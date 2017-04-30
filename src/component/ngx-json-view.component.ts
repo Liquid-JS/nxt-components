@@ -52,19 +52,22 @@ import { Utils } from './utils.class';
     	content: "+";
     }
     .ngx-json-view .key {
-    	color: #8e1f96;
+    	color: #92278f;
     }
     .ngx-json-view .value {
     	color: #000000;
     }
     .ngx-json-view .value .string {
-    	color: #008000;
+    	color: #3ab54a;
     }
     .ngx-json-view .value .number {
-    	color: #0000ff;
+    	color: #25aae2;
     }
     .ngx-json-view .value .boolean {
     	color: #aa0d91;
+    }
+    .ngx-json-view .value .null {
+    	color: #f1592a;
     }
     .ngx-json-view .children {
     	margin-left: 1em;
@@ -74,16 +77,6 @@ import { Utils } from './utils.class';
 export class NgxJsonViewComponent implements OnInit {
 
   private _data: object;
-  private isOpen: boolean = false;
-  private childrenKeys: string[];
-  private hasChildren: boolean = false;
-  private dataType: string;
-  private value: any;
-  private valueType: string;
-  private isObject: boolean = false;
-  private isArray: boolean = false;
-  private isInit: boolean = false;
-
   @Input()
   set data(data: object) {
     this._data = data;
@@ -93,6 +86,16 @@ export class NgxJsonViewComponent implements OnInit {
   @Input() key: string;
   @Input() level: number = 0;
   @Input() levelOpen: number;
+  
+  isOpen: boolean = false;
+  childrenKeys: string[];
+  hasChildren: boolean = false;
+  dataType: string;
+  value: any;
+  valueType: string;
+  isObject: boolean = false;
+  isArray: boolean = false;
+  isInit: boolean = false;
 
   ngOnInit() {
     this.init();
@@ -135,6 +138,7 @@ export class NgxJsonViewComponent implements OnInit {
       } else if (Utils.isBoolean(this.data)) {
         this.valueType = "boolean";
       } else if (null === this.data) {
+        this.valueType = "null";
         this.value = "null";
       }
     }

@@ -1,6 +1,6 @@
 {
   "name": "ngx-json-view",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A JSON View component for Angular 2+",
   "main": "src/index.js",
   "typings": "src/index.d.ts",
