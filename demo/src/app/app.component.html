@@ -12,4 +12,18 @@
       <ngx-json-view [data]="data" [levelOpen]="0"></ngx-json-view>
     </div>
   </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">在线测试</div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <textarea class="form-control" rows="15" [ngModel]="customData" (ngModelChange)="ngModelChange($event)"></textarea>
+        </div>
+        <div class="col-md-6">
+          <ngx-json-view [data]="customJson"></ngx-json-view>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

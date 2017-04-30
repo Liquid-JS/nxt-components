@@ -26,7 +26,15 @@ export class AppComponent {
       2,
       3
     ],
-    "date": new Date(),
     "null": null
   };
+  
+  customData: string = "{  }";
+  customJson: object;
+
+  ngModelChange($event){
+    try {
+      this.customJson = JSON.parse($event);
+    } catch (error) {}
+  }
 }

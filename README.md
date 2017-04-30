@@ -69,8 +69,8 @@ data = {
 ```
 
 # 文档
-- `data` - Object - 数据
-- `levelOpen` - number - 初始化展开层数
+- `data` - `Object` - 数据
+- `levelOpen` - `number` - 初始化展开层数(初始值：0)
 
 # 支持
 
