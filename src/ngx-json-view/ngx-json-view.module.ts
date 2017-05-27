@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { NgxJsonViewComponent } from './ngx-json-view.component';
+import { JsonViewComponent, NgxJsonViewComponent } from './component';
 
 @NgModule({
   imports: [
@@ -11,6 +11,7 @@ import { NgxJsonViewComponent } from './ngx-json-view.component';
     NgxJsonViewComponent
   ],
   declarations: [
+    JsonViewComponent,
     NgxJsonViewComponent
   ]
 })

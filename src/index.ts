@@ -1,2 +1,1 @@
-export * from './component/ngx-json-view.component';
-export * from './component/ngx-json-view.module';
+export * from './ngx-json-view';

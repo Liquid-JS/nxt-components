@@ -1,0 +1,19 @@
+<div class="json-view">
+  <a (click)="toggle()">
+        <span class="toggler" [ngClass]="{'collapse': isOpen, 'expand': !isOpen}" [style.visibility]="hasChildren?'visible':'hidden'"></span>
+        <span class="key" *ngIf="key">
+          <span>{{key}}</span>
+          <span>: </span>
+        </span>
+        <span class="value">
+          <span *ngIf="isObject">
+            {{ dataType }}
+            <span *ngIf="isArray">[ {{ data.length }} ]</span>
+          </span>
+          <span *ngIf="!isObject" [ngClass]="valueType">{{ value }}</span>
+        </span>
+      </a>
+  <div class="children" *ngIf="hasChildren && isOpen">
+    <json-view *ngFor="let _key of childrenKeys" [data]="data[_key]" [key]="_key" [level]="level+1" [levelOpen]="levelOpen"></json-view>
+  </div>
+</div>
