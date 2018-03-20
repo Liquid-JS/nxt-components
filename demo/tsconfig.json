@@ -16,5 +16,12 @@
       "es2016",
       "dom"
     ]
+    // For use with npm link & npm run start --preserve-symlinks
+    // ,
+    // "paths": {
+    //   "@angular/*": [
+    //     "../node_modules/@angular/*"
+    //   ]
+    // }
   }
 }

@@ -1,0 +1,11 @@
+{
+    "extends": "./tsconfig.json",
+    "include": [
+    ],
+    "files": [
+        "tmp/index.ts"
+    ],
+    "angularCompilerOptions": {
+        "annotateForClosureCompiler": true
+    }
+}
