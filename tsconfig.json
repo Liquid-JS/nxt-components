@@ -3,6 +3,7 @@
         "target": "es5",
         "module": "commonjs",
         "moduleResolution": "node",
+        "outDir": "dist/src",
         "sourceMap": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
@@ -13,6 +14,10 @@
             "dom"
         ],
         "declaration": true
+    },
+    "angularCompilerOptions": {
+        "annotateForClosureCompiler": true,
+        "genDir": "dist"
     },
     "include": [
         "src/**/*"
