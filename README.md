@@ -1,23 +1,25 @@
-# ngx-json-view
-A JSON View component for Angular 2+ (基于angular 2+ 的JSON展示组件)
+[![Build Status](https://travis-ci.org/killzoner/ng-json-view.svg?branch=master)](https://travis-ci.org/killzoner/ng-json-view)
 
-## 安装
+# ng-json-view
+A JSON View component for Angular 6+ (an angular 6+ based JSON display component)
 
-```
-npm install ngx-json-view --save
-```
-
-## 使用
-- 安装依赖包：`ngx-json-view`
+## installation
 
 ```
-npm install ngx-json-view --save
+npm install ng-json-view --save
 ```
 
-- 在module导入`NgxJsonViewModule`
+## use
+- Install the dependency package：`ng-json-view`
 
 ```
-import { NgxJsonViewModule } from 'ngx-json-view';
+npm install ng-json-view --save
+```
+
+- Import in module `NgxJsonViewModule`
+
+```
+import { NgxJsonViewModule } from 'ng-json-view';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import { NgxJsonViewModule } from 'ngx-json-view';
 export class AppModule { }
 ```
 
-- 准备JSON数据
+- Prepare JSON data
 
 ```
 data = {
@@ -62,17 +64,17 @@ data = {
 };
 ```
 
-- 在模板页面使用
+- Use on template page
 
 ```
 <ngx-json-view [data]="data"></ngx-json-view>
 ```
 
-# 文档
-- `data` - `Object` - 数据
-- `levelOpen` - `number` - 初始化展开层数(初始值：0)
+# Document
+- `data` - `Object` - Data
+- `levelOpen` - `number` - Initialize the number of layers to be expanded (initial value: 0)
 
-# 支持
+# stand by
 
-- 如果项目对你有帮助，请点颗星:star:，谢谢。
-- 如果你对项目有想法、问题、BUG，欢迎讨论。
+- If the project is helpful to you, please click on the star,Thank you
+- If you have ideas, questions, and bugs about the project, welcome to discuss.

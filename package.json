@@ -1,5 +1,5 @@
 {
-  "name": "ngx-json-view",
+  "name": "ng-json-view",
   "version": "2.0.0",
   "description": "A JSON View component for Angular 2+",
   "main": "dist/src/index.js",
@@ -8,19 +8,19 @@
     "clean": "npm run rimraf -- dist",
     "gulp": "gulp",
     "inline": "npm run gulp -- --gulpfile misc/inline-resources.gulp.js",
-    "ngc": "ngc -p tsconfig-aot.json && npm run rimraf -- dist/node_modules",
+    "ngc": "ngc -p tsconfig-aot.json && npm run rimraf -- dist/src/node_modules",
     "rimraf": "rimraf",
     "sass": "npm run sass:compile && npm run sass:replace",
     "sass:compile": "node-sass src -o tmp",
     "sass:replace": "node misc/replace_scss.js",
     "tmp": "ncp src tmp",
     "changelog": "conventional-changelog -i CHANGELOG.md -s -p angular -r 0",
-    "build": "npm run clean && npm run tmp && npm run sass && npm run inline && npm run ngc && npm run rimraf -- tmp",
+    "build": "npm run clean && npm run tmp && npm run sass && npm run inline && npm run ngc && ncp dist/src/tmp dist/src && npm run rimraf -- dist/src/tmp tmp",
     "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/twp0217/ngx-json-view.git"
+    "url": "git+https://github.com/killzoner/ng-json-view.git"
   },
   "keywords": [
     "angular",
@@ -30,14 +30,14 @@
     "ng",
     "ng2",
     "json-view",
-    "ngx-json-view"
+    "ng-json-view"
   ],
   "author": "tu.wenpan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/twp0217/ngx-json-view/issues"
+    "url": "https://github.com/killzoner/ng-json-view/issues"
   },
-  "homepage": "https://github.com/twp0217/ngx-json-view#readme",
+  "homepage": "https://github.com/killzoner/ng-json-view#readme",
   "devDependencies": {
     "@angular/common": "^6.1.6",
     "@angular/compiler": "^6.1.6",

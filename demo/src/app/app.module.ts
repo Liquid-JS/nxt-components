@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import { NgxJsonViewModule } from 'ngx-json-view';
+import { NgxJsonViewModule } from 'ng-json-view';
 
 @NgModule({
   declarations: [
