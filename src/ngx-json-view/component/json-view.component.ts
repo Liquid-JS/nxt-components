@@ -18,6 +18,7 @@ export class JsonViewComponent implements OnInit {
   @Input() key: string;
   @Input() level: number = 0;
   @Input() levelOpen: number;
+  @Input() levelLabels: { [key: number]: { [key: string]: string } };
 
   isOpen: boolean = false;
   childrenKeys: string[];
@@ -28,6 +29,7 @@ export class JsonViewComponent implements OnInit {
   isObject: boolean = false;
   isArray: boolean = false;
   isInit: boolean = false;
+  _levelLabels = {};
 
   ngOnInit() {
     this.init();
@@ -35,9 +37,16 @@ export class JsonViewComponent implements OnInit {
   }
 
   init() {
+    this.levelLabelHandle();
     this.levelOpenHandle();
     this.childrenKeysHandle();
     this.dataHandle();
+  }
+
+  levelLabelHandle() {
+    if (this.levelLabels !== undefined) {
+      this._levelLabels = this.levelLabels[this.level] || {};
+    }
   }
 
   levelOpenHandle() {
@@ -60,6 +69,9 @@ export class JsonViewComponent implements OnInit {
       if (isArray(this.data)) {
         this.isArray = true;
         this.dataType = "Array";
+      }
+      if (this._levelLabels[this.key]) {
+        this.dataType = this._levelLabels[this.key];
       }
     } else {
       this.value = this.data;

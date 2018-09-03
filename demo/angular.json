@@ -18,7 +18,8 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": ["src/static"],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ]
           },
           "configurations": {

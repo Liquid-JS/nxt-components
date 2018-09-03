@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  levelLabels: { [key: number]: { [key: string]: string } } = {
+    1: { 'object' : 'My label' }
+  };
+
   data = {
     'name': 'twp0217',
     'url': 'https://github.com/twp0217',
@@ -35,6 +40,6 @@ export class AppComponent {
   ngModelChange($event) {
     try {
       this.customJson = JSON.parse($event);
-    } catch (error) {}
+    } catch (error) { }
   }
 }

@@ -22,8 +22,9 @@
     "@angular/platform-browser": "^6.1.6",
     "@angular/platform-browser-dynamic": "^6.1.6",
     "@angular/router": "^6.1.6",
+    "bootstrap": "3.3.7",
     "core-js": "^2.4.1",
-    "ng-json-view": "^2.0.0",
+    "ng-json-view": "^2.1.0",
     "puppeteer": "^1.7.0",
     "rxjs": "^6.3.1",
     "zone.js": "^0.8.4"
