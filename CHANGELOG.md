@@ -1,4 +1,4 @@
-# [3.0.0](https://github.com/killzoner/ng-json-view/compare/v2.1.0...v3.0.0) Update to Angular 7, add fullTemplateTypeCheck compilation option
+# [2.2.0](https://github.com/killzoner/ng-json-view/compare/v2.1.0...v2.2.0) Add fullTemplateTypeCheck compilation option, make it compatible Angular 7
 
 # [2.1.0](https://github.com/killzoner/ng-json-view/compare/v2.0.0...v2.1.0) Add levelLabels feature
 
