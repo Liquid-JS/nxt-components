@@ -4,12 +4,12 @@ addons:
   chrome: stable
 language: node_js
 node_js:
-  - "8.11.3"
+  - "8.12.0"
 install:
     - cd $TRAVIS_BUILD_DIR && yarn install --frozen-lockfile
     - cd $TRAVIS_BUILD_DIR/demo && yarn install --frozen-lockfile
 script:
     - cd $TRAVIS_BUILD_DIR/demo
-    - yarn run build
+    - yarn run build:prod
     - yarn run lint
     - yarn run test

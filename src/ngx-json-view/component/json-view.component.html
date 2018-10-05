@@ -8,7 +8,7 @@
         <span class="value">
           <span *ngIf="isObject">
             {{ dataType }}
-            <span *ngIf="isArray">[ {{ data.length }} ]</span>
+            <span *ngIf="isArray">[ {{ $any(data)?.length }} ]</span>
           </span>
           <span *ngIf="!isObject" [ngClass]="valueType">{{ value }}</span>
         </span>

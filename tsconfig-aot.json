@@ -4,8 +4,5 @@
     ],
     "files": [
         "tmp/index.ts"
-    ],
-    "angularCompilerOptions": {
-        "annotateForClosureCompiler": true
-    }
+    ]
 }

@@ -15,7 +15,7 @@
     "lib": [
       "es2016",
       "dom"
-    ]
+    ],
     // For use with npm link & npm run start --preserve-symlinks
     // ,
     // "paths": {
@@ -23,5 +23,11 @@
     //     "../node_modules/@angular/*"
     //   ]
     // }
+  },
+  "angularCompilerOptions": {
+    "annotateForClosureCompiler": true,
+    "strictMetadataEmit": true,
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
   }
 }
