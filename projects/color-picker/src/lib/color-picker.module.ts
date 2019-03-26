@@ -16,7 +16,6 @@ import { TextDirective } from './text.directive'
         CommonModule
     ],
     exports: [
-        ColorPickerComponent,
         ColorPickerDirective
     ],
     entryComponents: [

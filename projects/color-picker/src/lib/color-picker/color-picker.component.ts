@@ -1,8 +1,8 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core'
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Hsla, Hsva, Rgba } from '../../util/formats'
-import { detectIE, SliderPosition } from '../../util/helpers'
-import { AlphaChannel, ColorFormat, ColorMode, ColorModeInternal, DialogDisplay, DialogPosition, OutputFormat, parseColorMode, Position } from '../../util/types'
+import { ColorModeInternal, parseColorMode, SliderPosition } from '../../util/helpers'
+import { AlphaChannel, ColorFormat, ColorMode, DialogDisplay, DialogPosition, OutputFormat, Position } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
 
 @Component({
@@ -17,8 +17,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
     readonly colorModeInternal = ColorModeInternal
     readonly dialogDisplay = DialogDisplay
     readonly colorFormat = ColorFormat
-
-    private isIE10: boolean = false
 
     private hsva: Hsva
 
@@ -186,8 +184,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
 
         this.cpColorMode = parseColorMode(cpColorMode)
 
-        this.isIE10 = (detectIE() === 10)
-
         this.directiveInstance = instance
         this.directiveElementRef = elementRef
 
@@ -294,7 +290,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     public onMouseDown(event: MouseEvent): void {
-        if (!this.isIE10 && this.cpDialogDisplay == DialogDisplay.popup &&
+        if (this.cpDialogDisplay == DialogDisplay.popup &&
             event.target !== this.directiveElementRef.nativeElement &&
             !this.isDescendant(this.elRef.nativeElement, event.target) &&
             !this.isDescendant(this.directiveElementRef.nativeElement, event.target) &&
@@ -645,9 +641,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
 
             this.directiveInstance.stateChanged(true)
 
-            if (!this.isIE10) {
-                document.addEventListener('mousedown', this.listenerMouseDown)
-            }
+            document.addEventListener('mousedown', this.listenerMouseDown)
 
             window.addEventListener('resize', this.listenerResize)
         }
@@ -659,9 +653,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
 
             this.directiveInstance.stateChanged(false)
 
-            if (!this.isIE10) {
-                document.removeEventListener('mousedown', this.listenerMouseDown)
-            }
+            document.removeEventListener('mousedown', this.listenerMouseDown)
 
             window.removeEventListener('resize', this.listenerResize)
 

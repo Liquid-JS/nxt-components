@@ -5,10 +5,11 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
+        "build:demo": "ng build color-picker && ng build --prod --base-href https://liquid-js.github.io/color-picker/ demo",
         "test": "ng test",
         "lint": "ng lint --fix",
         "e2e": "ng e2e",
-        "pages": "ng build color-picker && ng build --prod --base-href https://liquid-js.github.io/color-picker/ demo && ngh --dir dist/demo"
+        "pages": "yarn build:demo && ngh --dir dist/demo"
     },
     "private": true,
     "dependencies": {
