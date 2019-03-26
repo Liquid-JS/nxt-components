@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <base href="/">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+    <link rel="icon"
+        type="image/x-icon"
+        href="favicon.ico">
+    <style>
+        .loading,
+        .loading:after,
+        .loading:before {
+            content: ' ';
+            top: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            animation: spinner 1600ms infinite ease-in-out;
+        }
+
+        .loading {
+            color: #555;
+            margin: 64px auto;
+            position: relative;
+            animation-delay: -160ms;
+        }
+
+        .loading:after {
+            left: 64px;
+        }
+
+        .loading:before {
+            left: -64px;
+            animation-delay: -320ms;
+        }
+
+        .loading:after,
+        .loading:before {
+            position: absolute;
+        }
+
+        @keyframes spinner {
+            40% {
+                box-shadow: 0 40px 0 0;
+            }
+
+            0%,
+            80%,
+            100% {
+                box-shadow: 0 40px 0 -20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <app-root>
+        <div class="loading"></div>
+    </app-root>
+</body>
+
+</html>

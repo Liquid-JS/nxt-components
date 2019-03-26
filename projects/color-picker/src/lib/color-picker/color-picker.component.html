@@ -1,0 +1,301 @@
+<div #dialogPopup
+    class="color-picker"
+    (click)="$event.stopPropagation()"
+    [ngStyle]="{
+        visibility: hidden || !show ? 'hidden' : 'visible',
+        top: top || 0,
+        left: left || 0,
+        position: position || '',
+        height: cpHeight || 'auto',
+        width: cpWidth || 'auto'
+    }">
+    <div *ngIf="cpDialogDisplay == dialogDisplay.popup"
+        class="color-picker__arrow"
+        [ngClass]="'color-picker__arrow--' + cpPosition"
+        [ngStyle]="{ 
+            top: arrowTop
+        }"></div>
+    <div *ngIf="cpColorMode == colorModeInternal.color"
+        class="color-picker__sv"
+        cpSlider
+        [rgX]="1"
+        [rgY]="1"
+        (newValue)="onColorChange($event)"
+        (dragStart)="onDragStart('saturation-lightness')"
+        (dragEnd)="onDragEnd('saturation-lightness')"
+        [ngStyle]="{ 
+            backgroundColor: hueSliderColor || ''
+        }">
+        <div class="color-picker__cursor color-picker__cursor--sv"
+            [ngClass]="{ 'color-picker__cursor--white': svSliderWhite }"
+            [ngStyle]="{
+                top: (slider?.v || 0) * 100 + '%',
+                left: (slider?.s || 0) * 100 + '%'
+            }"></div>
+    </div>
+    <div class="color-picker__controls">
+        <div class="color-picker__selected">
+            <div class="color-picker__selected-color">
+                <div [ngStyle]="{ 
+                    backgroundColor: selectedColor || ''
+                }"></div>
+            </div>
+            <button *ngIf="cpAddColorButton"
+                class="color-picker__add-selected"
+                [disabled]="cpPresetColors && cpPresetColors.length >= cpMaxPresetColorsLength"
+                (click)="onAddPresetColor($event, selectedColor)">{{ cpAddColorButtonText }}</button>
+        </div>
+        <div class="color-picker__hav">
+            <div *ngIf="cpColorMode == colorModeInternal.color"
+                class="color-picker__slider color-picker__slider--hue"
+                cpSlider
+                [rgX]="1"
+                (newValue)="onHueChange($event)"
+                (dragStart)="onDragStart('hue')"
+                (dragEnd)="onDragEnd('hue')">
+                <div class="color-picker__cursor"
+                    [ngClass]="{ 'color-picker__cursor--white': hueSliderWhite }"
+                    [ngStyle]="{
+                        left: (slider?.h || 0) * 100 + '%'
+                    }"></div>
+            </div>
+            <div *ngIf="cpColorMode == colorModeInternal.grayscale"
+                class="color-picker__slider color-picker__slider--value"
+                cpSlider
+                [rgX]="1"
+                (newValue)="onValueChange($event)"
+                (dragStart)="onDragStart('value')"
+                (dragEnd)="onDragEnd('value')">
+                <div class="color-picker__cursor"
+                    [ngClass]="{ 'color-picker__cursor--white': valueSliderWhite }"
+                    [ngStyle]="{
+                        left: (1 - (slider?.v || 0)) * 100 + '%'
+                    }"></div>
+            </div>
+            <div *ngIf="cpAlphaChannel != alphaChannel.disabled"
+                class="color-picker__slider color-picker__slider--alpha"
+                cpSlider
+                [rgX]="1"
+                (newValue)="onAlphaChange($event)"
+                (dragStart)="onDragStart('alpha')"
+                (dragEnd)="onDragEnd('alpha')">
+                <div class="color-picker__slider--alpha-bg"
+                    [ngStyle]="{
+                        backgroundImage: alphaSliderColor || ''
+                    }">
+                    <div class="color-picker__cursor"
+                        [ngClass]="{ 'color-picker__cursor--white': alphaSliderWhite }"
+                        [ngStyle]="{
+                            left: (slider?.a || 0) * 100 + '%'
+                        }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!cpDisableInput && cpColorMode == colorModeInternal.color"
+        class="hsla-text"
+        [style.display]="format !== 2 ? 'none' : 'block'">
+        <div class="box">
+            <input type="number"
+                pattern="[0-9]*"
+                min="0"
+                max="360"
+                cpText
+                [rg]="360"
+                [value]="hslaText?.h"
+                (keyup.enter)="onAcceptColor($event)"
+                (newValue)="onHueInput($event)" />
+            <input type="number"
+                pattern="[0-9]*"
+                min="0"
+                max="100"
+                cpText
+                [rg]="100"
+                [value]="hslaText?.s"
+                (keyup.enter)="onAcceptColor($event)"
+                (newValue)="onSaturationInput($event)" />
+            <input type="number"
+                pattern="[0-9]*"
+                min="0"
+                max="100"
+                cpText
+                [rg]="100"
+                [value]="hslaText?.l"
+                (keyup.enter)="onAcceptColor($event)"
+                (newValue)="onLightnessInput($event)" />
+            <input *ngIf="cpAlphaChannel != alphaChannel.disabled"
+                type="number"
+                pattern="[0-9]+([\.,][0-9]{1,2})?"
+                min="0"
+                max="1"
+                step="0.1"
+                cpText
+                [rg]="1"
+                [value]="hslaText?.a"
+                (keyup.enter)="onAcceptColor($event)"
+                (newValue)="onAlphaInput($event)" />
+        </div>
+
+        <div class="box">
+            <div>H</div>
+            <div>S</div>
+            <div>L</div>
+            <div *ngIf="cpAlphaChannel != alphaChannel.disabled">A</div>
+        </div>
+    </div>
+
+    <div *ngIf="!cpDisableInput && cpColorMode == colorModeInternal.color"
+        [style.display]="format !== 1 ? 'none' : 'block'"
+        class="rgba-text">
+        <div class="box">
+            <input type="number"
+                pattern="[0-9]*"
+                min="0"
+                max="255"
+                cpText
+                [rg]="255"
+                [value]="rgbaText?.r"
+                (keyup.enter)="onAcceptColor($event)"
+                (newValue)="onRedInput($event)" />
+            <input type="number"
+                pattern="[0-9]*"
+                min="0"
+                max="255"
+                cpText
+                [rg]="255"
+                [value]="rgbaText?.g"
+                (keyup.enter)="onAcceptColor($event)"
+                (newValue)="onGreenInput($event)" />
+            <input type="number"
+                pattern="[0-9]*"
+                min="0"
+                max="255"
+                cpText
+                [rg]="255"
+                [value]="rgbaText?.b"
+                (keyup.enter)="onAcceptColor($event)"
+                (newValue)="onBlueInput($event)" />
+            <input *ngIf="cpAlphaChannel != alphaChannel.disabled"
+                type="number"
+                pattern="[0-9]+([\.,][0-9]{1,2})?"
+                min="0"
+                max="1"
+                step="0.1"
+                cpText
+                [rg]="1"
+                [value]="rgbaText?.a"
+                (keyup.enter)="onAcceptColor($event)"
+                (newValue)="onAlphaInput($event)" />
+        </div>
+
+        <div class="box">
+            <div>R</div>
+            <div>G</div>
+            <div>B</div>
+            <div *ngIf="cpAlphaChannel != alphaChannel.disabled">A</div>
+        </div>
+    </div>
+
+    <div *ngIf="!cpDisableInput && cpColorMode == colorModeInternal.color"
+        class="hex-text"
+        [class.hex-alpha]="cpAlphaChannel == alphaChannel.forced"
+        [style.display]="format !== 0 ? 'none' : 'block'">
+        <div class="box">
+            <input cpText
+                [value]="hexText"
+                (blur)="onHexInput(null)"
+                (keyup.enter)="onAcceptColor($event)"
+                (newValue)="onHexInput($event)" />
+            <input *ngIf="cpAlphaChannel == alphaChannel.forced"
+                type="number"
+                pattern="[0-9]+([\.,][0-9]{1,2})?"
+                min="0"
+                max="1"
+                step="0.1"
+                cpText
+                [rg]="1"
+                [value]="hexAlpha"
+                (keyup.enter)="onAcceptColor($event)"
+                (newValue)="onAlphaInput($event)" />
+        </div>
+
+        <div class="box">
+            <div>Hex</div>
+            <div *ngIf="cpAlphaChannel == alphaChannel.forced">A</div>
+        </div>
+    </div>
+
+    <div *ngIf="!cpDisableInput && cpColorMode == colorModeInternal.grayscale"
+        class="value-text">
+        <div class="box">
+            <input type="number"
+                pattern="[0-9]*"
+                min="0"
+                max="100"
+                cpText
+                [rg]="100"
+                [value]="hslaText?.l"
+                (keyup.enter)="onAcceptColor($event)"
+                (newValue)="onValueInput($event)" />
+            <input *ngIf="cpAlphaChannel != alphaChannel.disabled"
+                type="number"
+                pattern="[0-9]+([\.,][0-9]{1,2})?"
+                min="0"
+                max="1"
+                step="0.1"
+                cpText
+                [rg]="1"
+                [value]="hslaText?.a"
+                (keyup.enter)="onAcceptColor($event)"
+                (newValue)="onAlphaInput($event)" />
+        </div>
+
+        <div class="box">
+            <div>V</div>
+            <div>A</div>
+        </div>
+    </div>
+
+    <div *ngIf="!cpDisableInput && cpColorMode == colorModeInternal.color"
+        class="type-policy">
+        <span class="type-policy-arrow"
+            (click)="onFormatToggle(1)"></span>
+        <span class="type-policy-arrow"
+            (click)="onFormatToggle(-1)"></span>
+    </div>
+
+    <div *ngIf="cpPresetColors?.length || cpAddColorButton"
+        class="preset-area">
+        <hr>
+
+        <div class="preset-label">{{cpPresetLabel}}</div>
+
+        <div *ngIf="cpPresetColors?.length">
+            <div *ngFor="let color of cpPresetColors"
+                class="preset-color"
+                [style.backgroundColor]="color"
+                (click)="setColorFromString(color)">
+                <span *ngIf="cpAddColorButton"
+                    class="{{cpRemoveColorButtonClass}}"
+                    (click)="onRemovePresetColor($event, color)"></span>
+            </div>
+        </div>
+
+        <div *ngIf="!cpPresetColors?.length && cpAddColorButton"
+            class="{{cpPresetEmptyMessageClass}}">{{cpPresetEmptyMessage}}</div>
+    </div>
+
+    <div *ngIf="cpOKButton || cpCancelButton"
+        class="button-area">
+        <button *ngIf="cpCancelButton"
+            type="button"
+            class="{{cpCancelButtonClass}}"
+            (click)="onCancelColor($event)">{{cpCancelButtonText}}</button>
+
+        <button *ngIf="cpOKButton"
+            type="button"
+            class="{{cpOKButtonClass}}"
+            (click)="onAcceptColor($event)">{{cpOKButtonText}}</button>
+    </div>
+</div>
