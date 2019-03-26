@@ -6,8 +6,9 @@
         "start": "ng serve",
         "build": "ng build",
         "test": "ng test",
-        "lint": "ng lint",
-        "e2e": "ng e2e"
+        "lint": "ng lint --fix",
+        "e2e": "ng e2e",
+        "pages": "ng build color-picker && ng build --prod --base-href https://liquid-js.github.io/color-picker/ demo && ngh --dir dist/demo"
     },
     "private": true,
     "dependencies": {
@@ -34,6 +35,7 @@
         "@types/jasmine": "~3.3.12",
         "@types/jasminewd2": "~2.0.3",
         "@types/node": "~11.11.7",
+        "angular-cli-ghpages": "^0.5.3",
         "codelyzer": "~5.0.0-beta.2",
         "jasmine-core": "~3.3.0",
         "jasmine-spec-reporter": "~4.2.1",

@@ -1,3 +1,9 @@
+export enum ColorFormat {
+    hex = 'hex',
+    rgba = 'rgba',
+    hsla = 'hsla'
+}
+
 export enum OutputFormat {
     auto = 'auto',
     hex = 'hex',

@@ -14,17 +14,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
     private cmpRef: ComponentRef<ColorPickerComponent>
 
-    private _cpColor: string
-
-    @Input() set cpColor(val: string) {
-        this._cpColor = val
-        if (this.dialog)
-            this.dialog.setColorFromString(val, false)
-    }
-
-    get cpColor() {
-        return this._cpColor
-    }
+    @Input() cpColor: string
 
     @Input() cpWidth: string = '230px'
     @Input() cpHeight: string = 'auto'
@@ -56,23 +46,18 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
     @Input() cpOKButton: boolean = false
     @Input() cpOKButtonText: string = 'OK'
-    @Input() cpOKButtonClass: string = 'cp-ok-button-class'
 
     @Input() cpCancelButton: boolean = false
     @Input() cpCancelButtonText: string = 'Cancel'
-    @Input() cpCancelButtonClass: string = 'cp-cancel-button-class'
 
     @Input() cpPresetLabel: string = 'Preset colors'
     @Input() cpPresetColors: string[]
     @Input() cpMaxPresetColorsLength: number = 6
 
     @Input() cpPresetEmptyMessage: string = 'No colors added'
-    @Input() cpPresetEmptyMessageClass: string = 'preset-empty-message'
 
     @Input() cpAddColorButton: boolean = false
     @Input() cpAddColorButtonText: string = 'Add color'
-
-    @Input() cpRemoveColorButtonClass: string = 'cp-remove-color-button-class'
 
     @Output() cpInputChange = new EventEmitter<any>(true)
 
@@ -126,13 +111,13 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             }
         }
 
-        if (changes.colorPicker) {
+        if (changes.cpColor) {
             if (this.dialog && !this.ignoreChanges) {
                 if (this.cpDialogDisplay == DialogDisplay.inline) {
-                    this.dialog.setInitialColor(changes.colorPicker.currentValue)
+                    this.dialog.setInitialColor(changes.cpColor.currentValue)
                 }
 
-                this.dialog.setColorFromString(changes.colorPicker.currentValue, false)
+                this.dialog.setColorFromString(changes.cpColor.currentValue, false)
 
                 if (this.cpUseRootViewContainer && this.cpDialogDisplay != DialogDisplay.inline) {
                     this.cmpRef.changeDetectorRef.detectChanges()
@@ -172,17 +157,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
             this.cmpRef = vcRef.createComponent(compFactory, 0, this.injector, [])
 
-            this.cmpRef.instance.setupDialog(this, this.elRef, this.cpColor,
-                this.cpWidth, this.cpHeight, this.cpDialogDisplay, this.cpFallbackColor,
-                this.cpColorMode, this.cpAlphaChannel, this.cpOutputFormat, this.cpDisableInput,
-                this.cpIgnoredElements, this.cpSaveClickOutside, this.cpCloseClickOutside,
-                this.cpUseRootViewContainer, this.cpPosition, this.cpPositionOffset,
-                this.cpPositionRelativeToArrow, this.cpPresetLabel, this.cpPresetColors,
-                this.cpMaxPresetColorsLength, this.cpPresetEmptyMessage, this.cpPresetEmptyMessageClass,
-                this.cpOKButton, this.cpOKButtonClass, this.cpOKButtonText,
-                this.cpCancelButton, this.cpCancelButtonClass, this.cpCancelButtonText,
-                this.cpAddColorButton, this.cpAddColorButtonText,
-                this.cpRemoveColorButtonClass)
+            this.cmpRef.instance.setupDialog(this, this.elRef, this.cpColor, this.cpWidth, this.cpHeight, this.cpDialogDisplay, this.cpFallbackColor, this.cpColorMode, this.cpAlphaChannel, this.cpOutputFormat, this.cpDisableInput, this.cpIgnoredElements, this.cpSaveClickOutside, this.cpCloseClickOutside, this.cpUseRootViewContainer, this.cpPosition, this.cpPositionOffset, this.cpPositionRelativeToArrow, this.cpPresetLabel, this.cpPresetColors, this.cpMaxPresetColorsLength, this.cpPresetEmptyMessage, this.cpOKButton, this.cpOKButtonText, this.cpCancelButton, this.cpCancelButtonText, this.cpAddColorButton, this.cpAddColorButtonText)
 
             this.dialog = this.cmpRef.instance
 

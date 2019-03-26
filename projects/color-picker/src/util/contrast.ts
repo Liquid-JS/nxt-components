@@ -73,20 +73,20 @@ export function calculateMinimumAlpha(foreground: Rgba, background: Rgba, minCon
     return maxAlpha
 }
 
-const white = new Rgba(218, 218, 218, 1)
-const black = new Rgba(34, 34, 34, 1)
+const light = new Rgba(218, 218, 218, 1)
+const dark = new Rgba(34, 34, 34, 1)
 
-export function opaqueSliderWhite(background: Rgba) {
-    const cWhite = calculateContrast(white, new Rgba(background.r, background.g, background.b, 1))
-    const cBlack = calculateContrast(black, new Rgba(background.r, background.g, background.b, 1))
+export function opaqueSliderLight(background: Rgba) {
+    const cWhite = calculateContrast(light, new Rgba(background.r, background.g, background.b, 1))
+    const cBlack = calculateContrast(dark, new Rgba(background.r, background.g, background.b, 1))
 
     return cWhite > cBlack
 }
 
-export function transparentSliderWhite(background: Rgba) {
-    const bg = compositeColors(background, white)
-    const cWhite = calculateContrast(white, new Rgba(bg.r, bg.g, bg.b, 1))
-    const cBlack = calculateContrast(black, new Rgba(bg.r, bg.g, bg.b, 1))
+export function transparentSliderLight(background: Rgba) {
+    const bg = compositeColors(background, light)
+    const cWhite = calculateContrast(light, new Rgba(bg.r, bg.g, bg.b, 1))
+    const cBlack = calculateContrast(dark, new Rgba(bg.r, bg.g, bg.b, 1))
 
     return cWhite > cBlack
 }

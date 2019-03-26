@@ -1,8 +1,8 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core'
-import { opaqueSliderWhite, transparentSliderWhite } from '../../util/contrast'
-import { ColorFormats, Hsla, Hsva, Rgba } from '../../util/formats'
+import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
+import { Hsla, Hsva, Rgba } from '../../util/formats'
 import { detectIE, SliderPosition } from '../../util/helpers'
-import { AlphaChannel, ColorMode, ColorModeInternal, DialogDisplay, DialogPosition, OutputFormat, parseColorMode, Position } from '../../util/types'
+import { AlphaChannel, ColorFormat, ColorMode, ColorModeInternal, DialogDisplay, DialogPosition, OutputFormat, parseColorMode, Position } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
 
 @Component({
@@ -16,6 +16,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
     readonly alphaChannel = AlphaChannel
     readonly colorModeInternal = ColorModeInternal
     readonly dialogDisplay = DialogDisplay
+    readonly colorFormat = ColorFormat
 
     private isIE10: boolean = false
 
@@ -39,10 +40,10 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
     private dialogArrowSize: number = 10
     private dialogArrowOffset: number = 15
 
-    private dialogInputFields: ColorFormats[] = [
-        ColorFormats.HEX,
-        ColorFormats.RGBA,
-        ColorFormats.HSLA
+    private dialogInputFields: ColorFormat[] = [
+        ColorFormat.hex,
+        ColorFormat.rgba,
+        ColorFormat.hsla
     ]
 
     private useRootViewContainer: boolean = false
@@ -54,7 +55,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
     public left: number
     public position: Position = Position.relative
 
-    public format: ColorFormats
+    public format: ColorFormat
     public slider: SliderPosition
 
     public hexText: string
@@ -69,10 +70,10 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
     public hueSliderColor: string
     public alphaSliderColor: string
 
-    public svSliderWhite: boolean
-    public hueSliderWhite: boolean
-    public valueSliderWhite: boolean
-    public alphaSliderWhite: boolean
+    public svSliderLight = false
+    public hueSliderLight = false
+    public valueSliderLight = false
+    public alphaSliderLight = false
 
     public cpWidth: number
     public cpHeight: number
@@ -95,22 +96,18 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
 
     public cpOKButton: boolean
     public cpOKButtonText: string
-    public cpOKButtonClass: string
 
     public cpCancelButton: boolean
     public cpCancelButtonText: string
-    public cpCancelButtonClass: string
 
     public cpPresetLabel: string
     public cpPresetColors: string[]
     public cpMaxPresetColorsLength: number
 
     public cpPresetEmptyMessage: string
-    public cpPresetEmptyMessageClass: string
 
     public cpAddColorButton: boolean
     public cpAddColorButtonText: string
-    public cpRemoveColorButtonClass: string
 
     @ViewChild('dialogPopup') private dialogElement: ElementRef
 
@@ -136,11 +133,11 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
         this.slider = new SliderPosition(0, 0, 0, 0)
 
         if (this.cpOutputFormat == OutputFormat.rgba) {
-            this.format = ColorFormats.RGBA
+            this.format = ColorFormat.rgba
         } else if (this.cpOutputFormat == OutputFormat.hsla) {
-            this.format = ColorFormats.HSLA
+            this.format = ColorFormat.hsla
         } else {
-            this.format = ColorFormats.HEX
+            this.format = ColorFormat.hex
         }
 
         this.listenerMouseDown = (event: any) => { this.onMouseDown(event) }
@@ -184,17 +181,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
         this.closeColorPicker()
     }
 
-    public setupDialog(instance: any, elementRef: ElementRef, color: any,
-        cpWidth: string, cpHeight: string, cpDialogDisplay: DialogDisplay, cpFallbackColor: string,
-        cpColorMode: ColorMode, cpAlphaChannel: AlphaChannel, cpOutputFormat: OutputFormat,
-        cpDisableInput: boolean, cpIgnoredElements: any, cpSaveClickOutside: boolean,
-        cpCloseClickOutside: boolean, cpUseRootViewContainer: boolean, cpPosition: DialogPosition,
-        cpPositionOffset: string, cpPositionRelativeToArrow: boolean, cpPresetLabel: string,
-        cpPresetColors: string[], cpMaxPresetColorsLength: number, cpPresetEmptyMessage: string,
-        cpPresetEmptyMessageClass: string, cpOKButton: boolean, cpOKButtonClass: string,
-        cpOKButtonText: string, cpCancelButton: boolean, cpCancelButtonClass: string,
-        cpCancelButtonText: string, cpAddColorButton: boolean,
-        cpAddColorButtonText: string, cpRemoveColorButtonClass: string): void {
+    public setupDialog(instance: any, elementRef: ElementRef, color: any, cpWidth: string, cpHeight: string, cpDialogDisplay: DialogDisplay, cpFallbackColor: string, cpColorMode: ColorMode, cpAlphaChannel: AlphaChannel, cpOutputFormat: OutputFormat, cpDisableInput: boolean, cpIgnoredElements: any, cpSaveClickOutside: boolean, cpCloseClickOutside: boolean, cpUseRootViewContainer: boolean, cpPosition: DialogPosition, cpPositionOffset: string, cpPositionRelativeToArrow: boolean, cpPresetLabel: string, cpPresetColors: string[], cpMaxPresetColorsLength: number, cpPresetEmptyMessage: string, cpOKButton: boolean, cpOKButtonText: string, cpCancelButton: boolean, cpCancelButtonText: string, cpAddColorButton: boolean, cpAddColorButtonText: string): void {
         this.setInitialColor(color)
 
         this.cpColorMode = parseColorMode(cpColorMode)
@@ -225,11 +212,9 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
 
         this.cpOKButton = cpOKButton
         this.cpOKButtonText = cpOKButtonText
-        this.cpOKButtonClass = cpOKButtonClass
 
         this.cpCancelButton = cpCancelButton
         this.cpCancelButtonText = cpCancelButtonText
-        this.cpCancelButtonClass = cpCancelButtonClass
 
         this.fallbackColor = cpFallbackColor || '#fff'
 
@@ -237,11 +222,9 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
 
         this.cpMaxPresetColorsLength = cpMaxPresetColorsLength
         this.cpPresetEmptyMessage = cpPresetEmptyMessage
-        this.cpPresetEmptyMessageClass = cpPresetEmptyMessageClass
 
         this.cpAddColorButton = cpAddColorButton
         this.cpAddColorButtonText = cpAddColorButtonText
-        this.cpRemoveColorButtonClass = cpRemoveColorButtonClass
 
         if (!cpPositionRelativeToArrow) {
             this.dialogArrowOffset = 0
@@ -258,8 +241,9 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
         }
     }
 
-    public setInitialColor(color: any): void {
+    public setInitialColor(color: string): void {
         this.initialColor = color
+        this.setColorFromString(this.initialColor, false, true)
     }
 
     public setPresetConfig(cpPresetLabel: string, cpPresetColors: string[]): void {
@@ -713,17 +697,17 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
 
         if (this.cpOutputFormat == OutputFormat.auto) {
             if (this.hsva.a < 1) {
-                this.format = this.hsva.a < 1 ? ColorFormats.RGBA : ColorFormats.HEX
+                this.format = this.hsva.a < 1 ? ColorFormat.rgba : ColorFormat.hex
             }
         }
 
         this.hueSliderColor = 'rgb(' + hue.r + ',' + hue.g + ',' + hue.b + ')'
         this.alphaSliderColor = 'linear-gradient(to right, rgba(' + rgba.r + ',' + rgba.g + ',' + rgba.b + ', 0) 0%, rgba(' + rgba.r + ',' + rgba.g + ',' + rgba.b + ', 1) 100%)'
 
-        this.svSliderWhite = opaqueSliderWhite(rgba)
-        this.hueSliderWhite = opaqueSliderWhite(hue)
-        this.valueSliderWhite = opaqueSliderWhite(rgba)
-        this.alphaSliderWhite = transparentSliderWhite(rgba)
+        this.svSliderLight = opaqueSliderLight(rgba)
+        this.hueSliderLight = opaqueSliderLight(hue)
+        this.valueSliderLight = opaqueSliderLight(rgba)
+        this.alphaSliderLight = transparentSliderLight(rgba)
 
         this.outputColor = this.service.outputFormat(this.hsva, this.cpOutputFormat, this.cpAlphaChannel)
         this.selectedColor = this.service.outputFormat(this.hsva, 'rgba', null)
