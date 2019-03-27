@@ -1,6 +1,6 @@
 # Angular Color Picker
 
-<a href="https://badge.fury.io/js/Fnxt-color-picker"><img src="https://badge.fury.io/js/Fnxt-color-picker.svg" align="right" alt="yarn version" height="18"></a>
+<a href="https://badge.fury.io/js/nxt-color-picker"><img src="https://badge.fury.io/js/nxt-color-picker.svg" align="right" alt="yarn version" height="18"></a>
 
 This is a responsive color picker based on [angular2-color-picker](https://github.com/Alberplz/angular2-color-picker) and updates from [nxt-color-picker](https://github.com/zefoy/nxt-color-picker).
 
