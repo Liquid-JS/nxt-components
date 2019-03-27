@@ -2,7 +2,7 @@
 
 <a href="https://badge.fury.io/js/nxt-color-picker"><img src="https://badge.fury.io/js/nxt-color-picker.svg" align="right" alt="yarn version" height="18"></a>
 
-This is a responsive color picker based on [angular2-color-picker](https://github.com/Alberplz/angular2-color-picker) and updates from [nxt-color-picker](https://github.com/zefoy/nxt-color-picker).
+This is a responsive color picker based on [angular2-color-picker](https://github.com/Alberplz/angular2-color-picker) and updates from [ngx-color-picker](https://github.com/zefoy/ngx-color-picker).
 
 It's been rewriten using Angular CLI to streamline the codebase and employ best practices for development.
 
