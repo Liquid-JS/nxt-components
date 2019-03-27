@@ -18,7 +18,7 @@ module.exports = function (config) {
             clearContext: false // leave Jasmine Spec Runner output visible in browser
         },
         coverageIstanbulReporter: {
-            dir: require('path').join(__dirname, '../../coverage/color-picker'),
+            dir: require('path').join(__dirname, '../../../coverage/liquid-js/ngx-color-picker'),
             reports: ['html', 'lcovonly'],
             fixWebpackSourcePaths: true
         },

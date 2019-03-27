@@ -1,11 +1,11 @@
 {
-    "name": "color-picker",
+    "name": "ngx-color-picker",
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
-        "build:demo": "ng build color-picker && ng build --prod --base-href https://liquid-js.github.io/color-picker/ demo",
+        "build:demo": "ng build @liquid-js/ngx-color-picker && ng build --prod --base-href https://liquid-js.github.io/color-picker/ demo",
         "analyze": "yarn build:demo --stats-json && webpack-bundle-analyzer dist/demo/stats.json",
         "test": "ng test --code-coverage --source-map false --watch true",
         "lint": "ng lint --fix",

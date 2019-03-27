@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { ColorPickerModule } from 'projects/color-picker/src/public-api'
+import { ColorPickerModule } from '@liquid-js/ngx-color-picker'
 import { AppComponent } from './app.component'
 
 @NgModule({

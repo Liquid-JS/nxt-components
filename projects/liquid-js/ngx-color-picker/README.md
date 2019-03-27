@@ -1,6 +1,6 @@
 # Angular Color Picker
 
-<a href="https://badge.fury.io/js/ngx-color-picker"><img src="https://badge.fury.io/js/ngx-color-picker.svg" align="right" alt="yarn version" height="18"></a>
+<a href="https://badge.fury.io/js/%40liquid-js%2Fngx-color-picker"><img src="https://badge.fury.io/js/%40liquid-js%2Fngx-color-picker.svg" align="right" alt="yarn version" height="18"></a>
 
 This is a responsive color picker based on [angular2-color-picker](https://github.com/Alberplz/angular2-color-picker) and updates from [ngx-color-picker](https://github.com/zefoy/ngx-color-picker).
 
@@ -27,13 +27,13 @@ yarn start
 ### Installing and usage
 
 ```bash
-yarn ngx-color-picker --save
+yarn @liquid-js/ngx-color-picker --save
 ```
 
 ##### Load the module for your app:
 
 ```javascript
-import { ColorPickerModule } from 'ngx-color-picker';
+import { ColorPickerModule } from '@liquid-js/ngx-color-picker';
 
 @NgModule({
   ...
