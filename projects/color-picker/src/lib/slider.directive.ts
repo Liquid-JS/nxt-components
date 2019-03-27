@@ -1,11 +1,15 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core'
 
+export type CursorEvent = { v: number, rgX: number } | { v: number, rgY: number } | { v: number, s: number, rgX: number, rgY: number }
+
 @Directive({
     selector: '[cpSlider]'
 })
 export class SliderDirective {
-    private listenerMove: any
-    private listenerStop: any
+
+    constructor(
+        private elRef: ElementRef
+    ) { }
 
     @Input() rgX: number
     @Input() rgY: number
@@ -15,29 +19,25 @@ export class SliderDirective {
     @Output() dragEnd = new EventEmitter()
     @Output() dragStart = new EventEmitter()
 
-    @Output() newValue = new EventEmitter<any>()
+    @Output() newValue = new EventEmitter<CursorEvent>()
+    private listenerMove = (event: MouseEvent | TouchEvent) => this.move(event)
+    private listenerStop = () => this.stop()
 
-    @HostListener('mousedown', ['$event']) mouseDown(event: any): void {
+    @HostListener('mousedown', ['$event']) mouseDown(event: MouseEvent | TouchEvent): void {
         this.start(event)
     }
 
-    @HostListener('touchstart', ['$event']) touchStart(event: any): void {
+    @HostListener('touchstart', ['$event']) touchStart(event: MouseEvent | TouchEvent): void {
         this.start(event)
     }
 
-    constructor(private elRef: ElementRef) {
-        this.listenerMove = (event: any) => this.move(event)
-
-        this.listenerStop = () => this.stop()
-    }
-
-    private move(event: any): void {
+    private move(event: MouseEvent | TouchEvent): void {
         event.preventDefault()
 
         this.setCursor(event)
     }
 
-    private start(event: any): void {
+    private start(event: MouseEvent | TouchEvent): void {
         this.setCursor(event)
 
         event.stopPropagation()
@@ -59,23 +59,23 @@ export class SliderDirective {
         this.dragEnd.emit()
     }
 
-    private getX(event: any): number {
+    private getX(event: MouseEvent | TouchEvent): number {
         const position = this.elRef.nativeElement.getBoundingClientRect()
 
-        const pageX = (event.pageX !== undefined) ? event.pageX : event.touches[0].pageX
+        const pageX = 'pageX' in event ? event.pageX : event.touches[0].pageX
 
         return pageX - position.left - window.pageXOffset
     }
 
-    private getY(event: any): number {
+    private getY(event: MouseEvent | TouchEvent): number {
         const position = this.elRef.nativeElement.getBoundingClientRect()
 
-        const pageY = (event.pageY !== undefined) ? event.pageY : event.touches[0].pageY
+        const pageY = 'pageX' in event ? event.pageY : event.touches[0].pageY
 
         return pageY - position.top - window.pageYOffset
     }
 
-    private setCursor(event: any): void {
+    private setCursor(event: MouseEvent | TouchEvent): void {
         const width = this.elRef.nativeElement.offsetWidth
         const height = this.elRef.nativeElement.offsetHeight
 

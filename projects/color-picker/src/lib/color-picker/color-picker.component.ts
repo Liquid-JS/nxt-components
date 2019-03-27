@@ -3,8 +3,8 @@ import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Hsla, Hsva, Rgba } from '../../util/formats'
 import { ColorModeInternal, parseColorMode, Position, sizeToString, SliderPosition } from '../../util/helpers'
 import { AlphaChannel, ColorFormat, ColorMode, DialogDisplay, DialogPosition, OutputFormat } from '../../util/types'
+import { ColorPickerDirective } from '../color-picker.directive'
 import { ColorPickerService } from '../color-picker.service'
-import { ColorPickerDirective } from '../color-picker.directive';
 
 @Component({
     selector: 'cp-color-picker',
@@ -13,6 +13,12 @@ import { ColorPickerDirective } from '../color-picker.directive';
     encapsulation: ViewEncapsulation.Emulated
 })
 export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked {
+
+    constructor(
+        private elRef: ElementRef,
+        private cdRef: ChangeDetectorRef,
+        private service: ColorPickerService
+    ) { }
 
     readonly alphaChannel = AlphaChannel
     readonly colorModeInternal = ColorModeInternal
@@ -27,9 +33,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     private outputColor: string
     private initialColor: string
     private fallbackColor: string
-
-    private listenerResize: any
-    private listenerMouseDown: any
 
     private directiveInstance: ColorPickerDirective
 
@@ -85,7 +88,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     public cpDisableInput: boolean
     public cpDialogDisplay: DialogDisplay
 
-    public cpIgnoredElements: any
+    public cpIgnoredElements: any[]
 
     public cpSaveClickOutside: boolean
     public cpCloseClickOutside: boolean
@@ -110,23 +113,20 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
     @ViewChild('dialogPopup') private dialogElement: ElementRef<HTMLDivElement>
 
-    @HostListener('document:keyup.esc', ['$event']) handleEsc(event: any): void {
+    private listenerResize = () => { this.onResize() }
+    private listenerMouseDown = (event: MouseEvent) => { this.onMouseDown(event) }
+
+    @HostListener('document:keyup.esc', ['$event']) handleEsc(event: KeyboardEvent): void {
         if (this.show && this.cpDialogDisplay == DialogDisplay.popup) {
             this.onCancelColor(event)
         }
     }
 
-    @HostListener('document:keyup.enter', ['$event']) handleEnter(event: any): void {
+    @HostListener('document:keyup.enter', ['$event']) handleEnter(event: KeyboardEvent): void {
         if (this.show && this.cpDialogDisplay == DialogDisplay.popup) {
             this.onAcceptColor(event)
         }
     }
-
-    constructor(
-        private elRef: ElementRef,
-        private cdRef: ChangeDetectorRef,
-        private service: ColorPickerService
-    ) { }
 
     ngOnInit(): void {
         this.slider = new SliderPosition(0, 0, 0, 0)
@@ -138,9 +138,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         } else {
             this.format = ColorFormat.hex
         }
-
-        this.listenerMouseDown = (event: any) => { this.onMouseDown(event) }
-        this.listenerResize = () => { this.onResize() }
 
         this.openDialog(this.initialColor, false)
     }
@@ -190,7 +187,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.closeColorPicker()
     }
 
-    public setupDialog(instance: any, elementRef: ElementRef, color: any, cpWidth: string, cpHeight: string, cpDialogDisplay: DialogDisplay, cpFallbackColor: string, cpColorMode: ColorMode, cpAlphaChannel: AlphaChannel, cpOutputFormat: OutputFormat, cpDisableInput: boolean, cpIgnoredElements: any, cpSaveClickOutside: boolean, cpCloseClickOutside: boolean, cpUseRootViewContainer: boolean, cpPosition: DialogPosition, cpPositionOffset: string, cpPositionRelativeToArrow: boolean, cpPresetLabel: string, cpPresetColors: string[], cpMaxPresetColorsLength: number, cpPresetEmptyMessage: string, cpOKButton: boolean, cpOKButtonText: string, cpCancelButton: boolean, cpCancelButtonText: string, cpAddColorButton: boolean, cpAddColorButtonText: string): void {
+    public setupDialog(instance: ColorPickerDirective, elementRef: ElementRef, color: any, cpWidth: string, cpHeight: string, cpDialogDisplay: DialogDisplay, cpFallbackColor: string, cpColorMode: ColorMode, cpAlphaChannel: AlphaChannel, cpOutputFormat: OutputFormat, cpDisableInput: boolean, cpIgnoredElements: any[], cpSaveClickOutside: boolean, cpCloseClickOutside: boolean, cpUseRootViewContainer: boolean, cpPosition: DialogPosition, cpPositionOffset: string, cpPositionRelativeToArrow: boolean, cpPresetLabel: string, cpPresetColors: string[], cpMaxPresetColorsLength: number, cpPresetEmptyMessage: string, cpOKButton: boolean, cpOKButtonText: string, cpCancelButton: boolean, cpCancelButtonText: string, cpAddColorButton: boolean, cpAddColorButtonText: string): void {
         this.setInitialColor(color)
 
         this.cpColorMode = parseColorMode(cpColorMode)
@@ -303,8 +300,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     public onMouseDown(event: MouseEvent): void {
         if (this.cpDialogDisplay == DialogDisplay.popup &&
             event.target !== this.directiveElementRef.nativeElement &&
-            !this.isDescendant(this.elRef.nativeElement, event.target) &&
-            !this.isDescendant(this.directiveElementRef.nativeElement, event.target) &&
+            !this.isDescendant(this.elRef.nativeElement, event.target as Node) &&
+            !this.isDescendant(this.directiveElementRef.nativeElement, event.target as Node) &&
             this.cpIgnoredElements.filter((item: any) => item === event.target).length === 0) {
             if (!this.cpSaveClickOutside) {
                 this.setColorFromString(this.initialColor, false)
@@ -617,7 +614,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         })
     }
 
-    public onAddPresetColor(event: any, value: string): void {
+    public onAddPresetColor(event: Event, value: string): void {
         event.stopPropagation()
 
         if (!this.cpPresetColors.filter((color) => (color === value)).length) {
@@ -627,7 +624,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    public onRemovePresetColor(event: any, value: string): void {
+    public onRemovePresetColor(event: Event, value: string): void {
         event.stopPropagation()
 
         this.cpPresetColors = this.cpPresetColors.filter((color) => (color !== value))
@@ -727,7 +724,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         } else {
             let position = Position.static, transform = '', style
 
-            let parentNode: any = null, transformNode: any = null
+            let parentNode: ParentNode = null, transformNode: ParentNode = null
 
             let node = this.directiveElementRef.nativeElement.parentNode
 
@@ -765,7 +762,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
                     parentNode = node
                 }
 
-                const boxParent = this.createDialogBox(parentNode, (position != Position.fixed))
+                const boxParent = this.createDialogBox(parentNode as HTMLElement, (position != Position.fixed))
 
                 this.top = boxDirective.top - boxParent.top
                 this.left = boxDirective.left - boxParent.left
@@ -794,8 +791,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
     // Private helper functions for the color picker dialog positioning and opening
 
-    private isDescendant(parent: any, child: any): boolean {
-        let node: any = child.parentNode
+    private isDescendant(parent: Node, child: Node): boolean {
+        let node: Node = child.parentNode
 
         while (node !== null) {
             if (node === parent) {
@@ -808,7 +805,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         return false
     }
 
-    private createDialogBox(element: any, offset: boolean): any {
+    private createDialogBox(element: HTMLElement, offset: boolean): any {
         return {
             top: element.getBoundingClientRect().top + (offset ? window.pageYOffset : 0),
             left: element.getBoundingClientRect().left + (offset ? window.pageXOffset : 0),

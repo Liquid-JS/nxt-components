@@ -1,6 +1,6 @@
-import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Injector, Input, OnChanges, OnDestroy, Output, ViewContainerRef } from '@angular/core';
-import { AlphaChannel, ColorMode, DialogDisplay, DialogPosition, InputChangeEvent, OutputFormat, SliderChangeEvent } from '../util/types';
-import { ColorPickerComponent } from './color-picker/color-picker.component';
+import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Injector, Input, OnChanges, OnDestroy, Output, ViewContainerRef } from '@angular/core'
+import { AlphaChannel, ColorMode, DialogDisplay, DialogPosition, InputChangeEvent, OutputFormat, SliderChangeEvent } from '../util/types'
+import { ColorPickerComponent } from './color-picker/color-picker.component'
 
 @Directive({
     selector: '[cpColor]'
@@ -39,7 +39,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
     @Input() cpDialogDisplay: DialogDisplay = DialogDisplay.popup
 
-    @Input() cpIgnoredElements: any = []
+    @Input() cpIgnoredElements = new Array<any>()
 
     @Input() cpSaveClickOutside: boolean = true
     @Input() cpCloseClickOutside: boolean = true
@@ -74,7 +74,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Output() cpColorSelectCancel = new EventEmitter<void>(true)
     @Output() cpColorChange = new EventEmitter<string>(false)
 
-    @Output() cpPresetColorsChange = new EventEmitter<any>(true)
+    @Output() cpPresetColorsChange = new EventEmitter<any[]>(true)
 
     @HostListener('click') handleClick(): void {
         this.inputFocus()
