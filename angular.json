@@ -107,29 +107,11 @@
                         "browserTarget": "demo:build"
                     }
                 },
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "options": {
-                        "main": "projects/demo/src/test.ts",
-                        "polyfills": "projects/demo/src/polyfills.ts",
-                        "tsConfig": "projects/demo/tsconfig.spec.json",
-                        "karmaConfig": "projects/demo/karma.conf.js",
-                        "styles": [
-                            "projects/demo/src/styles.css"
-                        ],
-                        "scripts": [],
-                        "assets": [
-                            "projects/demo/src/favicon.ico",
-                            "projects/demo/src/assets"
-                        ]
-                    }
-                },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
                         "tsConfig": [
-                            "projects/demo/tsconfig.app.json",
-                            "projects/demo/tsconfig.spec.json"
+                            "projects/demo/tsconfig.app.json"
                         ],
                         "exclude": [
                             "**/node_modules/**"

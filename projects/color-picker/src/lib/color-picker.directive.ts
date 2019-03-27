@@ -1,6 +1,6 @@
-import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Injector, Input, OnChanges, OnDestroy, Output, ViewContainerRef } from '@angular/core'
-import { AlphaChannel, ColorMode, DialogDisplay, DialogPosition, OutputFormat } from '../util/types'
-import { ColorPickerComponent } from './color-picker/color-picker.component'
+import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Injector, Input, OnChanges, OnDestroy, Output, ViewContainerRef } from '@angular/core';
+import { AlphaChannel, ColorMode, DialogDisplay, DialogPosition, InputChangeEvent, OutputFormat, SliderChangeEvent } from '../util/types';
+import { ColorPickerComponent } from './color-picker/color-picker.component';
 
 @Directive({
     selector: '[cpColor]'
@@ -22,27 +22,27 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Input() cpToggle: boolean = false
     @Input() cpDisabled: boolean = false
 
-    @Input() cpIgnoredElements: any = []
-
-    @Input() cpFallbackColor: string = ''
-
     @Input() cpColorMode: ColorMode = 'color'
 
     @Input() cpOutputFormat: OutputFormat = OutputFormat.auto
     @Input() cpAlphaChannel: AlphaChannel = AlphaChannel.enabled
+    @Input() cpFallbackColor: string = ''
+
+    @Input() cpPosition: DialogPosition = DialogPosition.right
+    @Input() cpPositionOffset: string = '0%'
+    @Input() cpPositionRelativeToArrow: boolean = false
+
+    @Input() cpPresetLabel: string = 'Preset colors'
+    @Input() cpPresetColors: string[]
 
     @Input() cpDisableInput: boolean = false
 
     @Input() cpDialogDisplay: DialogDisplay = DialogDisplay.popup
 
+    @Input() cpIgnoredElements: any = []
+
     @Input() cpSaveClickOutside: boolean = true
     @Input() cpCloseClickOutside: boolean = true
-
-    @Input() cpUseRootViewContainer: boolean = false
-
-    @Input() cpPosition: DialogPosition = DialogPosition.right
-    @Input() cpPositionOffset: string = '0%'
-    @Input() cpPositionRelativeToArrow: boolean = false
 
     @Input() cpOKButton: boolean = false
     @Input() cpOKButtonText: string = 'OK'
@@ -50,28 +50,28 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Input() cpCancelButton: boolean = false
     @Input() cpCancelButtonText: string = 'Cancel'
 
-    @Input() cpPresetLabel: string = 'Preset colors'
-    @Input() cpPresetColors: string[]
+    @Input() cpAddColorButton: boolean = false
+    @Input() cpAddColorButtonText: string = 'Add color'
+
     @Input() cpMaxPresetColorsLength: number = 6
 
     @Input() cpPresetEmptyMessage: string = 'No colors added'
 
-    @Input() cpAddColorButton: boolean = false
-    @Input() cpAddColorButtonText: string = 'Add color'
-
-    @Output() cpInputChange = new EventEmitter<any>(true)
-
-    @Output() cpToggleChange = new EventEmitter<boolean>(true)
-
-    @Output() cpSliderChange = new EventEmitter<any>(true)
-    @Output() cpSliderDragEnd = new EventEmitter<string>(true)
-    @Output() cpSliderDragStart = new EventEmitter<string>(true)
+    @Input() cpUseRootViewContainer: boolean = false
 
     @Output() cpOpen = new EventEmitter<string>(true)
     @Output() cpClose = new EventEmitter<string>(true)
 
+    @Output() cpInputChange = new EventEmitter<InputChangeEvent>(true)
+
+    @Output() cpToggleChange = new EventEmitter<boolean>(true)
+
+    @Output() cpSliderDragStart = new EventEmitter<SliderChangeEvent>(true)
+    @Output() cpSliderChange = new EventEmitter<SliderChangeEvent>(true)
+    @Output() cpSliderDragEnd = new EventEmitter<SliderChangeEvent>(true)
+
     @Output() cpColorSelect = new EventEmitter<string>(true)
-    @Output() cpColorSelectCancel = new EventEmitter<string>(true)
+    @Output() cpColorSelectCancel = new EventEmitter<void>(true)
     @Output() cpColorChange = new EventEmitter<string>(false)
 
     @Output() cpPresetColorsChange = new EventEmitter<any>(true)
@@ -157,9 +157,9 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
             this.cmpRef = vcRef.createComponent(compFactory, 0, this.injector, [])
 
-            this.cmpRef.instance.setupDialog(this, this.elRef, this.cpColor, this.cpWidth, this.cpHeight, this.cpDialogDisplay, this.cpFallbackColor, this.cpColorMode, this.cpAlphaChannel, this.cpOutputFormat, this.cpDisableInput, this.cpIgnoredElements, this.cpSaveClickOutside, this.cpCloseClickOutside, this.cpUseRootViewContainer, this.cpPosition, this.cpPositionOffset, this.cpPositionRelativeToArrow, this.cpPresetLabel, this.cpPresetColors, this.cpMaxPresetColorsLength, this.cpPresetEmptyMessage, this.cpOKButton, this.cpOKButtonText, this.cpCancelButton, this.cpCancelButtonText, this.cpAddColorButton, this.cpAddColorButtonText)
-
             this.dialog = this.cmpRef.instance
+
+            this.setupDialog()
 
             if (this.vcRef !== vcRef) {
                 this.cmpRef.changeDetectorRef.detectChanges()
@@ -167,6 +167,11 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         } else if (this.dialog) {
             this.dialog.openDialog(this.cpColor)
         }
+    }
+
+    private setupDialog() {
+        if (this.dialog)
+            this.dialog.setupDialog(this, this.elRef, this.cpColor, this.cpWidth, this.cpHeight, this.cpDialogDisplay, this.cpFallbackColor, this.cpColorMode, this.cpAlphaChannel, this.cpOutputFormat, this.cpDisableInput, this.cpIgnoredElements, this.cpSaveClickOutside, this.cpCloseClickOutside, this.cpUseRootViewContainer, this.cpPosition, this.cpPositionOffset, this.cpPositionRelativeToArrow, this.cpPresetLabel, this.cpPresetColors, this.cpMaxPresetColorsLength, this.cpPresetEmptyMessage, this.cpOKButton, this.cpOKButtonText, this.cpCancelButton, this.cpCancelButtonText, this.cpAddColorButton, this.cpAddColorButtonText)
     }
 
     public closeDialog(): void {
@@ -225,20 +230,20 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         }
     }
 
-    public inputChanged(event: any): void {
+    public inputChanged(event: InputChangeEvent): void {
         this.cpInputChange.emit(event)
     }
 
-    public sliderChanged(event: any): void {
+    public sliderDragStart(event: SliderChangeEvent): void {
+        this.cpSliderDragStart.emit(event)
+    }
+
+    public sliderChanged(event: SliderChangeEvent): void {
         this.cpSliderChange.emit(event)
     }
 
-    public sliderDragEnd(event: any): void {
+    public sliderDragEnd(event: SliderChangeEvent): void {
         this.cpSliderDragEnd.emit(event)
-    }
-
-    public sliderDragStart(event: any): void {
-        this.cpSliderDragStart.emit(event)
     }
 
     public presetColorsChanged(value: any[]): void {

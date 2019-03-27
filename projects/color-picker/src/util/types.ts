@@ -31,3 +31,16 @@ export enum DialogDisplay {
 }
 
 export type ColorMode = 'color' | 'c' | '1' | 'grayscale' | 'g' | '2' | 'presets' | 'p' | '3'
+
+export interface InputChangeEvent {
+    input: string
+    valid: boolean
+    value: number | string
+    color: string
+}
+
+export interface SliderChangeEvent {
+    slider: string
+    value?: number | string
+    color: string
+}

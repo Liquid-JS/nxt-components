@@ -15,16 +15,20 @@
         </div>
         <div class="col-md-7">
             <p>Usage:</p>
-            <pre>
-  &lt;input [(cpColor)]="color"
-         [style.background]="color"/&gt;
-        </pre>
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;input [(cpColor)]="color"
+         [style.background]="color"/&gt;</code></pre>
+                </div>
+            </div>
             <p>Or:</p>
-            <pre>
-  &lt;input [style.background]="color"
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;input [style.background]="color"
          [cpColor]="color"
-         (cpColorChange)="color=$event"/&gt;
-        </pre>
+         (cpColorChange)="color=$event"/&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -41,10 +45,12 @@
         </div>
         <div class="col-md-7">
             <p>Grayscale color mode:</p>
-            <pre>
-  &lt;input [(cpColor)]="color" [cpColorMode]="'grayscale'"
-         [style.background]="color"/&gt;
-        </pre>
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;input [(cpColor)]="color" [cpColorMode]="'grayscale'"
+         [style.background]="color"/&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -56,11 +62,13 @@
         </div>
         <div class="col-md-7">
             <p>Show the color in the input field:</p>
-            <pre>
-  &lt;input [value]="color"
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;input [value]="color"
          [style.background]="color"
-         [(cpColor)]="color"/&gt;
-        </pre>
+         [(cpColor)]="color"/&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -78,12 +86,14 @@
         </div>
         <div class="col-md-7">
             <p>Output format:</p>
-            <pre>
-  &lt;input [value]="color"
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;input [value]="color"
          [style.background]="color"
          [cpOutputFormat]="'rgba'"
-         [(cpColor)]="color"/&gt;
-        </pre>
+         [(cpColor)]="color"/&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -96,12 +106,14 @@
         </div>
         <div class="col-md-7">
             <p>Changing dialog position:</p>
-            <pre>
-  &lt;input [value]="color"
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;input [value]="color"
          [style.background]="color"
          [cpPosition]="'bottom'"
-         [(cpColor)]="color"/&gt;
-        </pre>
+         [(cpColor)]="color"/&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -116,13 +128,15 @@
         </div>
         <div class="col-md-7">
             <p>You can introduce a offset of the color picker relative to the html element:</p>
-            <pre>
-  &lt;span [style.color]="color"
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;span [style.color]="color"
         [cpPosition]="'bottom'"
         [cpPositionOffset]="'50%'"
         [cpPositionRelativeToArrow]="true"
-        [(cpColor)]="color"&gt;Change me!&lt;/span&gt;
-        </pre>
+        [(cpColor)]="color"&gt;Change me!&lt;/span&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -135,12 +149,14 @@
         </div>
         <div class="col-md-7">
             <p>Show cancel button:</p>
-            <pre>
-  &lt;input [value]="color"
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;input [value]="color"
          [style.background]="color"
          [cpCancelButton]="true"
-         [(cpColor)]="color"/&gt;
-        </pre>
+         [(cpColor)]="color"/&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -153,12 +169,14 @@
         </div>
         <div class="col-md-7">
             <p>Change cancel button class, in this example we are using a bootstrap button:</p>
-            <pre>
-  &lt;input [value]="color"
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;input [value]="color"
          [style.background]="color"
          [cpCancelButton]="true"
-         [(cpColor)]="color"/&gt;
-        </pre>
+         [(cpColor)]="color"/&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -172,13 +190,15 @@
         </div>
         <div class="col-md-7">
             <p>Show OK button:</p>
-            <pre>
-  &lt;input [value]="color"
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;input [value]="color"
          [style.background]="color"
          [cpOKButton]="true"
          [cpSaveClickOutside]="false"
-         [(cpColor)]="color"/&gt;
-        </pre>
+         [(cpColor)]="color"/&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -208,15 +228,17 @@
         </div>
         <div class="col-md-7">
             <p>Change event color:</p>
-            <pre>
-  &lt;input [style.background]="color"
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;input [style.background]="color"
          [cpColor]="color"
          (cpColorChange)="cmykColor=onChangeColorCmyk($event);color=$event"/&gt;
   &lt;span [style.font-size.px]="100 * cmykColor.c"/&gt;C&lt;/span/&gt;
   &lt;span [style.font-size.px]="100 * cmykColor.m"/&gt;M&lt;/span/&gt;
   &lt;span [style.font-size.px]="100 * cmykColor.y"/&gt;Y&lt;/span/&gt;
-  &lt;span [style.font-size.px]="100 * cmykColor.k"/&gt;K&lt;/span/&gt;
-        </pre>
+  &lt;span [style.font-size.px]="100 * cmykColor.k"/&gt;K&lt;/span/&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -228,11 +250,13 @@
         </div>
         <div class="col-md-7">
             <p>With preset colors:</p>
-            <pre>
-  &lt;input [style.background]="color"
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;input [style.background]="color"
          [cpPresetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']"
-         [(cpColor)]="color"/&gt;
-        </pre>
+         [(cpColor)]="color"/&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -247,14 +271,16 @@
         </div>
         <div class="col-md-7">
             <p>Add and remove preset colors:</p>
-            <pre>
-  &lt;input [style.background]="color"
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;input [style.background]="color"
          [cpAlphaChannel]="'always'"
          [cpOutputFormat]="'rgba'"
          [cpPresetColors]="['#fff', '#2889e9']"
          [cpAddColorButton]="true"
-         [(cpColor)]="color"/&gt;
-        </pre>
+         [(cpColor)]="color"/&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -275,14 +301,16 @@
         </div>
         <div class="col-md-7">
             <p>Use cpToggle with cpIgnoredElements:</p>
-            <pre>
-  &lt;input #ignoredInput
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;input #ignoredInput
          [style.background]="color"
          [cpIgnoredElements]="[ignoredButton, ignoredInput]"
          [(cpToggle)]="toggle"
          [(cpColor)]="color"/&gt;
-  &lt;button #ignoredButton (click)="toggle=!toggle"&gt;&lt;/button&gt;
-        </pre>
+  &lt;button #ignoredButton (click)="toggle=!toggle"&gt;&lt;/button&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -315,8 +343,9 @@
         </div>
         <div class="col-md-7">
             <p>Change alpha channel behaviour:</p>
-            <pre>
-  &lt;input [value]="color"
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;input [value]="color"
          [style.background]="color"
          [cpAlphaChannel]="'always'"
          [cpOutputFormat]="'rgba'"
@@ -336,8 +365,9 @@
          [style.background]="color"
          [cpAlphaChannel]="'forced'"
          [cpOutputFormat]="'hex'"
-         [(cpColor)]="color"/&gt;
-        </pre>
+         [(cpColor)]="color"/&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -369,8 +399,9 @@
         </div>
         <div class="col-md-7">
             <p>Show the dialog permanently: </p>
-            <pre>
-  &lt;span [style.background]="arrayColors[selectedColor]"
+            <div class="card">
+                <div class="card-body">
+                    <pre><code>&lt;span [style.background]="arrayColors[selectedColor]"
         [cpToggle]="true"
         [cpDialogDisplay]="'inline'"
         [cpCancelButton]="true"
@@ -378,8 +409,9 @@
   &lt;div [style.background]="arrayColors['color1']"
        (click)="selectedColor='color1'"&gt;&lt;/div&gt;
   &lt;div [style.background]="arrayColors['color2']"
-       (click)="selectedColor='color2'"&gt;&lt;/div&gt;
-        </pre>
+       (click)="selectedColor='color2'"&gt;&lt;/div&gt;</code></pre>
+                </div>
+            </div>
         </div>
     </div>
     <hr><br>

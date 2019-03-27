@@ -4,6 +4,7 @@ import { Hsla, Hsva, Rgba } from '../../util/formats'
 import { ColorModeInternal, parseColorMode, Position, sizeToString, SliderPosition } from '../../util/helpers'
 import { AlphaChannel, ColorFormat, ColorMode, DialogDisplay, DialogPosition, OutputFormat } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
+import { ColorPickerDirective } from '../color-picker.directive';
 
 @Component({
     selector: 'cp-color-picker',
@@ -30,7 +31,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     private listenerResize: any
     private listenerMouseDown: any
 
-    private directiveInstance: any
+    private directiveInstance: ColorPickerDirective
 
     private sliderH: number
     private directiveElementRef: ElementRef
