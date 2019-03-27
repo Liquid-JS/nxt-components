@@ -3,33 +3,33 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "@liquid-js/ngx-color-picker": {
-            "root": "projects/liquid-js/ngx-color-picker",
-            "sourceRoot": "projects/liquid-js/ngx-color-picker/src",
+        "nxt-color-picker": {
+            "root": "projects/nxt-color-picker",
+            "sourceRoot": "projects/nxt-color-picker/src",
             "projectType": "library",
             "prefix": "cp",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-ng-packagr:build",
                     "options": {
-                        "tsConfig": "projects/liquid-js/ngx-color-picker/tsconfig.lib.json",
-                        "project": "projects/liquid-js/ngx-color-picker/ng-package.json"
+                        "tsConfig": "projects/nxt-color-picker/tsconfig.lib.json",
+                        "project": "projects/nxt-color-picker/ng-package.json"
                     }
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "projects/liquid-js/ngx-color-picker/src/test.ts",
-                        "tsConfig": "projects/liquid-js/ngx-color-picker/tsconfig.spec.json",
-                        "karmaConfig": "projects/liquid-js/ngx-color-picker/karma.conf.js"
+                        "main": "projects/nxt-color-picker/src/test.ts",
+                        "tsConfig": "projects/nxt-color-picker/tsconfig.spec.json",
+                        "karmaConfig": "projects/nxt-color-picker/karma.conf.js"
                     }
                 },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
                         "tsConfig": [
-                            "projects/liquid-js/ngx-color-picker/tsconfig.lib.json",
-                            "projects/liquid-js/ngx-color-picker/tsconfig.spec.json"
+                            "projects/nxt-color-picker/tsconfig.lib.json",
+                            "projects/nxt-color-picker/tsconfig.spec.json"
                         ],
                         "exclude": [
                             "**/node_modules/**"
@@ -140,5 +140,5 @@
             "prefix": "cp"
         }
     },
-    "defaultProject": "@liquid-js/ngx-color-picker"
+    "defaultProject": "nxt-color-picker"
 }

@@ -1,6 +1,5 @@
 import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core'
-
-export type TextEvent = string | { v: number, rg: number }
+import { TextEvent } from '../util/helpers'
 
 @Directive({
     selector: '[cpText]'

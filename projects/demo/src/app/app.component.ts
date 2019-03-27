@@ -1,5 +1,5 @@
 import { Component, ViewContainerRef } from '@angular/core'
-import { Cmyk, ColorPickerService } from '@liquid-js/ngx-color-picker'
+import { Cmyk, ColorPickerService } from 'nxt-color-picker'
 
 @Component({
     selector: 'app-root',

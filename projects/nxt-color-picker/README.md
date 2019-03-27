@@ -1,14 +1,14 @@
 # Angular Color Picker
 
-<a href="https://badge.fury.io/js/%40liquid-js%2Fngx-color-picker"><img src="https://badge.fury.io/js/%40liquid-js%2Fngx-color-picker.svg" align="right" alt="yarn version" height="18"></a>
+<a href="https://badge.fury.io/js/Fnxt-color-picker"><img src="https://badge.fury.io/js/Fnxt-color-picker.svg" align="right" alt="yarn version" height="18"></a>
 
-This is a responsive color picker based on [angular2-color-picker](https://github.com/Alberplz/angular2-color-picker) and updates from [ngx-color-picker](https://github.com/zefoy/ngx-color-picker).
+This is a responsive color picker based on [angular2-color-picker](https://github.com/Alberplz/angular2-color-picker) and updates from [nxt-color-picker](https://github.com/zefoy/nxt-color-picker).
 
 It's been rewriten using Angular CLI to streamline the codebase and employ best practices for development.
 
 ### Quick links
 
-[Example application](https://liquid-js.github.io/color-picker/)
+[Example application](https://liquid-js.github.io/nxt-color-picker/)
 
 ### Building the library
 
@@ -27,13 +27,13 @@ yarn start
 ### Installing and usage
 
 ```bash
-yarn @liquid-js/ngx-color-picker --save
+yarn nxt-color-picker --save
 ```
 
 ##### Load the module for your app:
 
 ```javascript
-import { ColorPickerModule } from '@liquid-js/ngx-color-picker';
+import { ColorPickerModule } from 'nxt-color-picker';
 
 @NgModule({
   ...

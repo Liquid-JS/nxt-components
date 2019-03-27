@@ -52,3 +52,7 @@ export function sizeToString(val: any) {
 
     return 'auto'
 }
+
+export type CursorEvent = { v: number, rgX: number } | { v: number, rgY: number } | { v: number, s: number, rgX: number, rgY: number }
+
+export type TextEvent = string | { v: number, rg: number }

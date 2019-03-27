@@ -1,6 +1,5 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core'
-
-export type CursorEvent = { v: number, rgX: number } | { v: number, rgY: number } | { v: number, s: number, rgX: number, rgY: number }
+import { CursorEvent } from '../util/helpers'
 
 @Directive({
     selector: '[cpSlider]'
