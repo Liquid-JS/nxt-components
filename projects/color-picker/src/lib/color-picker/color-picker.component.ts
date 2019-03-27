@@ -1,8 +1,8 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core'
+import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core'
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Hsla, Hsva, Rgba } from '../../util/formats'
-import { ColorModeInternal, parseColorMode, SliderPosition } from '../../util/helpers'
-import { AlphaChannel, ColorFormat, ColorMode, DialogDisplay, DialogPosition, OutputFormat, Position } from '../../util/types'
+import { ColorModeInternal, parseColorMode, Position, sizeToString, SliderPosition } from '../../util/helpers'
+import { AlphaChannel, ColorFormat, ColorMode, DialogDisplay, DialogPosition, OutputFormat } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
 
 @Component({
@@ -11,7 +11,7 @@ import { ColorPickerService } from '../color-picker.service'
     styleUrls: ['./color-picker.component.scss'],
     encapsulation: ViewEncapsulation.Emulated
 })
-export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     readonly alphaChannel = AlphaChannel
     readonly colorModeInternal = ColorModeInternal
@@ -35,8 +35,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
     private sliderH: number
     private directiveElementRef: ElementRef
 
-    private dialogArrowSize: number = 10
-    private dialogArrowOffset: number = 15
+    private dialogArrowSize: number = 16
+    private dialogArrowOffset: number = 16
 
     private dialogInputFields: ColorFormat[] = [
         ColorFormat.hex,
@@ -51,7 +51,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
 
     public top: number
     public left: number
-    public position: Position = Position.relative
+    public position: Position
 
     public format: ColorFormat
     public slider: SliderPosition
@@ -73,8 +73,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
     public valueSliderLight = false
     public alphaSliderLight = false
 
-    public cpWidth: number
-    public cpHeight: number
+    public cpWidth: string
+    public cpHeight: string
 
     public cpColorMode: ColorModeInternal = ColorModeInternal.color
 
@@ -107,7 +107,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
     public cpAddColorButton: boolean
     public cpAddColorButtonText: string
 
-    @ViewChild('dialogPopup') private dialogElement: ElementRef
+    @ViewChild('dialogPopup') private dialogElement: ElementRef<HTMLDivElement>
 
     @HostListener('document:keyup.esc', ['$event']) handleEsc(event: any): void {
         if (this.show && this.cpDialogDisplay == DialogDisplay.popup) {
@@ -148,25 +148,35 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
         this.closeDialog()
     }
 
-    ngAfterViewInit(): void {
-        if (this.cpWidth !== 230 || this.cpDialogDisplay == DialogDisplay.inline) {
+    ngAfterViewChecked(): void {
+        if (this.show && this.dialogElement && this.dialogElement.nativeElement) {
+            this.updateSize()
 
-            this.updateColorPicker(false)
-
-            this.cdRef.detectChanges()
+            if (this.hidden) {
+                this.hidden = false
+                this.cdRef.detectChanges()
+            }
         }
+    }
+
+    private updateSize() {
+        const w = this.dialogElement.nativeElement.offsetWidth
+        const h = this.dialogElement.nativeElement.offsetHeight
+
+        if (w != this.width || h != this.height) {
+            this.width = w
+            this.height = h
+            if (this.cpDialogDisplay != DialogDisplay.inline) {
+                this.setDialogPosition()
+                this.cdRef.detectChanges()
+            }
+            return true
+        }
+        return false
     }
 
     public openDialog(color: any, emit: boolean = true): void {
         this.service.setActive(this)
-
-        if (!this.width) {
-            this.cpWidth = this.directiveElementRef.nativeElement.offsetWidth
-        }
-
-        if (!this.height) {
-            this.height = 320
-        }
 
         this.setInitialColor(color)
 
@@ -200,8 +210,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
 
         this.useRootViewContainer = cpUseRootViewContainer
 
-        this.width = this.cpWidth = parseInt(cpWidth, 10)
-        this.height = this.cpHeight = parseInt(cpHeight, 10)
+        this.cpWidth = sizeToString(cpWidth)
+        this.cpHeight = sizeToString(cpHeight)
 
         this.cpPosition = cpPosition
         this.cpPositionOffset = parseInt(cpPositionOffset, 10)
@@ -631,14 +641,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
             this.show = true
             this.hidden = true
 
-            setTimeout(() => {
-                this.hidden = false
-
-                this.setDialogPosition()
-
-                this.cdRef.detectChanges()
-            }, 0)
-
             this.directiveInstance.stateChanged(true)
 
             document.addEventListener('mousedown', this.listenerMouseDown)
@@ -774,7 +776,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewInit {
 
             if (this.cpPosition == DialogPosition.left) {
                 this.top += boxDirective.height * this.cpPositionOffset / 100 - this.dialogArrowOffset
-                this.left -= this.cpWidth + this.dialogArrowSize - 2
+                this.left -= this.width + this.dialogArrowSize - 2
             } else if (this.cpPosition == DialogPosition.top) {
                 this.arrowTop = dialogHeight - 1
                 this.top -= dialogHeight + this.dialogArrowSize

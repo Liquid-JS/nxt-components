@@ -3,11 +3,11 @@
     (click)="$event.stopPropagation()"
     [ngStyle]="{
         visibility: hidden || !show ? 'hidden' : 'visible',
-        top: top || 0,
-        left: left || 0,
-        position: position || '',
-        height: cpHeight || 'auto',
-        width: cpWidth || 'auto'
+        'top.px': top || 0,
+        'left.px': left || 0,
+        position: position || undefined,
+        width: cpWidth || 'auto',
+        height: cpHeight || 'auto'
     }">
     <div *ngIf="cpDialogDisplay == dialogDisplay.popup"
         class="color-picker__arrow"

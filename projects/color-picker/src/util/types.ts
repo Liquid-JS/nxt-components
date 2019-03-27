@@ -30,11 +30,4 @@ export enum DialogDisplay {
     inline = 'inline'
 }
 
-export enum Position {
-    fixed = 'fixed',
-    relative = 'relative',
-    static = 'static',
-    absolute = 'absolute'
-}
-
 export type ColorMode = 'color' | 'c' | '1' | 'grayscale' | 'g' | '2' | 'presets' | 'p' | '3'
