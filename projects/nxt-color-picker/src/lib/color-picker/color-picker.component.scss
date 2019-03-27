@@ -127,13 +127,17 @@ $light: #dadada;
         border: none;
         padding: 0;
         width: 100%;
-        text-align: center;
         margin: 0;
-        font-weight: bold;
-        font-size: 2 * $baseSize;
-        line-height: 3 * $baseSize;
-        color: $dark;
+        color: #222222;
         transition: color 0.2s linear;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        svg {
+            fill: currentColor;
+        }
 
         &.color-picker__add-selected--light {
             color: $light;

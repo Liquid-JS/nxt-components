@@ -4,7 +4,7 @@
     "scripts": {
         "start": "ng serve",
         "build": "ng build",
-        "build:demo": "ng build nxt-color-picker && ng build --prod --base-href https://liquid-js.github.io/nxt-color-picker/ demo",
+        "build:demo": "ng build --prod --base-href https://liquid-js.github.io/nxt-color-picker/ demo",
         "analyze": "yarn build:demo --stats-json && webpack-bundle-analyzer dist/demo/stats.json",
         "test": "ng test --code-coverage --source-map false --watch true",
         "lint": "ng lint --fix",
