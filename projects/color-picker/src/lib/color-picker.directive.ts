@@ -22,7 +22,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Input() cpToggle: boolean = false
     @Input() cpDisabled: boolean = false
 
-    @Input() cpColorMode: ColorMode = 'color'
+    @Input() cpMode: ColorMode = 'color'
 
     @Input() cpOutputFormat: OutputFormat = OutputFormat.auto
     @Input() cpAlphaChannel: AlphaChannel = AlphaChannel.enabled
@@ -53,7 +53,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Input() cpAddColorButton: boolean = false
     @Input() cpAddColorButtonText: string = 'Add color'
 
-    @Input() cpMaxPresetColorsLength: number = 6
+    @Input() cpMaxPresetColors: number = 6
 
     @Input() cpPresetEmptyMessage: string = 'No colors added'
 
@@ -171,7 +171,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
     private setupDialog() {
         if (this.dialog)
-            this.dialog.setupDialog(this, this.elRef, this.cpColor, this.cpWidth, this.cpHeight, this.cpDialogDisplay, this.cpFallbackColor, this.cpColorMode, this.cpAlphaChannel, this.cpOutputFormat, this.cpDisableInput, this.cpIgnoredElements, this.cpSaveClickOutside, this.cpCloseClickOutside, this.cpUseRootViewContainer, this.cpPosition, this.cpPositionOffset, this.cpPositionRelativeToArrow, this.cpPresetLabel, this.cpPresetColors, this.cpMaxPresetColorsLength, this.cpPresetEmptyMessage, this.cpOKButton, this.cpOKButtonText, this.cpCancelButton, this.cpCancelButtonText, this.cpAddColorButton, this.cpAddColorButtonText)
+            this.dialog.setupDialog(this, this.elRef, this.cpColor, this.cpWidth, this.cpHeight, this.cpDialogDisplay, this.cpFallbackColor, this.cpMode, this.cpAlphaChannel, this.cpOutputFormat, this.cpDisableInput, this.cpIgnoredElements, this.cpSaveClickOutside, this.cpCloseClickOutside, this.cpUseRootViewContainer, this.cpPosition, this.cpPositionOffset, this.cpPositionRelativeToArrow, this.cpPresetLabel, this.cpPresetColors, this.cpMaxPresetColors, this.cpPresetEmptyMessage, this.cpOKButton, this.cpOKButtonText, this.cpCancelButton, this.cpCancelButtonText, this.cpAddColorButton, this.cpAddColorButtonText)
     }
 
     public closeDialog(): void {

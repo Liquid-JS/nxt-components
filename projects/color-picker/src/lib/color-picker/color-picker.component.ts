@@ -80,7 +80,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     public cpWidth: string
     public cpHeight: string
 
-    public cpColorMode: ColorModeInternal = ColorModeInternal.color
+    public cpMode: ColorModeInternal = ColorModeInternal.color
 
     public cpAlphaChannel: AlphaChannel
     public cpOutputFormat: OutputFormat
@@ -104,7 +104,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
     public cpPresetLabel: string
     public cpPresetColors: string[]
-    public cpMaxPresetColorsLength: number
+    public cpMaxPresetColors: number
 
     public cpPresetEmptyMessage: string
 
@@ -187,10 +187,10 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.closeColorPicker()
     }
 
-    public setupDialog(instance: ColorPickerDirective, elementRef: ElementRef, color: any, cpWidth: string, cpHeight: string, cpDialogDisplay: DialogDisplay, cpFallbackColor: string, cpColorMode: ColorMode, cpAlphaChannel: AlphaChannel, cpOutputFormat: OutputFormat, cpDisableInput: boolean, cpIgnoredElements: any[], cpSaveClickOutside: boolean, cpCloseClickOutside: boolean, cpUseRootViewContainer: boolean, cpPosition: DialogPosition, cpPositionOffset: string, cpPositionRelativeToArrow: boolean, cpPresetLabel: string, cpPresetColors: string[], cpMaxPresetColorsLength: number, cpPresetEmptyMessage: string, cpOKButton: boolean, cpOKButtonText: string, cpCancelButton: boolean, cpCancelButtonText: string, cpAddColorButton: boolean, cpAddColorButtonText: string): void {
+    public setupDialog(instance: ColorPickerDirective, elementRef: ElementRef, color: any, cpWidth: string, cpHeight: string, cpDialogDisplay: DialogDisplay, cpFallbackColor: string, cpMode: ColorMode, cpAlphaChannel: AlphaChannel, cpOutputFormat: OutputFormat, cpDisableInput: boolean, cpIgnoredElements: any[], cpSaveClickOutside: boolean, cpCloseClickOutside: boolean, cpUseRootViewContainer: boolean, cpPosition: DialogPosition, cpPositionOffset: string, cpPositionRelativeToArrow: boolean, cpPresetLabel: string, cpPresetColors: string[], cpMaxPresetColors: number, cpPresetEmptyMessage: string, cpOKButton: boolean, cpOKButtonText: string, cpCancelButton: boolean, cpCancelButtonText: string, cpAddColorButton: boolean, cpAddColorButtonText: string): void {
         this.setInitialColor(color)
 
-        this.cpColorMode = parseColorMode(cpColorMode)
+        this.cpMode = parseColorMode(cpMode)
 
         this.directiveInstance = instance
         this.directiveElementRef = elementRef
@@ -224,7 +224,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
         this.setPresetConfig(cpPresetLabel, cpPresetColors)
 
-        this.cpMaxPresetColorsLength = cpMaxPresetColorsLength
+        this.cpMaxPresetColors = cpMaxPresetColors
         this.cpPresetEmptyMessage = cpPresetEmptyMessage
 
         this.cpAddColorButton = cpAddColorButton
@@ -664,7 +664,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     private updateColorPicker(emit: boolean = true, update: boolean = true): void {
-        if (this.cpColorMode == ColorModeInternal.grayscale) {
+        if (this.cpMode == ColorModeInternal.grayscale) {
             this.hsva.s = 0
         }
 

@@ -59,13 +59,13 @@ import { ColorPickerModule } from 'ngx-color-picker';
 [cpToggle]                   // Sets the default open / close state of the color picker (false).
 [cpDisabled]                 // Disables opening of the color picker dialog via toggle / events.
 
-[cpColorMode]                // Dialog color mode: 'color', 'grayscale', 'presets' ('color').
+[cpMode]                     // Dialog color mode: 'color', 'grayscale', 'presets' ('color').
 
 [cpOutputFormat]             // Output color format: OutputFormat (OutputFormat.auto).
 [cpAlphaChannel]             // Alpha mode: AlphaChannel (AlphaChannel.enabled).
 [cpFallbackColor]            // Used when the color is not well-formed or is undefined ('#000').
 
-[cpPosition]                 // Dialog position: 'right', 'left', 'top', 'bottom' ('right').
+[cpPosition]                 // Dialog position: DialogPosition (DialogPosition.right).
 [cpPositionOffset]           // Dialog offset percentage relative to the directive element (0%).
 [cpPositionRelativeToArrow]  // Dialog position is calculated relative to dialog arrow (false).
 
@@ -92,7 +92,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 [cpAddColorButton]           // Show an Add Color button which add the color into preset (false).
 [cpAddColorButtonText]       // Button label text shown inside the Add Color button ('Add color').
 
-[cpMaxPresetColorsLength]    // Use this option to set the max colors allowed in presets (null).
+[cpMaxPresetColors]          // Use this option to set the max colors allowed in presets (6).
 
 [cpPresetEmptyMessage]       // Message for empty colors if any provided used ('No colors added').
 

@@ -15,7 +15,7 @@
         [ngStyle]="{ 
             top: arrowTop
         }"></div>
-    <div *ngIf="cpColorMode == colorModeInternal.color"
+    <div *ngIf="cpMode == colorModeInternal.color"
         class="color-picker__sv"
         cpSlider
         [rgX]="1"
@@ -42,12 +42,12 @@
                         [title]="cpAddColorButtonText"
                         class="color-picker__add-selected"
                         [ngClass]="{ 'color-picker__add-selected--light': alphaSliderLight }"
-                        [disabled]="cpPresetColors && cpPresetColors.length >= cpMaxPresetColorsLength"
+                        [disabled]="cpPresetColors && cpPresetColors.length >= cpMaxPresetColors"
                         (click)="onAddPresetColor($event, selectedColor)">+</button></div>
             </div>
         </div>
         <div class="color-picker__hav">
-            <div *ngIf="cpColorMode == colorModeInternal.color"
+            <div *ngIf="cpMode == colorModeInternal.color"
                 class="color-picker__slider color-picker__slider--hue"
                 cpSlider
                 [rgX]="1"
@@ -60,7 +60,7 @@
                         left: (slider?.h || 0) * 100 + '%'
                     }"></div>
             </div>
-            <div *ngIf="cpColorMode == colorModeInternal.grayscale"
+            <div *ngIf="cpMode == colorModeInternal.grayscale"
                 class="color-picker__slider color-picker__slider--value"
                 cpSlider
                 [rgX]="1"
@@ -93,10 +93,10 @@
             </div>
         </div>
     </div>
-    <div *ngIf="!cpDisableInput && (cpColorMode == colorModeInternal.color || cpColorMode == colorModeInternal.grayscale)"
+    <div *ngIf="!cpDisableInput && (cpMode == colorModeInternal.color || cpMode == colorModeInternal.grayscale)"
         class="color-picker__inputs">
         <div class="color-picker__input-fields">
-            <ng-container *ngIf="cpColorMode == colorModeInternal.grayscale; else formatSwitch">
+            <ng-container *ngIf="cpMode == colorModeInternal.grayscale; else formatSwitch">
                 <div class="color-picker__input-field">
                     <input type="number"
                         pattern="[0-9]*"
@@ -257,7 +257,7 @@
                 </ng-container>
             </ng-template>
         </div>
-        <div *ngIf="cpColorMode == colorModeInternal.color"
+        <div *ngIf="cpMode == colorModeInternal.color"
             class="color-picker__input-type">
             <span class="color-picker__input-type-arrow"
                 (click)="onFormatToggle(1)"></span>
