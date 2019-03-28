@@ -1,4 +1,5 @@
 import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core'
+import { denormalizeRGBA, formatOutput, hsla2hsva, hsva2hsla, hsvaToRgba, rgbaToHex, rgbaToHsva, stringToHsva } from '../../util/color'
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Hsla, Hsva, Rgba } from '../../util/formats'
 import { ColorModeInternal, parseColorMode, Position, sizeToString, SliderPosition } from '../../util/helpers'
@@ -263,17 +264,17 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         let hsva: Hsva | null
 
         if (this.cpAlphaChannel == AlphaChannel.always || this.cpAlphaChannel == AlphaChannel.forced) {
-            hsva = this.service.stringToHsva(value, true)
+            hsva = stringToHsva(value, true)
 
             if (!hsva && !this.hsva) {
-                hsva = this.service.stringToHsva(value, false)
+                hsva = stringToHsva(value, false)
             }
         } else {
-            hsva = this.service.stringToHsva(value, false)
+            hsva = stringToHsva(value, false)
         }
 
         if (!hsva && !this.hsva) {
-            hsva = this.service.stringToHsva(this.fallbackColor, false)
+            hsva = stringToHsva(this.fallbackColor, false)
         }
 
         if (hsva) {
@@ -447,14 +448,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     public onRedInput(value: { v: number, rg: number }): void {
-        const rgba = this.service.hsvaToRgba(this.hsva)
+        const rgba = hsvaToRgba(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
         if (valid) {
             rgba.r = value.v / value.rg
 
-            this.hsva = this.service.rgbaToHsva(rgba)
+            this.hsva = rgbaToHsva(rgba)
 
             this.sliderH = this.hsva.h
 
@@ -470,14 +471,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     public onBlueInput(value: { v: number, rg: number }): void {
-        const rgba = this.service.hsvaToRgba(this.hsva)
+        const rgba = hsvaToRgba(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
         if (valid) {
             rgba.b = value.v / value.rg
 
-            this.hsva = this.service.rgbaToHsva(rgba)
+            this.hsva = rgbaToHsva(rgba)
 
             this.sliderH = this.hsva.h
 
@@ -493,14 +494,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     public onGreenInput(value: { v: number, rg: number }): void {
-        const rgba = this.service.hsvaToRgba(this.hsva)
+        const rgba = hsvaToRgba(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
         if (valid) {
             rgba.g = value.v / value.rg
 
-            this.hsva = this.service.rgbaToHsva(rgba)
+            this.hsva = rgbaToHsva(rgba)
 
             this.sliderH = this.hsva.h
 
@@ -569,14 +570,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     public onLightnessInput(value: { v: number, rg: number }): void {
-        const hsla = this.service.hsva2hsla(this.hsva)
+        const hsla = hsva2hsla(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
         if (valid) {
             hsla.l = value.v / value.rg
 
-            this.hsva = this.service.hsla2hsva(hsla)
+            this.hsva = hsla2hsva(hsla)
 
             this.sliderH = this.hsva.h
 
@@ -592,14 +593,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     public onSaturationInput(value: { v: number, rg: number }): void {
-        const hsla = this.service.hsva2hsla(this.hsva)
+        const hsla = hsva2hsla(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
         if (valid) {
             hsla.s = value.v / value.rg
 
-            this.hsva = this.service.hsla2hsva(hsla)
+            this.hsva = hsla2hsva(hsla)
 
             this.sliderH = this.hsva.h
 
@@ -670,10 +671,10 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
         const lastOutput = this.outputColor
 
-        const hsla = this.service.hsva2hsla(this.hsva)
-        const rgba = this.service.denormalizeRGBA(this.service.hsvaToRgba(this.hsva))
+        const hsla = hsva2hsla(this.hsva)
+        const rgba = denormalizeRGBA(hsvaToRgba(this.hsva))
 
-        const hue = this.service.denormalizeRGBA(this.service.hsvaToRgba(new Hsva(this.sliderH || this.hsva.h, 1, 1, 1)))
+        const hue = denormalizeRGBA(hsvaToRgba(new Hsva(this.sliderH || this.hsva.h, 1, 1, 1)))
 
         if (update) {
             this.hslaText = new Hsla(Math.round((hsla.h) * 360), Math.round(hsla.s * 100), Math.round(hsla.l * 100),
@@ -683,7 +684,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
             const allowHex8 = this.cpAlphaChannel == AlphaChannel.always
 
-            this.hexText = this.service.rgbaToHex(rgba, allowHex8)
+            this.hexText = rgbaToHex(rgba, allowHex8)
             this.hexAlpha = this.rgbaText.a
         }
 
@@ -701,8 +702,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.valueSliderLight = opaqueSliderLight(rgba)
         this.alphaSliderLight = transparentSliderLight(rgba)
 
-        this.outputColor = this.service.outputFormat(this.hsva, this.cpOutputFormat, this.cpAlphaChannel)
-        this.selectedColor = this.service.outputFormat(this.hsva, 'rgba', null)
+        this.outputColor = formatOutput(this.hsva, this.cpOutputFormat, this.cpAlphaChannel)
+        this.selectedColor = formatOutput(this.hsva, 'rgba', null)
 
         this.slider = new SliderPosition(
             (this.sliderH || this.hsva.h),

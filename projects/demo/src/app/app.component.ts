@@ -1,5 +1,5 @@
-import { Component, ViewContainerRef } from '@angular/core'
-import { Cmyk, ColorPickerService } from 'projects/nxt-color-picker/src/public-api'
+import { Component } from '@angular/core'
+import { Cmyk, formatOutput, hsvaToRgba, rgbaToCmyk, stringToHsva } from 'projects/nxt-color-picker/src/public-api'
 
 @Component({
     selector: 'app-root',
@@ -42,29 +42,29 @@ export class AppComponent {
 
     public cmykColor: Cmyk = new Cmyk(0, 0, 0, 0)
 
-    constructor(public vcRef: ViewContainerRef, private cpService: ColorPickerService) { }
+    constructor() { }
 
     public onEventLog(event: string, data: any): void {
         console.log(event, data)
     }
 
     public onChangeColorCmyk(color: string): Cmyk {
-        const hsva = this.cpService.stringToHsva(color)
+        const hsva = stringToHsva(color)
 
         if (hsva) {
-            const rgba = this.cpService.hsvaToRgba(hsva)
+            const rgba = hsvaToRgba(hsva)
 
-            return this.cpService.rgbaToCmyk(rgba)
+            return rgbaToCmyk(rgba)
         }
 
         return new Cmyk(0, 0, 0, 0)
     }
 
     public onChangeColorHex8(color: string): string {
-        const hsva = this.cpService.stringToHsva(color, true)
+        const hsva = stringToHsva(color, true)
 
         if (hsva) {
-            return this.cpService.outputFormat(hsva, 'rgba', null)
+            return formatOutput(hsva, 'rgba', null)
         }
 
         return ''
