@@ -215,6 +215,8 @@ $light: #dadada;
                 padding: 1px;
                 border: $borderColor solid 1px;
                 width: 100%;
+                background: none;
+                min-width: 0;
 
                 &:invalid {
                     box-shadow: none;

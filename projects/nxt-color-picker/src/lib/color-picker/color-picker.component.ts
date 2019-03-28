@@ -201,7 +201,11 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.cpOutputFormat = cpOutputFormat
         this.cpDialogDisplay = cpDialogDisplay
 
-        this.cpIgnoredElements = cpIgnoredElements
+        this.cpIgnoredElements = [
+            ...(Array.isArray(cpIgnoredElements) ? cpIgnoredElements : [cpIgnoredElements]),
+            this.elRef && this.elRef.nativeElement,
+            elementRef && elementRef.nativeElement
+        ].filter(e => !!e)
 
         this.cpSaveClickOutside = cpSaveClickOutside
         this.cpCloseClickOutside = cpCloseClickOutside
@@ -298,11 +302,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     public onMouseDown(event: MouseEvent): void {
-        if (this.cpDialogDisplay == DialogDisplay.popup &&
-            event.target !== this.directiveElementRef.nativeElement &&
-            !this.isDescendant(this.elRef.nativeElement, event.target as Node) &&
-            !this.isDescendant(this.directiveElementRef.nativeElement, event.target as Node) &&
-            this.cpIgnoredElements.filter((item: any) => item === event.target).length === 0) {
+        if (this.cpDialogDisplay == DialogDisplay.popup && !this.cpIgnoredElements.find(item => this.isDescendant(item, event.target as Node))) {
             if (!this.cpSaveClickOutside) {
                 this.setColorFromString(this.initialColor, false)
 
@@ -792,7 +792,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     // Private helper functions for the color picker dialog positioning and opening
 
     private isDescendant(parent: Node, child: Node): boolean {
-        let node: Node = child.parentNode
+        let node: Node = child
 
         while (node !== null) {
             if (node === parent) {
