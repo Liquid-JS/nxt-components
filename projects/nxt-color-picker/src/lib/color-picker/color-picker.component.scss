@@ -31,6 +31,7 @@ $light: #dadada;
             border-width: ($baseSize * 0.75) ($baseSize * 0.375);
             border-color: $borderColor rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
             left: $baseSize * 0.75;
+            bottom: -$baseSize * 1.5;
         }
 
         &.color-picker__arrow--left {
