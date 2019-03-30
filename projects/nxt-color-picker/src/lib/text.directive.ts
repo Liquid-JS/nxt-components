@@ -12,17 +12,15 @@ export class TextDirective {
     @Output() newValue = new EventEmitter<TextEvent>()
 
     @HostListener('input', ['$event'])
+    @HostListener('change', ['$event'])
     inputChange(event: Event) {
-        if (event && event.target && event.target.hasOwnProperty('value')) {
-            const input = event.target as HTMLInputElement
+        const value = ((event && event.target && event.target['value'] || '') + '').trim()
 
-            if (this.rg === undefined) {
-                this.newValue.emit(input.value)
-            } else {
-                const numeric = parseFloat(input.value)
-
-                this.newValue.emit({ v: numeric, rg: this.rg })
-            }
+        if (this.rg == undefined) {
+            this.newValue.emit(value)
+        } else {
+            const numeric = parseFloat(value)
+            this.newValue.emit({ v: numeric, rg: this.rg })
         }
     }
 }

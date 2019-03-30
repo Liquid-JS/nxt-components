@@ -11,10 +11,7 @@
     }">
     <div *ngIf="cpDialogDisplay == dialogDisplay.popup"
         class="color-picker__arrow"
-        [ngClass]="'color-picker__arrow--' + cpPosition"
-        [ngStyle]="{ 
-            top: arrowTop
-        }"></div>
+        [ngClass]="'color-picker__arrow--' + cpPosition"></div>
     <div *ngIf="cpMode == colorModeInternal.color"
         class="color-picker__sv"
         cpSlider

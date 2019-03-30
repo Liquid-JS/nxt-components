@@ -63,8 +63,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     hslaText: Hsla
     rgbaText: Rgba
 
-    arrowTop: number
-
     selectedColor: string
     hueSliderColor: string
     alphaSliderColor: string
@@ -310,23 +308,17 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     setColorFromString(value: string, emit: boolean = true, update: boolean = true) {
-        let hsva: Hsva | null
-
-        if (this.cpAlphaChannel == AlphaChannel.always || this.cpAlphaChannel == AlphaChannel.forced) {
-            hsva = stringToHsva(value, true)
-
-            if (!hsva && !this.hsva) {
-                hsva = stringToHsva(value, false)
-            }
-        } else {
-            hsva = stringToHsva(value, false)
-        }
+        let hsva = stringToHsva(value, true)
 
         if (!hsva && !this.hsva) {
-            hsva = stringToHsva(this.fallbackColor, false)
+            hsva = stringToHsva(this.fallbackColor, true)
         }
 
         if (hsva) {
+            if (this.cpAlphaChannel == AlphaChannel.disabled) {
+                hsva.a = 1
+            }
+
             this.hsva = hsva
 
             this.sliderH = this.hsva.h
@@ -422,31 +414,29 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onHexInput(value: string | null) {
-        if (value === null) {
+    onHexInput(value: string) {
+        if (value == null) {
             this.updateColorPicker()
         } else {
-            if (value && value[0] !== '#') {
+            if (value && value[0] != '#') {
                 value = '#' + value
             }
 
-            let validHex = /^#([a-f0-9]{3}|[a-f0-9]{6})$/gi
-
-            if (this.cpAlphaChannel == AlphaChannel.always) {
-                validHex = /^#([a-f0-9]{3}|[a-f0-9]{6}|[a-f0-9]{8})$/gi
-            }
+            const validHex = /^#([a-f0-9]{3}|[a-f0-9]{6}|[a-f0-9]{8})$/gi
 
             const valid = validHex.test(value)
 
             if (valid) {
-                if (value.length < 5) {
+                // Short hex
+                if (value.length == 4) {
                     value = '#' + value.substring(1)
                         .split('')
                         .map(c => c + c)
                         .join('')
                 }
 
-                if (this.cpAlphaChannel == AlphaChannel.forced) {
+                // Hex without alpha
+                if (value.length == 7 && this.cpAlphaChannel == AlphaChannel.forced) {
                     value += Math.round(this.hsva.a * 255).toString(16)
                 }
 
@@ -649,7 +639,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     onAddPresetColor(value: string) {
-        if (!this.cpPresetColors.filter((color) => (color === value)).length) {
+        if (!this.cpPresetColors.filter((color) => (color == value)).length) {
             this.cpPresetColors = this.cpPresetColors.concat(value)
 
             if (this.callbacks) {
@@ -659,7 +649,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     onRemovePresetColor(value: string) {
-        this.cpPresetColors = this.cpPresetColors.filter((color) => (color !== value))
+        this.cpPresetColors = this.cpPresetColors.filter((color) => (color != value))
 
         if (this.callbacks) {
             this.callbacks.presetColorsChanged(this.cpPresetColors)
@@ -741,7 +731,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
             this.hsva.a
         )
 
-        if (emit && lastOutput !== this.outputColor) {
+        if (emit && lastOutput != this.outputColor) {
             if (this.callbacks) {
                 this.callbacks.colorChanged(this.outputColor)
             }
@@ -766,16 +756,16 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
             const dialogHeight = this.dialogElement.nativeElement.offsetHeight
 
-            while (node !== null && node.tagName !== 'HTML') {
+            while (node != null && node.tagName != 'HTML') {
                 style = window.getComputedStyle(node)
                 position = style.getPropertyValue('position')
                 transform = style.getPropertyValue('transform')
 
-                if (position != Position.static && parentNode === null) {
+                if (position != Position.static && parentNode == null) {
                     parentNode = node
                 }
 
-                if (transform && transform !== 'none' && transformNode === null) {
+                if (transform && transform != 'none' && transformNode == null) {
                     transformNode = node
                 }
 
@@ -794,7 +784,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
                 this.top = boxDirective.top
                 this.left = boxDirective.left
             } else {
-                if (parentNode === null) {
+                if (parentNode == null) {
                     parentNode = node
                 }
 
@@ -808,19 +798,26 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
                 this.position = Position.fixed
             }
 
-            if (this.cpPosition == DialogPosition.left) {
-                this.top += boxDirective.height * this.cpPositionOffset / 100 - this.dialogArrowOffset
-                this.left -= this.width + this.dialogArrowSize - 2
-            } else if (this.cpPosition == DialogPosition.top) {
-                this.arrowTop = dialogHeight - 1
-                this.top -= dialogHeight + this.dialogArrowSize
-                this.left += this.cpPositionOffset / 100 * boxDirective.width - this.dialogArrowOffset
-            } else if (this.cpPosition == DialogPosition.bottom) {
-                this.top += boxDirective.height + this.dialogArrowSize
-                this.left += this.cpPositionOffset / 100 * boxDirective.width - this.dialogArrowOffset
-            } else {
-                this.top += boxDirective.height * this.cpPositionOffset / 100 - this.dialogArrowOffset
-                this.left += boxDirective.width + this.dialogArrowSize - 2
+            switch (this.cpPosition) {
+                case DialogPosition.left:
+                    this.top += boxDirective.height * this.cpPositionOffset / 100 - this.dialogArrowOffset
+                    this.left -= this.width + this.dialogArrowSize - 2
+                    break
+
+                case DialogPosition.top:
+                    this.top -= dialogHeight + this.dialogArrowSize
+                    this.left += this.cpPositionOffset / 100 * boxDirective.width - this.dialogArrowOffset
+                    break
+
+                case DialogPosition.bottom:
+                    this.top += boxDirective.height + this.dialogArrowSize
+                    this.left += this.cpPositionOffset / 100 * boxDirective.width - this.dialogArrowOffset
+                    break
+
+                default:
+                    this.top += boxDirective.height * this.cpPositionOffset / 100 - this.dialogArrowOffset
+                    this.left += boxDirective.width + this.dialogArrowSize - 2
+                    break
             }
         }
     }

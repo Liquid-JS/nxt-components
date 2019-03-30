@@ -79,11 +79,11 @@ export class SliderDirective {
         const x = Math.max(0, Math.min(this.getX(event), width))
         const y = Math.max(0, Math.min(this.getY(event), height))
 
-        if (this.rgX !== undefined && this.rgY !== undefined) {
+        if (this.rgX != undefined && this.rgY != undefined) {
             this.newValue.emit({ s: x / width, v: (1 - y / height), rgX: this.rgX, rgY: this.rgY })
-        } else if (this.rgX === undefined && this.rgY !== undefined) {
+        } else if (this.rgX == undefined && this.rgY != undefined) {
             this.newValue.emit({ v: y / height, rgY: this.rgY })
-        } else if (this.rgX !== undefined && this.rgY === undefined) {
+        } else if (this.rgX != undefined && this.rgY == undefined) {
             this.newValue.emit({ v: x / width, rgX: this.rgX })
         }
     }

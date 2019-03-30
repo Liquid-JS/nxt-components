@@ -130,16 +130,15 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     }
 
     @HostListener('input', ['$event'])
+    @HostListener('change', ['$event'])
     handleInput(event: Event) {
-        if (event && event.target && event.target.hasOwnProperty('value')) {
-            const input = event.target as HTMLInputElement
-            if (this.dialog) {
-                this.dialog.setColorFromString(input.value, true)
-            } else {
-                this.cpColor = input.value
+        const value = ((event && event.target && event.target['value'] || '') + '').trim()
 
-                this.cpColorChange.emit(this.cpColor)
-            }
+        if (this.dialog) {
+            this.dialog.setColorFromString(value, true)
+        } else {
+            this.cpColor = value
+            this.cpColorChange.emit(this.cpColor)
         }
     }
 
@@ -152,7 +151,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     ) { }
 
     ngOnDestroy() {
-        if (this.cmpRef !== undefined) {
+        if (this.cmpRef != undefined) {
             this.cmpRef.destroy()
         }
     }
@@ -201,7 +200,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
                 vcRef = appInstance.vcRef || appInstance.viewContainerRef || this.vcRef
 
-                if (vcRef === this.vcRef) {
+                if (vcRef == this.vcRef) {
                     console.warn('You are using cpUseRootViewContainer, but the root component is not exposing viewContainerRef! Please expose it by adding \'vcRef: ViewContainerRef\' to the constructor.')
                 }
             }
@@ -214,7 +213,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
             this.setupDialog()
 
-            if (this.vcRef !== vcRef) {
+            if (this.vcRef != vcRef) {
                 this.cmpRef.changeDetectorRef.detectChanges()
             }
         } else if (this.dialog) {

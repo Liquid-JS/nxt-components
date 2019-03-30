@@ -3,9 +3,9 @@ import { Cmyk, Hsla, Hsva, Rgba } from './formats'
 export function hsva2hsla(hsva: Hsva) {
     const h = hsva.h, s = hsva.s, v = hsva.v, a = hsva.a
 
-    if (v === 0) {
+    if (v == 0) {
         return new Hsla(h, 0, 0, a)
-    } else if (s === 0 && v === 1) {
+    } else if (s == 0 && v == 1) {
         return new Hsla(h, 1, 1, a)
     } else {
         const l = v * (2 - s) / 2
@@ -18,7 +18,7 @@ export function hsla2hsva(hsla: Hsla) {
     const h = Math.min(hsla.h, 1), s = Math.min(hsla.s, 1)
     const l = Math.min(hsla.l, 1), a = Math.min(hsla.a, 1)
 
-    if (l === 0) {
+    if (l == 0) {
         return new Hsva(h, 0, 0, a)
     } else {
         const v = l + s * (1 - Math.abs(2 * l - 1)) / 2
@@ -67,7 +67,7 @@ export function hsvaToRgba(hsva: Hsva) {
 export function rgbaToCmyk(rgba: Rgba) {
     const k: number = 1 - Math.max(rgba.r, rgba.g, rgba.b)
 
-    if (k === 1) {
+    if (k == 1) {
         return new Cmyk(0, 0, 0, 1)
     } else {
         const c = (1 - rgba.r - k) / (1 - k)
@@ -88,9 +88,9 @@ export function rgbaToHsva(rgba: Rgba) {
 
     const v: number = max, d = max - min
 
-    s = (max === 0) ? 0 : d / max
+    s = (max == 0) ? 0 : d / max
 
-    if (max === min) {
+    if (max == min) {
         h = 0
     } else {
         switch (max) {
@@ -130,7 +130,7 @@ export function denormalizeRGBA(rgba: Rgba) {
 }
 
 export function stringToHsva(colorString: string = '', allowHex8: boolean = false) {
-    let hsva: Hsva | null = null
+    let hsva: Hsva = null
 
     colorString = (colorString || '').toLowerCase()
 
@@ -207,8 +207,8 @@ export function stringToHsva(colorString: string = '', allowHex8: boolean = fals
     return hsva
 }
 
-export function formatOutput(hsva: Hsva, outputFormat: string, alphaChannel: string | null) {
-    if (outputFormat === 'auto') {
+export function formatOutput(hsva: Hsva, outputFormat: string, alphaChannel: string) {
+    if (outputFormat == 'auto') {
         outputFormat = hsva.a < 1 ? 'rgba' : 'hex'
     }
 
@@ -219,7 +219,7 @@ export function formatOutput(hsva: Hsva, outputFormat: string, alphaChannel: str
             const hslaText = new Hsla(Math.round((hsla.h) * 360), Math.round(hsla.s * 100),
                 Math.round(hsla.l * 100), Math.round(hsla.a * 100) / 100)
 
-            if (hsva.a < 1 || alphaChannel === 'always') {
+            if (hsva.a < 1 || alphaChannel == 'always') {
                 return 'hsla(' + hslaText.h + ',' + hslaText.s + '%,' + hslaText.l + '%,' +
                     hslaText.a + ')'
             } else {
@@ -229,7 +229,7 @@ export function formatOutput(hsva: Hsva, outputFormat: string, alphaChannel: str
         case 'rgba':
             const rgba = denormalizeRGBA(hsvaToRgba(hsva))
 
-            if (hsva.a < 1 || alphaChannel === 'always') {
+            if (hsva.a < 1 || alphaChannel == 'always') {
                 return 'rgba(' + rgba.r + ',' + rgba.g + ',' + rgba.b + ',' +
                     Math.round(rgba.a * 100) / 100 + ')'
             } else {
@@ -237,7 +237,7 @@ export function formatOutput(hsva: Hsva, outputFormat: string, alphaChannel: str
             }
 
         default:
-            const allowHex8 = (alphaChannel === 'always' || alphaChannel === 'forced')
+            const allowHex8 = (alphaChannel == 'always' || alphaChannel == 'forced')
 
             return rgbaToHex(denormalizeRGBA(hsvaToRgba(hsva)), allowHex8)
     }
