@@ -1,4 +1,5 @@
 import { Cmyk, Hsla, Hsva, Rgba } from './formats'
+import { AlphaChannel, OutputFormat } from './types'
 
 export function hsva2hsla(hsva: Hsva) {
     const h = hsva.h, s = hsva.s, v = hsva.v, a = hsva.a
@@ -207,29 +208,29 @@ export function stringToHsva(colorString: string = '', allowHex8: boolean = fals
     return hsva
 }
 
-export function formatOutput(hsva: Hsva, outputFormat: string, alphaChannel: string) {
-    if (outputFormat == 'auto') {
-        outputFormat = hsva.a < 1 ? 'rgba' : 'hex'
+export function formatOutput(hsva: Hsva, outputFormat: OutputFormat, alphaChannel: AlphaChannel) {
+    if (outputFormat == OutputFormat.auto) {
+        outputFormat = hsva.a < 1 ? OutputFormat.rgba : OutputFormat.hex
     }
 
     switch (outputFormat) {
-        case 'hsla':
+        case OutputFormat.hsla:
             const hsla = hsva2hsla(hsva)
 
             const hslaText = new Hsla(Math.round((hsla.h) * 360), Math.round(hsla.s * 100),
                 Math.round(hsla.l * 100), Math.round(hsla.a * 100) / 100)
 
-            if (hsva.a < 1 || alphaChannel == 'always') {
+            if (hsva.a < 1 || alphaChannel == AlphaChannel.always) {
                 return 'hsla(' + hslaText.h + ',' + hslaText.s + '%,' + hslaText.l + '%,' +
                     hslaText.a + ')'
             } else {
                 return 'hsl(' + hslaText.h + ',' + hslaText.s + '%,' + hslaText.l + '%)'
             }
 
-        case 'rgba':
+        case OutputFormat.rgba:
             const rgba = denormalizeRGBA(hsvaToRgba(hsva))
 
-            if (hsva.a < 1 || alphaChannel == 'always') {
+            if (hsva.a < 1 || alphaChannel == AlphaChannel.always) {
                 return 'rgba(' + rgba.r + ',' + rgba.g + ',' + rgba.b + ',' +
                     Math.round(rgba.a * 100) / 100 + ')'
             } else {
@@ -237,7 +238,7 @@ export function formatOutput(hsva: Hsva, outputFormat: string, alphaChannel: str
             }
 
         default:
-            const allowHex8 = (alphaChannel == 'always' || alphaChannel == 'forced')
+            const allowHex8 = (alphaChannel == AlphaChannel.always || alphaChannel == AlphaChannel.forced)
 
             return rgbaToHex(denormalizeRGBA(hsvaToRgba(hsva)), allowHex8)
     }

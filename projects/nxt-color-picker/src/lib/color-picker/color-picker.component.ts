@@ -133,10 +133,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
                 this.closeColorPicker()
             }
 
-            if (this.outputColor) {
-                if (this.callbacks) {
-                    this.callbacks.colorSelected(this.outputColor)
-                }
+            if (this.outputColor && this.callbacks) {
+                this.callbacks.colorSelected(this.outputColor)
             }
         }
     }
@@ -148,7 +146,11 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
             const path = new Set(event.composedPath())
             const intersect = this.cpIgnoredElements.find(el => path.has(el))
             if (!intersect) {
-                if (!this.cpSaveClickOutside) {
+                if (this.cpSaveClickOutside) {
+                    if (this.outputColor && this.callbacks) {
+                        this.callbacks.colorSelected(this.outputColor)
+                    }
+                } else {
                     this.setColorFromString(this.initialColor, false)
 
                     if (this.callbacks) {
@@ -707,10 +709,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
             this.hexAlpha = this.rgbaText.a
         }
 
-        if (this.cpOutputFormat == OutputFormat.auto) {
-            if (this.hsva.a < 1) {
-                this.format = this.hsva.a < 1 ? ColorFormat.rgba : ColorFormat.hex
-            }
+        if (this.cpOutputFormat == OutputFormat.auto && this.hsva.a < 1) {
+            this.format = this.hsva.a < 1 ? ColorFormat.rgba : ColorFormat.hex
         }
 
         this.hueSliderColor = 'rgb(' + hue.r + ',' + hue.g + ',' + hue.b + ')'
@@ -722,7 +722,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.alphaSliderLight = transparentSliderLight(rgba)
 
         this.outputColor = formatOutput(this.hsva, this.cpOutputFormat, this.cpAlphaChannel)
-        this.selectedColor = formatOutput(this.hsva, 'rgba', null)
+        this.selectedColor = formatOutput(this.hsva, OutputFormat.rgba, null)
 
         this.slider = new SliderPosition(
             (this.sliderH || this.hsva.h),
@@ -731,10 +731,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
             this.hsva.a
         )
 
-        if (emit && lastOutput != this.outputColor) {
-            if (this.callbacks) {
-                this.callbacks.colorChanged(this.outputColor)
-            }
+        if (emit && lastOutput != this.outputColor && this.callbacks) {
+            this.callbacks.colorChanged(this.outputColor)
         }
     }
 

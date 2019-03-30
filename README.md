@@ -110,7 +110,7 @@ import { ColorPickerModule } from 'nxt-color-picker';
 (cpSliderDragEnd)            // Slider name and current color, send when slider dragging ends (value: SliderChangeEvent).
 
 (cpColorSelectCancel)        // Color select canceled, send when Cancel button is pressed (void).
-(cpColorSelect)              // Selected color value, send when OK button is pressed (value: string).
+(cpColorSelect)              // Selected color value, send when OK button pressed or user clicks outside (if cpSaveClickOutside is true). (value: string).
 (cpColorChange)              // Changed color value, send when color is changed (value: string).
 
 (cpPresetColorsChange)       // Preset colors, send when 'Add Color' button is pressed (value: array).

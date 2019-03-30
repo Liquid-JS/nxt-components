@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { Cmyk, formatOutput, hsvaToRgba, rgbaToCmyk, stringToHsva } from 'projects/nxt-color-picker/src/public-api'
+import { Cmyk, formatOutput, hsvaToRgba, OutputFormat, rgbaToCmyk, stringToHsva } from 'projects/nxt-color-picker/src/public-api'
 
 @Component({
     selector: 'app-root',
@@ -64,7 +64,7 @@ export class AppComponent {
         const hsva = stringToHsva(color, true)
 
         if (hsva) {
-            return formatOutput(hsva, 'rgba', null)
+            return formatOutput(hsva, OutputFormat.rgba, null)
         }
 
         return ''
