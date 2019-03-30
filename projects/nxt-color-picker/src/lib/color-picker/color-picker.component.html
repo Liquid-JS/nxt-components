@@ -38,12 +38,12 @@
             <div class="color-picker__selected-color">
                 <div [ngStyle]="{ 
                     backgroundColor: selectedColor || ''
-                }"><button *ngIf="cpAddColorButton"
+                }"><button
+                        *ngIf="cpAddColorButton && !(cpMaxPresetColors && (cpPresetColors?.length || 0) >= cpMaxPresetColors)"
                         [title]="cpAddColorButtonText"
                         class="color-picker__add-selected"
                         [ngClass]="{ 'color-picker__add-selected--light': alphaSliderLight }"
-                        [disabled]="cpPresetColors && cpPresetColors.length >= cpMaxPresetColors"
-                        (click)="onAddPresetColor($event, selectedColor)"><svg xmlns="http://www.w3.org/2000/svg"
+                        (click)="onAddPresetColor(selectedColor)"><svg xmlns="http://www.w3.org/2000/svg"
                             width="24"
                             height="24"
                             viewBox="0 0 24 24">
@@ -111,7 +111,7 @@
                         cpText
                         [rg]="100"
                         [value]="hslaText?.l"
-                        (keyup.enter)="onAcceptColor($event)"
+                        (keyup.enter)="onAccept($event)"
                         (newValue)="onValueInput($event)" />
                     <span class="color-picker__input-field-label">V</span>
                 </div>
@@ -125,7 +125,7 @@
                         cpText
                         [rg]="1"
                         [value]="hslaText?.a"
-                        (keyup.enter)="onAcceptColor($event)"
+                        (keyup.enter)="onAccept($event)"
                         (newValue)="onAlphaInput($event)" />
                     <span class="color-picker__input-field-label">A</span>
                 </div>
@@ -141,7 +141,7 @@
                                 cpText
                                 [rg]="360"
                                 [value]="hslaText?.h"
-                                (keyup.enter)="onAcceptColor($event)"
+                                (keyup.enter)="onAccept($event)"
                                 (newValue)="onHueInput($event)" />
                             <span class="color-picker__input-field-label">H</span>
                         </div>
@@ -153,7 +153,7 @@
                                 cpText
                                 [rg]="100"
                                 [value]="hslaText?.s"
-                                (keyup.enter)="onAcceptColor($event)"
+                                (keyup.enter)="onAccept($event)"
                                 (newValue)="onSaturationInput($event)" />
                             <span class="color-picker__input-field-label">S</span>
                         </div>
@@ -165,7 +165,7 @@
                                 cpText
                                 [rg]="100"
                                 [value]="hslaText?.l"
-                                (keyup.enter)="onAcceptColor($event)"
+                                (keyup.enter)="onAccept($event)"
                                 (newValue)="onLightnessInput($event)" />
                             <span class="color-picker__input-field-label">L</span>
                         </div>
@@ -179,7 +179,7 @@
                                 cpText
                                 [rg]="1"
                                 [value]="hslaText?.a"
-                                (keyup.enter)="onAcceptColor($event)"
+                                (keyup.enter)="onAccept($event)"
                                 (newValue)="onAlphaInput($event)" />
                             <span class="color-picker__input-field-label">A</span>
                         </div>
@@ -193,7 +193,7 @@
                                 cpText
                                 [rg]="255"
                                 [value]="rgbaText?.r"
-                                (keyup.enter)="onAcceptColor($event)"
+                                (keyup.enter)="onAccept($event)"
                                 (newValue)="onRedInput($event)" />
                             <span class="color-picker__input-field-label">R</span>
                         </div>
@@ -205,7 +205,7 @@
                                 cpText
                                 [rg]="255"
                                 [value]="rgbaText?.g"
-                                (keyup.enter)="onAcceptColor($event)"
+                                (keyup.enter)="onAccept($event)"
                                 (newValue)="onGreenInput($event)" />
                             <span class="color-picker__input-field-label">G</span>
                         </div>
@@ -217,7 +217,7 @@
                                 cpText
                                 [rg]="255"
                                 [value]="rgbaText?.b"
-                                (keyup.enter)="onAcceptColor($event)"
+                                (keyup.enter)="onAccept($event)"
                                 (newValue)="onBlueInput($event)" />
                             <span class="color-picker__input-field-label">B</span>
                         </div>
@@ -231,7 +231,7 @@
                                 cpText
                                 [rg]="1"
                                 [value]="hslaText?.a"
-                                (keyup.enter)="onAcceptColor($event)"
+                                (keyup.enter)="onAccept($event)"
                                 (newValue)="onAlphaInput($event)" />
                             <span class="color-picker__input-field-label">A</span>
                         </div>
@@ -241,7 +241,7 @@
                             <input cpText
                                 [value]="hexText"
                                 (blur)="onHexInput(null)"
-                                (keyup.enter)="onAcceptColor($event)"
+                                (keyup.enter)="onAccept($event)"
                                 (newValue)="onHexInput($event)" />
                             <span class="color-picker__input-field-label">Hex</span>
                         </div>
@@ -255,7 +255,7 @@
                                 cpText
                                 [rg]="1"
                                 [value]="hexAlpha"
-                                (keyup.enter)="onAcceptColor($event)"
+                                (keyup.enter)="onAccept($event)"
                                 (newValue)="onAlphaInput($event)" />
                             <span class="color-picker__input-field-label">A</span>
                         </div>
@@ -271,38 +271,44 @@
                 (click)="onFormatToggle(-1)"></span>
         </div>
     </div>
-
-    <div *ngIf="cpPresetColors?.length || cpAddColorButton"
-        class="preset-area">
-        <hr>
-
-        <div class="preset-label">{{cpPresetLabel}}</div>
-
-        <div *ngIf="cpPresetColors?.length">
-            <div *ngFor="let color of cpPresetColors"
-                class="preset-color"
-                [style.backgroundColor]="color"
-                (click)="setColorFromString(color)">
-                <span *ngIf="cpAddColorButton"
-                    class=""
-                    (click)="onRemovePresetColor($event, color)"></span>
+    <ng-container *ngIf="cpPresetColors?.length">
+        <div class="color-picker__separator"></div>
+        <div class="color-picker__preset">
+            <div *ngIf="cpPresetLabel"
+                class="color-picker__preset-label">{{ cpPresetLabel }}</div>
+            <div *ngIf="cpPresetColors?.length"
+                class="color-picker__preset-items">
+                <div *ngFor="let color of cpPresetColors"
+                    class="color-picker__preset-item"
+                    [title]="color"
+                    (click)="setColorFromString(color)">
+                    <div class="color-picker__preset-item-fill"
+                        [ngStyle]="{ 
+                        backgroundColor: color || ''
+                    }"><button *ngIf="cpAddColorButton"
+                            [title]="cpRemoveColorButtonText"
+                            class="color-picker__remove-selected"
+                            (click)="onRemovePresetColor(color)"><svg xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                                <path d="M0 0h24v24H0z"
+                                    fill="none" /></svg></button></div>
+                </div>
+                <div *ngFor="let i of fill(50)"
+                    class="color-picker__preset-item"></div>
             </div>
         </div>
-
-        <div *ngIf="!cpPresetColors?.length && cpAddColorButton"
-            class="">{{cpPresetEmptyMessage}}</div>
-    </div>
-
+    </ng-container>
     <div *ngIf="cpOKButton || cpCancelButton"
-        class="button-area">
+        class="color-picker__buttons">
         <button *ngIf="cpCancelButton"
             type="button"
-            class=""
-            (click)="onCancelColor($event)">{{cpCancelButtonText}}</button>
-
+            (click)="onCancel($event)">{{ cpCancelButtonText }}</button>
         <button *ngIf="cpOKButton"
             type="button"
-            class=""
-            (click)="onAcceptColor($event)">{{cpOKButtonText}}</button>
+            (click)="onAccept($event)">{{ cpOKButtonText }}</button>
     </div>
 </div>

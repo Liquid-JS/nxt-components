@@ -6,9 +6,7 @@ import { CursorEvent } from '../util/helpers'
 })
 export class SliderDirective {
 
-    constructor(
-        private elRef: ElementRef
-    ) { }
+    private isMoving = false
 
     @Input() rgX: number
     @Input() rgY: number
@@ -19,46 +17,46 @@ export class SliderDirective {
     @Output() dragStart = new EventEmitter()
 
     @Output() newValue = new EventEmitter<CursorEvent>()
-    private listenerMove = (event: MouseEvent | TouchEvent) => this.move(event)
-    private listenerStop = () => this.stop()
 
-    @HostListener('mousedown', ['$event']) mouseDown(event: MouseEvent | TouchEvent): void {
-        this.start(event)
-    }
+    constructor(
+        private elRef: ElementRef
+    ) { }
 
-    @HostListener('touchstart', ['$event']) touchStart(event: MouseEvent | TouchEvent): void {
-        this.start(event)
-    }
-
-    private move(event: MouseEvent | TouchEvent): void {
+    @HostListener('mousedown', ['$event'])
+    @HostListener('touchstart', ['$event'])
+    onStart(event: MouseEvent | TouchEvent) {
+        event.stopPropagation()
         event.preventDefault()
 
         this.setCursor(event)
-    }
-
-    private start(event: MouseEvent | TouchEvent): void {
-        this.setCursor(event)
-
-        event.stopPropagation()
-
-        document.addEventListener('mouseup', this.listenerStop)
-        document.addEventListener('touchend', this.listenerStop)
-        document.addEventListener('mousemove', this.listenerMove)
-        document.addEventListener('touchmove', this.listenerMove)
-
+        this.isMoving = true
         this.dragStart.emit()
     }
 
-    private stop(): void {
-        document.removeEventListener('mouseup', this.listenerStop)
-        document.removeEventListener('touchend', this.listenerStop)
-        document.removeEventListener('mousemove', this.listenerMove)
-        document.removeEventListener('touchmove', this.listenerMove)
+    @HostListener('document:mousemove', ['$event'])
+    @HostListener('document:touchmove', ['$event'])
+    onMove(event: MouseEvent | TouchEvent) {
+        if (this.isMoving) {
+            event.stopPropagation()
+            event.preventDefault()
 
-        this.dragEnd.emit()
+            this.setCursor(event)
+        }
     }
 
-    private getX(event: MouseEvent | TouchEvent): number {
+    @HostListener('document:mouseup', ['$event'])
+    @HostListener('document:touchend', ['$event'])
+    onStop(event: MouseEvent | TouchEvent) {
+        if (this.isMoving) {
+            event.stopPropagation()
+            event.preventDefault()
+
+            this.isMoving = false
+            this.dragEnd.emit()
+        }
+    }
+
+    private getX(event: MouseEvent | TouchEvent) {
         const position = this.elRef.nativeElement.getBoundingClientRect()
 
         const pageX = 'pageX' in event ? event.pageX : event.touches[0].pageX
@@ -66,7 +64,7 @@ export class SliderDirective {
         return pageX - position.left - window.pageXOffset
     }
 
-    private getY(event: MouseEvent | TouchEvent): number {
+    private getY(event: MouseEvent | TouchEvent) {
         const position = this.elRef.nativeElement.getBoundingClientRect()
 
         const pageY = 'pageX' in event ? event.pageY : event.touches[0].pageY
@@ -74,7 +72,7 @@ export class SliderDirective {
         return pageY - position.top - window.pageYOffset
     }
 
-    private setCursor(event: MouseEvent | TouchEvent): void {
+    private setCursor(event: MouseEvent | TouchEvent) {
         const width = this.elRef.nativeElement.offsetWidth
         const height = this.elRef.nativeElement.offsetHeight
 

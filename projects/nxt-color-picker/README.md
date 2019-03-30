@@ -90,11 +90,10 @@ import { ColorPickerModule } from 'nxt-color-picker';
 [cpCancelButtonText]         // Button label text shown inside the Cancel / Reset button ('Cancel').
 
 [cpAddColorButton]           // Show an Add Color button which add the color into preset (false).
-[cpAddColorButtonText]       // Button label text shown inside the Add Color button ('Add color').
+[cpAddColorButtonText]       // Button label text shown inside the Add Color button ('Add color to preset').
+[cpRemoveColorButtonText]    // Button label text shown inside the Remove Color button ('Remove Color').
 
 [cpMaxPresetColors]          // Use this option to set the max colors allowed in presets (6).
-
-[cpPresetEmptyMessage]       // Message for empty colors if any provided used ('No colors added').
 
 [cpUseRootViewContainer]     // Create dialog component in the root view container (false).
                              // Note: The root component needs to have public viewContainerRef.

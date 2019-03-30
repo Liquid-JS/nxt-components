@@ -1,4 +1,4 @@
-import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Injector, Input, OnChanges, OnDestroy, Output, ViewContainerRef } from '@angular/core'
+import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Injector, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewContainerRef } from '@angular/core'
 import { AlphaChannel, ColorMode, DialogDisplay, DialogPosition, InputChangeEvent, OutputFormat, SliderChangeEvent } from '../util/types'
 import { ColorPickerComponent } from './color-picker/color-picker.component'
 
@@ -13,6 +13,49 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     private ignoreChanges: boolean = false
 
     private cmpRef: ComponentRef<ColorPickerComponent>
+
+    private readonly _callbacks: DirectiveCallbacks = {
+        stateChanged: (state: boolean) => {
+            this.cpToggleChange.emit(state)
+
+            if (state) {
+                this.cpOpen.emit(this.cpColor)
+            } else {
+                this.cpClose.emit(this.cpColor)
+            }
+        },
+        colorChanged: (value: string, ignore: boolean = true) => {
+            this.ignoreChanges = ignore
+
+            this.cpColorChange.emit(value)
+        },
+        colorSelectCanceled: () => {
+            this.cpColorSelectCancel.emit()
+        },
+        colorSelected: (value: string) => {
+            this.cpColorSelect.emit(value)
+        },
+        inputChanged: (event: InputChangeEvent) => {
+            this.cpInputChange.emit(event)
+        },
+        sliderDragStart: (event: SliderChangeEvent) => {
+            this.cpSliderDragStart.emit(event)
+        },
+        sliderChanged: (event: SliderChangeEvent) => {
+            this.cpSliderChange.emit(event)
+        },
+        sliderDragEnd: (event: SliderChangeEvent) => {
+            this.cpSliderDragEnd.emit(event)
+        },
+        presetColorsChanged: (value: any[]) => {
+            this.cpPresetColorsChange.emit(value)
+        }
+    }
+
+    private get ignoredElements() {
+        const ign = Array.isArray(this.cpIgnoredElements) ? this.cpIgnoredElements : [this.cpIgnoredElements]
+        return ign.filter(el => !!el)
+    }
 
     @Input() cpColor: string
 
@@ -51,11 +94,10 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Input() cpCancelButtonText: string = 'Cancel'
 
     @Input() cpAddColorButton: boolean = false
-    @Input() cpAddColorButtonText: string = 'Add color'
+    @Input() cpAddColorButtonText: string = 'Add color to preset'
+    @Input() cpRemoveColorButtonText: string = 'Remove color'
 
     @Input() cpMaxPresetColors: number = 6
-
-    @Input() cpPresetEmptyMessage: string = 'No colors added'
 
     @Input() cpUseRootViewContainer: boolean = false
 
@@ -76,16 +118,29 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
     @Output() cpPresetColorsChange = new EventEmitter<any[]>(true)
 
-    @HostListener('click') handleClick(): void {
-        this.inputFocus()
+    @HostListener('focus', ['$event'])
+    @HostListener('click', ['$event'])
+    handleOpen(event: Event) {
+        const path = new Set(event.composedPath())
+        const ignored = this.ignoredElements.find(el => path.has(el))
+
+        if (!this.cpDisabled && !ignored) {
+            this.openDialog()
+        }
     }
 
-    @HostListener('focus') handleFocus(): void {
-        this.inputFocus()
-    }
+    @HostListener('input', ['$event'])
+    handleInput(event: Event) {
+        if (event && event.target && event.target.hasOwnProperty('value')) {
+            const input = event.target as HTMLInputElement
+            if (this.dialog) {
+                this.dialog.setColorFromString(input.value, true)
+            } else {
+                this.cpColor = input.value
 
-    @HostListener('input', ['$event']) handleInput(event: any): void {
-        this.inputChange(event)
+                this.cpColorChange.emit(this.cpColor)
+            }
+        }
     }
 
     constructor(
@@ -96,17 +151,17 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         private elRef: ElementRef
     ) { }
 
-    ngOnDestroy(): void {
+    ngOnDestroy() {
         if (this.cmpRef !== undefined) {
             this.cmpRef.destroy()
         }
     }
 
-    ngOnChanges(changes: any): void {
+    ngOnChanges(changes: SimpleChanges) {
         if (changes.cpToggle && !this.cpDisabled) {
             if (changes.cpToggle.currentValue) {
                 this.openDialog()
-            } else if (!changes.cpToggle.currentValue) {
+            } else {
                 this.closeDialog()
             }
         }
@@ -134,7 +189,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         }
     }
 
-    public openDialog(): void {
+    openDialog() {
         if (!this.dialogCreated) {
             let vcRef = this.vcRef
 
@@ -147,9 +202,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
                 vcRef = appInstance.vcRef || appInstance.viewContainerRef || this.vcRef
 
                 if (vcRef === this.vcRef) {
-                    console.warn('You are using cpUseRootViewContainer, ' +
-                        'but the root component is not exposing viewContainerRef!' +
-                        'Please expose it by adding \'public vcRef: ViewContainerRef\' to the constructor.')
+                    console.warn('You are using cpUseRootViewContainer, but the root component is not exposing viewContainerRef! Please expose it by adding \'vcRef: ViewContainerRef\' to the constructor.')
                 }
             }
 
@@ -169,84 +222,27 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         }
     }
 
-    private setupDialog() {
-        if (this.dialog)
-            this.dialog.setupDialog(this, this.elRef, this.cpColor, this.cpWidth, this.cpHeight, this.cpDialogDisplay, this.cpFallbackColor, this.cpMode, this.cpAlphaChannel, this.cpOutputFormat, this.cpDisableInput, this.cpIgnoredElements, this.cpSaveClickOutside, this.cpCloseClickOutside, this.cpUseRootViewContainer, this.cpPosition, this.cpPositionOffset, this.cpPositionRelativeToArrow, this.cpPresetLabel, this.cpPresetColors, this.cpMaxPresetColors, this.cpPresetEmptyMessage, this.cpOKButton, this.cpOKButtonText, this.cpCancelButton, this.cpCancelButtonText, this.cpAddColorButton, this.cpAddColorButtonText)
-    }
-
-    public closeDialog(): void {
+    closeDialog() {
         if (this.dialog && this.cpDialogDisplay == DialogDisplay.popup) {
             this.dialog.closeDialog()
         }
     }
 
-    public stateChanged(state: boolean): void {
-        this.cpToggleChange.emit(state)
-
-        if (state) {
-            this.cpOpen.emit(this.cpColor)
-        } else {
-            this.cpClose.emit(this.cpColor)
-        }
-    }
-
-    public colorChanged(value: string, ignore: boolean = true): void {
-        this.ignoreChanges = ignore
-
-        this.cpColorChange.emit(value)
-    }
-
-    public colorCanceled(): void {
-        this.cpColorSelectCancel.emit()
-    }
-
-    public colorSelected(value: string): void {
-        this.cpColorSelect.emit(value)
-    }
-
-    public inputFocus(): void {
-        const element = this.elRef.nativeElement
-
-        const ignored = this.cpIgnoredElements.filter((item: any) => item === element)
-
-        if (!this.cpDisabled && !ignored.length) {
-            if (typeof document !== 'undefined' && element === document.activeElement) {
-                this.openDialog()
-            } else if (!this.dialog || !this.dialog.show) {
-                this.openDialog()
-            } else {
-                this.closeDialog()
-            }
-        }
-    }
-
-    public inputChange(event: any): void {
+    private setupDialog() {
         if (this.dialog) {
-            this.dialog.setColorFromString(event.target.value, true)
-        } else {
-            this.cpColor = event.target.value
-
-            this.cpColorChange.emit(this.cpColor)
+            this.dialog.setupDialog({ ...this, callbacks: this._callbacks, elementRef: this.elRef, color: this.cpColor })
         }
     }
+}
 
-    public inputChanged(event: InputChangeEvent): void {
-        this.cpInputChange.emit(event)
-    }
-
-    public sliderDragStart(event: SliderChangeEvent): void {
-        this.cpSliderDragStart.emit(event)
-    }
-
-    public sliderChanged(event: SliderChangeEvent): void {
-        this.cpSliderChange.emit(event)
-    }
-
-    public sliderDragEnd(event: SliderChangeEvent): void {
-        this.cpSliderDragEnd.emit(event)
-    }
-
-    public presetColorsChanged(value: any[]): void {
-        this.cpPresetColorsChange.emit(value)
-    }
+export interface DirectiveCallbacks {
+    stateChanged(state: boolean): void
+    colorChanged(value: string, ignore?: boolean): void
+    colorSelectCanceled(): void
+    colorSelected(value: string): void
+    inputChanged(event: InputChangeEvent): void
+    sliderDragStart(event: SliderChangeEvent): void
+    sliderChanged(event: SliderChangeEvent): void
+    sliderDragEnd(event: SliderChangeEvent): void
+    presetColorsChanged(value: any[]): void
 }

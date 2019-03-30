@@ -1,6 +1,6 @@
 import { Cmyk, Hsla, Hsva, Rgba } from './formats'
 
-export function hsva2hsla(hsva: Hsva): Hsla {
+export function hsva2hsla(hsva: Hsva) {
     const h = hsva.h, s = hsva.s, v = hsva.v, a = hsva.a
 
     if (v === 0) {
@@ -14,7 +14,7 @@ export function hsva2hsla(hsva: Hsva): Hsla {
     }
 }
 
-export function hsla2hsva(hsla: Hsla): Hsva {
+export function hsla2hsva(hsla: Hsla) {
     const h = Math.min(hsla.h, 1), s = Math.min(hsla.s, 1)
     const l = Math.min(hsla.l, 1), a = Math.min(hsla.a, 1)
 
@@ -27,7 +27,7 @@ export function hsla2hsva(hsla: Hsla): Hsva {
     }
 }
 
-export function hsvaToRgba(hsva: Hsva): Rgba {
+export function hsvaToRgba(hsva: Hsva) {
     let r: number, g: number, b: number
 
     const h = hsva.h, s = hsva.s, v = hsva.v, a = hsva.a
@@ -64,7 +64,7 @@ export function hsvaToRgba(hsva: Hsva): Rgba {
     return new Rgba(r, g, b, a)
 }
 
-export function rgbaToCmyk(rgba: Rgba): Cmyk {
+export function rgbaToCmyk(rgba: Rgba) {
     const k: number = 1 - Math.max(rgba.r, rgba.g, rgba.b)
 
     if (k === 1) {
@@ -78,7 +78,7 @@ export function rgbaToCmyk(rgba: Rgba): Cmyk {
     }
 }
 
-export function rgbaToHsva(rgba: Rgba): Hsva {
+export function rgbaToHsva(rgba: Rgba) {
     let h: number, s: number
 
     const r = Math.min(rgba.r, 1), g = Math.min(rgba.g, 1)
@@ -113,7 +113,7 @@ export function rgbaToHsva(rgba: Rgba): Hsva {
     return new Hsva(h, s, v, a)
 }
 
-export function rgbaToHex(rgba: Rgba, allowHex8?: boolean): string {
+export function rgbaToHex(rgba: Rgba, allowHex8?: boolean) {
     /* tslint:disable:no-bitwise */
     let hex = '#' + ((1 << 24) | (rgba.r << 16) | (rgba.g << 8) | rgba.b).toString(16).substr(1)
 
@@ -125,11 +125,11 @@ export function rgbaToHex(rgba: Rgba, allowHex8?: boolean): string {
     return hex
 }
 
-export function denormalizeRGBA(rgba: Rgba): Rgba {
+export function denormalizeRGBA(rgba: Rgba) {
     return new Rgba(Math.round(rgba.r * 255), Math.round(rgba.g * 255), Math.round(rgba.b * 255), rgba.a)
 }
 
-export function stringToHsva(colorString: string = '', allowHex8: boolean = false): Hsva | null {
+export function stringToHsva(colorString: string = '', allowHex8: boolean = false) {
     let hsva: Hsva | null = null
 
     colorString = (colorString || '').toLowerCase()
@@ -207,7 +207,7 @@ export function stringToHsva(colorString: string = '', allowHex8: boolean = fals
     return hsva
 }
 
-export function formatOutput(hsva: Hsva, outputFormat: string, alphaChannel: string | null): string {
+export function formatOutput(hsva: Hsva, outputFormat: string, alphaChannel: string | null) {
     if (outputFormat === 'auto') {
         outputFormat = hsva.a < 1 ? 'rgba' : 'hex'
     }
@@ -245,8 +245,9 @@ export function formatOutput(hsva: Hsva, outputFormat: string, alphaChannel: str
 
 export function calculateContrast(foreground: Rgba, background: Rgba) {
 
-    if (Math.round(foreground.a * 100) < 100)
+    if (Math.round(foreground.a * 100) < 100) {
         foreground = compositeColors(foreground, background)
+    }
 
     const luminance1 = calculateLuminance(foreground) + 0.05
     const luminance2 = calculateLuminance(background) + 0.05
@@ -269,7 +270,9 @@ export function compositeAlpha(foregroundAlpha: number, backgroundAlpha: number)
 }
 
 export function compositeComponent(fgC: number, fgA: number, bgC: number, bgA: number, a: number) {
-    if (a == 0) return 0
+    if (a == 0) {
+        return 0
+    }
     return ((fgC * fgA) + (bgC * bgA * (1 - fgA))) / a
 }
 
@@ -287,13 +290,15 @@ export function calculateLuminance(color: Rgba) {
 }
 
 export function calculateMinimumAlpha(foreground: Rgba, background: Rgba, minContrastRatio: number) {
-    if (Math.round(background.a * 100) < 100)
+    if (Math.round(background.a * 100) < 100) {
         return -1
+    }
 
     let testForeground = new Rgba(foreground.r, foreground.g, foreground.b, 1)
     let testRatio = calculateContrast(testForeground, background)
-    if (testRatio < minContrastRatio)
+    if (testRatio < minContrastRatio) {
         return -1
+    }
 
     let numIterations = 0
     let minAlpha = 0
@@ -305,10 +310,11 @@ export function calculateMinimumAlpha(foreground: Rgba, background: Rgba, minCon
         testForeground = new Rgba(foreground.r, foreground.g, foreground.b, testAlpha)
         testRatio = calculateContrast(testForeground, background)
 
-        if (testRatio < minContrastRatio)
+        if (testRatio < minContrastRatio) {
             minAlpha = testAlpha
-        else
+        } else {
             maxAlpha = testAlpha
+        }
 
         numIterations++
     }

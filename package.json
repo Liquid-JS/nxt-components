@@ -2,7 +2,7 @@
     "name": "nxt-color-picker",
     "version": "0.0.0",
     "scripts": {
-        "start": "ng serve",
+        "start": "ng serve --disable-host-check",
         "build": "ng build",
         "build:demo": "ng build --prod --base-href https://liquid-js.github.io/nxt-color-picker/ demo",
         "analyze": "yarn build:demo --stats-json && webpack-bundle-analyzer dist/demo/stats.json",

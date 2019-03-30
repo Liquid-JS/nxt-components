@@ -10,7 +10,7 @@
             true,
             "check-space"
         ],
-        "curly": false,
+        "curly": true,
         "deprecation": {
             "severity": "warn"
         },

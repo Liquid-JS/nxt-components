@@ -12,8 +12,9 @@ describe('SliderDirective', () => {
     })
 
     afterEach(() => {
-        if (targetEl)
+        if (targetEl) {
             targetEl.remove()
+        }
     })
 
     it('should create an instance', () => {

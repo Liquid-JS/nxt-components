@@ -49,11 +49,13 @@ describe('ColorPickerComponent', () => {
     }))
 
     afterEach(() => {
-        if (targetEl)
+        if (targetEl) {
             targetEl.remove()
+        }
 
-        if (parentEl)
+        if (parentEl) {
             parentEl.remove()
+        }
 
         document.querySelectorAll('.color-picker').forEach(el => el.remove())
     })

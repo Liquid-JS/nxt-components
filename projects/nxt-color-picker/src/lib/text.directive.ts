@@ -5,20 +5,24 @@ import { TextEvent } from '../util/helpers'
     selector: '[cpText]'
 })
 export class TextDirective {
+
     @Input() rg: number
     @Input() text: any
 
     @Output() newValue = new EventEmitter<TextEvent>()
 
-    @HostListener('input', ['$event']) inputChange(event: any): void {
-        const value = event.target.value
+    @HostListener('input', ['$event'])
+    inputChange(event: Event) {
+        if (event && event.target && event.target.hasOwnProperty('value')) {
+            const input = event.target as HTMLInputElement
 
-        if (this.rg === undefined) {
-            this.newValue.emit(value)
-        } else {
-            const numeric = parseFloat(value)
+            if (this.rg === undefined) {
+                this.newValue.emit(input.value)
+            } else {
+                const numeric = parseFloat(input.value)
 
-            this.newValue.emit({ v: numeric, rg: this.rg })
+                this.newValue.emit({ v: numeric, rg: this.rg })
+            }
         }
     }
 }

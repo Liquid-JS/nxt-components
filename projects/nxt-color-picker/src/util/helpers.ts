@@ -19,7 +19,7 @@ export enum ColorModeInternal {
     presets
 }
 
-export function parseColorMode(mode: string): ColorModeInternal {
+export function parseColorMode(mode: string) {
     switch (mode.toString().toUpperCase()) {
         case '1':
         case 'C':
@@ -43,12 +43,14 @@ export function parseColorMode(mode: string): ColorModeInternal {
 
 export function sizeToString(val: any) {
     const strVal = ((val || 'auto') + '').trim().toLowerCase()
-    if (strVal.match(/^\d+[a-z%]+$/) || strVal == 'auto')
+    if (strVal.match(/^\d+[a-z%]+$/) || strVal == 'auto') {
         return strVal
+    }
 
     const num = parseInt(strVal, 10)
-    if (!Number.isNaN(num))
+    if (!Number.isNaN(num)) {
         return `${num}px`
+    }
 
     return 'auto'
 }
