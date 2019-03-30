@@ -142,10 +142,11 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     @HostListener('document:mousedown', ['$event'])
     @HostListener('document:focusin', ['$event'])
     onFocusChange(event: MouseEvent | FocusEvent) {
-        if (this.show && this.cpDialogDisplay == DialogDisplay.popup) {
-            const path = new Set(event.composedPath())
-            const intersect = this.cpIgnoredElements.find(el => path.has(el))
-            if (!intersect) {
+        const path = new Set(event.composedPath())
+        const intersect = this.cpIgnoredElements.find(el => path.has(el))
+
+        if (!intersect) {
+            if (this.show && this.cpDialogDisplay == DialogDisplay.popup) {
                 if (this.cpSaveClickOutside) {
                     if (this.outputColor && this.callbacks) {
                         this.callbacks.colorSelected(this.outputColor)
@@ -161,6 +162,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
                 if (this.cpCloseClickOutside) {
                     this.closeColorPicker()
                 }
+            } else if (this.cpSaveClickOutside && this.outputColor && this.callbacks) {
+                this.callbacks.colorSelected(this.outputColor)
             }
         }
     }
