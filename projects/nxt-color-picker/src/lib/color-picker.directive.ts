@@ -1,4 +1,5 @@
 import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Injector, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewContainerRef } from '@angular/core'
+import { DirectiveCallbacks } from '../util/helpers'
 import { AlphaChannel, ColorMode, DialogDisplay, DialogPosition, InputChangeEvent, OutputFormat, SliderChangeEvent } from '../util/types'
 import { ColorPickerComponent } from './color-picker/color-picker.component'
 
@@ -230,16 +231,4 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             this.dialog.setupDialog({ ...this, callbacks: this._callbacks, elementRef: this.elRef, color: this.cpColor })
         }
     }
-}
-
-export interface DirectiveCallbacks {
-    stateChanged(state: boolean): void
-    colorChanged(value: string, ignore?: boolean): void
-    colorSelectCanceled(): void
-    colorSelected(value: string): void
-    inputChanged(event: InputChangeEvent): void
-    sliderDragStart(event: SliderChangeEvent): void
-    sliderChanged(event: SliderChangeEvent): void
-    sliderDragEnd(event: SliderChangeEvent): void
-    presetColorsChanged(value: any[]): void
 }

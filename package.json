@@ -9,7 +9,8 @@
         "test": "ng test --code-coverage --source-map false --watch true",
         "lint": "ng lint --fix",
         "e2e": "ng e2e",
-        "pages": "yarn build:demo && ngh --dir dist/demo"
+        "pages": "yarn build:demo && yarn docs && ngh --dir dist/demo",
+        "docs": "ts-node -P ./scripts/tsconfig.json ./scripts/docs.ts"
     },
     "private": true,
     "dependencies": {
@@ -52,6 +53,7 @@
         "tsickle": "<0.34.3",
         "tslib": "^1.9.0",
         "tslint": "^5.14.0",
+        "typedoc": "https://github.com/shrinktofit/typedoc#leslie",
         "typescript": ">=3.1.1 <3.3",
         "webpack-bundle-analyzer": "^3.1.0"
     },

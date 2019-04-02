@@ -2,9 +2,8 @@ import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, HostListene
 import { denormalizeRGBA, formatOutput, hsla2hsva, hsva2hsla, hsvaToRgba, rgbaToHex, rgbaToHsva, stringToHsva } from '../../util/color'
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Hsla, Hsva, Rgba } from '../../util/formats'
-import { ColorModeInternal, parseColorMode, Position, sizeToString, SliderPosition } from '../../util/helpers'
-import { AlphaChannel, ColorFormat, ColorMode, DialogDisplay, DialogPosition, OutputFormat } from '../../util/types'
-import { DirectiveCallbacks } from '../color-picker.directive'
+import { ColorModeInternal, DialogConfig, DirectiveCallbacks, parseColorMode, Position, sizeToString, SliderPosition } from '../../util/helpers'
+import { AlphaChannel, ColorFormat, DialogDisplay, DialogPosition, OutputFormat } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
 
 @Component({
@@ -831,35 +830,4 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
             height: element.offsetHeight
         }
     }
-}
-
-export interface DialogConfig {
-    callbacks: DirectiveCallbacks,
-    elementRef: ElementRef,
-    color: any,
-    cpWidth: string,
-    cpHeight: string,
-    cpDialogDisplay: DialogDisplay,
-    cpFallbackColor: string,
-    cpMode: ColorMode,
-    cpAlphaChannel: AlphaChannel,
-    cpOutputFormat: OutputFormat,
-    cpDisableInput: boolean,
-    cpIgnoredElements: any[],
-    cpSaveClickOutside: boolean,
-    cpCloseClickOutside: boolean,
-    cpUseRootViewContainer: boolean,
-    cpPosition: DialogPosition,
-    cpPositionOffset: string,
-    cpPositionRelativeToArrow: boolean,
-    cpPresetLabel: string,
-    cpPresetColors: string[],
-    cpMaxPresetColors: number,
-    cpOKButton: boolean,
-    cpOKButtonText: string,
-    cpCancelButton: boolean,
-    cpCancelButtonText: string,
-    cpAddColorButton: boolean,
-    cpAddColorButtonText: string,
-    cpRemoveColorButtonText: string
 }
