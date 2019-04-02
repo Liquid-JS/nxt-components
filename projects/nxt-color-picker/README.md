@@ -4,7 +4,15 @@
 
 This is a responsive color picker based on [angular2-color-picker](https://github.com/Alberplz/angular2-color-picker) and updates from [ngx-color-picker](https://github.com/zefoy/ngx-color-picker).
 
-It's been rewriten using Angular CLI to streamline the codebase and employ best practices for development.
+#### Why another rewrite?
+
+ - __Responsive__: nxt-color-picker uses CSS and flex layout to ensure pixel-perfect rendering on all screen sizes and resolutions
+ - __UX improvements__:
+   - slider indicator changes colour based on background to maintain visibility
+   - preset colours show alpha
+   - proper support for mobile browsers
+ - __Type safe__: by replacing string options with enumerators, compiler can ensure you always pass correct options to nxt-color-picker
+ - __Built with Angular CLI__ to make nxt-color-picker development and testing a single-step process
 
 ### Quick links
 
@@ -27,7 +35,7 @@ yarn start
 ### Installing and usage
 
 ```bash
-yarn nxt-color-picker --save
+yarn add nxt-color-picker
 ```
 
 ##### Load the module for your app:
