@@ -8,7 +8,7 @@ This is a responsive color picker based on [angular2-color-picker](https://githu
 
  - __Responsive__: nxt-color-picker uses CSS and flex layout to ensure pixel-perfect rendering on all screen sizes and resolutions
  - __UX improvements__:
-   - slider indicator changes colour based on background to maintain visibility
+   - slider indicator changes color based on background to maintain visibility
    - preset colours show alpha
    - proper support for mobile browsers
  - __Type safe__: by replacing string options with enumerators, compiler can ensure you always pass correct options to nxt-color-picker
