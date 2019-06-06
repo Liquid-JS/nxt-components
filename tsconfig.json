@@ -9,7 +9,7 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "target": "es2015",
-        "module": "es2015",
+        "module": "esnext",
         "typeRoots": [
             "node_modules/@types"
         ],
