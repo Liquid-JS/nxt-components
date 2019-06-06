@@ -39,11 +39,11 @@
             }
         },
         "demo": {
-            "root": "projects/demo/",
-            "sourceRoot": "projects/demo/src",
             "projectType": "application",
-            "prefix": "app",
             "schematics": {},
+            "root": "projects/demo",
+            "sourceRoot": "projects/demo/src",
+            "prefix": "app",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",

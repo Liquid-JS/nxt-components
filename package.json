@@ -8,7 +8,6 @@
         "analyze": "yarn build:demo --stats-json && webpack-bundle-analyzer dist/demo/stats.json",
         "test": "ng test --code-coverage --source-map false --watch true",
         "lint": "ng lint --fix",
-        "e2e": "ng e2e",
         "pages": "yarn build:demo && yarn docs && ngh --dir dist/demo",
         "docs": "ts-node -P ./scripts/tsconfig.json ./scripts/docs.ts"
     },

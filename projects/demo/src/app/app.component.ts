@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { Cmyk, formatOutput, hsvaToRgba, OutputFormat, rgbaToCmyk, stringToHsva } from 'projects/nxt-color-picker/src/public-api'
+import { Cmyk, formatOutput, hsvaToRgba, OutputFormat, rgbaToCmyk, stringToHsva } from 'nxt-color-picker'
 
 @Component({
     selector: 'app-root',

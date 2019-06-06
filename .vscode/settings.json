@@ -3,9 +3,11 @@
     "editor.tabSize": 4,
     "editor.detectIndentation": false,
     "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
     "html.format.wrapAttributes": "force",
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": false,
-    "tslint.enable": false,
     "typescript.tsdk": "node_modules\\typescript\\lib"
 }

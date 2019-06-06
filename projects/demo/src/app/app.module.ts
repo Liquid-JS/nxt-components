@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { ColorPickerModule } from 'projects/nxt-color-picker/src/public-api'
+import { ColorPickerModule } from 'nxt-color-picker'
 import { AppComponent } from './app.component'
 
 @NgModule({

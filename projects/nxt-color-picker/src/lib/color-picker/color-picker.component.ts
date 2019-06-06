@@ -44,7 +44,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
     private callbacks: DirectiveCallbacks
 
-    @ViewChild('dialogPopup') private dialogElement: ElementRef<HTMLDivElement>
+    @ViewChild('dialogPopup', { static: true }) private dialogElement: ElementRef<HTMLDivElement>
 
     show: boolean
     hidden: boolean
@@ -128,12 +128,12 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         event.preventDefault()
 
         if (this.show && this.cpDialogDisplay == DialogDisplay.popup) {
-            if (this.cpDialogDisplay == DialogDisplay.popup) {
-                this.closeColorPicker()
-            }
-
             if (this.outputColor && this.callbacks) {
                 this.callbacks.colorSelected(this.outputColor)
+            }
+
+            if (this.cpDialogDisplay == DialogDisplay.popup) {
+                this.closeColorPicker()
             }
         }
     }
