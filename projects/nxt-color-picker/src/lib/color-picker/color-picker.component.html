@@ -37,6 +37,7 @@
                     backgroundColor: selectedColor || ''
                 }"><button
                         *ngIf="cpAddColorButton && !(cpMaxPresetColors && (cpPresetColors?.length || 0) >= cpMaxPresetColors)"
+                        type="button"
                         [title]="cpAddColorButtonText"
                         class="color-picker__add-selected"
                         [ngClass]="{ 'color-picker__add-selected--light': alphaSliderLight }"
@@ -283,6 +284,7 @@
                         [ngStyle]="{ 
                         backgroundColor: color || ''
                     }"><button *ngIf="cpAddColorButton"
+                            type="button"
                             [title]="cpRemoveColorButtonText"
                             class="color-picker__remove-selected"
                             (click)="onRemovePresetColor(color)"><svg xmlns="http://www.w3.org/2000/svg"

@@ -1,6 +1,6 @@
 {
     "name": "nxt-color-picker",
-    "version": "8.0.3",
+    "version": "8.0.4",
     "description": "Color picker widget for Angular",
     "bugs": "https://github.com/Liquid-JS/nxt-color-picker/issues",
     "license": "MIT",
