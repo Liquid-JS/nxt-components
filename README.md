@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/killzoner/ng-json-view.svg?branch=master)](https://travis-ci.org/killzoner/ng-json-view)
 
 # ng-json-view
-A JSON View component for Angular 6+ (an angular 6+ based JSON display component)
+A JSON View component for Angular 9+ (an angular based JSON display component)
 
 ## installation
 
@@ -27,8 +27,6 @@ import { NgxJsonViewModule } from 'ng-json-view';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
     NgxJsonViewModule
   ],
   bootstrap: [AppComponent]
@@ -40,8 +38,8 @@ export class AppModule { }
 
 ```
 data = {
-  "name": "twp0217",
-  "url": "https://github.com/twp0217",
+  "name": "ng-json-view",
+  "url": "https://github.com/killzoner/ng-json-view",
   "string": "github",
   "number": 88,
   "boolean": true,
