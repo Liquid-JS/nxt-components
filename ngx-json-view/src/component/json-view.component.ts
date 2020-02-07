@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { isUndefined, isObject, isArray, isString, isNumber, isBoolean } from '../utils';
+import { isUndefined, isObject, isArray, isString, isNumber, isBoolean } from '../utils/utils';
 
 @Component({
   selector: 'json-view',

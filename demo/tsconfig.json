@@ -16,7 +16,7 @@
       "es2016",
       "dom"
     ],
-    // For use with npm link & npm run start --preserve-symlinks
+    // For use with npm link & npm run start --preserve-symlinks, or test with verdaccio registry
     // ,
     // "paths": {
     //   "@angular/*": [
@@ -25,9 +25,12 @@
     // }
   },
   "angularCompilerOptions": {
+    "preserveWhitespaces": false,
     "annotateForClosureCompiler": true,
+    "skipTemplateCodegen": false,
     "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
+    "strictInjectionParameters": true,
+    "enableIvy": false
   }
 }

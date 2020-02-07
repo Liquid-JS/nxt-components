@@ -1,57 +1,30 @@
 {
-  "name": "ng-json-view",
-  "version": "2.2.0",
-  "description": "A JSON View component for Angular 2+",
-  "main": "dist/src/index.js",
-  "typings": "dist/src/index.d.ts",
+  "name": "ng-json-view-root",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "clean": "npm run rimraf -- dist",
-    "gulp": "gulp",
-    "inline": "npm run gulp -- --gulpfile misc/inline-resources.gulp.js",
-    "ngc": "ngc -p tsconfig-aot.json && npm run rimraf -- dist/src/node_modules",
     "rimraf": "rimraf",
-    "sass": "npm run sass:compile && npm run sass:replace",
-    "sass:compile": "node-sass src -o tmp",
-    "sass:replace": "node misc/replace_scss.js",
-    "tmp": "ncp src tmp",
-    "changelog": "conventional-changelog -i CHANGELOG.md -s -p angular -r 0",
-    "build": "npm run clean && npm run tmp && npm run sass && npm run inline && npm run ngc && ncp dist/src/tmp dist/src && npm run rimraf -- dist/src/tmp tmp",
-    "prepublish": "npm run build"
+    "metadata:package": "ncp ./README.md dist/README.md",
+    "build": "npm run clean && ng-packagr -p ngx-json-view/package.json && npm run metadata:package",
+    "postinstall": "npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/killzoner/ng-json-view.git"
-  },
-  "keywords": [
-    "angular",
-    "angular2",
-    "angular4",
-    "angular5",
-    "ng",
-    "ng2",
-    "json-view",
-    "ng-json-view"
-  ],
-  "author": "tu.wenpan",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/killzoner/ng-json-view/issues"
+  "dependencies": {
+    "@angular/core": "^9.0.0",
+    "@angular/common": "^9.0.0"
   },
-  "homepage": "https://github.com/killzoner/ng-json-view#readme",
   "devDependencies": {
-    "@angular/common": "^6.1.9",
-    "@angular/compiler": "^6.1.9",
-    "@angular/compiler-cli": "^6.1.9",
-    "@angular/core": "^6.1.9",
-    "bluebird": "^3.5.2",
-    "conventional-changelog-cli": "^2.0.5",
-    "gulp": "^3.9.1",
-    "gulp-inline-ng2-template": "^5.0.1",
+    "@angular/compiler": "^9.0.0",
+    "@angular/compiler-cli": "^9.0.0",
+    "@types/node": "^10.17.14",
     "ncp": "^2.0.0",
-    "node-sass": "^4.7.2",
-    "rimraf": "^2.6.2",
-    "rxjs": "^6.3.3",
-    "typescript": "~2.9.2",
-    "zone.js": "^0.8.4"
+    "ng-packagr": "^9.0.0",
+    "rimraf": "^3.0.1",
+    "rxjs": "^6.5.4",
+    "tsickle": "^0.38.0",
+    "tslib": "^1.10.0",
+    "typescript": "~3.7.5",
+    "zone.js": "^0.10.2"
   }
 }

@@ -1,0 +1,35 @@
+{
+    "name": "ng-json-view",
+    "version": "3.0.0",
+    "description": "A JSON View component for Angular 9+",
+    "main": "dist/src/index.js",
+    "typings": "dist/src/index.d.ts",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/killzoner/ng-json-view.git"
+    },
+    "keywords": [
+      "angular",
+      "ng",
+      "json-view",
+      "ng-json-view"
+    ],
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/killzoner/ng-json-view/issues"
+    },
+    "homepage": "https://github.com/killzoner/ng-json-view#readme",
+    "peerDependencies": {
+        "@angular/core": "^9.0.0",
+        "@angular/common": "^9.0.0",
+        "typescript": "~3.7.5"
+    },
+    "ngPackage": {
+        "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+        "lib": {
+          "entryFile": "src/public_api.ts"
+        },
+        "dest": "../dist"
+    }
+  }
+  
