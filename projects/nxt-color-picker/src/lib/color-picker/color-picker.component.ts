@@ -2,7 +2,7 @@ import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, HostListene
 import { denormalizeRGBA, formatOutput, hsla2hsva, hsva2hsla, hsvaToRgba, rgbaToHex, rgbaToHsva, stringToHsva } from '../../util/color'
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Hsla, Hsva, Rgba } from '../../util/formats'
-import { ColorModeInternal, DialogConfig, DirectiveCallbacks, parseColorMode, Position, sizeToString, SliderPosition } from '../../util/helpers'
+import { ColorModeInternal, composedPath, DialogConfig, DirectiveCallbacks, parseColorMode, Position, sizeToString, SliderPosition } from '../../util/helpers'
 import { AlphaChannel, ColorFormat, DialogDisplay, DialogPosition, OutputFormat } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
 
@@ -141,7 +141,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     @HostListener('document:mousedown', ['$event'])
     @HostListener('document:focusin', ['$event'])
     onFocusChange(event: MouseEvent | FocusEvent) {
-        const path = new Set(event.composedPath())
+        const path = new Set(composedPath(event))
         const intersect = this.cpIgnoredElements.find(el => path.has(el))
 
         if (!intersect) {

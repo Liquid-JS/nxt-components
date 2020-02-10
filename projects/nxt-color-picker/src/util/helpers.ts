@@ -104,3 +104,25 @@ export interface DialogConfig {
     cpAddColorButtonText: string,
     cpRemoveColorButtonText: string
 }
+
+export function composedPath(event: Event): EventTarget[] {
+    if (event.composedPath) {
+        return event.composedPath()
+    }
+
+    const _evt: any = event
+
+    if (_evt.path) {
+        return _evt.path
+    }
+
+    let t = _evt.target
+    _evt.path = []
+    while (t.parentNode !== null) {
+        _evt.path.push(t)
+        t = t.parentNode
+    }
+
+    _evt.path.push(document, window)
+    return _evt.path
+}

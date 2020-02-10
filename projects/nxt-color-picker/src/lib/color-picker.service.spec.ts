@@ -5,7 +5,7 @@ describe('ColorPickerService', () => {
     beforeEach(() => TestBed.configureTestingModule({}))
 
     it('should be created', () => {
-        const service: ColorPickerService = TestBed.get(ColorPickerService)
+        const service: ColorPickerService = TestBed.inject(ColorPickerService)
         expect(service).toBeTruthy()
     })
 })

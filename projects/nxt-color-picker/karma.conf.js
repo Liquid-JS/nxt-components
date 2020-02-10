@@ -19,7 +19,7 @@ module.exports = function (config) {
         },
         coverageIstanbulReporter: {
             dir: require('path').join(__dirname, '../../coverage/nxt-color-picker'),
-            reports: ['html', 'lcovonly'],
+            reports: ['html', 'lcovonly', 'text-summary'],
             fixWebpackSourcePaths: true
         },
         reporters: ['progress', 'kjhtml'],

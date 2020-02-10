@@ -4,9 +4,9 @@
     "newProjectRoot": "projects",
     "projects": {
         "nxt-color-picker": {
+            "projectType": "library",
             "root": "projects/nxt-color-picker",
             "sourceRoot": "projects/nxt-color-picker/src",
-            "projectType": "library",
             "prefix": "cp",
             "architect": {
                 "build": {
@@ -14,6 +14,11 @@
                     "options": {
                         "tsConfig": "projects/nxt-color-picker/tsconfig.lib.json",
                         "project": "projects/nxt-color-picker/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/nxt-color-picker/tsconfig.lib.prod.json"
+                        }
                     }
                 },
                 "test": {
@@ -40,7 +45,11 @@
         },
         "demo": {
             "projectType": "application",
-            "schematics": {},
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
+                }
+            },
             "root": "projects/demo",
             "sourceRoot": "projects/demo/src",
             "prefix": "app",
@@ -53,6 +62,7 @@
                         "main": "projects/demo/src/main.ts",
                         "polyfills": "projects/demo/src/polyfills.ts",
                         "tsConfig": "projects/demo/tsconfig.app.json",
+                        "aot": true,
                         "assets": [
                             "projects/demo/src/favicon.ico",
                             "projects/demo/src/assets"
@@ -60,8 +70,7 @@
                         "styles": [
                             "projects/demo/src/styles.scss"
                         ],
-                        "scripts": [],
-                        "es5BrowserSupport": true
+                        "scripts": []
                     },
                     "configurations": {
                         "production": {
@@ -76,7 +85,6 @@
                             "sourceMap": false,
                             "extractCss": true,
                             "namedChunks": false,
-                            "aot": true,
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
@@ -85,6 +93,11 @@
                                     "type": "initial",
                                     "maximumWarning": "2mb",
                                     "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
                                 }
                             ]
                         }

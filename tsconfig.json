@@ -8,26 +8,33 @@
         "experimentalDecorators": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "target": "es2015",
         "module": "esnext",
+        "target": "es2015",
+        "importHelpers": true,
+        "downlevelIteration": true,
         "typeRoots": [
             "node_modules/@types"
         ],
         "lib": [
-            "es2015",
-            "dom"
+            "es2017",
+            "dom",
+            "esnext.asynciterable"
         ],
         "resolveJsonModule": true,
         "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
-        "importHelpers": true,
         "paths": {
             "nxt-color-picker": [
+                "dist/nxt-color-picker/nxt-color-picker",
                 "dist/nxt-color-picker"
             ],
             "nxt-color-picker/*": [
                 "dist/nxt-color-picker/*"
             ]
         }
+    },
+    "angularCompilerOptions": {
+        "fullTemplateTypeCheck": true,
+        "strictInjectionParameters": true
     }
 }

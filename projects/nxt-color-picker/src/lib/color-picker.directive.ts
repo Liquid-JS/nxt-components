@@ -1,5 +1,5 @@
 import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Injector, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewContainerRef } from '@angular/core'
-import { DirectiveCallbacks } from '../util/helpers'
+import { composedPath, DirectiveCallbacks } from '../util/helpers'
 import { AlphaChannel, ColorMode, DialogDisplay, DialogPosition, InputChangeEvent, OutputFormat, SliderChangeEvent } from '../util/types'
 import { ColorPickerComponent } from './color-picker/color-picker.component'
 
@@ -122,7 +122,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @HostListener('focus', ['$event'])
     @HostListener('click', ['$event'])
     handleOpen(event: Event) {
-        const path = new Set(event.composedPath())
+        const path = new Set(composedPath(event))
         const ignored = this.ignoredElements.find(el => path.has(el))
 
         if (!this.cpDisabled && !ignored) {
