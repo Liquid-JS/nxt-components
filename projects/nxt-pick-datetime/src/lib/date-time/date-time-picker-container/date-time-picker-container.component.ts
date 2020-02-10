@@ -3,7 +3,7 @@ import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, SPACE, UP_ARROW } from '@angular/c
 import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, Optional, ViewChild } from '@angular/core'
 import { Observable, Subject } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
-import { OwlDateTime, PickerType } from '../../class/date-time.class'
+import { OwlDateTimeDirective, PickerType } from '../../class/date-time.class'
 import { OwlCalendarComponent } from '../calendar/calendar.component'
 import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
 import { OwlTimerComponent } from '../timer/timer.component'
@@ -23,12 +23,12 @@ import { owlDateTimePickerAnimations } from './date-time-picker-container.animat
 })
 export class OwlDateTimeContainerComponent<T>
     implements OnInit, AfterContentInit, AfterViewInit {
-    @ViewChild(OwlCalendarComponent, { static: false })
+    @ViewChild(OwlCalendarComponent)
     calendar: OwlCalendarComponent<T>
-    @ViewChild(OwlTimerComponent, { static: false })
+    @ViewChild(OwlTimerComponent)
     timer: OwlTimerComponent<T>
 
-    public picker: OwlDateTime<T>
+    public picker: OwlDateTimeDirective<T>
     public activeSelectedIndex = 0 // The current active SelectedIndex in range select mode (0: 'from', 1: 'to')
 
     /**

@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser'
 import { dispatchKeyboardEvent, dispatchMouseEvent, OwlTestDateTimeModule } from '../../../test-helpers'
 import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
 import { OwlDateTimeModule } from '../date-time.module'
-import { OwlMultiYearViewComponent, YEAR_ROWS, YEARS_PER_ROW } from './calendar-multi-year-view.component'
+import { OwlMultiYearViewComponent, YEARS_PER_ROW, YEAR_ROWS } from './calendar-multi-year-view.component'
 
 const JAN = 0,
     FEB = 1,

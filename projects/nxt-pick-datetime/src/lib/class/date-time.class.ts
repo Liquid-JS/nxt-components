@@ -1,7 +1,7 @@
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion'
-import { EventEmitter, Inject, Input, Optional } from '@angular/core'
+import { Directive, EventEmitter, Inject, Input, Optional } from '@angular/core'
 import { DateTimeAdapter } from './date-time-adapter.class'
-import { OWL_DATE_TIME_FORMATS, OwlDateTimeFormats } from './date-time-format.class'
+import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from './date-time-format.class'
 
 let nextUniqueId = 0
 
@@ -11,7 +11,8 @@ export type PickerMode = 'popup' | 'dialog' | 'inline'
 
 export type SelectMode = 'single' | 'range' | 'rangeFrom' | 'rangeTo'
 
-export abstract class OwlDateTime<T> {
+@Directive()
+export abstract class OwlDateTimeDirective<T> {
     /**
      * Whether to show the second's timer
      */

@@ -27,15 +27,9 @@
         "paths": {
             "nxt-pick-datetime": [
                 "dist/nxt-pick-datetime",
-                "dist/nxt-pick-datetime",
-                "dist/nxt-pick-datetime",
-                "dist/nxt-pick-datetime"
             ],
             "nxt-pick-datetime/*": [
                 "dist/nxt-pick-datetime/*",
-                "dist/nxt-pick-datetime/*",
-                "dist/nxt-pick-datetime/*",
-                "dist/nxt-pick-datetime/*"
             ]
         },
         "strict": false

@@ -2,7 +2,7 @@
 import { Platform, PlatformModule } from '@angular/cdk/platform'
 import { EventEmitter, Inject, Injectable, NgModule, NgZone, Optional } from '@angular/core'
 import { DateTimeAdapter, OWL_DATE_TIME_LOCALE } from './lib/class/date-time-adapter.class'
-import { OWL_DATE_TIME_FORMATS, OwlDateTimeFormats } from './lib/class/date-time-format.class'
+import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from './lib/class/date-time-format.class'
 
 export function dispatchEvent(node: Node | Window, event: Event): Event {
     node.dispatchEvent(event)

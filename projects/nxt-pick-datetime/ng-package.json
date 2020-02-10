@@ -3,5 +3,8 @@
     "dest": "../../dist/nxt-pick-datetime",
     "lib": {
         "entryFile": "src/public-api.ts"
-    }
+    },
+    "assets": [
+        "assets/picker.scss"
+    ]
 }

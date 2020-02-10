@@ -13,7 +13,7 @@ import { OwlDateTimeContainerComponent } from './date-time-picker-container/date
 import { OwlDateTimeInputDirective } from './date-time-picker-input.directive'
 import { OwlDateTimeIntl } from './date-time-picker-intl.service'
 import { OwlDateTimeTriggerDirective } from './date-time-picker-trigger.directive'
-import { OWL_DTPICKER_SCROLL_STRATEGY_PROVIDER, OwlDateTimeComponent } from './date-time-picker/date-time-picker.component'
+import { OwlDateTimeComponent, OWL_DTPICKER_SCROLL_STRATEGY_PROVIDER } from './date-time-picker/date-time-picker.component'
 import { NumberFixedLenPipe } from './number-fixed-len.pipe'
 import { OwlTimerBoxComponent } from './timer-box/timer-box.component'
 import { OwlTimerComponent } from './timer/timer.component'

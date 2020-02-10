@@ -4,7 +4,7 @@ import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, Host
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../class/date-time-adapter.class'
-import { OWL_DATE_TIME_FORMATS, OwlDateTimeFormats } from '../class/date-time-format.class'
+import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../class/date-time-format.class'
 import { SelectMode } from '../class/date-time.class'
 import { OwlDateTimeComponent } from './date-time-picker/date-time-picker.component'
 

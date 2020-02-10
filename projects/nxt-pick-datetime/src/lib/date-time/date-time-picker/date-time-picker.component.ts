@@ -7,8 +7,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, Ev
 import { merge, Subscription } from 'rxjs'
 import { filter, take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
-import { OWL_DATE_TIME_FORMATS, OwlDateTimeFormats } from '../../class/date-time-format.class'
-import { OwlDateTime, PickerMode, PickerType, SelectMode } from '../../class/date-time.class'
+import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
+import { OwlDateTimeDirective, PickerMode, PickerType, SelectMode } from '../../class/date-time.class'
 import { OwlDialogRef } from '../../class/dialog-ref.class'
 import { OwlDialogService } from '../../dialog/dialog.service'
 import { OwlDateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
@@ -42,7 +42,7 @@ export const OWL_DTPICKER_SCROLL_STRATEGY_PROVIDER = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     preserveWhitespaces: false
 })
-export class OwlDateTimeComponent<T> extends OwlDateTime<T>
+export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
     implements OnInit, OnDestroy {
     /** Custom class for the picker backdrop. */
     @Input()

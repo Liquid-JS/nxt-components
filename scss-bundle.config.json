@@ -1,7 +1,0 @@
-{
-    "bundlerOptions": {
-        "entryFile": "./projects/nxt-pick-datetime/src/sass/picker.scss",
-        "outFile": "./dist/nxt-pick-datetime/assets/picker.scss",
-        "rootDir": "./"
-    }
-}

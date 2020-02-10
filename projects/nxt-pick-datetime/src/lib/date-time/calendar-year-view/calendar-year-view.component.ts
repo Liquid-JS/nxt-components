@@ -2,7 +2,7 @@ import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARR
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Optional, Output, ViewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
-import { OWL_DATE_TIME_FORMATS, OwlDateTimeFormats } from '../../class/date-time-format.class'
+import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { SelectMode } from '../../class/date-time.class'
 import { CalendarCell, OwlCalendarBodyComponent } from '../calendar-body/calendar-body.component'
 
