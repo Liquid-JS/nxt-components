@@ -68,7 +68,8 @@
                             "projects/demo/src/assets"
                         ],
                         "styles": [
-                            "projects/demo/src/styles.scss"
+                            "projects/demo/src/styles.scss",
+                            "dist/nxt-pick-datetime/assets/picker.scss"
                         ],
                         "scripts": []
                     },
