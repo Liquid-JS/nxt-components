@@ -1,6 +1,6 @@
 {
     "name": "nxt-pick-datetime",
-    "version": "9.0.0-rc2",
+    "version": "9.0.1",
     "peerDependencies": {
         "@angular/animations": "^9.0.0",
         "@angular/common": "^9.0.0",
