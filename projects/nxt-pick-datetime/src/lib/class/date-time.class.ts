@@ -11,6 +11,10 @@ export type PickerMode = 'popup' | 'dialog' | 'inline'
 
 export type SelectMode = 'single' | 'range' | 'rangeFrom' | 'rangeTo'
 
+export type RenderItem = 'year' | 'month' | 'date'
+
+export type DateFilter<T> = (date: T, forRender?: RenderItem) => boolean
+
 @Directive()
 export abstract class OwlDateTimeDirective<T> {
     /**

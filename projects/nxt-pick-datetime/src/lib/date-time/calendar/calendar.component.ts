@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs'
 import { take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
-import { SelectMode } from '../../class/date-time.class'
+import { DateFilter, SelectMode } from '../../class/date-time.class'
 import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
 
 @Component({
@@ -20,7 +20,7 @@ export class OwlCalendarComponent<T>
      * Date filter for the month and year view
      * */
     @Input()
-    dateFilter: Function
+    dateFilter: DateFilter<T>
 
     /**
      * Set the first day of week
@@ -216,7 +216,7 @@ export class OwlCalendarComponent<T>
     public dateFilterForViews = (date: T) => {
         return (
             !!date &&
-            (!this.dateFilter || this.dateFilter(date)) &&
+            (!this.dateFilter || this.dateFilter(date, 'date')) &&
             (!this.minDate ||
                 this.dateTimeAdapter.compare(date, this.minDate) >= 0) &&
             (!this.maxDate ||

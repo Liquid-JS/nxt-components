@@ -4,7 +4,7 @@ import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
-import { SelectMode } from '../../class/date-time.class'
+import { DateFilter, SelectMode } from '../../class/date-time.class'
 import { CalendarCell, OwlCalendarBodyComponent } from '../calendar-body/calendar-body.component'
 
 const DAYS_PER_WEEK = 7
@@ -126,13 +126,13 @@ export class OwlMonthViewComponent<T>
     /**
      * A function used to filter which dates are selectable
      * */
-    private _dateFilter: (date: T) => boolean
+    private _dateFilter: DateFilter<T>
     @Input()
     get dateFilter() {
         return this._dateFilter
     }
 
-    set dateFilter(filter: (date: T) => boolean) {
+    set dateFilter(filter: DateFilter<T>) {
         this._dateFilter = filter
         if (this.initiated) {
             this.generateCalendar()
@@ -396,7 +396,7 @@ export class OwlMonthViewComponent<T>
 
             // select the pickerMoment
             case ENTER:
-                if (!this.dateFilter || this.dateFilter(this.pickerMoment)) {
+                if (!this.dateFilter || this.dateFilter(this.pickerMoment, 'date')) {
                     this.selectDate(
                         this.dateTimeAdapter.getDate(this.pickerMoment)
                     )
@@ -525,7 +525,7 @@ export class OwlMonthViewComponent<T>
     private isDateEnabled(date: T): boolean {
         return (
             !!date &&
-            (!this.dateFilter || this.dateFilter(date)) &&
+            (!this.dateFilter || this.dateFilter(date, 'date')) &&
             (!this.minDate ||
                 this.dateTimeAdapter.compare(date, this.minDate) >= 0) &&
             (!this.maxDate ||

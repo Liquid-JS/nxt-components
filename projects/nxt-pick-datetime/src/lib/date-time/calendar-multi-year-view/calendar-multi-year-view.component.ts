@@ -1,7 +1,7 @@
 import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Input, OnInit, Optional, Output, ViewChild } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
-import { SelectMode } from '../../class/date-time.class'
+import { DateFilter, SelectMode } from '../../class/date-time.class'
 import { CalendarCell, OwlCalendarBodyComponent } from '../calendar-body/calendar-body.component'
 import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
 
@@ -86,13 +86,13 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
     /**
      * A function used to filter which dates are selectable
      * */
-    private _dateFilter: (date: T) => boolean
+    private _dateFilter: DateFilter<T>
     @Input()
     get dateFilter() {
         return this._dateFilter
     }
 
-    set dateFilter(filter: (date: T) => boolean) {
+    set dateFilter(filter: DateFilter<T>) {
         this._dateFilter = filter
         if (this.initiated) {
             this.generateYearList()
@@ -412,7 +412,7 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
         // If any date in the year is enabled count the year as enabled.
         for (let date = firstOfYear; this.dateTimeAdapter.getYear(date) == year;
             date = this.dateTimeAdapter.addCalendarDays(date, 1)) {
-            if (this.dateFilter(date)) {
+            if (this.dateFilter(date, 'year')) {
                 return true
             }
         }
