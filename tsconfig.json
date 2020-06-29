@@ -1,41 +1,20 @@
+/*
+  This is a "Solution Style" tsconfig.json file, and is used by editors and TypeScript’s language server to improve development experience.
+  It is not intended to be used to perform a compilation.
+
+  To learn more about this file see: https://angular.io/config/solution-tsconfig.
+*/
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-        "sourceMap": true,
-        "declaration": false,
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "esModuleInterop": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "module": "esnext",
-        "target": "es2015",
-        "importHelpers": true,
-        "downlevelIteration": true,
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "lib": [
-            "es2017",
-            "dom",
-            "esnext.asynciterable"
-        ],
-        "resolveJsonModule": true,
-        "allowSyntheticDefaultImports": true,
-        "baseUrl": ".",
-        "paths": {
-            "nxt-pick-datetime": [
-                "dist/nxt-pick-datetime",
-            ],
-            "nxt-pick-datetime/*": [
-                "dist/nxt-pick-datetime/*",
-            ]
+    "files": [],
+    "references": [
+        {
+            "path": "./projects/nxt-pick-datetime/tsconfig.lib.json"
         },
-        "strict": false
-    },
-    "angularCompilerOptions": {
-        "fullTemplateTypeCheck": true,
-        "strictInjectionParameters": true
-    }
+        {
+            "path": "./projects/nxt-pick-datetime/tsconfig.spec.json"
+        },
+        {
+            "path": "./projects/demo/tsconfig.app.json"
+        }
+    ]
 }
