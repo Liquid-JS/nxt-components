@@ -136,15 +136,13 @@
     },
     "cli": {
         "packageManager": "yarn",
-        "warnings": {
-            "typescriptMismatch": false
-        }
+        "warnings": {}
     },
     "schematics": {
         "@schematics/angular:component": {
             "viewEncapsulation": "Emulated",
             "prefix": "cp",
-            "styleext": "scss"
+            "style": "scss"
         },
         "@schematics/angular:service": {
             "flat": false
