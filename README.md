@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/killzoner/ng-json-view.svg?branch=master)](https://travis-ci.com/killzoner/ng-json-view)
 
 # ng-json-view
-A JSON View component for Angular 9+ (an angular based JSON display component)
+A JSON View component for Angular 10+ (an angular based JSON display component)
 
 ## installation
 
