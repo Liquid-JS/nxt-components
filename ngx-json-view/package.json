@@ -20,9 +20,9 @@
     },
     "homepage": "https://github.com/killzoner/ng-json-view#readme",
     "peerDependencies": {
-        "@angular/core": "^9.0.0",
-        "@angular/common": "^9.0.0",
-        "typescript": "~3.7.5"
+        "@angular/core": "^10.0.2",
+        "@angular/common": "^10.0.2",
+        "typescript": "~3.9.6"
     },
     "ngPackage": {
         "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
@@ -32,4 +32,3 @@
         "dest": "../dist"
     }
   }
-  
