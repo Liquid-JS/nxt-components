@@ -1,0 +1,28 @@
+{
+  "name": "ngx-flags",
+  "version": "0.1.2",
+  "description": "Angular component to show country flags.",
+  "author": "Danilo Körber",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danilokorber/ngx-flags.git"
+  },
+  "bugs": {
+    "url": "https://github.com/danilokorber/ngx-flags/issues"
+  },
+  "homepage": "https://github.com/danilokorber/ngx-flags",
+  "keywords": [
+    "angular",
+    "javascript",
+    "typescript",
+    "flags"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^10.1.4",
+    "@angular/core": "^10.1.4"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}
