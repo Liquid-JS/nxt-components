@@ -10,7 +10,7 @@
             "prefix": "cp",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/nxt-color-picker/tsconfig.lib.json",
                         "project": "projects/nxt-color-picker/ng-package.json"
@@ -83,7 +83,6 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "extractLicenses": true,
                             "vendorChunk": false,

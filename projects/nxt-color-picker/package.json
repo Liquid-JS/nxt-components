@@ -1,6 +1,6 @@
 {
     "name": "nxt-color-picker",
-    "version": "10.0.0",
+    "version": "11.0.0",
     "description": "Color picker widget for Angular",
     "bugs": "https://github.com/Liquid-JS/nxt-color-picker/issues",
     "license": "MIT",
@@ -9,8 +9,8 @@
         "url": "https://github.com/Liquid-JS/nxt-color-picker.git"
     },
     "peerDependencies": {
-        "@angular/common": "^10.0.0",
-        "@angular/core": "^10.0.0"
+        "@angular/common": "^11.0.0",
+        "@angular/core": "^11.0.0"
     },
     "dependencies": {
         "tslib": "^2.0.0"

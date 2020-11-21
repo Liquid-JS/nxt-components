@@ -1,5 +1,5 @@
 import { ApplicationRef, ComponentFactoryResolver, ElementRef, Injector } from '@angular/core'
-import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing'
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing'
 import { ColorPickerDirective } from '../color-picker.directive'
 import { SliderDirective } from '../slider.directive'
 import { TextDirective } from '../text.directive'
@@ -13,8 +13,8 @@ describe('ColorPickerComponent', () => {
     let directive: ColorPickerDirective
     let fixture: ComponentFixture<ColorPickerComponent>
 
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
             declarations: [
                 SliderDirective,
                 TextDirective,
@@ -22,18 +22,7 @@ describe('ColorPickerComponent', () => {
             ]
         })
             .compileComponents()
-    }))
-
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
-            declarations: [
-                SliderDirective,
-                TextDirective,
-                ColorPickerComponent
-            ]
-        })
-            .compileComponents()
-    }))
+    })
 
     beforeEach(inject([Injector, ComponentFactoryResolver, ApplicationRef], (inj: Injector, cfr: ComponentFactoryResolver, app: ApplicationRef) => {
         parentEl = document.createElement('div')
