@@ -1,6 +1,6 @@
 import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
 import { Component, DebugElement } from '@angular/core'
-import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { dispatchKeyboardEvent, OwlTestDateTimeModule } from '../../../test-helpers'
 import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
@@ -21,8 +21,8 @@ const JAN = 0,
     DEC = 11
 
 describe('OwlMonthViewComponent', () => {
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
             imports: [OwlTestDateTimeModule, OwlDateTimeModule],
             declarations: [
                 StandardMonthViewComponent,
@@ -30,7 +30,7 @@ describe('OwlMonthViewComponent', () => {
             ],
             providers: [OwlDateTimeIntl]
         }).compileComponents()
-    }))
+    })
 
     describe('standard month view', () => {
         let fixture: ComponentFixture<StandardMonthViewComponent>

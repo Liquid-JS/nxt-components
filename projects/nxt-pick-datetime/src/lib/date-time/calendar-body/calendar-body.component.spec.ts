@@ -1,11 +1,11 @@
 import { Component } from '@angular/core'
-import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { CalendarCell, OwlCalendarBodyComponent } from './calendar-body.component'
 
 describe('OwlCalendarBodyComponent', () => {
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
             declarations: [
                 OwlCalendarBodyComponent,
 
@@ -13,7 +13,7 @@ describe('OwlCalendarBodyComponent', () => {
                 StandardCalendarBodyComponent
             ]
         }).compileComponents()
-    }))
+    })
 
     describe('standard CalendarBodyComponent', () => {
         let fixture: ComponentFixture<StandardCalendarBodyComponent>

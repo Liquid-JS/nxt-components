@@ -1,6 +1,6 @@
 import { ENTER, RIGHT_ARROW } from '@angular/cdk/keycodes'
 import { Component, NgZone } from '@angular/core'
-import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing'
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, MockNgZone, OwlTestDateTimeModule } from '../../../test-helpers'
 import { OwlMonthViewComponent } from '../calendar-month-view/calendar-month-view.component'
@@ -26,8 +26,8 @@ export const JAN = 0,
 describe('OwlCalendarComponent', () => {
     let zone: MockNgZone
 
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
             imports: [OwlTestDateTimeModule, OwlDateTimeModule],
             declarations: [
                 StandardCalendar,
@@ -39,7 +39,7 @@ describe('OwlCalendarComponent', () => {
                 { provide: NgZone, useFactory: () => (zone = new MockNgZone()) }
             ]
         }).compileComponents()
-    }))
+    })
 
     describe('standard calendar', () => {
         let fixture: ComponentFixture<StandardCalendar>
@@ -64,12 +64,12 @@ describe('OwlCalendarComponent', () => {
             testComponent = fixture.componentInstance
         })
 
-        it('should be in month view with specified month active', async(() => {
+        it('should be in month view with specified month active', () => {
             expect(calendarInstance.currentView).toBe('month')
             expect(calendarInstance.pickerMoment).toEqual(
                 new Date(2018, JAN, 31)
             )
-        }))
+        })
 
         it('should select date in month view', () => {
             const monthCell = calendarElement.querySelector(

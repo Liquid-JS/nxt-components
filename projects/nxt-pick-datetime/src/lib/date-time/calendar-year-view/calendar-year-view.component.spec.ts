@@ -1,6 +1,6 @@
 import { DOWN_ARROW, END, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
 import { Component, DebugElement } from '@angular/core'
-import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { dispatchKeyboardEvent, dispatchMouseEvent, OwlTestDateTimeModule } from '../../../test-helpers'
 import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
@@ -21,7 +21,7 @@ const JAN = 0,
     DEC = 11
 
 describe('OwlYearViewComponent', () => {
-    beforeEach(async(() => {
+    beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [OwlTestDateTimeModule, OwlDateTimeModule],
             declarations: [
@@ -30,7 +30,7 @@ describe('OwlYearViewComponent', () => {
             ],
             providers: [OwlDateTimeIntl]
         }).compileComponents()
-    }))
+    })
 
     describe('standard year view', () => {
         let fixture: ComponentFixture<StandardYearViewComponent>
