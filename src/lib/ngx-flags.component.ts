@@ -16,7 +16,7 @@ import * as database from './ngx-flags.database';
   ],
 })
 export class NgxFlagsComponent implements OnChanges {
-  @Input() code: string;
+  @Input() country: string;
   @Input() format: string;
   @Input() size: any = 48;
   @Input() class: string = '';
@@ -51,7 +51,7 @@ export class NgxFlagsComponent implements OnChanges {
   }
 
   getCode(): string {
-    return this.code.toLowerCase();
+    return this.country.toLowerCase();
   }
 
   getFlag(code: string): string {
