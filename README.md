@@ -5,7 +5,6 @@
 [![scope](https://img.shields.io/npm/v/ngx-flags.svg)](https://www.npmjs.com/package/ngx-flags)
 
 Angular component to show country flags.
-This package is still in beta. Feedback is very welcome.
 
 ## Install
 

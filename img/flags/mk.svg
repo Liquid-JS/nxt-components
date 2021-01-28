@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 512 335.45001"
+   xml:space="preserve"
+   sodipodi:docname="mk.svg"
+   width="512"
+   height="335.45001"
+   inkscape:version="1.0.1 (c497b03c, 2020-09-10)"><metadata
+   id="metadata1147"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs1145" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="905"
+   inkscape:window-height="480"
+   id="namedview1143"
+   showgrid="false"
+   inkscape:zoom="0.61328125"
+   inkscape:cx="256"
+   inkscape:cy="256"
+   inkscape:window-x="0"
+   inkscape:window-y="23"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Layer_1" />
+<path
+   style="fill:#ff4b55"
+   d="M 473.655,0.001 H 38.345 C 17.167,0.001 0,17.168 0,38.346 v 258.759 c 0,21.177 17.167,38.345 38.345,38.345 h 435.31 C 494.832,335.45 512,318.283 512,297.105 V 38.346 C 512,17.168 494.833,0.001 473.655,0.001 Z"
+   id="path1082" />
+<g
+   id="g1110"
+   transform="translate(0,-88.275)">
+	<path
+   style="fill:#ffe15a"
+   d="m 219.121,231.838 c 1.886,-2.873 4.121,-5.469 6.607,-7.822 -0.006,0.004 -0.011,0.009 -0.017,0.013 L 97.103,88.276 H 38.345 c -9.386,0 -17.98,3.378 -24.644,8.977 z"
+   id="path1084" />
+	<path
+   style="fill:#ffe15a"
+   d="m 212.318,260.522 c -0.156,-1.508 -0.456,-2.973 -0.456,-4.522 0,-1.549 0.3,-3.014 0.456,-4.522 v 0.002 L 0,229.517 v 52.966 l 212.318,-21.964 z"
+   id="path1086" />
+	<polygon
+   style="fill:#ffe15a"
+   points="249.139,212.553 249.14,212.553 "
+   id="polygon1088" />
+	<path
+   style="fill:#ffe15a"
+   d="m 256,211.862 c 2.35,0 4.61,0.338 6.86,0.691 L 282.483,88.276 h -52.966 l 19.623,124.277 c 2.25,-0.353 4.51,-0.691 6.86,-0.691 z"
+   id="path1090" />
+	<polygon
+   style="fill:#ffe15a"
+   points="262.86,212.553 262.861,212.553 262.86,212.553 "
+   id="polygon1092" />
+	<path
+   style="fill:#ffe15a"
+   d="m 286.272,224.015 c 2.486,2.354 4.722,4.949 6.607,7.822 L 498.3,97.252 c -6.665,-5.599 -15.258,-8.977 -24.644,-8.977 H 414.897 L 286.289,224.029 c -0.006,-0.005 -0.013,-0.008 -0.017,-0.014 z"
+   id="path1094" />
+	<path
+   style="fill:#ffe15a"
+   d="m 292.879,280.162 c -1.886,2.873 -4.121,5.469 -6.607,7.822 0.005,-0.004 0.011,-0.009 0.017,-0.013 l 128.608,135.753 h 58.759 c 9.386,0 17.98,-3.378 24.644,-8.977 z"
+   id="path1096" />
+	<path
+   style="fill:#ffe15a"
+   d="m 299.682,251.478 c 0.156,1.507 0.456,2.973 0.456,4.522 0,1.549 -0.3,3.014 -0.456,4.522 V 260.52 L 512,282.483 v -52.966 l -212.318,21.964 z"
+   id="path1098" />
+	<path
+   style="fill:#ffe15a"
+   d="m 256,300.138 c -2.35,0 -4.61,-0.338 -6.86,-0.691 l -19.623,124.277 h 52.966 L 262.86,299.447 c -2.25,0.353 -4.51,0.691 -6.86,0.691 z"
+   id="path1100" />
+	<polygon
+   style="fill:#ffe15a"
+   points="262.861,299.447 262.86,299.447 "
+   id="polygon1102" />
+	<polygon
+   style="fill:#ffe15a"
+   points="249.14,299.447 249.139,299.447 249.14,299.447 "
+   id="polygon1104" />
+	<path
+   style="fill:#ffe15a"
+   d="m 225.728,287.985 c -2.486,-2.354 -4.722,-4.949 -6.607,-7.822 L 13.7,414.748 c 6.665,5.599 15.258,8.977 24.644,8.977 H 97.103 L 225.711,287.972 c 0.006,0.004 0.013,0.007 0.017,0.013 z"
+   id="path1106" />
+	<circle
+   style="fill:#ffe15a"
+   cx="256"
+   cy="256"
+   r="35.310001"
+   id="circle1108" />
+</g>
+<g
+   id="g1112"
+   transform="translate(0,-88.275)">
+</g>
+<g
+   id="g1114"
+   transform="translate(0,-88.275)">
+</g>
+<g
+   id="g1116"
+   transform="translate(0,-88.275)">
+</g>
+<g
+   id="g1118"
+   transform="translate(0,-88.275)">
+</g>
+<g
+   id="g1120"
+   transform="translate(0,-88.275)">
+</g>
+<g
+   id="g1122"
+   transform="translate(0,-88.275)">
+</g>
+<g
+   id="g1124"
+   transform="translate(0,-88.275)">
+</g>
+<g
+   id="g1126"
+   transform="translate(0,-88.275)">
+</g>
+<g
+   id="g1128"
+   transform="translate(0,-88.275)">
+</g>
+<g
+   id="g1130"
+   transform="translate(0,-88.275)">
+</g>
+<g
+   id="g1132"
+   transform="translate(0,-88.275)">
+</g>
+<g
+   id="g1134"
+   transform="translate(0,-88.275)">
+</g>
+<g
+   id="g1136"
+   transform="translate(0,-88.275)">
+</g>
+<g
+   id="g1138"
+   transform="translate(0,-88.275)">
+</g>
+<g
+   id="g1140"
+   transform="translate(0,-88.275)">
+</g>
+</svg>

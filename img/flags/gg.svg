@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 512 335.45001"
+   xml:space="preserve"
+   sodipodi:docname="gg.svg"
+   width="512"
+   height="335.45001"
+   inkscape:version="1.0.1 (c497b03c, 2020-09-10)"><metadata
+   id="metadata55"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs53" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1267"
+   inkscape:window-height="783"
+   id="namedview51"
+   showgrid="false"
+   inkscape:zoom="1.640625"
+   inkscape:cx="256"
+   inkscape:cy="256"
+   inkscape:window-x="0"
+   inkscape:window-y="23"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Layer_1" />
+<path
+   style="fill:#f5f5f5"
+   d="M 473.654,335.448 H 38.345 C 17.167,335.448 0,318.28 0,297.103 V 38.345 C 0,17.168 17.167,0 38.345,0 h 435.309 c 21.177,0 38.345,17.167 38.345,38.345 v 258.758 c 0,21.177 -17.168,38.345 -38.345,38.345 z"
+   id="path10" />
+<polygon
+   style="fill:#ff4b55"
+   points="291.31,88.276 220.689,88.276 220.689,220.69 0,220.69 0,291.31 220.689,291.31 220.689,423.724 291.31,423.724 291.31,291.31 512,291.31 512,220.69 291.31,220.69 "
+   id="polygon12"
+   transform="translate(0,-88.276)" />
+<g
+   id="g18"
+   transform="translate(0,-88.276)">
+	<polygon
+   style="fill:#ffe15a"
+   points="348.689,242.759 163.31,242.759 150.069,229.517 150.069,282.483 163.31,269.241 348.689,269.241 361.93,282.483 361.93,229.517 "
+   id="polygon14" />
+	<polygon
+   style="fill:#ffe15a"
+   points="269.241,348.689 269.241,163.311 282.482,150.069 229.517,150.069 242.758,163.311 242.758,348.689 229.517,361.931 282.482,361.931 "
+   id="polygon16" />
+</g>
+<g
+   id="g20">
+</g>
+<g
+   id="g22">
+</g>
+<g
+   id="g24">
+</g>
+<g
+   id="g26">
+</g>
+<g
+   id="g28">
+</g>
+<g
+   id="g30">
+</g>
+<g
+   id="g32">
+</g>
+<g
+   id="g34">
+</g>
+<g
+   id="g36">
+</g>
+<g
+   id="g38">
+</g>
+<g
+   id="g40">
+</g>
+<g
+   id="g42">
+</g>
+<g
+   id="g44">
+</g>
+<g
+   id="g46">
+</g>
+<g
+   id="g48">
+</g>
+</svg>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 512 335.45001"
+   xml:space="preserve"
+   sodipodi:docname="tw.svg"
+   width="512"
+   height="335.45001"
+   inkscape:version="1.0.1 (c497b03c, 2020-09-10)"><metadata
+   id="metadata1121"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs1119" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1138"
+   inkscape:window-height="798"
+   id="namedview1117"
+   showgrid="false"
+   inkscape:zoom="1.3554688"
+   inkscape:cx="256"
+   inkscape:cy="256"
+   inkscape:window-x="0"
+   inkscape:window-y="23"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Layer_1" />
+<path
+   style="fill:#ff4b55"
+   d="M 473.655,335.448 H 38.345 C 17.167,335.448 0,318.281 0,297.104 V 38.346 C 0,17.169 17.167,0.001 38.345,0.001 h 435.31 C 494.832,0.001 512,17.168 512,38.346 v 258.758 c 0,21.177 -17.167,38.344 -38.345,38.344 z"
+   id="path1070" />
+<path
+   style="fill:#41479b"
+   d="m 8.828,167.724 h 238.345 c 4.875,0 8.828,-3.951 8.828,-8.828 V 8.828 C 256.001,3.953 252.048,0 247.173,0 H 38.345 C 17.167,0.001 0,17.168 0,38.346 v 120.552 c 0,4.875 3.953,8.826 8.828,8.826 z"
+   id="path1072" />
+<g
+   id="g1084"
+   transform="translate(0,-88.276)">
+	<path
+   style="fill:#f5f5f5"
+   d="m 96.403,172.139 c 0,-8.722 3.534,-16.618 9.248,-22.335 l -26.474,-7.573 c -1.537,-0.439 -2.638,1.469 -1.49,2.58 l 19.811,19.155 -26.734,6.684 c -1.55,0.387 -1.55,2.591 0,2.979 l 26.734,6.684 -19.811,19.155 c -1.149,1.111 -0.047,3.019 1.49,2.58 l 26.474,-7.573 c -5.714,-5.718 -9.248,-13.614 -9.248,-22.336 z"
+   id="path1074" />
+	<path
+   style="fill:#f5f5f5"
+   d="m 105.665,149.79 c 5.717,-5.714 13.613,-9.248 22.335,-9.248 8.722,0 16.618,3.534 22.335,9.248 l 7.573,-26.474 c 0.439,-1.537 -1.469,-2.638 -2.58,-1.49 l -19.155,19.81 -6.684,-26.734 c -0.387,-1.55 -2.591,-1.55 -2.979,0 l -6.684,26.734 -19.155,-19.81 c -1.111,-1.149 -3.02,-0.047 -2.58,1.49 z"
+   id="path1076" />
+	<path
+   style="fill:#f5f5f5"
+   d="m 150.335,194.488 c -5.717,5.714 -13.613,9.248 -22.335,9.248 -8.722,0 -16.618,-3.534 -22.335,-9.248 l -7.573,26.475 c -0.439,1.537 1.469,2.638 2.58,1.49 l 19.155,-19.81 6.684,26.734 c 0.387,1.55 2.591,1.55 2.979,0 l 6.684,-26.734 19.155,19.81 c 1.111,1.149 3.019,0.047 2.58,-1.49 z"
+   id="path1078" />
+	<path
+   style="fill:#f5f5f5"
+   d="m 185.236,170.648 -26.734,-6.684 19.81,-19.155 c 1.149,-1.111 0.047,-3.019 -1.49,-2.58 l -26.474,7.573 c 5.714,5.718 9.248,13.613 9.248,22.335 0,8.722 -3.534,16.618 -9.248,22.335 l 26.474,7.573 c 1.537,0.439 2.638,-1.469 1.49,-2.58 l -19.81,-19.155 26.734,-6.684 c 1.551,-0.385 1.551,-2.588 0,-2.978 z"
+   id="path1080" />
+	<circle
+   style="fill:#f5f5f5"
+   cx="128"
+   cy="172.14101"
+   r="25.16"
+   id="circle1082" />
+</g>
+<g
+   id="g1086"
+   transform="translate(0,-88.276)">
+</g>
+<g
+   id="g1088"
+   transform="translate(0,-88.276)">
+</g>
+<g
+   id="g1090"
+   transform="translate(0,-88.276)">
+</g>
+<g
+   id="g1092"
+   transform="translate(0,-88.276)">
+</g>
+<g
+   id="g1094"
+   transform="translate(0,-88.276)">
+</g>
+<g
+   id="g1096"
+   transform="translate(0,-88.276)">
+</g>
+<g
+   id="g1098"
+   transform="translate(0,-88.276)">
+</g>
+<g
+   id="g1100"
+   transform="translate(0,-88.276)">
+</g>
+<g
+   id="g1102"
+   transform="translate(0,-88.276)">
+</g>
+<g
+   id="g1104"
+   transform="translate(0,-88.276)">
+</g>
+<g
+   id="g1106"
+   transform="translate(0,-88.276)">
+</g>
+<g
+   id="g1108"
+   transform="translate(0,-88.276)">
+</g>
+<g
+   id="g1110"
+   transform="translate(0,-88.276)">
+</g>
+<g
+   id="g1112"
+   transform="translate(0,-88.276)">
+</g>
+<g
+   id="g1114"
+   transform="translate(0,-88.276)">
+</g>
+</svg>

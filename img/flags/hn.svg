@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 512 335.45001"
+   xml:space="preserve"
+   sodipodi:docname="hn.svg"
+   width="512"
+   height="335.45001"
+   inkscape:version="1.0.1 (c497b03c, 2020-09-10)"><metadata
+   id="metadata65"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs63" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1628"
+   inkscape:window-height="857"
+   id="namedview61"
+   showgrid="false"
+   inkscape:zoom="1.640625"
+   inkscape:cx="256"
+   inkscape:cy="256"
+   inkscape:window-x="0"
+   inkscape:window-y="23"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Layer_1" />
+<g
+   id="g14"
+   transform="translate(0,-88.276)">
+	<path
+   style="fill:#4173cd"
+   d="M 473.655,88.276 H 38.345 C 17.167,88.276 0,105.443 0,126.621 v 73.471 h 512 v -73.471 c 0,-21.178 -17.167,-38.345 -38.345,-38.345 z"
+   id="path10" />
+	<path
+   style="fill:#4173cd"
+   d="m 0,385.379 c 0,21.177 17.167,38.345 38.345,38.345 h 435.31 c 21.177,0 38.345,-17.167 38.345,-38.345 V 311.908 H 0 Z"
+   id="path12" />
+</g>
+<rect
+   y="111.814"
+   style="fill:#f5f5f5"
+   width="512"
+   height="111.81"
+   id="rect16"
+   x="0" />
+<g
+   id="g28"
+   transform="translate(0,-88.276)">
+	<path
+   style="fill:#4173cd"
+   d="m 257.277,241.579 3.159,9.473 9.985,0.077 c 1.293,0.01 1.828,1.66 0.789,2.428 l -8.033,5.932 3.012,9.521 c 0.389,1.233 -1.013,2.252 -2.066,1.501 l -8.123,-5.808 -8.124,5.806 c -1.052,0.751 -2.455,-0.268 -2.066,-1.501 l 3.012,-9.521 -8.033,-5.932 c -1.039,-0.768 -0.504,-2.418 0.789,-2.428 l 9.985,-0.077 3.159,-9.473 c 0.411,-1.225 2.145,-1.225 2.555,0.002 z"
+   id="path18" />
+	<path
+   style="fill:#4173cd"
+   d="m 167.104,267.002 3.159,9.473 9.985,0.077 c 1.293,0.01 1.828,1.66 0.789,2.428 l -8.033,5.932 3.012,9.521 c 0.39,1.233 -1.013,2.252 -2.066,1.501 l -8.124,-5.806 -8.124,5.806 c -1.052,0.751 -2.455,-0.268 -2.066,-1.501 l 3.012,-9.521 -8.033,-5.932 c -1.041,-0.768 -0.504,-2.418 0.789,-2.428 l 9.985,-0.077 3.159,-9.473 c 0.412,-1.227 2.147,-1.227 2.556,0 z"
+   id="path20" />
+	<path
+   style="fill:#4173cd"
+   d="m 167.104,216.156 3.159,9.473 9.985,0.077 c 1.293,0.01 1.828,1.66 0.789,2.428 l -8.033,5.932 3.012,9.521 c 0.39,1.233 -1.013,2.252 -2.066,1.501 l -8.124,-5.806 -8.124,5.806 c -1.052,0.751 -2.455,-0.268 -2.066,-1.501 l 3.012,-9.521 -8.033,-5.932 c -1.041,-0.768 -0.504,-2.418 0.789,-2.428 l 9.985,-0.077 3.159,-9.473 c 0.412,-1.227 2.147,-1.227 2.556,0 z"
+   id="path22" />
+	<path
+   style="fill:#4173cd"
+   d="m 347.448,267.002 3.159,9.473 9.985,0.077 c 1.293,0.01 1.828,1.66 0.789,2.428 l -8.033,5.932 3.012,9.521 c 0.389,1.233 -1.013,2.252 -2.066,1.501 l -8.124,-5.806 -8.124,5.806 c -1.052,0.751 -2.455,-0.268 -2.066,-1.501 l 3.012,-9.521 -8.033,-5.932 c -1.041,-0.768 -0.504,-2.418 0.789,-2.428 l 9.985,-0.077 3.159,-9.473 c 0.413,-1.227 2.148,-1.227 2.556,0 z"
+   id="path24" />
+	<path
+   style="fill:#4173cd"
+   d="m 347.448,216.156 3.159,9.473 9.985,0.077 c 1.293,0.01 1.828,1.66 0.789,2.428 l -8.033,5.932 3.012,9.521 c 0.389,1.233 -1.013,2.252 -2.066,1.501 l -8.124,-5.806 -8.124,5.806 c -1.052,0.751 -2.455,-0.268 -2.066,-1.501 l 3.012,-9.521 -8.033,-5.932 c -1.041,-0.768 -0.504,-2.418 0.789,-2.428 l 9.985,-0.077 3.159,-9.473 c 0.413,-1.227 2.148,-1.227 2.556,0 z"
+   id="path26" />
+</g>
+<g
+   id="g30">
+</g>
+<g
+   id="g32">
+</g>
+<g
+   id="g34">
+</g>
+<g
+   id="g36">
+</g>
+<g
+   id="g38">
+</g>
+<g
+   id="g40">
+</g>
+<g
+   id="g42">
+</g>
+<g
+   id="g44">
+</g>
+<g
+   id="g46">
+</g>
+<g
+   id="g48">
+</g>
+<g
+   id="g50">
+</g>
+<g
+   id="g52">
+</g>
+<g
+   id="g54">
+</g>
+<g
+   id="g56">
+</g>
+<g
+   id="g58">
+</g>
+</svg>

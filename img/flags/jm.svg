@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 512 335.45001"
+   xml:space="preserve"
+   sodipodi:docname="jm.svg"
+   width="512"
+   height="335.45001"
+   inkscape:version="1.0.1 (c497b03c, 2020-09-10)"><metadata
+   id="metadata55"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs53" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1525"
+   inkscape:window-height="825"
+   id="namedview51"
+   showgrid="false"
+   inkscape:zoom="1.640625"
+   inkscape:cx="256"
+   inkscape:cy="256"
+   inkscape:window-x="0"
+   inkscape:window-y="23"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Layer_1" />
+<path
+   style="fill:#73af00"
+   d="M 473.655,335.448 H 38.345 C 17.167,335.448 0,318.281 0,297.103 V 38.345 C 0,17.168 17.167,0 38.345,0 h 435.31 C 494.832,0 512,17.167 512,38.345 v 258.759 c 0,21.177 -17.167,38.344 -38.345,38.344 z"
+   id="path10" />
+<path
+   style="fill:#ffe15a"
+   d="M 511.47,303.437 304.329,167.724 511.47,32.011 C 508.449,13.849 492.674,0 473.655,0 h -9.984 L 256,136.061 48.329,0 H 38.345 C 19.326,0 3.55,13.849 0.53,32.011 L 207.671,167.724 0.53,303.437 c 3.02,18.162 18.796,32.011 37.815,32.011 h 9.984 L 256,199.387 463.671,335.448 h 9.984 c 19.019,0 34.794,-13.849 37.815,-32.011 z"
+   id="path12" />
+<g
+   id="g18"
+   transform="translate(0,-88.276)">
+	<polygon
+   style="fill:#464655"
+   points="304.329,256 512,119.939 512,392.061 "
+   id="polygon14" />
+	<polygon
+   style="fill:#464655"
+   points="207.671,256 0,392.061 0,119.939 "
+   id="polygon16" />
+</g>
+<g
+   id="g20">
+</g>
+<g
+   id="g22">
+</g>
+<g
+   id="g24">
+</g>
+<g
+   id="g26">
+</g>
+<g
+   id="g28">
+</g>
+<g
+   id="g30">
+</g>
+<g
+   id="g32">
+</g>
+<g
+   id="g34">
+</g>
+<g
+   id="g36">
+</g>
+<g
+   id="g38">
+</g>
+<g
+   id="g40">
+</g>
+<g
+   id="g42">
+</g>
+<g
+   id="g44">
+</g>
+<g
+   id="g46">
+</g>
+<g
+   id="g48">
+</g>
+</svg>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as database from './ngx-flags.database';
 
 @Component({
@@ -15,7 +15,7 @@ import * as database from './ngx-flags.database';
     `,
   ],
 })
-export class NgxFlagsComponent implements OnInit {
+export class NgxFlagsComponent implements OnChanges {
   @Input() code: string;
   @Input() format: string;
   @Input() size: any = 48;
@@ -24,12 +24,16 @@ export class NgxFlagsComponent implements OnInit {
   public imageUrl: string;
   public style;
   public database = database.db;
+  public countryCode: string = '';
 
   constructor() {}
 
-  ngOnInit(): void {
-    this.imageUrl = `assets/flags/${this.getFlag()}.svg`;
+  ngOnChanges(changes: SimpleChanges): void {
+    this.setImage();
+  }
 
+  setImage(): void {
+    this.imageUrl = `assets/flags/${this.getFlag(this.getCode())}.svg`;
     this.style = {
       borderRadius: this.getFormat() == FORMAT.ROUND ? '9999px' : '0%',
       width: `${this.getSize()}px`,
@@ -50,8 +54,8 @@ export class NgxFlagsComponent implements OnInit {
     return this.code.toLowerCase();
   }
 
-  getFlag(): string {
-    return this.database[this.code.toLowerCase()];
+  getFlag(code: string): string {
+    return this.database[code.toLowerCase()];
   }
 }
 
