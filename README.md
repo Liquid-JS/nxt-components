@@ -16,7 +16,7 @@ This is a responsive color picker based on [angular2-color-picker](https://githu
 
 ### Quick links
 
-[Example application](https://liquid-js.github.io/nxt-color-picker/)
+[Example application](https://liquid-js.github.io/nxt-color-picker/en-US/)
 
 ### Building the library
 

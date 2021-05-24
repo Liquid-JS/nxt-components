@@ -4,7 +4,7 @@
     "scripts": {
         "start": "ng serve --disable-host-check",
         "build": "ng build --configuration production",
-        "build:demo": "ng build --configuration production --base-href https://liquid-js.github.io/nxt-color-picker/ demo",
+        "build:demo": "ng build --configuration production --localize --base-href https://liquid-js.github.io/nxt-color-picker/ demo",
         "analyze": "yarn build:demo --stats-json && webpack-bundle-analyzer dist/demo/stats.json",
         "test": "ng test --code-coverage --source-map false --watch true",
         "lint": "ng lint --fix",
@@ -35,6 +35,7 @@
         "@angular/cli": "^12.0.1",
         "@angular/compiler-cli": "^12.0.1",
         "@angular/language-service": "^12.0.1",
+        "@angular/localize": "12.0.1",
         "@types/jasmine": "~3.7.4",
         "@types/jasminewd2": "^2.0.9",
         "@types/node": "^15.6.0",
