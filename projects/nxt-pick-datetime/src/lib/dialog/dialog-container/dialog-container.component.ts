@@ -1,5 +1,5 @@
 import { animate, animateChild, AnimationEvent, keyframes, style, transition, trigger } from '@angular/animations'
-import { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y'
+import { ConfigurableFocusTrapFactory, FocusTrap } from '@angular/cdk/a11y'
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal'
 import { DOCUMENT } from '@angular/common'
 import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EmbeddedViewRef, EventEmitter, HostBinding, HostListener, Inject, OnInit, Optional, ViewChild } from '@angular/core'
@@ -128,7 +128,7 @@ export class OwlDialogContainerComponent extends BasePortalOutlet
     constructor(
         private changeDetector: ChangeDetectorRef,
         private elementRef: ElementRef,
-        private focusTrapFactory: FocusTrapFactory,
+        private focusTrapFactory: ConfigurableFocusTrapFactory,
         @Optional()
         @Inject(DOCUMENT)
         private document: any

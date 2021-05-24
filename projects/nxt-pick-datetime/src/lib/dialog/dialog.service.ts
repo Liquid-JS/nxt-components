@@ -1,9 +1,9 @@
 import { Overlay, OverlayConfig, OverlayContainer, OverlayRef, ScrollStrategy } from '@angular/cdk/overlay'
-import { ComponentPortal, ComponentType, PortalInjector } from '@angular/cdk/portal'
+import { ComponentPortal, ComponentType } from '@angular/cdk/portal'
 import { Location } from '@angular/common'
 import { ComponentRef, Inject, Injectable, InjectionToken, Injector, Optional, SkipSelf, TemplateRef } from '@angular/core'
-import { defer, Observable, Subject } from 'rxjs'
-import { startWith } from 'rxjs/operators'
+import { defer, Observable, of, Subject } from 'rxjs'
+import { concatAll } from 'rxjs/operators'
 import { OwlDialogConfig } from '../class/dialog-config.class'
 import { OwlDialogRef } from '../class/dialog-ref.class'
 import { extendObject } from '../utils/object'
@@ -61,7 +61,7 @@ export class OwlDialogService {
             : this._afterOpenAtThisLevel
     }
 
-    get _afterAllClosed(): any {
+    get _afterAllClosed(): Subject<void> {
         const parent = this.parentDialog
         return parent
             ? parent._afterAllClosed
@@ -77,7 +77,7 @@ export class OwlDialogService {
         () =>
             this._openDialogsAtThisLevel.length
                 ? this._afterAllClosed
-                : this._afterAllClosed.pipe(startWith(undefined))
+                : of([undefined], this._afterAllClosed).pipe(concatAll())
     )
 
     private scrollStrategy: () => ScrollStrategy
@@ -109,8 +109,7 @@ export class OwlDialogService {
 
         if (config.id && this.getDialogById(config.id)) {
             throw Error(
-                `Dialog with id "${
-                config.id
+                `Dialog with id "${config.id
                 }" exists already. The dialog id must be unique.`
             )
         }
@@ -205,16 +204,15 @@ export class OwlDialogService {
             config &&
             config.viewContainerRef &&
             config.viewContainerRef.injector
-        const injectionTokens = new WeakMap()
 
-        injectionTokens.set(OwlDialogRef, dialogRef)
-        injectionTokens.set(OwlDialogContainerComponent, dialogContainer)
-        injectionTokens.set(OWL_DIALOG_DATA, config.data)
-
-        return new PortalInjector(
-            userInjector || this.injector,
-            injectionTokens
-        )
+        return Injector.create({
+            providers: [
+                { provide: OwlDialogRef, useValue: dialogRef },
+                { provide: OwlDialogContainerComponent, useValue: dialogContainer },
+                { provide: OWL_DIALOG_DATA, useValue: config.data }
+            ],
+            parent: userInjector || this.injector
+        })
     }
 
     private createOverlay(config: OwlDialogConfig): OverlayRef {

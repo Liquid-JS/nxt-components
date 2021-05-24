@@ -130,7 +130,7 @@ export class OwlDialogRef<T> {
      * @param height New height of the dialog.
      */
     updateSize(width: string = 'auto', height: string = 'auto'): this {
-        this.getPositionStrategy().width(width).height(height)
+        this.overlayRef.updateSize({ width, height })
         this.overlayRef.updatePosition()
         return this
     }

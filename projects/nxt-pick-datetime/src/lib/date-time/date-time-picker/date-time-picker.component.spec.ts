@@ -196,19 +196,21 @@ describe('OwlDateTimeComponent', () => {
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.dateTimePicker.opened).toBe(
-                    true,
-                    'Expected dateTimePicker to be open.'
-                )
+                expect(testComponent.dateTimePicker.opened)
+                    .withContext('Expected dateTimePicker to be open.')
+                    .toBe(
+                        true
+                    )
 
                 dispatchKeyboardEvent(document.body, 'keydown', ESCAPE)
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.dateTimePicker.opened).toBe(
-                    false,
-                    'Expected dateTimePicker to be closed.'
-                )
+                expect(testComponent.dateTimePicker.opened)
+                    .withContext('Expected dateTimePicker to be closed.')
+                    .toBe(
+                        false
+                    )
             }))
 
             it('should close dialog when fn close is called', fakeAsync(() => {
@@ -236,10 +238,11 @@ describe('OwlDateTimeComponent', () => {
                 testComponent.dateTimePicker.open()
                 fixture.detectChanges()
                 flush()
-                expect(testComponent.dateTimePicker.opened).toBe(
-                    true,
-                    'Expected dateTimePicker to be opened.'
-                )
+                expect(testComponent.dateTimePicker.opened)
+                    .withContext('Expected dateTimePicker to be opened.')
+                    .toBe(
+                        true
+                    )
 
                 const containerDebugElement = fixture.debugElement.query(
                     By.directive(OwlDateTimeContainerComponent)
@@ -253,20 +256,22 @@ describe('OwlDateTimeComponent', () => {
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.dateTimePicker.opened).toBe(
-                    false,
-                    'Expected dateTimePicker to be closed.'
-                )
+                expect(testComponent.dateTimePicker.opened)
+                    .withContext('Expected dateTimePicker to be closed.')
+                    .toBe(
+                        false
+                    )
             }))
 
             it('should close popup panel and not update input value when cancel button clicked', fakeAsync(() => {
                 testComponent.dateTimePicker.open()
                 fixture.detectChanges()
                 flush()
-                expect(testComponent.dateTimePicker.opened).toBe(
-                    true,
-                    'Expected dateTimePicker to be opened.'
-                )
+                expect(testComponent.dateTimePicker.opened)
+                    .withContext('Expected dateTimePicker to be opened.')
+                    .toBe(
+                        true
+                    )
 
                 const containerDebugElement = fixture.debugElement.query(
                     By.directive(OwlDateTimeContainerComponent)
@@ -286,10 +291,11 @@ describe('OwlDateTimeComponent', () => {
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.dateTimePicker.opened).toBe(
-                    false,
-                    'Expected dateTimePicker to be closed.'
-                )
+                expect(testComponent.dateTimePicker.opened)
+                    .withContext('Expected dateTimePicker to be closed.')
+                    .toBe(
+                        false
+                    )
                 expect(testComponent.dateTimePickerInput.value).toEqual(
                     new Date(2020, JAN, 1)
                 ) // not update to clicked value
@@ -299,10 +305,11 @@ describe('OwlDateTimeComponent', () => {
                 testComponent.dateTimePicker.open()
                 fixture.detectChanges()
                 flush()
-                expect(testComponent.dateTimePicker.opened).toBe(
-                    true,
-                    'Expected dateTimePicker to be opened.'
-                )
+                expect(testComponent.dateTimePicker.opened)
+                    .withContext('Expected dateTimePicker to be opened.')
+                    .toBe(
+                        true
+                    )
 
                 const containerDebugElement = fixture.debugElement.query(
                     By.directive(OwlDateTimeContainerComponent)
@@ -319,10 +326,11 @@ describe('OwlDateTimeComponent', () => {
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.dateTimePicker.opened).toBe(
-                    false,
-                    'Expected dateTimePicker to be closed.'
-                )
+                expect(testComponent.dateTimePicker.opened)
+                    .withContext('Expected dateTimePicker to be closed.')
+                    .toBe(
+                        false
+                    )
                 expect(testComponent.dateTimePickerInput.value).toEqual(
                     new Date(2020, JAN, 1)
                 )
@@ -332,10 +340,11 @@ describe('OwlDateTimeComponent', () => {
                 testComponent.dateTimePicker.open()
                 fixture.detectChanges()
                 flush()
-                expect(testComponent.dateTimePicker.opened).toBe(
-                    true,
-                    'Expected dateTimePicker to be opened.'
-                )
+                expect(testComponent.dateTimePicker.opened)
+                    .withContext('Expected dateTimePicker to be opened.')
+                    .toBe(
+                        true
+                    )
 
                 const containerDebugElement = fixture.debugElement.query(
                     By.directive(OwlDateTimeContainerComponent)
@@ -358,10 +367,11 @@ describe('OwlDateTimeComponent', () => {
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.dateTimePicker.opened).toBe(
-                    false,
-                    'Expected dateTimePicker to be closed.'
-                )
+                expect(testComponent.dateTimePicker.opened)
+                    .withContext('Expected dateTimePicker to be closed.')
+                    .toBe(
+                        false
+                    )
                 expect(testComponent.dateTimePickerInput.value).toEqual(
                     new Date(2020, JAN, 2)
                 )
@@ -451,10 +461,11 @@ describe('OwlDateTimeComponent', () => {
                     testComponent.dateTimePicker.open()
                     fixture.detectChanges()
                     flush()
-                    expect(testComponent.dateTimePicker.opened).toBe(
-                        true,
-                        'Expected dateTimePicker to be opened.'
-                    )
+                    expect(testComponent.dateTimePicker.opened)
+                        .withContext('Expected dateTimePicker to be opened.')
+                        .toBe(
+                            true
+                        )
 
                     const containerDebugElement = fixture.debugElement.query(
                         By.directive(OwlDateTimeContainerComponent)
@@ -471,10 +482,11 @@ describe('OwlDateTimeComponent', () => {
                     testComponent.dateTimePicker.open()
                     fixture.detectChanges()
                     flush()
-                    expect(testComponent.dateTimePicker.opened).toBe(
-                        true,
-                        'Expected dateTimePicker to be opened.'
-                    )
+                    expect(testComponent.dateTimePicker.opened)
+                        .withContext('Expected dateTimePicker to be opened.')
+                        .toBe(
+                            true
+                        )
 
                     const containerDebugElement = fixture.debugElement.query(
                         By.directive(OwlDateTimeContainerComponent)
@@ -491,10 +503,11 @@ describe('OwlDateTimeComponent', () => {
                     fixture.detectChanges()
                     flush()
 
-                    expect(testComponent.dateTimePicker.opened).toBe(
-                        false,
-                        'Expected dateTimePicker to be closed.'
-                    )
+                    expect(testComponent.dateTimePicker.opened)
+                        .withContext('Expected dateTimePicker to be closed.')
+                        .toBe(
+                            false
+                        )
                     expect(testComponent.dateTimePickerInput.value).toEqual(
                         new Date(2020, JAN, 2)
                     )
@@ -504,10 +517,11 @@ describe('OwlDateTimeComponent', () => {
                     testComponent.dateTimePicker.open()
                     fixture.detectChanges()
                     flush()
-                    expect(testComponent.dateTimePicker.opened).toBe(
-                        true,
-                        'Expected dateTimePicker to be opened.'
-                    )
+                    expect(testComponent.dateTimePicker.opened)
+                        .withContext('Expected dateTimePicker to be opened.')
+                        .toBe(
+                            true
+                        )
 
                     const containerDebugElement = fixture.debugElement.query(
                         By.directive(OwlDateTimeContainerComponent)
@@ -532,10 +546,11 @@ describe('OwlDateTimeComponent', () => {
                     fixture.detectChanges()
                     flush()
 
-                    expect(testComponent.dateTimePicker.opened).toBe(
-                        false,
-                        'Expected dateTimePicker to be closed.'
-                    )
+                    expect(testComponent.dateTimePicker.opened)
+                        .withContext('Expected dateTimePicker to be closed.')
+                        .toBe(
+                            false
+                        )
                     expect(testComponent.dateTimePickerInput.value).toEqual(
                         new Date(2020, JAN, 2)
                     )
@@ -545,10 +560,11 @@ describe('OwlDateTimeComponent', () => {
                     testComponent.dateTimePicker.open()
                     fixture.detectChanges()
                     flush()
-                    expect(testComponent.dateTimePicker.opened).toBe(
-                        true,
-                        'Expected dateTimePicker to be opened.'
-                    )
+                    expect(testComponent.dateTimePicker.opened)
+                        .withContext('Expected dateTimePicker to be opened.')
+                        .toBe(
+                            true
+                        )
 
                     const containerDebugElement = fixture.debugElement.query(
                         By.directive(OwlDateTimeContainerComponent)
@@ -568,10 +584,11 @@ describe('OwlDateTimeComponent', () => {
                     fixture.detectChanges()
                     flush()
 
-                    expect(testComponent.dateTimePicker.opened).toBe(
-                        false,
-                        'Expected dateTimePicker to be closed.'
-                    )
+                    expect(testComponent.dateTimePicker.opened)
+                        .withContext('Expected dateTimePicker to be closed.')
+                        .toBe(
+                            false
+                        )
                     expect(testComponent.dateTimePickerInput.value).toEqual(
                         new Date(2020, JAN, 1)
                     )
@@ -596,10 +613,11 @@ describe('OwlDateTimeComponent', () => {
                     testComponent.dateTimePicker.open()
                     fixture.detectChanges()
                     flush()
-                    expect(testComponent.dateTimePicker.opened).toBe(
-                        true,
-                        'Expected dateTimePicker to be opened.'
-                    )
+                    expect(testComponent.dateTimePicker.opened)
+                        .withContext('Expected dateTimePicker to be opened.')
+                        .toBe(
+                            true
+                        )
 
                     const containerDebugElement = fixture.debugElement.query(
                         By.directive(OwlDateTimeContainerComponent)
@@ -859,10 +877,11 @@ describe('OwlDateTimeComponent', () => {
                     fixture.detectChanges()
                     flush()
 
-                    expect(testComponent.dateTimePicker.opened).toBe(
-                        true,
-                        'Expected dateTimePicker to be opened.'
-                    )
+                    expect(testComponent.dateTimePicker.opened)
+                        .withContext('Expected dateTimePicker to be opened.')
+                        .toBe(
+                            true
+                        )
                 }))
 
                 it('should close the dateTimePicker popup panel when both the rangeFrom and the rangeTo value are selected', fakeAsync(() => {
@@ -899,10 +918,11 @@ describe('OwlDateTimeComponent', () => {
                     expect(testComponent.dateTimePicker.selecteds.length).toBe(
                         2
                     )
-                    expect(testComponent.dateTimePicker.opened).toBe(
-                        false,
-                        'Expected dateTimePicker to be closed.'
-                    )
+                    expect(testComponent.dateTimePicker.opened)
+                        .withContext('Expected dateTimePicker to be closed.')
+                        .toBe(
+                            false
+                        )
                 }))
             })
         })
