@@ -3,7 +3,7 @@ import { denormalizeRGBA, formatOutput, hsla2hsva, hsva2hsla, hsvaToRgba, rgbaTo
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Hsla, Hsva, Rgba } from '../../util/formats'
 import { ColorModeInternal, composedPath, DialogConfig, DirectiveCallbacks, parseColorMode, Position, sizeToString, SliderPosition } from '../../util/helpers'
-import { AlphaChannel, ColorFormat, DialogDisplay, DialogPosition, OutputFormat } from '../../util/types'
+import { AlphaChannel, AlphaEnabledFormats, ColorFormat, DialogDisplay, DialogPosition, OutputFormat } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
 
 @Component({
@@ -703,7 +703,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
             this.hexAlpha = this.rgbaText.a
         }
 
-        if (this.cpOutputFormat == OutputFormat.auto && this.hsva.a < 1) {
+        if (this.cpOutputFormat == OutputFormat.auto && this.hsva.a < 1 && !AlphaEnabledFormats.has(this.format)) {
             this.format = this.hsva.a < 1 ? ColorFormat.rgba : ColorFormat.hex
         }
 

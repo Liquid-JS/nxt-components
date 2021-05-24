@@ -4,6 +4,8 @@ export enum ColorFormat {
     hsla = 'hsla'
 }
 
+export const AlphaEnabledFormats = new Set([ColorFormat.hsla, ColorFormat.rgba])
+
 export enum OutputFormat {
     auto = 'auto',
     hex = 'hex',
