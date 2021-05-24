@@ -91,18 +91,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     cpPositionOffset: number
 
     cpOKButton: boolean
-    cpOKButtonText: string
 
     cpCancelButton: boolean
-    cpCancelButtonText: string
 
     cpPresetLabel: string
     cpPresetColors: string[]
     cpMaxPresetColors: number
 
     cpAddColorButton: boolean
-    cpAddColorButtonText: string
-    cpRemoveColorButtonText: string
 
     @HostListener('document:keyup.esc', ['$event'])
     onCancel(event: Event) {
@@ -271,10 +267,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.cpPositionOffset = parseInt(config.cpPositionOffset, 10)
 
         this.cpOKButton = config.cpOKButton
-        this.cpOKButtonText = config.cpOKButtonText
 
         this.cpCancelButton = config.cpCancelButton
-        this.cpCancelButtonText = config.cpCancelButtonText
 
         this.fallbackColor = config.cpFallbackColor || '#fff'
 
@@ -283,8 +277,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.cpMaxPresetColors = config.cpMaxPresetColors
 
         this.cpAddColorButton = config.cpAddColorButton
-        this.cpAddColorButtonText = config.cpAddColorButtonText
-        this.cpRemoveColorButtonText = config.cpRemoveColorButtonText
 
         if (!config.cpPositionRelativeToArrow) {
             this.dialogArrowOffset = 0

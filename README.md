@@ -6,13 +6,13 @@ This is a responsive color picker based on [angular2-color-picker](https://githu
 
 #### Why another rewrite?
 
- - __Responsive__: nxt-color-picker uses CSS and flex layout to ensure pixel-perfect rendering on all screen sizes and resolutions
- - __UX improvements__:
-   - slider indicator changes color based on background to maintain visibility
-   - preset colours show alpha
-   - proper support for mobile browsers
- - __Type safe__: by replacing string options with enumerators, compiler can ensure you always pass correct options to nxt-color-picker
- - __Built with Angular CLI__ to make nxt-color-picker development and testing a single-step process
+-   **Responsive**: nxt-color-picker uses CSS and flex layout to ensure pixel-perfect rendering on all screen sizes and resolutions
+-   **UX improvements**:
+    -   slider indicator changes color based on background to maintain visibility
+    -   preset colours show alpha
+    -   proper support for mobile browsers
+-   **Type safe**: by replacing string options with enumerators, compiler can ensure you always pass correct options to nxt-color-picker
+-   **Built with Angular CLI** to make nxt-color-picker development and testing a single-step process
 
 ### Quick links
 
@@ -92,14 +92,10 @@ import { ColorPickerModule } from 'nxt-color-picker';
 [cpCloseClickOutside]        // Close the color picker dialog when user clicks outside (true).
 
 [cpOKButton]                 // Show an OK / Apply button which saves the color (false).
-[cpOKButtonText]             // Button label text shown inside the OK / Apply button ('OK').
 
 [cpCancelButton]             // Show a Cancel / Reset button which resets the color (false).
-[cpCancelButtonText]         // Button label text shown inside the Cancel / Reset button ('Cancel').
 
 [cpAddColorButton]           // Show an Add Color button which add the color into preset (false).
-[cpAddColorButtonText]       // Button label text shown inside the Add Color button ('Add color to preset').
-[cpRemoveColorButtonText]    // Button label text shown inside the Remove Color button ('Remove Color').
 
 [cpMaxPresetColors]          // Use this option to set the max colors allowed in presets (6).
 

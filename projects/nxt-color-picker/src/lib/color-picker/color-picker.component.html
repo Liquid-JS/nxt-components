@@ -42,7 +42,8 @@
                 }"><button
                         *ngIf="cpAddColorButton && !(cpMaxPresetColors && (cpPresetColors?.length || 0) >= cpMaxPresetColors)"
                         type="button"
-                        [title]="cpAddColorButtonText"
+                        title="Add color to preset"
+                        i18n-title="@@nxt-color-picker.button.add-color"
                         class="color-picker__add-selected"
                         [ngClass]="{ 'color-picker__add-selected--light': alphaSliderLight }"
                         (click)="onAddPresetColor(selectedColor)"><svg xmlns="http://www.w3.org/2000/svg"
@@ -290,7 +291,8 @@
                         backgroundColor: color || ''
                     }"><button *ngIf="cpAddColorButton"
                             type="button"
-                            [title]="cpRemoveColorButtonText"
+                            title="Remove Color"
+                            i18n-title="@@nxt-color-picker.button.remove-color"
                             class="color-picker__remove-selected"
                             (click)="onRemovePresetColor(color)"><svg xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -311,9 +313,11 @@
         class="color-picker__buttons">
         <button *ngIf="cpCancelButton"
             type="button"
-            (click)="onCancel($event)">{{ cpCancelButtonText }}</button>
+            (click)="onCancel($event)"
+            i18n="@@nxt-color-picker.button.cancel">Cancel</button>
         <button *ngIf="cpOKButton"
             type="button"
-            (click)="onAccept($event)">{{ cpOKButtonText }}</button>
+            (click)="onAccept($event)"
+            i18n="@@nxt-color-picker.button.ok">OK</button>
     </div>
 </div>

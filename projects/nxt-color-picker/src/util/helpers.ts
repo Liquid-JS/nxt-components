@@ -97,12 +97,8 @@ export interface DialogConfig {
     cpPresetColors: string[],
     cpMaxPresetColors: number,
     cpOKButton: boolean,
-    cpOKButtonText: string,
     cpCancelButton: boolean,
-    cpCancelButtonText: string,
-    cpAddColorButton: boolean,
-    cpAddColorButtonText: string,
-    cpRemoveColorButtonText: string
+    cpAddColorButton: boolean
 }
 
 export function composedPath(event: Event): EventTarget[] {

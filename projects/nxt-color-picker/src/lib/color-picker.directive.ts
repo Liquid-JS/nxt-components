@@ -89,14 +89,10 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Input() cpCloseClickOutside: boolean = true
 
     @Input() cpOKButton: boolean = false
-    @Input() cpOKButtonText: string = 'OK'
 
     @Input() cpCancelButton: boolean = false
-    @Input() cpCancelButtonText: string = 'Cancel'
 
     @Input() cpAddColorButton: boolean = false
-    @Input() cpAddColorButtonText: string = 'Add color to preset'
-    @Input() cpRemoveColorButtonText: string = 'Remove color'
 
     @Input() cpMaxPresetColors: number = 6
 
