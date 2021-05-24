@@ -76,7 +76,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Input() cpPositionOffset: string = '0%'
     @Input() cpPositionRelativeToArrow: boolean = false
 
-    @Input() cpPresetLabel: string = 'Preset colors'
+    @Input() cpPresetLabel: boolean = true
     @Input() cpPresetColors: string[]
 
     @Input() cpDisableInput: boolean = false
