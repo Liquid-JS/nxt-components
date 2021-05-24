@@ -226,6 +226,15 @@
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-12.0.1.tgz#b3c1ff17e50f89b5c988e5d88bf7ee64ff9826cb"
   integrity sha512-zK4mRzPuCFnlcP+WDCQ2RhTggYTUIPmSgc6Ndcw5EzYdF+WUnjZSurbd6hAqJd5wd1PScieUU8YhoDhzHfNMSg==
 
+"@angular/localize@12.0.1":
+  version "12.0.1"
+  resolved "https://registry.yarnpkg.com/@angular/localize/-/localize-12.0.1.tgz#6477066b6e4830c9dffa931064794108961d4364"
+  integrity sha512-+nLvfbX2tQUMCDILlUOhb1o3B7DzcJgrEy3QEG3dGkT7A7RjA5zShXN+CXuaeEMlTSGURVx3IEzuudpGcgLz9Q==
+  dependencies:
+    "@babel/core" "7.8.3"
+    glob "7.1.7"
+    yargs "^16.2.0"
+
 "@angular/platform-browser-dynamic@^12.0.1":
   version "12.0.1"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-12.0.1.tgz#386442646e1fad99ba830611ba8e058a142fe04d"
@@ -259,7 +268,7 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.14.0.tgz#a901128bce2ad02565df95e6ecbf195cf9465919"
   integrity sha512-vu9V3uMM/1o5Hl5OekMUowo3FqXLJSw+s+66nt0fSWVWTtmosdzn45JHOB3cPtZoe6CTBDzvSw0RdOY85Q37+Q==
 
-"@babel/core@7.14.3", "@babel/core@^7.14.3", "@babel/core@^7.7.5", "@babel/core@^7.8.6":
+"@babel/core@7.14.3", "@babel/core@7.8.3", "@babel/core@^7.14.3", "@babel/core@^7.7.5", "@babel/core@^7.8.6":
   version "7.14.3"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.14.3.tgz#5395e30405f0776067fbd9cf0884f15bfb770a38"
   integrity sha512-jB5AmTKOCSJIZ72sd78ECEhuPiDMKlQdDI/4QRI6lzYATx5SSogS1oQA2AoPecRCknm30gHi2l+QVvNUu3wZAg==
