@@ -61,8 +61,7 @@ Use the tag `nxt-flag` with attribute `country="xx"` (where `xx` is the[ISO 3166
 
 ## Optional attributes
 
-| attribute | options                                                         | default  | description                |
-| --------- | --------------------------------------------------------------- | -------- | -------------------------- |
-| size      | `'xxs'`, `'xs'`, `'s'`, `'m'`, `'l'`, `'xl'`, `'xxl'`, <number> | `48`     | sets the flag width        |
-| format    | `'none'`, `'round'`, `'square'`                                 | `'none'` | sets the flag format       |
-| class     | <string>                                                        |          | apply custom class to flag |
+| attribute | options                                                         | default  | description          |
+| --------- | --------------------------------------------------------------- | -------- | -------------------- |
+| size      | `'xxs'`, `'xs'`, `'s'`, `'m'`, `'l'`, `'xl'`, `'xxl'`, <number> | `48`     | sets the flag width  |
+| format    | `'none'`, `'round'`, `'square'`                                 | `'none'` | sets the flag format |
