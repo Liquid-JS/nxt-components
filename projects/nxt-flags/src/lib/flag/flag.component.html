@@ -1,0 +1,8 @@
+<div *ngIf="code"
+    [ngStyle]="{
+        borderRadius: radius,
+        backgroundImage: 'url(assets/flags/' + code + '.svg)',
+        width: width + 'px',
+        height: height + 'px'
+    }"
+    class="nxt-flag {{ class }}"></div>
