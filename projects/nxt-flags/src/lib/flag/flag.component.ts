@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core'
+import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core'
 import { FlagDatabase } from '../database'
 import { FlagFormat, FlagSize } from '../types'
 
@@ -43,24 +43,33 @@ export class FlagComponent {
         }
     }
 
-    @Input() class: string = ''
-
+    @HostBinding('style.width.px')
     get width() {
         return this._size
     }
 
+    @HostBinding('style.height.px')
     get height() {
         return this._format == FlagFormat.None
             ? Math.floor(this._size / 1.5)
             : this._size
     }
 
+    @HostBinding('style.borderRadius')
     get radius() {
         return this._format == FlagFormat.Round ? '100%' : '0%'
     }
 
-    get code() {
+    @HostBinding('style.backgroundImage')
+    get image() {
+        return `url(assets/flags/${this._code}.svg)`
+    }
+
+    @HostBinding('style.display')
+    get display() {
         return this._code
+            ? ''
+            : 'none'
     }
 
     constructor() { }
