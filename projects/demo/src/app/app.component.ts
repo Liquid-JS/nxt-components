@@ -2,7 +2,6 @@ import { Component } from '@angular/core'
 import { remove as removeDiacritics } from 'diacritics'
 import * as countries from 'i18n-iso-countries'
 import locl from 'i18n-iso-countries/langs/en.json'
-import { FlagDatabase } from 'nxt-flags'
 
 countries.registerLocale(locl)
 
@@ -16,7 +15,7 @@ export class AppComponent {
     data: { code: string, name: string }[]
 
     constructor() {
-        const codes = Object.keys(FlagDatabase).filter(v => v.length == 2)
+        const codes = Object.keys(locl.countries)
         this.data = codes.map(c => ({
             code: c.toLowerCase(),
             name: countries.getName(c.toUpperCase(), 'en')
