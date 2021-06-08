@@ -1,7 +1,10 @@
 <h1>nxt-flags</h1>
 
-<input type="text"
-    [(ngModel)]="code">
+<select [(ngModel)]="code">
+    <option *ngFor="let i of data"
+        [value]="i.code">{{ i.name }} (ISO code: {{ i.code }})</option>
+</select>
+
 <h2>Format</h2>
 <h3>none</h3>
 <nxt-flag [country]="code"></nxt-flag>
