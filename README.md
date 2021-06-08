@@ -53,7 +53,7 @@ Add this lines to `angular.json`:
 
 ## Usage
 
-Use the tag `nxt-flag` with attribute `country="xx"` (where `xx` is the[ISO 3166-1-alpha-2 code](http://www.iso.org/iso/country_names_and_code_elements) of a country):
+Use the tag `nxt-flag` with attribute `country="xx"` (where `xx` is the [ISO 3166-1-alpha-2 code](http://www.iso.org/iso/country_names_and_code_elements) of a country):
 
 ```html
 <nxt-flag country="br"></nxt-flag>

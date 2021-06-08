@@ -1,9 +1,9 @@
 import { Component } from '@angular/core'
 import { remove as removeDiacritics } from 'diacritics'
-import * as countries from 'i18n-iso-countries'
+import { getName, registerLocale } from 'i18n-iso-countries'
 import locl from 'i18n-iso-countries/langs/en.json'
 
-countries.registerLocale(locl)
+registerLocale(locl)
 
 @Component({
     selector: 'app-root',
@@ -18,7 +18,7 @@ export class AppComponent {
         const codes = Object.keys(locl.countries)
         this.data = codes.map(c => ({
             code: c.toLowerCase(),
-            name: countries.getName(c.toUpperCase(), 'en')
+            name: getName(c.toUpperCase(), 'en')
         })).filter(({ name }) => !!name)
             .sort((a, b) => normalizeCompare(a.name, b.name))
     }
