@@ -178,7 +178,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             this.ignoreChanges = false
         }
 
-        if (changes.cpPresetLabel || changes.cpPresetColors && this.dialog) {
+        if ((changes.cpPresetLabel || changes.cpPresetColors) && this.dialog) {
             this.dialog.setPresetConfig(this.cpPresetLabel, this.cpPresetColors)
         }
     }
