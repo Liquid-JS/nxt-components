@@ -94,7 +94,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
     cpCancelButton: boolean
 
-    cpPresetLabel: boolean
+    cpPresetLabel: boolean | string
     cpPresetColors: string[]
     cpMaxPresetColors: number
 
@@ -298,7 +298,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.setColorFromString(this.initialColor, false, true)
     }
 
-    setPresetConfig(cpPresetLabel: boolean, cpPresetColors: string[]) {
+    setPresetConfig(cpPresetLabel: boolean | string, cpPresetColors: string[]) {
         this.cpPresetLabel = cpPresetLabel
         this.cpPresetColors = cpPresetColors
     }

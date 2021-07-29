@@ -279,8 +279,11 @@
         <div class="color-picker__separator"></div>
         <div class="color-picker__preset">
             <div *ngIf="cpPresetLabel"
-                class="color-picker__preset-label"
-                i18n="@@nxt-color-picker.preset-colors">Preset colors</div>
+                class="color-picker__preset-label">
+                <ng-container *ngIf="cpPresetLabel === true; else stringLabel"
+                    i18n="@@nxt-color-picker.preset-colors">Preset colors</ng-container>
+                <ng-template #stringLabel>{{ cpPresetLabel }}</ng-template>
+            </div>
             <div *ngIf="cpPresetColors?.length"
                 class="color-picker__preset-items">
                 <div *ngFor="let color of cpPresetColors"

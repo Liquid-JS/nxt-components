@@ -93,7 +93,7 @@ export interface DialogConfig {
     cpPosition: DialogPosition,
     cpPositionOffset: string,
     cpPositionRelativeToArrow: boolean,
-    cpPresetLabel: boolean,
+    cpPresetLabel: boolean | string,
     cpPresetColors: string[],
     cpMaxPresetColors: number,
     cpOKButton: boolean,

@@ -77,7 +77,7 @@ import { ColorPickerModule } from 'nxt-color-picker';
 [cpPositionOffset]           // Dialog offset percentage relative to the directive element (0%).
 [cpPositionRelativeToArrow]  // Dialog position is calculated relative to dialog arrow (false).
 
-[cpPresetLabel]              // Show label for preset colors (true).
+[cpPresetLabel]              // Show label for preset colors (true). If string is given, it overrides the default label.
 [cpPresetColors]             // Array of preset colors to show in the color picker dialog ([]).
 
 [cpDisableInput]             // Disables / hides the color input field from the dialog (false).
