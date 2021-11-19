@@ -97,6 +97,9 @@
                         "classPropertiesAllowed": false,
                         "allowStandaloneDeclarations": true
                     }
+                ],
+                "@typescript-eslint/naming-convention": [
+                    "off"
                 ]
             }
         },
@@ -107,7 +110,10 @@
             "extends": [
                 "plugin:@angular-eslint/template/recommended"
             ],
-            "rules": {}
+            "rules": {
+                "@angular-eslint/template/eqeqeq": "off",
+                "@angular-eslint/template/no-negated-async": "off"
+            }
         }
     ]
 }
