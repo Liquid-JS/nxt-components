@@ -115,6 +115,14 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
     @Output() cpPresetColorsChange = new EventEmitter<any[]>(true)
 
+    constructor(
+        private injector: Injector,
+        private cfr: ComponentFactoryResolver,
+        private appRef: ApplicationRef,
+        private vcRef: ViewContainerRef,
+        private elRef: ElementRef
+    ) { }
+
     @HostListener('focus', ['$event'])
     @HostListener('click', ['$event'])
     handleOpen(event: Event) {
@@ -138,14 +146,6 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             this.cpColorChange.emit(this.cpColor)
         }
     }
-
-    constructor(
-        private injector: Injector,
-        private cfr: ComponentFactoryResolver,
-        private appRef: ApplicationRef,
-        private vcRef: ViewContainerRef,
-        private elRef: ElementRef
-    ) { }
 
     ngOnDestroy() {
         if (this.cmpRef != undefined) {

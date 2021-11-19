@@ -100,6 +100,12 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
     cpAddColorButton: boolean
 
+    constructor(
+        private elRef: ElementRef,
+        private cdRef: ChangeDetectorRef,
+        private service: ColorPickerService
+    ) { }
+
     @HostListener('document:keyup.esc', ['$event'])
     onCancel(event: Event) {
         event.stopPropagation()
@@ -169,12 +175,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
             this.setDialogPosition()
         }
     }
-
-    constructor(
-        private elRef: ElementRef,
-        private cdRef: ChangeDetectorRef,
-        private service: ColorPickerService
-    ) { }
 
     ngOnInit() {
         this.slider = new SliderPosition(0, 0, 0, 0)
@@ -325,13 +325,13 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
     onDragEnd(slider: string) {
         if (this.callbacks) {
-            this.callbacks.sliderDragEnd({ slider: slider, color: this.outputColor })
+            this.callbacks.sliderDragEnd({ slider, color: this.outputColor })
         }
     }
 
     onDragStart(slider: string) {
         if (this.callbacks) {
-            this.callbacks.sliderDragStart({ slider: slider, color: this.outputColor })
+            this.callbacks.sliderDragStart({ slider, color: this.outputColor })
         }
     }
 
@@ -344,7 +344,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.format = this.dialogInputFields[nextFormat]
     }
 
-    onColorChange(value: { s: number, v: number, rgX: number, rgY: number }) {
+    onColorChange(value: { s: number; v: number; rgX: number; rgY: number }) {
         this.hsva.s = value.s / value.rgX
         this.hsva.v = value.v / value.rgY
 
@@ -367,7 +367,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onHueChange(value: { v: number, rgX: number }) {
+    onHueChange(value: { v: number; rgX: number }) {
         this.hsva.h = value.v / value.rgX
         this.sliderH = this.hsva.h
 
@@ -382,7 +382,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onValueChange(value: { v: number, rgX: number }) {
+    onValueChange(value: { v: number; rgX: number }) {
         this.hsva.v = value.v / value.rgX
 
         this.updateColorPicker()
@@ -396,7 +396,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onAlphaChange(value: { v: number, rgX: number }) {
+    onAlphaChange(value: { v: number; rgX: number }) {
         this.hsva.a = value.v / value.rgX
 
         this.updateColorPicker()
@@ -442,15 +442,15 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
             if (this.callbacks) {
                 this.callbacks.inputChanged({
                     input: 'hex',
-                    valid: valid,
-                    value: value,
+                    valid,
+                    value,
                     color: this.outputColor
                 })
             }
         }
     }
 
-    onRedInput(value: { v: number, rg: number }) {
+    onRedInput(value: { v: number; rg: number }) {
         const rgba = hsvaToRgba(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
@@ -468,14 +468,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         if (this.callbacks) {
             this.callbacks.inputChanged({
                 input: 'red',
-                valid: valid,
+                valid,
                 value: rgba.r,
                 color: this.outputColor
             })
         }
     }
 
-    onBlueInput(value: { v: number, rg: number }) {
+    onBlueInput(value: { v: number; rg: number }) {
         const rgba = hsvaToRgba(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
@@ -493,14 +493,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         if (this.callbacks) {
             this.callbacks.inputChanged({
                 input: 'blue',
-                valid: valid,
+                valid,
                 value: rgba.b,
                 color: this.outputColor
             })
         }
     }
 
-    onGreenInput(value: { v: number, rg: number }) {
+    onGreenInput(value: { v: number; rg: number }) {
         const rgba = hsvaToRgba(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
@@ -518,14 +518,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         if (this.callbacks) {
             this.callbacks.inputChanged({
                 input: 'green',
-                valid: valid,
+                valid,
                 value: rgba.g,
                 color: this.outputColor
             })
         }
     }
 
-    onHueInput(value: { v: number, rg: number }) {
+    onHueInput(value: { v: number; rg: number }) {
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
         if (valid) {
@@ -539,14 +539,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         if (this.callbacks) {
             this.callbacks.inputChanged({
                 input: 'hue',
-                valid: valid,
+                valid,
                 value: this.hsva.h,
                 color: this.outputColor
             })
         }
     }
 
-    onValueInput(value: { v: number, rg: number }) {
+    onValueInput(value: { v: number; rg: number }) {
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
         if (valid) {
@@ -558,14 +558,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         if (this.callbacks) {
             this.callbacks.inputChanged({
                 input: 'value',
-                valid: valid,
+                valid,
                 value: this.hsva.v,
                 color: this.outputColor
             })
         }
     }
 
-    onAlphaInput(value: { v: number, rg: number }) {
+    onAlphaInput(value: { v: number; rg: number }) {
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
         if (valid) {
@@ -577,14 +577,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         if (this.callbacks) {
             this.callbacks.inputChanged({
                 input: 'alpha',
-                valid: valid,
+                valid,
                 value: this.hsva.a,
                 color: this.outputColor
             })
         }
     }
 
-    onLightnessInput(value: { v: number, rg: number }) {
+    onLightnessInput(value: { v: number; rg: number }) {
         const hsla = hsva2hsla(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
@@ -602,14 +602,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         if (this.callbacks) {
             this.callbacks.inputChanged({
                 input: 'lightness',
-                valid: valid,
+                valid,
                 value: hsla.l,
                 color: this.outputColor
             })
         }
     }
 
-    onSaturationInput(value: { v: number, rg: number }) {
+    onSaturationInput(value: { v: number; rg: number }) {
         const hsla = hsva2hsla(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
@@ -627,7 +627,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         if (this.callbacks) {
             this.callbacks.inputChanged({
                 input: 'saturation',
-                valid: valid,
+                valid,
                 value: hsla.s,
                 color: this.outputColor
             })
@@ -740,9 +740,9 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         if (this.cpDialogDisplay == DialogDisplay.inline) {
             this.position = Position.relative
         } else {
-            let position = Position.static, transform = '', style
+            let position = Position.static; let transform = ''; let style
 
-            let parentNode: ParentNode = null, transformNode: ParentNode = null
+            let parentNode: ParentNode = null; let transformNode: ParentNode = null
 
             let node = this.directiveElementRef.nativeElement.parentNode
 

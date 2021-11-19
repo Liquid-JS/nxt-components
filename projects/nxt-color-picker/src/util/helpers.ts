@@ -58,9 +58,9 @@ export function sizeToString(val: any) {
     return 'auto'
 }
 
-export type CursorEvent = { v: number, rgX: number } | { v: number, rgY: number } | { v: number, s: number, rgX: number, rgY: number }
+export type CursorEvent = { v: number; rgX: number } | { v: number; rgY: number } | { v: number; s: number; rgX: number; rgY: number }
 
-export type TextEvent = string | { v: number, rg: number }
+export type TextEvent = string | { v: number; rg: number }
 
 export interface DirectiveCallbacks {
     stateChanged(state: boolean): void
@@ -75,29 +75,29 @@ export interface DirectiveCallbacks {
 }
 
 export interface DialogConfig {
-    callbacks: DirectiveCallbacks,
-    elementRef: ElementRef,
-    color: any,
-    cpWidth: string,
-    cpHeight: string,
-    cpDialogDisplay: DialogDisplay,
-    cpFallbackColor: string,
-    cpMode: ColorMode,
-    cpAlphaChannel: AlphaChannel,
-    cpOutputFormat: OutputFormat,
-    cpDisableInput: boolean,
-    cpIgnoredElements: any[],
-    cpSaveClickOutside: boolean,
-    cpCloseClickOutside: boolean,
-    cpUseRootViewContainer: boolean,
-    cpPosition: DialogPosition,
-    cpPositionOffset: string,
-    cpPositionRelativeToArrow: boolean,
-    cpPresetLabel: boolean | string,
-    cpPresetColors: string[],
-    cpMaxPresetColors: number,
-    cpOKButton: boolean,
-    cpCancelButton: boolean,
+    callbacks: DirectiveCallbacks
+    elementRef: ElementRef
+    color: any
+    cpWidth: string
+    cpHeight: string
+    cpDialogDisplay: DialogDisplay
+    cpFallbackColor: string
+    cpMode: ColorMode
+    cpAlphaChannel: AlphaChannel
+    cpOutputFormat: OutputFormat
+    cpDisableInput: boolean
+    cpIgnoredElements: any[]
+    cpSaveClickOutside: boolean
+    cpCloseClickOutside: boolean
+    cpUseRootViewContainer: boolean
+    cpPosition: DialogPosition
+    cpPositionOffset: string
+    cpPositionRelativeToArrow: boolean
+    cpPresetLabel: boolean | string
+    cpPresetColors: string[]
+    cpMaxPresetColors: number
+    cpOKButton: boolean
+    cpCancelButton: boolean
     cpAddColorButton: boolean
 }
 
