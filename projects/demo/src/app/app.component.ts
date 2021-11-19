@@ -12,7 +12,7 @@ registerLocale(locl)
 })
 export class AppComponent {
     code = 'es'
-    data: { code: string, name: string }[]
+    data: { code: string; name: string }[]
 
     constructor() {
         const codes = Object.keys(locl.countries)

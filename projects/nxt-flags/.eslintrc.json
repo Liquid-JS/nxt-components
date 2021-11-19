@@ -1,0 +1,44 @@
+{
+    "extends": "../../.eslintrc.json",
+    "ignorePatterns": [
+        "!**/*"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "*.ts"
+            ],
+            "parserOptions": {
+                "project": [
+                    "projects/nxt-flags/tsconfig.lib.json",
+                    "projects/nxt-flags/tsconfig.spec.json"
+                ],
+                "createDefaultProgram": true
+            },
+            "rules": {
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "type": "element",
+                        "prefix": "nxt",
+                        "style": "kebab-case"
+                    }
+                ],
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "type": "attribute",
+                        "prefix": "nxt",
+                        "style": "camelCase"
+                    }
+                ]
+            }
+        },
+        {
+            "files": [
+                "*.html"
+            ],
+            "rules": {}
+        }
+    ]
+}

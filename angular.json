@@ -30,14 +30,11 @@
                     }
                 },
                 "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
+                    "builder": "@angular-eslint/builder:lint",
                     "options": {
-                        "tsConfig": [
-                            "projects/nxt-flags/tsconfig.lib.json",
-                            "projects/nxt-flags/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**"
+                        "lintFilePatterns": [
+                            "projects/nxt-flags/**/*.ts",
+                            "projects/nxt-flags/**/*.html"
                         ]
                     }
                 }
@@ -130,13 +127,11 @@
                     }
                 },
                 "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
+                    "builder": "@angular-eslint/builder:lint",
                     "options": {
-                        "tsConfig": [
-                            "projects/demo/tsconfig.app.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**"
+                        "lintFilePatterns": [
+                            "projects/demo/**/*.ts",
+                            "projects/demo/**/*.html"
                         ]
                     }
                 }
@@ -145,7 +140,8 @@
     },
     "cli": {
         "packageManager": "yarn",
-        "warnings": {}
+        "warnings": {},
+        "defaultCollection": "@angular-eslint/schematics"
     },
     "schematics": {
         "@schematics/angular:component": {
