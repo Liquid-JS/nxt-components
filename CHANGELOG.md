@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/Liquid-JS/nxt-json-view/compare/v4.0.0...v4.1.0) (2021-11-19)
+
+
+### Features
+
+* update for angular 13, improve ci ([b1b7acf](https://github.com/Liquid-JS/nxt-json-view/commit/b1b7acf972f9afe3e42c6cf5fab2cb1d1f865739))
+
 # [4.0.0](https://github.com/Liquid-JS/nxt-json-view/compare/v3.0.0...v4.0.0) (2020-07-06)
 
 ### Features
