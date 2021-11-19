@@ -1,78 +1,83 @@
-[![Build Status](https://travis-ci.com/killzoner/ng-json-view.svg?branch=master)](https://travis-ci.com/killzoner/ng-json-view)
+# nxt-json-view
 
-# ng-json-view
-A JSON View component for Angular 10+ (an angular based JSON display component)
+A JSON View component for Angular 13+ (an angular based JSON display component)
+
+## Demo
+
+<https://liquid-js.github.io/nxt-json-view/>
 
 ## installation
 
-```
-npm install ng-json-view --save
+```sh
+npm install nxt-json-view --save
 ```
 
 ## use
-- Install the dependency package：`ng-json-view`
 
-```
-npm install ng-json-view --save
+-   Install the dependency package：`nxt-json-view`
+
+```sh
+npm install nxt-json-view --save
 ```
 
-- Import in module `NgxJsonViewModule`
+-   Import in module `NxtJsonViewModule`
 
-```
-import { NgxJsonViewModule } from 'ng-json-view';
+```ts
+import { NxtJsonViewModule } from 'nxt-json-view';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    NgxJsonViewModule
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        NxtJsonViewModule
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
 ```
 
-- Prepare JSON data
+-   Prepare JSON data
 
-```
+```js
 data = {
-  "name": "ng-json-view",
-  "url": "https://github.com/killzoner/ng-json-view",
-  "string": "github",
-  "number": 88,
-  "boolean": true,
-  "object": {
-      "obj1": "obj1",
-      "obj2": "obj2",
-      "object": {
-          "obj11": "obj11",
-          "obj22": "obj22"
-      },
-      "emptyArray": []
-  },
-  "array": [
-      1,
-      2,
-      3
-  ],
-  "date": new Date(),
-  "null": null
+    "name": "nxt-json-view",
+    "url": "https://github.com/killzoner/nxt-json-view",
+    "string": "github",
+    "number": 88,
+    "boolean": true,
+    "object": {
+        "obj1": "obj1",
+        "obj2": "obj2",
+        "object": {
+            "obj11": "obj11",
+            "obj22": "obj22"
+        },
+        "emptyArray": []
+    },
+    "array": [
+        1,
+        2,
+        3
+    ],
+    "date": new Date(),
+    "null": null
 };
 ```
 
-- Use on template page
+-   Use on template page
 
-```
-<ngx-json-view [data]="data"></ngx-json-view>
+```html
+<nxt-json-view [data]="data"></nxt-json-view>
 ```
 
 # Document
-- `data` - `Object` - Data
-- `levelOpen` - `number` - Initialize the number of layers to be expanded (initial value: 0)
+
+-   `data` - `Object` - Data
+-   `levelOpen` - `number` - Initialize the number of layers to be expanded (initial value: 0)
 
 # stand by
 
-- If the project is helpful to you, please click on the star,Thank you
-- If you have ideas, questions, and bugs about the project, welcome to discuss.
+-   If the project is helpful to you, please click on the star,Thank you
+-   If you have ideas, questions, and bugs about the project, welcome to discuss.

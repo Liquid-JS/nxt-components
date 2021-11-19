@@ -1,29 +1,40 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
+    "compileOnSave": false,
     "compilerOptions": {
+        "baseUrl": "./",
         "outDir": "./dist/out-tsc",
-        "baseUrl": "./src",
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
         "sourceMap": true,
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "downlevelIteration": true,
         "experimentalDecorators": true,
-        "target": "es5",
-        "removeComments": false,
-        "noImplicitAny": false,
+        "moduleResolution": "node",
+        "paths": {
+            "nxt-json-view": [
+                "dist/nxt-json-view/nxt-json-view",
+                "dist/nxt-json-view",
+                "dist/nxt-json-view/nxt-json-view",
+                "dist/nxt-json-view",
+                "dist/nxt-json-view/nxt-json-view",
+                "dist/nxt-json-view"
+            ]
+        },
+        "importHelpers": true,
+        "target": "es2017",
+        "module": "es2020",
         "lib": [
             "es2018",
             "dom"
-        ],
-        "declaration": false
+        ]
     },
     "angularCompilerOptions": {
-        "preserveWhitespaces": false,
-        "annotateForClosureCompiler": true,
-        "genDir": "dist",
-        "skipTemplateCodegen": false,
-        "strictMetadataEmit": true,
-        "fullTemplateTypeCheck": true,
+        "enableI18nLegacyMessageIdFormat": false,
         "strictInjectionParameters": true,
-        "enableIvy": true
+        "strictInputAccessModifiers": true,
+        "strictTemplates": true
     }
 }
