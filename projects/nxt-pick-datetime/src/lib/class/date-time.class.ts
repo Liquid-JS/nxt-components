@@ -124,29 +124,29 @@ export abstract class OwlDateTimeDirective<T> {
         return this._id
     }
 
-    abstract get selected(): T | null;
+    abstract get selected(): T | null
 
-    abstract get selecteds(): T[] | null;
+    abstract get selecteds(): T[] | null
 
-    abstract get dateTimeFilter(): (date: T | null) => boolean;
+    abstract get dateTimeFilter(): (date: T | null) => boolean
 
-    abstract get maxDateTime(): T | null;
+    abstract get maxDateTime(): T | null
 
-    abstract get minDateTime(): T | null;
+    abstract get minDateTime(): T | null
 
-    abstract get selectMode(): SelectMode;
+    abstract get selectMode(): SelectMode
 
-    abstract get startAt(): T | null;
+    abstract get startAt(): T | null
 
-    abstract get opened(): boolean;
+    abstract get opened(): boolean
 
-    abstract get pickerMode(): PickerMode;
+    abstract get pickerMode(): PickerMode
 
-    abstract get pickerType(): PickerType;
+    abstract get pickerType(): PickerType
 
-    abstract get isInSingleMode(): boolean;
+    abstract get isInSingleMode(): boolean
 
-    abstract get isInRangeMode(): boolean;
+    abstract get isInRangeMode(): boolean
 
     abstract select(date: T | T[]): void
 
@@ -169,8 +169,7 @@ export abstract class OwlDateTimeDirective<T> {
     /**
      * Date Time Checker to check if the give dateTime is selectable
      */
-    public dateTimeChecker = (dateTime: T) => {
-        return (
+    public dateTimeChecker = (dateTime: T) => (
             !!dateTime &&
             (!this.dateTimeFilter || this.dateTimeFilter(dateTime)) &&
             (!this.minDateTime ||
@@ -179,7 +178,6 @@ export abstract class OwlDateTimeDirective<T> {
             (!this.maxDateTime ||
                 this.dateTimeAdapter.compare(dateTime, this.maxDateTime) <= 0)
         )
-    }
 
     get disabled(): boolean {
         return false
@@ -193,17 +191,17 @@ export abstract class OwlDateTimeDirective<T> {
     ) {
         if (!this.dateTimeAdapter) {
             throw Error(
-                `OwlDateTimePicker: No provider found for DateTimeAdapter. You must import one of the following ` +
-                `modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ` +
-                `custom implementation.`
+                'OwlDateTimePicker: No provider found for DateTimeAdapter. You must import one of the following ' +
+                'modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ' +
+                'custom implementation.'
             )
         }
 
         if (!this.dateTimeFormats) {
             throw Error(
-                `OwlDateTimePicker: No provider found for OWL_DATE_TIME_FORMATS. You must import one of the following ` +
-                `modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ` +
-                `custom implementation.`
+                'OwlDateTimePicker: No provider found for OWL_DATE_TIME_FORMATS. You must import one of the following ' +
+                'modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ' +
+                'custom implementation.'
             )
         }
 

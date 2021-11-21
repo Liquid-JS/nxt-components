@@ -57,10 +57,10 @@ export class OwlYearViewComponent<T>
 
     set selecteds(values: T[]) {
         this._selecteds = []
-        for (let i = 0; i < values.length; i++) {
-            const value = this.dateTimeAdapter.deserialize(values[i])
+        values.forEach(val => {
+            const value = this.dateTimeAdapter.deserialize(val)
             this._selecteds.push(this.getValidDate(value))
-        }
+        })
 
         this.setSelectedMonths()
     }
@@ -172,6 +172,7 @@ export class OwlYearViewComponent<T>
      * Callback to invoke when a new month is selected
      * */
     @Output()
+    // eslint-disable-next-line @angular-eslint/no-output-native
     readonly change = new EventEmitter<T>()
 
     /**

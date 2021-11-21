@@ -117,6 +117,7 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
         return this._min || null
     }
 
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('min')
     set minDateTime(value: T | null) {
         this._min = this.getValidDate(this.dateTimeAdapter.deserialize(value))
@@ -130,6 +131,7 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
         return this._max || null
     }
 
+    // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('max')
     set maxDateTime(value: T | null) {
         this._max = this.getValidDate(this.dateTimeAdapter.deserialize(value))
@@ -229,8 +231,8 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
         return true
     }
 
-    private onModelChange: Function = () => { }
-    private onModelTouched: Function = () => { }
+    private onModelChange: (date: T | T[]) => void = () => { }
+    private onModelTouched: () => void = () => { }
 
     constructor(
         protected changeDetector: ChangeDetectorRef,

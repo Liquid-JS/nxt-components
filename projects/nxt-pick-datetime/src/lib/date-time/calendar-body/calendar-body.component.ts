@@ -14,7 +14,7 @@ export class CalendarCell {
 }
 
 @Component({
-    // tslint:disable-next-line:component-selector
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: '[owl-date-time-calendar-body]',
     exportAs: 'owlDateTimeCalendarBody',
     templateUrl: './calendar-body.component.html',
@@ -69,6 +69,7 @@ export class OwlCalendarBodyComponent implements OnInit {
      * Emit when a calendar cell is selected
      * */
     @Output()
+    // eslint-disable-next-line @angular-eslint/no-output-native
     public readonly select = new EventEmitter<CalendarCell>()
 
     @HostBinding('class.owl-dt-calendar-body')

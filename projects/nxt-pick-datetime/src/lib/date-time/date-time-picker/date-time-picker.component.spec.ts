@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/component-class-suffix */
 import { ENTER, ESCAPE, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
 import { OverlayContainer } from '@angular/cdk/overlay'
 import { Component, FactoryProvider, Type, ValueProvider, ViewChild } from '@angular/core'
@@ -13,29 +14,29 @@ import { OwlDateTimeTriggerDirective } from '../date-time-picker-trigger.directi
 import { OwlDateTimeModule } from '../date-time.module'
 import { OwlDateTimeComponent } from './date-time-picker.component'
 
-const JAN = 0,
-    FEB = 1,
-    MAR = 2,
-    APR = 3,
-    MAY = 4,
-    JUN = 5,
-    JUL = 6,
-    AUG = 7,
-    SEP = 8,
-    OCT = 9,
-    NOV = 10,
-    DEC = 11
+const JAN = 0
+const FEB = 1
+const MAR = 2
+const APR = 3
+const MAY = 4
+const JUN = 5
+const JUL = 6
+const AUG = 7
+const SEP = 8
+const OCT = 9
+const NOV = 10
+const DEC = 11
 
 describe('OwlDateTimeComponent', () => {
     const SUPPORTS_INTL = typeof Intl != 'undefined'
 
     // Creates a test component fixture.
-    function createComponent(
+    const createComponent = (
         component: Type<any>,
         imports: Type<any>[] = [],
         providers: (FactoryProvider | ValueProvider)[] = [],
         entryComponents: Type<any>[] = []
-    ): ComponentFixture<any> {
+    ): ComponentFixture<any> => {
         TestBed.configureTestingModule({
             imports: [
                 FormsModule,

@@ -213,8 +213,7 @@ export class OwlCalendarComponent<T>
     /**
      * Date filter for the month and year view
      */
-    public dateFilterForViews = (date: T) => {
-        return (
+    public dateFilterForViews = (date: T) => (
             !!date &&
             (!this.dateFilter || this.dateFilter(date, 'date')) &&
             (!this.minDate ||
@@ -222,7 +221,6 @@ export class OwlCalendarComponent<T>
             (!this.maxDate ||
                 this.dateTimeAdapter.compare(date, this.maxDate) <= 0)
         )
-    }
 
     /**
      * Bind class 'owl-dt-calendar' to host

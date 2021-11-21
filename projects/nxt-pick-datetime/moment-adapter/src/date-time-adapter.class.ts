@@ -39,11 +39,11 @@ function range<T>(length: number, valueFunction: (index: number) => T): T[] {
 export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
 
     private _localeData: {
-        longMonths: string[],
-        shortMonths: string[],
-        longDaysOfWeek: string[],
-        shortDaysOfWeek: string[],
-        narrowDaysOfWeek: string[],
+        longMonths: string[]
+        shortMonths: string[]
+        longDaysOfWeek: string[]
+        shortDaysOfWeek: string[]
+        narrowDaysOfWeek: string[]
         dates: string[]
     }
 

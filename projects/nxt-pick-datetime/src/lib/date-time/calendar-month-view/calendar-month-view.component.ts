@@ -419,9 +419,7 @@ export class OwlMonthViewComponent<T>
         const narrowWeekdays = this.dateTimeAdapter.getDayOfWeekNames('narrow')
         const firstDayOfWeek = this.firstDayOfWeek
 
-        const weekdays = longWeekdays.map((long, i) => {
-            return { long, short: shortWeekdays[i], narrow: narrowWeekdays[i] }
-        })
+        const weekdays = longWeekdays.map((long, i) => ({ long, short: shortWeekdays[i], narrow: narrowWeekdays[i] }))
 
         this._weekdays = weekdays
             .slice(firstDayOfWeek)

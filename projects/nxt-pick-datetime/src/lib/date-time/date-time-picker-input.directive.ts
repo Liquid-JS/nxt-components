@@ -220,16 +220,14 @@ export class OwlDateTimeInputDirective<T>
 
     private lastValueValid = true
 
-    private onModelChange: Function = () => { }
-    private onModelTouched: Function = () => { }
-    private validatorOnChange: Function = () => { }
+    private onModelChange: (date: T | T[]) => void = () => { }
+    private onModelTouched: () => void = () => { }
+    private validatorOnChange: () => void = () => { }
 
     /** The form control validator for whether the input parses. */
-    private parseValidator: ValidatorFn = (): ValidationErrors | null => {
-        return this.lastValueValid
-            ? null
-            : { owlDateTimeParse: { text: this.elmRef.nativeElement.value } }
-    }
+    private parseValidator: ValidatorFn = (): ValidationErrors | null => this.lastValueValid
+        ? null
+        : { owlDateTimeParse: { text: this.elmRef.nativeElement.value } }
 
     /** The form control validator for the min date. */
     private minValidator: ValidatorFn = (
@@ -384,17 +382,17 @@ export class OwlDateTimeInputDirective<T>
         @Optional() @Inject(OWL_DATE_TIME_FORMATS) private dateTimeFormats: OwlDateTimeFormats) {
         if (!this.dateTimeAdapter) {
             throw Error(
-                `OwlDateTimePicker: No provider found for DateTimePicker. You must import one of the following ` +
-                `modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ` +
-                `custom implementation.`
+                'OwlDateTimePicker: No provider found for DateTimePicker. You must import one of the following ' +
+                'modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ' +
+                'custom implementation.'
             )
         }
 
         if (!this.dateTimeFormats) {
             throw Error(
-                `OwlDateTimePicker: No provider found for OWL_DATE_TIME_FORMATS. You must import one of the following ` +
-                `modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ` +
-                `custom implementation.`
+                'OwlDateTimePicker: No provider found for OWL_DATE_TIME_FORMATS. You must import one of the following ' +
+                'modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ' +
+                'custom implementation.'
             )
         }
 
@@ -406,7 +404,7 @@ export class OwlDateTimeInputDirective<T>
     public ngOnInit(): void {
         if (!this.dtPicker) {
             throw Error(
-                `OwlDateTimePicker: the picker input doesn't have any associated owl-date-time component`
+                'OwlDateTimePicker: the picker input doesn\'t have any associated owl-date-time component'
             )
         }
     }

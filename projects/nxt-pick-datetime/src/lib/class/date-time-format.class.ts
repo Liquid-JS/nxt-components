@@ -1,13 +1,13 @@
 import { InjectionToken } from '@angular/core'
 
 export interface OwlDateTimeFormats {
-    parseInput: any,
-    fullPickerInput: any,
-    datePickerInput: any,
-    timePickerInput: any,
-    monthYearLabel: any,
-    dateA11yLabel: any,
-    monthYearA11yLabel: any,
+    parseInput: any
+    fullPickerInput: any
+    datePickerInput: any
+    timePickerInput: any
+    monthYearLabel: any
+    dateA11yLabel: any
+    monthYearA11yLabel: any
 }
 
 /** InjectionToken for date time picker that can be used to override default format. */

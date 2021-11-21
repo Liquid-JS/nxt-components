@@ -1,8 +1,8 @@
 import { animate, animateChild, AnimationTriggerMetadata, group, query, state, style, transition, trigger } from '@angular/animations'
 
 export const owlDateTimePickerAnimations: {
-    readonly transformPicker: AnimationTriggerMetadata;
-    readonly fadeInPicker: AnimationTriggerMetadata;
+    readonly transformPicker: AnimationTriggerMetadata
+    readonly fadeInPicker: AnimationTriggerMetadata
 } = {
 
     transformPicker: trigger('transformPicker', [

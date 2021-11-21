@@ -102,19 +102,26 @@ export class OwlDialogRef<T> {
 
     /**
      * Updates the dialog's position.
+     *
      * @param position New dialog position.
      */
     public updatePosition(position?: DialogPosition): this {
         const strategy = this.getPositionStrategy()
 
         if (position && (position.left || position.right)) {
-            position.left ? strategy.left(position.left) : strategy.right(position.right)
+            if (position.left)
+                strategy.left(position.left)
+            else
+                strategy.right(position.right)
         } else {
             strategy.centerHorizontally()
         }
 
         if (position && (position.top || position.bottom)) {
-            position.top ? strategy.top(position.top) : strategy.bottom(position.bottom)
+            if (position.top)
+                strategy.top(position.top)
+            else
+                strategy.bottom(position.bottom)
         } else {
             strategy.centerVertically()
         }
@@ -126,6 +133,7 @@ export class OwlDialogRef<T> {
 
     /**
      * Updates the dialog's width and height.
+     *
      * @param width New width of the dialog.
      * @param height New height of the dialog.
      */

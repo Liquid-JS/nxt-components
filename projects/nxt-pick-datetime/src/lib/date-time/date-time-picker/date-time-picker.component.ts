@@ -147,7 +147,10 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
     }
 
     set opened(val: boolean) {
-        val ? this.open() : this.close()
+        if (val)
+            this.open()
+        else
+            this.close()
     }
 
     /**
@@ -345,7 +348,10 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
             )
         }
 
-        this.pickerMode === 'dialog' ? this.openAsDialog() : this.openAsPopup()
+        if (this.pickerMode === 'dialog')
+            this.openAsDialog()
+        else
+            this.openAsPopup()
 
         this.pickerContainer.picker = this
 

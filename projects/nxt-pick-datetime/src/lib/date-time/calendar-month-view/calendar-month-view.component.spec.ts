@@ -7,18 +7,18 @@ import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
 import { OwlDateTimeModule } from '../date-time.module'
 import { OwlMonthViewComponent } from './calendar-month-view.component'
 
-const JAN = 0,
-    FEB = 1,
-    MAR = 2,
-    APR = 3,
-    MAY = 4,
-    JUN = 5,
-    JUL = 6,
-    AUG = 7,
-    SEP = 8,
-    OCT = 9,
-    NOV = 10,
-    DEC = 11
+const JAN = 0
+    const FEB = 1
+    const MAR = 2
+    const APR = 3
+    const MAY = 4
+    const JUN = 5
+    const JUL = 6
+    const AUG = 7
+    const SEP = 8
+    const OCT = 9
+    const NOV = 10
+    const DEC = 11
 
 describe('OwlMonthViewComponent', () => {
     beforeEach(async () => {

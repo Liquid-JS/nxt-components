@@ -73,7 +73,7 @@ export class OwlDialogService {
      * Will emit on subscribe if there are no open dialogs to begin with.
      */
 
-    afterAllClosed: Observable<{}> = defer(
+    afterAllClosed: Observable<Record<string, unknown>> = defer(
         () =>
             this._openDialogsAtThisLevel.length
                 ? this._afterAllClosed
@@ -148,6 +148,7 @@ export class OwlDialogService {
 
     /**
      * Finds an open dialog by its id.
+     *
      * @param id ID to use when looking up the dialog.
      */
     public getDialogById(id: string): OwlDialogRef<any> | undefined {
@@ -310,6 +311,7 @@ export class OwlDialogService {
 
 /**
  * Applies default options to the dialog config.
+ *
  * @param config Config to be modified.
  * @param defaultOptions Default config setting
  * @returns The new configuration object.

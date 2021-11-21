@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/component-class-suffix */
 import { Component, DebugElement, EventEmitter, NgZone } from '@angular/core'
 import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
@@ -6,28 +7,28 @@ import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
 import { OwlDateTimeModule } from '../date-time.module'
 import { OwlTimerComponent } from './timer.component'
 
-const JAN = 0,
-    FEB = 1,
-    MAR = 2,
-    APR = 3,
-    MAY = 4,
-    JUN = 5,
-    JUL = 6,
-    AUG = 7,
-    SEP = 8,
-    OCT = 9,
-    NOV = 10,
-    DEC = 11
+const JAN = 0
+const FEB = 1
+const MAR = 2
+const APR = 3
+const MAY = 4
+const JUN = 5
+const JUL = 6
+const AUG = 7
+const SEP = 8
+const OCT = 9
+const NOV = 10
+const DEC = 11
 
 class MockNgZone extends NgZone {
     onStable: EventEmitter<any> = new EventEmitter(false)
     constructor() {
         super({ enableLongStackTrace: false })
     }
-    run(fn: Function): any {
+    run(fn: () => void): any {
         return fn()
     }
-    runOutsideAngular(fn: Function): any {
+    runOutsideAngular(fn: () => void): any {
         return fn()
     }
     simulateZoneExit(): void {
@@ -118,11 +119,11 @@ describe('OwlTimerComponent', () => {
             )
             expect(arrowBtns.length).toBe(6)
 
-            for (let i = 0; i < arrowBtns.length; i++) {
-                arrowBtns[i].click()
+            arrowBtns.forEach(btn => {
+                btn.click()
                 fixture.detectChanges()
                 flush()
-            }
+            })
 
             expect(testComponent.handleSelectedChange).toHaveBeenCalledTimes(6)
         }))
