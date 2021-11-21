@@ -2317,8 +2317,6 @@ describe('OwlDateTimeComponent', () => {
     })
 })
 
-/* tslint:disable:component-class-suffix */
-
 @Component({
     template: `
         <input [owlDateTime]="dt" [value]="date">

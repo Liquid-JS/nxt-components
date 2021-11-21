@@ -336,8 +336,6 @@ describe('OwlTimerComponent', () => {
     })
 })
 
-/* tslint:disable:component-class-suffix */
-
 @Component({
     template: `
         <owl-date-time-timer

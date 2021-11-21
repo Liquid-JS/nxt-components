@@ -1,6 +1,6 @@
 {
     "name": "nxt-pick-datetime",
-    "version": "12.0.1",
+    "version": "13.0.0",
     "description": "Date time picker for Angular",
     "bugs": "https://github.com/Liquid-JS/nxt-pick-datetime/issues",
     "license": "MIT",
@@ -9,12 +9,12 @@
         "url": "https://github.com/Liquid-JS/nxt-pick-datetime.git"
     },
     "peerDependencies": {
-        "@angular/animations": "^12.0.0",
-        "@angular/common": "^12.0.0",
-        "@angular/cdk": "^12.0.0",
-        "@angular/core": "^12.0.0"
+        "@angular/animations": "^13.0.0",
+        "@angular/common": "^13.0.0",
+        "@angular/cdk": "^13.0.0",
+        "@angular/core": "^13.0.0"
     },
     "dependencies": {
-        "tslib": "^2.2.0"
+        "tslib": "^2.3.0"
     }
 }

@@ -454,8 +454,6 @@ describe('OwlCalendarComponent', () => {
     })
 })
 
-/* tslint:disable:component-class-suffix */
-
 @Component({
     template: `
         <owl-date-time-calendar
