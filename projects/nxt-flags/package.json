@@ -1,6 +1,6 @@
 {
     "name": "nxt-flags",
-    "version": "13.0.0",
+    "version": "13.0.1",
     "description": "Angular component to show country flags.",
     "bugs": "https://github.com/Liquid-JS/nxt-flags/issues",
     "license": "MIT",
@@ -14,5 +14,10 @@
     },
     "dependencies": {
         "tslib": "^2.3.0"
+    },
+    "exports": {
+        "./assets/": {
+            "default": "./assets/"
+        }
     }
 }
