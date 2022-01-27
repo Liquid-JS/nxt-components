@@ -1,16 +1,16 @@
 # Angular Dropzone Wrapper
 
-<a href="https://badge.fury.io/js/ngx-dropzone-wrapper"><img src="https://badge.fury.io/js/ngx-dropzone-wrapper.svg" align="right" alt="npm version" height="18"></a>
+<a href="https://badge.fury.io/js/nxt-dropzone-wrapper"><img src="https://badge.fury.io/js/nxt-dropzone-wrapper.svg" align="right" alt="npm version" height="18"></a>
 
 This is an Angular wrapper library for the [Dropzone](http://www.dropzonejs.com/). To use this library you should get familiar with the Dropzone documentation as well since this documentation only explains details specific to this wrapper.
 
-This documentation is for the latest 6.x.x version which requires Angular 5 or newer. For Angular 4 you need to use the latest 4.x.x version. Documentation for the 4.x.x can be found from <a href="https://github.com/zefoy/ngx-dropzone-wrapper/tree/4.x.x/">here</a>.
+This documentation is for the latest 13.x.x version which requires Angular 13 or newer.
 
 ### Quick links
 
-[Example application](https://zefoy.github.io/ngx-dropzone-wrapper/)
+[Example application](https://liquid-js.github.io/nxt-dropzone-wrapper/)
  |
-[StackBlitz example](https://stackblitz.com/github/zefoy/ngx-dropzone-wrapper/tree/master)
+[StackBlitz example](https://stackblitz.com/github/Liquid-JS/nxt-dropzone-wrapper/tree/master)
  |
 [Dropzone documentation](http://www.dropzonejs.com/#configuration-options)
 
@@ -31,7 +31,7 @@ npm run start
 ### Installing and usage
 
 ```bash
-npm install ngx-dropzone-wrapper --save
+npm install nxt-dropzone-wrapper --save
 ```
 
 ##### Load the module for your app (with global configuration):
@@ -39,9 +39,9 @@ npm install ngx-dropzone-wrapper --save
 Providing the global configuration is optional and when used you should only provide the configuration in your root module.
 
 ```javascript
-import { DropzoneModule } from 'ngx-dropzone-wrapper';
-import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
-import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+import { DropzoneModule } from 'nxt-dropzone-wrapper';
+import { DROPZONE_CONFIG } from 'nxt-dropzone-wrapper';
+import { DropzoneConfigInterface } from 'nxt-dropzone-wrapper';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
  // Change this to your upload POST address:

@@ -20,7 +20,7 @@
       "dom"
     ],
     "paths": {
-      "ngx-dropzone-wrapper": [
+      "nxt-dropzone-wrapper": [
         "dist/lib"
       ]
     }

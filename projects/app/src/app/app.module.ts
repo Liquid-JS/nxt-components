@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { DropzoneModule, DropzoneConfigInterface,
-  DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
+  DROPZONE_CONFIG } from 'nxt-dropzone-wrapper';
 
 import { AppComponent } from './app.component';
 

@@ -1,8 +1,8 @@
 {
-  "name": "ngx-dropzone-wrapper",
+  "name": "nxt-dropzone-wrapper",
   "description": "Angular wrapper library for Dropzone",
-  "bugs": "https://github.com/zefoy/ngx-dropzone-wrapper/issues",
-  "version": "10.0.1",
+  "bugs": "https://github.com/Liquid-JS/nxt-dropzone-wrapper/issues",
+  "version": "13.0.0",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -23,18 +23,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zefoy/ngx-dropzone-wrapper.git"
+    "url": "https://github.com/Liquid-JS/nxt-dropzone-wrapper.git"
   },
   "config": {
     "deployToGit": {
-      "repository": "git@github.com:zefoy/ngx-dropzone-wrapper.git",
+      "repository": "git@github.com:Liquid-JS/nxt-dropzone-wrapper.git",
       "branch": "gh-pages",
       "folder": "dist/app",
-      "script": "ng build app --configuration production -- --base-href=ngx-dropzone-wrapper --delete-output-path=false",
+      "script": "ng build app --configuration production -- --base-href=nxt-dropzone-wrapper --delete-output-path=false",
       "commit": "Publishing $npm_package_version",
       "user": {
-        "name": "ZEF Devel",
-        "email": "devel@zef.fi"
+        "name": "HitkoDev",
+        "email": "development@hitko.si"
       }
     }
   },

@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { DropzoneComponent , DropzoneDirective,
-  DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+  DropzoneConfigInterface } from 'nxt-dropzone-wrapper';
 
 @Component({
   selector: 'my-app',
