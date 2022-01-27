@@ -1,4 +1,4 @@
-# ngx-sortablejs
+# nxt-sortablejs
 
 This package is an Angular 2+ binding for [Sortable.js](https://github.com/RubaXa/Sortable). Supports standard arrays and Angular `FormArray`.
 
@@ -6,14 +6,14 @@ Previously known as angular-sortablejs.
 
 ## Demo
 
-See the library in action in a [demo](https://sortablejs.github.io/ngx-sortablejs) project (the source is located in `src` directory).
+See the library in action in a [demo](https://liquid-js.github.io/ngx-sortablejs) project (the source is located in `src` directory).
 
 Trees are also supported: [tree with fake root element (\*ngFor once, root can also be hidden anyway)](https://stackblitz.com/edit/angular-o1pq84) or [without (\*ngFor 2 times)](https://stackblitz.com/edit/angular-ptu94s).
 
 ## Installation
 
 ```sh
-npm i -S ngx-sortablejs sortablejs
+npm i -S nxt-sortablejs sortablejs
 npm i -D @types/sortablejs
 ```
 
@@ -133,7 +133,7 @@ The only thing which should be done is assigning the `group` option to the both 
 
 ```typescript
 import { Component } from '@angular/core';
-import { SortablejsOptions } from 'ngx-sortablejs';
+import { SortablejsOptions } from 'nxt-sortablejs';
 
 @Component({
     selector: 'my-app',
@@ -161,13 +161,13 @@ export class AppComponent {
 
 ### Drag & drop between two lists: clone mode
 
-The clone mode is similar to the one above (of course the proper Sortablejs settings should be used; see demo). The only important thing is that the `ngx-sortablejs` does clone the HTML element but **does not clone the variable** (or `FormControl` in case of `FormArray` input). By default the variable will be taken as is: a primitive will be copied, an object will be referenced.
+The clone mode is similar to the one above (of course the proper Sortablejs settings should be used; see demo). The only important thing is that the `nxt-sortablejs` does clone the HTML element but **does not clone the variable** (or `FormControl` in case of `FormArray` input). By default the variable will be taken as is: a primitive will be copied, an object will be referenced.
 
 If you want to clone the item being sorted in a different manner, you can provide `sortablejsCloneFunction` as a parameter. This function receives an item and should return a clone of that item.
 
 ```typescript
 import { Component } from '@angular/core';
-import { SortablejsOptions } from 'ngx-sortablejs';
+import { SortablejsOptions } from 'nxt-sortablejs';
 
 @Component({
     selector: 'my-app',

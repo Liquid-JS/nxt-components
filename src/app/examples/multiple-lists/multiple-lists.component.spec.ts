@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { SortablejsModule } from 'ngx-sortablejs';
+import { SortablejsModule } from 'nxt-sortablejs';
 import { MultipleListsComponent } from './multiple-lists.component';
 
 describe('MultipleListsComponent', () => {

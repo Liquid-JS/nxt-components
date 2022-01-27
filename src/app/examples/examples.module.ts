@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SortablejsModule } from 'ngx-sortablejs';
+import { SortablejsModule } from 'nxt-sortablejs';
 import { MultipleListsComponent } from './multiple-lists/multiple-lists.component';
 import { SimpleSortableComponent } from './simple-sortable/simple-sortable.component';
 import { SortableFormArrayComponent } from './sortable-form-array/sortable-form-array.component';

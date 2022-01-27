@@ -1,19 +1,19 @@
-# [10.1.0](https://github.com/SortableJS/ngx-sortablejs/compare/v10.0.0...v10.1.0) (2020-12-25)
+# [10.1.0](https://github.com/Liquid-JS/nxt-sortablejs/compare/v10.0.0...v10.1.0) (2020-12-25)
 
 
 ### Features
 
-* migrate to Angular 11 ([2acf12e](https://github.com/SortableJS/ngx-sortablejs/commit/2acf12e239e3f97ef4c26ea52295ae4007197798))
+* migrate to Angular 11 ([2acf12e](https://github.com/Liquid-JS/nxt-sortablejs/commit/2acf12e239e3f97ef4c26ea52295ae4007197798))
 
-# [10.0.0](https://github.com/SortableJS/ngx-sortablejs/compare/v3.1.4...v10.0.0) (2020-10-25)
+# [10.0.0](https://github.com/Liquid-JS/nxt-sortablejs/compare/v3.1.4...v10.0.0) (2020-10-25)
 
 ### Bug Fixes
 
-* sortablejs directive no longer supports runInsideAngular property (7f59f49 (https://github.com/SortableJS/ngx-sortablejs/commit/7f59f4942baa33b102ade80f70ea308f5fba1424))
+* sortablejs directive no longer supports runInsideAngular property (7f59f49 (https://github.com/Liquid-JS/nxt-sortablejs/commit/7f59f4942baa33b102ade80f70ea308f5fba1424))
 
 ### Features
 
-* migrate to angular 10 (6e65e1c (https://github.com/SortableJS/ngx-sortablejs/commit/6e65e1c6c49cb90a8e130b2607470cde5da3f952))
+* migrate to angular 10 (6e65e1c (https://github.com/Liquid-JS/nxt-sortablejs/commit/6e65e1c6c49cb90a8e130b2607470cde5da3f952))
 
 ## [3.1.4](https://github.com/SortableJS/angular-sortablejs/compare/v3.1.3...v3.1.4) (2020-01-28)
 
@@ -63,4 +63,4 @@
 
 ### BREAKING CHANGES
 
-* library name is changed from angular-sortablejs to ngx-sortablejs
+* library name is changed from angular-sortablejs to nxt-sortablejs

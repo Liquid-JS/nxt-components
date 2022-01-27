@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { SortablejsModule } from 'ngx-sortablejs';
+import { SortablejsModule } from 'nxt-sortablejs';
 import { SortableWithOptionsComponent } from './sortable-with-options.component';
 
 describe('SortableWithOptionsComponent', () => {

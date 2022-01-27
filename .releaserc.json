@@ -6,7 +6,7 @@
     [
       "@semantic-release/npm",
       {
-        "pkgRoot": "dist/ngx-sortablejs"
+        "pkgRoot": "dist/nxt-sortablejs"
       }
     ],
     [
