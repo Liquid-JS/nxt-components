@@ -6,7 +6,7 @@ Previously known as angular-sortablejs.
 
 ## Demo
 
-See the library in action in a [demo](https://liquid-js.github.io/ngx-sortablejs) project (the source is located in `src` directory).
+See the library in action in a [demo](https://liquid-js.github.io/nxt-sortablejs) project (the source is located in `src` directory).
 
 Trees are also supported: [tree with fake root element (\*ngFor once, root can also be hidden anyway)](https://stackblitz.com/edit/angular-o1pq84) or [without (\*ngFor 2 times)](https://stackblitz.com/edit/angular-ptu94s).
 
