@@ -1,10 +1,11 @@
 export enum ColorFormat {
     hex = 'hex',
     rgba = 'rgba',
-    hsla = 'hsla'
+    hsla = 'hsla',
+    cmyk = 'cmyk'
 }
 
-export const AlphaEnabledFormats = new Set([ColorFormat.hsla, ColorFormat.rgba])
+export const AlphaEnabledFormats = new Set([ColorFormat.hsla, ColorFormat.rgba, ColorFormat.cmyk])
 
 export enum OutputFormat {
     auto = 'auto',

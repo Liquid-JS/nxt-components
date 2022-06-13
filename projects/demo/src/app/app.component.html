@@ -208,8 +208,11 @@
         <div class="col-md-5">
             <input [style.background]="color10"
                 [cpColor]="color10"
-                (cpColorChange)="cmykColor=onChangeColorCmyk($event);color10=$event" />
+                [cpCmykEnabled]="true"
+                (cpCmykColorChange)="cmykValue=$event;cmykColor=onChangeColorCmyk($event)"
+                (cpColorChange)="color10=$event" />
             <div class="clearfix"></div>
+            <div>{{cmykValue}}</div>
             <div>
                 <span class="cmyk-text"
                     style="color: rgb(0,255,255);"
@@ -232,9 +235,11 @@
             <p>Change event color:</p>
             <div class="card">
                 <div class="card-body">
-                    <pre><code>&lt;input [style.background]="color"
-       [cpColor]="color"
-       (cpColorChange)="cmykColor=onChangeColorCmyk($event);color=$event"/&gt;
+                    <pre><code>&lt;input [style.background]="rgbColor"
+        [cpColor]="color"
+        [cpCmykEnabled]="true"
+        (cpCmykColorChange)="color=$event;cmykColor=onChangeColorCmyk($event)"
+        (cpColorChange)="rgbColor=$event"/&gt;
 &lt;span [style.font-size.px]="100 * cmykColor.c"/&gt;C&lt;/span/&gt;
 &lt;span [style.font-size.px]="100 * cmykColor.m"/&gt;M&lt;/span/&gt;
 &lt;span [style.font-size.px]="100 * cmykColor.y"/&gt;Y&lt;/span/&gt;
@@ -469,6 +474,13 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>cpCmykEnabled</td>
+                        <td>
+                            <b>false</b>, true<br>
+                            Enable cmyk color mode.
+                        </td>
+                    </tr>
+                    <tr>
                         <td>cpOutputFormat</td>
                         <td>
                             <b>OutputFormat.auto</b><br>
@@ -684,6 +696,12 @@
                         <td>cpColorChange</td>
                         <td>
                             Changed color value, send when color is changed. <b>(value: string)</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>cpCmykColorChange</td>
+                        <td>
+                            Changed CMYK value, send when CMYK is enabled. <b>(value: string)</b>
                         </td>
                     </tr>
                     <tr>

@@ -1,4 +1,4 @@
-import { ApplicationRef, ComponentFactoryResolver, ElementRef, Injector } from '@angular/core'
+import { ApplicationRef, ElementRef, Injector } from '@angular/core'
 import { inject } from '@angular/core/testing'
 import { ColorPickerDirective } from './color-picker.directive'
 
@@ -8,11 +8,11 @@ describe('ColorPickerDirective', () => {
 
     let directive: ColorPickerDirective
 
-    beforeEach(inject([Injector, ComponentFactoryResolver, ApplicationRef], (inj: Injector, cfr: ComponentFactoryResolver, app: ApplicationRef) => {
+    beforeEach(inject([Injector, ApplicationRef], (inj: Injector, app: ApplicationRef) => {
         parentEl = document.createElement('div')
         targetEl = document.createElement('div')
         parentEl.appendChild(targetEl)
-        directive = new ColorPickerDirective(inj, cfr, app, null, new ElementRef(targetEl))
+        directive = new ColorPickerDirective(inj, app, null, new ElementRef(targetEl))
     }))
 
     afterEach(() => {
@@ -27,7 +27,5 @@ describe('ColorPickerDirective', () => {
         document.querySelectorAll('.color-picker').forEach(el => el.remove())
     })
 
-    it('should create an instance', () => {
-        expect(directive).toBeTruthy()
-    })
+    it('should create an instance', async () => expect(directive).toBeTruthy())
 })

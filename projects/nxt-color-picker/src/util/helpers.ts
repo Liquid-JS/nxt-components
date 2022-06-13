@@ -58,12 +58,13 @@ export function sizeToString(val: any) {
     return 'auto'
 }
 
-export type CursorEvent = { v: number; rgX: number } | { v: number; rgY: number } | { v: number; s: number; rgX: number; rgY: number }
+export type CursorEvent = { v: number, rgX: number } | { v: number, rgY: number } | { v: number, s: number, rgX: number, rgY: number }
 
-export type TextEvent = string | { v: number; rg: number }
+export type TextEvent = string | { v: number, rg: number }
 
 export interface DirectiveCallbacks {
     stateChanged(state: boolean): void
+    cmykChanged(valuse: string, ignore?: boolean): void
     colorChanged(value: string, ignore?: boolean): void
     colorSelectCanceled(): void
     colorSelected(value: string): void
@@ -83,6 +84,7 @@ export interface DialogConfig {
     cpDialogDisplay: DialogDisplay
     cpFallbackColor: string
     cpMode: ColorMode
+    cpCmykEnabled: boolean
     cpAlphaChannel: AlphaChannel
     cpOutputFormat: OutputFormat
     cpDisableInput: boolean

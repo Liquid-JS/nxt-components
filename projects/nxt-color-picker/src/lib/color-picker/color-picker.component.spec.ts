@@ -1,4 +1,4 @@
-import { ApplicationRef, ComponentFactoryResolver, ElementRef, Injector } from '@angular/core'
+import { ApplicationRef, ElementRef, Injector } from '@angular/core'
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing'
 import { ColorPickerDirective } from '../color-picker.directive'
 import { SliderDirective } from '../slider.directive'
@@ -24,11 +24,11 @@ describe('ColorPickerComponent', () => {
             .compileComponents()
     })
 
-    beforeEach(inject([Injector, ComponentFactoryResolver, ApplicationRef], (inj: Injector, cfr: ComponentFactoryResolver, app: ApplicationRef) => {
+    beforeEach(inject([Injector, ApplicationRef], (inj: Injector, app: ApplicationRef) => {
         parentEl = document.createElement('div')
         targetEl = document.createElement('div')
         parentEl.appendChild(targetEl)
-        directive = new ColorPickerDirective(inj, cfr, app, null, new ElementRef(targetEl))
+        directive = new ColorPickerDirective(inj, app, null, new ElementRef(targetEl))
 
         fixture = TestBed.createComponent(ColorPickerComponent)
         component = fixture.componentInstance
@@ -49,7 +49,5 @@ describe('ColorPickerComponent', () => {
         document.querySelectorAll('.color-picker').forEach(el => el.remove())
     })
 
-    it('should create', () => {
-        expect(component).toBeTruthy()
-    })
+    it('should create', () => expect(component).toBeTruthy())
 })

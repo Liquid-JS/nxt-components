@@ -61,7 +61,7 @@ export class SliderDirective {
 
         const pageX = 'pageX' in event ? event.pageX : event.touches[0].pageX
 
-        return pageX - position.left - window.pageXOffset
+        return pageX - position.left - window.scrollX
     }
 
     private getY(event: MouseEvent | TouchEvent) {
@@ -69,7 +69,7 @@ export class SliderDirective {
 
         const pageY = 'pageX' in event ? event.pageY : event.touches[0].pageY
 
-        return pageY - position.top - window.pageYOffset
+        return pageY - position.top - window.scrollY
     }
 
     private setCursor(event: MouseEvent | TouchEvent) {

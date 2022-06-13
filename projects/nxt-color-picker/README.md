@@ -69,6 +69,8 @@ import { ColorPickerModule } from 'nxt-color-picker';
 
 [cpMode]                     // Dialog color mode: 'color', 'grayscale', 'presets' ('color').
 
+[cpCmykEnabled]              // Enables CMYK input format and color change event (false).
+
 [cpOutputFormat]             // Output color format: OutputFormat (OutputFormat.auto).
 [cpAlphaChannel]             // Alpha mode: AlphaChannel (AlphaChannel.enabled).
 [cpFallbackColor]            // Used when the color is not well-formed or is undefined ('#000').
@@ -116,6 +118,8 @@ import { ColorPickerModule } from 'nxt-color-picker';
 (cpColorSelectCancel)        // Color select canceled, send when Cancel button is pressed (void).
 (cpColorSelect)              // Selected color value, send when OK button pressed or user clicks outside (if cpSaveClickOutside is true). (value: string).
 (cpColorChange)              // Changed color value, send when color is changed (value: string).
+
+(cpCmykColorChange)          // Outputs the color as CMYK string if CMYK is enabled (value: string).
 
 (cpPresetColorsChange)       // Preset colors, send when 'Add Color' button is pressed (value: array).
 ```

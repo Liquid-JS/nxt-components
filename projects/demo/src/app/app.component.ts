@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { Cmyk, formatOutput, hsvaToRgba, OutputFormat, rgbaToCmyk, stringToHsva } from 'nxt-color-picker'
+import { Cmyk, formatOutput, OutputFormat, stringToCmyk, stringToHsva } from 'nxt-color-picker'
 
 @Component({
     selector: 'app-root',
@@ -40,7 +40,9 @@ export class AppComponent {
     color17: string = '#666666'
     color18: string = '#ff0000'
 
-    cmykColor: Cmyk = new Cmyk(0, 0, 0, 0)
+    cmykValue: string = ''
+
+    cmykColor: Cmyk = new Cmyk(0, 0, 0, 0, 1)
 
     constructor() { }
 
@@ -49,15 +51,8 @@ export class AppComponent {
     }
 
     onChangeColorCmyk(color: string) {
-        const hsva = stringToHsva(color)
-
-        if (hsva) {
-            const rgba = hsvaToRgba(hsva)
-
-            return rgbaToCmyk(rgba)
-        }
-
-        return new Cmyk(0, 0, 0, 0)
+        const cmyk = stringToCmyk(color)
+        return cmyk || new Cmyk(0, 0, 0, 0, 1)
     }
 
     onChangeColorHex8(color: string) {

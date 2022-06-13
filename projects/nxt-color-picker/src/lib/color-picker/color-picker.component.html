@@ -240,6 +240,70 @@
                             <span class="color-picker__input-field-label">A</span>
                         </div>
                     </ng-container>
+                    <ng-container *ngSwitchCase="colorFormat.cmyk">
+                        <div class="color-picker__input-field">
+                            <input type="number"
+                                pattern="[0-9]*"
+                                min="0"
+                                max="100"
+                                cpText
+                                [rg]="100"
+                                [value]="cmykText?.c"
+                                (keyup.enter)="onAccept($event)"
+                                (newValue)="onCyanInput($event)" />
+                            <span class="color-picker__input-field-label">C</span>
+                        </div>
+                        <div class="color-picker__input-field">
+                            <input type="number"
+                                pattern="[0-9]*"
+                                min="0"
+                                max="100"
+                                cpText
+                                [rg]="100"
+                                [value]="cmykText?.m"
+                                (keyup.enter)="onAccept($event)"
+                                (newValue)="onMagentaInput($event)" />
+                            <span class="color-picker__input-field-label">M</span>
+                        </div>
+                        <div class="color-picker__input-field">
+                            <input type="number"
+                                pattern="[0-9]*"
+                                min="0"
+                                max="100"
+                                cpText
+                                [rg]="100"
+                                [value]="cmykText?.y"
+                                (keyup.enter)="onAccept($event)"
+                                (newValue)="onYellowInput($event)" />
+                            <span class="color-picker__input-field-label">Y</span>
+                        </div>
+                        <div class="color-picker__input-field">
+                            <input type="number"
+                                pattern="[0-9]*"
+                                min="0"
+                                max="100"
+                                cpText
+                                [rg]="100"
+                                [value]="cmykText?.k"
+                                (keyup.enter)="onAccept($event)"
+                                (newValue)="onBlackInput($event)" />
+                            <span class="color-picker__input-field-label">K</span>
+                        </div>
+                        <div *ngIf="cpAlphaChannel != alphaChannel.disabled"
+                            class="color-picker__input-field">
+                            <input type="number"
+                                pattern="[0-9]+([\.,][0-9]{1,2})?"
+                                min="0"
+                                max="1"
+                                step="0.1"
+                                cpText
+                                [rg]="1"
+                                [value]="cmykText?.c"
+                                (keyup.enter)="onAccept($event)"
+                                (newValue)="onAlphaInput($event)" />
+                            <span class="color-picker__input-field-label">A</span>
+                        </div>
+                    </ng-container>
                     <ng-container *ngSwitchDefault>
                         <div class="color-picker__input-field">
                             <input cpText

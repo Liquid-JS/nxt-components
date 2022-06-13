@@ -1,4 +1,4 @@
-import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Injector, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewContainerRef } from '@angular/core'
+import { ApplicationRef, ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Injector, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewContainerRef } from '@angular/core'
 import { composedPath, DirectiveCallbacks } from '../util/helpers'
 import { AlphaChannel, ColorMode, DialogDisplay, DialogPosition, InputChangeEvent, OutputFormat, SliderChangeEvent } from '../util/types'
 import { ColorPickerComponent } from './color-picker/color-picker.component'
@@ -24,6 +24,11 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             } else {
                 this.cpClose.emit(this.cpColor)
             }
+        },
+        cmykChanged: (value: string, ignore: boolean = true) => {
+            this.ignoreChanges = ignore
+
+            this.cpCmykColorChange.emit(value)
         },
         colorChanged: (value: string, ignore: boolean = true) => {
             this.ignoreChanges = ignore
@@ -69,6 +74,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Input() cpMode: ColorMode = 'color'
 
     @Input() cpOutputFormat: OutputFormat = OutputFormat.auto
+    @Input() cpCmykEnabled: boolean = false
     @Input() cpAlphaChannel: AlphaChannel = AlphaChannel.enabled
     @Input() cpFallbackColor: string = ''
 
@@ -113,11 +119,12 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Output() cpColorSelectCancel = new EventEmitter<void>(true)
     @Output() cpColorChange = new EventEmitter<string>(false)
 
+    @Output() cpCmykColorChange = new EventEmitter<string>(true)
+
     @Output() cpPresetColorsChange = new EventEmitter<any[]>(true)
 
     constructor(
         private injector: Injector,
-        private cfr: ComponentFactoryResolver,
         private appRef: ApplicationRef,
         private vcRef: ViewContainerRef,
         private elRef: ElementRef
@@ -200,9 +207,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
                 }
             }
 
-            const compFactory = this.cfr.resolveComponentFactory(ColorPickerComponent)
-
-            this.cmpRef = vcRef.createComponent(compFactory, 0, this.injector, [])
+            this.cmpRef = vcRef.createComponent(ColorPickerComponent, { injector: this.injector, index: 0 })
 
             this.dialog = this.cmpRef.instance
 

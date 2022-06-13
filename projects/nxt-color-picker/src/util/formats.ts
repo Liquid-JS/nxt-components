@@ -1,5 +1,5 @@
 export class Cmyk {
-    constructor(public c: number, public m: number, public y: number, public k: number) { }
+    constructor(public c: number, public m: number, public y: number, public k: number, public a: number) { }
 }
 
 export class Hsla {

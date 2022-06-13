@@ -1,7 +1,7 @@
 import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core'
-import { denormalizeRGBA, formatOutput, hsla2hsva, hsva2hsla, hsvaToRgba, rgbaToHex, rgbaToHsva, stringToHsva } from '../../util/color'
+import { cmykToRgb, denormalizeCMYK, denormalizeRGBA, formatOutput, hsla2hsva, hsva2hsla, hsvaToRgba, normalizeCMYK, rgbaToCmyk, rgbaToHex, rgbaToHsva, stringToCmyk, stringToHsva } from '../../util/color'
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
-import { Hsla, Hsva, Rgba } from '../../util/formats'
+import { Cmyk, Hsla, Hsva, Rgba } from '../../util/formats'
 import { ColorModeInternal, composedPath, DialogConfig, DirectiveCallbacks, parseColorMode, Position, sizeToString, SliderPosition } from '../../util/helpers'
 import { AlphaChannel, AlphaEnabledFormats, ColorFormat, DialogDisplay, DialogPosition, OutputFormat } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
@@ -20,10 +20,12 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     readonly colorFormat = ColorFormat
 
     private hsva: Hsva
+    private cmyk: Cmyk
 
     private width: number
     private height: number
 
+    private cmykColor: string
     private outputColor: string
     private initialColor: string
     private fallbackColor: string
@@ -37,7 +39,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     private dialogInputFields: ColorFormat[] = [
         ColorFormat.hex,
         ColorFormat.rgba,
-        ColorFormat.hsla
+        ColorFormat.hsla,
+        ColorFormat.cmyk
     ]
 
     private useRootViewContainer: boolean = false
@@ -59,6 +62,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     hexText: string
     hexAlpha: number
 
+    cmykText: Cmyk
     hslaText: Hsla
     rgbaText: Rgba
 
@@ -76,6 +80,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
     cpMode: ColorModeInternal = ColorModeInternal.color
 
+    cpCmykEnabled: boolean
     cpAlphaChannel: AlphaChannel
     cpOutputFormat: OutputFormat
 
@@ -156,6 +161,10 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
                     this.setColorFromString(this.initialColor, false)
 
                     if (this.callbacks) {
+                        if (this.cpCmykEnabled) {
+                            this.callbacks.cmykChanged(this.cmykColor)
+                        }
+
                         this.callbacks.colorChanged(this.initialColor)
                     }
                 }
@@ -179,7 +188,9 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     ngOnInit() {
         this.slider = new SliderPosition(0, 0, 0, 0)
 
-        if (this.cpOutputFormat == OutputFormat.rgba) {
+        if (this.cpCmykEnabled) {
+            this.format = ColorFormat.cmyk
+        } else if (this.cpOutputFormat == OutputFormat.rgba) {
             this.format = ColorFormat.rgba
         } else if (this.cpOutputFormat == OutputFormat.hsla) {
             this.format = ColorFormat.hsla
@@ -245,6 +256,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
         this.cpDisableInput = config.cpDisableInput
 
+        this.cpCmykEnabled = config.cpCmykEnabled
         this.cpAlphaChannel = config.cpAlphaChannel
         this.cpOutputFormat = config.cpOutputFormat
         this.cpDialogDisplay = config.cpDialogDisplay
@@ -305,17 +317,21 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
     setColorFromString(value: string, emit: boolean = true, update: boolean = true) {
         let hsva = stringToHsva(value, true)
+        let cmyk = stringToCmyk(value, true)
 
-        if (!hsva && !this.hsva) {
+        if ((!hsva && !this.hsva) || (!cmyk && !this.cmyk)) {
             hsva = stringToHsva(this.fallbackColor, true)
+            cmyk = stringToCmyk(this.fallbackColor, true)
         }
 
-        if (hsva) {
+        if (hsva && cmyk) {
             if (this.cpAlphaChannel == AlphaChannel.disabled) {
                 hsva.a = 1
+                cmyk.a = 1
             }
 
             this.hsva = hsva
+            this.cmyk = cmyk
 
             this.sliderH = this.hsva.h
 
@@ -336,7 +352,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     onFormatToggle(change: number) {
-        const availableFormats = this.dialogInputFields.length
+        const availableFormats = this.dialogInputFields.length - (this.cpCmykEnabled ? 0 : 1)
 
         const nextFormat = (((this.dialogInputFields.indexOf(this.format) + change) %
             availableFormats) + availableFormats) % availableFormats
@@ -344,7 +360,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.format = this.dialogInputFields[nextFormat]
     }
 
-    onColorChange(value: { s: number; v: number; rgX: number; rgY: number }) {
+    onColorChange(value: { s: number, v: number, rgX: number, rgY: number }) {
         this.hsva.s = value.s / value.rgX
         this.hsva.v = value.v / value.rgY
 
@@ -367,7 +383,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onHueChange(value: { v: number; rgX: number }) {
+    onHueChange(value: { v: number, rgX: number }) {
         this.hsva.h = value.v / value.rgX
         this.sliderH = this.hsva.h
 
@@ -382,7 +398,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onValueChange(value: { v: number; rgX: number }) {
+    onValueChange(value: { v: number, rgX: number }) {
         this.hsva.v = value.v / value.rgX
 
         this.updateColorPicker()
@@ -396,7 +412,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onAlphaChange(value: { v: number; rgX: number }) {
+    onAlphaChange(value: { v: number, rgX: number }) {
         this.hsva.a = value.v / value.rgX
 
         this.updateColorPicker()
@@ -450,7 +466,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onRedInput(value: { v: number; rg: number }) {
+    onRedInput(value: { v: number, rg: number }) {
         const rgba = hsvaToRgba(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
@@ -475,7 +491,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onBlueInput(value: { v: number; rg: number }) {
+    onBlueInput(value: { v: number, rg: number }) {
         const rgba = hsvaToRgba(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
@@ -500,7 +516,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onGreenInput(value: { v: number; rg: number }) {
+    onGreenInput(value: { v: number, rg: number }) {
         const rgba = hsvaToRgba(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
@@ -525,7 +541,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onHueInput(value: { v: number; rg: number }) {
+    onHueInput(value: { v: number, rg: number }) {
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
         if (valid) {
@@ -546,7 +562,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onValueInput(value: { v: number; rg: number }) {
+    onValueInput(value: { v: number, rg: number }) {
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
         if (valid) {
@@ -565,7 +581,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onAlphaInput(value: { v: number; rg: number }) {
+    onAlphaInput(value: { v: number, rg: number }) {
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
         if (valid) {
@@ -584,7 +600,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onLightnessInput(value: { v: number; rg: number }) {
+    onLightnessInput(value: { v: number, rg: number }) {
         const hsla = hsva2hsla(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
@@ -609,7 +625,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onSaturationInput(value: { v: number; rg: number }) {
+    onSaturationInput(value: { v: number, rg: number }) {
         const hsla = hsva2hsla(this.hsva)
 
         const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
@@ -629,6 +645,82 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
                 input: 'saturation',
                 valid,
                 value: hsla.s,
+                color: this.outputColor
+            })
+        }
+    }
+
+    public onCyanInput(value: { v: number, rg: number }): void {
+        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+
+        if (valid) {
+            this.cmyk.c = value.v
+
+            this.updateColorPicker(true, true, true)
+        }
+
+        if (this.callbacks) {
+            this.callbacks.inputChanged({
+                input: 'cyan',
+                valid: true,
+                value: this.cmyk.c,
+                color: this.outputColor
+            })
+        }
+    }
+
+    public onMagentaInput(value: { v: number, rg: number }): void {
+        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+
+        if (valid) {
+            this.cmyk.m = value.v
+
+            this.updateColorPicker(true, true, true)
+        }
+
+        if (this.callbacks) {
+            this.callbacks.inputChanged({
+                input: 'magenta',
+                valid: true,
+                value: this.cmyk.m,
+                color: this.outputColor
+            })
+        }
+    }
+
+    public onYellowInput(value: { v: number, rg: number }): void {
+        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+
+        if (valid) {
+            this.cmyk.y = value.v
+
+            this.updateColorPicker(true, true, true)
+        }
+
+        if (this.callbacks) {
+            this.callbacks.inputChanged({
+                input: 'yellow',
+                valid: true,
+                value: this.cmyk.y,
+                color: this.outputColor
+            })
+        }
+    }
+
+    public onBlackInput(value: { v: number, rg: number }): void {
+        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+
+        if (valid) {
+            this.cmyk.k = value.v
+
+            this.updateColorPicker(true, true, true)
+        }
+
+        if (this.callbacks) {
+            this.callbacks.inputChanged({
+                input: 'black',
+                valid: true,
+                value: this.cmyk.k,
                 color: this.outputColor
             })
         }
@@ -679,15 +771,34 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    private updateColorPicker(emit: boolean = true, update: boolean = true) {
+    private updateColorPicker(emit: boolean = true, update: boolean = true, cmykInput: boolean = false) {
         if (this.cpMode == ColorModeInternal.grayscale) {
             this.hsva.s = 0
         }
 
+        let rgba: Rgba
+
         const lastOutput = this.outputColor
 
         const hsla = hsva2hsla(this.hsva)
-        const rgba = denormalizeRGBA(hsvaToRgba(this.hsva))
+
+        if (!this.cpCmykEnabled) {
+            rgba = denormalizeRGBA(hsvaToRgba(this.hsva))
+        } else {
+            if (!cmykInput) {
+                rgba = hsvaToRgba(this.hsva)
+
+                this.cmyk = denormalizeCMYK(rgbaToCmyk(rgba))
+            } else {
+                rgba = cmykToRgb(normalizeCMYK(this.cmyk))
+
+                this.hsva = rgbaToHsva(rgba)
+            }
+
+            rgba = denormalizeRGBA(rgba)
+
+            this.sliderH = this.hsva.h
+        }
 
         const hue = denormalizeRGBA(hsvaToRgba(new Hsva(this.sliderH || this.hsva.h, 1, 1, 1)))
 
@@ -697,7 +808,12 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
             this.rgbaText = new Rgba(rgba.r, rgba.g, rgba.b, Math.round(rgba.a * 100) / 100)
 
-            const allowHex8 = this.cpAlphaChannel == AlphaChannel.always
+            if (this.cpCmykEnabled) {
+                this.cmykText = new Cmyk(this.cmyk.c, this.cmyk.m, this.cmyk.y, this.cmyk.k,
+                    Math.round(this.cmyk.a * 100) / 100)
+            }
+
+            const allowHex8 = this.cpAlphaChannel === AlphaChannel.always
 
             this.hexText = rgbaToHex(rgba, allowHex8)
             this.hexAlpha = this.rgbaText.a
@@ -718,6 +834,19 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.outputColor = formatOutput(this.hsva, this.cpOutputFormat, this.cpAlphaChannel)
         this.selectedColor = formatOutput(this.hsva, OutputFormat.rgba, null)
 
+        if (this.format !== ColorFormat.cmyk) {
+            this.cmykColor = ''
+        } else {
+            if (this.cpAlphaChannel === AlphaChannel.always || this.cpAlphaChannel === AlphaChannel.enabled ||
+                this.cpAlphaChannel === AlphaChannel.forced) {
+                const alpha = Math.round(this.cmyk.a * 100) / 100
+
+                this.cmykColor = `cmyka(${this.cmyk.c},${this.cmyk.m},${this.cmyk.y},${this.cmyk.k},${alpha})`
+            } else {
+                this.cmykColor = `cmyk(${this.cmyk.c},${this.cmyk.m},${this.cmyk.y},${this.cmyk.k})`
+            }
+        }
+
         this.slider = new SliderPosition(
             (this.sliderH || this.hsva.h),
             this.hsva.s,
@@ -726,6 +855,10 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         )
 
         if (emit && lastOutput != this.outputColor && this.callbacks) {
+            if (this.cpCmykEnabled) {
+                this.callbacks.cmykChanged(this.cmykColor)
+            }
+
             this.callbacks.colorChanged(this.outputColor)
         }
     }
@@ -815,9 +948,10 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     private createDialogBox(element: HTMLElement, offset: boolean) {
+        const { top, left } = element.getBoundingClientRect()
         return {
-            top: element.getBoundingClientRect().top + (offset ? window.pageYOffset : 0),
-            left: element.getBoundingClientRect().left + (offset ? window.pageXOffset : 0),
+            top: top + (offset ? window.scrollY : 0),
+            left: left + (offset ? window.scrollX : 0),
             width: element.offsetWidth,
             height: element.offsetHeight
         }
