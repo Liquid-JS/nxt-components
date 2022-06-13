@@ -1,27 +1,29 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
+        "forceConsistentCasingInFileNames": true,
+        "strict": false,
+        "strictPropertyInitialization": false,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": false,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": false,
         "sourceMap": true,
+        "emitDecoratorMetadata": true,
         "declaration": false,
-        "moduleResolution": "node",
-        "experimentalDecorators": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "module": "es2020",
-        "target": "es2020",
-        "importHelpers": true,
         "downlevelIteration": true,
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "lib": [
-            "es2017",
-            "dom",
-            "esnext.asynciterable"
-        ],
-        "resolveJsonModule": true,
-        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "target": "es2020",
+        "module": "esnext",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
         "baseUrl": ".",
+        "lib": [
+            "es2020",
+            "dom"
+        ],
         "paths": {
             "nxt-color-picker": [
                 "dist/nxt-color-picker/nxt-color-picker",
@@ -33,7 +35,9 @@
         }
     },
     "angularCompilerOptions": {
-        "fullTemplateTypeCheck": true,
-        "strictInjectionParameters": true
+        "enableI18nLegacyMessageIdFormat": false,
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "strictTemplates": false
     }
 }

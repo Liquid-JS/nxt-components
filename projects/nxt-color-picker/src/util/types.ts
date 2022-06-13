@@ -22,6 +22,7 @@ export enum AlphaChannel {
 }
 
 export enum DialogPosition {
+    auto = 'auto',
     top = 'top',
     left = 'left',
     right = 'right',

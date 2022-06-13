@@ -356,6 +356,14 @@ export function formatOutput(hsva: Hsva, outputFormat: OutputFormat, alphaChanne
     }
 }
 
+export function formatCmyk(cmyk: Cmyk, alphaChannel: AlphaChannel) {
+    if (cmyk.a < 1 || alphaChannel == AlphaChannel.always) {
+        return 'cmyka(' + cmyk.c + ',' + cmyk.m + ',' + cmyk.y + ',' + cmyk.k + ',' + cmyk.a + ')'
+    } else {
+        return 'cmyka(' + cmyk.c + ',' + cmyk.m + ',' + cmyk.y + ',' + cmyk.k + ')'
+    }
+}
+
 export function calculateContrast(foreground: Rgba, background: Rgba) {
 
     if (Math.round(foreground.a * 100) < 100) {

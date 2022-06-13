@@ -1,18 +1,11 @@
-<div #dialogPopup
-    class="color-picker"
+<div class="color-picker"
     (click)="$event.stopPropagation()"
-    [ngStyle]="cpDialogDisplay == 'inline' 
-        ? {
-            visibility: hidden || !show ? 'hidden' : 'visible'
-        } 
-        : {
-            visibility: hidden || !show ? 'hidden' : 'visible',
-            'top.px': top || 0,
-            'left.px': left || 0,
-            position: position || undefined,
-            width: cpWidth || 'auto',
-            height: cpHeight || 'auto'
-        }">
+    [ngStyle]="{
+        visibility: !show ? 'hidden' : 'visible',
+        width: cpWidth || '',
+        height: cpHeight || ''
+    }"
+    *ngIf="show">
     <div *ngIf="cpDialogDisplay == dialogDisplay.popup"
         class="color-picker__arrow"
         [ngClass]="'color-picker__arrow--' + cpPosition"></div>

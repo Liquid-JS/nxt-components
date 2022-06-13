@@ -9,6 +9,7 @@
         "url": "https://github.com/Liquid-JS/nxt-color-picker.git"
     },
     "peerDependencies": {
+        "@angular/cdk": "^14.0.1",
         "@angular/common": "^14.0.1",
         "@angular/core": "^14.0.1"
     },

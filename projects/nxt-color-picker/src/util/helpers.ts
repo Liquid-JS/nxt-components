@@ -9,13 +9,6 @@ export class SliderDimension {
     constructor(public h: number, public s: number, public v: number, public a: number) { }
 }
 
-export enum Position {
-    fixed = 'fixed',
-    relative = 'relative',
-    static = 'static',
-    absolute = 'absolute'
-}
-
 export enum ColorModeInternal {
     color,
     grayscale,
@@ -93,8 +86,6 @@ export interface DialogConfig {
     cpCloseClickOutside: boolean
     cpUseRootViewContainer: boolean
     cpPosition: DialogPosition
-    cpPositionOffset: string
-    cpPositionRelativeToArrow: boolean
     cpPresetLabel: boolean | string
     cpPresetColors: string[]
     cpMaxPresetColors: number

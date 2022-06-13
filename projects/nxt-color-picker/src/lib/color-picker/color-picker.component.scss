@@ -8,8 +8,7 @@ $dark: #222222;
 $light: #dadada;
 
 .color-picker {
-    position: absolute;
-    z-index: 100000;
+    position: relative;
     user-select: none;
     background-color: $backgroundColor;
     box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
@@ -28,34 +27,6 @@ $light: #dadada;
         border-style: solid;
         position: absolute;
         z-index: 999999;
-
-        &.color-picker__arrow--top {
-            border-width: ($baseSize * 0.75) ($baseSize * 0.375);
-            border-color: $borderColor rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
-            left: $baseSize * 0.75;
-            bottom: -$baseSize * 1.5;
-        }
-
-        &.color-picker__arrow--left {
-            border-width: ($baseSize * 0.375) ($baseSize * 0.75);
-            border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $borderColor;
-            top: $baseSize * 0.75;
-            left: 230px;
-        }
-
-        &.color-picker__arrow--right {
-            border-width: ($baseSize * 0.375) ($baseSize * 0.75);
-            border-color: rgba(0, 0, 0, 0) $borderColor rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
-            top: $baseSize * 0.75;
-            left: -$baseSize * 1.5;
-        }
-
-        &.color-picker__arrow--bottom {
-            border-width: ($baseSize * 0.75) ($baseSize * 0.375);
-            border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $borderColor rgba(0, 0, 0, 0);
-            top: -$baseSize * 1.5;
-            left: $baseSize * 0.75;
-        }
     }
 
     .color-picker__cursor {
@@ -352,4 +323,58 @@ $light: #dadada;
             margin: math.div($baseSize, 4);
         }
     }
+}
+
+
+:host-context(.color-picker__arrow--top) {
+    .color-picker {
+        margin-bottom: 16px;
+    }
+
+    .color-picker__arrow {
+        border-width: ($baseSize * 0.75) ($baseSize * 0.375);
+        border-color: $borderColor rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+        left: $baseSize * 0.75;
+        bottom: -$baseSize * 1.5;
+    }
+}
+
+:host-context(.color-picker__arrow--left) {
+    
+    .color-picker {
+        margin-right: 16px;
+    }
+    .color-picker__arrow {
+        border-width: ($baseSize * 0.375) ($baseSize * 0.75);
+        border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $borderColor;
+        top: $baseSize * 0.75;
+        left: 230px;
+    }
+}
+
+:host-context(.color-picker__arrow--right){
+
+    .color-picker {
+        margin-left: 16px;
+    }
+.color-picker__arrow {
+    border-width: ($baseSize * 0.375) ($baseSize * 0.75);
+    border-color: rgba(0, 0, 0, 0) $borderColor rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    top: $baseSize * 0.75;
+    left: -$baseSize * 1.5;
+}
+}
+
+:host-context(.color-picker__arrow--bottom) {
+    
+    .color-picker {
+        margin-top: 16px;
+    }
+    .color-picker__arrow {
+    border-width: ($baseSize * 0.75) ($baseSize * 0.375);
+    border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $borderColor rgba(0, 0, 0, 0);
+    top: -$baseSize * 1.5;
+    left: $baseSize * 0.75;
+}
+
 }

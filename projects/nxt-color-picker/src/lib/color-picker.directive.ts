@@ -1,3 +1,5 @@
+import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay'
+import { ComponentPortal } from '@angular/cdk/portal'
 import { ApplicationRef, ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Injector, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewContainerRef } from '@angular/core'
 import { composedPath, DirectiveCallbacks } from '../util/helpers'
 import { AlphaChannel, ColorMode, DialogDisplay, DialogPosition, InputChangeEvent, OutputFormat, SliderChangeEvent } from '../util/types'
@@ -57,6 +59,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             this.cpPresetColorsChange.emit(value)
         }
     }
+    overlayRef: OverlayRef
 
     private get ignoredElements() {
         const ign = Array.isArray(this.cpIgnoredElements) ? this.cpIgnoredElements : [this.cpIgnoredElements]
@@ -79,8 +82,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Input() cpFallbackColor: string = ''
 
     @Input() cpPosition: DialogPosition = DialogPosition.right
-    @Input() cpPositionOffset: string = '0%'
-    @Input() cpPositionRelativeToArrow: boolean = false
+    @Input() cpPositionOffset: number = 0
 
     @Input() cpPresetLabel: boolean | string = true
     @Input() cpPresetColors: string[]
@@ -127,7 +129,8 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         private injector: Injector,
         private appRef: ApplicationRef,
         private vcRef: ViewContainerRef,
-        private elRef: ElementRef
+        private elRef: ElementRef,
+        private overlay: Overlay
     ) { }
 
     @HostListener('focus', ['$event'])
@@ -155,9 +158,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     }
 
     ngOnDestroy() {
-        if (this.cmpRef != undefined) {
-            this.cmpRef.destroy()
-        }
+        this.dispose()
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -188,34 +189,24 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         if ((changes.cpPresetLabel || changes.cpPresetColors) && this.dialog) {
             this.dialog.setPresetConfig(this.cpPresetLabel, this.cpPresetColors)
         }
+
+        if (changes.cpDialogDisplay) {
+            this.dispose()
+            this.create()
+        }
+
+        if ((changes.cpPosition || changes.cpPositionOffset) && this.cpDialogDisplay == DialogDisplay.popup) {
+            if (this.overlayRef) {
+                this.overlayRef.updatePositionStrategy(this.overlay.position()
+                    .flexibleConnectedTo(this.elRef)
+                    .withPositions(this.getPositions(this.cpPositionOffset)))
+            }
+        }
     }
 
     openDialog() {
         if (!this.dialogCreated) {
-            let vcRef = this.vcRef
-
-            this.dialogCreated = true
-
-            if (this.cpUseRootViewContainer && this.cpDialogDisplay != DialogDisplay.inline) {
-                const classOfRootComponent = this.appRef.componentTypes[0]
-                const appInstance = this.injector.get(classOfRootComponent)
-
-                vcRef = appInstance.vcRef || appInstance.viewContainerRef || this.vcRef
-
-                if (vcRef == this.vcRef) {
-                    console.warn('You are using cpUseRootViewContainer, but the root component is not exposing viewContainerRef! Please expose it by adding \'vcRef: ViewContainerRef\' to the constructor.')
-                }
-            }
-
-            this.cmpRef = vcRef.createComponent(ColorPickerComponent, { injector: this.injector, index: 0 })
-
-            this.dialog = this.cmpRef.instance
-
-            this.setupDialog()
-
-            if (this.vcRef != vcRef) {
-                this.cmpRef.changeDetectorRef.detectChanges()
-            }
+            this.create()
         } else if (this.dialog) {
             this.dialog.openDialog(this.cpColor)
         }
@@ -227,9 +218,109 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         }
     }
 
+    private dispose() {
+        if (this.cmpRef)
+            this.cmpRef.destroy()
+        if (this.overlayRef)
+            this.overlayRef.dispose()
+
+        this.cmpRef = undefined
+        this.overlayRef = undefined
+    }
+
+    private create() {
+        let vcRef = this.vcRef
+
+        this.dialogCreated = true
+
+        if (this.cpUseRootViewContainer && this.cpDialogDisplay != DialogDisplay.inline) {
+            const classOfRootComponent = this.appRef.componentTypes[0]
+            const appInstance = this.injector.get(classOfRootComponent)
+
+            vcRef = appInstance.vcRef || appInstance.viewContainerRef || this.vcRef
+
+            if (vcRef == this.vcRef) {
+                console.warn('You are using cpUseRootViewContainer, but the root component is not exposing viewContainerRef! Please expose it by adding \'vcRef: ViewContainerRef\' to the constructor.')
+            }
+        }
+
+        if (this.cpDialogDisplay != DialogDisplay.inline) {
+            const pos = this.overlay.position()
+                .flexibleConnectedTo(this.elRef)
+                .withFlexibleDimensions(false)
+                .withPush(false)
+                .withPositions(this.getPositions(this.cpPositionOffset))
+            this.overlayRef = this.overlay.create({ positionStrategy: pos, scrollStrategy: this.overlay.scrollStrategies.reposition({ autoClose: true }) })
+            this.cmpRef = this.overlayRef.attach(new ComponentPortal(ColorPickerComponent, null, this.injector))
+        } else {
+            this.cmpRef = vcRef.createComponent(ColorPickerComponent, { injector: this.injector, index: 0 })
+        }
+
+        this.dialog = this.cmpRef.instance
+
+        this.setupDialog()
+
+        if (this.vcRef != vcRef) {
+            this.cmpRef.changeDetectorRef.detectChanges()
+        }
+    }
+
     private setupDialog() {
         if (this.dialog) {
             this.dialog.setupDialog({ ...this, callbacks: this._callbacks, elementRef: this.elRef, color: this.cpColor })
         }
+    }
+
+    private getPositions(offset = 0) {
+        const pos: ConnectedPosition[] = []
+        const position = this.cpPosition || DialogPosition.auto
+
+        const bb = this.elRef.nativeElement.getBoundingClientRect()
+
+        if (position == DialogPosition.auto || position == DialogPosition.bottom) {
+            pos.push({
+                originX: 'start',
+                originY: 'bottom',
+                overlayX: 'start',
+                overlayY: 'top',
+                panelClass: 'color-picker__arrow--bottom',
+                offsetY: bb.height * offset
+            })
+        }
+
+        if (position == DialogPosition.auto || position == DialogPosition.top) {
+            pos.push({
+                originX: 'start',
+                originY: 'top',
+                overlayX: 'start',
+                overlayY: 'bottom',
+                panelClass: 'color-picker__arrow--top',
+                offsetY: -bb.height * offset
+            })
+        }
+
+        if (position == DialogPosition.auto || position == DialogPosition.left) {
+            pos.push({
+                originX: 'start',
+                originY: 'top',
+                overlayX: 'end',
+                overlayY: 'top',
+                panelClass: 'color-picker__arrow--left',
+                offsetX: -bb.width * offset
+            })
+        }
+
+        if (position == DialogPosition.auto || position == DialogPosition.right) {
+            pos.push({
+                originX: 'end',
+                originY: 'top',
+                overlayX: 'start',
+                overlayY: 'top',
+                panelClass: 'color-picker__arrow--right',
+                offsetX: bb.width * offset
+            })
+        }
+
+        return pos
     }
 }

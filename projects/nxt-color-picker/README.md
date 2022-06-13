@@ -76,8 +76,7 @@ import { ColorPickerModule } from 'nxt-color-picker';
 [cpFallbackColor]            // Used when the color is not well-formed or is undefined ('#000').
 
 [cpPosition]                 // Dialog position: DialogPosition (DialogPosition.right).
-[cpPositionOffset]           // Dialog offset percentage relative to the directive element (0%).
-[cpPositionRelativeToArrow]  // Dialog position is calculated relative to dialog arrow (false).
+[cpPositionOffset]           // Dialog offset percentage relative to the directive element (0).
 
 [cpPresetLabel]              // Show label for preset colors (true). If string is given, it overrides the default label.
 [cpPresetColors]             // Array of preset colors to show in the color picker dialog ([]).

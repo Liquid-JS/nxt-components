@@ -124,8 +124,7 @@
             <span class="change-me"
                 [style.color]="color6"
                 [cpPosition]="'bottom'"
-                [cpPositionOffset]="'50%'"
-                [cpPositionRelativeToArrow]="true"
+                [cpPositionOffset]="0.5"
                 [(cpColor)]="color6">Change me!</span>
         </div>
         <div class="col-md-7">
@@ -134,8 +133,7 @@
                 <div class="card-body">
                     <pre><code>&lt;span [style.color]="color"
       [cpPosition]="'bottom'"
-      [cpPositionOffset]="'50%'"
-      [cpPositionRelativeToArrow]="true"
+      [cpPositionOffset]="0.5"
       [(cpColor)]="color"&gt;Change me!&lt;/span&gt;</code></pre>
                 </div>
             </div>
@@ -520,16 +518,8 @@
                     <tr>
                         <td>cpPositionOffset</td>
                         <td>
-                            <b>'0%'</b><br>
+                            <b>0</b><br>
                             Dialog offset (percent) relative to the element that contains the directive.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>cpPositionRelativeToArrow</td>
-                        <td>
-                            <b>false</b>, true <br>
-                            Dialog position is calculated relative to the dialog (false) or relative to the dialog arrow
-                            (true).
                         </td>
                     </tr>
                     <tr>

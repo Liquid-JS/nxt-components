@@ -1,8 +1,8 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core'
-import { cmykToRgb, denormalizeCMYK, denormalizeRGBA, formatOutput, hsla2hsva, hsva2hsla, hsvaToRgba, normalizeCMYK, rgbaToCmyk, rgbaToHex, rgbaToHsva, stringToCmyk, stringToHsva } from '../../util/color'
+import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core'
+import { cmykToRgb, denormalizeCMYK, denormalizeRGBA, formatCmyk, formatOutput, hsla2hsva, hsva2hsla, hsvaToRgba, normalizeCMYK, rgbaToCmyk, rgbaToHex, rgbaToHsva, stringToCmyk, stringToHsva } from '../../util/color'
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Cmyk, Hsla, Hsva, Rgba } from '../../util/formats'
-import { ColorModeInternal, composedPath, DialogConfig, DirectiveCallbacks, parseColorMode, Position, sizeToString, SliderPosition } from '../../util/helpers'
+import { ColorModeInternal, composedPath, DialogConfig, DirectiveCallbacks, parseColorMode, sizeToString, SliderPosition } from '../../util/helpers'
 import { AlphaChannel, AlphaEnabledFormats, ColorFormat, DialogDisplay, DialogPosition, OutputFormat } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
 
@@ -22,19 +22,12 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     private hsva: Hsva
     private cmyk: Cmyk
 
-    private width: number
-    private height: number
-
     private cmykColor: string
     private outputColor: string
     private initialColor: string
     private fallbackColor: string
 
     private sliderH: number
-    private directiveElementRef: ElementRef
-
-    private dialogArrowSize: number = 16
-    private dialogArrowOffset: number = 16
 
     private dialogInputFields: ColorFormat[] = [
         ColorFormat.hex,
@@ -43,18 +36,9 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         ColorFormat.cmyk
     ]
 
-    private useRootViewContainer: boolean = false
-
     private callbacks: DirectiveCallbacks
 
-    @ViewChild('dialogPopup', { static: true }) private dialogElement: ElementRef<HTMLDivElement>
-
     show: boolean
-    hidden: boolean
-
-    top: number
-    left: number
-    position: Position
 
     format: ColorFormat
     slider: SliderPosition
@@ -93,7 +77,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     cpCloseClickOutside: boolean
 
     cpPosition: DialogPosition = DialogPosition.right
-    cpPositionOffset: number
 
     cpOKButton: boolean
 
@@ -178,13 +161,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    @HostListener('window:resize')
-    onResize() {
-        if (this.position == Position.fixed) {
-            this.setDialogPosition()
-        }
-    }
-
     ngOnInit() {
         this.slider = new SliderPosition(0, 0, 0, 0)
 
@@ -205,32 +181,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.closeDialog()
     }
 
-    ngAfterViewChecked() {
-        if (this.show && this.dialogElement && this.dialogElement.nativeElement) {
-            this.updateSize()
-
-            if (this.hidden) {
-                this.hidden = false
-                this.cdRef.detectChanges()
-            }
-        }
-    }
-
-    private updateSize() {
-        const w = this.dialogElement.nativeElement.offsetWidth
-        const h = this.dialogElement.nativeElement.offsetHeight
-
-        if (w != this.width || h != this.height) {
-            this.width = w
-            this.height = h
-            if (this.cpDialogDisplay != DialogDisplay.inline) {
-                this.setDialogPosition()
-                this.cdRef.detectChanges()
-            }
-            return true
-        }
-        return false
-    }
+    ngAfterViewChecked() { }
 
     openDialog(color: any, emit: boolean = true) {
         this.service.setActive(this)
@@ -252,7 +203,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.cpMode = parseColorMode(config.cpMode)
 
         this.callbacks = config.callbacks
-        this.directiveElementRef = config.elementRef
 
         this.cpDisableInput = config.cpDisableInput
 
@@ -270,13 +220,10 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.cpSaveClickOutside = config.cpSaveClickOutside
         this.cpCloseClickOutside = config.cpCloseClickOutside
 
-        this.useRootViewContainer = config.cpUseRootViewContainer
-
         this.cpWidth = sizeToString(config.cpWidth)
         this.cpHeight = sizeToString(config.cpHeight)
 
         this.cpPosition = config.cpPosition
-        this.cpPositionOffset = parseInt(config.cpPositionOffset, 10)
 
         this.cpOKButton = config.cpOKButton
 
@@ -289,15 +236,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.cpMaxPresetColors = config.cpMaxPresetColors
 
         this.cpAddColorButton = config.cpAddColorButton
-
-        if (!config.cpPositionRelativeToArrow) {
-            this.dialogArrowOffset = 0
-        }
-
-        if (config.cpDialogDisplay == DialogDisplay.inline) {
-            this.dialogArrowSize = 0
-            this.dialogArrowOffset = 0
-        }
 
         if (config.cpOutputFormat == OutputFormat.hex &&
             config.cpAlphaChannel != AlphaChannel.always && config.cpAlphaChannel != AlphaChannel.forced) {
@@ -319,23 +257,23 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         let hsva = stringToHsva(value, true)
         let cmyk = stringToCmyk(value, true)
 
-        if ((!hsva && !this.hsva) || (!cmyk && !this.cmyk)) {
+        if ((!hsva && !this.hsva) && (!cmyk && !this.cmyk)) {
             hsva = stringToHsva(this.fallbackColor, true)
             cmyk = stringToCmyk(this.fallbackColor, true)
         }
 
-        if (hsva && cmyk) {
+        if (hsva || cmyk) {
             if (this.cpAlphaChannel == AlphaChannel.disabled) {
                 hsva.a = 1
                 cmyk.a = 1
             }
 
             this.hsva = hsva
-            this.cmyk = cmyk
+            this.cmyk = cmyk ? denormalizeCMYK(cmyk) : cmyk
 
             this.sliderH = this.hsva.h
 
-            this.updateColorPicker(emit, update)
+            this.updateColorPicker(emit, update, (cmyk && this.cpCmykEnabled))
         }
     }
 
@@ -749,7 +687,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     private openColorPicker() {
         if (!this.show) {
             this.show = true
-            this.hidden = true
 
             if (this.callbacks) {
                 this.callbacks.stateChanged(true)
@@ -837,14 +774,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         if (this.format !== ColorFormat.cmyk) {
             this.cmykColor = ''
         } else {
-            if (this.cpAlphaChannel === AlphaChannel.always || this.cpAlphaChannel === AlphaChannel.enabled ||
-                this.cpAlphaChannel === AlphaChannel.forced) {
-                const alpha = Math.round(this.cmyk.a * 100) / 100
-
-                this.cmykColor = `cmyka(${this.cmyk.c},${this.cmyk.m},${this.cmyk.y},${this.cmyk.k},${alpha})`
-            } else {
-                this.cmykColor = `cmyk(${this.cmyk.c},${this.cmyk.m},${this.cmyk.y},${this.cmyk.k})`
-            }
+            this.cmykColor = formatCmyk(this.cmyk, this.cpAlphaChannel)
         }
 
         this.slider = new SliderPosition(
@@ -865,95 +795,5 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
     fill(n: number) {
         return new Array(n).fill(1)
-    }
-
-    // Private helper functions for the color picker dialog positioning
-
-    private setDialogPosition() {
-        if (this.cpDialogDisplay == DialogDisplay.inline) {
-            this.position = Position.relative
-        } else {
-            let position = Position.static; let transform = ''; let style
-
-            let parentNode: ParentNode = null; let transformNode: ParentNode = null
-
-            let node = this.directiveElementRef.nativeElement.parentNode
-
-            const dialogHeight = this.dialogElement.nativeElement.offsetHeight
-
-            while (node != null && node.tagName != 'HTML') {
-                style = window.getComputedStyle(node)
-                position = style.getPropertyValue('position')
-                transform = style.getPropertyValue('transform')
-
-                if (position != Position.static && parentNode == null) {
-                    parentNode = node
-                }
-
-                if (transform && transform != 'none' && transformNode == null) {
-                    transformNode = node
-                }
-
-                if (position == Position.fixed) {
-                    parentNode = transformNode
-
-                    break
-                }
-
-                node = node.parentNode
-            }
-
-            const boxDirective = this.createDialogBox(this.directiveElementRef.nativeElement, (position != Position.fixed))
-
-            if (this.useRootViewContainer || (position == Position.fixed && (!parentNode || parentNode instanceof HTMLUnknownElement))) {
-                this.top = boxDirective.top
-                this.left = boxDirective.left
-            } else {
-                if (parentNode == null) {
-                    parentNode = node
-                }
-
-                const boxParent = this.createDialogBox(parentNode as HTMLElement, (position != Position.fixed))
-
-                this.top = boxDirective.top - boxParent.top
-                this.left = boxDirective.left - boxParent.left
-            }
-
-            if (position == Position.fixed) {
-                this.position = Position.fixed
-            }
-
-            switch (this.cpPosition) {
-                case DialogPosition.left:
-                    this.top += boxDirective.height * this.cpPositionOffset / 100 - this.dialogArrowOffset
-                    this.left -= this.width + this.dialogArrowSize - 2
-                    break
-
-                case DialogPosition.top:
-                    this.top -= dialogHeight + this.dialogArrowSize
-                    this.left += this.cpPositionOffset / 100 * boxDirective.width - this.dialogArrowOffset
-                    break
-
-                case DialogPosition.bottom:
-                    this.top += boxDirective.height + this.dialogArrowSize
-                    this.left += this.cpPositionOffset / 100 * boxDirective.width - this.dialogArrowOffset
-                    break
-
-                default:
-                    this.top += boxDirective.height * this.cpPositionOffset / 100 - this.dialogArrowOffset
-                    this.left += boxDirective.width + this.dialogArrowSize - 2
-                    break
-            }
-        }
-    }
-
-    private createDialogBox(element: HTMLElement, offset: boolean) {
-        const { top, left } = element.getBoundingClientRect()
-        return {
-            top: top + (offset ? window.scrollY : 0),
-            left: left + (offset ? window.scrollX : 0),
-            width: element.offsetWidth,
-            height: element.offsetHeight
-        }
     }
 }
