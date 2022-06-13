@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $borderColor: #999;
 $backgroundColor: #fff;
 $baseSize: 16px;
@@ -63,11 +65,11 @@ $light: #dadada;
         width: $baseSize;
         height: $baseSize;
         border: $dark solid 2px;
-        margin: 0 (-$baseSize / 2);
+        margin: 0 math.div(-$baseSize, 2);
         transition: border 0.2s linear;
 
         &.color-picker__cursor--sv {
-            margin: -$baseSize / 2;
+            margin: math.div(-$baseSize, 2);
         }
 
         &.color-picker__cursor--light {
@@ -89,16 +91,16 @@ $light: #dadada;
 
     .color-picker__controls {
         display: flex;
-        margin: $baseSize / 2;
+        margin: math.div($baseSize, 2);
         align-items: center;
 
         .color-picker__selected {
-            margin: $baseSize / 4;
+            margin: math.div($baseSize, 4);
             flex: (3 * $baseSize) 0 0;
         }
 
         .color-picker__hav {
-            margin: -$baseSize / 4;
+            margin: math.div(-$baseSize, 4);
             margin-left: 0px;
             flex: auto 1 1;
         }
@@ -114,7 +116,7 @@ $light: #dadada;
         background-size: $baseSize;
         background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cmVjdCBmaWxsPSIjQ0NDQ0NDIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiLz48cmVjdCB4PSI1MCIgeT0iNTAiIGZpbGw9IiNDQ0NDQ0MiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIvPjxyZWN0IHk9IjUwIiBmaWxsPSIjRkZGRkZGIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiLz48cmVjdCB4PSI1MCIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIi8+PC9zdmc+");
         background-repeat: repeat;
-        box-shadow: 0 0 ($baseSize / 2) (-$baseSize / 8) rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 math.div($baseSize, 2) math.div(-$baseSize, 8) rgba(0, 0, 0, 0.5);
 
         div {
             width: 100%;
@@ -156,12 +158,12 @@ $light: #dadada;
         width: 100%;
         flex: 100% 1 1;
         height: $baseSize;
-        margin: $baseSize / 2;
+        margin: math.div($baseSize, 2);
         position: relative;
 
         &.color-picker__slider--hue {
             background-size: 100% 100%;
-            background-image: linear-gradient(to right, rgba(255, 0, 0, 1) 0%, rgba(255, 255, 0, 1) (100% / 6), rgba(0, 255, 0, 1) (100% / 3), rgba(0, 255, 255, 1) 50%, rgba(0, 0, 255, 1) (50% + 100% / 6), rgba(255, 0, 255, 1) (50% + 100% / 3), rgba(255, 0, 0, 1) 100%);
+            background-image: linear-gradient(to right, rgba(255, 0, 0, 1) 0%, rgba(255, 255, 0, 1) math.div(100%, 6), rgba(0, 255, 0, 1) math.div(100%, 3), rgba(0, 255, 255, 1) 50%, rgba(0, 0, 255, 1) (50% + math.div(100%, 6)), rgba(255, 0, 255, 1) (50% + math.div(100%, 3)), rgba(255, 0, 0, 1) 100%);
         }
 
         &.color-picker__slider--value {
@@ -202,7 +204,7 @@ $light: #dadada;
         display: flex;
 
         .color-picker__input-field {
-            margin: $baseSize / 4;
+            margin: math.div($baseSize, 4);
             display: flex;
             flex-wrap: wrap;
             align-items: flex-start;
@@ -236,7 +238,7 @@ $light: #dadada;
                 flex: 100% 1 1;
                 display: block;
                 text-align: center;
-                margin-top: $baseSize / 4;
+                margin-top: math.div($baseSize, 4);
             }
         }
     }
@@ -244,7 +246,7 @@ $light: #dadada;
     .color-picker__input-type {
         width: 1.5 * $baseSize;
         height: 1.5 * $baseSize;
-        margin-top: $baseSize / 4;
+        margin-top: math.div($baseSize, 4);
         display: flex;
         flex-wrap: wrap;
         background-size: contain;
@@ -263,20 +265,20 @@ $light: #dadada;
 
     .color-picker__separator {
         border-top: 1px solid $borderColor;
-        margin-left: $baseSize / 2;
-        margin-right: $baseSize / 2;
+        margin-left: math.div($baseSize, 2);
+        margin-right: math.div($baseSize, 2);
         flex: 100% 1 1;
     }
 
     .color-picker__preset {
         display: flex;
-        margin: $baseSize / 2;
+        margin: math.div($baseSize, 2);
         align-items: center;
         flex-wrap: wrap;
     }
 
     .color-picker__preset-label {
-        margin: $baseSize / 4;
+        margin: math.div($baseSize, 4);
         flex: 100% 1 1;
     }
 
@@ -291,8 +293,8 @@ $light: #dadada;
             flex: ($baseSize * 1.25) 1 1;
             background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cmVjdCBmaWxsPSIjQ0NDQ0NDIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiLz48cmVjdCB4PSI1MCIgeT0iNTAiIGZpbGw9IiNDQ0NDQ0MiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIvPjxyZWN0IHk9IjUwIiBmaWxsPSIjRkZGRkZGIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiLz48cmVjdCB4PSI1MCIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIi8+PC9zdmc+");
             background-size: 100% 100%;
-            margin: $baseSize / 4;
-            border-radius: $baseSize / 4;
+            margin: math.div($baseSize, 4);
+            border-radius: math.div($baseSize, 4);
             border: 1px solid $borderColor;
             cursor: pointer;
 
@@ -300,7 +302,7 @@ $light: #dadada;
                 position: relative;
                 width: 100%;
                 padding-bottom: 100%;
-                border-radius: calc(#{$baseSize / 4} - 1px);
+                border-radius: calc(#{math.div($baseSize, 4)} - 1px);
             }
 
             &:empty {
@@ -320,7 +322,7 @@ $light: #dadada;
         transition: color 0.2s linear;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 0 ($baseSize / 2) (-$baseSize / 8) rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 math.div($baseSize, 2) math.div(-$baseSize, 8) rgba(0, 0, 0, 0.5);
         position: absolute;
         width: $baseSize * 0.75;
         height: $baseSize * 0.75;
@@ -339,7 +341,7 @@ $light: #dadada;
 
     .color-picker__buttons {
         display: flex;
-        margin: $baseSize / 2;
+        margin: math.div($baseSize, 2);
         align-items: center;
         flex-wrap: wrap;
         justify-content: flex-end;
@@ -347,7 +349,7 @@ $light: #dadada;
 
         button {
             flex: auto 0 0;
-            margin: $baseSize / 4;
+            margin: math.div($baseSize, 4);
         }
     }
 }

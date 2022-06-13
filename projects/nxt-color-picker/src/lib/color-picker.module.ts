@@ -17,9 +17,6 @@ import { TextDirective } from './text.directive'
     ],
     exports: [
         ColorPickerDirective
-    ],
-    entryComponents: [
-        ColorPickerComponent
     ]
 })
 export class ColorPickerModule { }
