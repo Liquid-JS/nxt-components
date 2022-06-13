@@ -72,7 +72,7 @@ $light: #dadada;
 
         .color-picker__hav {
             margin: math.div(-$baseSize, 4);
-            margin-left: 0px;
+            margin-left: 0;
             flex: auto 1 1;
         }
     }
@@ -110,7 +110,7 @@ $light: #dadada;
         height: 100%;
 
         svg {
-            fill: currentColor;
+            fill: currentcolor;
             width: 1.5 * $baseSize;
             height: auto;
         }
@@ -304,7 +304,7 @@ $light: #dadada;
         display: flex;
 
         svg {
-            fill: currentColor;
+            fill: currentcolor;
             width: 100%;
             height: auto;
         }
@@ -325,7 +325,6 @@ $light: #dadada;
     }
 }
 
-
 :host-context(.color-picker__arrow--top) {
     .color-picker {
         margin-bottom: 16px;
@@ -340,10 +339,10 @@ $light: #dadada;
 }
 
 :host-context(.color-picker__arrow--left) {
-    
     .color-picker {
         margin-right: 16px;
     }
+
     .color-picker__arrow {
         border-width: ($baseSize * 0.375) ($baseSize * 0.75);
         border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $borderColor;
@@ -352,29 +351,28 @@ $light: #dadada;
     }
 }
 
-:host-context(.color-picker__arrow--right){
-
+:host-context(.color-picker__arrow--right) {
     .color-picker {
         margin-left: 16px;
     }
-.color-picker__arrow {
-    border-width: ($baseSize * 0.375) ($baseSize * 0.75);
-    border-color: rgba(0, 0, 0, 0) $borderColor rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
-    top: $baseSize * 0.75;
-    left: -$baseSize * 1.5;
-}
+
+    .color-picker__arrow {
+        border-width: ($baseSize * 0.375) ($baseSize * 0.75);
+        border-color: rgba(0, 0, 0, 0) $borderColor rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+        top: $baseSize * 0.75;
+        left: -$baseSize * 1.5;
+    }
 }
 
 :host-context(.color-picker__arrow--bottom) {
-    
     .color-picker {
         margin-top: 16px;
     }
-    .color-picker__arrow {
-    border-width: ($baseSize * 0.75) ($baseSize * 0.375);
-    border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $borderColor rgba(0, 0, 0, 0);
-    top: -$baseSize * 1.5;
-    left: $baseSize * 0.75;
-}
 
+    .color-picker__arrow {
+        border-width: ($baseSize * 0.75) ($baseSize * 0.375);
+        border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $borderColor rgba(0, 0, 0, 0);
+        top: -$baseSize * 1.5;
+        left: $baseSize * 0.75;
+    }
 }
