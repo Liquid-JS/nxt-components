@@ -208,6 +208,11 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         if (!this.dialogCreated) {
             this.create()
         } else if (this.dialog) {
+            if (this.overlayRef && !this.overlayRef.hasAttached()) {
+                this.cmpRef = this.overlayRef.attach(new ComponentPortal(ColorPickerComponent, null, this.injector))
+                this.dialog = this.cmpRef.instance
+                this.setupDialog()
+            }
             this.dialog.openDialog(this.cpColor)
         }
     }
@@ -226,6 +231,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
         this.cmpRef = undefined
         this.overlayRef = undefined
+        this.dialogCreated = false
     }
 
     private create() {
