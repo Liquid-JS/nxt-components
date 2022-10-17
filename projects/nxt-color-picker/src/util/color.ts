@@ -360,7 +360,7 @@ export function formatCmyk(cmyk: Cmyk, alphaChannel: AlphaChannel) {
     if (cmyk.a < 1 || alphaChannel == AlphaChannel.always) {
         return 'cmyka(' + cmyk.c + ',' + cmyk.m + ',' + cmyk.y + ',' + cmyk.k + ',' + cmyk.a + ')'
     } else {
-        return 'cmyka(' + cmyk.c + ',' + cmyk.m + ',' + cmyk.y + ',' + cmyk.k + ')'
+        return 'cmyk(' + cmyk.c + ',' + cmyk.m + ',' + cmyk.y + ',' + cmyk.k + ')'
     }
 }
 
