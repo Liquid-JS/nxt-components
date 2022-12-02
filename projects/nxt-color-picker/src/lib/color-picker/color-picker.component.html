@@ -343,28 +343,30 @@
             </div>
             <div *ngIf="cpPresetColors?.length"
                 class="color-picker__preset-items">
-                <div *ngFor="let color of cpPresetColors"
-                    class="color-picker__preset-item"
-                    [title]="color"
-                    (click)="setColorFromString(color)">
-                    <div class="color-picker__preset-item-fill"
-                        [ngStyle]="{ 
-                        backgroundColor: color || ''
+                <ng-container *ngFor="let color of cpPresetColors">
+                    <div *ngIf="stringToRgba(color) as rgba"
+                        class="color-picker__preset-item"
+                        [title]="color"
+                        (click)="setColorFromString(color)">
+                        <div class="color-picker__preset-item-fill"
+                            [ngStyle]="{ 
+                        backgroundColor: rgba || ''
                     }"><button *ngIf="cpAddColorButton"
-                            type="button"
-                            title="Remove Color"
-                            i18n-title="@@nxt-color-picker.button.remove-color"
-                            class="color-picker__remove-selected"
-                            (click)="onRemovePresetColor(color)"><svg xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24">
-                                <path
-                                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-                                <path d="M0 0h24v24H0z"
-                                    fill="none" />
-                            </svg></button></div>
-                </div>
+                                type="button"
+                                title="Remove Color"
+                                i18n-title="@@nxt-color-picker.button.remove-color"
+                                class="color-picker__remove-selected"
+                                (click)="onRemovePresetColor(color)"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                                    <path d="M0 0h24v24H0z"
+                                        fill="none" />
+                                </svg></button></div>
+                    </div>
+                </ng-container>
                 <div *ngFor="let i of fill(50)"
                     class="color-picker__preset-item"></div>
             </div>

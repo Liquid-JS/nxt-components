@@ -277,6 +277,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
+    stringToRgba(value: string) {
+        const hsva = stringToHsva(value, true)
+        if (hsva)
+            return formatOutput(hsva, OutputFormat.rgba, AlphaChannel.enabled)
+
+        return undefined
+    }
+
     onDragEnd(slider: string) {
         if (this.callbacks) {
             this.callbacks.sliderDragEnd({ slider, color: this.outputColor })
