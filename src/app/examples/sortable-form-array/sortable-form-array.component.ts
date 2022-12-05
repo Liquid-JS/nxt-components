@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormControl } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sortable-form-array',
@@ -8,12 +8,12 @@ import { FormArray, FormControl } from '@angular/forms';
 })
 export class SortableFormArrayComponent {
 
-  citiesControls = new FormArray([
+  citiesControls = new UntypedFormArray([
     'Ankara',
     'Moscow',
     'Munich',
     'Paris',
     'Washington',
-  ].map(city => new FormControl(city)));
+  ].map(city => new UntypedFormControl(city)));
 
 }
