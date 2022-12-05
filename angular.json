@@ -166,10 +166,11 @@
             }
         }
     },
-    "defaultProject": "nxt-json-view",
     "cli": {
         "packageManager": "yarn",
-        "defaultCollection": "@angular-eslint/schematics"
+        "schematicCollections": [
+            "@angular-eslint/schematics"
+        ]
     },
     "schematics": {
         "@schematics/angular:component": {
