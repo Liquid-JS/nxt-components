@@ -30,7 +30,7 @@
       "repository": "git@github.com:Liquid-JS/nxt-dropzone-wrapper.git",
       "branch": "gh-pages",
       "folder": "dist/app",
-      "script": "ng build app --configuration production -- --base-href=nxt-dropzone-wrapper --delete-output-path=false",
+      "script": "ng build app --configuration production -- --base-href=/nxt-dropzone-wrapper/ --delete-output-path=false",
       "commit": "Publishing $npm_package_version",
       "user": {
         "name": "HitkoDev",
