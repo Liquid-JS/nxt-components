@@ -137,10 +137,11 @@
             }
         }
     },
-    "defaultProject": "nxt-pick-datetime",
     "cli": {
         "packageManager": "yarn",
-        "defaultCollection": "@angular-eslint/schematics"
+        "schematicCollections": [
+            "@angular-eslint/schematics"
+        ]
     },
     "schematics": {
         "@schematics/angular:component": {

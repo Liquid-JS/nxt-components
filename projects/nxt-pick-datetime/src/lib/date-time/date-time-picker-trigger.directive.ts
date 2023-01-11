@@ -1,5 +1,5 @@
 import { AfterContentInit, ChangeDetectorRef, Directive, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core'
-import { merge, of as observableOf, Subscription } from 'rxjs'
+import { merge, Observable, of as observableOf, Subscription } from 'rxjs'
 import { OwlDateTimeComponent } from './date-time-picker/date-time-picker.component'
 
 @Directive({
@@ -63,7 +63,7 @@ export class OwlDateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterC
         const pickerDisabled = this.dtPicker ?
             this.dtPicker.disabledChange : observableOf()
 
-        this.stateChanges = merge(pickerDisabled, inputDisabled)
+        this.stateChanges = merge(pickerDisabled as Observable<boolean>, inputDisabled as Observable<boolean>)
             .subscribe(() => {
                 this.changeDetector.markForCheck()
             })

@@ -48,9 +48,6 @@ import { OwlTimerComponent } from './timer/timer.component'
     providers: [
         OwlDateTimeIntl,
         OWL_DTPICKER_SCROLL_STRATEGY_PROVIDER
-    ],
-    entryComponents: [
-        OwlDateTimeContainerComponent
     ]
 })
 export class OwlDateTimeModule { }
