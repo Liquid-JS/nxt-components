@@ -30,4 +30,4 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
         }
     ]
 })
-export class AppModule { }
+export class AppDropzoneWrapperModule { }

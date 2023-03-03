@@ -4,7 +4,11 @@ import { RouterModule, Routes } from '@angular/router'
 const routes: Routes = [
     {
         path: 'dropzone-wrapper',
-        loadChildren: () => import('./dropzone-wrapper/dropzone-wrapper.module').then(m => m.AppModule)
+        loadChildren: () => import('./dropzone-wrapper/dropzone-wrapper.module').then(m => m.AppDropzoneWrapperModule)
+    },
+    {
+        path: 'flags',
+        loadChildren: () => import('./flags/flags.module').then(m => m.AppFlagsModule)
     }
 ]
 

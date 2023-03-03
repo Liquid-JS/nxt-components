@@ -806,3 +806,5 @@ export const FlagDatabase = {
     'vatican-city': 'va',
     'xx': 'xx'
 }
+
+export type FlagDatabaseKey = keyof typeof FlagDatabase

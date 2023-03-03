@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import { remove as removeDiacritics } from 'diacritics'
+import { FlagDatabaseKey, FlagFormat } from 'flags'
 import { getName, registerLocale } from 'i18n-iso-countries'
 import locl from 'i18n-iso-countries/langs/en.json'
 
@@ -11,8 +12,10 @@ registerLocale(locl)
     styleUrls: ['./flags.component.scss']
 })
 export class AppFlagsComponent {
-    code = 'es'
+
+    code: FlagDatabaseKey = 'es'
     data: Array<{ code: string, name: string }>
+    readonly flagFormat = FlagFormat
 
     constructor() {
         const codes = Object.keys(locl.countries)

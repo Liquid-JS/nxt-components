@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core'
-import { FlagDatabase } from '../database'
+import { FlagDatabase, FlagDatabaseKey } from '../database'
 import { FlagFormat, FlagSize } from '../types'
 
 const availableFormats = new Set(Object.values(FlagFormat))
@@ -14,8 +14,8 @@ const availableCodes = new Set(Object.values(FlagDatabase))
 export class FlagComponent {
 
     private _code?: string
-    @Input() set country(val: keyof typeof FlagDatabase) {
-        const lc: (keyof typeof FlagDatabase) | undefined = (val && val.toLowerCase() as any) || undefined
+    @Input() set country(val: FlagDatabaseKey) {
+        const lc: FlagDatabaseKey | undefined = (val && val.toLowerCase() as any) || undefined
         if (lc && lc in FlagDatabase) {
             this._code = FlagDatabase[lc]
         } else if (lc && availableCodes.has(lc)) {

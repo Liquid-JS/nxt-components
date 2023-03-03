@@ -1,19 +1,19 @@
+import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { BrowserModule } from '@angular/platform-browser'
-import { FlagsModule } from 'nxt-flags'
-import { AppComponent } from './app.component'
+import { FlagsModule } from 'flags'
+import { FlagsRoutingModule } from './flags-routing.module'
+import { AppFlagsComponent } from './flags.component'
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppFlagsComponent
     ],
     imports: [
-        BrowserModule,
+        CommonModule,
         FlagsModule,
-        FormsModule
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+        FormsModule,
+        FlagsRoutingModule
+    ]
 })
-export class AppModule { }
+export class AppFlagsModule { }
