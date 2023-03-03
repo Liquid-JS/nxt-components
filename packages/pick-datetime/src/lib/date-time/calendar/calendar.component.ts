@@ -20,7 +20,7 @@ export class OwlCalendarComponent<T>
      * Date filter for the month and year view
      * */
     @Input()
-    dateFilter: DateFilter<T>
+    dateFilter?: DateFilter<T>
 
     /**
      * Set the first day of week
@@ -29,7 +29,7 @@ export class OwlCalendarComponent<T>
     firstDayOfWeek = 0
 
     /** The minimum selectable date. */
-    private _minDate: T | null
+    private _minDate: T | null = null
     @Input()
     get minDate(): T | null {
         return this._minDate
@@ -49,7 +49,7 @@ export class OwlCalendarComponent<T>
     }
 
     /** The maximum selectable date. */
-    private _maxDate: T | null
+    private _maxDate: T | null = null
     @Input()
     get maxDate(): T | null {
         return this._maxDate
@@ -69,23 +69,23 @@ export class OwlCalendarComponent<T>
     }
 
     /** The current picker moment */
-    private _pickerMoment: T
+    private _pickerMoment: T | null = null
     @Input()
     get pickerMoment() {
         return this._pickerMoment
     }
 
-    set pickerMoment(value: T) {
+    set pickerMoment(value: T | null) {
         value = this.dateTimeAdapter.deserialize(value)
         this._pickerMoment =
             this.getValidDate(value) || this.dateTimeAdapter.now()
     }
 
     @Input()
-    selectMode: SelectMode
+    selectMode?: SelectMode
 
     /** The currently selected moment. */
-    private _selected: T | null
+    private _selected: T | null = null
     @Input()
     get selected(): T | null {
         return this._selected
@@ -96,13 +96,13 @@ export class OwlCalendarComponent<T>
         this._selected = this.getValidDate(value)
     }
 
-    private _selecteds: T[] = []
+    private _selecteds: Array<T | null> = []
     @Input()
-    get selecteds(): T[] {
+    get selecteds(): Array<T | null> {
         return this._selecteds
     }
 
-    set selecteds(values: T[]) {
+    set selecteds(values: Array<T | null>) {
         this._selecteds = values.map(v => {
             v = this.dateTimeAdapter.deserialize(v)
             return this.getValidDate(v)
@@ -119,7 +119,7 @@ export class OwlCalendarComponent<T>
      * Whether to hide dates in other months at the start or end of the current month.
      * */
     @Input()
-    hideOtherMonths: boolean
+    hideOtherMonths: boolean = false
 
     /** Emits when the currently picker moment changes. */
     @Output()
@@ -214,13 +214,13 @@ export class OwlCalendarComponent<T>
      * Date filter for the month and year view
      */
     public dateFilterForViews = (date: T) => (
-            !!date &&
-            (!this.dateFilter || this.dateFilter(date, 'date')) &&
-            (!this.minDate ||
-                this.dateTimeAdapter.compare(date, this.minDate) >= 0) &&
-            (!this.maxDate ||
-                this.dateTimeAdapter.compare(date, this.maxDate) <= 0)
-        )
+        !!date &&
+        (!this.dateFilter || this.dateFilter(date, 'date')) &&
+        (!this.minDate ||
+            this.dateTimeAdapter.compare(date, this.minDate) >= 0) &&
+        (!this.maxDate ||
+            this.dateTimeAdapter.compare(date, this.maxDate) <= 0)
+    )
 
     /**
      * Bind class 'owl-dt-calendar' to host

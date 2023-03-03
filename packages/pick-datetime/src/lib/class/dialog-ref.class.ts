@@ -23,14 +23,14 @@ export class OwlDialogRef<T> {
     /**
      * The instance of component opened into modal
      * */
-    public componentInstance: T
+    public componentInstance?: T | null
 
     /** Whether the user is allowed to close the dialog. */
-    public disableClose = this.container.config.disableClose
+    public disableClose = !!this.container.config?.disableClose
 
     constructor(private overlayRef: OverlayRef,
         private container: OwlDialogContainerComponent,
-        public readonly id: string,
+        public readonly id?: string,
         location?: Location) {
 
         this.container.animationStateChanged
@@ -62,7 +62,7 @@ export class OwlDialogRef<T> {
 
         if (location) {
             this.locationChanged = location.subscribe(() => {
-                if (this.container.config.closeOnNavigation) {
+                if (this.container.config?.closeOnNavigation) {
                     this.close()
                 }
             })

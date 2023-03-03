@@ -2,7 +2,7 @@ import { Overlay, OverlayConfig, OverlayContainer, OverlayRef, ScrollStrategy } 
 import { ComponentPortal, ComponentType } from '@angular/cdk/portal'
 import { Location } from '@angular/common'
 import { ComponentRef, Inject, Injectable, InjectionToken, Injector, Optional, SkipSelf, TemplateRef } from '@angular/core'
-import { defer, Observable, of, Subject } from 'rxjs'
+import { defer, of, Subject } from 'rxjs'
 import { concatAll } from 'rxjs/operators'
 import { OwlDialogConfig } from '../class/dialog-config.class'
 import { OwlDialogRef } from '../class/dialog-ref.class'
@@ -43,12 +43,12 @@ export const OWL_DIALOG_DEFAULT_OPTIONS = new InjectionToken<OwlDialogConfig>(
 export class OwlDialogService {
     private ariaHiddenElements = new Map<Element, string | null>()
 
-    private _openDialogsAtThisLevel: OwlDialogRef<any>[] = []
+    private _openDialogsAtThisLevel: Array<OwlDialogRef<any>> = []
     private _afterOpenAtThisLevel = new Subject<OwlDialogRef<any>>()
     private _afterAllClosedAtThisLevel = new Subject<void>()
 
     /** Keeps track of the currently-open dialogs. */
-    get openDialogs(): OwlDialogRef<any>[] {
+    get openDialogs(): Array<OwlDialogRef<any>> {
         return this.parentDialog
             ? this.parentDialog.openDialogs
             : this._openDialogsAtThisLevel
@@ -73,7 +73,7 @@ export class OwlDialogService {
      * Will emit on subscribe if there are no open dialogs to begin with.
      */
 
-    afterAllClosed: Observable<Record<string, unknown>> = defer(
+    afterAllClosed = defer(
         () =>
             this._openDialogsAtThisLevel.length
                 ? this._afterAllClosed

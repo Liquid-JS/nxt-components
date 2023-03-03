@@ -173,7 +173,7 @@ export class OwlMonthViewComponent<T>
         }
     }
 
-    private _weekdays: Array<{ long: string; short: string; narrow: string }>
+    private _weekdays: Array<{ long: string, short: string, narrow: string }>
     get weekdays() {
         return this._weekdays
     }

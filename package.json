@@ -29,6 +29,7 @@
         "diacritics": "^1.3.0",
         "dropzone": "^6.0.0-beta.2",
         "i18n-iso-countries": "^7.5.0",
+        "moment": "^2.29.4",
         "rxjs": "^7.8.0",
         "tslib": "^2.3.0",
         "zone.js": "^0.12.0"
@@ -42,6 +43,7 @@
         "@angular-eslint/template-parser": "<15.0.0",
         "@angular/cli": "<15.0.0",
         "@angular/compiler-cli": "<15.0.0",
+        "@angular/localize": "14.2.12",
         "@commitlint/cli": "^17.4.4",
         "@commitlint/config-conventional": "^17.4.4",
         "@types/diacritics": "^1.3.1",

@@ -1,6 +1,6 @@
 import { Platform } from '@angular/cdk/platform'
 import { Inject, Injectable, Optional } from '@angular/core'
-import { DateTimeAdapter, OWL_DATE_TIME_LOCALE } from 'nxt-pick-datetime'
+import { DateTimeAdapter, OWL_DATE_TIME_LOCALE } from '../../src/lib/class/date-time-adapter.class'
 
 /** The default month names to use if Intl API is not available. */
 const DEFAULT_MONTH_NAMES = {
@@ -141,7 +141,7 @@ export class NativeDateTimeAdapter extends DateTimeAdapter<Date> {
         return this.getDate(lastDateOfMonth)
     }
 
-    public differenceInCalendarDays(dateLeft: Date, dateRight: Date): number {
+    public differenceInCalendarDays(dateLeft: Date, dateRight: Date): number | null {
         if (this.isValid(dateLeft) && this.isValid(dateRight)) {
             const dateLeftStartOfDay = this.createDate(
                 this.getYear(dateLeft),
@@ -420,7 +420,7 @@ export class NativeDateTimeAdapter extends DateTimeAdapter<Date> {
      * (https://www.ietf.org/rfc/rfc3339.txt) into valid Dates and empty string into null. Returns an
      * invalid date for all other values.
      */
-    public deserialize(value: any): Date | null {
+    public override deserialize(value: any): Date | null {
         if (typeof value === 'string') {
             if (!value) {
                 return null

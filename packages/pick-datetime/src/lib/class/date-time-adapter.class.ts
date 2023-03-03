@@ -91,7 +91,7 @@ export abstract class DateTimeAdapter<T> {
      * If dateLeft is before dateRight, it would return positive value
      * If dateLeft is after dateRight, it would return negative value
      */
-    abstract differenceInCalendarDays(dateLeft: T, dateRight: T): number
+    abstract differenceInCalendarDays(dateLeft: T, dateRight: T): number | null
 
     /**
      * Gets the name for the year of the given date.

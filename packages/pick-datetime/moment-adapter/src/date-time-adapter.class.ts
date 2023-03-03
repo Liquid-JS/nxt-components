@@ -1,6 +1,6 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core'
 import moment, { Moment } from 'moment'
-import { DateTimeAdapter, OWL_DATE_TIME_LOCALE } from 'nxt-pick-datetime'
+import { DateTimeAdapter, OWL_DATE_TIME_LOCALE } from '../../src/lib/class/date-time-adapter.class'
 
 /** Configurable options for {@see MomentDateAdapter}. */
 export interface OwlMomentDateTimeAdapterOptions {
@@ -15,9 +15,9 @@ export interface OwlMomentDateTimeAdapterOptions {
 /** InjectionToken for moment date adapter to configure options. */
 export const OWL_MOMENT_DATE_TIME_ADAPTER_OPTIONS = new InjectionToken<OwlMomentDateTimeAdapterOptions>(
     'OWL_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {
-        providedIn: 'root',
-        factory: OWL_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY
-    })
+    providedIn: 'root',
+    factory: OWL_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY
+})
 
 /** @docs-private */
 export function OWL_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY(): OwlMomentDateTimeAdapterOptions {
@@ -45,7 +45,7 @@ export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
         shortDaysOfWeek: string[]
         narrowDaysOfWeek: string[]
         dates: string[]
-    }
+    } = {} as any
 
     constructor(
         @Optional() @Inject(OWL_DATE_TIME_LOCALE)
@@ -57,7 +57,7 @@ export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
         this.setLocale(owlDateTimeLocale || moment.locale())
     }
 
-    public setLocale(locale: string) {
+    public override setLocale(locale: string) {
         super.setLocale(locale)
 
         const momentLocaleData = moment.localeData(locale)
@@ -251,7 +251,7 @@ export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
      * (https://www.ietf.org/rfc/rfc3339.txt) and valid Date objects into valid Moments and empty
      * string into null. Returns an invalid date for all other values.
      */
-    deserialize(value: any): Moment | null {
+    override deserialize(value: any): Moment | null {
         let date
         if (value instanceof Date) {
             date = this.createMoment(value)

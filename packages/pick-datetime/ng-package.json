@@ -1,0 +1,10 @@
+{
+    "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+    "dest": "../../dist/pick-datetime",
+    "lib": {
+        "entryFile": "src/public-api.ts"
+    },
+    "assets": [
+        "assets/picker.scss"
+    ]
+}

@@ -57,10 +57,10 @@ const zoomFadeInFrom = {
 export class OwlDialogContainerComponent extends BasePortalOutlet
     implements OnInit {
     @ViewChild(CdkPortalOutlet, { static: true })
-    portalOutlet: CdkPortalOutlet
+    portalOutlet?: CdkPortalOutlet
 
     /** The class that traps and manages focus within the dialog. */
-    private focusTrap: FocusTrap
+    private focusTrap?: FocusTrap
 
     /** ID of the element that should be considered as the dialog's label. */
     public ariaLabelledBy: string | null = null
@@ -70,8 +70,8 @@ export class OwlDialogContainerComponent extends BasePortalOutlet
 
     public isAnimating = false
 
-    private _config: OwlDialogConfig
-    get config(): OwlDialogConfig {
+    private _config?: OwlDialogConfig
+    get config(): OwlDialogConfig | undefined {
         return this._config
     }
 
@@ -101,23 +101,23 @@ export class OwlDialogContainerComponent extends BasePortalOutlet
     }
 
     @HostBinding('attr.id')
-    get owlDialogContainerId(): string {
-        return this._config.id
+    get owlDialogContainerId(): string | undefined {
+        return this._config?.id
     }
 
     @HostBinding('attr.role')
-    get owlDialogContainerRole(): string {
-        return this._config.role || null
+    get owlDialogContainerRole(): string | null {
+        return this._config?.role || null
     }
 
     @HostBinding('attr.aria-labelledby')
-    get owlDialogContainerAriaLabelledby(): string {
+    get owlDialogContainerAriaLabelledby(): string | null {
         return this.ariaLabelledBy
     }
 
     @HostBinding('attr.aria-describedby')
-    get owlDialogContainerAriaDescribedby(): string {
-        return this._config.ariaDescribedBy || null
+    get owlDialogContainerAriaDescribedby(): string | null {
+        return this._config?.ariaDescribedBy || null
     }
 
     @HostBinding('@slideModal')
@@ -144,14 +144,14 @@ export class OwlDialogContainerComponent extends BasePortalOutlet
     public attachComponentPortal<T>(
         portal: ComponentPortal<T>
     ): ComponentRef<T> {
-        if (this.portalOutlet.hasAttached()) {
+        if (this.portalOutlet!.hasAttached()) {
             throw Error(
                 'Attempting to attach dialog content after content is already attached'
             )
         }
 
         this.savePreviouslyFocusedElement()
-        return this.portalOutlet.attachComponentPortal(portal)
+        return this.portalOutlet!.attachComponentPortal(portal)
     }
 
     public attachTemplatePortal<C>(
@@ -227,7 +227,7 @@ export class OwlDialogContainerComponent extends BasePortalOutlet
             this.elementFocusedBeforeDialogWasOpened = this.document
                 .activeElement as HTMLElement
 
-            Promise.resolve().then(() => this.elementRef.nativeElement.focus())
+            Promise.resolve().then(() => this.elementRef.nativeElement.focus()).catch(() => { })
         }
     }
 
@@ -238,8 +238,8 @@ export class OwlDialogContainerComponent extends BasePortalOutlet
             )
         }
 
-        if (this._config.autoFocus) {
-            this.focusTrap.focusInitialElementWhenReady()
+        if (this._config?.autoFocus) {
+            this.focusTrap?.focusInitialElementWhenReady().catch(() => { })
         }
     }
 

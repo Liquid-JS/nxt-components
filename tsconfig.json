@@ -33,6 +33,9 @@
             ],
             "json-view": [
                 "dist/json-view"
+            ],
+            "pick-datetime": [
+                "dist/pick-datetime"
             ]
         }
     },

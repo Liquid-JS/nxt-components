@@ -7,12 +7,12 @@ import { OwlDateTimeComponent } from './date-time-picker/date-time-picker.compon
 })
 export class OwlDateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterContentInit, OnDestroy {
 
-    @Input('owlDateTimeTrigger') dtPicker: OwlDateTimeComponent<T>
+    @Input('owlDateTimeTrigger') dtPicker?: OwlDateTimeComponent<T>
 
-    private _disabled: boolean
+    private _disabled?: boolean
     @Input()
     get disabled(): boolean {
-        return this._disabled === undefined ? this.dtPicker.disabled : !!this._disabled
+        return this._disabled === undefined ? !!this.dtPicker?.disabled : !!this._disabled
     }
 
     set disabled(value: boolean) {
@@ -33,7 +33,7 @@ export class OwlDateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterC
     }
 
     public ngOnChanges(changes: SimpleChanges) {
-        if (changes.datepicker) {
+        if ('datepicker' in changes) {
             this.watchStateChanges()
         }
     }

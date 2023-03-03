@@ -17,6 +17,7 @@ import { OwlDateTimeComponent, OWL_DTPICKER_SCROLL_STRATEGY_PROVIDER } from './d
 import { NumberFixedLenPipe } from './number-fixed-len.pipe'
 import { OwlTimerBoxComponent } from './timer-box/timer-box.component'
 import { OwlTimerComponent } from './timer/timer.component'
+
 @NgModule({
     imports: [CommonModule, OverlayModule, OwlDialogModule, A11yModule],
     exports: [

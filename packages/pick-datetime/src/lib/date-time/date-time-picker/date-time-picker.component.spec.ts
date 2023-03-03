@@ -33,9 +33,9 @@ describe('OwlDateTimeComponent', () => {
     // Creates a test component fixture.
     const createComponent = (
         component: Type<any>,
-        imports: Type<any>[] = [],
-        providers: (FactoryProvider | ValueProvider)[] = [],
-        entryComponents: Type<any>[] = []
+        imports: Array<Type<any>> = [],
+        providers: Array<FactoryProvider | ValueProvider> = [],
+        entryComponents: Array<Type<any>> = []
     ): ComponentFixture<any> => {
         TestBed.configureTestingModule({
             imports: [
