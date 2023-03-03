@@ -17,7 +17,7 @@
             ],
             "parserOptions": {
                 "project": [
-                    "tsconfig.base.json"
+                    "tsconfig.json"
                 ],
                 "createDefaultProgram": true
             },
@@ -165,10 +165,6 @@
                 "@angular-eslint/template/no-negated-async": "off",
                 "@typescript-eslint/no-this-alias": "off",
                 "no-unused-labels": "off",
-                "import/extensions": [
-                    "error",
-                    "ignorePackages"
-                ],
                 "no-unused-vars": "off",
                 "@typescript-eslint/no-unused-vars": "off",
                 "unused-imports/no-unused-imports": "error",

@@ -23,7 +23,11 @@
             "es2020",
             "dom"
         ],
-        "paths": {}
+        "paths": {
+          "dropzone-wrapper": [
+            "dist/dropzone-wrapper"
+          ]
+        }
     },
     "angularCompilerOptions": {
         "enableI18nLegacyMessageIdFormat": false,
