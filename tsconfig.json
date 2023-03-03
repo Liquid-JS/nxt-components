@@ -26,6 +26,9 @@
         "paths": {
             "dropzone-wrapper": [
                 "dist/dropzone-wrapper"
+            ],
+            "flags": [
+                "dist/flags"
             ]
         }
     },
