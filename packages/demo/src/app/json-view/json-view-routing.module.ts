@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { AppDropzoneWrapperComponent } from './dropzone-wrapper.component'
+import { AppJsonViewComponent } from './json-view.component'
 
 const routes: Routes = [
-    { path: '', component: AppDropzoneWrapperComponent }
+    { path: '', component: AppJsonViewComponent }
 ]
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class AppDropzoneWrapperRoutingModule { }
+export class AppJsonViewRoutingModule { }

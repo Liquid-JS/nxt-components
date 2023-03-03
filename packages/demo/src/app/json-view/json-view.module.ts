@@ -1,19 +1,19 @@
+import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { BrowserModule } from '@angular/platform-browser'
-import { NxtJsonViewModule } from 'nxt-json-view'
-import { AppComponent } from './json-view.component'
+import { JsonViewModule } from 'json-view'
+import { AppJsonViewRoutingModule } from './json-view-routing.module'
+import { AppJsonViewComponent } from './json-view.component'
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppJsonViewComponent
     ],
     imports: [
-        BrowserModule,
+        CommonModule,
         FormsModule,
-        NxtJsonViewModule
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+        JsonViewModule,
+        AppJsonViewRoutingModule
+    ]
 })
-export class AppModule { }
+export class AppJsonViewModule { }

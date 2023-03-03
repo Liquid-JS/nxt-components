@@ -1,11 +1,11 @@
 import { Component } from '@angular/core'
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    selector: 'app-json-view',
+    templateUrl: './json-view.component.html',
+    styleUrls: ['./json-view.component.scss', '../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css']
 })
-export class AppComponent {
+export class AppJsonViewComponent {
 
     levelLabels: { [key: number]: { [key: string]: string } } = {
         1: { object: 'My label' }
