@@ -2,7 +2,8 @@
     "root": true,
     "ignorePatterns": [
         "packages",
-        "node_modules"
+        "node_modules",
+        "dist"
     ],
     "overrides": [
         {
