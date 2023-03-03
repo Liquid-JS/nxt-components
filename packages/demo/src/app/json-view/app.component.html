@@ -1,0 +1,43 @@
+<div class="container"
+    style="padding-top: 20px;">
+    <div class="panel panel-default">
+        <div class="panel-heading">Basic</div>
+        <div class="panel-body">
+            <nxt-json-view [data]="data"></nxt-json-view>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">With expansion parameters</div>
+        <div class="panel-body">
+            <nxt-json-view [data]="data"
+                [levelOpen]="0"></nxt-json-view>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">With levelLabels {{levelLabels | json}}</div>
+        <div class="panel-body">
+            <nxt-json-view [data]="data"
+                [levelOpen]="0"
+                [levelLabels]="levelLabels"></nxt-json-view>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">live test</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <textarea class="form-control"
+                        rows="15"
+                        [ngModel]="customData"
+                        (ngModelChange)="ngModelChange($event)"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <nxt-json-view [data]="customJson"></nxt-json-view>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
