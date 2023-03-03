@@ -1,0 +1,7 @@
+{
+    "dep": "prod,dev,bundle,optional,peer,resolutions",
+    "upgrade": true,
+    "interactive": true,
+    "workspaces": true,
+    "root": true
+}
