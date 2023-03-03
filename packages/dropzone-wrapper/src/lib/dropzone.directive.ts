@@ -1,16 +1,11 @@
-import Dropzone from 'dropzone'
-
 import { isPlatformBrowser } from '@angular/common'
 import { Directive, DoCheck, ElementRef, EventEmitter, Inject, Input, KeyValueDiffer, KeyValueDiffers, NgZone, OnChanges, OnDestroy, OnInit, Optional, Output, PLATFORM_ID, Renderer2, SimpleChanges } from '@angular/core'
-
-import {
-    DropzoneConfig, DropzoneConfigInterface,
-    DropzoneEvent, DropzoneEvents, DROPZONE_CONFIG
-} from './dropzone.interfaces'
+import Dropzone from 'dropzone'
+import { DropzoneConfig, DropzoneConfigInterface, DropzoneEvent, DropzoneEvents, DROPZONE_CONFIG } from './dropzone.interfaces'
 
 @Directive({
-    selector: '[dropzone]',
-    exportAs: 'ngxDropzone'
+    selector: '[nxtDropzone]',
+    exportAs: 'nxtDropzone'
 })
 export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, OnChanges {
     private instance: any
@@ -19,7 +14,7 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, OnChanges 
 
     @Input() disabled: boolean = false
 
-    @Input('dropzone') config?: DropzoneConfigInterface
+    @Input('nxtDropzone') config?: DropzoneConfigInterface
 
     @Output('init') DZ_INIT = new EventEmitter<any>()
 

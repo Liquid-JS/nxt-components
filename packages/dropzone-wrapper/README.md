@@ -76,7 +76,7 @@ Simply replace the element that would ordinarily be passed to `Dropzone` with th
 **NOTE:** Component provides couple additional features from directive such as the placeholder image. If you don't need them or want to create custom component then you might want to use the directive instead.
 
 ```html
-<dropzone [config]="config" [message]="'Click or drag images here to upload'" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></dropzone>
+<nxt-dropzone [config]="config" [message]="'Click or drag images here to upload'" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></nxt-dropzone>
 ```
 
 ```javascript
@@ -109,11 +109,11 @@ When using only the directive you need to provide your own theming or import the
 Dropzone directive can be used in form or div element with optional custom configuration:
 
 ```html
-<div class="dropzone" [dropzone]="config" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
+<div class="dropzone" [nxtDropzone]="config" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
 ```
 
 ```javascript
-[dropzone]              // Can be used to provide optional custom config.
+[nxtDropzone]           // Can be used to provide optional custom config.
 
 [disabled]              // Disables / detaches Dropzone from the element.
 

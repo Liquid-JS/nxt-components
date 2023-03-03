@@ -4,9 +4,16 @@ import { DropzoneComponent } from './dropzone.component'
 import { DropzoneDirective } from './dropzone.directive'
 
 @NgModule({
-    imports: [CommonModule],
-    declarations: [DropzoneComponent, DropzoneDirective],
-    exports: [CommonModule, DropzoneComponent, DropzoneDirective]
+    declarations: [
+        DropzoneComponent,
+        DropzoneDirective
+    ],
+    imports: [
+        CommonModule
+    ],
+    exports: [
+        DropzoneComponent,
+        DropzoneDirective
+    ]
 })
-export class DropzoneModule {
-}
+export class DropzoneModule { }

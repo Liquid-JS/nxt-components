@@ -4,11 +4,11 @@ import { DropzoneDirective } from './dropzone.directive'
 import { DropzoneConfigInterface, DropzoneEvent, DropzoneEvents } from './dropzone.interfaces'
 
 @Component({
-    selector: 'dropzone',
-    exportAs: 'ngxDropzone',
+    selector: 'nxt-dropzone',
+    exportAs: 'nxtDropzone',
     templateUrl: './dropzone.component.html',
     styleUrls: [
-        './dropzone.component.css',
+        './dropzone.component.scss',
         '../../../../node_modules/dropzone/dist/dropzone.css'
     ],
     encapsulation: ViewEncapsulation.None

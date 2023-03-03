@@ -1,6 +1,10 @@
 {
     "name": "nxt-dropzone-wrapper",
-    "version": "0.0.1",
+    "description": "Angular wrapper library for Dropzone",
+    "bugs": "https://github.com/Liquid-JS/nxt-components/issues",
+    "version": "14.0.0",
+    "license": "MIT",
+    "repository": "https://github.com/Liquid-JS/nxt-components.git",
     "peerDependencies": {
         "@angular/common": "^14.2.0",
         "@angular/core": "^14.2.0",

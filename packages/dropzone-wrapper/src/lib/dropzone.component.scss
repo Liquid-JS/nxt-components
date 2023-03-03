@@ -1,10 +1,10 @@
-dropzone {
+nxt-dropzone {
   display: block;
   width: 100%;
   height: auto;
 }
 
-dropzone[fxflex] {
+nxt-dropzone[fxflex] {
   display: flex;
   flex-direction: inherit;
   min-width: 0;
@@ -14,7 +14,7 @@ dropzone[fxflex] {
   -webkit-box-orient: inherit;
 }
 
-dropzone[fxflex] > .dropzone.dz-wrapper {
+nxt-dropzone[fxflex] > .dropzone.dz-wrapper {
   flex: 1 1 auto;
   min-width: 0;
   min-height: 0;
@@ -22,7 +22,7 @@ dropzone[fxflex] > .dropzone.dz-wrapper {
   -webkit-box-flex: 1;
 }
 
-dropzone[fxlayout] {
+nxt-dropzone[fxlayout] {
   align-items: inherit;
   align-content: inherit;
   justify-content: inherit;
@@ -31,7 +31,7 @@ dropzone[fxlayout] {
   -webkit-box-pack: inherit;
 }
 
-dropzone[fxlayout] > .dropzone.dz-wrapper.dz-single {
+nxt-dropzone[fxlayout] > .dropzone.dz-wrapper.dz-single {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +44,7 @@ dropzone[fxlayout] > .dropzone.dz-wrapper.dz-single {
   -webkit-box-pack: center;
 }
 
-dropzone[fxlayout] > .dropzone.dz-wrapper.dz-multiple {
+nxt-dropzone[fxlayout] > .dropzone.dz-wrapper.dz-multiple {
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
@@ -57,7 +57,7 @@ dropzone[fxlayout] > .dropzone.dz-wrapper.dz-multiple {
   -webkit-box-pack: flex-start;
 }
 
-dropzone > .dropzone.dz-wrapper {
+nxt-dropzone > .dropzone.dz-wrapper {
   position: relative;
 
   overflow: auto;
@@ -71,7 +71,7 @@ dropzone > .dropzone.dz-wrapper {
   background: transparent;
 }
 
-dropzone > .dropzone.dz-wrapper .dz-message {
+nxt-dropzone > .dropzone.dz-wrapper .dz-message {
   position: relative;
 
   display: inline-block;
@@ -87,7 +87,7 @@ dropzone > .dropzone.dz-wrapper .dz-message {
   background-color: #eee;
 }
 
-dropzone > .dropzone.dz-wrapper .dz-message .dz-text {
+nxt-dropzone > .dropzone.dz-wrapper .dz-message .dz-text {
   position: absolute;
   top: 50%;
 
@@ -99,7 +99,7 @@ dropzone > .dropzone.dz-wrapper .dz-message .dz-text {
   transform: translateY(-50%);
 }
 
-dropzone > .dropzone.dz-wrapper .dz-message .dz-image {
+nxt-dropzone > .dropzone.dz-wrapper .dz-message .dz-image {
   width: 100%;
   height: 100%;
 
@@ -108,19 +108,19 @@ dropzone > .dropzone.dz-wrapper .dz-message .dz-image {
   background-position: 50% 50%;
 }
 
-dropzone > .dropzone.dz-wrapper .dz-message.disabled {
+nxt-dropzone > .dropzone.dz-wrapper .dz-message.disabled {
   cursor: not-allowed;
 }
 
-dropzone > .dropzone.dz-wrapper .dz-message.disabled .dz-text {
+nxt-dropzone > .dropzone.dz-wrapper .dz-message.disabled .dz-text {
   opacity: 0.5;
 }
 
-dropzone > .dropzone.dz-wrapper .dz-message.dz-placeholder {
+nxt-dropzone > .dropzone.dz-wrapper .dz-message.dz-placeholder {
   border-color: rgba(#aaa, 0);
 }
 
-dropzone > .dropzone.dz-wrapper .dz-message.dz-placeholder .dz-text {
+nxt-dropzone > .dropzone.dz-wrapper .dz-message.dz-placeholder .dz-text {
   position: absolute;
   z-index: 1;
   top: 0;
@@ -139,40 +139,40 @@ dropzone > .dropzone.dz-wrapper .dz-message.dz-placeholder .dz-text {
     border-color 250ms ease-in-out;
 }
 
-dropzone > .dropzone.dz-wrapper .dz-message.dz-placeholder:hover:not(.disabled) {
+nxt-dropzone > .dropzone.dz-wrapper .dz-message.dz-placeholder:hover:not(.disabled) {
   border-color: #aaa;
 }
 
-dropzone > .dropzone.dz-wrapper .dz-message.dz-placeholder:hover:not(.disabled) .dz-text {
+nxt-dropzone > .dropzone.dz-wrapper .dz-message.dz-placeholder:hover:not(.disabled) .dz-text {
   opacity: 1;
 }
 
-dropzone > .dropzone.dz-wrapper .dz-message.dz-placeholder:hover:not(.disabled) .dz-image {
+nxt-dropzone > .dropzone.dz-wrapper .dz-message.dz-placeholder:hover:not(.disabled) .dz-image {
   -webkit-filter: blur(8px);
 
   filter: blur(8px);
 }
 
-dropzone > .dropzone.dz-wrapper .dz-preview {
+nxt-dropzone > .dropzone.dz-wrapper .dz-preview {
   margin: 8px;
 }
 
-dropzone > .dropzone.dz-wrapper .dz-preview .dz-details {
+nxt-dropzone > .dropzone.dz-wrapper .dz-preview .dz-details {
   padding: 24px;
 }
 
-dropzone > .dropzone.dz-wrapper .dz-preview .dz-progress {
+nxt-dropzone > .dropzone.dz-wrapper .dz-preview .dz-progress {
   width: 80%;
   margin-left: -40%;
   border: 1px solid #aaa;
   border-radius: 4px;
 }
 
-dropzone > .dropzone.dz-wrapper .dz-preview .dz-progress .dz-upload {
+nxt-dropzone > .dropzone.dz-wrapper .dz-preview .dz-progress .dz-upload {
   background-color: #666;
 }
 
-dropzone > .dropzone.dz-wrapper .dz-preview .dz-filename span {
+nxt-dropzone > .dropzone.dz-wrapper .dz-preview .dz-filename span {
   display: block;
   overflow: hidden;
   width: 100%;
@@ -181,47 +181,47 @@ dropzone > .dropzone.dz-wrapper .dz-preview .dz-filename span {
   text-overflow: ellipsis;
 }
 
-dropzone > .dropzone.dz-wrapper .dz-preview .dz-filename span:hover {
+nxt-dropzone > .dropzone.dz-wrapper .dz-preview .dz-filename span:hover {
   overflow: visible;
 
   white-space: normal;
   word-wrap: break-word;
 }
 
-dropzone > .dropzone.dz-wrapper.dz-single .dz-message {
+nxt-dropzone > .dropzone.dz-wrapper.dz-single .dz-message {
   width: 100%;
   height: 100%;
 }
 
-dropzone > .dropzone.dz-wrapper.dz-single.dz-started .dz-message {
+nxt-dropzone > .dropzone.dz-wrapper.dz-single.dz-started .dz-message {
   display: none;
 }
 
-dropzone > .dropzone.dz-wrapper.dz-single .dz-preview {
+nxt-dropzone > .dropzone.dz-wrapper.dz-single .dz-preview {
   width: calc(100% - 16px);
   height: 100%;
 }
 
-dropzone > .dropzone.dz-wrapper.dz-single .dz-preview .dz-image {
+nxt-dropzone > .dropzone.dz-wrapper.dz-single .dz-preview .dz-image {
   width: 100%;
   height: 100%;
   border-radius: 0;
 }
 
-dropzone > .dropzone.dz-wrapper.dz-single .dz-preview .dz-image img {
+nxt-dropzone > .dropzone.dz-wrapper.dz-single .dz-preview .dz-image img {
   display: block;
   width: 100%;
   height: auto;
   margin: 0;
 }
 
-dropzone > .dropzone.dz-wrapper.dz-single .dz-error-message {
+nxt-dropzone > .dropzone.dz-wrapper.dz-single .dz-error-message {
   top: 50%;
   left: 50%;
 
   transform: translateX(-50%) translateY(100%);
 }
 
-dropzone > .dropzone.dz-wrapper.dz-multiple.dz-started .dz-message {
+nxt-dropzone > .dropzone.dz-wrapper.dz-multiple.dz-started .dz-message {
   display: inline-block;
 }
