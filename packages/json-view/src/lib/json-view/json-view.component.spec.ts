@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { NxtJsonViewComponent } from './nxt-json-view.component'
+import { JsonViewComponent } from './json-view.component'
 
-describe('NxtJsonViewComponent', () => {
-    let component: NxtJsonViewComponent
-    let fixture: ComponentFixture<NxtJsonViewComponent>
+describe('JsonViewComponent', () => {
+    let component: JsonViewComponent
+    let fixture: ComponentFixture<JsonViewComponent>
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [NxtJsonViewComponent]
+            declarations: [JsonViewComponent]
         })
             .compileComponents()
     })
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(NxtJsonViewComponent)
+        fixture = TestBed.createComponent(JsonViewComponent)
         component = fixture.componentInstance
         fixture.detectChanges()
     })

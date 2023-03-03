@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core'
-import { isArray, isBoolean, isNumber, isObject, isString, isUndefined } from '../../utils/utils'
+import { isArray, isBoolean, isNumber, isObject, isString, isUndefined } from '../utils/utils'
 
 @Component({
     selector: 'nxt-json-view-item',

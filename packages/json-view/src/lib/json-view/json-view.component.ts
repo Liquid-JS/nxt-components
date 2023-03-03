@@ -2,11 +2,11 @@ import { Component, Input, ViewEncapsulation } from '@angular/core'
 
 @Component({
     selector: 'nxt-json-view',
-    templateUrl: './nxt-json-view.component.html',
-    styleUrls: ['./nxt-json-view.component.scss'],
+    templateUrl: './json-view.component.html',
+    styleUrls: ['./json-view.component.scss'],
     encapsulation: ViewEncapsulation.Emulated
 })
-export class NxtJsonViewComponent {
+export class JsonViewComponent {
 
     @Input() data: any
     @Input() levelOpen?: number

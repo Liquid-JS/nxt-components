@@ -1,25 +1,83 @@
-# NxtJsonView
+# nxt-json-view
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.0.
+A JSON View component for Angular 13+ (an angular based JSON display component)
 
-## Code scaffolding
+## Demo
 
-Run `ng generate component component-name --project nxt-json-view` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project nxt-json-view`.
+<https://liquid-js.github.io/nxt-json-view/>
 
-> Note: Don't forget to add `--project nxt-json-view` or else it will be added to the default project in your `angular.json` file. 
+## installation
 
-## Build
+```sh
+npm install nxt-json-view --save
+```
 
-Run `ng build nxt-json-view` to build the project. The build artifacts will be stored in the `dist/` directory.
+## use
 
-## Publishing
+-   Install the dependency package：`nxt-json-view`
 
-After building your library with `ng build nxt-json-view`, go to the dist folder `cd dist/nxt-json-view` and run `npm publish`.
+```sh
+npm install nxt-json-view --save
+```
 
-## Running unit tests
+-   Import in module `JsonViewModule`
 
-Run `ng test nxt-json-view` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```ts
+import { JsonViewModule } from 'nxt-json-view';
 
-## Further help
+@NgModule({
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        JsonViewModule
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+-   Prepare JSON data
+
+```js
+data = {
+    "name": "nxt-json-view",
+    "url": "https://github.com/killzoner/nxt-json-view",
+    "string": "github",
+    "number": 88,
+    "boolean": true,
+    "object": {
+        "obj1": "obj1",
+        "obj2": "obj2",
+        "object": {
+            "obj11": "obj11",
+            "obj22": "obj22"
+        },
+        "emptyArray": []
+    },
+    "array": [
+        1,
+        2,
+        3
+    ],
+    "date": new Date(),
+    "null": null
+};
+```
+
+-   Use on template page
+
+```html
+<nxt-json-view [data]="data"></nxt-json-view>
+```
+
+# Document
+
+-   `data` - `Object` - Data
+-   `levelOpen` - `number` - Initialize the number of layers to be expanded (initial value: 0)
+
+# stand by
+
+-   If the project is helpful to you, please click on the star,Thank you
+-   If you have ideas, questions, and bugs about the project, welcome to discuss.
