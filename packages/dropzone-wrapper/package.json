@@ -1,0 +1,15 @@
+{
+    "name": "nxt-dropzone-wrapper",
+    "version": "0.0.1",
+    "peerDependencies": {
+        "@angular/common": "^14.2.0",
+        "@angular/core": "^14.2.0",
+        "dropzone": "^6.0.0-beta.2"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    },
+    "devDependencies": {
+        "@types/dropzone": "^5.7.4"
+    }
+}

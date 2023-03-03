@@ -24,9 +24,9 @@
             "dom"
         ],
         "paths": {
-          "dropzone-wrapper": [
-            "dist/dropzone-wrapper"
-          ]
+            "dropzone-wrapper": [
+                "dist/dropzone-wrapper"
+            ]
         }
     },
     "angularCompilerOptions": {
