@@ -12,11 +12,11 @@
         float: left;
     }
 
-    .collapse::before {
+    .collapse:before {
         content: "-";
     }
 
-    .expand::before {
+    .expand:before {
         content: "+";
     }
 

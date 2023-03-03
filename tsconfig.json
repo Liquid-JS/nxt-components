@@ -30,6 +30,9 @@
             ],
             "flags": [
                 "dist/flags"
+            ],
+            "json-view": [
+                "dist/json-view"
             ]
         }
     },
