@@ -13,12 +13,12 @@ const availableCodes = new Set(Object.values(FlagDatabase))
 })
 export class FlagComponent {
 
-    private _code: string
+    private _code?: string
     @Input() set country(val: keyof typeof FlagDatabase) {
-        const lc = val && val.toLowerCase() || undefined
-        if (lc in FlagDatabase) {
+        const lc: (keyof typeof FlagDatabase) | undefined = (val && val.toLowerCase() as any) || undefined
+        if (lc && lc in FlagDatabase) {
             this._code = FlagDatabase[lc]
-        } else if (availableCodes.has(lc)) {
+        } else if (lc && availableCodes.has(lc)) {
             this._code = lc
         } else {
             this._code = undefined
@@ -35,7 +35,7 @@ export class FlagComponent {
     private _size = 48
     @Input() set size(val: number | keyof typeof FlagSize) {
         if (typeof val == 'string' && val.toLowerCase() in FlagSize) {
-            this._size = FlagSize[val.toLowerCase()]
+            this._size = FlagSize[val.toLowerCase() as (keyof typeof FlagSize)]
         } else {
             this._size = Number.isInteger(val) && val > 0
                 ? Number(val)
