@@ -6,6 +6,6 @@ module.exports = {
         'workspace-scopes'
     ],
     rules: {
-        'scope-enum': [2, 'always', []],
+        'scope-enum': [2, 'always', ['demo']]
     }
 }
