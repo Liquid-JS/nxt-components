@@ -1,3 +1,9 @@
+$color_1: #555;
+$color_2: #fff;
+$background-color_1: #eee;
+$background-color_2: #fff;
+$background-color_3: #555;
+
 .app-title {
     font-size: 24px;
 }
@@ -15,11 +21,9 @@
     padding: 24px;
     margin: 24px auto;
     border-radius: 4px;
-    color: #555;
-    background-color: #eee;
-    box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.18),
-        0 6px 6px rgba(0, 0, 0, 0.25);
+    color: $color_1;
+    background-color: $background-color_1;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18), 0 6px 6px rgba(0, 0, 0, 0.25);
 }
 
 .info-container {
@@ -27,7 +31,17 @@
     line-height: 24px;
 }
 
-.action-container,
+.action-container {
+    position: relative;
+    overflow: auto;
+    height: 300px;
+    min-height: 0;
+    padding: 16px;
+    margin: 8px 16px;
+    border-radius: 4px;
+    background-color: $background-color_2;
+}
+
 .content-container {
     position: relative;
     overflow: auto;
@@ -36,10 +50,13 @@
     padding: 16px;
     margin: 8px 16px;
     border-radius: 4px;
-    background-color: #fff;
+    background-color: $background-color_2;
 }
 
-.vertical-container,
+.vertical-container {
+    min-height: 0 !important;
+}
+
 .horizontal-container {
     min-height: 0 !important;
 }
@@ -57,11 +74,11 @@
     font-weight: bold;
     line-height: 14px;
     text-align: center;
-}
 
-.action-button:hover {
-    color: #fff;
-    background-color: #555;
+    &:hover {
+        color: $color_2;
+        background-color: $background-color_3;
+    }
 }
 
 .dropzone-container {
