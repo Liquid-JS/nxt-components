@@ -6,13 +6,13 @@ import locl from 'i18n-iso-countries/langs/en.json'
 registerLocale(locl)
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    selector: 'app-flags',
+    templateUrl: './flags.component.html',
+    styleUrls: ['./flags.component.scss']
 })
-export class AppComponent {
+export class AppFlagsComponent {
     code = 'es'
-    data: { code: string; name: string }[]
+    data: Array<{ code: string, name: string }>
 
     constructor() {
         const codes = Object.keys(locl.countries)
