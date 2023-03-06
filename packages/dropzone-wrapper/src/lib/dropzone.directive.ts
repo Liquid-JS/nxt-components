@@ -51,7 +51,7 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, OnChanges 
     @Output('queueComplete') DZ_QUEUECOMPLETE = new EventEmitter<any>()
     @Output('totalUploadProgress') DZ_TOTALUPLOADPROGRESS = new EventEmitter<any>()
 
-    constructor(private zone: NgZone, private renderer: Renderer2, private elementRef: ElementRef,
+    constructor(private zone: NgZone, private renderer: Renderer2, private elementRef: ElementRef<HTMLElement>,
         private differs: KeyValueDiffers, @Inject(PLATFORM_ID) private platformId: Object,
         @Optional() @Inject(DROPZONE_CONFIG) private defaults: DropzoneConfigInterface) {
         const dz = Dropzone

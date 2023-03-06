@@ -1,5 +1,5 @@
 import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Optional, Output, ViewChild } from '@angular/core'
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
@@ -17,8 +17,7 @@ const MONTHS_PER_ROW = 3
     preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OwlYearViewComponent<T>
-    implements OnInit, AfterContentInit, OnDestroy {
+export class OwlYearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy {
     /**
      * The select mode of the picker;
      * */
@@ -37,41 +36,41 @@ export class OwlYearViewComponent<T>
     }
 
     /** The currently selected date. */
-    private _selected: T | null = null
+    private _selected?: T
     @Input()
-    get selected(): T | null {
+    get selected() {
         return this._selected
     }
 
-    set selected(value: T | null) {
+    set selected(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._selected = this.getValidDate(value)
         this.setSelectedMonths()
     }
 
-    private _selecteds: Array<T | null> = []
+    private _selecteds?: Array<T | undefined>
     @Input()
-    get selecteds(): Array<T | null> {
+    get selecteds() {
         return this._selecteds
     }
 
-    set selecteds(values: Array<T | null>) {
+    set selecteds(values: Array<T | undefined> | undefined) {
         this._selecteds = []
-        values.forEach(val => {
+        values?.forEach(val => {
             const value = this.dateTimeAdapter.deserialize(val)
-            this._selecteds.push(this.getValidDate(value))
+            this._selecteds!.push(this.getValidDate(value))
         })
 
         this.setSelectedMonths()
     }
 
-    private _pickerMoment: T | null = null
+    private _pickerMoment?: T
     @Input()
     get pickerMoment() {
         return this._pickerMoment
     }
 
-    set pickerMoment(value: T | null) {
+    set pickerMoment(value: T | undefined) {
         const oldMoment = this._pickerMoment
         value = this.dateTimeAdapter.deserialize(value)
         this._pickerMoment =
@@ -102,13 +101,13 @@ export class OwlYearViewComponent<T>
     }
 
     /** The minimum selectable date. */
-    private _minDate: T | null = null
+    private _minDate?: T
     @Input()
-    get minDate(): T | null {
+    get minDate() {
         return this._minDate
     }
 
-    set minDate(value: T | null) {
+    set minDate(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._minDate = this.getValidDate(value)
         if (this.initiated) {
@@ -117,13 +116,13 @@ export class OwlYearViewComponent<T>
     }
 
     /** The maximum selectable date. */
-    private _maxDate: T | null = null
+    private _maxDate?: T
     @Input()
-    get maxDate(): T | null {
+    get maxDate() {
         return this._maxDate
     }
 
-    set maxDate(value: T | null) {
+    set maxDate(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._maxDate = this.getValidDate(value)
         if (this.initiated) {
@@ -157,17 +156,17 @@ export class OwlYearViewComponent<T>
         )
     }
 
-    private localeSub: Subscription = Subscription.EMPTY
+    private localeSub?: Subscription
 
     private initiated = false
 
-    public todayMonth: number | null = null
+    public todayMonth?: number
 
     /**
      * An array to hold all selectedDates' month value
      * the value is the month number in current year
      * */
-    public selectedMonths: Array<number | null> = []
+    public selectedMonths?: Array<number | undefined>
 
     /**
      * Callback to invoke when a new month is selected
@@ -184,11 +183,11 @@ export class OwlYearViewComponent<T>
 
     /** Emits when any date is activated. */
     @Output()
-    readonly pickerMomentChange: EventEmitter<T> = new EventEmitter<T>()
+    readonly pickerMomentChange = new EventEmitter<T>()
 
     /** Emits when use keyboard enter to select a calendar cell */
     @Output()
-    readonly keyboardEnter: EventEmitter<any> = new EventEmitter<any>()
+    readonly keyboardEnter = new EventEmitter<void>()
 
     /** The body of calendar table */
     @ViewChild(OwlCalendarBodyComponent, { static: true })
@@ -200,11 +199,10 @@ export class OwlYearViewComponent<T>
     }
 
     constructor(
-        private cdRef: ChangeDetectorRef,
-        @Optional() private dateTimeAdapter: DateTimeAdapter<T>,
-        @Optional()
+        private readonly cdRef: ChangeDetectorRef,
+        private readonly dateTimeAdapter: DateTimeAdapter<T>,
         @Inject(OWL_DATE_TIME_FORMATS)
-        private dateTimeFormats: OwlDateTimeFormats
+        private readonly dateTimeFormats: OwlDateTimeFormats
     ) {
         this.monthNames = this.dateTimeAdapter.getMonthNames('short')
     }
@@ -222,7 +220,8 @@ export class OwlYearViewComponent<T>
     }
 
     public ngOnDestroy(): void {
-        this.localeSub.unsubscribe()
+        this.localeSub?.unsubscribe()
+        this.localeSub = undefined
     }
 
     /**
@@ -442,9 +441,9 @@ export class OwlYearViewComponent<T>
 
     /**
      * Gets the month in this year that the given Date falls on.
-     * Returns null if the given Date is in another year.
+     * Returns undefined if the given Date is in another year.
      */
-    private getMonthInCurrentYear(date: T | null): number | null {
+    private getMonthInCurrentYear(date?: T): number | undefined {
         if (this.getValidDate(date) && this.getValidDate(this._pickerMoment)) {
             const result = this.dateTimeAdapter.compareYear(
                 date,
@@ -461,9 +460,8 @@ export class OwlYearViewComponent<T>
             } else {
                 return this.dateTimeAdapter.getMonth(date)
             }
-        } else {
-            return null
         }
+        return
     }
 
     /**
@@ -490,7 +488,7 @@ export class OwlYearViewComponent<T>
     /**
      * Check the given dates are in the same year
      */
-    private hasSameYear(dateLeft: T | null, dateRight: T | null) {
+    private hasSameYear(dateLeft?: T, dateRight?: T) {
         return !!(
             dateLeft &&
             dateRight &&
@@ -502,11 +500,11 @@ export class OwlYearViewComponent<T>
     /**
      * Get a valid date object
      */
-    private getValidDate(obj: any): T | null {
+    private getValidDate(obj: any): T | undefined {
         return this.dateTimeAdapter.isDateInstance(obj) &&
             this.dateTimeAdapter.isValid(obj)
             ? obj
-            : null
+            : undefined
     }
 
     private focusActiveCell() {

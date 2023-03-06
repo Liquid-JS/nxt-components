@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Input, NgZone, OnInit, Optional, Output } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Input, NgZone, OnInit, Output } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
@@ -13,38 +13,37 @@ import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
 })
 export class OwlTimerComponent<T> implements OnInit {
     /** The current picker moment */
-    private _pickerMoment: T | null = null
+    private _pickerMoment?: T
     @Input()
     get pickerMoment() {
         return this._pickerMoment
     }
 
-    set pickerMoment(value: T | null) {
+    set pickerMoment(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
-        this._pickerMoment =
-            this.getValidDate(value) || this.dateTimeAdapter.now()
+        this._pickerMoment = this.getValidDate(value) || this.dateTimeAdapter.now()
     }
 
     /** The minimum selectable date time. */
-    private _minDateTime: T | null = null
+    private _minDateTime?: T
     @Input()
-    get minDateTime(): T | null {
+    get minDateTime() {
         return this._minDateTime
     }
 
-    set minDateTime(value: T | null) {
+    set minDateTime(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._minDateTime = this.getValidDate(value)
     }
 
     /** The maximum selectable date time. */
-    private _maxDateTime: T | null = null
+    private _maxDateTime?: T
     @Input()
-    get maxDateTime(): T | null {
+    get maxDateTime() {
         return this._maxDateTime
     }
 
-    set maxDateTime(value: T | null) {
+    set maxDateTime(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._maxDateTime = this.getValidDate(value)
     }
@@ -151,7 +150,7 @@ export class OwlTimerComponent<T> implements OnInit {
     }
 
     @Output()
-    selectedChange = new EventEmitter<T>()
+    readonly selectedChange = new EventEmitter<T>()
 
     @HostBinding('class.owl-dt-timer')
     get owlDTTimerClass(): boolean {
@@ -164,11 +163,11 @@ export class OwlTimerComponent<T> implements OnInit {
     }
 
     constructor(
-        private ngZone: NgZone,
-        private elmRef: ElementRef,
-        private pickerIntl: OwlDateTimeIntl,
-        private cdRef: ChangeDetectorRef,
-        @Optional() private dateTimeAdapter: DateTimeAdapter<T>
+        private readonly ngZone: NgZone,
+        private readonly elmRef: ElementRef<HTMLElement>,
+        private readonly pickerIntl: OwlDateTimeIntl,
+        private readonly cdRef: ChangeDetectorRef,
+        private readonly dateTimeAdapter: DateTimeAdapter<T>
     ) { }
 
     public ngOnInit() { }
@@ -344,10 +343,10 @@ export class OwlTimerComponent<T> implements OnInit {
     /**
      * Get a valid date object
      */
-    private getValidDate(obj: any): T | null {
+    private getValidDate(obj: any): T | undefined {
         return this.dateTimeAdapter.isDateInstance(obj) &&
             this.dateTimeAdapter.isValid(obj)
             ? obj
-            : null
+            : undefined
     }
 }

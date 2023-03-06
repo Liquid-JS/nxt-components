@@ -1,6 +1,6 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion'
 import { DOWN_ARROW } from '@angular/cdk/keycodes'
-import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit, Optional, Output, Renderer2 } from '@angular/core'
+import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core'
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../class/date-time-adapter.class'
@@ -28,13 +28,7 @@ export const OWL_DATETIME_VALIDATORS: any = {
         OWL_DATETIME_VALIDATORS
     ]
 })
-export class OwlDateTimeInputDirective<T>
-    implements
-    OnInit,
-    AfterContentInit,
-    OnDestroy,
-    ControlValueAccessor,
-    Validator {
+export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDestroy, ControlValueAccessor, Validator {
     /**
      * The date time picker that this input is associated with.
      * */
@@ -47,19 +41,19 @@ export class OwlDateTimeInputDirective<T>
      * A function to filter date time
      */
     @Input()
-    set owlDateTimeFilter(filter: (date: T | null) => boolean) {
+    set owlDateTimeFilter(filter: (date?: T) => boolean) {
         this._dateTimeFilter = filter
-        this.validatorOnChange()
+        this.validatorOnChange?.()
     }
 
-    private _dateTimeFilter?: (date: T | null) => boolean
+    private _dateTimeFilter?: (date?: T) => boolean
     get dateTimeFilter() {
         return this._dateTimeFilter
     }
 
     /** Whether the date time picker's input is disabled. */
     @Input()
-    private _disabled: boolean = false
+    private _disabled = false
     get disabled() {
         return this._disabled
     }
@@ -73,37 +67,33 @@ export class OwlDateTimeInputDirective<T>
             this.disabledChange.emit(newValue)
         }
 
-        // We need to null check the `blur` method, because it's undefined during SSR.
-        if (newValue && element.blur) {
-            // Normally, native input elements automatically blur if they turn disabled. This behavior
-            // is problematic, because it would mean that it triggers another change detection cycle,
-            // which then causes a changed after checked error if the input element was focused before.
-            element.blur()
+        if (newValue) {
+            element.blur?.()
         }
     }
 
     /** The minimum valid date. */
-    private _min: T | null = null
+    private _min?: T
     @Input()
-    get min(): T | null {
+    get min() {
         return this._min
     }
 
-    set min(value: T | null) {
+    set min(value: T | undefined) {
         this._min = this.getValidDate(this.dateTimeAdapter.deserialize(value))
-        this.validatorOnChange()
+        this.validatorOnChange?.()
     }
 
     /** The maximum valid date. */
-    private _max: T | null = null
+    private _max?: T
     @Input()
-    get max(): T | null {
+    get max() {
         return this._max
     }
 
-    set max(value: T | null) {
+    set max(value: T | undefined) {
         this._max = this.getValidDate(this.dateTimeAdapter.deserialize(value))
-        this.validatorOnChange()
+        this.validatorOnChange?.()
     }
 
     /**
@@ -134,15 +124,15 @@ export class OwlDateTimeInputDirective<T>
     @Input()
     rangeSeparator = '~'
 
-    private _value: T | null = null
+    private _value?: T
     @Input()
     get value() {
         return this._value
     }
 
-    set value(value: T | null) {
+    set value(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
-        this.lastValueValid = !value || this.dateTimeAdapter.isValid(value)
+        this.lastValueValid = !value || !!this.dateTimeAdapter.isValid(value)
         value = this.getValidDate(value)
         const oldDate = this._value
         this._value = value
@@ -156,13 +146,13 @@ export class OwlDateTimeInputDirective<T>
         }
     }
 
-    private _values: Array<T | null> = []
+    private _values: Array<T | undefined> = []
     @Input()
     get values() {
         return this._values
     }
 
-    set values(values: Array<T | null>) {
+    set values(values: Array<T | undefined>) {
         if (values && values.length > 0) {
             this._values = values.map(v => {
                 v = this.dateTimeAdapter.deserialize(v)
@@ -188,15 +178,23 @@ export class OwlDateTimeInputDirective<T>
      * Callback to invoke when `change` event is fired on this `<input>`
      * */
     @Output()
-    dateTimeChange = new EventEmitter<any>()
+    readonly dateTimeChange = new EventEmitter<{
+        source: OwlDateTimeInputDirective<T>
+        value?: T | Array<T | undefined>
+        input: HTMLInputElement
+    }>()
 
     /**
      * Callback to invoke when an `input` event is fired on this `<input>`.
      * */
     @Output()
-    dateTimeInput = new EventEmitter<any>()
+    readonly dateTimeInput = new EventEmitter<{
+        source: OwlDateTimeInputDirective<T>
+        value?: T | Array<T | undefined>
+        input: HTMLInputElement
+    }>()
 
-    get elementRef(): ElementRef {
+    get elementRef() {
         return this.elmRef
     }
 
@@ -215,24 +213,24 @@ export class OwlDateTimeInputDirective<T>
     /** The date-time-picker that this input is associated with. */
     public dtPicker?: OwlDateTimeComponent<T>
 
-    private dtPickerSub: Subscription = Subscription.EMPTY
-    private localeSub: Subscription = Subscription.EMPTY
+    private dtPickerSub?: Subscription
+    private localeSub?: Subscription
 
     private lastValueValid = true
 
-    private onModelChange: (date: T | Array<T | null> | null) => void = () => { }
-    private onModelTouched: () => void = () => { }
-    private validatorOnChange: () => void = () => { }
+    private onModelChange?: (date: T | Array<T | undefined> | undefined) => void
+    private onModelTouched?: () => void
+    private validatorOnChange?: () => void
 
     /** The form control validator for whether the input parses. */
-    private parseValidator: ValidatorFn = (): ValidationErrors | null => this.lastValueValid
+    private readonly parseValidator: ValidatorFn = () => this.lastValueValid
         ? null
         : { owlDateTimeParse: { text: this.elmRef.nativeElement.value } }
 
     /** The form control validator for the min date. */
-    private minValidator: ValidatorFn = (
-        control: AbstractControl
-    ): ValidationErrors | null => {
+    private readonly minValidator: ValidatorFn = (
+        control
+    ) => {
         if (this.isInSingleMode) {
             const controlValue = this.getValidDate(
                 this.dateTimeAdapter.deserialize(control.value)
@@ -265,9 +263,9 @@ export class OwlDateTimeInputDirective<T>
     }
 
     /** The form control validator for the max date. */
-    private maxValidator: ValidatorFn = (
-        control: AbstractControl
-    ): ValidationErrors | null => {
+    private readonly maxValidator: ValidatorFn = (
+        control
+    ) => {
         if (this.isInSingleMode) {
             const controlValue = this.getValidDate(
                 this.dateTimeAdapter.deserialize(control.value)
@@ -300,7 +298,7 @@ export class OwlDateTimeInputDirective<T>
     }
 
     /** The form control validator for the date filter. */
-    private filterValidator: ValidatorFn = (
+    private readonly filterValidator: ValidatorFn = (
         control: AbstractControl
     ): ValidationErrors | null => {
         const controlValue = this.getValidDate(
@@ -317,9 +315,9 @@ export class OwlDateTimeInputDirective<T>
      * The form control validator for the range.
      * Check whether the 'before' value is before the 'to' value
      * */
-    private rangeValidator: ValidatorFn = (
-        control: AbstractControl
-    ): ValidationErrors | null => {
+    private readonly rangeValidator: ValidatorFn = (
+        control
+    ) => {
         if (this.isInSingleMode || !control.value) {
             return null
         }
@@ -339,7 +337,7 @@ export class OwlDateTimeInputDirective<T>
     }
 
     /** The combined form control validator for this input. */
-    private validator: ValidatorFn | null = Validators.compose([
+    private readonly validator = Validators.compose([
         this.parseValidator,
         this.minValidator,
         this.maxValidator,
@@ -348,10 +346,10 @@ export class OwlDateTimeInputDirective<T>
     ])
 
     /** Emits when the value changes (either due to user input or programmatic change). */
-    public valueChange = new EventEmitter<Array<T | null> | T | null>()
+    public readonly valueChange = new EventEmitter<Array<T | undefined> | T | undefined>()
 
     /** Emits when the disabled state has changed */
-    public disabledChange = new EventEmitter<boolean>()
+    public readonly disabledChange = new EventEmitter<boolean>()
 
     @HostBinding('attr.aria-haspopup')
     get owlDateTimeInputAriaHaspopup(): boolean {
@@ -360,17 +358,17 @@ export class OwlDateTimeInputDirective<T>
 
     @HostBinding('attr.aria-owns')
     get owlDateTimeInputAriaOwns() {
-        return (this.dtPicker?.opened && this.dtPicker.id) || null
+        return (this.dtPicker?.opened && this.dtPicker.id) || undefined
     }
 
     @HostBinding('attr.min')
     get minIso8601() {
-        return this.min ? this.dateTimeAdapter.toIso8601(this.min) : null
+        return this.min ? this.dateTimeAdapter.toIso8601(this.min) : undefined
     }
 
     @HostBinding('attr.max')
     get maxIso8601() {
-        return this.max ? this.dateTimeAdapter.toIso8601(this.max) : null
+        return this.max ? this.dateTimeAdapter.toIso8601(this.max) : undefined
     }
 
     @HostBinding('disabled')
@@ -378,26 +376,13 @@ export class OwlDateTimeInputDirective<T>
         return this.disabled
     }
 
-    constructor(private elmRef: ElementRef,
-        private renderer: Renderer2,
-        @Optional() private dateTimeAdapter: DateTimeAdapter<T>,
-        @Optional() @Inject(OWL_DATE_TIME_FORMATS) private dateTimeFormats: OwlDateTimeFormats) {
-        if (!this.dateTimeAdapter) {
-            throw Error(
-                'OwlDateTimePicker: No provider found for DateTimePicker. You must import one of the following ' +
-                'modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ' +
-                'custom implementation.'
-            )
-        }
-
-        if (!this.dateTimeFormats) {
-            throw Error(
-                'OwlDateTimePicker: No provider found for OWL_DATE_TIME_FORMATS. You must import one of the following ' +
-                'modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ' +
-                'custom implementation.'
-            )
-        }
-
+    constructor(
+        private readonly elmRef: ElementRef<HTMLInputElement>,
+        private readonly renderer: Renderer2,
+        private readonly dateTimeAdapter: DateTimeAdapter<T>,
+        @Inject(OWL_DATE_TIME_FORMATS)
+        private readonly dateTimeFormats: OwlDateTimeFormats
+    ) {
         this.localeSub = this.dateTimeAdapter.localeChanges.subscribe(() => {
             this.value = this.value
         })
@@ -420,8 +405,8 @@ export class OwlDateTimeInputDirective<T>
                     this.value = selecteds
                 }
 
-                this.onModelChange(selecteds)
-                this.onModelTouched()
+                this.onModelChange?.(selecteds)
+                this.onModelTouched?.()
                 this.dateTimeChange.emit({
                     source: this,
                     value: selecteds,
@@ -433,12 +418,14 @@ export class OwlDateTimeInputDirective<T>
                     input: this.elmRef.nativeElement
                 })
             }
-        ) ?? Subscription.EMPTY
+        )
     }
 
     public ngOnDestroy(): void {
-        this.dtPickerSub.unsubscribe()
-        this.localeSub.unsubscribe()
+        this.dtPickerSub?.unsubscribe()
+        this.dtPickerSub = undefined
+        this.localeSub?.unsubscribe()
+        this.localeSub = undefined
         this.valueChange.complete()
         this.disabledChange.complete()
     }
@@ -484,7 +471,7 @@ export class OwlDateTimeInputDirective<T>
 
     @HostListener('blur', ['$event'])
     public handleBlurOnHost(_event: Event): void {
-        this.onModelTouched()
+        this.onModelTouched?.()
     }
 
     @HostListener('input', ['$event'])
@@ -553,7 +540,7 @@ export class OwlDateTimeInputDirective<T>
                     this.renderer.setProperty(
                         this.elmRef.nativeElement,
                         'value',
-                        null
+                        undefined
                     )
                 } else {
                     if (this._selectMode === 'range') {
@@ -605,11 +592,11 @@ export class OwlDateTimeInputDirective<T>
     /**
      * Convert a given obj to a valid date object
      */
-    private getValidDate(obj: any): T | null {
+    private getValidDate(obj: any): T | undefined {
         return this.dateTimeAdapter.isDateInstance(obj) &&
             this.dateTimeAdapter.isValid(obj)
             ? obj
-            : null
+            : undefined
     }
 
     /**
@@ -619,9 +606,9 @@ export class OwlDateTimeInputDirective<T>
      * Therefore we need this fn to convert a time string to a date-time string.
      */
     private convertTimeStringToDateTimeString(
-        timeString: string | null,
-        dateTime: T | null
-    ): string | null {
+        timeString?: string,
+        dateTime?: T
+    ) {
         if (timeString) {
             const v = dateTime || this.dateTimeAdapter.now()
             const dateString = this.dateTimeAdapter.format(
@@ -629,16 +616,15 @@ export class OwlDateTimeInputDirective<T>
                 this.dateTimeFormats.datePickerInput
             )
             return dateString + ' ' + timeString
-        } else {
-            return null
         }
+        return undefined
     }
 
     /**
      * Handle input change in single mode
      */
     private changeInputInSingleMode(inputValue: string): void {
-        let value: string | null = inputValue
+        let value: string | undefined = inputValue
         if (this.dtPicker?.pickerType === 'timer') {
             value = this.convertTimeStringToDateTimeString(value, this.value)
         }
@@ -651,11 +637,11 @@ export class OwlDateTimeInputDirective<T>
         result = this.getValidDate(result)
 
         // if the newValue is the same as the oldValue, we intend to not fire the valueChange event
-        // result equals to null means there is input event, but the input value is invalid
-        if (!this.isSameValue(result, this._value) || result === null) {
+        // result equals to undefined means there is input event, but the input value is invalid
+        if (!this.isSameValue(result, this._value) || result === undefined) {
             this._value = result
             this.valueChange.emit(result)
-            this.onModelChange(result)
+            this.onModelChange?.(result)
             this.dateTimeInput.emit({
                 source: this,
                 value: result,
@@ -667,7 +653,7 @@ export class OwlDateTimeInputDirective<T>
     /**
      * Handle input change in rangeFrom or rangeTo mode
      */
-    private changeInputInRangeFromToMode(inputValue: string | null): void {
+    private changeInputInRangeFromToMode(inputValue?: string): void {
         const originalValue =
             this._selectMode === 'rangeFrom'
                 ? this._values[0]
@@ -704,7 +690,7 @@ export class OwlDateTimeInputDirective<T>
                 ? [result, this._values[1]]
                 : [this._values[0], result]
         this.valueChange.emit(this._values)
-        this.onModelChange(this._values)
+        this.onModelChange?.(this._values)
         this.dateTimeInput.emit({
             source: this,
             value: this._values,
@@ -717,8 +703,8 @@ export class OwlDateTimeInputDirective<T>
      */
     private changeInputInRangeMode(inputValue: string): void {
         const selecteds = inputValue.split(this.rangeSeparator)
-        let fromString: string | null = selecteds[0]
-        let toString: string | null = selecteds[1]
+        let fromString: string | undefined = selecteds[0]
+        let toString: string | undefined = selecteds[1]
 
         if (this.dtPicker?.pickerType === 'timer') {
             fromString = this.convertTimeStringToDateTimeString(
@@ -749,11 +735,11 @@ export class OwlDateTimeInputDirective<T>
         if (
             !this.isSameValue(from, this._values[0]) ||
             !this.isSameValue(to, this._values[1]) ||
-            (from === null && to === null)
+            (!from && !to)
         ) {
             this._values = [from, to]
             this.valueChange.emit(this._values)
-            this.onModelChange(this._values)
+            this.onModelChange?.(this._values)
             this.dateTimeInput.emit({
                 source: this,
                 value: this._values,
@@ -765,7 +751,7 @@ export class OwlDateTimeInputDirective<T>
     /**
      * Check if the two value is the same
      */
-    private isSameValue(first: T | null, second: T | null): boolean {
+    private isSameValue(first?: T, second?: T): boolean {
         if (first && second) {
             return this.dateTimeAdapter.compare(first, second) === 0
         }

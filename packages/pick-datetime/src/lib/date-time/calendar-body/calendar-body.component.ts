@@ -57,7 +57,7 @@ export class OwlCalendarBodyComponent implements OnInit {
      * The value in the table that is currently selected.
      * */
     @Input()
-    selectedValues?: Array<number | null>
+    selectedValues?: Array<number | undefined>
 
     /**
      * Current picker select mode
@@ -89,7 +89,10 @@ export class OwlCalendarBodyComponent implements OnInit {
         )
     }
 
-    constructor(private elmRef: ElementRef, private ngZone: NgZone) { }
+    constructor(
+        private readonly elmRef: ElementRef<HTMLElement>,
+        private readonly ngZone: NgZone
+    ) { }
 
     public ngOnInit() { }
 
@@ -128,10 +131,10 @@ export class OwlCalendarBodyComponent implements OnInit {
      * */
     public isInRange(value: number): boolean {
         if (this.isInRangeMode) {
-            const fromValue = this.selectedValues?.[0] ?? null
-            const toValue = this.selectedValues?.[1] ?? null
+            const fromValue = this.selectedValues?.[0]
+            const toValue = this.selectedValues?.[1]
 
-            if (fromValue !== null && toValue !== null) {
+            if (fromValue !== undefined && toValue !== undefined) {
                 return value >= fromValue && value <= toValue
             } else {
                 return value === fromValue || value === toValue
@@ -145,8 +148,8 @@ export class OwlCalendarBodyComponent implements OnInit {
      * */
     public isRangeFrom(value: number): boolean {
         if (this.isInRangeMode) {
-            const fromValue = this.selectedValues?.[0] ?? null
-            return fromValue !== null && value === fromValue
+            const fromValue = this.selectedValues?.[0]
+            return fromValue !== undefined && value === fromValue
         }
         return false
     }
@@ -157,7 +160,7 @@ export class OwlCalendarBodyComponent implements OnInit {
     public isRangeTo(value: number): boolean {
         if (this.isInRangeMode) {
             const toValue = this.selectedValues?.[1]
-            return toValue !== null && value === toValue
+            return toValue !== undefined && value === toValue
         }
         return false
     }
@@ -172,8 +175,8 @@ export class OwlCalendarBodyComponent implements OnInit {
                 .pipe(take(1))
                 .subscribe(() => {
                     this.elmRef.nativeElement
-                        .querySelector('.owl-dt-calendar-cell-active')
-                        .focus()
+                        ?.querySelector<HTMLElement>('.owl-dt-calendar-cell-active')
+                        ?.focus()
                 })
         })
     }

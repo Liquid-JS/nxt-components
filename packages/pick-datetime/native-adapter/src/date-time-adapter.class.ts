@@ -141,7 +141,7 @@ export class NativeDateTimeAdapter extends DateTimeAdapter<Date> {
         return this.getDate(lastDateOfMonth)
     }
 
-    public differenceInCalendarDays(dateLeft: Date, dateRight: Date): number | null {
+    public differenceInCalendarDays(dateLeft: Date, dateRight: Date): number | undefined {
         if (this.isValid(dateLeft) && this.isValid(dateRight)) {
             const dateLeftStartOfDay = this.createDate(
                 this.getYear(dateLeft),
@@ -166,7 +166,7 @@ export class NativeDateTimeAdapter extends DateTimeAdapter<Date> {
                 (timeStampLeft - timeStampRight) / this.millisecondsInDay
             )
         } else {
-            return null
+            return undefined
         }
     }
 
@@ -407,23 +407,23 @@ export class NativeDateTimeAdapter extends DateTimeAdapter<Date> {
         return this.stripDirectionalityCharacters(date.toDateString())
     }
 
-    public parse(value: any, _parseFormat: any): Date | null {
+    public parse(value: any, _parseFormat: any): Date | undefined {
         // There is no way using the native JS Date to set the parse format or locale
         if (typeof value === 'number') {
             return new Date(value)
         }
-        return value ? new Date(Date.parse(value)) : null
+        return value ? new Date(Date.parse(value)) : undefined
     }
 
     /**
-     * Returns the given value if given a valid Date or null. Deserializes valid ISO 8601 strings
-     * (https://www.ietf.org/rfc/rfc3339.txt) into valid Dates and empty string into null. Returns an
+     * Returns the given value if given a valid Date or undefined. Deserializes valid ISO 8601 strings
+     * (https://www.ietf.org/rfc/rfc3339.txt) into valid Dates and empty string into undefined. Returns an
      * invalid date for all other values.
      */
-    public override deserialize(value: any): Date | null {
+    public override deserialize(value: any): Date | undefined {
         if (typeof value === 'string') {
             if (!value) {
-                return null
+                return undefined
             }
             // The `Date` constructor accepts formats other than ISO 8601, so we need to make sure the
             // string is the right format first.

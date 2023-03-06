@@ -1,6 +1,6 @@
 import { coerceNumberProperty } from '@angular/cdk/coercion'
 import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Optional, Output, ViewChild } from '@angular/core'
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
@@ -18,8 +18,7 @@ const WEEKS_PER_VIEW = 6
     preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OwlMonthViewComponent<T>
-    implements OnInit, AfterContentInit, OnDestroy {
+export class OwlMonthViewComponent<T> implements OnInit, AfterContentInit, OnDestroy {
     /**
      * Whether to hide dates in other months at the start or end of the current month.
      * */
@@ -67,13 +66,13 @@ export class OwlMonthViewComponent<T>
     }
 
     /** The currently selected date. */
-    private _selected: T | null = null
+    private _selected?: T
     @Input()
-    get selected(): T | null {
+    get selected() {
         return this._selected
     }
 
-    set selected(value: T | null) {
+    set selected(value: T | undefined) {
         const oldSelected = this._selected
         value = this.dateTimeAdapter.deserialize(value)
         this._selected = this.getValidDate(value)
@@ -83,27 +82,27 @@ export class OwlMonthViewComponent<T>
         }
     }
 
-    private _selecteds: Array<T | null> = []
+    private _selecteds?: Array<T | undefined>
     @Input()
-    get selecteds(): Array<T | null> {
+    get selecteds() {
         return this._selecteds
     }
 
-    set selecteds(values: Array<T | null>) {
-        this._selecteds = values.map(v => {
+    set selecteds(values: Array<T | undefined> | undefined) {
+        this._selecteds = values?.map(v => {
             v = this.dateTimeAdapter.deserialize(v)
             return this.getValidDate(v)
         })
         this.setSelectedDates()
     }
 
-    private _pickerMoment: T | null = null
+    private _pickerMoment?: T
     @Input()
     get pickerMoment() {
         return this._pickerMoment
     }
 
-    set pickerMoment(value: T | null) {
+    set pickerMoment(value: T | undefined) {
         const oldMoment = this._pickerMoment
         value = this.dateTimeAdapter.deserialize(value)
         this._pickerMoment =
@@ -141,13 +140,13 @@ export class OwlMonthViewComponent<T>
     }
 
     /** The minimum selectable date. */
-    private _minDate: T | null = null
+    private _minDate?: T
     @Input()
-    get minDate(): T | null {
+    get minDate() {
         return this._minDate
     }
 
-    set minDate(value: T | null) {
+    set minDate(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._minDate = this.getValidDate(value)
         if (this.initiated) {
@@ -157,13 +156,13 @@ export class OwlMonthViewComponent<T>
     }
 
     /** The maximum selectable date. */
-    private _maxDate: T | null = null
+    private _maxDate?: T
     @Input()
-    get maxDate(): T | null {
+    get maxDate() {
         return this._maxDate
     }
 
-    set maxDate(value: T | null) {
+    set maxDate(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._maxDate = this.getValidDate(value)
 
@@ -206,22 +205,22 @@ export class OwlMonthViewComponent<T>
         )
     }
 
-    private firstDateOfMonth: T | null = null
+    private firstDateOfMonth?: T
 
-    private localeSub: Subscription = Subscription.EMPTY
+    private localeSub?: Subscription
 
     private initiated = false
 
     /**
      * The date of the month that today falls on.
      * */
-    public todayDate: number | null = null
+    public todayDate?: number
 
     /**
      * An array to hold all selectedDates' value
      * the value is the day number in current month
      * */
-    public selectedDates: Array<number | null> = []
+    public selectedDates?: Array<number | undefined>
 
     // the index of cell that contains the first date of the month
     public firstRowOffset: number = 0
@@ -230,7 +229,7 @@ export class OwlMonthViewComponent<T>
      * Callback to invoke when a new date is selected
      * */
     @Output()
-    readonly selectedChange = new EventEmitter<T | null>()
+    readonly selectedChange = new EventEmitter<T | undefined>()
 
     /**
      * Callback to invoke when any date is selected.
@@ -240,7 +239,7 @@ export class OwlMonthViewComponent<T>
 
     /** Emits when any date is activated. */
     @Output()
-    readonly pickerMomentChange: EventEmitter<T> = new EventEmitter<T>()
+    readonly pickerMomentChange = new EventEmitter<T>()
 
     /** The body of calendar table */
     @ViewChild(OwlCalendarBodyComponent, { static: true })
@@ -252,11 +251,10 @@ export class OwlMonthViewComponent<T>
     }
 
     constructor(
-        private cdRef: ChangeDetectorRef,
-        @Optional() private dateTimeAdapter: DateTimeAdapter<T>,
-        @Optional()
+        private readonly cdRef: ChangeDetectorRef,
+        private readonly dateTimeAdapter: DateTimeAdapter<T>,
         @Inject(OWL_DATE_TIME_FORMATS)
-        private dateTimeFormats: OwlDateTimeFormats
+        private readonly dateTimeFormats: OwlDateTimeFormats
     ) { }
 
     public ngOnInit() {
@@ -275,7 +273,8 @@ export class OwlMonthViewComponent<T>
     }
 
     public ngOnDestroy(): void {
-        this.localeSub.unsubscribe()
+        this.localeSub?.unsubscribe()
+        this.localeSub = undefined
     }
 
     /**
@@ -437,7 +436,7 @@ export class OwlMonthViewComponent<T>
             return
         }
 
-        this.todayDate = null
+        this.todayDate = undefined
 
         // the first weekday of the month
         const startWeekdayOfMonth = this.dateTimeAdapter.getDay(
@@ -535,17 +534,17 @@ export class OwlMonthViewComponent<T>
     /**
      * Get a valid date object
      */
-    private getValidDate(obj: any): T | null {
+    private getValidDate(obj: any): T | undefined {
         return this.dateTimeAdapter.isDateInstance(obj) &&
             this.dateTimeAdapter.isValid(obj)
             ? obj
-            : null
+            : undefined
     }
 
     /**
-     * Check if the give dates are none-null and in the same month
+     * Check if the give dates are defined and in the same month
      */
-    public isSameMonth(dateLeft: T | null, dateRight: T | null): boolean {
+    public isSameMonth(dateLeft?: T, dateRight?: T): boolean {
         return !!(
             dateLeft &&
             dateRight &&
@@ -587,9 +586,8 @@ export class OwlMonthViewComponent<T>
                         this.firstDateOfMonth
                     ) ?? 0
                     return dayDiff + 1
-                } else {
-                    return null
                 }
+                return
             })
         }
     }

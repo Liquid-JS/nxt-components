@@ -24,10 +24,11 @@ export class OwlDateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterC
         return this.disabled
     }
 
-    private stateChanges = Subscription.EMPTY
+    private stateChanges?: Subscription
 
-    constructor(protected changeDetector: ChangeDetectorRef) {
-    }
+    constructor(
+        protected readonly changeDetector: ChangeDetectorRef
+    ) { }
 
     public ngOnInit(): void {
     }
@@ -43,7 +44,8 @@ export class OwlDateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterC
     }
 
     public ngOnDestroy(): void {
-        this.stateChanges.unsubscribe()
+        this.stateChanges?.unsubscribe()
+        this.stateChanges = undefined
     }
 
     @HostListener('click', ['$event'])
@@ -55,7 +57,8 @@ export class OwlDateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterC
     }
 
     private watchStateChanges(): void {
-        this.stateChanges.unsubscribe()
+        this.stateChanges?.unsubscribe()
+        this.stateChanges = undefined
 
         const inputDisabled = this.dtPicker && this.dtPicker.dtInput ?
             this.dtPicker.dtInput.disabledChange : observableOf()

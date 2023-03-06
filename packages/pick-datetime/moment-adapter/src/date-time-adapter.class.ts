@@ -239,26 +239,26 @@ export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
         return date.format(displayFormat)
     }
 
-    public parse(value: any, parseFormat: any): Moment | null {
+    public parse(value: any, parseFormat: any): Moment | undefined {
         if (value && typeof value === 'string') {
             return this.createMoment(value, parseFormat, this.locale)
         }
-        return value ? this.createMoment(value).locale(this.locale) : null
+        return value ? this.createMoment(value).locale(this.locale) : undefined
     }
 
     /**
-     * Returns the given value if given a valid Moment or null. Deserializes valid ISO 8601 strings
+     * Returns the given value if given a valid Moment or undefined. Deserializes valid ISO 8601 strings
      * (https://www.ietf.org/rfc/rfc3339.txt) and valid Date objects into valid Moments and empty
-     * string into null. Returns an invalid date for all other values.
+     * string into undefined. Returns an invalid date for all other values.
      */
-    override deserialize(value: any): Moment | null {
+    override deserialize(value: any): Moment | undefined {
         let date
         if (value instanceof Date) {
             date = this.createMoment(value)
         }
         if (typeof value === 'string') {
             if (!value) {
-                return null
+                return undefined
             }
             date = this.createMoment(value, moment.ISO_8601).locale(this.locale)
         }

@@ -2,7 +2,7 @@ import { AnimationEvent } from '@angular/animations'
 import { ESCAPE } from '@angular/cdk/keycodes'
 import { GlobalPositionStrategy, OverlayRef } from '@angular/cdk/overlay'
 import { Location } from '@angular/common'
-import { Observable, Subject, Subscription, SubscriptionLike as ISubscription } from 'rxjs'
+import { Subject, SubscriptionLike as ISubscription } from 'rxjs'
 import { filter, take } from 'rxjs/operators'
 import { OwlDialogContainerComponent } from '../dialog/dialog-container/dialog-container.component'
 import { DialogPosition } from './dialog-config.class'
@@ -11,28 +11,29 @@ export class OwlDialogRef<T> {
 
     private result: any
 
-    private _beforeClose$ = new Subject<any>()
+    private readonly _beforeClose$ = new Subject<void>()
 
-    private _afterOpen$ = new Subject<any>()
+    private readonly _afterOpen$ = new Subject<void>()
 
-    private _afterClosed$ = new Subject<any>()
+    private readonly _afterClosed$ = new Subject<void>()
 
     /** Subscription to changes in the user's location. */
-    private locationChanged: ISubscription = Subscription.EMPTY
+    private locationChanged?: ISubscription
 
     /**
      * The instance of component opened into modal
      * */
-    public componentInstance?: T | null
+    public componentInstance?: T
 
     /** Whether the user is allowed to close the dialog. */
     public disableClose = !!this.container.config?.disableClose
 
-    constructor(private overlayRef: OverlayRef,
-        private container: OwlDialogContainerComponent,
+    constructor(
+        private readonly overlayRef: OverlayRef,
+        private readonly container: OwlDialogContainerComponent,
         public readonly id?: string,
-        location?: Location) {
-
+        location?: Location
+    ) {
         this.container.animationStateChanged
             .pipe(
                 filter((event: AnimationEvent) => event.phaseName === 'done' && event.toState === 'enter'),
@@ -50,10 +51,11 @@ export class OwlDialogRef<T> {
             )
             .subscribe(() => {
                 this.overlayRef.dispose()
-                this.locationChanged.unsubscribe()
+                this.locationChanged?.unsubscribe()
+                this.locationChanged = undefined
                 this._afterClosed$.next(this.result)
                 this._afterClosed$.complete()
-                this.componentInstance = null
+                this.componentInstance = undefined
             })
 
         this.overlayRef.keydownEvents()
@@ -89,14 +91,14 @@ export class OwlDialogRef<T> {
     /**
      * Gets an observable that emits when the overlay's backdrop has been clicked.
      */
-    public backdropClick(): Observable<any> {
+    public backdropClick() {
         return this.overlayRef.backdropClick()
     }
 
     /**
      * Gets an observable that emits when keydown events are targeted on the overlay.
      */
-    public keydownEvents(): Observable<KeyboardEvent> {
+    public keydownEvents() {
         return this.overlayRef.keydownEvents()
     }
 
@@ -147,15 +149,15 @@ export class OwlDialogRef<T> {
         return this.container.isAnimating
     }
 
-    public afterOpen(): Observable<any> {
+    public afterOpen() {
         return this._afterOpen$.asObservable()
     }
 
-    public beforeClose(): Observable<any> {
+    public beforeClose() {
         return this._beforeClose$.asObservable()
     }
 
-    public afterClosed(): Observable<any> {
+    public afterClosed() {
         return this._afterClosed$.asObservable()
     }
 

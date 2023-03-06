@@ -22,12 +22,12 @@ export class OwlDialogConfig {
     /**
      * ID of the element that describes the dialog.
      */
-    public ariaDescribedBy?: string | null = null
+    public ariaDescribedBy?: string
 
     /**
      * Whether to focus the dialog when the dialog is opened
      */
-    public autoFocus?= true
+    public autoFocus = true
 
     /** Whether the dialog has a backdrop. */
     public hasBackdrop?= true
@@ -38,7 +38,7 @@ export class OwlDialogConfig {
     public backdropStyle?: any
 
     /** Data being injected into the child component. */
-    public data?: any = null
+    public data?: any
 
     /** Whether the user can use escape or clicking outside to close a modal. */
     public disableClose?= false

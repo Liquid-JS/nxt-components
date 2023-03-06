@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Inject, Input, NgZone, OnDestroy, OnInit, Optional, Output } from '@angular/core'
+import { AfterContentInit, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Inject, Input, NgZone, OnDestroy, OnInit, Output } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
@@ -14,8 +14,7 @@ import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
     preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OwlCalendarComponent<T>
-    implements OnInit, AfterContentInit, AfterViewChecked, OnDestroy {
+export class OwlCalendarComponent<T> implements OnInit, AfterContentInit, AfterViewChecked, OnDestroy {
     /**
      * Date filter for the month and year view
      * */
@@ -29,13 +28,13 @@ export class OwlCalendarComponent<T>
     firstDayOfWeek = 0
 
     /** The minimum selectable date. */
-    private _minDate: T | null = null
+    private _minDate?: T
     @Input()
-    get minDate(): T | null {
+    get minDate() {
         return this._minDate
     }
 
-    set minDate(value: T | null) {
+    set minDate(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         value = this.getValidDate(value)
 
@@ -45,17 +44,17 @@ export class OwlCalendarComponent<T>
                 this.dateTimeAdapter.getMonth(value),
                 this.dateTimeAdapter.getDate(value)
             )
-            : null
+            : undefined
     }
 
     /** The maximum selectable date. */
-    private _maxDate: T | null = null
+    private _maxDate?: T
     @Input()
-    get maxDate(): T | null {
+    get maxDate() {
         return this._maxDate
     }
 
-    set maxDate(value: T | null) {
+    set maxDate(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         value = this.getValidDate(value)
 
@@ -65,17 +64,17 @@ export class OwlCalendarComponent<T>
                 this.dateTimeAdapter.getMonth(value),
                 this.dateTimeAdapter.getDate(value)
             )
-            : null
+            : undefined
     }
 
     /** The current picker moment */
-    private _pickerMoment: T | null = null
+    private _pickerMoment?: T
     @Input()
     get pickerMoment() {
         return this._pickerMoment
     }
 
-    set pickerMoment(value: T | null) {
+    set pickerMoment(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._pickerMoment =
             this.getValidDate(value) || this.dateTimeAdapter.now()
@@ -85,25 +84,25 @@ export class OwlCalendarComponent<T>
     selectMode?: SelectMode
 
     /** The currently selected moment. */
-    private _selected: T | null = null
+    private _selected?: T
     @Input()
-    get selected(): T | null {
+    get selected() {
         return this._selected
     }
 
-    set selected(value: T | null) {
+    set selected(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._selected = this.getValidDate(value)
     }
 
-    private _selecteds: Array<T | null> = []
+    private _selecteds?: Array<T | undefined>
     @Input()
-    get selecteds(): Array<T | null> {
+    get selecteds() {
         return this._selecteds
     }
 
-    set selecteds(values: Array<T | null>) {
-        this._selecteds = values.map(v => {
+    set selecteds(values: Array<T | undefined> | undefined) {
+        this._selecteds = values?.map(v => {
             v = this.dateTimeAdapter.deserialize(v)
             return this.getValidDate(v)
         })
@@ -123,15 +122,15 @@ export class OwlCalendarComponent<T>
 
     /** Emits when the currently picker moment changes. */
     @Output()
-    pickerMomentChange = new EventEmitter<T>()
+    readonly pickerMomentChange = new EventEmitter<T>()
 
     /** Emits when the currently selected date changes. */
     @Output()
-    selectedChange = new EventEmitter<T | null>()
+    readonly selectedChange = new EventEmitter<T | undefined>()
 
     /** Emits when any date is selected. */
     @Output()
-    userSelection = new EventEmitter<void>()
+    readonly userSelection = new EventEmitter<void>()
 
     /**
      * Emits the selected year. This doesn't imply a change on the selected date
@@ -165,9 +164,8 @@ export class OwlCalendarComponent<T>
             return this.pickerIntl.prevMonthLabel
         } else if (this._currentView === 'year') {
             return this.pickerIntl.prevYearLabel
-        } else {
-            return null
         }
+        return
     }
 
     get nextButtonLabel() {
@@ -175,9 +173,8 @@ export class OwlCalendarComponent<T>
             return this.pickerIntl.nextMonthLabel
         } else if (this._currentView === 'year') {
             return this.pickerIntl.nextYearLabel
-        } else {
-            return null
         }
+        return
     }
 
     private _currentView?: 'month' | 'year' | 'multi-years'
@@ -213,7 +210,7 @@ export class OwlCalendarComponent<T>
     /**
      * Date filter for the month and year view
      */
-    public dateFilterForViews = (date: T | null) => (
+    public dateFilterForViews = (date?: T) => (
         !!date &&
         (!this.dateFilter || this.dateFilter(date, 'date')) &&
         (!this.minDate ||
@@ -230,7 +227,7 @@ export class OwlCalendarComponent<T>
         return true
     }
 
-    private intlChangesSub = Subscription.EMPTY
+    private intlChangesSub?: Subscription
 
     /**
      * Used for scheduling that focus should be moved to the active cell on the next tick.
@@ -240,14 +237,13 @@ export class OwlCalendarComponent<T>
     private moveFocusOnNextTick = false
 
     constructor(
-        private elmRef: ElementRef,
-        private pickerIntl: OwlDateTimeIntl,
-        private ngZone: NgZone,
-        private cdRef: ChangeDetectorRef,
-        @Optional() private dateTimeAdapter: DateTimeAdapter<T>,
-        @Optional()
+        private readonly elmRef: ElementRef<HTMLElement>,
+        private readonly pickerIntl: OwlDateTimeIntl,
+        private readonly ngZone: NgZone,
+        private readonly cdRef: ChangeDetectorRef,
+        private readonly dateTimeAdapter: DateTimeAdapter<T>,
         @Inject(OWL_DATE_TIME_FORMATS)
-        private dateTimeFormats: OwlDateTimeFormats
+        private readonly dateTimeFormats: OwlDateTimeFormats
     ) {
         this.intlChangesSub = this.pickerIntl.changes.subscribe(() => {
             this.cdRef.markForCheck()
@@ -268,7 +264,8 @@ export class OwlCalendarComponent<T>
     }
 
     public ngOnDestroy(): void {
-        this.intlChangesSub.unsubscribe()
+        this.intlChangesSub?.unsubscribe()
+        this.intlChangesSub = undefined
     }
 
     /**
@@ -301,7 +298,7 @@ export class OwlCalendarComponent<T>
         this.pickerMomentChange.emit(this.pickerMoment)
     }
 
-    public dateSelected(date: T | null): void {
+    public dateSelected(date?: T): void {
         if (!this.dateFilterForViews(date)) {
             return
         }
@@ -371,8 +368,8 @@ export class OwlCalendarComponent<T>
                 .pipe(take(1))
                 .subscribe(() => {
                     this.elmRef.nativeElement
-                        .querySelector('.owl-dt-calendar-cell-active')
-                        .focus()
+                        ?.querySelector<HTMLElement>('.owl-dt-calendar-cell-active')
+                        ?.focus()
                 })
         })
     }
@@ -388,7 +385,7 @@ export class OwlCalendarComponent<T>
     /**
      * Whether the two dates represent the same view in the current view mode (month or year).
      */
-    private isSameView(date1: T | null, date2: T | null): boolean {
+    private isSameView(date1?: T, date2?: T): boolean {
         if (this._currentView === 'month') {
             return !!(
                 date1 &&
@@ -413,10 +410,10 @@ export class OwlCalendarComponent<T>
     /**
      * Get a valid date object
      */
-    private getValidDate(obj: any): T | null {
+    private getValidDate(obj: any): T | undefined {
         return this.dateTimeAdapter.isDateInstance(obj) &&
             this.dateTimeAdapter.isValid(obj)
             ? obj
-            : null
+            : undefined
     }
 }

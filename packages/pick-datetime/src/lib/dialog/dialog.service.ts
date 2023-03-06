@@ -41,11 +41,11 @@ export const OWL_DIALOG_DEFAULT_OPTIONS = new InjectionToken<OwlDialogConfig>(
 
 @Injectable()
 export class OwlDialogService {
-    private ariaHiddenElements = new Map<Element, string | null>()
+    private readonly ariaHiddenElements = new Map<Element, string | null>()
 
-    private _openDialogsAtThisLevel: Array<OwlDialogRef<any>> = []
-    private _afterOpenAtThisLevel = new Subject<OwlDialogRef<any>>()
-    private _afterAllClosedAtThisLevel = new Subject<void>()
+    private readonly _openDialogsAtThisLevel: Array<OwlDialogRef<any>> = []
+    private readonly _afterOpenAtThisLevel = new Subject<OwlDialogRef<any>>()
+    private readonly _afterAllClosedAtThisLevel = new Subject<void>()
 
     /** Keeps track of the currently-open dialogs. */
     get openDialogs(): Array<OwlDialogRef<any>> {
@@ -73,7 +73,7 @@ export class OwlDialogService {
      * Will emit on subscribe if there are no open dialogs to begin with.
      */
 
-    afterAllClosed = defer(
+    readonly afterAllClosed = defer(
         () =>
             this._openDialogsAtThisLevel.length
                 ? this._afterAllClosed
@@ -83,17 +83,21 @@ export class OwlDialogService {
     private scrollStrategy: () => ScrollStrategy
 
     constructor(
-        private overlay: Overlay,
-        private injector: Injector,
-        @Optional() private location: Location,
-        @Inject(OWL_DIALOG_SCROLL_STRATEGY) scrollStrategy: any,
+        private readonly overlay: Overlay,
+        private readonly injector: Injector,
+        @Optional()
+        @Inject(Location)
+        private readonly location: Location | undefined,
+        @Inject(OWL_DIALOG_SCROLL_STRATEGY)
+        scrollStrategy: () => ScrollStrategy,
         @Optional()
         @Inject(OWL_DIALOG_DEFAULT_OPTIONS)
-        private defaultOptions: OwlDialogConfig,
+        private readonly defaultOptions: OwlDialogConfig | undefined,
         @Optional()
         @SkipSelf()
-        private parentDialog: OwlDialogService,
-        private overlayContainer: OverlayContainer
+        @Inject(OwlDialogService)
+        private readonly parentDialog: OwlDialogService | undefined,
+        private readonly overlayContainer: OverlayContainer
     ) {
         this.scrollStrategy = scrollStrategy
         if (!parentDialog && location) {
@@ -108,10 +112,7 @@ export class OwlDialogService {
         config = applyConfigDefaults(config, this.defaultOptions)
 
         if (config.id && this.getDialogById(config.id)) {
-            throw Error(
-                `Dialog with id "${config.id
-                }" exists already. The dialog id must be unique.`
-            )
+            throw Error(`Dialog with id "${config.id}" exists already. The dialog id must be unique.`)
         }
 
         const overlayRef = this.createOverlay(config)
@@ -176,8 +177,7 @@ export class OwlDialogService {
             })
         }
 
-        if (componentOrTemplateRef instanceof TemplateRef) {
-        } else {
+        if (!(componentOrTemplateRef instanceof TemplateRef)) {
             const injector = this.createInjector<T>(
                 config,
                 dialogRef,

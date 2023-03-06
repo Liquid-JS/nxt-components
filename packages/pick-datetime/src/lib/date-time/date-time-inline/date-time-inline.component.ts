@@ -1,5 +1,5 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion'
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Inject, Input, OnInit, Optional, Output, ViewChild } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Inject, Input, OnInit, Output, ViewChild } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
@@ -20,8 +20,8 @@ export const OWL_DATETIME_VALUE_ACCESSOR: any = {
     preserveWhitespaces: false,
     providers: [OWL_DATETIME_VALUE_ACCESSOR]
 })
-export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
-    implements OnInit, ControlValueAccessor {
+export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T> implements OnInit, ControlValueAccessor {
+
     @ViewChild(OwlDateTimeContainerComponent, { static: true })
     container?: OwlDateTimeContainerComponent<T>
 
@@ -73,96 +73,96 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
     }
 
     /** The date to open the calendar to initially. */
-    private _startAt: T | null = null
+    private _startAt?: T
     @Input()
-    get startAt(): T | null {
+    get startAt() {
         if (this._startAt) {
             return this._startAt
         }
 
         if (this.selectMode === 'single') {
-            return this.value || null
+            return this.value
         } else if (
             this.selectMode === 'range' ||
             this.selectMode === 'rangeFrom'
         ) {
-            return this.values[0] || null
+            return this.values?.[0]
         } else if (this.selectMode === 'rangeTo') {
-            return this.values[1] || null
+            return this.values?.[1]
         } else {
-            return null
+            return
         }
     }
 
-    set startAt(date: T | null) {
+    set startAt(date: T | undefined) {
         this._startAt = this.getValidDate(
-            this.dateTimeAdapter?.deserialize(date)
+            this.dateTimeAdapter.deserialize(date)
         )
     }
 
-    private _dateTimeFilter?: (date: T | null) => boolean
+    private _dateTimeFilter?: (date: T | undefined) => boolean
     @Input('owlDateTimeFilter')
     get dateTimeFilter() {
         return this._dateTimeFilter
     }
 
-    set dateTimeFilter(filter: ((date: T | null) => boolean) | undefined) {
+    set dateTimeFilter(filter: ((date: T | undefined) => boolean) | undefined) {
         this._dateTimeFilter = filter
     }
 
     /** The minimum valid date. */
-    private _min: T | null = null
+    private _min?: T
 
-    get minDateTime(): T | null {
-        return this._min || null
+    get minDateTime() {
+        return this._min
     }
 
     // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('min')
-    set minDateTime(value: T | null) {
-        this._min = this.getValidDate(this.dateTimeAdapter?.deserialize(value))
+    set minDateTime(value: T | undefined) {
+        this._min = this.getValidDate(this.dateTimeAdapter.deserialize(value))
         this.changeDetector.markForCheck()
     }
 
     /** The maximum valid date. */
-    private _max: T | null = null
+    private _max?: T
 
-    get maxDateTime(): T | null {
-        return this._max || null
+    get maxDateTime() {
+        return this._max
     }
 
     // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('max')
-    set maxDateTime(value: T | null) {
-        this._max = this.getValidDate(this.dateTimeAdapter?.deserialize(value))
+    set maxDateTime(value: T | undefined) {
+        this._max = this.getValidDate(this.dateTimeAdapter.deserialize(value))
         this.changeDetector.markForCheck()
     }
 
-    private _value: T | null = null
+    private _value?: T
     @Input()
     get value() {
         return this._value
     }
 
-    set value(value: T | null) {
-        value = this.dateTimeAdapter?.deserialize(value) ?? null
+    set value(value: T | undefined) {
+        value = this.dateTimeAdapter.deserialize(value)
         value = this.getValidDate(value)
         this._value = value
         this.selected = value
     }
 
-    private _values: Array<T | null> = []
+    private _values?: Array<T | undefined>
     @Input()
     get values() {
         return this._values
     }
 
-    set values(values: Array<T | null>) {
+    set values(values: Array<T | undefined> | undefined) {
         if (values && values.length > 0) {
             values = values.map(v => {
-                v = this.dateTimeAdapter?.deserialize(v) ?? null
+                v = this.dateTimeAdapter.deserialize(v)
                 v = this.getValidDate(v)
-                return (v && this.dateTimeAdapter?.clone(v)) ?? null
+                return (v && this.dateTimeAdapter.clone(v))
             })
             this._values = [...values]
             this.selecteds = [...values]
@@ -177,31 +177,31 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
      * This doesn't imply a change on the selected date.
      * */
     @Output()
-    yearSelected = new EventEmitter<T>()
+    readonly yearSelected = new EventEmitter<T>()
 
     /**
      * Emits selected month in year view
      * This doesn't imply a change on the selected date.
      * */
     @Output()
-    monthSelected = new EventEmitter<T>()
+    readonly monthSelected = new EventEmitter<T>()
 
-    private _selected: T | null = null
+    private _selected?: T
     get selected() {
         return this._selected
     }
 
-    set selected(value: T | null) {
+    set selected(value: T | undefined) {
         this._selected = value
         this.changeDetector.markForCheck()
     }
 
-    private _selecteds: Array<T | null> = []
+    private _selecteds?: Array<T | undefined>
     get selecteds() {
         return this._selecteds
     }
 
-    set selecteds(values: Array<T | null>) {
+    set selecteds(values: Array<T | undefined> | undefined) {
         this._selecteds = values
         this.changeDetector.markForCheck()
     }
@@ -231,13 +231,12 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
         return true
     }
 
-    private onModelChange: (date: T | T[]) => void = () => { }
-    private onModelTouched: () => void = () => { }
+    private onModelChange?: (date: T | T[]) => void
+    private onModelTouched?: () => void
 
     constructor(
-        protected changeDetector: ChangeDetectorRef,
-        @Optional() @Inject(DateTimeAdapter<T>) dateTimeAdapter: DateTimeAdapter<T> | undefined,
-        @Optional()
+        protected readonly changeDetector: ChangeDetectorRef,
+        dateTimeAdapter: DateTimeAdapter<T>,
         @Inject(OWL_DATE_TIME_FORMATS)
         dateTimeFormats: OwlDateTimeFormats
     ) {
@@ -257,7 +256,7 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
         } else {
             this.values = value
             if (this.container)
-                this.container.pickerMoment = this._values[
+                this.container.pickerMoment = this._values?.[
                     this.container.activeSelectedIndex
                 ]
         }
@@ -285,8 +284,8 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
         } else {
             this.value = date
         }
-        this.onModelChange(date)
-        this.onModelTouched()
+        this.onModelChange?.(date)
+        this.onModelTouched?.()
     }
 
     /**

@@ -4,20 +4,15 @@ import { Pipe, PipeTransform } from '@angular/core'
     name: 'numberFixedLen'
 })
 export class NumberFixedLenPipe implements PipeTransform {
-    transform(num: number, len: number): any {
+    transform(num: number | undefined, len: number | undefined) {
+        if (num == undefined || !Number.isFinite(num))
+            return undefined
+
         const number = Math.floor(num)
-        const length = Math.floor(len)
 
-        if (num === null || isNaN(number) || isNaN(length)) {
-            return num
-        }
+        if (len == undefined || !Number.isFinite(len))
+            return number
 
-        let numString = number.toString()
-
-        while (numString.length < length) {
-            numString = '0' + numString
-        }
-
-        return numString
+        return number.toFixed(0).padStart(Math.floor(len), '0')
     }
 }

@@ -7,10 +7,14 @@ import { OwlDialogContainerComponent } from './dialog-container/dialog-container
 import { OwlDialogService, OWL_DIALOG_SCROLL_STRATEGY_PROVIDER } from './dialog.service'
 
 @NgModule({
-    imports: [CommonModule, A11yModule, OverlayModule, PortalModule],
-    exports: [],
     declarations: [
         OwlDialogContainerComponent
+    ],
+    imports: [
+        CommonModule,
+        A11yModule,
+        OverlayModule,
+        PortalModule
     ],
     providers: [
         OWL_DIALOG_SCROLL_STRATEGY_PROVIDER,

@@ -26,7 +26,7 @@ export class OwlTimerBoxComponent implements OnInit, OnDestroy {
 
     /**
      * Value would be displayed in the box
-     * If it is null, the box would display [value]
+     * If it is undefiend, the box would display [value]
      * */
     @Input() boxValue?: number
 
@@ -46,7 +46,7 @@ export class OwlTimerBoxComponent implements OnInit, OnDestroy {
 
     private inputStream = new Subject<string>()
 
-    private inputStreamSub = Subscription.EMPTY
+    private inputStreamSub?: Subscription
 
     get displayValue(): number {
         return this.boxValue || this.value
@@ -73,7 +73,8 @@ export class OwlTimerBoxComponent implements OnInit, OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        this.inputStreamSub.unsubscribe()
+        this.inputStreamSub?.unsubscribe()
+        this.inputStreamSub = undefined
     }
 
     public upBtnClicked(): void {

@@ -19,18 +19,6 @@ import { OwlTimerBoxComponent } from './timer-box/timer-box.component'
 import { OwlTimerComponent } from './timer/timer.component'
 
 @NgModule({
-    imports: [CommonModule, OverlayModule, OwlDialogModule, A11yModule],
-    exports: [
-        OwlCalendarComponent,
-        OwlTimerComponent,
-        OwlDateTimeTriggerDirective,
-        OwlDateTimeInputDirective,
-        OwlDateTimeComponent,
-        OwlDateTimeInlineComponent,
-        OwlMultiYearViewComponent,
-        OwlYearViewComponent,
-        OwlMonthViewComponent
-    ],
     declarations: [
         OwlDateTimeTriggerDirective,
         OwlDateTimeInputDirective,
@@ -45,6 +33,23 @@ import { OwlTimerComponent } from './timer/timer.component'
         OwlCalendarBodyComponent,
         NumberFixedLenPipe,
         OwlDateTimeInlineComponent
+    ],
+    imports: [
+        CommonModule,
+        OverlayModule,
+        OwlDialogModule,
+        A11yModule
+    ],
+    exports: [
+        OwlCalendarComponent,
+        OwlTimerComponent,
+        OwlDateTimeTriggerDirective,
+        OwlDateTimeInputDirective,
+        OwlDateTimeComponent,
+        OwlDateTimeInlineComponent,
+        OwlMultiYearViewComponent,
+        OwlYearViewComponent,
+        OwlMonthViewComponent
     ],
     providers: [
         OwlDateTimeIntl,

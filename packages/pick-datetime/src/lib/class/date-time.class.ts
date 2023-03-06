@@ -1,5 +1,5 @@
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion'
-import { Directive, EventEmitter, Inject, Input, Optional } from '@angular/core'
+import { Directive, EventEmitter, Inject, Input } from '@angular/core'
 import { DateTimeAdapter } from './date-time-adapter.class'
 import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from './date-time-format.class'
 
@@ -13,7 +13,9 @@ export type SelectMode = 'single' | 'range' | 'rangeFrom' | 'rangeTo'
 
 export type RenderItem = 'year' | 'month' | 'date'
 
-export type DateFilter<T> = (date: T | null, forRender?: RenderItem) => boolean
+export type ViewType = 'month' | 'year' | 'multi-years'
+
+export type DateFilter<T> = (date?: T, forRender?: RenderItem) => boolean
 
 @Directive()
 export abstract class OwlDateTimeDirective<T> {
@@ -47,7 +49,7 @@ export abstract class OwlDateTimeDirective<T> {
      * The view that the calendar should start in.
      */
     @Input()
-    startView: 'month' | 'year' | 'multi-years' = 'month'
+    startView: ViewType = 'month'
 
     /**
      * Hours to change per step
@@ -124,19 +126,19 @@ export abstract class OwlDateTimeDirective<T> {
         return this._id
     }
 
-    abstract get selected(): T | null
+    abstract get selected(): T | undefined
 
-    abstract get selecteds(): Array<T | null> | null
+    abstract get selecteds(): Array<T | undefined> | undefined
 
-    abstract get dateTimeFilter(): ((date: T | null) => boolean) | undefined
+    abstract get dateTimeFilter(): ((date: T | undefined) => boolean) | undefined
 
-    abstract get maxDateTime(): T | null
+    abstract get maxDateTime(): T | undefined
 
-    abstract get minDateTime(): T | null
+    abstract get minDateTime(): T | undefined
 
     abstract get selectMode(): SelectMode | undefined
 
-    abstract get startAt(): T | null
+    abstract get startAt(): T | undefined
 
     abstract get opened(): boolean
 
@@ -148,7 +150,7 @@ export abstract class OwlDateTimeDirective<T> {
 
     abstract get isInRangeMode(): boolean
 
-    abstract select(date: T | Array<T | null>): void
+    abstract select(date: T | Array<T | undefined>): void
 
     abstract yearSelected: EventEmitter<T>
 
@@ -160,23 +162,20 @@ export abstract class OwlDateTimeDirective<T> {
 
     get formatString(): string {
         return this.pickerType === 'both'
-            ? this.dateTimeFormats?.fullPickerInput
+            ? this.dateTimeFormats.fullPickerInput
             : this.pickerType === 'calendar'
-                ? this.dateTimeFormats?.datePickerInput
-                : this.dateTimeFormats?.timePickerInput
+                ? this.dateTimeFormats.datePickerInput
+                : this.dateTimeFormats.timePickerInput
     }
 
     /**
      * Date Time Checker to check if the give dateTime is selectable
      */
-    public dateTimeChecker = (dateTime: T | null) => (
+    public dateTimeChecker = (dateTime: T | undefined) => (
         !!dateTime &&
         (!this.dateTimeFilter || this.dateTimeFilter(dateTime)) &&
-        (!this.minDateTime ||
-            (this.dateTimeAdapter?.compare(dateTime, this.minDateTime) ?? -1) >=
-            0) &&
-        (!this.maxDateTime ||
-            (this.dateTimeAdapter?.compare(dateTime, this.maxDateTime) ?? 1) <= 0)
+        (!this.minDateTime || this.dateTimeAdapter.compare(dateTime, this.minDateTime) >= 0) &&
+        (!this.maxDateTime || this.dateTimeAdapter.compare(dateTime, this.maxDateTime) <= 0)
     )
 
     get disabled(): boolean {
@@ -184,34 +183,17 @@ export abstract class OwlDateTimeDirective<T> {
     }
 
     constructor(
-        @Optional() @Inject(DateTimeAdapter<T>) protected dateTimeAdapter: DateTimeAdapter<T> | undefined,
-        @Optional()
+        protected readonly dateTimeAdapter: DateTimeAdapter<T>,
         @Inject(OWL_DATE_TIME_FORMATS)
-        protected dateTimeFormats: OwlDateTimeFormats | undefined
+        protected readonly dateTimeFormats: OwlDateTimeFormats
     ) {
-        if (!this.dateTimeAdapter) {
-            throw Error(
-                'OwlDateTimePicker: No provider found for DateTimeAdapter. You must import one of the following ' +
-                'modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ' +
-                'custom implementation.'
-            )
-        }
-
-        if (!this.dateTimeFormats) {
-            throw Error(
-                'OwlDateTimePicker: No provider found for OWL_DATE_TIME_FORMATS. You must import one of the following ' +
-                'modules at your application root: OwlNativeDateTimeModule, OwlMomentDateTimeModule, or provide a ' +
-                'custom implementation.'
-            )
-        }
-
         this._id = `owl-dt-picker-${nextUniqueId++}`
     }
 
-    protected getValidDate(obj: any): T | null {
-        return this.dateTimeAdapter?.isDateInstance(obj) &&
+    protected getValidDate(obj: any): T | undefined {
+        return this.dateTimeAdapter.isDateInstance(obj) &&
             this.dateTimeAdapter.isValid(obj)
             ? obj
-            : null
+            : undefined
     }
 }

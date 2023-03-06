@@ -1,14 +1,17 @@
 import { animate, animateChild, AnimationEvent, keyframes, style, transition, trigger } from '@angular/animations'
-import { ConfigurableFocusTrapFactory, FocusTrap } from '@angular/cdk/a11y'
+import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory } from '@angular/cdk/a11y'
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal'
 import { DOCUMENT } from '@angular/common'
 import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EmbeddedViewRef, EventEmitter, HostBinding, HostListener, Inject, OnInit, Optional, ViewChild } from '@angular/core'
 import { OwlDialogConfig } from '../../class/dialog-config.class'
 
+export type DialogContainerState = 'void' | 'enter' | 'exit'
+
 const zoomFadeIn = {
     opacity: 0,
     transform: 'translateX({{ x }}) translateY({{ y }}) scale({{scale}})'
 }
+
 const zoomFadeInFrom = {
     opacity: 0,
     transform: 'translateX({{ x }}) translateY({{ y }}) scale({{scale}})',
@@ -54,28 +57,27 @@ const zoomFadeInFrom = {
         ])
     ]
 })
-export class OwlDialogContainerComponent extends BasePortalOutlet
-    implements OnInit {
+export class OwlDialogContainerComponent extends BasePortalOutlet implements OnInit {
     @ViewChild(CdkPortalOutlet, { static: true })
     portalOutlet?: CdkPortalOutlet
 
     /** The class that traps and manages focus within the dialog. */
-    private focusTrap?: FocusTrap
+    private focusTrap?: ConfigurableFocusTrap
 
     /** ID of the element that should be considered as the dialog's label. */
-    public ariaLabelledBy: string | null = null
+    public ariaLabelledBy?: string
 
     /** Emits when an animation state changes. */
-    public animationStateChanged = new EventEmitter<AnimationEvent>()
+    public readonly animationStateChanged = new EventEmitter<AnimationEvent>()
 
     public isAnimating = false
 
     private _config?: OwlDialogConfig
-    get config(): OwlDialogConfig | undefined {
+    get config() {
         return this._config
     }
 
-    private state: 'void' | 'enter' | 'exit' = 'enter'
+    private state: DialogContainerState = 'enter'
 
     // for animation purpose
     private params: any = {
@@ -88,7 +90,7 @@ export class OwlDialogContainerComponent extends BasePortalOutlet
 
     // A variable to hold the focused element before the dialog was open.
     // This would help us to refocus back to element when the dialog was closed.
-    private elementFocusedBeforeDialogWasOpened: HTMLElement | null = null
+    private elementFocusedBeforeDialogWasOpened?: HTMLElement
 
     @HostBinding('class.owl-dialog-container')
     get owlDialogContainerClass(): boolean {
@@ -101,37 +103,37 @@ export class OwlDialogContainerComponent extends BasePortalOutlet
     }
 
     @HostBinding('attr.id')
-    get owlDialogContainerId(): string | undefined {
+    get owlDialogContainerId() {
         return this._config?.id
     }
 
     @HostBinding('attr.role')
-    get owlDialogContainerRole(): string | null {
-        return this._config?.role || null
+    get owlDialogContainerRole() {
+        return this._config?.role
     }
 
     @HostBinding('attr.aria-labelledby')
-    get owlDialogContainerAriaLabelledby(): string | null {
+    get owlDialogContainerAriaLabelledby() {
         return this.ariaLabelledBy
     }
 
     @HostBinding('attr.aria-describedby')
-    get owlDialogContainerAriaDescribedby(): string | null {
-        return this._config?.ariaDescribedBy || null
+    get owlDialogContainerAriaDescribedby() {
+        return this._config?.ariaDescribedBy
     }
 
     @HostBinding('@slideModal')
-    get owlDialogContainerAnimation(): any {
+    get owlDialogContainerAnimation() {
         return { value: this.state, params: this.params }
     }
 
     constructor(
-        private changeDetector: ChangeDetectorRef,
-        private elementRef: ElementRef,
-        private focusTrapFactory: ConfigurableFocusTrapFactory,
+        private readonly changeDetector: ChangeDetectorRef,
+        private readonly elementRef: ElementRef<HTMLElement>,
+        private readonly focusTrapFactory: ConfigurableFocusTrapFactory,
         @Optional()
         @Inject(DOCUMENT)
-        private document: any
+        private readonly document?: Document
     ) {
         super()
     }
@@ -144,7 +146,7 @@ export class OwlDialogContainerComponent extends BasePortalOutlet
     public attachComponentPortal<T>(
         portal: ComponentPortal<T>
     ): ComponentRef<T> {
-        if (this.portalOutlet!.hasAttached()) {
+        if (this.portalOutlet?.hasAttached()) {
             throw Error(
                 'Attempting to attach dialog content after content is already attached'
             )
@@ -246,13 +248,13 @@ export class OwlDialogContainerComponent extends BasePortalOutlet
     private restoreFocus(): void {
         const toFocus = this.elementFocusedBeforeDialogWasOpened
 
-        // We need the extra check, because IE can set the `activeElement` to null in some cases.
         if (toFocus && typeof toFocus.focus === 'function') {
             toFocus.focus()
         }
 
         if (this.focusTrap) {
             this.focusTrap.destroy()
+            this.focusTrap = undefined
         }
     }
 }
