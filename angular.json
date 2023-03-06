@@ -53,7 +53,8 @@
                             }
                         ],
                         "styles": [
-                            "packages/demo/src/styles.scss"
+                            "packages/demo/src/styles.scss",
+                            "dist/nxt-pick-datetime/assets/picker.scss"
                         ],
                         "scripts": []
                     },

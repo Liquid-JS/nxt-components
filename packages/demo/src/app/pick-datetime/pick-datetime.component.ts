@@ -2,13 +2,13 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core'
 import { OwlDateTimeComponent } from 'nxt-pick-datetime'
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    selector: 'app-pick-datetime',
+    templateUrl: './pick-datetime.component.html',
+    styleUrls: ['./pick-datetime.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppPickDatetimeComponent implements AfterViewInit {
     @ViewChild('date_range_component', { static: true })
-    date_range_component?: OwlDateTimeComponent<AppComponent>
+    date_range_component?: OwlDateTimeComponent<AppPickDatetimeComponent>
 
     public selectedMoments: Date[] = [
         new Date('2019-03-11T08:00:00+11:00'),

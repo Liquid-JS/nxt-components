@@ -13,6 +13,10 @@ const routes: Routes = [
     {
         path: 'json-view',
         loadChildren: () => import('./json-view/json-view.module').then(m => m.AppJsonViewModule)
+    },
+    {
+        path: 'pick-datetime',
+        loadChildren: () => import('./pick-datetime/pick-datetime.module').then(m => m.AppPickDatetimeModule)
     }
 ]
 
