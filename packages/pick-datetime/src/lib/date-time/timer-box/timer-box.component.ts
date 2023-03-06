@@ -4,15 +4,15 @@ import { Subject, Subscription } from 'rxjs'
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
 
 @Component({
-    exportAs: 'owlDateTimeTimerBox',
-    selector: 'owl-date-time-timer-box',
+    exportAs: 'nxtDateTimeTimerBox',
+    selector: 'nxt-date-time-timer-box',
     templateUrl: './timer-box.component.html',
     styleUrls: ['./timer-box.component.scss'],
     preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class OwlTimerBoxComponent implements OnInit, OnDestroy {
+export class TimerBoxComponent implements OnInit, OnDestroy {
 
     @Input() showDivider = false
 
@@ -52,8 +52,8 @@ export class OwlTimerBoxComponent implements OnInit, OnDestroy {
         return this.boxValue || this.value
     }
 
-    @HostBinding('class.owl-dt-timer-box')
-    get owlDTTimerBoxClass(): boolean {
+    @HostBinding('class.nxt-dt-timer-box')
+    get nxtDTTimerBoxClass(): boolean {
         return true
     }
 

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { CalendarCell, OwlCalendarBodyComponent } from './calendar-body.component'
+import { CalendarCell, CalendarBodyComponent } from './calendar-body.component'
 
-describe('OwlCalendarBodyComponent', () => {
+describe('NxtCalendarBodyComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [
-                OwlCalendarBodyComponent,
+                CalendarBodyComponent,
 
                 // Test components
                 StandardCalendarBodyComponent
@@ -24,14 +24,14 @@ describe('OwlCalendarBodyComponent', () => {
 
         const refreshElementLists = () => {
             rowEls = calendarBodyNativeElement.querySelectorAll('tr')
-            cellEls = calendarBodyNativeElement.querySelectorAll('.owl-dt-calendar-cell')
+            cellEls = calendarBodyNativeElement.querySelectorAll('.nxt-dt-calendar-cell')
         }
 
         beforeEach(() => {
             fixture = TestBed.createComponent(StandardCalendarBodyComponent)
             fixture.detectChanges()
 
-            const calendarBodyDebugElement = fixture.debugElement.query(By.directive(OwlCalendarBodyComponent))
+            const calendarBodyDebugElement = fixture.debugElement.query(By.directive(CalendarBodyComponent))
             calendarBodyNativeElement = calendarBodyDebugElement.nativeElement
             testComponent = fixture.componentInstance
 
@@ -44,13 +44,13 @@ describe('OwlCalendarBodyComponent', () => {
         })
 
         it('should highlight today', () => {
-            const todayCell = calendarBodyNativeElement.querySelector('.owl-dt-calendar-cell-today')
+            const todayCell = calendarBodyNativeElement.querySelector('.nxt-dt-calendar-cell-today')
             expect(todayCell).not.toBeUndefined()
             expect(todayCell?.innerHTML.trim()).toBe('3')
         })
 
         it('should highlight selected', () => {
-            const selectedCell = calendarBodyNativeElement.querySelector('.owl-dt-calendar-cell-selected')
+            const selectedCell = calendarBodyNativeElement.querySelector('.nxt-dt-calendar-cell-selected')
             expect(selectedCell).not.toBeUndefined()
             expect(selectedCell?.innerHTML.trim()).toBe('4')
         })
@@ -59,7 +59,7 @@ describe('OwlCalendarBodyComponent', () => {
             spyOn(testComponent, 'handleSelect')
             expect(testComponent.handleSelect).not.toHaveBeenCalled()
             const todayElement =
-                calendarBodyNativeElement.querySelector('.owl-dt-calendar-cell-today') as HTMLElement
+                calendarBodyNativeElement.querySelector('.nxt-dt-calendar-cell-today') as HTMLElement
             todayElement.click()
             fixture.detectChanges()
 
@@ -68,14 +68,14 @@ describe('OwlCalendarBodyComponent', () => {
 
         it('should mark active date', () => {
             expect((cellEls[10] as HTMLElement).innerText.trim()).toBe('11')
-            expect(cellEls[10].classList).toContain('owl-dt-calendar-cell-active')
+            expect(cellEls[10].classList).toContain('nxt-dt-calendar-cell-active')
         })
     })
 })
 
 @Component({
     template: `
-        <table owl-date-time-calendar-body
+        <table nxt-date-time-calendar-body
                [rows]="rows"
                [todayValue]="todayValue"
                [selectedValues]="selectedValues"

@@ -2,10 +2,10 @@ import { DOWN_ARROW, END, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_
 import { Component, DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { dispatchKeyboardEvent, dispatchMouseEvent, OwlTestDateTimeModule } from '../../../test-helpers'
-import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
-import { OwlDateTimeModule } from '../date-time.module'
-import { OwlMultiYearViewComponent, YEARS_PER_ROW, YEAR_ROWS } from './calendar-multi-year-view.component'
+import { dispatchKeyboardEvent, dispatchMouseEvent, NxtTestDateTimeModule } from '../../../test-helpers'
+import { DateTimeIntl } from '../date-time-picker-intl.service'
+import { DateTimeModule } from '../date-time.module'
+import { MultiYearViewComponent, YEARS_PER_ROW, YEAR_ROWS } from './calendar-multi-year-view.component'
 
 const JAN = 0
 const FEB = 1
@@ -20,15 +20,15 @@ const OCT = 9
 const NOV = 10
 const DEC = 11
 
-describe('OwlMultiYearViewComponent', () => {
+describe('NxtMultiYearViewComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [OwlTestDateTimeModule, OwlDateTimeModule],
+            imports: [NxtTestDateTimeModule, DateTimeModule],
             declarations: [
                 StandardMultiYearViewComponent,
                 MultiYearViewWithDateFilterComponent
             ],
-            providers: [OwlDateTimeIntl]
+            providers: [DateTimeIntl]
         }).compileComponents()
     })
 
@@ -37,14 +37,14 @@ describe('OwlMultiYearViewComponent', () => {
         let testComponent: StandardMultiYearViewComponent
         let multiYearViewDebugElement: DebugElement
         let multiYearViewElement: HTMLElement
-        let multiYearViewInstance: OwlMultiYearViewComponent<Date>
+        let multiYearViewInstance: MultiYearViewComponent<Date>
 
         beforeEach(() => {
             fixture = TestBed.createComponent(StandardMultiYearViewComponent)
             fixture.detectChanges()
 
             multiYearViewDebugElement = fixture.debugElement.query(
-                By.directive(OwlMultiYearViewComponent)
+                By.directive(MultiYearViewComponent)
             )
             multiYearViewElement = multiYearViewDebugElement.nativeElement
             testComponent = fixture.componentInstance
@@ -53,14 +53,14 @@ describe('OwlMultiYearViewComponent', () => {
 
         it('should have correct number of years', () => {
             const cellEls = multiYearViewElement.querySelectorAll(
-                '.owl-dt-calendar-cell'
+                '.nxt-dt-calendar-cell'
             )
             expect(cellEls.length).toBe(YEARS_PER_ROW * YEAR_ROWS)
         })
 
         it('should shows selected year if in same range', () => {
             const selectedElContent = multiYearViewElement.querySelector(
-                '.owl-dt-calendar-cell-selected.owl-dt-calendar-cell-content'
+                '.nxt-dt-calendar-cell-selected.nxt-dt-calendar-cell-content'
             )
             expect(selectedElContent?.innerHTML.trim()).toBe('2020')
         })
@@ -70,7 +70,7 @@ describe('OwlMultiYearViewComponent', () => {
             fixture.detectChanges()
 
             const selectedElContent = multiYearViewElement.querySelector(
-                '.owl-calendar-body-selected.owl-dt-calendar-cell-content'
+                '.nxt-calendar-body-selected.nxt-dt-calendar-cell-content'
             )
             expect(selectedElContent).toBeNull()
         })
@@ -83,7 +83,7 @@ describe('OwlMultiYearViewComponent', () => {
             fixture.detectChanges()
 
             const selectedElContent = multiYearViewElement.querySelector(
-                '.owl-dt-calendar-cell-active .owl-dt-calendar-cell-content'
+                '.nxt-dt-calendar-cell-active .nxt-dt-calendar-cell-content'
             )
             expect(selectedElContent?.innerHTML.trim()).toBe('2030')
         })
@@ -93,12 +93,12 @@ describe('OwlMultiYearViewComponent', () => {
                 '[aria-label="2018"]'
             )
             expect((cell2017 as HTMLElement).innerText.trim()).toBe('2018')
-            expect(cell2017?.classList).toContain('owl-dt-calendar-cell-active')
+            expect(cell2017?.classList).toContain('nxt-dt-calendar-cell-active')
         })
 
         it('should decrement year on left arrow press', () => {
             const calendarBodyEl = multiYearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', LEFT_ARROW)
             fixture.detectChanges()
@@ -117,7 +117,7 @@ describe('OwlMultiYearViewComponent', () => {
 
         it('should increment year on right arrow press', () => {
             const calendarBodyEl = multiYearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', RIGHT_ARROW)
             fixture.detectChanges()
@@ -136,7 +136,7 @@ describe('OwlMultiYearViewComponent', () => {
 
         it('should go up a row on up arrow press', () => {
             const calendarBodyEl = multiYearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', UP_ARROW)
             fixture.detectChanges()
@@ -155,7 +155,7 @@ describe('OwlMultiYearViewComponent', () => {
 
         it('should go down a row on down arrow press', () => {
             const calendarBodyEl = multiYearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', DOWN_ARROW)
             fixture.detectChanges()
@@ -174,7 +174,7 @@ describe('OwlMultiYearViewComponent', () => {
 
         it('should go to first year in current range on home press', () => {
             const calendarBodyEl = multiYearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', HOME)
             fixture.detectChanges()
@@ -193,7 +193,7 @@ describe('OwlMultiYearViewComponent', () => {
 
         it('should go to last year in current range on end press', () => {
             const calendarBodyEl = multiYearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', END)
             fixture.detectChanges()
@@ -212,7 +212,7 @@ describe('OwlMultiYearViewComponent', () => {
 
         it('should go to same index in previous year range page up press', () => {
             const calendarBodyEl = multiYearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_UP)
             fixture.detectChanges()
@@ -231,7 +231,7 @@ describe('OwlMultiYearViewComponent', () => {
 
         it('should go to same index in next year range on page down press', () => {
             const calendarBodyEl = multiYearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_DOWN)
             fixture.detectChanges()
@@ -260,7 +260,7 @@ describe('OwlMultiYearViewComponent', () => {
             fixture.detectChanges()
 
             const multiYearViewDebugElement = fixture.debugElement.query(
-                By.directive(OwlMultiYearViewComponent)
+                By.directive(MultiYearViewComponent)
             )
             multiYearViewElement = multiYearViewDebugElement.nativeElement
         })
@@ -273,10 +273,10 @@ describe('OwlMultiYearViewComponent', () => {
                 '[aria-label="2019"]'
             )
             expect(cell2019?.classList).not.toContain(
-                'owl-dt-calendar-cell-disabled'
+                'nxt-dt-calendar-cell-disabled'
             )
             expect(cell2018?.classList).toContain(
-                'owl-dt-calendar-cell-disabled'
+                'nxt-dt-calendar-cell-disabled'
             )
         })
     })
@@ -284,10 +284,10 @@ describe('OwlMultiYearViewComponent', () => {
 
 @Component({
     template: `
-        <owl-date-time-multi-year-view
+        <nxt-date-time-multi-year-view
                 [selected]="selected"
                 [(pickerMoment)]="pickerMoment"
-                (change)="handleChange($event)"></owl-date-time-multi-year-view>
+                (change)="handleChange($event)"></nxt-date-time-multi-year-view>
     `
 })
 class StandardMultiYearViewComponent {
@@ -301,9 +301,9 @@ class StandardMultiYearViewComponent {
 
 @Component({
     template: `
-        <owl-date-time-multi-year-view
+        <nxt-date-time-multi-year-view
                 [(pickerMoment)]="pickerMoment"
-                [dateFilter]="dateFilter"></owl-date-time-multi-year-view>
+                [dateFilter]="dateFilter"></nxt-date-time-multi-year-view>
     `
 })
 class MultiYearViewWithDateFilterComponent {

@@ -4,10 +4,10 @@ import { GlobalPositionStrategy, OverlayRef } from '@angular/cdk/overlay'
 import { Location } from '@angular/common'
 import { Subject, SubscriptionLike as ISubscription } from 'rxjs'
 import { filter, take } from 'rxjs/operators'
-import { OwlDialogContainerComponent } from '../dialog/dialog-container/dialog-container.component'
+import { NxtDialogContainerComponent } from '../dialog/dialog-container/dialog-container.component'
 import { DialogPosition } from './dialog-config.class'
 
-export class OwlDialogRef<T> {
+export class DialogRef<T> {
 
     private result: any
 
@@ -30,7 +30,7 @@ export class OwlDialogRef<T> {
 
     constructor(
         private readonly overlayRef: OverlayRef,
-        private readonly container: OwlDialogContainerComponent,
+        private readonly container: NxtDialogContainerComponent,
         public readonly id?: string,
         location?: Location
     ) {

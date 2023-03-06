@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core'
 
-export interface OwlDateTimeFormats {
+export interface DateTimeFormats {
     parseInput: any
     fullPickerInput: any
     datePickerInput: any
@@ -11,4 +11,4 @@ export interface OwlDateTimeFormats {
 }
 
 /** InjectionToken for date time picker that can be used to override default format. */
-export const OWL_DATE_TIME_FORMATS = new InjectionToken<OwlDateTimeFormats>('OWL_DATE_TIME_FORMATS')
+export const NXT_DATE_TIME_FORMATS = new InjectionToken<DateTimeFormats>('NXT_DATE_TIME_FORMATS')

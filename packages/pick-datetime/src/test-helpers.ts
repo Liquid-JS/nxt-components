@@ -1,8 +1,8 @@
 // Based on @angular/cdk/testing
 import { Platform, PlatformModule } from '@angular/cdk/platform'
 import { EventEmitter, Inject, Injectable, NgModule, NgZone, Optional } from '@angular/core'
-import { DateTimeAdapter, OWL_DATE_TIME_LOCALE } from './lib/class/date-time-adapter.class'
-import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from './lib/class/date-time-format.class'
+import { DateTimeAdapter, NXT_DATE_TIME_LOCALE } from './lib/class/date-time-adapter.class'
+import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from './lib/class/date-time-format.class'
 
 export function dispatchEvent(node: Node | Window, event: Event): Event {
     node.dispatchEvent(event)
@@ -213,11 +213,11 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
     constructor(
         platform: Platform,
         @Optional()
-        @Inject(OWL_DATE_TIME_LOCALE)
-        owlDateTimeLocale?: string
+        @Inject(NXT_DATE_TIME_LOCALE)
+        nxtDateTimeLocale?: string
     ) {
         super()
-        super.setLocale(owlDateTimeLocale)
+        super.setLocale(nxtDateTimeLocale)
 
         // IE does its own time zone correction, so we disable this on IE.
         this.useUtcForDisplay = !platform.TRIDENT
@@ -612,7 +612,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
     }
 }
 
-export const OWL_TEST_DATE_TIME_FORMATS: OwlDateTimeFormats = {
+export const NXT_TEST_DATE_TIME_FORMATS: DateTimeFormats = {
     parseInput: null,
     fullPickerInput: { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' },
     datePickerInput: { year: 'numeric', month: 'numeric', day: 'numeric' },
@@ -632,6 +632,6 @@ export class TestDateTimeModule { }
 
 @NgModule({
     imports: [TestDateTimeModule],
-    providers: [{ provide: OWL_DATE_TIME_FORMATS, useValue: OWL_TEST_DATE_TIME_FORMATS }]
+    providers: [{ provide: NXT_DATE_TIME_FORMATS, useValue: NXT_TEST_DATE_TIME_FORMATS }]
 })
-export class OwlTestDateTimeModule { }
+export class NxtTestDateTimeModule { }

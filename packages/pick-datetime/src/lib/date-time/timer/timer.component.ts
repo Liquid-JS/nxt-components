@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Input, NgZone, OnInit, Output } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
-import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
+import { DateTimeIntl } from '../date-time-picker-intl.service'
 
 @Component({
-    exportAs: 'owlDateTimeTimer',
-    selector: 'owl-date-time-timer',
+    exportAs: 'nxtDateTimeTimer',
+    selector: 'nxt-date-time-timer',
     templateUrl: './timer.component.html',
     styleUrls: ['./timer.component.scss'],
     preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OwlTimerComponent<T> implements OnInit {
+export class TimerComponent<T> implements OnInit {
     /** The current picker moment */
     private _pickerMoment?: T
     @Input()
@@ -152,20 +152,20 @@ export class OwlTimerComponent<T> implements OnInit {
     @Output()
     readonly selectedChange = new EventEmitter<T>()
 
-    @HostBinding('class.owl-dt-timer')
-    get owlDTTimerClass(): boolean {
+    @HostBinding('class.nxt-dt-timer')
+    get nxtDTTimerClass(): boolean {
         return true
     }
 
     @HostBinding('attr.tabindex')
-    get owlDTTimeTabIndex(): number {
+    get nxtDTTimeTabIndex(): number {
         return -1
     }
 
     constructor(
         private readonly ngZone: NgZone,
         private readonly elmRef: ElementRef<HTMLElement>,
-        private readonly pickerIntl: OwlDateTimeIntl,
+        private readonly pickerIntl: DateTimeIntl,
         private readonly cdRef: ChangeDetectorRef,
         private readonly dateTimeAdapter: DateTimeAdapter<T>
     ) { }

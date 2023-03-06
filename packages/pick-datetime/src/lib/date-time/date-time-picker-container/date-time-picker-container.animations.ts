@@ -1,6 +1,6 @@
 import { animate, animateChild, AnimationTriggerMetadata, group, query, state, style, transition, trigger } from '@angular/animations'
 
-export const owlDateTimePickerAnimations: {
+export const nxtDateTimePickerAnimations: {
     readonly transformPicker: AnimationTriggerMetadata
     readonly fadeInPicker: AnimationTriggerMetadata
 } = {

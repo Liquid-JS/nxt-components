@@ -2,19 +2,19 @@ import { AfterContentInit, AfterViewChecked, ChangeDetectionStrategy, ChangeDete
 import { Subscription } from 'rxjs'
 import { take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
-import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
+import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
-import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
+import { DateTimeIntl } from '../date-time-picker-intl.service'
 
 @Component({
-    selector: 'owl-date-time-calendar',
-    exportAs: 'owlDateTimeCalendar',
+    selector: 'nxt-date-time-calendar',
+    exportAs: 'nxtDateTimeCalendar',
     templateUrl: './calendar.component.html',
     styleUrls: ['./calendar.component.scss'],
     preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OwlCalendarComponent<T> implements OnInit, AfterContentInit, AfterViewChecked, OnDestroy {
+export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterViewChecked, OnDestroy {
     /**
      * Date filter for the month and year view
      * */
@@ -220,10 +220,10 @@ export class OwlCalendarComponent<T> implements OnInit, AfterContentInit, AfterV
     )
 
     /**
-     * Bind class 'owl-dt-calendar' to host
+     * Bind class 'nxt-dt-calendar' to host
      * */
-    @HostBinding('class.owl-dt-calendar')
-    get owlDTCalendarClass(): boolean {
+    @HostBinding('class.nxt-dt-calendar')
+    get nxtDTCalendarClass(): boolean {
         return true
     }
 
@@ -238,12 +238,12 @@ export class OwlCalendarComponent<T> implements OnInit, AfterContentInit, AfterV
 
     constructor(
         private readonly elmRef: ElementRef<HTMLElement>,
-        private readonly pickerIntl: OwlDateTimeIntl,
+        private readonly pickerIntl: DateTimeIntl,
         private readonly ngZone: NgZone,
         private readonly cdRef: ChangeDetectorRef,
         private readonly dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(OWL_DATE_TIME_FORMATS)
-        private readonly dateTimeFormats: OwlDateTimeFormats
+        @Inject(NXT_DATE_TIME_FORMATS)
+        private readonly dateTimeFormats: DateTimeFormats
     ) {
         this.intlChangesSub = this.pickerIntl.changes.subscribe(() => {
             this.cdRef.markForCheck()
@@ -368,7 +368,7 @@ export class OwlCalendarComponent<T> implements OnInit, AfterContentInit, AfterV
                 .pipe(take(1))
                 .subscribe(() => {
                     this.elmRef.nativeElement
-                        ?.querySelector<HTMLElement>('.owl-dt-calendar-cell-active')
+                        ?.querySelector<HTMLElement>('.nxt-dt-calendar-cell-active')
                         ?.focus()
                 })
         })

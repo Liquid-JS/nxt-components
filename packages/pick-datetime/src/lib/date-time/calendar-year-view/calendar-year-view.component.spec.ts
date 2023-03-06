@@ -2,10 +2,10 @@ import { DOWN_ARROW, END, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_
 import { Component, DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { dispatchKeyboardEvent, dispatchMouseEvent, OwlTestDateTimeModule } from '../../../test-helpers'
-import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
-import { OwlDateTimeModule } from '../date-time.module'
-import { OwlYearViewComponent } from './calendar-year-view.component'
+import { dispatchKeyboardEvent, dispatchMouseEvent, NxtTestDateTimeModule } from '../../../test-helpers'
+import { DateTimeIntl } from '../date-time-picker-intl.service'
+import { DateTimeModule } from '../date-time.module'
+import { YearViewComponent } from './calendar-year-view.component'
 
 const JAN = 0
 const FEB = 1
@@ -20,15 +20,15 @@ const OCT = 9
 const NOV = 10
 const DEC = 11
 
-describe('OwlYearViewComponent', () => {
+describe('NxtYearViewComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [OwlTestDateTimeModule, OwlDateTimeModule],
+            imports: [NxtTestDateTimeModule, DateTimeModule],
             declarations: [
                 StandardYearViewComponent,
                 YearViewWithDateFilterComponent
             ],
-            providers: [OwlDateTimeIntl]
+            providers: [DateTimeIntl]
         }).compileComponents()
     })
 
@@ -37,14 +37,14 @@ describe('OwlYearViewComponent', () => {
         let testComponent: StandardYearViewComponent
         let yearViewDebugElement: DebugElement
         let yearViewElement: HTMLElement
-        let yearViewInstance: OwlYearViewComponent<Date>
+        let yearViewInstance: YearViewComponent<Date>
 
         beforeEach(() => {
             fixture = TestBed.createComponent(StandardYearViewComponent)
             fixture.detectChanges()
 
             yearViewDebugElement = fixture.debugElement.query(
-                By.directive(OwlYearViewComponent)
+                By.directive(YearViewComponent)
             )
             yearViewElement = yearViewDebugElement.nativeElement
             testComponent = fixture.componentInstance
@@ -53,14 +53,14 @@ describe('OwlYearViewComponent', () => {
 
         it('should have 12 months', () => {
             const cellEls = yearViewElement.querySelectorAll(
-                '.owl-dt-calendar-cell'
+                '.nxt-dt-calendar-cell'
             )
             expect(cellEls.length).toBe(12)
         })
 
         it('should show selected month if in same year', () => {
             const selectedElContent = yearViewElement.querySelector<HTMLElement>(
-                '.owl-dt-calendar-cell-selected.owl-dt-calendar-cell-content'
+                '.nxt-dt-calendar-cell-selected.nxt-dt-calendar-cell-content'
             )
             expect(selectedElContent!.innerHTML.trim()).toBe('Jan')
         })
@@ -70,7 +70,7 @@ describe('OwlYearViewComponent', () => {
             fixture.detectChanges()
 
             const selectedElContent = yearViewElement.querySelector(
-                '.owl-calendar-body-selected.owl-dt-calendar-cell-content'
+                '.nxt-calendar-body-selected.nxt-dt-calendar-cell-content'
             )
             expect(selectedElContent).toBeNull()
         })
@@ -83,7 +83,7 @@ describe('OwlYearViewComponent', () => {
             fixture.detectChanges()
 
             const selectedElContent = yearViewElement.querySelector(
-                '.owl-dt-calendar-cell-active .owl-dt-calendar-cell-content'
+                '.nxt-dt-calendar-cell-active .nxt-dt-calendar-cell-content'
             )
             expect(selectedElContent!.innerHTML.trim()).toBe('Dec')
         })
@@ -94,7 +94,7 @@ describe('OwlYearViewComponent', () => {
             )
             expect((cellDecember as HTMLElement).innerText.trim()).toBe('Jan')
             expect(cellDecember!.classList).toContain(
-                'owl-dt-calendar-cell-active'
+                'nxt-dt-calendar-cell-active'
             )
         })
 
@@ -113,7 +113,7 @@ describe('OwlYearViewComponent', () => {
 
         it('should decrement month on left arrow press', () => {
             const calendarBodyEl = yearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', LEFT_ARROW)
             fixture.detectChanges()
@@ -132,7 +132,7 @@ describe('OwlYearViewComponent', () => {
 
         it('should increment month on right arrow press', () => {
             const calendarBodyEl = yearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', RIGHT_ARROW)
             fixture.detectChanges()
@@ -151,7 +151,7 @@ describe('OwlYearViewComponent', () => {
 
         it('should go up a row on up arrow press', () => {
             const calendarBodyEl = yearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', UP_ARROW)
             fixture.detectChanges()
@@ -183,7 +183,7 @@ describe('OwlYearViewComponent', () => {
 
         it('should go down a row on down arrow press', () => {
             const calendarBodyEl = yearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', DOWN_ARROW)
             fixture.detectChanges()
@@ -218,7 +218,7 @@ describe('OwlYearViewComponent', () => {
             fixture.detectChanges()
 
             const calendarBodyEl = yearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', HOME)
             fixture.detectChanges()
@@ -240,7 +240,7 @@ describe('OwlYearViewComponent', () => {
             fixture.detectChanges()
 
             const calendarBodyEl = yearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', END)
             fixture.detectChanges()
@@ -262,7 +262,7 @@ describe('OwlYearViewComponent', () => {
             fixture.detectChanges()
 
             const calendarBodyEl = yearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_UP)
             fixture.detectChanges()
@@ -284,7 +284,7 @@ describe('OwlYearViewComponent', () => {
             fixture.detectChanges()
 
             const calendarBodyEl = yearViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_DOWN)
             fixture.detectChanges()
@@ -311,7 +311,7 @@ describe('OwlYearViewComponent', () => {
             fixture.detectChanges()
 
             const yearViewDebugElement = fixture.debugElement.query(
-                By.directive(OwlYearViewComponent)
+                By.directive(YearViewComponent)
             )
             yearViewNativeElement = yearViewDebugElement.nativeElement
         })
@@ -324,10 +324,10 @@ describe('OwlYearViewComponent', () => {
                 '[aria-label="February 2018"]'
             )
             expect(cellJan!.classList).not.toContain(
-                'owl-dt-calendar-cell-disabled'
+                'nxt-dt-calendar-cell-disabled'
             )
             expect(cellFeb!.classList).toContain(
-                'owl-dt-calendar-cell-disabled'
+                'nxt-dt-calendar-cell-disabled'
             )
         })
     })
@@ -335,10 +335,10 @@ describe('OwlYearViewComponent', () => {
 
 @Component({
     template: `
-        <owl-date-time-year-view
+        <nxt-date-time-year-view
                 [selected]="selected"
                 [(pickerMoment)]="pickerMoment"
-                (change)="handleChange($event)"></owl-date-time-year-view>
+                (change)="handleChange($event)"></nxt-date-time-year-view>
     `
 })
 class StandardYearViewComponent {
@@ -352,9 +352,9 @@ class StandardYearViewComponent {
 
 @Component({
     template: `
-        <owl-date-time-year-view
+        <nxt-date-time-year-view
                 [(pickerMoment)]="pickerMoment"
-                [dateFilter]="dateFilter"></owl-date-time-year-view>
+                [dateFilter]="dateFilter"></nxt-date-time-year-view>
     `
 })
 class YearViewWithDateFilterComponent {

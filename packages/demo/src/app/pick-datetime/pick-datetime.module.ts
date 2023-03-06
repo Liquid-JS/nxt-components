@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { OwlDateTimeModule } from 'nxt-pick-datetime'
-import { OwlNativeDateTimeModule } from 'nxt-pick-datetime/native-adapter'
+import { DateTimeModule } from 'nxt-pick-datetime'
+import { NativeDateTimeModule } from 'nxt-pick-datetime/native-adapter'
 import { AppPickDatetimeRoutingModule } from './pick-datetime-routing.module'
 import { AppPickDatetimeComponent } from './pick-datetime.component'
 
@@ -13,8 +13,8 @@ import { AppPickDatetimeComponent } from './pick-datetime.component'
     imports: [
         CommonModule,
         FormsModule,
-        OwlDateTimeModule,
-        OwlNativeDateTimeModule,
+        DateTimeModule,
+        NativeDateTimeModule,
         AppPickDatetimeRoutingModule
     ],
     providers: [],

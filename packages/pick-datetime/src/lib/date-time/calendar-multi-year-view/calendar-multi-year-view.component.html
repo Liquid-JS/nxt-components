@@ -1,10 +1,10 @@
-<button class="owl-dt-control-button owl-dt-control-arrow-button"
+<button class="nxt-dt-control-button nxt-dt-control-arrow-button"
     [disabled]="!previousEnabled()"
     [attr.aria-label]="prevButtonLabel"
     type="button"
     tabindex="0"
     (click)="prevYearList($event)">
-    <span class="owl-dt-control-button-content"
+    <span class="nxt-dt-control-button-content"
         tabindex="-1">
         <!-- <editor-fold desc="SVG Arrow Left"> -->
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -23,13 +23,13 @@
         <!-- </editor-fold> -->
     </span>
 </button>
-<table class="owl-dt-calendar-table owl-dt-calendar-multi-year-table">
-    <thead class="owl-dt-calendar-header">
+<table class="nxt-dt-calendar-table nxt-dt-calendar-multi-year-table">
+    <thead class="nxt-dt-calendar-header">
         <tr>
             <th colspan="3">{{tableHeader}}</th>
         </tr>
     </thead>
-    <tbody owl-date-time-calendar-body
+    <tbody nxt-date-time-calendar-body
         role="grid"
         [rows]="years"
         [numCols]="3"
@@ -41,13 +41,13 @@
         (keydown)="handleCalendarKeydown($event)"
         (select)="selectCalendarCell($event)"></tbody>
 </table>
-<button class="owl-dt-control-button owl-dt-control-arrow-button"
+<button class="nxt-dt-control-button nxt-dt-control-arrow-button"
     [disabled]="!nextEnabled()"
     [attr.aria-label]="nextButtonLabel"
     type="button"
     tabindex="0"
     (click)="nextYearList($event)">
-    <span class="owl-dt-control-button-content"
+    <span class="nxt-dt-control-button-content"
         tabindex="-1">
         <!-- <editor-fold desc="SVG Arrow Right"> -->
         <svg version="1.1"

@@ -1,13 +1,13 @@
 import { AfterContentInit, ChangeDetectorRef, Directive, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core'
 import { merge, Observable, of as observableOf, Subscription } from 'rxjs'
-import { OwlDateTimeComponent } from './date-time-picker/date-time-picker.component'
+import { DateTimeComponent } from './date-time-picker/date-time-picker.component'
 
 @Directive({
-    selector: '[owlDateTimeTrigger]'
+    selector: '[nxtDateTimeTrigger]'
 })
-export class OwlDateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterContentInit, OnDestroy {
+export class DateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterContentInit, OnDestroy {
 
-    @Input('owlDateTimeTrigger') dtPicker?: OwlDateTimeComponent<T>
+    @Input('nxtDateTimeTrigger') dtPicker?: DateTimeComponent<T>
 
     private _disabled?: boolean
     @Input()
@@ -19,8 +19,8 @@ export class OwlDateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterC
         this._disabled = value
     }
 
-    @HostBinding('class.owl-dt-trigger-disabled')
-    get owlDTTriggerDisabledClass(): boolean {
+    @HostBinding('class.nxt-dt-trigger-disabled')
+    get nxtDTTriggerDisabledClass(): boolean {
         return this.disabled
     }
 

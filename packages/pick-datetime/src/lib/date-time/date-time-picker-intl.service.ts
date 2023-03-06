@@ -7,7 +7,7 @@ declare const $localize: LocalizeFn
 @Injectable({
     providedIn: 'root'
 })
-export class OwlDateTimeIntl {
+export class DateTimeIntl {
 
     /**
      * Stream that emits whenever the labels here are changed. Use this to notify

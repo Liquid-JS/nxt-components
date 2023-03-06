@@ -136,7 +136,7 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
     overflow-y: scroll;
 }
 
-.owl-dialog-container {
+.nxt-dialog-container {
     position: relative;
     pointer-events: auto;
     box-sizing: border-box;
@@ -154,12 +154,12 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
 
 $theme-color: #3f51b5;
 
-.owl-dt-container,
-.owl-dt-container * {
+.nxt-dt-container,
+.nxt-dt-container * {
     box-sizing: border-box;
 }
 
-.owl-dt-container {
+.nxt-dt-container {
     display: block;
     font-size: 1rem;
     background: #ffffff;
@@ -167,7 +167,7 @@ $theme-color: #3f51b5;
     z-index: 1000;
 }
 
-.owl-dt-container-row {
+.nxt-dt-container-row {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
     &:last-child {
@@ -175,13 +175,13 @@ $theme-color: #3f51b5;
     }
 }
 
-.owl-dt-calendar {
+.nxt-dt-calendar {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.owl-dt-calendar-control {
+.nxt-dt-calendar-control {
     display: flex;
     align-items: center;
     font-size: 1em;
@@ -189,13 +189,13 @@ $theme-color: #3f51b5;
     padding: .5em;
     color: #000000;
 
-    .owl-dt-calendar-control-content {
+    .nxt-dt-calendar-control-content {
         flex: 1 1 auto;
         display: flex;
         justify-content: center;
         align-items: center;
 
-        .owl-dt-calendar-control-button {
+        .nxt-dt-calendar-control-button {
             padding: 0 .8em;
 
             &:hover {
@@ -205,7 +205,7 @@ $theme-color: #3f51b5;
     }
 }
 
-.owl-dt-calendar-main {
+.nxt-dt-calendar-main {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
@@ -213,33 +213,33 @@ $theme-color: #3f51b5;
     outline: 0;
 }
 
-.owl-dt-calendar-view {
+.nxt-dt-calendar-view {
     display: block;
     flex: 1 1 auto;
 }
 
-.owl-dt-calendar-multi-year-view {
+.nxt-dt-calendar-multi-year-view {
     display: flex;
     align-items: center;
 
-    .owl-dt-calendar-table {
+    .nxt-dt-calendar-table {
         width: calc(100% - 3em);
 
-        .owl-dt-calendar-header th {
+        .nxt-dt-calendar-header th {
             padding-bottom: .25em;
         }
     }
 }
 
-.owl-dt-calendar-table {
+.nxt-dt-calendar-table {
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
 
-    .owl-dt-calendar-header {
+    .nxt-dt-calendar-header {
         color: rgba(0, 0, 0, 0.4);
 
-        .owl-dt-weekdays {
+        .nxt-dt-weekdays {
             th {
                 font-size: .7em;
                 font-weight: 400;
@@ -248,7 +248,7 @@ $theme-color: #3f51b5;
             }
         }
 
-        .owl-dt-calendar-table-divider {
+        .nxt-dt-calendar-table-divider {
             position: relative;
             height: 1px;
             padding-bottom: .5em;
@@ -265,7 +265,7 @@ $theme-color: #3f51b5;
         }
     }
 
-    .owl-dt-calendar-cell {
+    .nxt-dt-calendar-cell {
         position: relative;
         height: 0;
         line-height: 0;
@@ -277,7 +277,7 @@ $theme-color: #3f51b5;
         -webkit-tap-highlight-color: transparent;
     }
 
-    .owl-dt-calendar-cell-content {
+    .nxt-dt-calendar-cell-content {
         position: absolute;
         top: 5%;
         left: 5%;
@@ -295,60 +295,60 @@ $theme-color: #3f51b5;
         cursor: pointer;
     }
 
-    .owl-dt-calendar-cell-out {
+    .nxt-dt-calendar-cell-out {
         opacity: .2;
     }
 
-    .owl-dt-calendar-cell-today:not(.owl-dt-calendar-cell-selected) {
+    .nxt-dt-calendar-cell-today:not(.nxt-dt-calendar-cell-selected) {
         border-color: rgba(0, 0, 0, 0.4);
     }
 
-    .owl-dt-calendar-cell-selected {
+    .nxt-dt-calendar-cell-selected {
         color: hsla(0, 0%, 100%, 0.85);
         background-color: $theme-color;
 
-        &.owl-dt-calendar-cell-today {
+        &.nxt-dt-calendar-cell-today {
             box-shadow: inset 0 0 0 1px hsla(0, 0%, 100%, 0.85);
         }
     }
 
-    .owl-dt-calendar-cell-disabled {
+    .nxt-dt-calendar-cell-disabled {
         cursor: default;
 
-        & > .owl-dt-calendar-cell-content:not(.owl-dt-calendar-cell-selected) {
+        & > .nxt-dt-calendar-cell-content:not(.nxt-dt-calendar-cell-selected) {
             color: rgba(0, 0, 0, 0.4);
         }
 
-        & > .owl-dt-calendar-cell-content.owl-dt-calendar-cell-selected {
+        & > .nxt-dt-calendar-cell-content.nxt-dt-calendar-cell-selected {
             opacity: .4;
         }
 
-        & > .owl-dt-calendar-cell-today:not(.owl-dt-calendar-cell-selected) {
+        & > .nxt-dt-calendar-cell-today:not(.nxt-dt-calendar-cell-selected) {
             border-color: rgba(0, 0, 0, 0.2);
         }
     }
 
-    .owl-dt-calendar-cell-active:focus > .owl-dt-calendar-cell-content:not(.owl-dt-calendar-cell-selected),
-    :not(.owl-dt-calendar-cell-disabled):hover > .owl-dt-calendar-cell-content:not(.owl-dt-calendar-cell-selected) {
+    .nxt-dt-calendar-cell-active:focus > .nxt-dt-calendar-cell-content:not(.nxt-dt-calendar-cell-selected),
+    :not(.nxt-dt-calendar-cell-disabled):hover > .nxt-dt-calendar-cell-content:not(.nxt-dt-calendar-cell-selected) {
         background-color: rgba(0, 0, 0, 0.04);
     }
 
-    .owl-dt-calendar-cell-in-range {
+    .nxt-dt-calendar-cell-in-range {
         background: rgba($theme-color, 0.2);
 
-        &.owl-dt-calendar-cell-range-from {
+        &.nxt-dt-calendar-cell-range-from {
             border-top-left-radius: 999px;
             border-bottom-left-radius: 999px;
         }
 
-        &.owl-dt-calendar-cell-range-to {
+        &.nxt-dt-calendar-cell-range-to {
             border-top-right-radius: 999px;
             border-bottom-right-radius: 999px;
         }
     }
 }
 
-.owl-dt-timer {
+.nxt-dt-timer {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -357,7 +357,7 @@ $theme-color: #3f51b5;
     outline: none;
 }
 
-.owl-dt-timer-box {
+.nxt-dt-timer-box {
     position: relative;
     display: inline-flex;
     flex-direction: column;
@@ -366,7 +366,7 @@ $theme-color: #3f51b5;
     height: 100%;
 }
 
-.owl-dt-timer-content {
+.nxt-dt-timer-content {
     flex: 1 1 auto;
     display: flex;
     justify-content: center;
@@ -374,7 +374,7 @@ $theme-color: #3f51b5;
     width: 100%;
     margin: .2em 0;
 
-    .owl-dt-timer-input {
+    .nxt-dt-timer-input {
         display: block;
         width: 2em;
         text-align: center;
@@ -386,7 +386,7 @@ $theme-color: #3f51b5;
     }
 }
 
-.owl-dt-timer-divider {
+.nxt-dt-timer-divider {
     display: inline-block;
     align-self: flex-end;
     position: absolute;
@@ -416,7 +416,7 @@ $theme-color: #3f51b5;
     }
 }
 
-.owl-dt-control-button {
+.nxt-dt-control-button {
     user-select: none;
     cursor: pointer;
     outline: none;
@@ -432,7 +432,7 @@ $theme-color: #3f51b5;
     font-size: 1em;
     color: inherit;
 
-    .owl-dt-control-button-content {
+    .nxt-dt-control-button-content {
         position: relative;
         display: inline-flex;
         justify-content: center;
@@ -441,19 +441,19 @@ $theme-color: #3f51b5;
     }
 }
 
-.owl-dt-control-period-button {
-    .owl-dt-control-button-content {
+.nxt-dt-control-period-button {
+    .nxt-dt-control-button-content {
         height: 1.5em;
         padding: 0 .5em;
         border-radius: 3px;
         transition: background-color 100ms linear;
     }
 
-    &:hover > .owl-dt-control-button-content {
+    &:hover > .nxt-dt-control-button-content {
         background-color: rgba(0, 0, 0, 0.12);
     }
 
-    .owl-dt-control-button-arrow {
+    .nxt-dt-control-button-arrow {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -464,8 +464,8 @@ $theme-color: #3f51b5;
     }
 }
 
-.owl-dt-control-arrow-button {
-    .owl-dt-control-button-content {
+.nxt-dt-control-arrow-button {
+    .nxt-dt-control-button-content {
         padding: 0;
         border-radius: 50%;
         width: 1.5em;
@@ -484,100 +484,100 @@ $theme-color: #3f51b5;
     }
 }
 
-.owl-dt-inline-container,
-.owl-dt-popup-container {
+.nxt-dt-inline-container,
+.nxt-dt-popup-container {
     position: relative;
     width: 18.5em;
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 
-    .owl-dt-calendar,
-    .owl-dt-timer {
+    .nxt-dt-calendar,
+    .nxt-dt-timer {
         width: 100%;
     }
 
-    .owl-dt-calendar {
+    .nxt-dt-calendar {
         height: 20.25em;
     }
 }
 
-.owl-dt-dialog-container {
+.nxt-dt-dialog-container {
     max-height: 95vh;
     margin: -1.5em;
 
-    .owl-dt-calendar {
+    .nxt-dt-calendar {
         min-width: 250px;
         min-height: 330px;
         max-width: 750px;
         max-height: 750px;
     }
 
-    .owl-dt-timer {
+    .nxt-dt-timer {
         min-width: 250px;
         max-width: 750px;
     }
 }
 
 @media all and (orientation: landscape) {
-    .owl-dt-dialog-container {
-        .owl-dt-calendar {
+    .nxt-dt-dialog-container {
+        .nxt-dt-calendar {
             width: 58vh;
             height: 62vh;
         }
 
-        .owl-dt-timer {
+        .nxt-dt-timer {
             width: 58vh;
         }
     }
 }
 
 @media all and (orientation: portrait) {
-    .owl-dt-dialog-container {
-        .owl-dt-calendar {
+    .nxt-dt-dialog-container {
+        .nxt-dt-calendar {
             width: 80vw;
             height: 80vw;
         }
 
-        .owl-dt-timer {
+        .nxt-dt-timer {
             width: 80vw;
         }
     }
 }
 
-.owl-dt-container-buttons {
+.nxt-dt-container-buttons {
     display: flex;
     width: 100%;
     height: 2em;
     color: $theme-color;
 }
 
-.owl-dt-container-control-button {
+.nxt-dt-container-control-button {
     font-size: 1em;
     width: 50%;
     height: 100%;
     border-radius: 0;
 
-    .owl-dt-control-button-content {
+    .nxt-dt-control-button-content {
         height: 100%;
         width: 100%;
         transition: background-color 100ms linear;
     }
 
     &:hover {
-        .owl-dt-control-button-content {
+        .nxt-dt-control-button-content {
             background-color: rgba(0, 0, 0, 0.1);
         }
     }
 }
 
-.owl-dt-container-info {
+.nxt-dt-container-info {
     padding: 0 .5em;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 
-    .owl-dt-container-range {
+    .nxt-dt-container-range {
         outline: none;
 
-        .owl-dt-container-range-content {
+        .nxt-dt-container-range-content {
             display: flex;
             justify-content: space-between;
             padding: .5em 0;
@@ -589,38 +589,38 @@ $theme-color: #3f51b5;
         }
     }
 
-    .owl-dt-container-info-active {
+    .nxt-dt-container-info-active {
         color: $theme-color;
     }
 }
 
-.owl-dt-container-disabled,
-.owl-dt-trigger-disabled {
+.nxt-dt-container-disabled,
+.nxt-dt-trigger-disabled {
     opacity: 0.35;
     filter: Alpha(Opacity = 35);
     background-image: none;
     cursor: default !important;
 }
 
-.owl-dt-timer-hour12 {
+.nxt-dt-timer-hour12 {
     display: flex;
     justify-content: center;
     align-items: center;
     color: $theme-color;
 
-    .owl-dt-timer-hour12-box {
+    .nxt-dt-timer-hour12-box {
         border: 1px solid currentColor;
         border-radius: 2px;
         transition: background 200ms ease;
 
-        .owl-dt-control-button-content {
+        .nxt-dt-control-button-content {
             width: 100%;
             height: 100%;
             padding: .5em;
         }
 
         &:focus, &:hover {
-            .owl-dt-control-button-content {
+            .nxt-dt-control-button-content {
                 background: $theme-color;
                 color: #ffffff;
             }
@@ -628,35 +628,35 @@ $theme-color: #3f51b5;
     }
 }
 
-.owl-dt-calendar-only-current-month {
-    .owl-dt-calendar-cell-out {
+.nxt-dt-calendar-only-current-month {
+    .nxt-dt-calendar-cell-out {
         visibility: hidden;
         cursor: default;
     }
 }
 
-.owl-dt-inline {
+.nxt-dt-inline {
     display: inline-block;
 }
 
-.owl-dt-control {
+.nxt-dt-control {
     outline: none;
     cursor: pointer;
 
-    .owl-dt-control-content {
+    .nxt-dt-control-content {
         outline: none;
     }
 
-    &:focus > .owl-dt-control-content {
+    &:focus > .nxt-dt-control-content {
         background-color: rgba(0, 0, 0, 0.12);
     }
 
-    &:not(:-moz-focusring):focus > .owl-dt-control-content {
+    &:not(:-moz-focusring):focus > .nxt-dt-control-content {
         box-shadow: none;
     }
 }
 
-.owl-hidden-accessible {
+.nxt-hidden-accessible {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;

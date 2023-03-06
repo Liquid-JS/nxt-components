@@ -3,33 +3,33 @@ import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, SPACE, UP_ARROW } from '@angular/c
 import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, ViewChild } from '@angular/core'
 import { Subject } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
-import { OwlDateTimeDirective } from '../../class/date-time.class'
-import { OwlCalendarComponent } from '../calendar/calendar.component'
-import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
-import { OwlTimerComponent } from '../timer/timer.component'
-import { owlDateTimePickerAnimations } from './date-time-picker-container.animations'
+import { DateTimeDirective } from '../../class/date-time.class'
+import { CalendarComponent } from '../calendar/calendar.component'
+import { DateTimeIntl } from '../date-time-picker-intl.service'
+import { TimerComponent } from '../timer/timer.component'
+import { nxtDateTimePickerAnimations } from './date-time-picker-container.animations'
 
 @Component({
-    exportAs: 'owlDateTimeContainer',
-    selector: 'owl-date-time-container',
+    exportAs: 'nxtDateTimeContainer',
+    selector: 'nxt-date-time-container',
     templateUrl: './date-time-picker-container.component.html',
     styleUrls: ['./date-time-picker-container.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     preserveWhitespaces: false,
     animations: [
-        owlDateTimePickerAnimations.transformPicker,
-        owlDateTimePickerAnimations.fadeInPicker
+        nxtDateTimePickerAnimations.transformPicker,
+        nxtDateTimePickerAnimations.fadeInPicker
     ]
 })
-export class OwlDateTimeContainerComponent<T> implements OnInit, AfterContentInit, AfterViewInit {
+export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, AfterViewInit {
 
-    @ViewChild(OwlCalendarComponent)
-    calendar?: OwlCalendarComponent<T>
+    @ViewChild(CalendarComponent)
+    calendar?: CalendarComponent<T>
 
-    @ViewChild(OwlTimerComponent)
-    timer?: OwlTimerComponent<T>
+    @ViewChild(TimerComponent)
+    timer?: TimerComponent<T>
 
-    public picker?: OwlDateTimeDirective<T>
+    public picker?: DateTimeDirective<T>
     public activeSelectedIndex = 0 // The current active SelectedIndex in range select mode (0: 'from', 1: 'to')
 
     /**
@@ -134,45 +134,45 @@ export class OwlDateTimeContainerComponent<T> implements OnInit, AfterContentIni
         return this.elmRef.nativeElement
     }
 
-    @HostBinding('class.owl-dt-container')
-    get owlDTContainerClass(): boolean {
+    @HostBinding('class.nxt-dt-container')
+    get nxtDTContainerClass(): boolean {
         return true
     }
 
-    @HostBinding('class.owl-dt-popup-container')
-    get owlDTPopupContainerClass(): boolean {
+    @HostBinding('class.nxt-dt-popup-container')
+    get nxtDTPopupContainerClass(): boolean {
         return this.picker?.pickerMode === 'popup'
     }
 
-    @HostBinding('class.owl-dt-dialog-container')
-    get owlDTDialogContainerClass(): boolean {
+    @HostBinding('class.nxt-dt-dialog-container')
+    get nxtDTDialogContainerClass(): boolean {
         return this.picker?.pickerMode === 'dialog'
     }
 
-    @HostBinding('class.owl-dt-inline-container')
-    get owlDTInlineContainerClass(): boolean {
+    @HostBinding('class.nxt-dt-inline-container')
+    get nxtDTInlineContainerClass(): boolean {
         return this.picker?.pickerMode === 'inline'
     }
 
-    @HostBinding('class.owl-dt-container-disabled')
-    get owlDTContainerDisabledClass(): boolean {
+    @HostBinding('class.nxt-dt-container-disabled')
+    get nxtDTContainerDisabledClass(): boolean {
         return !!this.picker?.disabled
     }
 
     @HostBinding('attr.id')
-    get owlDTContainerId(): string | undefined {
+    get nxtDTContainerId(): string | undefined {
         return this.picker?.id
     }
 
     @HostBinding('@transformPicker')
-    get owlDTContainerAnimation(): any {
+    get nxtDTContainerAnimation(): any {
         return this.picker?.pickerMode === 'inline' ? '' : 'enter'
     }
 
     constructor(
         private readonly cdRef: ChangeDetectorRef,
         private readonly elmRef: ElementRef<HTMLElement>,
-        private readonly pickerIntl: OwlDateTimeIntl,
+        private readonly pickerIntl: DateTimeIntl,
         private readonly dateTimeAdapter: DateTimeAdapter<T>
     ) { }
 

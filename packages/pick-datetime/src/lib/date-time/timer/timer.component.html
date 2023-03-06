@@ -1,4 +1,4 @@
-<owl-date-time-timer-box [upBtnAriaLabel]="upHourButtonLabel"
+<nxt-date-time-timer-box [upBtnAriaLabel]="upHourButtonLabel"
     [downBtnAriaLabel]="downHourButtonLabel"
     [upBtnDisabled]="!upHourEnabled()"
     [downBtnDisabled]="!downHourEnabled()"
@@ -9,8 +9,8 @@
     [step]="stepHour"
     [inputLabel]="'Hour'"
     (inputChange)="setHourValueViaInput($event)"
-    (valueChange)="setHourValue($event)"></owl-date-time-timer-box>
-<owl-date-time-timer-box [showDivider]="true"
+    (valueChange)="setHourValue($event)"></nxt-date-time-timer-box>
+<nxt-date-time-timer-box [showDivider]="true"
     [upBtnAriaLabel]="upMinuteButtonLabel"
     [downBtnAriaLabel]="downMinuteButtonLabel"
     [upBtnDisabled]="!upMinuteEnabled()"
@@ -21,8 +21,8 @@
     [step]="stepMinute"
     [inputLabel]="'Minute'"
     (inputChange)="setMinuteValue($event)"
-    (valueChange)="setMinuteValue($event)"></owl-date-time-timer-box>
-<owl-date-time-timer-box *ngIf="showSecondsTimer"
+    (valueChange)="setMinuteValue($event)"></nxt-date-time-timer-box>
+<nxt-date-time-timer-box *ngIf="showSecondsTimer"
     [showDivider]="true"
     [upBtnAriaLabel]="upSecondButtonLabel"
     [downBtnAriaLabel]="downSecondButtonLabel"
@@ -34,15 +34,15 @@
     [step]="stepSecond"
     [inputLabel]="'Second'"
     (inputChange)="setSecondValue($event)"
-    (valueChange)="setSecondValue($event)"></owl-date-time-timer-box>
+    (valueChange)="setSecondValue($event)"></nxt-date-time-timer-box>
 
 <div *ngIf="hour12Timer"
-    class="owl-dt-timer-hour12">
-    <button class="owl-dt-control-button owl-dt-timer-hour12-box"
+    class="nxt-dt-timer-hour12">
+    <button class="nxt-dt-control-button nxt-dt-timer-hour12-box"
         type="button"
         tabindex="0"
         (click)="setMeridiem($event)">
-        <span class="owl-dt-control-button-content"
+        <span class="nxt-dt-control-button-content"
             tabindex="-1">
             {{hour12ButtonLabel}}
         </span>

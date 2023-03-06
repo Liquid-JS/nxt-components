@@ -4,21 +4,21 @@ import { Location } from '@angular/common'
 import { ComponentRef, Inject, Injectable, InjectionToken, Injector, Optional, SkipSelf, TemplateRef } from '@angular/core'
 import { defer, of, Subject } from 'rxjs'
 import { concatAll } from 'rxjs/operators'
-import { OwlDialogConfig } from '../class/dialog-config.class'
-import { OwlDialogRef } from '../class/dialog-ref.class'
+import { DialogConfig } from '../class/dialog-config.class'
+import { DialogRef } from '../class/dialog-ref.class'
 import { extendObject } from '../utils/object'
-import { OwlDialogContainerComponent } from './dialog-container/dialog-container.component'
+import { NxtDialogContainerComponent } from './dialog-container/dialog-container.component'
 
-export const OWL_DIALOG_DATA = new InjectionToken<any>('OwlDialogData')
+export const NXT_DIALOG_DATA = new InjectionToken<any>('NXT_DIALOG_DATA')
 
 /**
  * Injection token that determines the scroll handling while the dialog is open.
  * */
-export const OWL_DIALOG_SCROLL_STRATEGY = new InjectionToken<
+export const NXT_DIALOG_SCROLL_STRATEGY = new InjectionToken<
     () => ScrollStrategy
->('owl-dialog-scroll-strategy')
+>('NXT_DIALOG_SCROLL_STRATEGY')
 
-export function OWL_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(
+export function NXT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(
     overlay: Overlay
 ): () => ScrollStrategy {
     const fn = () => overlay.scrollStrategies.block()
@@ -26,36 +26,36 @@ export function OWL_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(
 }
 
 /** @docs-private */
-export const OWL_DIALOG_SCROLL_STRATEGY_PROVIDER = {
-    provide: OWL_DIALOG_SCROLL_STRATEGY,
+export const NXT_DIALOG_SCROLL_STRATEGY_PROVIDER = {
+    provide: NXT_DIALOG_SCROLL_STRATEGY,
     deps: [Overlay],
-    useFactory: OWL_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY
+    useFactory: NXT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY
 }
 
 /** I
  * njection token that can be used to specify default dialog options.
  * */
-export const OWL_DIALOG_DEFAULT_OPTIONS = new InjectionToken<OwlDialogConfig>(
-    'owl-dialog-default-options'
+export const NXT_DIALOG_DEFAULT_OPTIONS = new InjectionToken<DialogConfig>(
+    'NXT_DIALOG_DEFAULT_OPTIONS'
 )
 
 @Injectable()
-export class OwlDialogService {
+export class NxtDialogService {
     private readonly ariaHiddenElements = new Map<Element, string | null>()
 
-    private readonly _openDialogsAtThisLevel: Array<OwlDialogRef<any>> = []
-    private readonly _afterOpenAtThisLevel = new Subject<OwlDialogRef<any>>()
+    private readonly _openDialogsAtThisLevel: Array<DialogRef<any>> = []
+    private readonly _afterOpenAtThisLevel = new Subject<DialogRef<any>>()
     private readonly _afterAllClosedAtThisLevel = new Subject<void>()
 
     /** Keeps track of the currently-open dialogs. */
-    get openDialogs(): Array<OwlDialogRef<any>> {
+    get openDialogs(): Array<DialogRef<any>> {
         return this.parentDialog
             ? this.parentDialog.openDialogs
             : this._openDialogsAtThisLevel
     }
 
     /** Stream that emits when a dialog has been opened. */
-    get afterOpen(): Subject<OwlDialogRef<any>> {
+    get afterOpen(): Subject<DialogRef<any>> {
         return this.parentDialog
             ? this.parentDialog.afterOpen
             : this._afterOpenAtThisLevel
@@ -88,15 +88,15 @@ export class OwlDialogService {
         @Optional()
         @Inject(Location)
         private readonly location: Location | undefined,
-        @Inject(OWL_DIALOG_SCROLL_STRATEGY)
+        @Inject(NXT_DIALOG_SCROLL_STRATEGY)
         scrollStrategy: () => ScrollStrategy,
         @Optional()
-        @Inject(OWL_DIALOG_DEFAULT_OPTIONS)
-        private readonly defaultOptions: OwlDialogConfig | undefined,
+        @Inject(NXT_DIALOG_DEFAULT_OPTIONS)
+        private readonly defaultOptions: DialogConfig | undefined,
         @Optional()
         @SkipSelf()
-        @Inject(OwlDialogService)
-        private readonly parentDialog: OwlDialogService | undefined,
+        @Inject(NxtDialogService)
+        private readonly parentDialog: NxtDialogService | undefined,
         private readonly overlayContainer: OverlayContainer
     ) {
         this.scrollStrategy = scrollStrategy
@@ -107,8 +107,8 @@ export class OwlDialogService {
 
     public open<T>(
         componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
-        config?: OwlDialogConfig
-    ): OwlDialogRef<any> {
+        config?: DialogConfig
+    ): DialogRef<any> {
         config = applyConfigDefaults(config, this.defaultOptions)
 
         if (config.id && this.getDialogById(config.id)) {
@@ -152,17 +152,17 @@ export class OwlDialogService {
      *
      * @param id ID to use when looking up the dialog.
      */
-    public getDialogById(id: string): OwlDialogRef<any> | undefined {
+    public getDialogById(id: string): DialogRef<any> | undefined {
         return this.openDialogs.find(dialog => dialog.id === id)
     }
 
     private attachDialogContent<T>(
         componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
-        dialogContainer: OwlDialogContainerComponent,
+        dialogContainer: NxtDialogContainerComponent,
         overlayRef: OverlayRef,
-        config: OwlDialogConfig
+        config: DialogConfig
     ) {
-        const dialogRef = new OwlDialogRef<T>(
+        const dialogRef = new DialogRef<T>(
             overlayRef,
             dialogContainer,
             config.id,
@@ -197,9 +197,9 @@ export class OwlDialogService {
     }
 
     private createInjector<T>(
-        config: OwlDialogConfig,
-        dialogRef: OwlDialogRef<T>,
-        dialogContainer: OwlDialogContainerComponent
+        config: DialogConfig,
+        dialogRef: DialogRef<T>,
+        dialogContainer: NxtDialogContainerComponent
     ) {
         const userInjector =
             config &&
@@ -208,36 +208,36 @@ export class OwlDialogService {
 
         return Injector.create({
             providers: [
-                { provide: OwlDialogRef, useValue: dialogRef },
-                { provide: OwlDialogContainerComponent, useValue: dialogContainer },
-                { provide: OWL_DIALOG_DATA, useValue: config.data }
+                { provide: DialogRef, useValue: dialogRef },
+                { provide: NxtDialogContainerComponent, useValue: dialogContainer },
+                { provide: NXT_DIALOG_DATA, useValue: config.data }
             ],
             parent: userInjector || this.injector
         })
     }
 
-    private createOverlay(config: OwlDialogConfig): OverlayRef {
+    private createOverlay(config: DialogConfig): OverlayRef {
         const overlayConfig = this.getOverlayConfig(config)
         return this.overlay.create(overlayConfig)
     }
 
     private attachDialogContainer(
         overlayRef: OverlayRef,
-        config: OwlDialogConfig
-    ): OwlDialogContainerComponent {
+        config: DialogConfig
+    ): NxtDialogContainerComponent {
         const containerPortal = new ComponentPortal(
-            OwlDialogContainerComponent,
+            NxtDialogContainerComponent,
             config.viewContainerRef
         )
         const containerRef: ComponentRef<
-            OwlDialogContainerComponent
+            NxtDialogContainerComponent
         > = overlayRef.attach(containerPortal)
         containerRef.instance.setConfig(config)
 
         return containerRef.instance
     }
 
-    private getOverlayConfig(dialogConfig: OwlDialogConfig): OverlayConfig {
+    private getOverlayConfig(dialogConfig: DialogConfig): OverlayConfig {
         const state = new OverlayConfig({
             positionStrategy: this.overlay.position().global(),
             scrollStrategy:
@@ -257,7 +257,7 @@ export class OwlDialogService {
         return state
     }
 
-    private removeOpenDialog(dialogRef: OwlDialogRef<any>): void {
+    private removeOpenDialog(dialogRef: DialogRef<any>): void {
         const index = this._openDialogsAtThisLevel.indexOf(dialogRef)
 
         if (index > -1) {
@@ -317,8 +317,8 @@ export class OwlDialogService {
  * @returns The new configuration object.
  */
 function applyConfigDefaults(
-    config?: OwlDialogConfig,
-    defaultOptions?: OwlDialogConfig
-): OwlDialogConfig {
-    return extendObject(new OwlDialogConfig(), config, defaultOptions)
+    config?: DialogConfig,
+    defaultOptions?: DialogConfig
+): DialogConfig {
+    return extendObject(new DialogConfig(), config, defaultOptions)
 }

@@ -1,6 +1,6 @@
 import { Platform } from '@angular/cdk/platform'
 import { Inject, Injectable, Optional } from '@angular/core'
-import { DateTimeAdapter, OWL_DATE_TIME_LOCALE } from 'nxt-pick-datetime'
+import { DateTimeAdapter, NXT_DATE_TIME_LOCALE } from 'nxt-pick-datetime'
 
 /** The default month names to use if Intl API is not available. */
 const DEFAULT_MONTH_NAMES = {
@@ -88,11 +88,11 @@ export class NativeDateTimeAdapter extends DateTimeAdapter<Date> {
     constructor(
         platform: Platform,
         @Optional()
-        @Inject(OWL_DATE_TIME_LOCALE)
-        owlDateTimeLocale?: string
+        @Inject(NXT_DATE_TIME_LOCALE)
+        nxtDateTimeLocale?: string
     ) {
         super()
-        super.setLocale(owlDateTimeLocale)
+        super.setLocale(nxtDateTimeLocale)
 
         // IE does its own time zone correction, so we disable this on IE.
         this.useUtcForDisplay = !platform.TRIDENT

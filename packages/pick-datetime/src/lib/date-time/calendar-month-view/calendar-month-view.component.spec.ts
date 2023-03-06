@@ -2,10 +2,10 @@ import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARR
 import { Component, DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { dispatchKeyboardEvent, OwlTestDateTimeModule } from '../../../test-helpers'
-import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
-import { OwlDateTimeModule } from '../date-time.module'
-import { OwlMonthViewComponent } from './calendar-month-view.component'
+import { dispatchKeyboardEvent, NxtTestDateTimeModule } from '../../../test-helpers'
+import { DateTimeIntl } from '../date-time-picker-intl.service'
+import { DateTimeModule } from '../date-time.module'
+import { MonthViewComponent } from './calendar-month-view.component'
 
 const JAN = 0
 const FEB = 1
@@ -20,15 +20,15 @@ const OCT = 9
 const NOV = 10
 const DEC = 11
 
-describe('OwlMonthViewComponent', () => {
+describe('NxtMonthViewComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [OwlTestDateTimeModule, OwlDateTimeModule],
+            imports: [NxtTestDateTimeModule, DateTimeModule],
             declarations: [
                 StandardMonthViewComponent,
                 MonthViewWithDateFilterComponent
             ],
-            providers: [OwlDateTimeIntl]
+            providers: [DateTimeIntl]
         }).compileComponents()
     })
 
@@ -37,14 +37,14 @@ describe('OwlMonthViewComponent', () => {
         let testComponent: StandardMonthViewComponent
         let monthViewDebugElement: DebugElement
         let monthViewElement: HTMLElement
-        let monthViewInstance: OwlMonthViewComponent<Date>
+        let monthViewInstance: MonthViewComponent<Date>
 
         beforeEach(() => {
             fixture = TestBed.createComponent(StandardMonthViewComponent)
             fixture.detectChanges()
 
             monthViewDebugElement = fixture.debugElement.query(
-                By.directive(OwlMonthViewComponent)
+                By.directive(MonthViewComponent)
             )
             monthViewElement = monthViewDebugElement.nativeElement
             testComponent = fixture.componentInstance
@@ -53,14 +53,14 @@ describe('OwlMonthViewComponent', () => {
 
         it('should have 42 calendar day cells', () => {
             const cellEls = monthViewElement.querySelectorAll(
-                '.owl-dt-calendar-cell'
+                '.nxt-dt-calendar-cell'
             )
             expect(cellEls.length).toBe(42)
         })
 
         it('should show selected date if in same month', () => {
             const selectedEl = monthViewElement.querySelector(
-                '.owl-dt-calendar-cell-selected'
+                '.nxt-dt-calendar-cell-selected'
             )
             expect(selectedEl?.innerHTML.trim()).toBe('10')
         })
@@ -69,14 +69,14 @@ describe('OwlMonthViewComponent', () => {
             testComponent.selected = new Date(2018, MAR, 10)
             fixture.detectChanges()
             const selectedEl = monthViewElement.querySelector(
-                '.owl-dt-calendar-cell-selected'
+                '.nxt-dt-calendar-cell-selected'
             )
             expect(selectedEl).toBeNull()
         })
 
         it('should mark active date', () => {
             const selectedElContent = monthViewElement.querySelector(
-                '.owl-dt-calendar-cell-active .owl-dt-calendar-cell-content'
+                '.nxt-dt-calendar-cell-active .nxt-dt-calendar-cell-content'
             )
             expect(selectedElContent?.innerHTML.trim()).toBe('5')
         })
@@ -84,7 +84,7 @@ describe('OwlMonthViewComponent', () => {
         it('should set Sunday as first day of week by default', () => {
             expect(monthViewInstance.firstDayOfWeek).toBe(0)
             const weekdayCells = monthViewElement.querySelectorAll(
-                '.owl-dt-weekday'
+                '.nxt-dt-weekday'
             )
             expect(weekdayCells[0].getAttribute('aria-label')).toBe('Sunday')
         })
@@ -93,7 +93,7 @@ describe('OwlMonthViewComponent', () => {
             monthViewInstance.firstDayOfWeek = 1
             fixture.detectChanges()
             const weekdayCells = monthViewElement.querySelectorAll(
-                '.owl-dt-weekday'
+                '.nxt-dt-weekday'
             )
             expect(weekdayCells[0].getAttribute('aria-label')).toBe('Monday')
         })
@@ -102,14 +102,14 @@ describe('OwlMonthViewComponent', () => {
             monthViewInstance.firstDayOfWeek = 6
             fixture.detectChanges()
             const weekdayCells = monthViewElement.querySelectorAll(
-                '.owl-dt-weekday'
+                '.nxt-dt-weekday'
             )
             expect(weekdayCells[0].getAttribute('aria-label')).toBe('Saturday')
         })
 
         it('should decrement date on left arrow press', () => {
             const calendarBodyEl = monthViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', LEFT_ARROW)
             fixture.detectChanges()
@@ -126,7 +126,7 @@ describe('OwlMonthViewComponent', () => {
 
         it('should increment date on right arrow press', () => {
             const calendarBodyEl = monthViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', RIGHT_ARROW)
             fixture.detectChanges()
@@ -141,7 +141,7 @@ describe('OwlMonthViewComponent', () => {
 
         it('should go up a row on up arrow press', () => {
             const calendarBodyEl = monthViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', UP_ARROW)
             fixture.detectChanges()
@@ -159,7 +159,7 @@ describe('OwlMonthViewComponent', () => {
 
         it('should go down a row on down arrow press', () => {
             const calendarBodyEl = monthViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', DOWN_ARROW)
             fixture.detectChanges()
@@ -177,7 +177,7 @@ describe('OwlMonthViewComponent', () => {
             fixture.detectChanges()
 
             const calendarBodyEl = monthViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', HOME)
             fixture.detectChanges()
@@ -195,7 +195,7 @@ describe('OwlMonthViewComponent', () => {
             fixture.detectChanges()
 
             const calendarBodyEl = monthViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', END)
             fixture.detectChanges()
@@ -210,7 +210,7 @@ describe('OwlMonthViewComponent', () => {
 
         it('should go back one month on page up press', () => {
             const calendarBodyEl = monthViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_UP)
             fixture.detectChanges()
@@ -225,7 +225,7 @@ describe('OwlMonthViewComponent', () => {
 
         it('should go forward one month on page down press', () => {
             const calendarBodyEl = monthViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_DOWN)
             fixture.detectChanges()
@@ -240,7 +240,7 @@ describe('OwlMonthViewComponent', () => {
 
         it('should select active date on enter', () => {
             const calendarBodyEl = monthViewElement.querySelector(
-                '.owl-dt-calendar-body'
+                '.nxt-dt-calendar-body'
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', LEFT_ARROW)
             fixture.detectChanges()
@@ -263,7 +263,7 @@ describe('OwlMonthViewComponent', () => {
             fixture.detectChanges()
 
             const monthViewDebugElement = fixture.debugElement.query(
-                By.directive(OwlMonthViewComponent)
+                By.directive(MonthViewComponent)
             )
             monthViewNativeElement = monthViewDebugElement.nativeElement
         })
@@ -276,10 +276,10 @@ describe('OwlMonthViewComponent', () => {
                 '[aria-label="January 2, 2018"]'
             )
             expect(cellOne?.classList).toContain(
-                'owl-dt-calendar-cell-disabled'
+                'nxt-dt-calendar-cell-disabled'
             )
             expect(cellTwo?.classList).not.toContain(
-                'owl-dt-calendar-cell-disabled'
+                'nxt-dt-calendar-cell-disabled'
             )
         })
     })
@@ -287,9 +287,9 @@ describe('OwlMonthViewComponent', () => {
 
 @Component({
     template: `
-        <owl-date-time-month-view
+        <nxt-date-time-month-view
                 [(selected)]="selected"
-                [(pickerMoment)]="pickerMoment"></owl-date-time-month-view>
+                [(pickerMoment)]="pickerMoment"></nxt-date-time-month-view>
     `
 })
 class StandardMonthViewComponent {
@@ -299,9 +299,9 @@ class StandardMonthViewComponent {
 
 @Component({
     template: `
-        <owl-date-time-month-view
+        <nxt-date-time-month-view
                 [(pickerMoment)]="pickerMoment"
-                [dateFilter]="dateFilter"></owl-date-time-month-view>
+                [dateFilter]="dateFilter"></nxt-date-time-month-view>
     `
 })
 class MonthViewWithDateFilterComponent {

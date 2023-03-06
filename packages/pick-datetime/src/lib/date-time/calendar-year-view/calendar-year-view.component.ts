@@ -2,22 +2,22 @@ import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARR
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
-import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
+import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
-import { CalendarCell, OwlCalendarBodyComponent } from '../calendar-body/calendar-body.component'
+import { CalendarCell, CalendarBodyComponent } from '../calendar-body/calendar-body.component'
 
 const MONTHS_PER_YEAR = 12
 const MONTHS_PER_ROW = 3
 
 @Component({
-    selector: 'owl-date-time-year-view',
-    exportAs: 'owlMonthView',
+    selector: 'nxt-date-time-year-view',
+    exportAs: 'nxtMonthView',
     templateUrl: './calendar-year-view.component.html',
     styleUrls: ['./calendar-year-view.component.scss'],
     preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OwlYearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy {
+export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy {
     /**
      * The select mode of the picker;
      * */
@@ -190,19 +190,19 @@ export class OwlYearViewComponent<T> implements OnInit, AfterContentInit, OnDest
     readonly keyboardEnter = new EventEmitter<void>()
 
     /** The body of calendar table */
-    @ViewChild(OwlCalendarBodyComponent, { static: true })
-    calendarBodyElm?: OwlCalendarBodyComponent
+    @ViewChild(CalendarBodyComponent, { static: true })
+    calendarBodyElm?: CalendarBodyComponent
 
-    @HostBinding('class.owl-dt-calendar-view')
-    get owlDTCalendarView(): boolean {
+    @HostBinding('class.nxt-dt-calendar-view')
+    get nxtDTCalendarView(): boolean {
         return true
     }
 
     constructor(
         private readonly cdRef: ChangeDetectorRef,
         private readonly dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(OWL_DATE_TIME_FORMATS)
-        private readonly dateTimeFormats: OwlDateTimeFormats
+        @Inject(NXT_DATE_TIME_FORMATS)
+        private readonly dateTimeFormats: DateTimeFormats
     ) {
         this.monthNames = this.dateTimeAdapter.getMonthNames('short')
     }
@@ -396,7 +396,7 @@ export class OwlYearViewComponent<T> implements OnInit, AfterContentInit, OnDest
             startDateOfMonth,
             this.dateTimeFormats.monthYearA11yLabel
         )
-        const cellClass = 'owl-dt-month-' + month
+        const cellClass = 'nxt-dt-month-' + month
         return new CalendarCell(
             month,
             this.monthNames[month],

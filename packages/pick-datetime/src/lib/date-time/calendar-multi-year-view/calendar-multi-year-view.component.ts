@@ -2,21 +2,21 @@ import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARR
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Input, OnInit, Output, ViewChild } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
-import { CalendarCell, OwlCalendarBodyComponent } from '../calendar-body/calendar-body.component'
-import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
+import { CalendarCell, CalendarBodyComponent } from '../calendar-body/calendar-body.component'
+import { DateTimeIntl } from '../date-time-picker-intl.service'
 
 export const YEARS_PER_ROW = 3
 export const YEAR_ROWS = 7
 
 @Component({
-    selector: 'owl-date-time-multi-year-view',
+    selector: 'nxt-date-time-multi-year-view',
     templateUrl: './calendar-multi-year-view.component.html',
     styleUrls: ['./calendar-multi-year-view.component.scss'],
     preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
+export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /**
      * The select mode of the picker;
@@ -199,22 +199,22 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
     readonly keyboardEnter = new EventEmitter<void>()
 
     /** The body of calendar table */
-    @ViewChild(OwlCalendarBodyComponent, { static: true })
-    calendarBodyElm?: OwlCalendarBodyComponent
+    @ViewChild(CalendarBodyComponent, { static: true })
+    calendarBodyElm?: CalendarBodyComponent
 
-    @HostBinding('class.owl-dt-calendar-view')
-    get owlDTCalendarView(): boolean {
+    @HostBinding('class.nxt-dt-calendar-view')
+    get nxtDTCalendarView(): boolean {
         return true
     }
 
-    @HostBinding('class.owl-dt-calendar-multi-year-view')
-    get owlDTCalendarMultiYearView(): boolean {
+    @HostBinding('class.nxt-dt-calendar-multi-year-view')
+    get nxtDTCalendarMultiYearView(): boolean {
         return true
     }
 
     constructor(
         private readonly cdRef: ChangeDetectorRef,
-        private readonly pickerIntl: OwlDateTimeIntl,
+        private readonly pickerIntl: DateTimeIntl,
         private readonly dateTimeAdapter: DateTimeAdapter<T>
     ) { }
 
@@ -379,7 +379,7 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
     private createYearCell(year: number): CalendarCell {
         const startDateOfYear = this.dateTimeAdapter.createDate(year, 0, 1)
         const ariaLabel = this.dateTimeAdapter.getYearName(startDateOfYear)
-        const cellClass = 'owl-dt-year-' + year
+        const cellClass = 'nxt-dt-year-' + year
         return new CalendarCell(year, year.toString(), ariaLabel, this.isYearEnabled(year), false, cellClass)
     }
 

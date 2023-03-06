@@ -2,22 +2,22 @@ import { inject, InjectionToken, LOCALE_ID } from '@angular/core'
 import { Observable, Subject } from 'rxjs'
 
 /** InjectionToken for date time picker that can be used to override default locale code. */
-export const OWL_DATE_TIME_LOCALE = new InjectionToken<string>(
-    'OWL_DATE_TIME_LOCALE',
+export const NXT_DATE_TIME_LOCALE = new InjectionToken<string>(
+    'NXT_DATE_TIME_LOCALE',
     {
         providedIn: 'root',
-        factory: OWL_DATE_TIME_LOCALE_FACTORY
+        factory: NXT_DATE_TIME_LOCALE_FACTORY
     }
 )
 
 /** @docs-private */
-export function OWL_DATE_TIME_LOCALE_FACTORY(): string {
+export function NXT_DATE_TIME_LOCALE_FACTORY(): string {
     return inject(LOCALE_ID)
 }
 
-/** Provider for OWL_DATE_TIME_LOCALE injection token. */
-export const OWL_DATE_TIME_LOCALE_PROVIDER = {
-    provide: OWL_DATE_TIME_LOCALE,
+/** Provider for NXT_DATE_TIME_LOCALE injection token. */
+export const NXT_DATE_TIME_LOCALE_PROVIDER = {
+    provide: NXT_DATE_TIME_LOCALE,
     useExisting: LOCALE_ID
 }
 

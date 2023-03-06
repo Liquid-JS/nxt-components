@@ -1,7 +1,7 @@
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion'
 import { Directive, EventEmitter, Inject, Input } from '@angular/core'
 import { DateTimeAdapter } from './date-time-adapter.class'
-import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from './date-time-format.class'
+import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from './date-time-format.class'
 
 let nextUniqueId = 0
 
@@ -18,7 +18,7 @@ export type ViewType = 'month' | 'year' | 'multi-years'
 export type DateFilter<T> = (date?: T, forRender?: RenderItem) => boolean
 
 @Directive()
-export abstract class OwlDateTimeDirective<T> {
+export abstract class DateTimeDirective<T> {
     /**
      * Whether to show the second's timer
      */
@@ -184,10 +184,10 @@ export abstract class OwlDateTimeDirective<T> {
 
     constructor(
         protected readonly dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(OWL_DATE_TIME_FORMATS)
-        protected readonly dateTimeFormats: OwlDateTimeFormats
+        @Inject(NXT_DATE_TIME_FORMATS)
+        protected readonly dateTimeFormats: DateTimeFormats
     ) {
-        this._id = `owl-dt-picker-${nextUniqueId++}`
+        this._id = `nxt-dt-picker-${nextUniqueId++}`
     }
 
     protected getValidDate(obj: any): T | undefined {

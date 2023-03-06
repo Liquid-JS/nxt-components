@@ -18,7 +18,7 @@ export interface DialogPosition {
     right?: string
 }
 
-export class OwlDialogConfig {
+export class DialogConfig {
     /**
      * ID of the element that describes the dialog.
      */
@@ -115,6 +115,6 @@ export class OwlDialogConfig {
     public viewContainerRef?: ViewContainerRef
 
     constructor() {
-        this.id = `owl-dialog-${uniqueId++}`
+        this.id = `nxt-dialog-${uniqueId++}`
     }
 }

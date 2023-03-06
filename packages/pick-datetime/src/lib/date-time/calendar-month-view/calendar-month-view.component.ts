@@ -3,22 +3,22 @@ import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARR
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
-import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
+import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
-import { CalendarCell, OwlCalendarBodyComponent } from '../calendar-body/calendar-body.component'
+import { CalendarCell, CalendarBodyComponent } from '../calendar-body/calendar-body.component'
 
 const DAYS_PER_WEEK = 7
 const WEEKS_PER_VIEW = 6
 
 @Component({
-    selector: 'owl-date-time-month-view',
-    exportAs: 'owlYearView',
+    selector: 'nxt-date-time-month-view',
+    exportAs: 'nxtYearView',
     templateUrl: './calendar-month-view.component.html',
     styleUrls: ['./calendar-month-view.component.scss'],
     preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OwlMonthViewComponent<T> implements OnInit, AfterContentInit, OnDestroy {
+export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestroy {
     /**
      * Whether to hide dates in other months at the start or end of the current month.
      * */
@@ -242,19 +242,19 @@ export class OwlMonthViewComponent<T> implements OnInit, AfterContentInit, OnDes
     readonly pickerMomentChange = new EventEmitter<T>()
 
     /** The body of calendar table */
-    @ViewChild(OwlCalendarBodyComponent, { static: true })
-    calendarBodyElm?: OwlCalendarBodyComponent
+    @ViewChild(CalendarBodyComponent, { static: true })
+    calendarBodyElm?: CalendarBodyComponent
 
-    @HostBinding('class.owl-dt-calendar-view')
-    get owlDTCalendarView(): boolean {
+    @HostBinding('class.nxt-dt-calendar-view')
+    get nxtDTCalendarView(): boolean {
         return true
     }
 
     constructor(
         private readonly cdRef: ChangeDetectorRef,
         private readonly dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(OWL_DATE_TIME_FORMATS)
-        private readonly dateTimeFormats: OwlDateTimeFormats
+        @Inject(NXT_DATE_TIME_FORMATS)
+        private readonly dateTimeFormats: DateTimeFormats
     ) { }
 
     public ngOnInit() {
@@ -505,7 +505,7 @@ export class OwlMonthViewComponent<T> implements OnInit, AfterContentInit, OnDes
         // check if date is not in current month
         const dayValue = daysDiff + 1
         const out = dayValue < 1 || dayValue > daysInMonth
-        const cellClass = 'owl-dt-day-' + this.dateTimeAdapter.getDay(date)
+        const cellClass = 'nxt-dt-day-' + this.dateTimeAdapter.getDay(date)
 
         return new CalendarCell(
             dayValue,

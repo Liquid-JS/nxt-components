@@ -1,1 +1,1 @@
-export { OwlMomentDateTimeModule } from './moment-adapter.module'
+export { MomentDateTimeModule } from './moment-adapter.module'

@@ -1,9 +1,9 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core'
 import moment, { Moment } from 'moment'
-import { DateTimeAdapter, OWL_DATE_TIME_LOCALE } from 'nxt-pick-datetime'
+import { DateTimeAdapter, NXT_DATE_TIME_LOCALE } from 'nxt-pick-datetime'
 
 /** Configurable options for {@see MomentDateAdapter}. */
-export interface OwlMomentDateTimeAdapterOptions {
+export interface NxtMomentDateTimeAdapterOptions {
     /**
      * Turns the use of utc dates on or off.
      * Changing this will change how the DateTimePicker output value.
@@ -13,14 +13,14 @@ export interface OwlMomentDateTimeAdapterOptions {
 }
 
 /** InjectionToken for moment date adapter to configure options. */
-export const OWL_MOMENT_DATE_TIME_ADAPTER_OPTIONS = new InjectionToken<OwlMomentDateTimeAdapterOptions>(
-    'OWL_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {
+export const NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS = new InjectionToken<NxtMomentDateTimeAdapterOptions>(
+    'NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {
     providedIn: 'root',
-    factory: OWL_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY
+    factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY
 })
 
 /** @docs-private */
-export function OWL_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY(): OwlMomentDateTimeAdapterOptions {
+export function NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY(): NxtMomentDateTimeAdapterOptions {
     return {
         useUtc: false
     }
@@ -48,13 +48,15 @@ export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
     } = {} as any
 
     constructor(
-        @Optional() @Inject(OWL_DATE_TIME_LOCALE)
-        owlDateTimeLocale?: string,
-        @Optional() @Inject(OWL_MOMENT_DATE_TIME_ADAPTER_OPTIONS)
-        private options?: OwlMomentDateTimeAdapterOptions
+        @Optional()
+        @Inject(NXT_DATE_TIME_LOCALE)
+        nxtDateTimeLocale?: string,
+        @Optional()
+        @Inject(NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS)
+        private readonly options?: NxtMomentDateTimeAdapterOptions
     ) {
         super()
-        this.setLocale(owlDateTimeLocale || moment.locale())
+        this.setLocale(nxtDateTimeLocale || moment.locale())
     }
 
     public override setLocale(locale: string) {

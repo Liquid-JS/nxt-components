@@ -7,20 +7,20 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, Ev
 import { merge, Subscription } from 'rxjs'
 import { filter, take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
-import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
-import { OwlDateTimeDirective, PickerMode, PickerType } from '../../class/date-time.class'
-import { OwlDialogRef } from '../../class/dialog-ref.class'
-import { OwlDialogService } from '../../dialog/dialog.service'
-import { OwlDateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
-import { OwlDateTimeInputDirective } from '../date-time-picker-input.directive'
+import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
+import { DateTimeDirective, PickerMode, PickerType } from '../../class/date-time.class'
+import { DialogRef } from '../../class/dialog-ref.class'
+import { NxtDialogService } from '../../dialog/dialog.service'
+import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
+import { DateTimeInputDirective } from '../date-time-picker-input.directive'
 
 /** Injection token that determines the scroll handling while the dtPicker is open. */
-export const OWL_DTPICKER_SCROLL_STRATEGY = new InjectionToken<
+export const NXT_DTPICKER_SCROLL_STRATEGY = new InjectionToken<
     () => ScrollStrategy
->('owl-dtpicker-scroll-strategy')
+>('NXT_DTPICKER_SCROLL_STRATEGY')
 
 /** @docs-private */
-export function OWL_DTPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY(
+export function NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY(
     overlay: Overlay
 ): () => BlockScrollStrategy {
     const fn = () => overlay.scrollStrategies.block()
@@ -28,21 +28,21 @@ export function OWL_DTPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY(
 }
 
 /** @docs-private */
-export const OWL_DTPICKER_SCROLL_STRATEGY_PROVIDER = {
-    provide: OWL_DTPICKER_SCROLL_STRATEGY,
+export const NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER = {
+    provide: NXT_DTPICKER_SCROLL_STRATEGY,
     deps: [Overlay],
-    useFactory: OWL_DTPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY
+    useFactory: NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY
 }
 
 @Component({
-    selector: 'owl-date-time',
-    exportAs: 'owlDateTime',
+    selector: 'nxt-date-time',
+    exportAs: 'nxtDateTime',
     templateUrl: './date-time-picker.component.html',
     styleUrls: ['./date-time-picker.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     preserveWhitespaces: false
 })
-export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T> implements OnInit, OnDestroy {
+export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit, OnDestroy {
     /** Custom class for the picker backdrop. */
     @Input()
     public backdropClass: string | string[] = []
@@ -193,11 +193,11 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T> implements 
     public readonly disabledChange = new EventEmitter<boolean>()
 
     private pickerContainerPortal?: ComponentPortal<
-        OwlDateTimeContainerComponent<T>
+        DateTimeContainerComponent<T>
     >
-    private pickerContainer?: OwlDateTimeContainerComponent<T>
+    private pickerContainer?: DateTimeContainerComponent<T>
     private popupRef?: OverlayRef
-    private dialogRef?: OwlDialogRef<OwlDateTimeContainerComponent<T>>
+    private dialogRef?: DialogRef<DateTimeContainerComponent<T>>
     private dtInputSub?: Subscription
     private hidePickerStreamSub?: Subscription
     private confirmSelectedStreamSub?: Subscription
@@ -206,7 +206,7 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T> implements 
     /** The element that was focused before the date time picker was opened. */
     private focusedElementBeforeOpen?: HTMLElement
 
-    private _dtInput?: OwlDateTimeInputDirective<T>
+    private _dtInput?: DateTimeInputDirective<T>
     get dtInput() {
         return this._dtInput
     }
@@ -260,14 +260,14 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T> implements 
     constructor(
         private readonly overlay: Overlay,
         private readonly viewContainerRef: ViewContainerRef,
-        private readonly dialogService: OwlDialogService,
+        private readonly dialogService: NxtDialogService,
         private readonly ngZone: NgZone,
         protected readonly changeDetector: ChangeDetectorRef,
         dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(OWL_DTPICKER_SCROLL_STRATEGY)
+        @Inject(NXT_DTPICKER_SCROLL_STRATEGY)
         private readonly defaultScrollStrategy: () => ScrollStrategy,
-        @Inject(OWL_DATE_TIME_FORMATS)
-        dateTimeFormats: OwlDateTimeFormats,
+        @Inject(NXT_DATE_TIME_FORMATS)
+        dateTimeFormats: DateTimeFormats,
         @Optional()
         @Inject(DOCUMENT)
         private readonly document?: Document
@@ -288,10 +288,10 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T> implements 
         }
     }
 
-    public registerInput(input: OwlDateTimeInputDirective<T>): void {
+    public registerInput(input: DateTimeInputDirective<T>): void {
         if (this._dtInput) {
             throw Error(
-                'A Owl DateTimePicker can only be associated with a single input.'
+                'A Nxt DateTimePicker can only be associated with a single input.'
             )
         }
 
@@ -488,14 +488,14 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T> implements 
      */
     private openAsDialog(): void {
         this.dialogRef = this.dialogService.open(
-            OwlDateTimeContainerComponent,
+            DateTimeContainerComponent,
             {
                 autoFocus: false,
                 backdropClass: [
                     'cdk-overlay-dark-backdrop',
                     ...coerceArray(this.backdropClass)
                 ],
-                paneClass: ['owl-dt-dialog', ...coerceArray(this.panelClass)],
+                paneClass: ['nxt-dt-dialog', ...coerceArray(this.panelClass)],
                 viewContainerRef: this.viewContainerRef,
                 scrollStrategy: this.scrollStrategy || this.defaultScrollStrategy()
             }
@@ -515,8 +515,8 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T> implements 
     private openAsPopup(): void {
         if (!this.pickerContainerPortal) {
             this.pickerContainerPortal = new ComponentPortal<
-                OwlDateTimeContainerComponent<T>
-            >(OwlDateTimeContainerComponent, this.viewContainerRef)
+                DateTimeContainerComponent<T>
+            >(DateTimeContainerComponent, this.viewContainerRef)
         }
 
         if (!this.popupRef) {
@@ -525,7 +525,7 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T> implements 
 
         if (!this.popupRef?.hasAttached()) {
             const componentRef: ComponentRef<
-                OwlDateTimeContainerComponent<T>
+                DateTimeContainerComponent<T>
             > | undefined = this.popupRef?.attach(this.pickerContainerPortal)
             this.pickerContainer = componentRef?.instance
 
@@ -556,7 +556,7 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T> implements 
                 ...coerceArray(this.backdropClass)
             ],
             scrollStrategy: this.scrollStrategy || this.defaultScrollStrategy(),
-            panelClass: ['owl-dt-popup', ...coerceArray(this.panelClass)]
+            panelClass: ['nxt-dt-popup', ...coerceArray(this.panelClass)]
         })
 
         this.popupRef = this.overlay.create(overlayConfig)
@@ -586,7 +586,7 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T> implements 
             return this.overlay
                 .position()
                 .flexibleConnectedTo(this._dtInput.elementRef)
-                .withTransformOriginOn('.owl-dt-container')
+                .withTransformOriginOn('.nxt-dt-container')
                 .withFlexibleDimensions(false)
                 .withPush(false)
                 .withPositions([

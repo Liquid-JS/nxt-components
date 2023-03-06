@@ -3,7 +3,7 @@ import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory } from '@angular/cd
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal'
 import { DOCUMENT } from '@angular/common'
 import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EmbeddedViewRef, EventEmitter, HostBinding, HostListener, Inject, OnInit, Optional, ViewChild } from '@angular/core'
-import { OwlDialogConfig } from '../../class/dialog-config.class'
+import { DialogConfig } from '../../class/dialog-config.class'
 
 export type DialogContainerState = 'void' | 'enter' | 'exit'
 
@@ -19,7 +19,7 @@ const zoomFadeInFrom = {
 }
 
 @Component({
-    selector: 'owl-dialog-container',
+    selector: 'nxt-dialog-container',
     templateUrl: './dialog-container.component.html',
     animations: [
         trigger('slideModal', [
@@ -57,7 +57,7 @@ const zoomFadeInFrom = {
         ])
     ]
 })
-export class OwlDialogContainerComponent extends BasePortalOutlet implements OnInit {
+export class NxtDialogContainerComponent extends BasePortalOutlet implements OnInit {
     @ViewChild(CdkPortalOutlet, { static: true })
     portalOutlet?: CdkPortalOutlet
 
@@ -72,7 +72,7 @@ export class OwlDialogContainerComponent extends BasePortalOutlet implements OnI
 
     public isAnimating = false
 
-    private _config?: OwlDialogConfig
+    private _config?: DialogConfig
     get config() {
         return this._config
     }
@@ -92,38 +92,38 @@ export class OwlDialogContainerComponent extends BasePortalOutlet implements OnI
     // This would help us to refocus back to element when the dialog was closed.
     private elementFocusedBeforeDialogWasOpened?: HTMLElement
 
-    @HostBinding('class.owl-dialog-container')
-    get owlDialogContainerClass(): boolean {
+    @HostBinding('class.nxt-dialog-container')
+    get nxtDialogContainerClass(): boolean {
         return true
     }
 
     @HostBinding('attr.tabindex')
-    get owlDialogContainerTabIndex(): number {
+    get nxtDialogContainerTabIndex(): number {
         return -1
     }
 
     @HostBinding('attr.id')
-    get owlDialogContainerId() {
+    get nxtDialogContainerId() {
         return this._config?.id
     }
 
     @HostBinding('attr.role')
-    get owlDialogContainerRole() {
+    get nxtDialogContainerRole() {
         return this._config?.role
     }
 
     @HostBinding('attr.aria-labelledby')
-    get owlDialogContainerAriaLabelledby() {
+    get nxtDialogContainerAriaLabelledby() {
         return this.ariaLabelledBy
     }
 
     @HostBinding('attr.aria-describedby')
-    get owlDialogContainerAriaDescribedby() {
+    get nxtDialogContainerAriaDescribedby() {
         return this._config?.ariaDescribedBy
     }
 
     @HostBinding('@slideModal')
-    get owlDialogContainerAnimation() {
+    get nxtDialogContainerAnimation() {
         return { value: this.state, params: this.params }
     }
 
@@ -162,7 +162,7 @@ export class OwlDialogContainerComponent extends BasePortalOutlet implements OnI
         throw new Error('Method not implemented.')
     }
 
-    public setConfig(config: OwlDialogConfig): void {
+    public setConfig(config: DialogConfig): void {
         this._config = config
 
         if (config.event) {

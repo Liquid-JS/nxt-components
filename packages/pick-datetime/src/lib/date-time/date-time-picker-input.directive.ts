@@ -4,36 +4,36 @@ import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, Host
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../class/date-time-adapter.class'
-import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../class/date-time-format.class'
+import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../class/date-time-format.class'
 import { SelectMode } from '../class/date-time.class'
-import { OwlDateTimeComponent } from './date-time-picker/date-time-picker.component'
+import { DateTimeComponent } from './date-time-picker/date-time-picker.component'
 
-export const OWL_DATETIME_VALUE_ACCESSOR: any = {
+export const NXT_DATETIME_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => OwlDateTimeInputDirective),
+    useExisting: forwardRef(() => DateTimeInputDirective),
     multi: true
 }
 
-export const OWL_DATETIME_VALIDATORS: any = {
+export const NXT_DATETIME_VALIDATORS: any = {
     provide: NG_VALIDATORS,
-    useExisting: forwardRef(() => OwlDateTimeInputDirective),
+    useExisting: forwardRef(() => DateTimeInputDirective),
     multi: true
 }
 
 @Directive({
-    selector: 'input[owlDateTime]',
-    exportAs: 'owlDateTimeInput',
+    selector: 'input[nxtDateTime]',
+    exportAs: 'nxtDateTimeInput',
     providers: [
-        OWL_DATETIME_VALUE_ACCESSOR,
-        OWL_DATETIME_VALIDATORS
+        NXT_DATETIME_VALUE_ACCESSOR,
+        NXT_DATETIME_VALIDATORS
     ]
 })
-export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDestroy, ControlValueAccessor, Validator {
+export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDestroy, ControlValueAccessor, Validator {
     /**
      * The date time picker that this input is associated with.
      * */
     @Input()
-    set owlDateTime(value: OwlDateTimeComponent<T>) {
+    set nxtDateTime(value: DateTimeComponent<T>) {
         this.registerDateTimePicker(value)
     }
 
@@ -41,7 +41,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
      * A function to filter date time
      */
     @Input()
-    set owlDateTimeFilter(filter: (date?: T) => boolean) {
+    set nxtDateTimeFilter(filter: (date?: T) => boolean) {
         this._dateTimeFilter = filter
         this.validatorOnChange?.()
     }
@@ -112,7 +112,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
             mode !== 'rangeFrom' &&
             mode !== 'rangeTo'
         ) {
-            throw Error('OwlDateTime Error: invalid selectMode value!')
+            throw Error('NxtDateTime Error: invalid selectMode value!')
         }
 
         this._selectMode = mode
@@ -179,7 +179,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
      * */
     @Output()
     readonly dateTimeChange = new EventEmitter<{
-        source: OwlDateTimeInputDirective<T>
+        source: DateTimeInputDirective<T>
         value?: T | Array<T | undefined>
         input: HTMLInputElement
     }>()
@@ -189,7 +189,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
      * */
     @Output()
     readonly dateTimeInput = new EventEmitter<{
-        source: OwlDateTimeInputDirective<T>
+        source: DateTimeInputDirective<T>
         value?: T | Array<T | undefined>
         input: HTMLInputElement
     }>()
@@ -211,7 +211,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
     }
 
     /** The date-time-picker that this input is associated with. */
-    public dtPicker?: OwlDateTimeComponent<T>
+    public dtPicker?: DateTimeComponent<T>
 
     private dtPickerSub?: Subscription
     private localeSub?: Subscription
@@ -225,7 +225,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
     /** The form control validator for whether the input parses. */
     private readonly parseValidator: ValidatorFn = () => this.lastValueValid
         ? null
-        : { owlDateTimeParse: { text: this.elmRef.nativeElement.value } }
+        : { nxtDateTimeParse: { text: this.elmRef.nativeElement.value } }
 
     /** The form control validator for the min date. */
     private readonly minValidator: ValidatorFn = (
@@ -239,7 +239,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
                 !controlValue ||
                 this.dateTimeAdapter.compare(this.min, controlValue) <= 0
                 ? null
-                : { owlDateTimeMin: { min: this.min, actual: controlValue } }
+                : { nxtDateTimeMin: { min: this.min, actual: controlValue } }
         } else if (this.isInRangeMode && control.value) {
             const controlValueFrom = this.getValidDate(
                 this.dateTimeAdapter.deserialize(control.value[0])
@@ -253,7 +253,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
                 this.dateTimeAdapter.compare(this.min, controlValueFrom) <= 0
                 ? null
                 : {
-                    owlDateTimeMin: {
+                    nxtDateTimeMin: {
                         min: this.min,
                         actual: [controlValueFrom, controlValueTo]
                     }
@@ -274,7 +274,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
                 !controlValue ||
                 this.dateTimeAdapter.compare(this.max, controlValue) >= 0
                 ? null
-                : { owlDateTimeMax: { max: this.max, actual: controlValue } }
+                : { nxtDateTimeMax: { max: this.max, actual: controlValue } }
         } else if (this.isInRangeMode && control.value) {
             const controlValueFrom = this.getValidDate(
                 this.dateTimeAdapter.deserialize(control.value[0])
@@ -288,7 +288,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
                 this.dateTimeAdapter.compare(this.max, controlValueTo) >= 0
                 ? null
                 : {
-                    owlDateTimeMax: {
+                    nxtDateTimeMax: {
                         max: this.max,
                         actual: [controlValueFrom, controlValueTo]
                     }
@@ -308,7 +308,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
             !controlValue ||
             this._dateTimeFilter(controlValue)
             ? null
-            : { owlDateTimeFilter: true }
+            : { nxtDateTimeFilter: true }
     }
 
     /**
@@ -333,7 +333,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
             !controlValueTo ||
             this.dateTimeAdapter.compare(controlValueFrom, controlValueTo) <= 0
             ? null
-            : { owlDateTimeRange: true }
+            : { nxtDateTimeRange: true }
     }
 
     /** The combined form control validator for this input. */
@@ -352,12 +352,12 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
     public readonly disabledChange = new EventEmitter<boolean>()
 
     @HostBinding('attr.aria-haspopup')
-    get owlDateTimeInputAriaHaspopup(): boolean {
+    get nxtDateTimeInputAriaHaspopup(): boolean {
         return true
     }
 
     @HostBinding('attr.aria-owns')
-    get owlDateTimeInputAriaOwns() {
+    get nxtDateTimeInputAriaOwns() {
         return (this.dtPicker?.opened && this.dtPicker.id) || undefined
     }
 
@@ -372,7 +372,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
     }
 
     @HostBinding('disabled')
-    get owlDateTimeInputDisabled(): boolean {
+    get nxtDateTimeInputDisabled(): boolean {
         return this.disabled
     }
 
@@ -380,8 +380,8 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
         private readonly elmRef: ElementRef<HTMLInputElement>,
         private readonly renderer: Renderer2,
         private readonly dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(OWL_DATE_TIME_FORMATS)
-        private readonly dateTimeFormats: OwlDateTimeFormats
+        @Inject(NXT_DATE_TIME_FORMATS)
+        private readonly dateTimeFormats: DateTimeFormats
     ) {
         this.localeSub = this.dateTimeAdapter.localeChanges.subscribe(() => {
             this.value = this.value
@@ -391,7 +391,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
     public ngOnInit(): void {
         if (!this.dtPicker) {
             throw Error(
-                'OwlDateTimePicker: the picker input doesn\'t have any associated owl-date-time component'
+                'NxtDateTimePicker: the picker input doesn\'t have any associated nxt-date-time component'
             )
         }
     }
@@ -583,7 +583,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
     /**
      * Register the relationship between this input and its picker component
      */
-    private registerDateTimePicker(picker: OwlDateTimeComponent<T>) {
+    private registerDateTimePicker(picker: DateTimeComponent<T>) {
         if (picker) {
             this.dtPicker = picker
             this.dtPicker.registerInput(this)

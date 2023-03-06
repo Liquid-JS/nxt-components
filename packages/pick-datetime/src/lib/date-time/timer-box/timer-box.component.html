@@ -1,13 +1,13 @@
 <div *ngIf="showDivider"
-    class="owl-dt-timer-divider"
+    class="nxt-dt-timer-divider"
     aria-hidden="true"></div>
-<button class="owl-dt-control-button owl-dt-control-arrow-button"
+<button class="nxt-dt-control-button nxt-dt-control-arrow-button"
     type="button"
     tabindex="-1"
     [disabled]="upBtnDisabled"
     [attr.aria-label]="upBtnAriaLabel"
     (click)="upBtnClicked()">
-    <span class="owl-dt-control-button-content"
+    <span class="nxt-dt-control-button-content"
         tabindex="-1">
         <!-- <editor-fold desc="SVG Arrow Up"> -->
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -27,21 +27,21 @@
         <!-- </editor-fold> -->
     </span>
 </button>
-<label class="owl-dt-timer-content">
-    <input class="owl-dt-timer-input"
+<label class="nxt-dt-timer-content">
+    <input class="nxt-dt-timer-input"
         maxlength="2"
         [value]="displayValue | numberFixedLen : 2"
         (input)="handleInputChange(valueInput.value)"
         #valueInput>
-    <span class="owl-hidden-accessible">{{inputLabel}}</span>
+    <span class="nxt-hidden-accessible">{{inputLabel}}</span>
 </label>
-<button class="owl-dt-control-button owl-dt-control-arrow-button"
+<button class="nxt-dt-control-button nxt-dt-control-arrow-button"
     type="button"
     tabindex="-1"
     [disabled]="downBtnDisabled"
     [attr.aria-label]="downBtnAriaLabel"
     (click)="downBtnClicked()">
-    <span class="owl-dt-control-button-content"
+    <span class="nxt-dt-control-button-content"
         tabindex="-1">
         <!-- <editor-fold desc="SVG Arrow Down"> -->
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -54,8 +54,7 @@
             xml:space="preserve"
             width="100%"
             height="100%">
-            <path
-                d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751
+            <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751
                         c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0
                         c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z" />
         </svg>

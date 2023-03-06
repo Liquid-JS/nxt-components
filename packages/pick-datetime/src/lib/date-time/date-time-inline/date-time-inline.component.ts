@@ -2,28 +2,28 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion'
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Inject, Input, OnInit, Output, ViewChild } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
-import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
-import { OwlDateTimeDirective, PickerMode, PickerType, SelectMode } from '../../class/date-time.class'
-import { OwlDateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
+import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
+import { DateTimeDirective, PickerMode, PickerType, SelectMode } from '../../class/date-time.class'
+import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
 
-export const OWL_DATETIME_VALUE_ACCESSOR: any = {
+export const NXT_DATETIME_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => OwlDateTimeInlineComponent),
+    useExisting: forwardRef(() => DateTimeInlineComponent),
     multi: true
 }
 
 @Component({
-    selector: 'owl-date-time-inline',
+    selector: 'nxt-date-time-inline',
     templateUrl: './date-time-inline.component.html',
     styleUrls: ['./date-time-inline.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     preserveWhitespaces: false,
-    providers: [OWL_DATETIME_VALUE_ACCESSOR]
+    providers: [NXT_DATETIME_VALUE_ACCESSOR]
 })
-export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T> implements OnInit, ControlValueAccessor {
+export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements OnInit, ControlValueAccessor {
 
-    @ViewChild(OwlDateTimeContainerComponent, { static: true })
-    container?: OwlDateTimeContainerComponent<T>
+    @ViewChild(DateTimeContainerComponent, { static: true })
+    container?: DateTimeContainerComponent<T>
 
     /**
      * Set the type of the dateTime picker
@@ -66,7 +66,7 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T> imple
             mode !== 'rangeFrom' &&
             mode !== 'rangeTo'
         ) {
-            throw Error('OwlDateTime Error: invalid selectMode value!')
+            throw Error('NxtDateTime Error: invalid selectMode value!')
         }
 
         this._selectMode = mode
@@ -101,7 +101,7 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T> imple
     }
 
     private _dateTimeFilter?: (date: T | undefined) => boolean
-    @Input('owlDateTimeFilter')
+    @Input('nxtDateTimeFilter')
     get dateTimeFilter() {
         return this._dateTimeFilter
     }
@@ -226,8 +226,8 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T> imple
         )
     }
 
-    @HostBinding('class.owl-dt-inline')
-    get owlDTInlineClass(): boolean {
+    @HostBinding('class.nxt-dt-inline')
+    get nxtDTInlineClass(): boolean {
         return true
     }
 
@@ -237,8 +237,8 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T> imple
     constructor(
         protected readonly changeDetector: ChangeDetectorRef,
         dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(OWL_DATE_TIME_FORMATS)
-        dateTimeFormats: OwlDateTimeFormats
+        @Inject(NXT_DATE_TIME_FORMATS)
+        dateTimeFormats: DateTimeFormats
     ) {
         super(dateTimeAdapter, dateTimeFormats)
     }

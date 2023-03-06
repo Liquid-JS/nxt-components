@@ -15,14 +15,14 @@ export class CalendarCell {
 
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
-    selector: '[owl-date-time-calendar-body]',
-    exportAs: 'owlDateTimeCalendarBody',
+    selector: '[nxt-date-time-calendar-body]',
+    exportAs: 'nxtDateTimeCalendarBody',
     templateUrl: './calendar-body.component.html',
     styleUrls: ['./calendar-body.component.scss'],
     preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OwlCalendarBodyComponent implements OnInit {
+export class CalendarBodyComponent implements OnInit {
     /**
      * The cell number of the active cell in the table.
      */
@@ -72,8 +72,8 @@ export class OwlCalendarBodyComponent implements OnInit {
     // eslint-disable-next-line @angular-eslint/no-output-native
     public readonly select = new EventEmitter<CalendarCell>()
 
-    @HostBinding('class.owl-dt-calendar-body')
-    get owlDTCalendarBodyClass(): boolean {
+    @HostBinding('class.nxt-dt-calendar-body')
+    get nxtDTCalendarBodyClass(): boolean {
         return true
     }
 
@@ -175,7 +175,7 @@ export class OwlCalendarBodyComponent implements OnInit {
                 .pipe(take(1))
                 .subscribe(() => {
                     this.elmRef.nativeElement
-                        ?.querySelector<HTMLElement>('.owl-dt-calendar-cell-active')
+                        ?.querySelector<HTMLElement>('.nxt-dt-calendar-cell-active')
                         ?.focus()
                 })
         })

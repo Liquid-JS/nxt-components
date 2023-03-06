@@ -1,9 +1,9 @@
 <label for="daterange">Datetime range (click, then press 'Set' to modify):</label>
 <input [(ngModel)]="selectedMoments"
     [selectMode]="'range'"
-    [owlDateTimeTrigger]="date_range_component"
-    [owlDateTime]="date_range_component"
+    [nxtDateTimeTrigger]="date_range_component"
+    [nxtDateTime]="date_range_component"
     style="width: 100%; color: cornflowerblue"
     id="daterange"
     matInput>
-<owl-date-time #date_range_component></owl-date-time>
+<nxt-date-time #date_range_component></nxt-date-time>

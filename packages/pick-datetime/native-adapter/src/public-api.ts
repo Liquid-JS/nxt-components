@@ -1,1 +1,2 @@
-export { OwlNativeDateTimeModule } from './native-adapter.module'
+export { NativeDateTimeModule } from './native-adapter.module'
+
