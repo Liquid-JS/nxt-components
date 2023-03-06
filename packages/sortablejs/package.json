@@ -29,5 +29,8 @@
     },
     "dependencies": {
         "tslib": "^2.3.0"
+    },
+    "devDependencies": {
+        "@types/sortablejs": "^1.15.0"
     }
 }

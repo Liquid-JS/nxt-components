@@ -45,10 +45,10 @@ Then use `sortablejs` property on a container HTML element to tell Angular that 
 
 ## Directive API
 
-- `sortablejs` - directive, accepts model to be auto-updated (see examples below)
-- `sortablejsContainer` - directive input, CSS selector for the sortable container, string. Mostly required for frameworks that wrap the content into the elements where it is impossible to access the real container element (e.g. @angular/material). Example: `sortablejsContainer=".mat-grid-list"`
-- `sortablejsOptions` - directive input, sortable options to pass in. Please note that in order to change the options later the whole object needs to be recreated, see below
-- `sortablejsInit` - directive output, returns the current Sortable instance. Example: `(sortablejsInit)="sortableInstance = $event"`
+-   `sortablejs` - directive, accepts model to be auto-updated (see examples below)
+-   `sortablejsContainer` - directive input, CSS selector for the sortable container, string. Mostly required for frameworks that wrap the content into the elements where it is impossible to access the real container element (e.g. @angular/material). Example: `sortablejsContainer=".mat-grid-list"`
+-   `sortablejsOptions` - directive input, sortable options to pass in. Please note that in order to change the options later the whole object needs to be recreated, see below
+-   `sortablejsInit` - directive output, returns the current Sortable instance. Example: `(sortablejsInit)="sortableInstance = $event"`
 
 ## Simple sortable list
 
@@ -58,14 +58,14 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'my-app',
     template: `
-      <h2>Drag / drop the item</h2>
-      <div [sortablejs]="items">
-        <div *ngFor="let item of items">{{ item }}</div>
-      </div>
+        <h2>Drag / drop the item</h2>
+        <div [sortablejs]="items">
+            <div *ngFor="let item of items">{{ item }}</div>
+        </div>
     `
 })
 export class AppComponent {
-   items = [1, 2, 3, 4, 5];
+    items = [1, 2, 3, 4, 5];
 }
 ```
 
@@ -79,28 +79,28 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'my-app',
     template: `
-      <h2>Drag / drop the item</h2>
-      <div [sortablejs]="items" [sortablejsOptions]="{ animation: 150 }">
-        <div *ngFor="let item of items">{{ item }}</div>
-      </div>
+        <h2>Drag / drop the item</h2>
+        <div [sortablejs]="items" [sortablejsOptions]="{ animation: 150 }">
+                <div *ngFor="let item of items">{{ item }}</div>
+        </div>
     `
 })
 export class AppComponent {
-   items = [1, 2, 3, 4, 5];
+    items = [1, 2, 3, 4, 5];
 }
 ```
 
 ### Tracking lists update events
 
-You can use the options' `onUpdate` method to track the changes (see also *Passing the options* section):
+You can use the options' `onUpdate` method to track the changes (see also _Passing the options_ section):
 
 ```ts
 constructor() {
-  this.options = {
-    onUpdate: (event: any) => {
-      this.postChangesToServer();
-    }
-  };
+    this.options = {
+        onUpdate: (event: any) => {
+            this.postChangesToServer();
+        }
+    };
 }
 ```
 
@@ -108,15 +108,15 @@ If you use FormArray you are able to choose a more elegant solution:
 
 ```ts
 public items = new FormArray([
-  new FormControl(1),
-  new FormControl(2),
-  new FormControl(3),
+    new FormControl(1),
+    new FormControl(2),
+    new FormControl(3),
 ]);
 
 constructor() {
-  this.items.valueChanges.subscribe(() => {
-    this.postChangesToServer(this.items.value);
-  });
+    this.items.valueChanges.subscribe(() => {
+        this.postChangesToServer(this.items.value);
+    });
 }
 ```
 
@@ -125,6 +125,7 @@ but note, that here you will be able to take the whole changed array only (no ol
 ### Updating the options
 
 You can pass a new options object at anytime via the `[sortablejsOptions]` binding and the Angular's change detection will check for the changes from the previous options and will call the low level option setter from [Sortable.js](https://github.com/RubaXa/Sortable) to set the new option values.
+
 > Note: It will only detect changes when a brand new options object is passed, not deep changes.
 
 ### Drag & drop between two lists
@@ -138,24 +139,24 @@ import { SortablejsOptions } from 'nxt-sortablejs';
 @Component({
     selector: 'my-app',
     template: `
-    <h2>Drag / drop the item</h2>
-    <h3>list 1</h3>
-    <div class="items1" [sortablejs]="items1" [sortablejsOptions]="options">
-      <div *ngFor="let item of items1">{{ item }}</div>
-    </div>
-    <h3>list 2</h3>
-    <div class="items2" [sortablejs]="items2" [sortablejsOptions]="options">
-      <div *ngFor="let item of items2">{{ item }}</div>
-    </div>
+        <h2>Drag / drop the item</h2>
+        <h3>list 1</h3>
+        <div class="items1" [sortablejs]="items1" [sortablejsOptions]="options">
+            <div *ngFor="let item of items1">{{ item }}</div>
+        </div>
+        <h3>list 2</h3>
+        <div class="items2" [sortablejs]="items2" [sortablejsOptions]="options">
+            <div *ngFor="let item of items2">{{ item }}</div>
+        </div>
     `
 })
 export class AppComponent {
-   items1 = [1, 2, 3, 4, 5];
-   items2 = ['a', 'b', 'c', 'd', 'e'];
+    items1 = [1, 2, 3, 4, 5];
+    items2 = ['a', 'b', 'c', 'd', 'e'];
 
-   options: SortablejsOptions = {
-     group: 'test'
-   };
+    options: SortablejsOptions = {
+        group: 'test'
+    };
 }
 ```
 
@@ -172,22 +173,22 @@ import { SortablejsOptions } from 'nxt-sortablejs';
 @Component({
     selector: 'my-app',
     template: `
-    <h2>Drag / drop the item</h2>
-    <h3>list 1</h3>
-    <div class="items1" [sortablejs]="items1" [sortablejsOptions]="options" [sortablejsCloneFunction]="myCloneImplementation">
-      <div *ngFor="let item of items1">{{ item }}</div>
-    </div>
-    <h3>list 2</h3>
-    <div class="items2" [sortablejs]="items2" [sortablejsOptions]="options" [sortablejsCloneFunction]="myCloneImplementation">
-      <div *ngFor="let item of items2">{{ item }}</div>
-    </div>
+        <h2>Drag / drop the item</h2>
+        <h3>list 1</h3>
+        <div class="items1" [sortablejs]="items1" [sortablejsOptions]="options" [sortablejsCloneFunction]="myCloneImplementation">
+            <div *ngFor="let item of items1">{{ item }}</div>
+        </div>
+        <h3>list 2</h3>
+        <div class="items2" [sortablejs]="items2" [sortablejsOptions]="options" [sortablejsCloneFunction]="myCloneImplementation">
+            <div *ngFor="let item of items2">{{ item }}</div>
+        </div>
     `
 })
 export class AppComponent {
 
-  myCloneImplementation = (item) => {
-    return item; // this is what happens if sortablejsCloneFunction is not provided. Add your stuff here
-  }
+    myCloneImplementation = (item) => {
+        return item; // this is what happens if sortablejsCloneFunction is not provided. Add your stuff here
+    }
 
 }
 ```
@@ -205,12 +206,12 @@ If you want to use the same sortable options across different places of your app
 
 ```typescript
 imports: [
-  // ...
-  // any properties and events available on original library work here as well
-  SortablejsModule.forRoot({
-    animation: 150
-  }),
-  // ...
+    // ...
+    // any properties and events available on original library work here as well
+    SortablejsModule.forRoot({
+        animation: 150
+    }),
+    // ...
 ]
 ```
 
@@ -226,7 +227,7 @@ Just add this to your **global** styles
 
 ```css
 mat-expansion-panel.sortable-drag .mat-expansion-panel-content {
-  display: none;
+    display: none;
 }
 ```
 
@@ -238,22 +239,22 @@ The elements with ripple effect like `mat-list-item` are affected. The dragging 
 
 There are two solutions:
 
-1. Disable the ripple effect
+1.  Disable the ripple effect
 
 ```ts
 <a mat-list-item [disableRipple]="true">
 ```
 
-2. Use `handle` property and block propagation of `mousedown` and `touchstart` events on the handler to prevent ripple.
+2.  Use `handle` property and block propagation of `mousedown` and `touchstart` events on the handler to prevent ripple.
 
 ```ts
 <div [sortablejs]="..." [sortablejsOptions]="{ handle: '.handle' }">
-  <a mat-list-item *ngFor="let a of b" [routerLink]="..." routerLinkActive="active">
-    <mat-icon matListIcon
-              class="handle"
-              (mousedown)="$event.stopPropagation()"
-              (touchstart)="$event.stopPropagation()">drag_handle</mat-icon> {{ a }}
-  </a>
+    <a mat-list-item *ngFor="let a of b" [routerLink]="..." routerLinkActive="active">
+        <mat-icon matListIcon
+                class="handle"
+                (mousedown)="$event.stopPropagation()"
+                (touchstart)="$event.stopPropagation()">drag_handle</mat-icon> {{ a }}
+    </a>
 </div>
 ```
 
