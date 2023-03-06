@@ -1,0 +1,378 @@
+@use "sass:math";
+
+$borderColor: #999;
+$backgroundColor: #fff;
+$baseSize: 16px;
+
+$dark: #222222;
+$light: #dadada;
+
+.color-picker {
+    position: relative;
+    user-select: none;
+    background-color: $backgroundColor;
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        font-size: 0.75 * $baseSize;
+    }
+
+    .color-picker__arrow {
+        height: 0;
+        width: 0;
+        border-style: solid;
+        position: absolute;
+        z-index: 999999;
+    }
+
+    .color-picker__cursor {
+        cursor: pointer;
+        position: absolute;
+        border-radius: 50%;
+        width: $baseSize;
+        height: $baseSize;
+        border: $dark solid 2px;
+        margin: 0 math.div(-$baseSize, 2);
+        transition: border 0.2s linear;
+
+        &.color-picker__cursor--sv {
+            margin: math.div(-$baseSize, 2);
+        }
+
+        &.color-picker__cursor--light {
+            border-color: $light;
+        }
+    }
+
+    .color-picker__sv {
+        position: relative;
+        direction: ltr;
+        width: 100%;
+        height: 130px;
+        border: none;
+        cursor: pointer;
+        touch-action: manipulation;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%), linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        background-size: 100% 100%;
+    }
+
+    .color-picker__controls {
+        display: flex;
+        margin: math.div($baseSize, 2);
+        align-items: center;
+
+        .color-picker__selected {
+            margin: math.div($baseSize, 4);
+            flex: (3 * $baseSize) 0 0;
+        }
+
+        .color-picker__hav {
+            margin: math.div(-$baseSize, 4);
+            margin-left: 0;
+            flex: auto 1 1;
+        }
+    }
+
+    .color-picker__selected-color {
+        width: 3 * $baseSize;
+        height: 3 * $baseSize;
+        display: flex;
+        align-items: stretch;
+        justify-content: stretch;
+        border-radius: 50%;
+        background-size: $baseSize;
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cmVjdCBmaWxsPSIjQ0NDQ0NDIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiLz48cmVjdCB4PSI1MCIgeT0iNTAiIGZpbGw9IiNDQ0NDQ0MiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIvPjxyZWN0IHk9IjUwIiBmaWxsPSIjRkZGRkZGIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiLz48cmVjdCB4PSI1MCIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIi8+PC9zdmc+");
+        background-repeat: repeat;
+        box-shadow: 0 0 math.div($baseSize, 2) math.div(-$baseSize, 8) rgba(0, 0, 0, 0.5);
+
+        div {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+    }
+
+    .color-picker__add-selected {
+        background: none;
+        border: none;
+        padding: 0;
+        width: 100%;
+        margin: 0;
+        color: $dark;
+        transition: color 0.2s linear;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        svg {
+            fill: currentcolor;
+            width: 1.5 * $baseSize;
+            height: auto;
+        }
+
+        &.color-picker__add-selected--light {
+            color: $light;
+        }
+    }
+
+    .color-picker__hav {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .color-picker__slider {
+        width: 100%;
+        flex: 100% 1 1;
+        height: $baseSize;
+        margin: math.div($baseSize, 2);
+        position: relative;
+
+        &.color-picker__slider--hue {
+            background-size: 100% 100%;
+            background-image: linear-gradient(to right, rgba(255, 0, 0, 1) 0%, rgba(255, 255, 0, 1) math.div(100%, 6), rgba(0, 255, 0, 1) math.div(100%, 3), rgba(0, 255, 255, 1) 50%, rgba(0, 0, 255, 1) (50% + math.div(100%, 6)), rgba(255, 0, 255, 1) (50% + math.div(100%, 3)), rgba(255, 0, 0, 1) 100%);
+        }
+
+        &.color-picker__slider--value {
+            background-size: 100% 100%;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 1) 100%);
+        }
+
+        &.color-picker__slider--alpha {
+            background-size: $baseSize;
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cmVjdCBmaWxsPSIjQ0NDQ0NDIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiLz48cmVjdCB4PSI1MCIgeT0iNTAiIGZpbGw9IiNDQ0NDQ0MiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIvPjxyZWN0IHk9IjUwIiBmaWxsPSIjRkZGRkZGIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiLz48cmVjdCB4PSI1MCIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIi8+PC9zdmc+");
+            background-repeat: repeat;
+
+            .color-picker__slider--alpha-bg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+        }
+    }
+
+    .color-picker__inputs {
+        display: flex;
+        margin: 8px;
+        align-items: flex-start;
+
+        .color-picker__input-fields {
+            flex: auto 1 1;
+        }
+
+        .color-picker__input-type {
+            flex: (1.5 * $baseSize) 0 0;
+        }
+    }
+
+    .color-picker__input-fields {
+        display: flex;
+
+        .color-picker__input-field {
+            margin: math.div($baseSize, 4);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: center;
+            flex: 20% 1 1;
+
+            input {
+                text-align: center;
+                font-size: 0.75 * $baseSize;
+                height: 1.5 * $baseSize;
+                appearance: none;
+                flex: 100% 1 1;
+                padding: 1px;
+                border: $borderColor solid 1px;
+                width: 100%;
+                background: none;
+                min-width: 0;
+
+                &:invalid {
+                    box-shadow: none;
+                }
+
+                &::-webkit-inner-spin-button,
+                &::-webkit-outer-spin-button {
+                    appearance: none;
+                    margin: 0;
+                }
+            }
+
+            .color-picker__input-field-label {
+                flex: 100% 1 1;
+                display: block;
+                text-align: center;
+                margin-top: math.div($baseSize, 4);
+            }
+        }
+    }
+
+    .color-picker__input-type {
+        width: 1.5 * $baseSize;
+        height: 1.5 * $baseSize;
+        margin-top: math.div($baseSize, 4);
+        display: flex;
+        flex-wrap: wrap;
+        background-size: contain;
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjMzMzMzMzIiBwb2ludHM9IjUwIDE2IDMwIDQ0IDcwIDQ0ICIvPjxwb2x5Z29uIGZpbGw9IiMzMzMzMzMiIHBvaW50cz0iNTAgODQgNzAgNTYgMzAgNTYgIi8+PC9zdmc+");
+        background-repeat: no-repeat;
+        background-position: center;
+
+        .color-picker__input-type-arrow {
+            display: block;
+            cursor: pointer;
+            flex: 100% 1 1;
+            width: 100%;
+            height: 50%;
+        }
+    }
+
+    .color-picker__separator {
+        border-top: 1px solid $borderColor;
+        margin-left: math.div($baseSize, 2);
+        margin-right: math.div($baseSize, 2);
+        flex: 100% 1 1;
+    }
+
+    .color-picker__preset {
+        display: flex;
+        margin: math.div($baseSize, 2);
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .color-picker__preset-label {
+        margin: math.div($baseSize, 4);
+        flex: 100% 1 1;
+    }
+
+    .color-picker__preset-items {
+        display: flex;
+        flex: 100% 1 1;
+        flex-wrap: wrap;
+        align-items: flex-start;
+
+        .color-picker__preset-item {
+            position: relative;
+            flex: ($baseSize * 1.25) 1 1;
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cmVjdCBmaWxsPSIjQ0NDQ0NDIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiLz48cmVjdCB4PSI1MCIgeT0iNTAiIGZpbGw9IiNDQ0NDQ0MiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIvPjxyZWN0IHk9IjUwIiBmaWxsPSIjRkZGRkZGIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiLz48cmVjdCB4PSI1MCIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIi8+PC9zdmc+");
+            background-size: 100% 100%;
+            margin: math.div($baseSize, 4);
+            border-radius: math.div($baseSize, 4);
+            border: 1px solid $borderColor;
+            cursor: pointer;
+
+            .color-picker__preset-item-fill {
+                position: relative;
+                width: 100%;
+                padding-bottom: 100%;
+                border-radius: calc(#{math.div($baseSize, 4)} - 1px);
+            }
+
+            &:empty {
+                margin-top: 0;
+                margin-bottom: 0;
+                border-top: 0;
+                border-bottom: 0;
+            }
+        }
+    }
+
+    .color-picker__remove-selected {
+        border: none;
+        padding: 0;
+        margin: 0;
+        color: $dark;
+        transition: color 0.2s linear;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 math.div($baseSize, 2) math.div(-$baseSize, 8) rgba(0, 0, 0, 0.5);
+        position: absolute;
+        width: $baseSize * 0.75;
+        height: $baseSize * 0.75;
+        right: -$baseSize * 0.375;
+        top: -$baseSize * 0.375;
+        background: $backgroundColor;
+        border-radius: 50%;
+        display: flex;
+
+        svg {
+            fill: currentcolor;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .color-picker__buttons {
+        display: flex;
+        margin: math.div($baseSize, 2);
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        margin-top: 0;
+
+        button {
+            flex: auto 0 0;
+            margin: math.div($baseSize, 4);
+        }
+    }
+}
+
+:host-context(.color-picker__arrow--top) {
+    .color-picker {
+        margin-bottom: 16px;
+    }
+
+    .color-picker__arrow {
+        border-width: ($baseSize * 0.75) ($baseSize * 0.375);
+        border-color: $borderColor rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+        left: $baseSize * 0.75;
+        bottom: -$baseSize * 1.5;
+    }
+}
+
+:host-context(.color-picker__arrow--left) {
+    .color-picker {
+        margin-right: 16px;
+    }
+
+    .color-picker__arrow {
+        border-width: ($baseSize * 0.375) ($baseSize * 0.75);
+        border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $borderColor;
+        top: $baseSize * 0.75;
+        left: 230px;
+    }
+}
+
+:host-context(.color-picker__arrow--right) {
+    .color-picker {
+        margin-left: 16px;
+    }
+
+    .color-picker__arrow {
+        border-width: ($baseSize * 0.375) ($baseSize * 0.75);
+        border-color: rgba(0, 0, 0, 0) $borderColor rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+        top: $baseSize * 0.75;
+        left: -$baseSize * 1.5;
+    }
+}
+
+:host-context(.color-picker__arrow--bottom) {
+    .color-picker {
+        margin-top: 16px;
+    }
+
+    .color-picker__arrow {
+        border-width: ($baseSize * 0.75) ($baseSize * 0.375);
+        border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $borderColor rgba(0, 0, 0, 0);
+        top: -$baseSize * 1.5;
+        left: $baseSize * 0.75;
+    }
+}
