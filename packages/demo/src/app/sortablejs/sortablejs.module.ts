@@ -1,6 +1,5 @@
+import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { SortablejsModule } from 'nxt-sortablejs'
 import { ExamplesModule } from './examples/examples.module'
@@ -13,8 +12,7 @@ import { TestCasesModule } from './test-cases/test-cases.module'
         AppSortablejsComponent
     ],
     imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
+        CommonModule,
         AppSortablejsRouterModule,
 
         // global settings

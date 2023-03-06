@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FlexLayoutModule } from '@angular/flex-layout'
-import { DropzoneConfigInterface, DropzoneModule, DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
+import { DropzoneConfigInterface, DropzoneModule, NXT_DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
 import { AppDropzoneWrapperRoutingModule } from './dropzone-wrapper-routing.module'
 import { AppDropzoneWrapperComponent } from './dropzone-wrapper.component'
 
@@ -25,7 +25,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     exports: [],
     providers: [
         {
-            provide: DROPZONE_CONFIG,
+            provide: NXT_DROPZONE_CONFIG,
             useValue: DEFAULT_DROPZONE_CONFIG
         }
     ]

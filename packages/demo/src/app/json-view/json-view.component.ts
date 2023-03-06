@@ -3,7 +3,7 @@ import { Component } from '@angular/core'
 @Component({
     selector: 'app-json-view',
     templateUrl: './json-view.component.html',
-    styleUrls: ['./json-view.component.scss', '../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css']
+    styleUrls: ['./json-view.component.scss']
 })
 export class AppJsonViewComponent {
 

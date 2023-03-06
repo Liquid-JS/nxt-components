@@ -54,7 +54,8 @@
                         ],
                         "styles": [
                             "packages/demo/src/styles.scss",
-                            "dist/pick-datetime/assets/picker.scss"
+                            "dist/pick-datetime/assets/picker.scss",
+                            "node_modules/bootstrap/dist/css/bootstrap.min.css"
                         ],
                         "scripts": []
                     },

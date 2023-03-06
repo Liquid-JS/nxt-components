@@ -1,18 +1,18 @@
-import { Component, Input } from '@angular/core';
-import {Options} from 'sortablejs';
+import { Component, Input } from '@angular/core'
+import { Options } from 'sortablejs'
 
 @Component({
-  selector: 'app-child-component',
-  templateUrl: './child-component.component.html',
-  styleUrls: ['./child-component.component.scss'],
+    selector: 'app-sortablejs-child-component',
+    templateUrl: './child-component.component.html',
+    styleUrls: ['./child-component.component.scss']
 })
 export class ChildComponentComponent {
 
-  @Input()
-  list: string[];
+    @Input()
+    list?: string[]
 
-  options: Options = {
-    group: 'test',
-  };
+    options: Options = {
+        group: 'test'
+    }
 
 }
