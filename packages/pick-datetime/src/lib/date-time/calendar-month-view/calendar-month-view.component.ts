@@ -67,7 +67,7 @@ export class OwlMonthViewComponent<T>
     }
 
     /** The currently selected date. */
-    private _selected: T | null
+    private _selected: T | null = null
     @Input()
     get selected(): T | null {
         return this._selected
@@ -83,13 +83,13 @@ export class OwlMonthViewComponent<T>
         }
     }
 
-    private _selecteds: T[] = []
+    private _selecteds: Array<T | null> = []
     @Input()
-    get selecteds(): T[] {
+    get selecteds(): Array<T | null> {
         return this._selecteds
     }
 
-    set selecteds(values: T[]) {
+    set selecteds(values: Array<T | null>) {
         this._selecteds = values.map(v => {
             v = this.dateTimeAdapter.deserialize(v)
             return this.getValidDate(v)
@@ -97,13 +97,13 @@ export class OwlMonthViewComponent<T>
         this.setSelectedDates()
     }
 
-    private _pickerMoment: T
+    private _pickerMoment: T | null = null
     @Input()
     get pickerMoment() {
         return this._pickerMoment
     }
 
-    set pickerMoment(value: T) {
+    set pickerMoment(value: T | null) {
         const oldMoment = this._pickerMoment
         value = this.dateTimeAdapter.deserialize(value)
         this._pickerMoment =
@@ -126,13 +126,13 @@ export class OwlMonthViewComponent<T>
     /**
      * A function used to filter which dates are selectable
      * */
-    private _dateFilter: DateFilter<T>
+    private _dateFilter?: DateFilter<T>
     @Input()
     get dateFilter() {
         return this._dateFilter
     }
 
-    set dateFilter(filter: DateFilter<T>) {
+    set dateFilter(filter: DateFilter<T> | undefined) {
         this._dateFilter = filter
         if (this.initiated) {
             this.generateCalendar()
@@ -141,7 +141,7 @@ export class OwlMonthViewComponent<T>
     }
 
     /** The minimum selectable date. */
-    private _minDate: T | null
+    private _minDate: T | null = null
     @Input()
     get minDate(): T | null {
         return this._minDate
@@ -157,7 +157,7 @@ export class OwlMonthViewComponent<T>
     }
 
     /** The maximum selectable date. */
-    private _maxDate: T | null
+    private _maxDate: T | null = null
     @Input()
     get maxDate(): T | null {
         return this._maxDate
@@ -173,17 +173,17 @@ export class OwlMonthViewComponent<T>
         }
     }
 
-    private _weekdays: Array<{ long: string, short: string, narrow: string }>
+    private _weekdays?: Array<{ long: string, short: string, narrow: string }>
     get weekdays() {
         return this._weekdays
     }
 
-    private _days: CalendarCell[][]
+    private _days?: CalendarCell[][]
     get days() {
         return this._days
     }
 
-    get activeCell(): number {
+    get activeCell() {
         if (this.pickerMoment) {
             return (
                 this.dateTimeAdapter.getDate(this.pickerMoment) +
@@ -191,6 +191,7 @@ export class OwlMonthViewComponent<T>
                 1
             )
         }
+        return
     }
 
     get isInSingleMode(): boolean {
@@ -205,7 +206,7 @@ export class OwlMonthViewComponent<T>
         )
     }
 
-    private firstDateOfMonth: T
+    private firstDateOfMonth: T | null = null
 
     private localeSub: Subscription = Subscription.EMPTY
 
@@ -214,16 +215,16 @@ export class OwlMonthViewComponent<T>
     /**
      * The date of the month that today falls on.
      * */
-    public todayDate: number | null
+    public todayDate: number | null = null
 
     /**
      * An array to hold all selectedDates' value
      * the value is the day number in current month
      * */
-    public selectedDates: number[] = []
+    public selectedDates: Array<number | null> = []
 
     // the index of cell that contains the first date of the month
-    public firstRowOffset: number
+    public firstRowOffset: number = 0
 
     /**
      * Callback to invoke when a new date is selected
@@ -243,7 +244,7 @@ export class OwlMonthViewComponent<T>
 
     /** The body of calendar table */
     @ViewChild(OwlCalendarBodyComponent, { static: true })
-    calendarBodyElm: OwlCalendarBodyComponent
+    calendarBodyElm?: OwlCalendarBodyComponent
 
     @HostBinding('class.owl-dt-calendar-view')
     get owlDTCalendarView(): boolean {
@@ -544,7 +545,7 @@ export class OwlMonthViewComponent<T>
     /**
      * Check if the give dates are none-null and in the same month
      */
-    public isSameMonth(dateLeft: T, dateRight: T): boolean {
+    public isSameMonth(dateLeft: T | null, dateRight: T | null): boolean {
         return !!(
             dateLeft &&
             dateRight &&
@@ -573,7 +574,7 @@ export class OwlMonthViewComponent<T>
             const dayDiff = this.dateTimeAdapter.differenceInCalendarDays(
                 this.selected,
                 this.firstDateOfMonth
-            )
+            ) ?? 0
             this.selectedDates[0] = dayDiff + 1
             return
         }
@@ -584,7 +585,7 @@ export class OwlMonthViewComponent<T>
                     const dayDiff = this.dateTimeAdapter.differenceInCalendarDays(
                         selected,
                         this.firstDateOfMonth
-                    )
+                    ) ?? 0
                     return dayDiff + 1
                 } else {
                     return null
@@ -594,6 +595,6 @@ export class OwlMonthViewComponent<T>
     }
 
     private focusActiveCell() {
-        this.calendarBodyElm.focusActiveCell()
+        this.calendarBodyElm?.focusActiveCell()
     }
 }

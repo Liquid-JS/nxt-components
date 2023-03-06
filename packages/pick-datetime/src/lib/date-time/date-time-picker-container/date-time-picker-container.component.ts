@@ -3,7 +3,7 @@ import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, SPACE, UP_ARROW } from '@angular/c
 import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, Optional, ViewChild } from '@angular/core'
 import { Observable, Subject } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
-import { OwlDateTimeDirective, PickerType } from '../../class/date-time.class'
+import { OwlDateTimeDirective } from '../../class/date-time.class'
 import { OwlCalendarComponent } from '../calendar/calendar.component'
 import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
 import { OwlTimerComponent } from '../timer/timer.component'
@@ -24,11 +24,11 @@ import { owlDateTimePickerAnimations } from './date-time-picker-container.animat
 export class OwlDateTimeContainerComponent<T>
     implements OnInit, AfterContentInit, AfterViewInit {
     @ViewChild(OwlCalendarComponent)
-    calendar: OwlCalendarComponent<T>
+    calendar?: OwlCalendarComponent<T>
     @ViewChild(OwlTimerComponent)
-    timer: OwlTimerComponent<T>
+    timer?: OwlTimerComponent<T>
 
-    public picker: OwlDateTimeDirective<T>
+    public picker?: OwlDateTimeDirective<T>
     public activeSelectedIndex = 0 // The current active SelectedIndex in range select mode (0: 'from', 1: 'to')
 
     /**
@@ -59,25 +59,25 @@ export class OwlDateTimeContainerComponent<T>
      * The current picker moment. This determines which time period is shown and which date is
      * highlighted when using keyboard navigation.
      */
-    private _clamPickerMoment: T
+    private _clamPickerMoment: T | null = null
 
     get pickerMoment() {
         return this._clamPickerMoment
     }
 
-    set pickerMoment(value: T) {
+    set pickerMoment(value: T | null) {
         if (value) {
             this._clamPickerMoment = this.dateTimeAdapter.clampDate(
                 value,
-                this.picker.minDateTime,
-                this.picker.maxDateTime
+                this.picker?.minDateTime,
+                this.picker?.maxDateTime
             )
         }
         this.cdRef.markForCheck()
     }
 
-    get pickerType(): PickerType {
-        return this.picker.pickerType
+    get pickerType() {
+        return this.picker?.pickerType
     }
 
     get cancelLabel(): string {
@@ -106,9 +106,9 @@ export class OwlDateTimeContainerComponent<T>
      * The range 'from' formatted value
      * */
     get fromFormattedValue(): string {
-        const value = this.picker.selecteds[0]
+        const value = this.picker?.selecteds?.[0]
         return value
-            ? this.dateTimeAdapter.format(value, this.picker.formatString)
+            ? this.dateTimeAdapter.format(value, this.picker?.formatString)
             : ''
     }
 
@@ -116,9 +116,9 @@ export class OwlDateTimeContainerComponent<T>
      * The range 'to' formatted value
      * */
     get toFormattedValue(): string {
-        const value = this.picker.selecteds[1]
+        const value = this.picker?.selecteds?.[1]
         return value
-            ? this.dateTimeAdapter.format(value, this.picker.formatString)
+            ? this.dateTimeAdapter.format(value, this.picker?.formatString)
             : ''
     }
 
@@ -129,9 +129,9 @@ export class OwlDateTimeContainerComponent<T>
      * */
     get showControlButtons(): boolean {
         return (
-            this.picker.pickerMode === 'dialog' ||
-            (this.picker.pickerType !== 'calendar' &&
-                this.picker.pickerMode !== 'inline')
+            this.picker?.pickerMode === 'dialog' ||
+            (this.picker?.pickerType !== 'calendar' &&
+                this.picker?.pickerMode !== 'inline')
         )
     }
 
@@ -146,32 +146,32 @@ export class OwlDateTimeContainerComponent<T>
 
     @HostBinding('class.owl-dt-popup-container')
     get owlDTPopupContainerClass(): boolean {
-        return this.picker.pickerMode === 'popup'
+        return this.picker?.pickerMode === 'popup'
     }
 
     @HostBinding('class.owl-dt-dialog-container')
     get owlDTDialogContainerClass(): boolean {
-        return this.picker.pickerMode === 'dialog'
+        return this.picker?.pickerMode === 'dialog'
     }
 
     @HostBinding('class.owl-dt-inline-container')
     get owlDTInlineContainerClass(): boolean {
-        return this.picker.pickerMode === 'inline'
+        return this.picker?.pickerMode === 'inline'
     }
 
     @HostBinding('class.owl-dt-container-disabled')
     get owlDTContainerDisabledClass(): boolean {
-        return this.picker.disabled
+        return !!this.picker?.disabled
     }
 
     @HostBinding('attr.id')
-    get owlDTContainerId(): string {
-        return this.picker.id
+    get owlDTContainerId(): string | undefined {
+        return this.picker?.id
     }
 
     @HostBinding('@transformPicker')
     get owlDTContainerAnimation(): any {
-        return this.picker.pickerMode === 'inline' ? '' : 'enter'
+        return this.picker?.pickerMode === 'inline' ? '' : 'enter'
     }
 
     constructor(private cdRef: ChangeDetectorRef,
@@ -198,10 +198,10 @@ export class OwlDateTimeContainerComponent<T>
         }
     }
 
-    public dateSelected(date: T): void {
+    public dateSelected(date: T | null): void {
         let result
 
-        if (this.picker.isInSingleMode) {
+        if (this.picker?.isInSingleMode) {
             result = this.dateSelectedInSingleMode(date)
             if (result) {
                 this.pickerMoment = result
@@ -215,7 +215,7 @@ export class OwlDateTimeContainerComponent<T>
             return
         }
 
-        if (this.picker.isInRangeMode) {
+        if (this.picker?.isInRangeMode) {
             result = this.dateSelectedInRangeMode(date)
             if (result) {
                 this.pickerMoment = result[this.activeSelectedIndex]
@@ -224,10 +224,10 @@ export class OwlDateTimeContainerComponent<T>
         }
     }
 
-    public timeSelected(time: T): void {
+    public timeSelected(time: T | undefined): void {
         this.pickerMoment = this.dateTimeAdapter.clone(time)
 
-        if (!this.picker.dateTimeChecker(this.pickerMoment)) {
+        if (!this.picker?.dateTimeChecker(this.pickerMoment)) {
             return
         }
 
@@ -237,7 +237,7 @@ export class OwlDateTimeContainerComponent<T>
         }
 
         if (this.picker.isInRangeMode) {
-            const selecteds = [...this.picker.selecteds]
+            const selecteds = [...this.picker?.selecteds || []]
 
             // check if the 'from' is after 'to' or 'to'is before 'from'
             // In this case, we set both the 'from' and 'to' the same value
@@ -278,7 +278,7 @@ export class OwlDateTimeContainerComponent<T>
      * Handle click on set button
      */
     public onSetClicked(event: any): void {
-        if (!this.picker.dateTimeChecker(this.pickerMoment)) {
+        if (!this.picker?.dateTimeChecker?.(this.pickerMoment)) {
             this.hidePicker$.next(null)
             event.preventDefault()
             return
@@ -333,12 +333,12 @@ export class OwlDateTimeContainerComponent<T>
      */
     private setActiveSelectedIndex(index: number): void {
         if (
-            this.picker.selectMode === 'range' &&
+            this.picker?.selectMode === 'range' &&
             this.activeSelectedIndex !== index
         ) {
             this.activeSelectedIndex = index
 
-            const selected = this.picker.selecteds[this.activeSelectedIndex]
+            const selected = this.picker?.selecteds?.[this.activeSelectedIndex]
             if (this.picker.selecteds && selected) {
                 this.pickerMoment = this.dateTimeAdapter.clone(selected)
             }
@@ -347,16 +347,16 @@ export class OwlDateTimeContainerComponent<T>
     }
 
     private initPicker(): void {
-        this.pickerMoment = this.picker.startAt || this.dateTimeAdapter.now()
-        this.activeSelectedIndex = this.picker.selectMode === 'rangeTo' ? 1 : 0
+        this.pickerMoment = this.picker?.startAt || this.dateTimeAdapter.now()
+        this.activeSelectedIndex = this.picker?.selectMode === 'rangeTo' ? 1 : 0
     }
 
     /**
      * Select calendar date in single mode,
      * it returns null when date is not selected.
      */
-    private dateSelectedInSingleMode(date: T): T | null {
-        if (this.dateTimeAdapter.isSameDay(date, this.picker.selected)) {
+    private dateSelectedInSingleMode(date: T | null): T | null {
+        if (this.dateTimeAdapter.isSameDay(date, this.picker?.selected)) {
             return null
         }
 
@@ -366,9 +366,9 @@ export class OwlDateTimeContainerComponent<T>
     /**
      * Select dates in range Mode
      */
-    private dateSelectedInRangeMode(date: T): T[] | null {
-        let from = this.picker.selecteds[0]
-        let to = this.picker.selecteds[1]
+    private dateSelectedInRangeMode(date: T | null): Array<T | null> | null {
+        let from = this.picker?.selecteds?.[0] ?? null
+        let to = this.picker?.selecteds?.[1] ?? null
 
         const result = this.updateAndCheckCalendarDate(date)
 
@@ -379,13 +379,13 @@ export class OwlDateTimeContainerComponent<T>
         // if the given calendar day is after or equal to 'from',
         // set ths given date as 'to'
         // otherwise, set it as 'from' and set 'to' to null
-        if (this.picker.selectMode === 'range') {
+        if (this.picker?.selectMode === 'range') {
             if (
                 this.picker.selecteds &&
                 this.picker.selecteds.length &&
                 !to &&
                 from &&
-                this.dateTimeAdapter.differenceInCalendarDays(result, from) >= 0
+                (this.dateTimeAdapter.differenceInCalendarDays(result, from) ?? 0) >= 0
             ) {
                 to = result
                 this.activeSelectedIndex = 1
@@ -394,14 +394,14 @@ export class OwlDateTimeContainerComponent<T>
                 to = null
                 this.activeSelectedIndex = 0
             }
-        } else if (this.picker.selectMode === 'rangeFrom') {
+        } else if (this.picker?.selectMode === 'rangeFrom') {
             from = result
 
             // if the from value is after the to value, set the to value as null
             if (to && this.dateTimeAdapter.compare(from, to) > 0) {
                 to = null
             }
-        } else if (this.picker.selectMode === 'rangeTo') {
+        } else if (this.picker?.selectMode === 'rangeTo') {
             to = result
 
             // if the from value is after the to value, set the from value as null
@@ -420,11 +420,11 @@ export class OwlDateTimeContainerComponent<T>
      * if it is valid, return the updated dateTime
      * if it is not valid, return null
      */
-    private updateAndCheckCalendarDate(date: T): T {
+    private updateAndCheckCalendarDate(date: T | null): T | null {
         let result
 
         // if the picker is 'both', update the calendar date's time value
-        if (this.picker.pickerType === 'both') {
+        if (this.picker?.pickerType === 'both') {
             result = this.dateTimeAdapter.createDate(
                 this.dateTimeAdapter.getYear(date),
                 this.dateTimeAdapter.getMonth(date),
@@ -443,14 +443,14 @@ export class OwlDateTimeContainerComponent<T>
         }
 
         // check the updated dateTime
-        return this.picker.dateTimeChecker(result) ? result : null
+        return this.picker?.dateTimeChecker(result) ? result : null
     }
 
     /**
      * Focus to the picker
      * */
     private focusPicker(): void {
-        if (this.picker.pickerMode === 'inline') {
+        if (this.picker?.pickerMode === 'inline') {
             return
         }
 

@@ -25,17 +25,23 @@
             "dom"
         ],
         "paths": {
-            "dropzone-wrapper": [
+            "nxt-dropzone-wrapper": [
                 "dist/dropzone-wrapper"
             ],
-            "flags": [
+            "nxt-flags": [
                 "dist/flags"
             ],
-            "json-view": [
+            "nxt-json-view": [
                 "dist/json-view"
             ],
-            "pick-datetime": [
+            "nxt-pick-datetime": [
                 "dist/pick-datetime"
+            ],
+            "nxt-pick-datetime/moment-adapter": [
+                "dist/pick-datetime/moment-adapter"
+            ],
+            "nxt-pick-datetime/native-adapter": [
+                "dist/pick-datetime/native-adapter"
             ]
         }
     },

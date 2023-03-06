@@ -40,41 +40,41 @@ export abstract class DateTimeAdapter<T> {
     /**
      * Get the year of the given date
      */
-    abstract getYear(date: T): number
+    abstract getYear(date: T | null): number
 
     /**
      * Get the month of the given date
      * 0 -- January
      * 11 -- December
      * */
-    abstract getMonth(date: T): number
+    abstract getMonth(date: T | null): number
 
     /**
      * Get the day of the week of the given date
      * 0 -- Sunday
      * 6 -- Saturday
      * */
-    abstract getDay(date: T): number
+    abstract getDay(date: T | null): number
 
     /**
      * Get the day num of the given date
      */
-    abstract getDate(date: T): number
+    abstract getDate(date: T | null): number
 
     /**
      * Get the hours of the given date
      */
-    abstract getHours(date: T): number
+    abstract getHours(date: T | null): number
 
     /**
      * Get the minutes of the given date
      */
-    abstract getMinutes(date: T): number
+    abstract getMinutes(date: T | null): number
 
     /**
      * Get the seconds of the given date
      */
-    abstract getSeconds(date: T): number
+    abstract getSeconds(date: T | null): number
 
     /**
      * Get the milliseconds timestamp of the given date
@@ -84,19 +84,19 @@ export abstract class DateTimeAdapter<T> {
     /**
      * Gets the number of days in the month of the given date.
      */
-    abstract getNumDaysInMonth(date: T): number
+    abstract getNumDaysInMonth(date: T | null): number
 
     /**
      * Get the number of calendar days between the given dates.
      * If dateLeft is before dateRight, it would return positive value
      * If dateLeft is after dateRight, it would return negative value
      */
-    abstract differenceInCalendarDays(dateLeft: T, dateRight: T): number | null
+    abstract differenceInCalendarDays(dateLeft: T | null, dateRight: T | null): number | null
 
     /**
      * Gets the name for the year of the given date.
      */
-    abstract getYearName(date: T): string
+    abstract getYearName(date: T | null): string
 
     /**
      * Get a list of month names
@@ -121,17 +121,17 @@ export abstract class DateTimeAdapter<T> {
     /**
      * Check if the give dates are equal
      */
-    abstract isEqual(dateLeft: T, dateRight: T): boolean
+    abstract isEqual(dateLeft: T | null, dateRight: T | null): boolean
 
     /**
      * Check if the give dates are the same day
      */
-    abstract isSameDay(dateLeft: T, dateRight: T): boolean
+    abstract isSameDay(dateLeft: T | null, dateRight: T | null | undefined): boolean
 
     /**
      * Checks whether the given date is valid.
      */
-    abstract isValid(date: T): boolean
+    abstract isValid(date: T | null): boolean
 
     /**
      * Gets date instance that is not valid.
@@ -146,32 +146,32 @@ export abstract class DateTimeAdapter<T> {
     /**
      * Add the specified number of years to the given date
      */
-    abstract addCalendarYears(date: T, amount: number): T
+    abstract addCalendarYears(date: T | null, amount: number): T
 
     /**
      * Add the specified number of months to the given date
      */
-    abstract addCalendarMonths(date: T, amount: number): T
+    abstract addCalendarMonths(date: T | null, amount: number): T
 
     /**
      * Add the specified number of days to the given date
      */
-    abstract addCalendarDays(date: T, amount: number): T
+    abstract addCalendarDays(date: T | null, amount: number): T
 
     /**
      * Set the hours to the given date.
      */
-    abstract setHours(date: T, amount: number): T
+    abstract setHours(date: T | null, amount: number): T
 
     /**
      * Set the minutes to the given date.
      */
-    abstract setMinutes(date: T, amount: number): T
+    abstract setMinutes(date: T | null, amount: number): T
 
     /**
      * Set the seconds to the given date.
      */
-    abstract setSeconds(date: T, amount: number): T
+    abstract setSeconds(date: T | null, amount: number): T
 
     /**
      * Creates a date with the given year, month, date, hour, minute and second. Does not allow over/under-flow of the
@@ -190,7 +190,7 @@ export abstract class DateTimeAdapter<T> {
     /**
      * Clone the given date
      */
-    abstract clone(date: T): T
+    abstract clone(date: T | undefined | null): T
 
     /**
      * Get a new moment
@@ -200,7 +200,7 @@ export abstract class DateTimeAdapter<T> {
     /**
      * Formats a date as a string according to the given format.
      */
-    abstract format(date: T, displayFormat: any): string
+    abstract format(date: T | null, displayFormat: any): string
 
     /**
      * Parse a user-provided value to a Date Object
@@ -239,7 +239,7 @@ export abstract class DateTimeAdapter<T> {
      * -1 if the first date's year is before the second
      * 0 if two given dates are in the same year
      * */
-    compareYear(first: T, second: T): number {
+    compareYear(first: T | null, second: T | null): number {
         if (!this.isValid(first) || !this.isValid(second)) {
             throw Error('JSNativeDate: Cannot compare invalid dates.')
         }

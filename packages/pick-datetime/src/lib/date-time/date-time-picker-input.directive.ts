@@ -52,16 +52,16 @@ export class OwlDateTimeInputDirective<T>
         this.validatorOnChange()
     }
 
-    private _dateTimeFilter: (date: T | null) => boolean
+    private _dateTimeFilter?: (date: T | null) => boolean
     get dateTimeFilter() {
         return this._dateTimeFilter
     }
 
     /** Whether the date time picker's input is disabled. */
     @Input()
-    private _disabled: boolean
+    private _disabled: boolean = false
     get disabled() {
-        return !!this._disabled
+        return this._disabled
     }
 
     set disabled(value: boolean) {
@@ -83,7 +83,7 @@ export class OwlDateTimeInputDirective<T>
     }
 
     /** The minimum valid date. */
-    private _min: T | null
+    private _min: T | null = null
     @Input()
     get min(): T | null {
         return this._min
@@ -95,7 +95,7 @@ export class OwlDateTimeInputDirective<T>
     }
 
     /** The maximum valid date. */
-    private _max: T | null
+    private _max: T | null = null
     @Input()
     get max(): T | null {
         return this._max
@@ -134,7 +134,7 @@ export class OwlDateTimeInputDirective<T>
     @Input()
     rangeSeparator = '~'
 
-    private _value: T | null
+    private _value: T | null = null
     @Input()
     get value() {
         return this._value
@@ -156,13 +156,13 @@ export class OwlDateTimeInputDirective<T>
         }
     }
 
-    private _values: T[] = []
+    private _values: Array<T | null> = []
     @Input()
     get values() {
         return this._values
     }
 
-    set values(values: T[]) {
+    set values(values: Array<T | null>) {
         if (values && values.length > 0) {
             this._values = values.map(v => {
                 v = this.dateTimeAdapter.deserialize(v)
@@ -213,14 +213,14 @@ export class OwlDateTimeInputDirective<T>
     }
 
     /** The date-time-picker that this input is associated with. */
-    public dtPicker: OwlDateTimeComponent<T>
+    public dtPicker?: OwlDateTimeComponent<T>
 
     private dtPickerSub: Subscription = Subscription.EMPTY
     private localeSub: Subscription = Subscription.EMPTY
 
     private lastValueValid = true
 
-    private onModelChange: (date: T | T[]) => void = () => { }
+    private onModelChange: (date: T | Array<T | null> | null) => void = () => { }
     private onModelTouched: () => void = () => { }
     private validatorOnChange: () => void = () => { }
 
@@ -261,6 +261,7 @@ export class OwlDateTimeInputDirective<T>
                     }
                 }
         }
+        return null
     }
 
     /** The form control validator for the max date. */
@@ -295,6 +296,7 @@ export class OwlDateTimeInputDirective<T>
                     }
                 }
         }
+        return null
     }
 
     /** The form control validator for the date filter. */
@@ -346,7 +348,7 @@ export class OwlDateTimeInputDirective<T>
     ])
 
     /** Emits when the value changes (either due to user input or programmatic change). */
-    public valueChange = new EventEmitter<T[] | T | null>()
+    public valueChange = new EventEmitter<Array<T | null> | T | null>()
 
     /** Emits when the disabled state has changed */
     public disabledChange = new EventEmitter<boolean>()
@@ -357,17 +359,17 @@ export class OwlDateTimeInputDirective<T>
     }
 
     @HostBinding('attr.aria-owns')
-    get owlDateTimeInputAriaOwns(): string {
-        return (this.dtPicker.opened && this.dtPicker.id) || null
+    get owlDateTimeInputAriaOwns() {
+        return (this.dtPicker?.opened && this.dtPicker.id) || null
     }
 
     @HostBinding('attr.min')
-    get minIso8601(): string {
+    get minIso8601() {
         return this.min ? this.dateTimeAdapter.toIso8601(this.min) : null
     }
 
     @HostBinding('attr.max')
-    get maxIso8601(): string {
+    get maxIso8601() {
         return this.max ? this.dateTimeAdapter.toIso8601(this.max) : null
     }
 
@@ -410,7 +412,7 @@ export class OwlDateTimeInputDirective<T>
     }
 
     public ngAfterContentInit(): void {
-        this.dtPickerSub = this.dtPicker.confirmSelectedChange.subscribe(
+        this.dtPickerSub = this.dtPicker?.confirmSelectedChange.subscribe(
             (selecteds: T[] | T) => {
                 if (Array.isArray(selecteds)) {
                     this.values = selecteds
@@ -431,7 +433,7 @@ export class OwlDateTimeInputDirective<T>
                     input: this.elmRef.nativeElement
                 })
             }
-        )
+        ) ?? Subscription.EMPTY
     }
 
     public ngOnDestroy(): void {
@@ -461,7 +463,7 @@ export class OwlDateTimeInputDirective<T>
         this.disabled = isDisabled
     }
 
-    public validate(c: AbstractControl): { [key: string]: any } {
+    public validate(c: AbstractControl) {
         return this.validator ? this.validator(c) : null
     }
 
@@ -475,7 +477,7 @@ export class OwlDateTimeInputDirective<T>
     @HostListener('keydown', ['$event'])
     public handleKeydownOnHost(event: KeyboardEvent): void {
         if (event.altKey && event.keyCode === DOWN_ARROW) {
-            this.dtPicker.open()
+            this.dtPicker?.open()
             event.preventDefault()
         }
     }
@@ -525,7 +527,7 @@ export class OwlDateTimeInputDirective<T>
                 this._value
                     ? this.dateTimeAdapter.format(
                         this._value,
-                        this.dtPicker.formatString
+                        this.dtPicker?.formatString
                     )
                     : ''
             )
@@ -537,13 +539,13 @@ export class OwlDateTimeInputDirective<T>
                 const fromFormatted = from
                     ? this.dateTimeAdapter.format(
                         from,
-                        this.dtPicker.formatString
+                        this.dtPicker?.formatString
                     )
                     : ''
                 const toFormatted = to
                     ? this.dateTimeAdapter.format(
                         to,
-                        this.dtPicker.formatString
+                        this.dtPicker?.formatString
                     )
                     : ''
 
@@ -617,8 +619,8 @@ export class OwlDateTimeInputDirective<T>
      * Therefore we need this fn to convert a time string to a date-time string.
      */
     private convertTimeStringToDateTimeString(
-        timeString: string,
-        dateTime: T
+        timeString: string | null,
+        dateTime: T | null
     ): string | null {
         if (timeString) {
             const v = dateTime || this.dateTimeAdapter.now()
@@ -636,8 +638,8 @@ export class OwlDateTimeInputDirective<T>
      * Handle input change in single mode
      */
     private changeInputInSingleMode(inputValue: string): void {
-        let value = inputValue
-        if (this.dtPicker.pickerType === 'timer') {
+        let value: string | null = inputValue
+        if (this.dtPicker?.pickerType === 'timer') {
             value = this.convertTimeStringToDateTimeString(value, this.value)
         }
 
@@ -665,13 +667,13 @@ export class OwlDateTimeInputDirective<T>
     /**
      * Handle input change in rangeFrom or rangeTo mode
      */
-    private changeInputInRangeFromToMode(inputValue: string): void {
+    private changeInputInRangeFromToMode(inputValue: string | null): void {
         const originalValue =
             this._selectMode === 'rangeFrom'
                 ? this._values[0]
                 : this._values[1]
 
-        if (this.dtPicker.pickerType === 'timer') {
+        if (this.dtPicker?.pickerType === 'timer') {
             inputValue = this.convertTimeStringToDateTimeString(
                 inputValue,
                 originalValue
@@ -715,10 +717,10 @@ export class OwlDateTimeInputDirective<T>
      */
     private changeInputInRangeMode(inputValue: string): void {
         const selecteds = inputValue.split(this.rangeSeparator)
-        let fromString = selecteds[0]
-        let toString = selecteds[1]
+        let fromString: string | null = selecteds[0]
+        let toString: string | null = selecteds[1]
 
-        if (this.dtPicker.pickerType === 'timer') {
+        if (this.dtPicker?.pickerType === 'timer') {
             fromString = this.convertTimeStringToDateTimeString(
                 fromString,
                 this.values[0]

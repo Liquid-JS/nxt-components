@@ -127,7 +127,7 @@ export class OwlCalendarComponent<T>
 
     /** Emits when the currently selected date changes. */
     @Output()
-    selectedChange = new EventEmitter<T>()
+    selectedChange = new EventEmitter<T | null>()
 
     /** Emits when any date is selected. */
     @Output()
@@ -160,7 +160,7 @@ export class OwlCalendarComponent<T>
             : this.pickerIntl.switchToMonthViewLabel
     }
 
-    get prevButtonLabel(): string {
+    get prevButtonLabel() {
         if (this._currentView === 'month') {
             return this.pickerIntl.prevMonthLabel
         } else if (this._currentView === 'year') {
@@ -170,7 +170,7 @@ export class OwlCalendarComponent<T>
         }
     }
 
-    get nextButtonLabel(): string {
+    get nextButtonLabel() {
         if (this._currentView === 'month') {
             return this.pickerIntl.nextMonthLabel
         } else if (this._currentView === 'year') {
@@ -180,12 +180,12 @@ export class OwlCalendarComponent<T>
         }
     }
 
-    private _currentView: 'month' | 'year' | 'multi-years'
-    get currentView(): 'month' | 'year' | 'multi-years' {
+    private _currentView?: 'month' | 'year' | 'multi-years'
+    get currentView() {
         return this._currentView
     }
 
-    set currentView(view: 'month' | 'year' | 'multi-years') {
+    set currentView(view: 'month' | 'year' | 'multi-years' | undefined) {
         this._currentView = view
         this.moveFocusOnNextTick = true
     }
@@ -213,7 +213,7 @@ export class OwlCalendarComponent<T>
     /**
      * Date filter for the month and year view
      */
-    public dateFilterForViews = (date: T) => (
+    public dateFilterForViews = (date: T | null) => (
         !!date &&
         (!this.dateFilter || this.dateFilter(date, 'date')) &&
         (!this.minDate ||
@@ -301,7 +301,7 @@ export class OwlCalendarComponent<T>
         this.pickerMomentChange.emit(this.pickerMoment)
     }
 
-    public dateSelected(date: T): void {
+    public dateSelected(date: T | null): void {
         if (!this.dateFilterForViews(date)) {
             return
         }
@@ -388,7 +388,7 @@ export class OwlCalendarComponent<T>
     /**
      * Whether the two dates represent the same view in the current view mode (month or year).
      */
-    private isSameView(date1: T, date2: T): boolean {
+    private isSameView(date1: T | null, date2: T | null): boolean {
         if (this._currentView === 'month') {
             return !!(
                 date1 &&

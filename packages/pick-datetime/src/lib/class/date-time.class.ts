@@ -13,7 +13,7 @@ export type SelectMode = 'single' | 'range' | 'rangeFrom' | 'rangeTo'
 
 export type RenderItem = 'year' | 'month' | 'date'
 
-export type DateFilter<T> = (date: T, forRender?: RenderItem) => boolean
+export type DateFilter<T> = (date: T | null, forRender?: RenderItem) => boolean
 
 @Directive()
 export abstract class OwlDateTimeDirective<T> {
@@ -126,15 +126,15 @@ export abstract class OwlDateTimeDirective<T> {
 
     abstract get selected(): T | null
 
-    abstract get selecteds(): T[] | null
+    abstract get selecteds(): Array<T | null> | null
 
-    abstract get dateTimeFilter(): (date: T | null) => boolean
+    abstract get dateTimeFilter(): ((date: T | null) => boolean) | undefined
 
     abstract get maxDateTime(): T | null
 
     abstract get minDateTime(): T | null
 
-    abstract get selectMode(): SelectMode
+    abstract get selectMode(): SelectMode | undefined
 
     abstract get startAt(): T | null
 
@@ -148,7 +148,7 @@ export abstract class OwlDateTimeDirective<T> {
 
     abstract get isInRangeMode(): boolean
 
-    abstract select(date: T | T[]): void
+    abstract select(date: T | Array<T | null>): void
 
     abstract yearSelected: EventEmitter<T>
 
@@ -160,34 +160,34 @@ export abstract class OwlDateTimeDirective<T> {
 
     get formatString(): string {
         return this.pickerType === 'both'
-            ? this.dateTimeFormats.fullPickerInput
+            ? this.dateTimeFormats?.fullPickerInput
             : this.pickerType === 'calendar'
-                ? this.dateTimeFormats.datePickerInput
-                : this.dateTimeFormats.timePickerInput
+                ? this.dateTimeFormats?.datePickerInput
+                : this.dateTimeFormats?.timePickerInput
     }
 
     /**
      * Date Time Checker to check if the give dateTime is selectable
      */
-    public dateTimeChecker = (dateTime: T) => (
-            !!dateTime &&
-            (!this.dateTimeFilter || this.dateTimeFilter(dateTime)) &&
-            (!this.minDateTime ||
-                this.dateTimeAdapter.compare(dateTime, this.minDateTime) >=
-                0) &&
-            (!this.maxDateTime ||
-                this.dateTimeAdapter.compare(dateTime, this.maxDateTime) <= 0)
-        )
+    public dateTimeChecker = (dateTime: T | null) => (
+        !!dateTime &&
+        (!this.dateTimeFilter || this.dateTimeFilter(dateTime)) &&
+        (!this.minDateTime ||
+            (this.dateTimeAdapter?.compare(dateTime, this.minDateTime) ?? -1) >=
+            0) &&
+        (!this.maxDateTime ||
+            (this.dateTimeAdapter?.compare(dateTime, this.maxDateTime) ?? 1) <= 0)
+    )
 
     get disabled(): boolean {
         return false
     }
 
     constructor(
-        @Optional() protected dateTimeAdapter: DateTimeAdapter<T>,
+        @Optional() @Inject(DateTimeAdapter<T>) protected dateTimeAdapter: DateTimeAdapter<T> | undefined,
         @Optional()
         @Inject(OWL_DATE_TIME_FORMATS)
-        protected dateTimeFormats: OwlDateTimeFormats
+        protected dateTimeFormats: OwlDateTimeFormats | undefined
     ) {
         if (!this.dateTimeAdapter) {
             throw Error(
@@ -209,7 +209,7 @@ export abstract class OwlDateTimeDirective<T> {
     }
 
     protected getValidDate(obj: any): T | null {
-        return this.dateTimeAdapter.isDateInstance(obj) &&
+        return this.dateTimeAdapter?.isDateInstance(obj) &&
             this.dateTimeAdapter.isValid(obj)
             ? obj
             : null

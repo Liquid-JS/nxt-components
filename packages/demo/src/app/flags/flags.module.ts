@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { FlagsModule } from 'flags'
+import { FlagsModule } from 'nxt-flags'
 import { AppFlagsRoutingModule } from './flags-routing.module'
 import { AppFlagsComponent } from './flags.component'
 

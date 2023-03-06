@@ -23,7 +23,7 @@ export const OWL_DATETIME_VALUE_ACCESSOR: any = {
 export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
     implements OnInit, ControlValueAccessor {
     @ViewChild(OwlDateTimeContainerComponent, { static: true })
-    container: OwlDateTimeContainerComponent<T>
+    container?: OwlDateTimeContainerComponent<T>
 
     /**
      * Set the type of the dateTime picker
@@ -45,11 +45,11 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
 
     private _disabled = false
     @Input()
-    get disabled(): boolean {
+    override get disabled(): boolean {
         return !!this._disabled
     }
 
-    set disabled(value: boolean) {
+    override set disabled(value: boolean) {
         this._disabled = coerceBooleanProperty(value)
     }
 
@@ -73,7 +73,7 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
     }
 
     /** The date to open the calendar to initially. */
-    private _startAt: T | null
+    private _startAt: T | null = null
     @Input()
     get startAt(): T | null {
         if (this._startAt) {
@@ -96,22 +96,22 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
 
     set startAt(date: T | null) {
         this._startAt = this.getValidDate(
-            this.dateTimeAdapter.deserialize(date)
+            this.dateTimeAdapter?.deserialize(date)
         )
     }
 
-    private _dateTimeFilter: (date: T | null) => boolean
+    private _dateTimeFilter?: (date: T | null) => boolean
     @Input('owlDateTimeFilter')
     get dateTimeFilter() {
         return this._dateTimeFilter
     }
 
-    set dateTimeFilter(filter: (date: T | null) => boolean) {
+    set dateTimeFilter(filter: ((date: T | null) => boolean) | undefined) {
         this._dateTimeFilter = filter
     }
 
     /** The minimum valid date. */
-    private _min: T | null
+    private _min: T | null = null
 
     get minDateTime(): T | null {
         return this._min || null
@@ -120,12 +120,12 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
     // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('min')
     set minDateTime(value: T | null) {
-        this._min = this.getValidDate(this.dateTimeAdapter.deserialize(value))
+        this._min = this.getValidDate(this.dateTimeAdapter?.deserialize(value))
         this.changeDetector.markForCheck()
     }
 
     /** The maximum valid date. */
-    private _max: T | null
+    private _max: T | null = null
 
     get maxDateTime(): T | null {
         return this._max || null
@@ -134,35 +134,35 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
     // eslint-disable-next-line @angular-eslint/no-input-rename
     @Input('max')
     set maxDateTime(value: T | null) {
-        this._max = this.getValidDate(this.dateTimeAdapter.deserialize(value))
+        this._max = this.getValidDate(this.dateTimeAdapter?.deserialize(value))
         this.changeDetector.markForCheck()
     }
 
-    private _value: T | null
+    private _value: T | null = null
     @Input()
     get value() {
         return this._value
     }
 
     set value(value: T | null) {
-        value = this.dateTimeAdapter.deserialize(value)
+        value = this.dateTimeAdapter?.deserialize(value) ?? null
         value = this.getValidDate(value)
         this._value = value
         this.selected = value
     }
 
-    private _values: T[] = []
+    private _values: Array<T | null> = []
     @Input()
     get values() {
         return this._values
     }
 
-    set values(values: T[]) {
+    set values(values: Array<T | null>) {
         if (values && values.length > 0) {
             values = values.map(v => {
-                v = this.dateTimeAdapter.deserialize(v)
+                v = this.dateTimeAdapter?.deserialize(v) ?? null
                 v = this.getValidDate(v)
-                return v ? this.dateTimeAdapter.clone(v) : null
+                return (v && this.dateTimeAdapter?.clone(v)) ?? null
             })
             this._values = [...values]
             this.selecteds = [...values]
@@ -186,7 +186,7 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
     @Output()
     monthSelected = new EventEmitter<T>()
 
-    private _selected: T | null
+    private _selected: T | null = null
     get selected() {
         return this._selected
     }
@@ -196,12 +196,12 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
         this.changeDetector.markForCheck()
     }
 
-    private _selecteds: T[] = []
+    private _selecteds: Array<T | null> = []
     get selecteds() {
         return this._selecteds
     }
 
-    set selecteds(values: T[]) {
+    set selecteds(values: Array<T | null>) {
         this._selecteds = values
         this.changeDetector.markForCheck()
     }
@@ -236,27 +236,30 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T>
 
     constructor(
         protected changeDetector: ChangeDetectorRef,
-        @Optional() protected dateTimeAdapter: DateTimeAdapter<T>,
+        @Optional() @Inject(DateTimeAdapter<T>) dateTimeAdapter: DateTimeAdapter<T> | undefined,
         @Optional()
         @Inject(OWL_DATE_TIME_FORMATS)
-        protected dateTimeFormats: OwlDateTimeFormats
+        dateTimeFormats: OwlDateTimeFormats
     ) {
         super(dateTimeAdapter, dateTimeFormats)
     }
 
     public ngOnInit() {
-        this.container.picker = this
+        if (this.container)
+            this.container.picker = this
     }
 
     public writeValue(value: any): void {
         if (this.isInSingleMode) {
             this.value = value
-            this.container.pickerMoment = value
+            if (this.container)
+                this.container.pickerMoment = value
         } else {
             this.values = value
-            this.container.pickerMoment = this._values[
-                this.container.activeSelectedIndex
-            ]
+            if (this.container)
+                this.container.pickerMoment = this._values[
+                    this.container.activeSelectedIndex
+                ]
         }
     }
 

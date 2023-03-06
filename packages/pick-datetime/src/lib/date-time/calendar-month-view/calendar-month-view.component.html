@@ -18,10 +18,10 @@
     <tbody owl-date-time-calendar-body
         role="grid"
         [rows]="days"
-        [todayValue]="todayDate"
+        [todayValue]="todayDate ?? undefined"
         [selectedValues]="selectedDates"
         [selectMode]="selectMode"
-        [activeCell]="activeCell"
+        [activeCell]="activeCell ?? 0"
         (keydown)="handleCalendarKeydown($event)"
         (select)="selectCalendarCell($event)">
     </tbody>

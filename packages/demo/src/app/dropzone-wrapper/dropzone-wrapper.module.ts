@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FlexLayoutModule } from '@angular/flex-layout'
-import { DropzoneConfigInterface, DropzoneModule, DROPZONE_CONFIG } from 'dropzone-wrapper'
+import { DropzoneConfigInterface, DropzoneModule, DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
 import { AppDropzoneWrapperRoutingModule } from './dropzone-wrapper-routing.module'
 import { AppDropzoneWrapperComponent } from './dropzone-wrapper.component'
 

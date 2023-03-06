@@ -16,29 +16,29 @@ export class OwlTimerBoxComponent implements OnInit, OnDestroy {
 
     @Input() showDivider = false
 
-    @Input() upBtnAriaLabel: string
+    @Input() upBtnAriaLabel?: string
 
-    @Input() upBtnDisabled: boolean
+    @Input() upBtnDisabled: boolean = false
 
-    @Input() downBtnAriaLabel: string
+    @Input() downBtnAriaLabel?: string
 
-    @Input() downBtnDisabled: boolean
+    @Input() downBtnDisabled: boolean = false
 
     /**
      * Value would be displayed in the box
      * If it is null, the box would display [value]
      * */
-    @Input() boxValue: number
+    @Input() boxValue?: number
 
-    @Input() value: number
+    @Input() value: number = 0
 
-    @Input() min: number
+    @Input() min: number = 0
 
-    @Input() max: number
+    @Input() max: number = 0
 
     @Input() step = 1
 
-    @Input() inputLabel: string
+    @Input() inputLabel?: string
 
     @Output() valueChange = new EventEmitter<number>()
 

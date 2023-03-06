@@ -33,7 +33,7 @@ export class OwlCalendarBodyComponent implements OnInit {
      * The cells to display in the table.
      * */
     @Input()
-    rows: CalendarCell[][]
+    rows?: CalendarCell[][]
 
     /**
      * The number of columns in the table.
@@ -51,19 +51,19 @@ export class OwlCalendarBodyComponent implements OnInit {
      * The value in the table that corresponds to today.
      * */
     @Input()
-    todayValue: number
+    todayValue?: number
 
     /**
      * The value in the table that is currently selected.
      * */
     @Input()
-    selectedValues: number[]
+    selectedValues?: Array<number | null>
 
     /**
      * Current picker select mode
      */
     @Input()
-    selectMode: SelectMode
+    selectMode?: SelectMode
 
     /**
      * Emit when a calendar cell is selected
@@ -120,6 +120,7 @@ export class OwlCalendarBodyComponent implements OnInit {
 
             return value === fromValue || value === toValue
         }
+        return false
     }
 
     /**
@@ -127,8 +128,8 @@ export class OwlCalendarBodyComponent implements OnInit {
      * */
     public isInRange(value: number): boolean {
         if (this.isInRangeMode) {
-            const fromValue = this.selectedValues[0]
-            const toValue = this.selectedValues[1]
+            const fromValue = this.selectedValues?.[0] ?? null
+            const toValue = this.selectedValues?.[1] ?? null
 
             if (fromValue !== null && toValue !== null) {
                 return value >= fromValue && value <= toValue
@@ -136,6 +137,7 @@ export class OwlCalendarBodyComponent implements OnInit {
                 return value === fromValue || value === toValue
             }
         }
+        return false
     }
 
     /**
@@ -143,9 +145,10 @@ export class OwlCalendarBodyComponent implements OnInit {
      * */
     public isRangeFrom(value: number): boolean {
         if (this.isInRangeMode) {
-            const fromValue = this.selectedValues[0]
+            const fromValue = this.selectedValues?.[0] ?? null
             return fromValue !== null && value === fromValue
         }
+        return false
     }
 
     /**
@@ -153,9 +156,10 @@ export class OwlCalendarBodyComponent implements OnInit {
      * */
     public isRangeTo(value: number): boolean {
         if (this.isInRangeMode) {
-            const toValue = this.selectedValues[1]
+            const toValue = this.selectedValues?.[1]
             return toValue !== null && value === toValue
         }
+        return false
     }
 
     /**

@@ -1,7 +1,6 @@
 import { PlatformModule } from '@angular/cdk/platform'
 import { NgModule } from '@angular/core'
-import { DateTimeAdapter } from '../../src/lib/class/date-time-adapter.class'
-import { OWL_DATE_TIME_FORMATS } from '../../src/lib/class/date-time-format.class'
+import { DateTimeAdapter, OWL_DATE_TIME_FORMATS } from 'nxt-pick-datetime'
 import { NativeDateTimeAdapter } from './date-time-adapter.class'
 import { OWL_NATIVE_DATE_TIME_FORMATS } from './date-time-format.class'
 

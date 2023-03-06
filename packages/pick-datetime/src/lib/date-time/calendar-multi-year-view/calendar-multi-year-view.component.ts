@@ -36,7 +36,7 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
     }
 
     /** The currently selected date. */
-    private _selected: T | null
+    private _selected: T | null = null
     @Input()
     get selected(): T | null {
         return this._selected
@@ -52,13 +52,13 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
         }
     }
 
-    private _selecteds: T[] = []
+    private _selecteds: Array<T | null> = []
     @Input()
-    get selecteds(): T[] {
+    get selecteds(): Array<T | null> {
         return this._selecteds
     }
 
-    set selecteds(values: T[]) {
+    set selecteds(values: Array<T | null>) {
         this._selecteds = values.map((v) => {
             v = this.dateTimeAdapter.deserialize(v)
             return this.getValidDate(v)
@@ -66,13 +66,13 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
         this.setSelectedYears()
     }
 
-    private _pickerMoment: T | null
+    private _pickerMoment: T | null = null
     @Input()
     get pickerMoment() {
         return this._pickerMoment
     }
 
-    set pickerMoment(value: T) {
+    set pickerMoment(value: T | null) {
         const oldMoment = this._pickerMoment
         value = this.dateTimeAdapter.deserialize(value)
         this._pickerMoment = this.getValidDate(value) || this.dateTimeAdapter.now()
@@ -86,13 +86,13 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
     /**
      * A function used to filter which dates are selectable
      * */
-    private _dateFilter: DateFilter<T>
+    private _dateFilter?: DateFilter<T>
     @Input()
     get dateFilter() {
         return this._dateFilter
     }
 
-    set dateFilter(filter: DateFilter<T>) {
+    set dateFilter(filter: DateFilter<T> | undefined) {
         this._dateFilter = filter
         if (this.initiated) {
             this.generateYearList()
@@ -100,7 +100,7 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
     }
 
     /** The minimum selectable date. */
-    private _minDate: T | null
+    private _minDate: T | null = null
     @Input()
     get minDate(): T | null {
         return this._minDate
@@ -115,7 +115,7 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
     }
 
     /** The maximum selectable date. */
-    private _maxDate: T | null
+    private _maxDate: T | null = null
     @Input()
     get maxDate(): T | null {
         return this._maxDate
@@ -129,18 +129,18 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
         }
     }
 
-    private _todayYear: number
-    get todayYear(): number {
+    private _todayYear?: number
+    get todayYear() {
         return this._todayYear
     }
 
-    private _years: CalendarCell[][]
+    private _years?: CalendarCell[][]
     get years() {
         return this._years
     }
 
-    private _selectedYears: number[]
-    get selectedYears(): number[] {
+    private _selectedYears?: Array<number | null>
+    get selectedYears() {
         return this._selectedYears
     }
 
@@ -155,16 +155,18 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
             || this.selectMode === 'rangeTo'
     }
 
-    get activeCell(): number {
+    get activeCell(): number | undefined {
         if (this._pickerMoment) {
             return this.dateTimeAdapter.getYear(this._pickerMoment) % (YEARS_PER_ROW * YEAR_ROWS)
         }
+        return
     }
 
-    get tableHeader(): string {
+    get tableHeader(): string | undefined {
         if (this._years && this._years.length > 0) {
             return `${this._years[0][0].displayValue} ~ ${this._years[YEAR_ROWS - 1][YEARS_PER_ROW - 1].displayValue}`
         }
+        return
     }
 
     get prevButtonLabel(): string {
@@ -193,7 +195,7 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
     @Output() readonly keyboardEnter: EventEmitter<any> = new EventEmitter<any>()
 
     /** The body of calendar table */
-    @ViewChild(OwlCalendarBodyComponent, { static: true }) calendarBodyElm: OwlCalendarBodyComponent
+    @ViewChild(OwlCalendarBodyComponent, { static: true }) calendarBodyElm?: OwlCalendarBodyComponent
 
     @HostBinding('class.owl-dt-calendar-view')
     get owlDTCalendarView(): boolean {
@@ -421,7 +423,7 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
         return false
     }
 
-    private isSameYearList(date1: T, date2: T): boolean {
+    private isSameYearList(date1: T | null, date2: T | null): boolean {
         return Math.floor(this.dateTimeAdapter.getYear(date1) / (YEARS_PER_ROW * YEAR_ROWS)) ===
             Math.floor(this.dateTimeAdapter.getYear(date2) / (YEARS_PER_ROW * YEAR_ROWS))
     }
@@ -434,6 +436,6 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
     }
 
     private focusActiveCell() {
-        this.calendarBodyElm.focusActiveCell()
+        this.calendarBodyElm?.focusActiveCell()
     }
 }

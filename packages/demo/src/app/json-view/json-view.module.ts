@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { JsonViewModule } from 'json-view'
+import { JsonViewModule } from 'nxt-json-view'
 import { AppJsonViewRoutingModule } from './json-view-routing.module'
 import { AppJsonViewComponent } from './json-view.component'
 

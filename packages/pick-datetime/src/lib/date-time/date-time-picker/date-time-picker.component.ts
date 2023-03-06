@@ -8,7 +8,7 @@ import { merge, Subscription } from 'rxjs'
 import { filter, take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { OwlDateTimeFormats, OWL_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
-import { OwlDateTimeDirective, PickerMode, PickerType, SelectMode } from '../../class/date-time.class'
+import { OwlDateTimeDirective, PickerMode, PickerType } from '../../class/date-time.class'
 import { OwlDialogRef } from '../../class/dialog-ref.class'
 import { OwlDialogService } from '../../dialog/dialog.service'
 import { OwlDateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
@@ -53,7 +53,7 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
     public panelClass: string | string[] = []
 
     /** The date to open the calendar to initially. */
-    private _startAt: T | null
+    private _startAt: T | null = null
     @Input()
     get startAt(): T | null {
         // If an explicit startAt is set we start there, otherwise we start at whatever the currently
@@ -73,14 +73,13 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
             } else if (this._dtInput.selectMode === 'rangeTo') {
                 return this._dtInput.values[1] || null
             }
-        } else {
-            return null
         }
+        return null
     }
 
     set startAt(date: T | null) {
         this._startAt = this.getValidDate(
-            this.dateTimeAdapter.deserialize(date)
+            this.dateTimeAdapter?.deserialize(date)
         )
     }
 
@@ -123,15 +122,15 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
     }
 
     /** Whether the date time picker should be disabled. */
-    private _disabled: boolean
+    private _disabled: boolean = false
     @Input()
-    get disabled(): boolean {
+    override get disabled(): boolean {
         return this._disabled === undefined && this._dtInput
             ? this._dtInput.disabled
             : !!this._disabled
     }
 
-    set disabled(value: boolean) {
+    override set disabled(value: boolean) {
         value = coerceBooleanProperty(value)
         if (value !== this._disabled) {
             this._disabled = value
@@ -158,7 +157,7 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
      * Learn more this from https://material.angular.io/cdk/overlay/overview#scroll-strategies
      * */
     @Input()
-    public scrollStrategy: ScrollStrategy
+    public scrollStrategy?: ScrollStrategy
 
     /**
      * Callback when the picker is closed
@@ -189,33 +188,33 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
     /**
      * Emit when the selected value has been confirmed
      * */
-    public confirmSelectedChange = new EventEmitter<T[] | T>()
+    public confirmSelectedChange = new EventEmitter<Array<T | null> | T>()
 
     /**
      * Emits when the date time picker is disabled.
      * */
     public disabledChange = new EventEmitter<boolean>()
 
-    private pickerContainerPortal: ComponentPortal<
+    private pickerContainerPortal?: ComponentPortal<
         OwlDateTimeContainerComponent<T>
     >
-    private pickerContainer: OwlDateTimeContainerComponent<T>
-    private popupRef: OverlayRef
-    private dialogRef: OwlDialogRef<OwlDateTimeContainerComponent<T>>
+    private pickerContainer?: OwlDateTimeContainerComponent<T>
+    private popupRef?: OverlayRef
+    private dialogRef?: OwlDialogRef<OwlDateTimeContainerComponent<T>>
     private dtInputSub = Subscription.EMPTY
-    private hidePickerStreamSub = Subscription.EMPTY
-    private confirmSelectedStreamSub = Subscription.EMPTY
-    private pickerOpenedStreamSub = Subscription.EMPTY
+    private hidePickerStreamSub: Subscription | null = Subscription.EMPTY
+    private confirmSelectedStreamSub: Subscription | null = Subscription.EMPTY
+    private pickerOpenedStreamSub: Subscription | null = Subscription.EMPTY
 
     /** The element that was focused before the date time picker was opened. */
     private focusedElementBeforeOpen: HTMLElement | null = null
 
-    private _dtInput: OwlDateTimeInputDirective<T>
+    private _dtInput?: OwlDateTimeInputDirective<T>
     get dtInput() {
         return this._dtInput
     }
 
-    private _selected: T | null
+    private _selected: T | null = null
     get selected() {
         return this._selected
     }
@@ -225,40 +224,40 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
         this.changeDetector.markForCheck()
     }
 
-    private _selecteds: T[] = []
+    private _selecteds: Array<T | null> = []
     get selecteds() {
         return this._selecteds
     }
 
-    set selecteds(values: T[]) {
+    set selecteds(values: Array<T | null>) {
         this._selecteds = values
         this.changeDetector.markForCheck()
     }
 
     /** The minimum selectable date. */
     get minDateTime(): T | null {
-        return this._dtInput && this._dtInput.min
+        return (this._dtInput && this._dtInput.min) ?? null
     }
 
     /** The maximum selectable date. */
     get maxDateTime(): T | null {
-        return this._dtInput && this._dtInput.max
+        return (this._dtInput && this._dtInput.max) ?? null
     }
 
-    get dateTimeFilter(): (date: T | null) => boolean {
-        return this._dtInput && this._dtInput.dateTimeFilter
+    get dateTimeFilter() {
+        return this._dtInput?.dateTimeFilter
     }
 
-    get selectMode(): SelectMode {
-        return this._dtInput.selectMode
+    get selectMode() {
+        return this._dtInput?.selectMode
     }
 
-    get isInSingleMode(): boolean {
-        return this._dtInput.isInSingleMode
+    get isInSingleMode() {
+        return !!this._dtInput?.isInSingleMode
     }
 
-    get isInRangeMode(): boolean {
-        return this._dtInput.isInRangeMode
+    get isInRangeMode() {
+        return !!this._dtInput?.isInRangeMode
     }
 
     private defaultScrollStrategy: () => ScrollStrategy
@@ -269,14 +268,14 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
         private dialogService: OwlDialogService,
         private ngZone: NgZone,
         protected changeDetector: ChangeDetectorRef,
-        @Optional() protected dateTimeAdapter: DateTimeAdapter<T>,
+        @Optional() @Inject(DateTimeAdapter<T>) dateTimeAdapter: DateTimeAdapter<T> | undefined,
         @Inject(OWL_DTPICKER_SCROLL_STRATEGY) defaultScrollStrategy: any,
         @Optional()
         @Inject(OWL_DATE_TIME_FORMATS)
-        protected dateTimeFormats: OwlDateTimeFormats,
+        dateTimeFormats: OwlDateTimeFormats,
         @Optional()
         @Inject(DOCUMENT)
-        private document: any
+        private document: Document | undefined
     ) {
         super(dateTimeAdapter, dateTimeFormats)
         this.defaultScrollStrategy = defaultScrollStrategy
@@ -325,7 +324,7 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
         }
 
         if (this.document) {
-            this.focusedElementBeforeOpen = this.document.activeElement
+            this.focusedElementBeforeOpen = this.document.activeElement as HTMLElement | null
         }
 
         // reset the picker selected value
@@ -338,14 +337,14 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
         // when the picker is open , we make sure the picker's current selected time value
         // is the same as the _startAt time value.
         if (this.selected && this.pickerType !== 'calendar' && this._startAt) {
-            this.selected = this.dateTimeAdapter.createDate(
+            this.selected = this.dateTimeAdapter?.createDate(
                 this.dateTimeAdapter.getYear(this.selected),
                 this.dateTimeAdapter.getMonth(this.selected),
                 this.dateTimeAdapter.getDate(this.selected),
                 this.dateTimeAdapter.getHours(this._startAt),
                 this.dateTimeAdapter.getMinutes(this._startAt),
                 this.dateTimeAdapter.getSeconds(this._startAt)
-            )
+            ) ?? null
         }
 
         if (this.pickerMode === 'dialog')
@@ -353,21 +352,22 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
         else
             this.openAsPopup()
 
-        this.pickerContainer.picker = this
+        if (this.pickerContainer)
+            this.pickerContainer.picker = this
 
         // Listen to picker container's hidePickerStream
-        this.hidePickerStreamSub = this.pickerContainer.hidePickerStream.subscribe(
+        this.hidePickerStreamSub = this.pickerContainer?.hidePickerStream.subscribe(
             () => {
                 this.close()
             }
-        )
+        ) ?? Subscription.EMPTY
 
         // Listen to picker container's confirmSelectedStream
-        this.confirmSelectedStreamSub = this.pickerContainer.confirmSelectedStream.subscribe(
+        this.confirmSelectedStreamSub = this.pickerContainer?.confirmSelectedStream.subscribe(
             (event: any) => {
                 this.confirmSelect(event)
             }
-        )
+        ) ?? Subscription.EMPTY
     }
 
     /**
@@ -453,7 +453,7 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
 
         if (this.dialogRef) {
             this.dialogRef.close()
-            this.dialogRef = null
+            this.dialogRef = undefined
         }
 
         const completeClose = () => {
@@ -486,7 +486,7 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
     public confirmSelect(_event?: any): void {
         if (this.isInSingleMode) {
             const selected =
-                this.selected || this.startAt || this.dateTimeAdapter.now()
+                this.selected || this.startAt || this.dateTimeAdapter?.now()
             this.confirmSelectedChange.emit(selected)
         } else if (this.isInRangeMode) {
             this.confirmSelectedChange.emit(this.selecteds)
@@ -514,7 +514,7 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
                     this.scrollStrategy || this.defaultScrollStrategy()
             }
         )
-        this.pickerContainer = this.dialogRef.componentInstance
+        this.pickerContainer = this.dialogRef.componentInstance ?? undefined
 
         this.dialogRef.afterOpen().subscribe(() => {
             this.afterPickerOpen.emit(null)
@@ -537,27 +537,27 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
             this.createPopup()
         }
 
-        if (!this.popupRef.hasAttached()) {
+        if (!this.popupRef?.hasAttached()) {
             const componentRef: ComponentRef<
                 OwlDateTimeContainerComponent<T>
-            > = this.popupRef.attach(this.pickerContainerPortal)
-            this.pickerContainer = componentRef.instance
+            > | undefined = this.popupRef?.attach(this.pickerContainerPortal)
+            this.pickerContainer = componentRef?.instance
 
             // Update the position once the calendar has rendered.
             this.ngZone.onStable
                 .asObservable()
                 .pipe(take(1))
                 .subscribe(() => {
-                    this.popupRef.updatePosition()
+                    this.popupRef?.updatePosition()
                 })
 
             // emit open stream
-            this.pickerOpenedStreamSub = this.pickerContainer.pickerOpenedStream
+            this.pickerOpenedStreamSub = this.pickerContainer?.pickerOpenedStream
                 .pipe(take(1))
                 .subscribe(() => {
                     this.afterPickerOpen.emit(null)
                     this._opened = true
-                })
+                }) ?? null
         }
     }
 
@@ -583,10 +583,10 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
                 .pipe(
                     filter(
                         event =>
-                            event.keyCode === ESCAPE ||
-                            (this._dtInput &&
-                                event.altKey &&
-                                event.keyCode === UP_ARROW)
+                            !!(event.keyCode === ESCAPE ||
+                                (this._dtInput &&
+                                    event.altKey &&
+                                    event.keyCode === UP_ARROW))
                     )
                 )
         ).subscribe(() => this.close())
@@ -595,52 +595,54 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T>
     /**
      * Create the popup PositionStrategy.
      * */
-    private createPopupPositionStrategy(): PositionStrategy {
-        return this.overlay
-            .position()
-            .flexibleConnectedTo(this._dtInput.elementRef)
-            .withTransformOriginOn('.owl-dt-container')
-            .withFlexibleDimensions(false)
-            .withPush(false)
-            .withPositions([
-                {
-                    originX: 'start',
-                    originY: 'bottom',
-                    overlayX: 'start',
-                    overlayY: 'top'
-                },
-                {
-                    originX: 'start',
-                    originY: 'top',
-                    overlayX: 'start',
-                    overlayY: 'bottom'
-                },
-                {
-                    originX: 'end',
-                    originY: 'bottom',
-                    overlayX: 'end',
-                    overlayY: 'top'
-                },
-                {
-                    originX: 'end',
-                    originY: 'top',
-                    overlayX: 'end',
-                    overlayY: 'bottom'
-                },
-                {
-                    originX: 'start',
-                    originY: 'top',
-                    overlayX: 'start',
-                    overlayY: 'top',
-                    offsetY: -176
-                },
-                {
-                    originX: 'start',
-                    originY: 'top',
-                    overlayX: 'start',
-                    overlayY: 'top',
-                    offsetY: -352
-                }
-            ])
+    private createPopupPositionStrategy(): PositionStrategy | undefined {
+        if (this._dtInput)
+            return this.overlay
+                .position()
+                .flexibleConnectedTo(this._dtInput.elementRef)
+                .withTransformOriginOn('.owl-dt-container')
+                .withFlexibleDimensions(false)
+                .withPush(false)
+                .withPositions([
+                    {
+                        originX: 'start',
+                        originY: 'bottom',
+                        overlayX: 'start',
+                        overlayY: 'top'
+                    },
+                    {
+                        originX: 'start',
+                        originY: 'top',
+                        overlayX: 'start',
+                        overlayY: 'bottom'
+                    },
+                    {
+                        originX: 'end',
+                        originY: 'bottom',
+                        overlayX: 'end',
+                        overlayY: 'top'
+                    },
+                    {
+                        originX: 'end',
+                        originY: 'top',
+                        overlayX: 'end',
+                        overlayY: 'bottom'
+                    },
+                    {
+                        originX: 'start',
+                        originY: 'top',
+                        overlayX: 'start',
+                        overlayY: 'top',
+                        offsetY: -176
+                    },
+                    {
+                        originX: 'start',
+                        originY: 'top',
+                        overlayX: 'start',
+                        overlayY: 'top',
+                        offsetY: -352
+                    }
+                ])
+        return
     }
 }

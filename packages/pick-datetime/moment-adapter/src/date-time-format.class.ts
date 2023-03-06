@@ -1,4 +1,4 @@
-import { OwlDateTimeFormats } from '../../src/lib/class/date-time-format.class'
+import { OwlDateTimeFormats } from 'nxt-pick-datetime'
 
 export const OWL_MOMENT_DATE_TIME_FORMATS: OwlDateTimeFormats = {
     parseInput: 'l LT',

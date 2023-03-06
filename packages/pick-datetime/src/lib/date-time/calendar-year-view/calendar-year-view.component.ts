@@ -37,7 +37,7 @@ export class OwlYearViewComponent<T>
     }
 
     /** The currently selected date. */
-    private _selected: T | null
+    private _selected: T | null = null
     @Input()
     get selected(): T | null {
         return this._selected
@@ -49,13 +49,13 @@ export class OwlYearViewComponent<T>
         this.setSelectedMonths()
     }
 
-    private _selecteds: T[] = []
+    private _selecteds: Array<T | null> = []
     @Input()
-    get selecteds(): T[] {
+    get selecteds(): Array<T | null> {
         return this._selecteds
     }
 
-    set selecteds(values: T[]) {
+    set selecteds(values: Array<T | null>) {
         this._selecteds = []
         values.forEach(val => {
             const value = this.dateTimeAdapter.deserialize(val)
@@ -65,13 +65,13 @@ export class OwlYearViewComponent<T>
         this.setSelectedMonths()
     }
 
-    private _pickerMoment: T | null
+    private _pickerMoment: T | null = null
     @Input()
     get pickerMoment() {
         return this._pickerMoment
     }
 
-    set pickerMoment(value: T) {
+    set pickerMoment(value: T | null) {
         const oldMoment = this._pickerMoment
         value = this.dateTimeAdapter.deserialize(value)
         this._pickerMoment =
@@ -88,13 +88,13 @@ export class OwlYearViewComponent<T>
     /**
      * A function used to filter which dates are selectable
      * */
-    private _dateFilter: DateFilter<T>
+    private _dateFilter?: DateFilter<T>
     @Input()
     get dateFilter() {
         return this._dateFilter
     }
 
-    set dateFilter(filter: DateFilter<T>) {
+    set dateFilter(filter: DateFilter<T> | undefined) {
         this._dateFilter = filter
         if (this.initiated) {
             this.generateMonthList()
@@ -102,7 +102,7 @@ export class OwlYearViewComponent<T>
     }
 
     /** The minimum selectable date. */
-    private _minDate: T | null
+    private _minDate: T | null = null
     @Input()
     get minDate(): T | null {
         return this._minDate
@@ -117,7 +117,7 @@ export class OwlYearViewComponent<T>
     }
 
     /** The maximum selectable date. */
-    private _maxDate: T | null
+    private _maxDate: T | null = null
     @Input()
     get maxDate(): T | null {
         return this._maxDate
@@ -133,15 +133,16 @@ export class OwlYearViewComponent<T>
 
     private readonly monthNames: string[]
 
-    private _months: CalendarCell[][]
+    private _months?: CalendarCell[][]
     get months() {
         return this._months
     }
 
-    get activeCell(): number {
+    get activeCell(): number | undefined {
         if (this._pickerMoment) {
             return this.dateTimeAdapter.getMonth(this._pickerMoment)
         }
+        return
     }
 
     get isInSingleMode(): boolean {
@@ -160,13 +161,13 @@ export class OwlYearViewComponent<T>
 
     private initiated = false
 
-    public todayMonth: number | null
+    public todayMonth: number | null = null
 
     /**
      * An array to hold all selectedDates' month value
      * the value is the month number in current year
      * */
-    public selectedMonths: number[] = []
+    public selectedMonths: Array<number | null> = []
 
     /**
      * Callback to invoke when a new month is selected
@@ -191,7 +192,7 @@ export class OwlYearViewComponent<T>
 
     /** The body of calendar table */
     @ViewChild(OwlCalendarBodyComponent, { static: true })
-    calendarBodyElm: OwlCalendarBodyComponent
+    calendarBodyElm?: OwlCalendarBodyComponent
 
     @HostBinding('class.owl-dt-calendar-view')
     get owlDTCalendarView(): boolean {
@@ -443,7 +444,7 @@ export class OwlYearViewComponent<T>
      * Gets the month in this year that the given Date falls on.
      * Returns null if the given Date is in another year.
      */
-    private getMonthInCurrentYear(date: T | null): number {
+    private getMonthInCurrentYear(date: T | null): number | null {
         if (this.getValidDate(date) && this.getValidDate(this._pickerMoment)) {
             const result = this.dateTimeAdapter.compareYear(
                 date,
@@ -489,7 +490,7 @@ export class OwlYearViewComponent<T>
     /**
      * Check the given dates are in the same year
      */
-    private hasSameYear(dateLeft: T, dateRight: T) {
+    private hasSameYear(dateLeft: T | null, dateRight: T | null) {
         return !!(
             dateLeft &&
             dateRight &&
@@ -509,6 +510,6 @@ export class OwlYearViewComponent<T>
     }
 
     private focusActiveCell() {
-        this.calendarBodyElm.focusActiveCell()
+        this.calendarBodyElm?.focusActiveCell()
     }
 }

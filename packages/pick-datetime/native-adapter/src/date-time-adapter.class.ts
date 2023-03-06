@@ -1,6 +1,6 @@
 import { Platform } from '@angular/cdk/platform'
 import { Inject, Injectable, Optional } from '@angular/core'
-import { DateTimeAdapter, OWL_DATE_TIME_LOCALE } from '../../src/lib/class/date-time-adapter.class'
+import { DateTimeAdapter, OWL_DATE_TIME_LOCALE } from 'nxt-pick-datetime'
 
 /** The default month names to use if Intl API is not available. */
 const DEFAULT_MONTH_NAMES = {

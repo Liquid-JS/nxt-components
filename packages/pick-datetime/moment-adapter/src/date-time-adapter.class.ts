@@ -1,6 +1,6 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core'
 import moment, { Moment } from 'moment'
-import { DateTimeAdapter, OWL_DATE_TIME_LOCALE } from '../../src/lib/class/date-time-adapter.class'
+import { DateTimeAdapter, OWL_DATE_TIME_LOCALE } from 'nxt-pick-datetime'
 
 /** Configurable options for {@see MomentDateAdapter}. */
 export interface OwlMomentDateTimeAdapterOptions {

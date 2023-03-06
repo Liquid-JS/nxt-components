@@ -13,20 +13,20 @@ import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
 })
 export class OwlTimerComponent<T> implements OnInit {
     /** The current picker moment */
-    private _pickerMoment: T
+    private _pickerMoment: T | null = null
     @Input()
     get pickerMoment() {
         return this._pickerMoment
     }
 
-    set pickerMoment(value: T) {
+    set pickerMoment(value: T | null) {
         value = this.dateTimeAdapter.deserialize(value)
         this._pickerMoment =
             this.getValidDate(value) || this.dateTimeAdapter.now()
     }
 
     /** The minimum selectable date time. */
-    private _minDateTime: T | null
+    private _minDateTime: T | null = null
     @Input()
     get minDateTime(): T | null {
         return this._minDateTime
@@ -38,7 +38,7 @@ export class OwlTimerComponent<T> implements OnInit {
     }
 
     /** The maximum selectable date time. */
-    private _maxDateTime: T | null
+    private _maxDateTime: T | null = null
     @Input()
     get maxDateTime(): T | null {
         return this._maxDateTime
@@ -55,13 +55,13 @@ export class OwlTimerComponent<T> implements OnInit {
      * Whether to show the second's timer
      */
     @Input()
-    showSecondsTimer: boolean
+    showSecondsTimer: boolean = false
 
     /**
      * Whether the timer is in hour12 format
      */
     @Input()
-    hour12Timer: boolean
+    hour12Timer: boolean = false
 
     /**
      * Hours to change per step

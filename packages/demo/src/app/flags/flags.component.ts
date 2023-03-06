@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { remove as removeDiacritics } from 'diacritics'
-import { FlagDatabaseKey, FlagFormat } from 'flags'
+import { FlagDatabaseKey, FlagFormat } from 'nxt-flags'
 import { getName, registerLocale } from 'i18n-iso-countries'
 import locl from 'i18n-iso-countries/langs/en.json'
 
