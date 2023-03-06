@@ -2,28 +2,15 @@ import { DOWN_ARROW, END, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_
 import { Component, DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { dispatchKeyboardEvent, dispatchMouseEvent, NxtTestDateTimeModule } from '../../../test-helpers'
+import { dispatchKeyboardEvent, dispatchMouseEvent, TestDateTimeModule } from '../../../test-helpers'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 import { DateTimeModule } from '../date-time.module'
 import { MultiYearViewComponent, YEARS_PER_ROW, YEAR_ROWS } from './calendar-multi-year-view.component'
 
-const JAN = 0
-const FEB = 1
-const MAR = 2
-const APR = 3
-const MAY = 4
-const JUN = 5
-const JUL = 6
-const AUG = 7
-const SEP = 8
-const OCT = 9
-const NOV = 10
-const DEC = 11
-
-describe('NxtMultiYearViewComponent', () => {
+describe('MultiYearViewComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [NxtTestDateTimeModule, DateTimeModule],
+            imports: [TestDateTimeModule, DateTimeModule],
             declarations: [
                 StandardMultiYearViewComponent,
                 MultiYearViewWithDateFilterComponent
@@ -66,7 +53,7 @@ describe('NxtMultiYearViewComponent', () => {
         })
 
         it('should NOT show selected year if in different range', () => {
-            testComponent.selected = new Date(2040, JAN, 10)
+            testComponent.selected = new Date(2040, 0, 10)
             fixture.detectChanges()
 
             const selectedElContent = multiYearViewElement.querySelector(
@@ -104,14 +91,14 @@ describe('NxtMultiYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2017, JAN, 5)
+                new Date(2017, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', LEFT_ARROW)
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2016, JAN, 5)
+                new Date(2016, 0, 5)
             )
         })
 
@@ -123,14 +110,14 @@ describe('NxtMultiYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2019, JAN, 5)
+                new Date(2019, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', RIGHT_ARROW)
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2020, JAN, 5)
+                new Date(2020, 0, 5)
             )
         })
 
@@ -142,14 +129,14 @@ describe('NxtMultiYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2018 - YEARS_PER_ROW, JAN, 5)
+                new Date(2018 - YEARS_PER_ROW, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', UP_ARROW)
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2018 - YEARS_PER_ROW * 2, JAN, 5)
+                new Date(2018 - YEARS_PER_ROW * 2, 0, 5)
             )
         })
 
@@ -161,14 +148,14 @@ describe('NxtMultiYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2018 + YEARS_PER_ROW, JAN, 5)
+                new Date(2018 + YEARS_PER_ROW, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', DOWN_ARROW)
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2018 + YEARS_PER_ROW * 2, JAN, 5)
+                new Date(2018 + YEARS_PER_ROW * 2, 0, 5)
             )
         })
 
@@ -180,14 +167,14 @@ describe('NxtMultiYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2016, JAN, 5)
+                new Date(2016, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', HOME)
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2016, JAN, 5)
+                new Date(2016, 0, 5)
             )
         })
 
@@ -199,14 +186,14 @@ describe('NxtMultiYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2036, JAN, 5)
+                new Date(2036, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', END)
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2036, JAN, 5)
+                new Date(2036, 0, 5)
             )
         })
 
@@ -218,14 +205,14 @@ describe('NxtMultiYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2018 - YEARS_PER_ROW * YEAR_ROWS, JAN, 5)
+                new Date(2018 - YEARS_PER_ROW * YEAR_ROWS, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_UP)
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2018 - YEARS_PER_ROW * YEAR_ROWS * 2, JAN, 5)
+                new Date(2018 - YEARS_PER_ROW * YEAR_ROWS * 2, 0, 5)
             )
         })
 
@@ -237,14 +224,14 @@ describe('NxtMultiYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2018 + YEARS_PER_ROW * YEAR_ROWS, JAN, 5)
+                new Date(2018 + YEARS_PER_ROW * YEAR_ROWS, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_DOWN)
             fixture.detectChanges()
 
             expect(multiYearViewInstance.pickerMoment).toEqual(
-                new Date(2018 + YEARS_PER_ROW * YEAR_ROWS * 2, JAN, 5)
+                new Date(2018 + YEARS_PER_ROW * YEAR_ROWS * 2, 0, 5)
             )
         })
     })
@@ -291,8 +278,8 @@ describe('NxtMultiYearViewComponent', () => {
     `
 })
 class StandardMultiYearViewComponent {
-    selected = new Date(2020, JAN, 10)
-    pickerMoment = new Date(2018, JAN, 5)
+    selected = new Date(2020, 0, 10)
+    pickerMoment = new Date(2018, 0, 5)
 
     handleChange(date: Date): void {
         this.pickerMoment = new Date(date)
@@ -307,7 +294,7 @@ class StandardMultiYearViewComponent {
     `
 })
 class MultiYearViewWithDateFilterComponent {
-    pickerMoment = new Date(2018, JAN, 1)
+    pickerMoment = new Date(2018, 0, 1)
     dateFilter(date: Date) {
         return date.getFullYear() !== 2018
     }

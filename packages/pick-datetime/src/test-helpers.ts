@@ -214,10 +214,10 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         platform: Platform,
         @Optional()
         @Inject(NXT_DATE_TIME_LOCALE)
-        nxtDateTimeLocale?: string
+        dateTimeLocale?: string
     ) {
         super()
-        super.setLocale(nxtDateTimeLocale)
+        super.setLocale(dateTimeLocale)
 
         // IE does its own time zone correction, so we disable this on IE.
         this.useUtcForDisplay = !platform.TRIDENT
@@ -625,13 +625,8 @@ export const NXT_TEST_DATE_TIME_FORMATS: DateTimeFormats = {
 @NgModule({
     imports: [PlatformModule],
     providers: [
-        { provide: DateTimeAdapter, useClass: TestDateTimeAdapter }
+        { provide: DateTimeAdapter, useClass: TestDateTimeAdapter },
+        { provide: NXT_DATE_TIME_FORMATS, useValue: NXT_TEST_DATE_TIME_FORMATS }
     ]
 })
 export class TestDateTimeModule { }
-
-@NgModule({
-    imports: [TestDateTimeModule],
-    providers: [{ provide: NXT_DATE_TIME_FORMATS, useValue: NXT_TEST_DATE_TIME_FORMATS }]
-})
-export class NxtTestDateTimeModule { }

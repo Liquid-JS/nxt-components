@@ -2,7 +2,7 @@ import { A11yModule } from '@angular/cdk/a11y'
 import { OverlayModule } from '@angular/cdk/overlay'
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { NxtDialogModule } from '../dialog/dialog.module'
+import { DialogModule } from '../dialog/dialog.module'
 import { CalendarBodyComponent } from './calendar-body/calendar-body.component'
 import { MonthViewComponent } from './calendar-month-view/calendar-month-view.component'
 import { MultiYearViewComponent } from './calendar-multi-year-view/calendar-multi-year-view.component'
@@ -37,7 +37,7 @@ import { TimerComponent } from './timer/timer.component'
     imports: [
         CommonModule,
         OverlayModule,
-        NxtDialogModule,
+        DialogModule,
         A11yModule
     ],
     exports: [

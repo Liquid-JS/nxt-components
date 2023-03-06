@@ -12,7 +12,6 @@ const WEEKS_PER_VIEW = 6
 
 @Component({
     selector: 'nxt-date-time-month-view',
-    exportAs: 'nxtYearView',
     templateUrl: './calendar-month-view.component.html',
     styleUrls: ['./calendar-month-view.component.scss'],
     preserveWhitespaces: false,
@@ -142,11 +141,11 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     /** The minimum selectable date. */
     private _minDate?: T
     @Input()
-    get minDate() {
+    get min() {
         return this._minDate
     }
 
-    set minDate(value: T | undefined) {
+    set min(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._minDate = this.getValidDate(value)
         if (this.initiated) {
@@ -158,11 +157,11 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     /** The maximum selectable date. */
     private _maxDate?: T
     @Input()
-    get maxDate() {
+    get max() {
         return this._maxDate
     }
 
-    set maxDate(value: T | undefined) {
+    set max(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._maxDate = this.getValidDate(value)
 
@@ -246,7 +245,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     calendarBodyElm?: CalendarBodyComponent
 
     @HostBinding('class.nxt-dt-calendar-view')
-    get nxtDTCalendarView(): boolean {
+    get calendarView(): boolean {
         return true
     }
 
@@ -524,10 +523,10 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
         return (
             !!date &&
             (!this.dateFilter || this.dateFilter(date, 'date')) &&
-            (!this.minDate ||
-                this.dateTimeAdapter.compare(date, this.minDate) >= 0) &&
-            (!this.maxDate ||
-                this.dateTimeAdapter.compare(date, this.maxDate) <= 0)
+            (!this.min ||
+                this.dateTimeAdapter.compare(date, this.min) >= 0) &&
+            (!this.max ||
+                this.dateTimeAdapter.compare(date, this.max) <= 0)
         )
     }
 

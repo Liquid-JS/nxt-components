@@ -15,8 +15,8 @@ export class CalendarCell {
 
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
-    selector: '[nxt-date-time-calendar-body]',
-    exportAs: 'nxtDateTimeCalendarBody',
+    selector: '[nxtDateTimeCalendarBody]',
+    exportAs: 'dateTimeCalendarBody',
     templateUrl: './calendar-body.component.html',
     styleUrls: ['./calendar-body.component.scss'],
     preserveWhitespaces: false,
@@ -73,7 +73,7 @@ export class CalendarBodyComponent implements OnInit {
     public readonly select = new EventEmitter<CalendarCell>()
 
     @HostBinding('class.nxt-dt-calendar-body')
-    get nxtDTCalendarBodyClass(): boolean {
+    get calendarBodyClass(): boolean {
         return true
     }
 

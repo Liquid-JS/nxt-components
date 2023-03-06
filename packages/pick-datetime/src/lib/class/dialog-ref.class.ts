@@ -4,7 +4,7 @@ import { GlobalPositionStrategy, OverlayRef } from '@angular/cdk/overlay'
 import { Location } from '@angular/common'
 import { Subject, SubscriptionLike as ISubscription } from 'rxjs'
 import { filter, take } from 'rxjs/operators'
-import { NxtDialogContainerComponent } from '../dialog/dialog-container/dialog-container.component'
+import { DialogContainerComponent } from '../dialog/dialog-container/dialog-container.component'
 import { DialogPosition } from './dialog-config.class'
 
 export class DialogRef<T> {
@@ -30,7 +30,7 @@ export class DialogRef<T> {
 
     constructor(
         private readonly overlayRef: OverlayRef,
-        private readonly container: NxtDialogContainerComponent,
+        private readonly container: DialogContainerComponent,
         public readonly id?: string,
         location?: Location
     ) {

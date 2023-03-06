@@ -3,12 +3,12 @@ import { OverlayModule } from '@angular/cdk/overlay'
 import { PortalModule } from '@angular/cdk/portal'
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { NxtDialogContainerComponent } from './dialog-container/dialog-container.component'
-import { NxtDialogService, NXT_DIALOG_SCROLL_STRATEGY_PROVIDER } from './dialog.service'
+import { DialogContainerComponent } from './dialog-container/dialog-container.component'
+import { DialogService, NXT_DIALOG_SCROLL_STRATEGY_PROVIDER } from './dialog.service'
 
 @NgModule({
     declarations: [
-        NxtDialogContainerComponent
+        DialogContainerComponent
     ],
     imports: [
         CommonModule,
@@ -18,7 +18,7 @@ import { NxtDialogService, NXT_DIALOG_SCROLL_STRATEGY_PROVIDER } from './dialog.
     ],
     providers: [
         NXT_DIALOG_SCROLL_STRATEGY_PROVIDER,
-        NxtDialogService
+        DialogService
     ]
 })
-export class NxtDialogModule { }
+export class DialogModule { }

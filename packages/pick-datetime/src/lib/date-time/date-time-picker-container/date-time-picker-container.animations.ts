@@ -1,6 +1,6 @@
 import { animate, animateChild, AnimationTriggerMetadata, group, query, state, style, transition, trigger } from '@angular/animations'
 
-export const nxtDateTimePickerAnimations: {
+export const dateTimePickerAnimations: {
     readonly transformPicker: AnimationTriggerMetadata
     readonly fadeInPicker: AnimationTriggerMetadata
 } = {

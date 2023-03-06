@@ -4,7 +4,6 @@ import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 
 @Component({
-    exportAs: 'nxtDateTimeTimer',
     selector: 'nxt-date-time-timer',
     templateUrl: './timer.component.html',
     styleUrls: ['./timer.component.scss'],
@@ -27,11 +26,11 @@ export class TimerComponent<T> implements OnInit {
     /** The minimum selectable date time. */
     private _minDateTime?: T
     @Input()
-    get minDateTime() {
+    get min() {
         return this._minDateTime
     }
 
-    set minDateTime(value: T | undefined) {
+    set min(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._minDateTime = this.getValidDate(value)
     }
@@ -39,11 +38,11 @@ export class TimerComponent<T> implements OnInit {
     /** The maximum selectable date time. */
     private _maxDateTime?: T
     @Input()
-    get maxDateTime() {
+    get max() {
         return this._maxDateTime
     }
 
-    set maxDateTime(value: T | undefined) {
+    set max(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._maxDateTime = this.getValidDate(value)
     }
@@ -153,12 +152,12 @@ export class TimerComponent<T> implements OnInit {
     readonly selectedChange = new EventEmitter<T>()
 
     @HostBinding('class.nxt-dt-timer')
-    get nxtDTTimerClass(): boolean {
+    get timerClass(): boolean {
         return true
     }
 
     @HostBinding('attr.tabindex')
-    get nxtDTTimeTabIndex(): number {
+    get timeTabIndex(): number {
         return -1
     }
 
@@ -241,8 +240,8 @@ export class TimerComponent<T> implements OnInit {
      */
     public upHourEnabled(): boolean {
         return (
-            !this.maxDateTime ||
-            this.compareHours(this.stepHour, this.maxDateTime) < 1
+            !this.max ||
+            this.compareHours(this.stepHour, this.max) < 1
         )
     }
 
@@ -251,8 +250,8 @@ export class TimerComponent<T> implements OnInit {
      */
     public downHourEnabled(): boolean {
         return (
-            !this.minDateTime ||
-            this.compareHours(-this.stepHour, this.minDateTime) > -1
+            !this.min ||
+            this.compareHours(-this.stepHour, this.min) > -1
         )
     }
 
@@ -261,8 +260,8 @@ export class TimerComponent<T> implements OnInit {
      */
     public upMinuteEnabled(): boolean {
         return (
-            !this.maxDateTime ||
-            this.compareMinutes(this.stepMinute, this.maxDateTime) < 1
+            !this.max ||
+            this.compareMinutes(this.stepMinute, this.max) < 1
         )
     }
 
@@ -271,8 +270,8 @@ export class TimerComponent<T> implements OnInit {
      */
     public downMinuteEnabled(): boolean {
         return (
-            !this.minDateTime ||
-            this.compareMinutes(-this.stepMinute, this.minDateTime) > -1
+            !this.min ||
+            this.compareMinutes(-this.stepMinute, this.min) > -1
         )
     }
 
@@ -281,8 +280,8 @@ export class TimerComponent<T> implements OnInit {
      */
     public upSecondEnabled(): boolean {
         return (
-            !this.maxDateTime ||
-            this.compareSeconds(this.stepSecond, this.maxDateTime) < 1
+            !this.max ||
+            this.compareSeconds(this.stepSecond, this.max) < 1
         )
     }
 
@@ -291,8 +290,8 @@ export class TimerComponent<T> implements OnInit {
      */
     public downSecondEnabled(): boolean {
         return (
-            !this.minDateTime ||
-            this.compareSeconds(-this.stepSecond, this.minDateTime) > -1
+            !this.min ||
+            this.compareSeconds(-this.stepSecond, this.min) > -1
         )
     }
 

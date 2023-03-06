@@ -8,7 +8,6 @@ import { DateTimeIntl } from '../date-time-picker-intl.service'
 
 @Component({
     selector: 'nxt-date-time-calendar',
-    exportAs: 'nxtDateTimeCalendar',
     templateUrl: './calendar.component.html',
     styleUrls: ['./calendar.component.scss'],
     preserveWhitespaces: false,
@@ -30,11 +29,11 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     /** The minimum selectable date. */
     private _minDate?: T
     @Input()
-    get minDate() {
+    get min() {
         return this._minDate
     }
 
-    set minDate(value: T | undefined) {
+    set min(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         value = this.getValidDate(value)
 
@@ -50,11 +49,11 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     /** The maximum selectable date. */
     private _maxDate?: T
     @Input()
-    get maxDate() {
+    get max() {
         return this._maxDate
     }
 
-    set maxDate(value: T | undefined) {
+    set max(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         value = this.getValidDate(value)
 
@@ -213,17 +212,17 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     public dateFilterForViews = (date?: T) => (
         !!date &&
         (!this.dateFilter || this.dateFilter(date, 'date')) &&
-        (!this.minDate ||
-            this.dateTimeAdapter.compare(date, this.minDate) >= 0) &&
-        (!this.maxDate ||
-            this.dateTimeAdapter.compare(date, this.maxDate) <= 0)
+        (!this.min ||
+            this.dateTimeAdapter.compare(date, this.min) >= 0) &&
+        (!this.max ||
+            this.dateTimeAdapter.compare(date, this.max) <= 0)
     )
 
     /**
      * Bind class 'nxt-dt-calendar' to host
      * */
     @HostBinding('class.nxt-dt-calendar')
-    get nxtDTCalendarClass(): boolean {
+    get calendarClass(): boolean {
         return true
     }
 
@@ -329,8 +328,8 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     public handlePickerMomentChange(date: T): void {
         this.pickerMoment = this.dateTimeAdapter.clampDate(
             date,
-            this.minDate,
-            this.maxDate
+            this.min,
+            this.max
         )
         this.pickerMomentChange.emit(this.pickerMoment)
         return
@@ -345,7 +344,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
      */
     public prevButtonEnabled(): boolean {
         return (
-            !this.minDate || !this.isSameView(this.pickerMoment, this.minDate)
+            !this.min || !this.isSameView(this.pickerMoment, this.min)
         )
     }
 
@@ -354,7 +353,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
      */
     public nextButtonEnabled(): boolean {
         return (
-            !this.maxDate || !this.isSameView(this.pickerMoment, this.maxDate)
+            !this.max || !this.isSameView(this.pickerMoment, this.max)
         )
     }
 

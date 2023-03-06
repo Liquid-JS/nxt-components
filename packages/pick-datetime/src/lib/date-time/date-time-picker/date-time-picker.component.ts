@@ -10,7 +10,7 @@ import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateTimeDirective, PickerMode, PickerType } from '../../class/date-time.class'
 import { DialogRef } from '../../class/dialog-ref.class'
-import { NxtDialogService } from '../../dialog/dialog.service'
+import { DialogService } from '../../dialog/dialog.service'
 import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
 import { DateTimeInputDirective } from '../date-time-picker-input.directive'
 
@@ -36,7 +36,6 @@ export const NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER = {
 
 @Component({
     selector: 'nxt-date-time',
-    exportAs: 'nxtDateTime',
     templateUrl: './date-time-picker.component.html',
     styleUrls: ['./date-time-picker.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -232,12 +231,12 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     }
 
     /** The minimum selectable date. */
-    get minDateTime() {
+    get min() {
         return (this._dtInput && this._dtInput.min)
     }
 
     /** The maximum selectable date. */
-    get maxDateTime() {
+    get max() {
         return (this._dtInput && this._dtInput.max)
     }
 
@@ -260,7 +259,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     constructor(
         private readonly overlay: Overlay,
         private readonly viewContainerRef: ViewContainerRef,
-        private readonly dialogService: NxtDialogService,
+        private readonly dialogService: DialogService,
         private readonly ngZone: NgZone,
         protected readonly changeDetector: ChangeDetectorRef,
         dateTimeAdapter: DateTimeAdapter<T>,

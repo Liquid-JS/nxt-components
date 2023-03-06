@@ -3,7 +3,7 @@ import { ENTER, RIGHT_ARROW } from '@angular/cdk/keycodes'
 import { Component, NgZone } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, MockNgZone, NxtTestDateTimeModule } from '../../../test-helpers'
+import { dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, MockNgZone, TestDateTimeModule } from '../../../test-helpers'
 import { MonthViewComponent } from '../calendar-month-view/calendar-month-view.component'
 import { MultiYearViewComponent } from '../calendar-multi-year-view/calendar-multi-year-view.component'
 import { YearViewComponent } from '../calendar-year-view/calendar-year-view.component'
@@ -11,25 +11,12 @@ import { DateTimeIntl } from '../date-time-picker-intl.service'
 import { DateTimeModule } from '../date-time.module'
 import { CalendarComponent } from './calendar.component'
 
-export const JAN = 0
-export const FEB = 1
-export const MAR = 2
-export const APR = 3
-export const MAY = 4
-export const JUN = 5
-export const JUL = 6
-export const AUG = 7
-export const SEP = 8
-export const OCT = 9
-export const NOV = 10
-export const DEC = 11
-
-describe('NxtCalendarComponent', () => {
+describe('CalendarComponent', () => {
     let zone: MockNgZone
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [NxtTestDateTimeModule, DateTimeModule],
+            imports: [TestDateTimeModule, DateTimeModule],
             declarations: [
                 StandardCalendar,
                 CalendarWithMinMax,
@@ -68,7 +55,7 @@ describe('NxtCalendarComponent', () => {
         it('should be in month view with specified month active', () => {
             expect(calendarInstance.currentView).toBe('month')
             expect(calendarInstance.pickerMoment).toEqual(
-                new Date(2018, JAN, 31)
+                new Date(2018, 0, 31)
             )
         })
 
@@ -80,7 +67,7 @@ describe('NxtCalendarComponent', () => {
 
             fixture.detectChanges()
             expect(calendarInstance.currentView).toBe('month')
-            expect(testComponent.selected).toEqual(new Date(2018, JAN, 31))
+            expect(testComponent.selected).toEqual(new Date(2018, 0, 31))
         })
 
         it('should emit the selected month on cell clicked in year view', () => {
@@ -89,7 +76,7 @@ describe('NxtCalendarComponent', () => {
 
             expect(calendarInstance.currentView).toBe('multi-years')
             expect(calendarInstance.pickerMoment).toEqual(
-                new Date(2018, JAN, 31)
+                new Date(2018, 0, 31)
             );
 
             (calendarElement.querySelector(
@@ -114,7 +101,7 @@ describe('NxtCalendarComponent', () => {
 
             expect(calendarInstance.currentView).toBe('multi-years')
             expect(calendarInstance.pickerMoment).toEqual(
-                new Date(2018, JAN, 31)
+                new Date(2018, 0, 31)
             );
             (calendarElement.querySelector(
                 '.nxt-dt-calendar-cell-active'
@@ -127,7 +114,7 @@ describe('NxtCalendarComponent', () => {
         })
 
         /*it('should re-render when the i18n labels have changed', () => {
-            inject([NxtDateTimeIntl], (intl: NxtDateTimeIntl) => {
+            inject([DateTimeIntl], (intl: DateTimeIntl) => {
                 const button = fixture.debugElement.nativeElement.querySelector(
                     '.nxt-dt-control-period-button'
                 )
@@ -165,7 +152,7 @@ describe('NxtCalendarComponent', () => {
 
                 it('should initially set pickerMoment', () => {
                     expect(calendarInstance.pickerMoment).toEqual(
-                        new Date(2018, JAN, 31)
+                        new Date(2018, 0, 31)
                     )
                 })
 
@@ -237,7 +224,7 @@ describe('NxtCalendarComponent', () => {
 
                         expect(calendarInstance.currentView).toBe('month')
                         expect(calendarInstance.pickerMoment).toEqual(
-                            new Date(2018, FEB, 28)
+                            new Date(2018, 1, 28)
                         )
                         expect(testComponent.selected).toBeUndefined()
                     })
@@ -270,7 +257,7 @@ describe('NxtCalendarComponent', () => {
 
                         expect(calendarInstance.currentView).toBe('year')
                         expect(calendarInstance.pickerMoment).toEqual(
-                            new Date(2019, JAN, 31)
+                            new Date(2019, 0, 31)
                         )
                         expect(testComponent.selected).toBeUndefined()
                     })
@@ -306,7 +293,7 @@ describe('NxtCalendarComponent', () => {
             expect(monthViewComp).toBeTruthy()
 
             spyOn(monthViewComp, 'generateCalendar').and.callThrough()
-            testComponent.minDate = new Date(2017, NOV, 1)
+            testComponent.minDate = new Date(2017, 10, 1)
             fixture.detectChanges()
 
             expect(monthViewComp.generateCalendar).toHaveBeenCalled()
@@ -320,7 +307,7 @@ describe('NxtCalendarComponent', () => {
             expect(monthViewComp).toBeTruthy()
 
             spyOn(monthViewComp, 'generateCalendar').and.callThrough()
-            testComponent.maxDate = new Date(2017, NOV, 1)
+            testComponent.maxDate = new Date(2017, 10, 1)
             fixture.detectChanges()
 
             expect(monthViewComp.generateCalendar).toHaveBeenCalled()
@@ -346,7 +333,7 @@ describe('NxtCalendarComponent', () => {
             expect(yearViewComp).toBeTruthy()
 
             spyOn(yearViewComp, 'generateMonthList').and.callThrough()
-            testComponent.minDate = new Date(2017, NOV, 1)
+            testComponent.minDate = new Date(2017, 10, 1)
             fixture.detectChanges()
 
             expect(yearViewComp.generateMonthList).toHaveBeenCalled()
@@ -372,7 +359,7 @@ describe('NxtCalendarComponent', () => {
             expect(yearViewComp).toBeTruthy()
 
             spyOn(yearViewComp, 'generateMonthList').and.callThrough()
-            testComponent.maxDate = new Date(2017, NOV, 1)
+            testComponent.maxDate = new Date(2017, 10, 1)
             fixture.detectChanges()
 
             expect(yearViewComp.generateMonthList).toHaveBeenCalled()
@@ -393,7 +380,7 @@ describe('NxtCalendarComponent', () => {
             expect(multiYearsViewComp).toBeTruthy()
 
             spyOn(multiYearsViewComp, 'generateYearList').and.callThrough()
-            testComponent.minDate = new Date(2017, NOV, 1)
+            testComponent.minDate = new Date(2017, 10, 1)
             fixture.detectChanges()
 
             expect(multiYearsViewComp.generateYearList).toHaveBeenCalled()
@@ -414,7 +401,7 @@ describe('NxtCalendarComponent', () => {
             expect(multiYearsViewComp).toBeTruthy()
 
             spyOn(multiYearsViewComp, 'generateYearList').and.callThrough()
-            testComponent.maxDate = new Date(2017, NOV, 1)
+            testComponent.maxDate = new Date(2017, 10, 1)
             fixture.detectChanges()
 
             expect(multiYearsViewComp.generateYearList).toHaveBeenCalled()
@@ -448,7 +435,7 @@ describe('NxtCalendarComponent', () => {
             (monthCell as HTMLElement).click()
             fixture.detectChanges()
 
-            expect(testComponent.selected).toEqual(new Date(2018, JAN, 2))
+            expect(testComponent.selected).toEqual(new Date(2018, 0, 2))
         })
     })
 })
@@ -468,23 +455,23 @@ class StandardCalendar {
     selected?: Date
     selectedYear?: Date
     selectedMonth?: Date
-    pickerMoment = new Date(2018, JAN, 31)
+    pickerMoment = new Date(2018, 0, 31)
 }
 
 @Component({
     template: `
         <nxt-date-time-calendar [selectMode]="selectMode"
                                 [pickerMoment]="pickerMoment"
-                                [minDate]="minDate"
-                                [maxDate]="maxDate"></nxt-date-time-calendar>
+                                [min]="minDate"
+                                [max]="maxDate"></nxt-date-time-calendar>
     `
 })
 class CalendarWithMinMax {
     selectMode = 'single'
     startAt?: Date
-    minDate = new Date(2016, JAN, 1)
-    maxDate = new Date(2019, JAN, 1)
-    pickerMoment = new Date(2018, JAN, 31)
+    minDate = new Date(2016, 0, 1)
+    maxDate = new Date(2019, 0, 1)
+    pickerMoment = new Date(2018, 0, 31)
 }
 
 @Component({
@@ -498,9 +485,9 @@ class CalendarWithMinMax {
 class CalendarWithDateFilter {
     selectMode = 'single'
     selected?: Date
-    pickerMoment = new Date(2018, JAN, 31)
+    pickerMoment = new Date(2018, 0, 31)
 
     dateFilter(date: Date) {
-        return !(date.getDate() % 2) && date.getMonth() !== NOV
+        return !(date.getDate() % 2) && date.getMonth() !== 10
     }
 }

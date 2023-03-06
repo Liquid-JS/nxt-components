@@ -132,9 +132,9 @@ export abstract class DateTimeDirective<T> {
 
     abstract get dateTimeFilter(): ((date: T | undefined) => boolean) | undefined
 
-    abstract get maxDateTime(): T | undefined
+    abstract get max(): T | undefined
 
-    abstract get minDateTime(): T | undefined
+    abstract get min(): T | undefined
 
     abstract get selectMode(): SelectMode | undefined
 
@@ -174,8 +174,8 @@ export abstract class DateTimeDirective<T> {
     public dateTimeChecker = (dateTime: T | undefined) => (
         !!dateTime &&
         (!this.dateTimeFilter || this.dateTimeFilter(dateTime)) &&
-        (!this.minDateTime || this.dateTimeAdapter.compare(dateTime, this.minDateTime) >= 0) &&
-        (!this.maxDateTime || this.dateTimeAdapter.compare(dateTime, this.maxDateTime) <= 0)
+        (!this.min || this.dateTimeAdapter.compare(dateTime, this.min) >= 0) &&
+        (!this.max || this.dateTimeAdapter.compare(dateTime, this.max) <= 0)
     )
 
     get disabled(): boolean {

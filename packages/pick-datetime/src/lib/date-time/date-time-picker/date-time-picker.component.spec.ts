@@ -3,31 +3,18 @@ import { ENTER, ESCAPE, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
 import { OverlayContainer } from '@angular/cdk/overlay'
 import { Component, FactoryProvider, Type, ValueProvider, ViewChild } from '@angular/core'
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing'
-import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule, UntypedFormControl } from '@angular/forms'
 import { By } from '@angular/platform-browser'
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
-import { createKeyboardEvent, dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, NxtTestDateTimeModule } from '../../../test-helpers'
+import { createKeyboardEvent, dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, TestDateTimeModule } from '../../../test-helpers'
 import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
 import { DateTimeInputDirective } from '../date-time-picker-input.directive'
 import { DateTimeTriggerDirective } from '../date-time-picker-trigger.directive'
 import { DateTimeModule } from '../date-time.module'
 import { DateTimeComponent } from './date-time-picker.component'
 
-const JAN = 0
-const FEB = 1
-const MAR = 2
-const APR = 3
-const MAY = 4
-const JUN = 5
-const JUL = 6
-const AUG = 7
-const SEP = 8
-const OCT = 9
-const NOV = 10
-const DEC = 11
-
-describe('NxtDateTimeComponent', () => {
+describe('DateTimeComponent', () => {
     const SUPPORTS_INTL = typeof Intl != 'undefined'
 
     // Creates a test component fixture.
@@ -62,7 +49,7 @@ describe('NxtDateTimeComponent', () => {
         container.ngOnDestroy()
     }))
 
-    describe('with NxtTestDateTimeModule', () => {
+    describe('with TestDateTimeModule', () => {
         describe('standard DateTimePicker', () => {
             let fixture: ComponentFixture<StandardDateTimePicker>
             let testComponent: StandardDateTimePicker
@@ -70,7 +57,7 @@ describe('NxtDateTimeComponent', () => {
 
             beforeEach(fakeAsync(() => {
                 fixture = createComponent(StandardDateTimePicker, [
-                    NxtTestDateTimeModule
+                    TestDateTimeModule
                 ])
                 fixture.detectChanges()
                 testComponent = fixture.componentInstance
@@ -298,7 +285,7 @@ describe('NxtDateTimeComponent', () => {
                         false
                     )
                 expect(testComponent.dateTimePickerInput?.value).toEqual(
-                    new Date(2020, JAN, 1)
+                    new Date(2020, 0, 1)
                 ) // not update to clicked value
             }))
 
@@ -318,7 +305,7 @@ describe('NxtDateTimeComponent', () => {
                 containerElement = containerDebugElement.nativeElement
                 expect(
                     containerDebugElement.componentInstance.pickerMoment
-                ).toEqual(new Date(2020, JAN, 1))
+                ).toEqual(new Date(2020, 0, 1))
 
                 const btns = containerElement.querySelectorAll(
                     '.nxt-dt-container-control-button'
@@ -333,7 +320,7 @@ describe('NxtDateTimeComponent', () => {
                         false
                     )
                 expect(testComponent.dateTimePickerInput?.value).toEqual(
-                    new Date(2020, JAN, 1)
+                    new Date(2020, 0, 1)
                 )
             }))
 
@@ -353,7 +340,7 @@ describe('NxtDateTimeComponent', () => {
                 containerElement = containerDebugElement.nativeElement
                 expect(
                     containerDebugElement.componentInstance.pickerMoment
-                ).toEqual(new Date(2020, JAN, 1))
+                ).toEqual(new Date(2020, 0, 1))
 
                 const monthCell = containerElement.querySelector(
                     '[aria-label="January 2, 2020"]'
@@ -374,13 +361,13 @@ describe('NxtDateTimeComponent', () => {
                         false
                     )
                 expect(testComponent.dateTimePickerInput?.value).toEqual(
-                    new Date(2020, JAN, 2)
+                    new Date(2020, 0, 2)
                 )
             }))
 
             it('should set startAt fallback to input value', () => {
                 expect(testComponent.dateTimePicker?.startAt).toEqual(
-                    new Date(2020, JAN, 1)
+                    new Date(2020, 0, 1)
                 )
             })
 
@@ -495,7 +482,7 @@ describe('NxtDateTimeComponent', () => {
                     containerElement = containerDebugElement.nativeElement
                     expect(
                         containerDebugElement.componentInstance.pickerMoment
-                    ).toEqual(new Date(2020, JAN, 1))
+                    ).toEqual(new Date(2020, 0, 1))
 
                     const dateCell = containerElement.querySelector(
                         '[aria-label="January 2, 2020"]'
@@ -510,7 +497,7 @@ describe('NxtDateTimeComponent', () => {
                             false
                         )
                     expect(testComponent.dateTimePickerInput?.value).toEqual(
-                        new Date(2020, JAN, 2)
+                        new Date(2020, 0, 2)
                     )
                 }))
 
@@ -530,7 +517,7 @@ describe('NxtDateTimeComponent', () => {
                     containerElement = containerDebugElement.nativeElement
                     expect(
                         containerDebugElement.componentInstance.pickerMoment
-                    ).toEqual(new Date(2020, JAN, 1))
+                    ).toEqual(new Date(2020, 0, 1))
 
                     const calendarBodyEl = containerElement.querySelector(
                         '.nxt-dt-calendar-body'
@@ -553,7 +540,7 @@ describe('NxtDateTimeComponent', () => {
                             false
                         )
                     expect(testComponent.dateTimePickerInput?.value).toEqual(
-                        new Date(2020, JAN, 2)
+                        new Date(2020, 0, 2)
                     )
                 }))
 
@@ -573,9 +560,9 @@ describe('NxtDateTimeComponent', () => {
                     containerElement = containerDebugElement.nativeElement
                     expect(
                         containerDebugElement.componentInstance.pickerMoment
-                    ).toEqual(new Date(2020, JAN, 1))
+                    ).toEqual(new Date(2020, 0, 1))
                     expect(testComponent.dateTimePicker?.selected).toEqual(
-                        new Date(2020, JAN, 1)
+                        new Date(2020, 0, 1)
                     )
 
                     const dateCell = containerElement.querySelector(
@@ -591,7 +578,7 @@ describe('NxtDateTimeComponent', () => {
                             false
                         )
                     expect(testComponent.dateTimePickerInput?.value).toEqual(
-                        new Date(2020, JAN, 1)
+                        new Date(2020, 0, 1)
                     )
                 }))
             })
@@ -640,7 +627,7 @@ describe('NxtDateTimeComponent', () => {
 
             beforeEach(fakeAsync(() => {
                 fixture = createComponent(RangeDateTimePicker, [
-                    NxtTestDateTimeModule
+                    TestDateTimeModule
                 ])
                 fixture.detectChanges()
                 testComponent = fixture.componentInstance
@@ -699,7 +686,7 @@ describe('NxtDateTimeComponent', () => {
                 ).toBe(0)
                 expect(testComponent.dateTimePicker?.selecteds.length).toBe(2)
                 expect(testComponent.dateTimePicker!.selecteds![0]).toEqual(
-                    new Date(2020, JAN, 2)
+                    new Date(2020, 0, 2)
                 )
                 expect(testComponent.dateTimePicker!.selecteds![1]).toBe(undefined)
             }))
@@ -728,13 +715,13 @@ describe('NxtDateTimeComponent', () => {
                 ).toBe(0)
                 expect(testComponent.dateTimePicker?.selecteds.length).toBe(2)
                 expect(testComponent.dateTimePicker!.selecteds![0]).toEqual(
-                    new Date(2020, JAN, 2)
+                    new Date(2020, 0, 2)
                 )
                 expect(testComponent.dateTimePicker!.selecteds![1]).toBe(undefined)
             }))
 
             it('clicking the dateCell should set the rangeFrom value when dateCell value is before the old rangeFrom value', fakeAsync(() => {
-                testComponent.dates = [new Date(2020, JAN, 2), undefined]
+                testComponent.dates = [new Date(2020, 0, 2), undefined]
                 fixture.detectChanges()
 
                 testComponent.dateTimePicker?.open()
@@ -760,13 +747,13 @@ describe('NxtDateTimeComponent', () => {
                 ).toBe(0)
                 expect(testComponent.dateTimePicker?.selecteds.length).toBe(2)
                 expect(testComponent.dateTimePicker!.selecteds![0]).toEqual(
-                    new Date(2020, JAN, 1)
+                    new Date(2020, 0, 1)
                 )
                 expect(testComponent.dateTimePicker!.selecteds![1]).toBe(undefined)
             }))
 
             it('clicking the dateCell should set the rangeTo value when rangeFrom already had value', fakeAsync(() => {
-                testComponent.dates = [new Date(2020, JAN, 2), undefined]
+                testComponent.dates = [new Date(2020, 0, 2), undefined]
                 fixture.detectChanges()
 
                 testComponent.dateTimePicker?.open()
@@ -792,10 +779,10 @@ describe('NxtDateTimeComponent', () => {
                 ).toBe(1)
                 expect(testComponent.dateTimePicker?.selecteds.length).toBe(2)
                 expect(testComponent.dateTimePicker!.selecteds![0]).toEqual(
-                    new Date(2020, JAN, 2)
+                    new Date(2020, 0, 2)
                 )
                 expect(testComponent.dateTimePicker!.selecteds![1]).toEqual(
-                    new Date(2020, JAN, 3)
+                    new Date(2020, 0, 3)
                 )
             }))
 
@@ -931,7 +918,7 @@ describe('NxtDateTimeComponent', () => {
         describe('DateTimePicker with too many inputs', () => {
             it('should throw when multiple inputs registered', fakeAsync(() => {
                 const fixture = createComponent(MultiInputDateTimePicker, [
-                    NxtTestDateTimeModule
+                    TestDateTimeModule
                 ])
                 expect(() => fixture.detectChanges()).toThrow()
             }))
@@ -943,7 +930,7 @@ describe('NxtDateTimeComponent', () => {
 
             beforeEach(fakeAsync(() => {
                 fixture = createComponent(NoInputDateTimePicker, [
-                    NxtTestDateTimeModule
+                    TestDateTimeModule
                 ])
                 fixture.detectChanges()
 
@@ -972,7 +959,7 @@ describe('NxtDateTimeComponent', () => {
 
             beforeEach(fakeAsync(() => {
                 fixture = createComponent(DateTimePickerWithStartAt, [
-                    NxtTestDateTimeModule
+                    TestDateTimeModule
                 ])
                 fixture.detectChanges()
 
@@ -986,7 +973,7 @@ describe('NxtDateTimeComponent', () => {
 
             it('should override input value by explicit startAt', () => {
                 expect(testComponent.dateTimePicker?.startAt).toEqual(
-                    new Date(2010, JAN, 1)
+                    new Date(2010, 0, 1)
                 )
             })
         })
@@ -999,7 +986,7 @@ describe('NxtDateTimeComponent', () => {
 
             beforeEach(async () => {
                 fixture = createComponent(DateTimePickerWithStartView, [
-                    NxtTestDateTimeModule
+                    TestDateTimeModule
                 ])
                 fixture.detectChanges()
 
@@ -1108,7 +1095,7 @@ describe('NxtDateTimeComponent', () => {
 
             beforeEach(fakeAsync(async () => {
                 fixture = createComponent(DateTimePickerWithNgModel, [
-                    NxtTestDateTimeModule
+                    TestDateTimeModule
                 ])
                 fixture.detectChanges()
                 await fixture.whenStable().then(() => {
@@ -1128,7 +1115,7 @@ describe('NxtDateTimeComponent', () => {
                 expect(testComponent.dateTimePickerInput?.value).toBeUndefined()
                 expect(testComponent.dateTimePicker?.selected).toBeUndefined()
 
-                const selected = new Date(2017, JAN, 1)
+                const selected = new Date(2017, 0, 1)
                 testComponent.moment = selected
                 fixture.detectChanges()
                 flush()
@@ -1144,7 +1131,7 @@ describe('NxtDateTimeComponent', () => {
                 expect(testComponent.moment).toBeUndefined()
                 expect(testComponent.dateTimePickerInput?.value).toBeUndefined()
 
-                const selected = new Date(2017, JAN, 1)
+                const selected = new Date(2017, 0, 1)
                 testComponent.dateTimePicker?.select(selected)
                 fixture.detectChanges()
                 flush()
@@ -1178,7 +1165,7 @@ describe('NxtDateTimeComponent', () => {
 
                 expect(inputEl.classList).toContain('ng-pristine')
 
-                testComponent.dateTimePicker?.select(new Date(2017, JAN, 1))
+                testComponent.dateTimePicker?.select(new Date(2017, 0, 1))
                 fixture.detectChanges()
                 flush()
                 testComponent.dateTimePicker?.confirmSelect()
@@ -1195,7 +1182,7 @@ describe('NxtDateTimeComponent', () => {
 
                 expect(inputEl.classList).toContain('ng-pristine')
 
-                testComponent.moment = new Date(2017, JAN, 1)
+                testComponent.moment = new Date(2017, 0, 1)
                 fixture.detectChanges()
                 flush()
                 fixture.detectChanges()
@@ -1240,7 +1227,7 @@ describe('NxtDateTimeComponent', () => {
 
                 expect(inputEl.classList).toContain('ng-untouched')
 
-                testComponent.dateTimePicker?.select(new Date(2017, JAN, 1))
+                testComponent.dateTimePicker?.select(new Date(2017, 0, 1))
                 fixture.detectChanges()
                 flush()
                 testComponent.dateTimePicker?.confirmSelect()
@@ -1268,8 +1255,8 @@ describe('NxtDateTimeComponent', () => {
                         0
                     )
 
-                    const from = new Date(2017, JAN, 1)
-                    const to = new Date(2017, JAN, 3)
+                    const from = new Date(2017, 0, 1)
+                    const to = new Date(2017, 0, 3)
                     testComponent.moment = [from, to]
                     fixture.detectChanges()
                     flush()
@@ -1301,8 +1288,8 @@ describe('NxtDateTimeComponent', () => {
                         testComponent.dateTimePickerInput?.values.length
                     ).toBe(0)
 
-                    const from = new Date(2017, JAN, 1)
-                    const to = new Date(2017, JAN, 3)
+                    const from = new Date(2017, 0, 1)
+                    const to = new Date(2017, 0, 3)
                     testComponent.dateTimePicker?.select([from, to])
                     fixture.detectChanges()
                     flush()
@@ -1345,7 +1332,7 @@ describe('NxtDateTimeComponent', () => {
                         0
                     )
 
-                    const from = new Date(2017, JAN, 1)
+                    const from = new Date(2017, 0, 1)
                     testComponent.moment = [from]
                     fixture.detectChanges()
                     flush()
@@ -1366,8 +1353,8 @@ describe('NxtDateTimeComponent', () => {
                 }))
 
                 it('should only update fromValue when date is selected', fakeAsync(() => {
-                    const from = new Date(2017, JAN, 1)
-                    const to = new Date(2017, JAN, 3)
+                    const from = new Date(2017, 0, 1)
+                    const to = new Date(2017, 0, 3)
                     testComponent.moment = [from, to]
                     fixture.detectChanges()
                     flush()
@@ -1377,7 +1364,7 @@ describe('NxtDateTimeComponent', () => {
                     fixture.detectChanges()
                     flush()
 
-                    const newSelectedFrom = new Date(2017, JAN, 2)
+                    const newSelectedFrom = new Date(2017, 0, 2)
                     const containerDebugElement = fixture.debugElement.query(
                         By.directive(DateTimeContainerComponent)
                     )
@@ -1408,8 +1395,8 @@ describe('NxtDateTimeComponent', () => {
                 }))
 
                 it('should update fromValue and set toValue to null when date is selected after toValue', fakeAsync(() => {
-                    const from = new Date(2017, JAN, 1)
-                    const to = new Date(2017, JAN, 3)
+                    const from = new Date(2017, 0, 1)
+                    const to = new Date(2017, 0, 3)
                     testComponent.moment = [from, to]
                     fixture.detectChanges()
                     flush()
@@ -1419,7 +1406,7 @@ describe('NxtDateTimeComponent', () => {
                     fixture.detectChanges()
                     flush()
 
-                    const newSelectedFrom = new Date(2017, JAN, 4)
+                    const newSelectedFrom = new Date(2017, 0, 4)
                     const containerDebugElement = fixture.debugElement.query(
                         By.directive(DateTimeContainerComponent)
                     )
@@ -1467,7 +1454,7 @@ describe('NxtDateTimeComponent', () => {
                         0
                     )
 
-                    const to = new Date(2017, JAN, 3)
+                    const to = new Date(2017, 0, 3)
                     testComponent.moment = [undefined, to]
                     fixture.detectChanges()
                     flush()
@@ -1488,8 +1475,8 @@ describe('NxtDateTimeComponent', () => {
                 }))
 
                 it('should only update toValue when date is selected', fakeAsync(() => {
-                    const from = new Date(2017, JAN, 1)
-                    const to = new Date(2017, JAN, 3)
+                    const from = new Date(2017, 0, 1)
+                    const to = new Date(2017, 0, 3)
                     testComponent.moment = [from, to]
                     fixture.detectChanges()
                     flush()
@@ -1499,7 +1486,7 @@ describe('NxtDateTimeComponent', () => {
                     fixture.detectChanges()
                     flush()
 
-                    const newSelectedTo = new Date(2017, JAN, 4)
+                    const newSelectedTo = new Date(2017, 0, 4)
                     const containerDebugElement = fixture.debugElement.query(
                         By.directive(DateTimeContainerComponent)
                     )
@@ -1530,8 +1517,8 @@ describe('NxtDateTimeComponent', () => {
                 }))
 
                 it('should update toValue and set fromValue to null when date is selected before fromValue', fakeAsync(() => {
-                    const from = new Date(2017, JAN, 2)
-                    const to = new Date(2017, JAN, 3)
+                    const from = new Date(2017, 0, 2)
+                    const to = new Date(2017, 0, 3)
                     testComponent.moment = [from, to]
                     fixture.detectChanges()
                     flush()
@@ -1541,7 +1528,7 @@ describe('NxtDateTimeComponent', () => {
                     fixture.detectChanges()
                     flush()
 
-                    const newSelectedTo = new Date(2017, JAN, 1)
+                    const newSelectedTo = new Date(2017, 0, 1)
                     const containerDebugElement = fixture.debugElement.query(
                         By.directive(DateTimeContainerComponent)
                     )
@@ -1579,7 +1566,7 @@ describe('NxtDateTimeComponent', () => {
 
             beforeEach(fakeAsync(() => {
                 fixture = createComponent(DateTimePickerWithFormControl, [
-                    NxtTestDateTimeModule
+                    TestDateTimeModule
                 ])
                 fixture.detectChanges()
 
@@ -1595,7 +1582,7 @@ describe('NxtDateTimeComponent', () => {
                 expect(testComponent.dateTimePickerInput?.value).toBeUndefined()
                 expect(testComponent.dateTimePicker?.selected).toBeUndefined()
 
-                const selected = new Date(2017, JAN, 1)
+                const selected = new Date(2017, 0, 1)
                 testComponent.formControl.setValue(selected)
                 fixture.detectChanges()
 
@@ -1609,7 +1596,7 @@ describe('NxtDateTimeComponent', () => {
                 expect(testComponent.formControl.value).toBeNull()
                 expect(testComponent.dateTimePickerInput?.value).toBeUndefined()
 
-                const selected = new Date(2017, JAN, 1)
+                const selected = new Date(2017, 0, 1)
                 testComponent.dateTimePicker?.select(selected)
                 fixture.detectChanges()
                 flush()
@@ -1652,7 +1639,7 @@ describe('NxtDateTimeComponent', () => {
 
             beforeEach(fakeAsync(() => {
                 fixture = createComponent(DateTimePickerWithTrigger, [
-                    NxtTestDateTimeModule
+                    TestDateTimeModule
                 ])
                 fixture.detectChanges()
 
@@ -1731,14 +1718,14 @@ describe('NxtDateTimeComponent', () => {
             beforeEach(fakeAsync(() => {
                 fixture = createComponent(
                     DateTimePickerWithMinAndMaxValidation,
-                    [NxtTestDateTimeModule]
+                    [TestDateTimeModule]
                 )
                 fixture.detectChanges()
 
                 testComponent = fixture.componentInstance
 
-                minMoment = new Date(2010, JAN, 1, 0, 30, 30)
-                maxMoment = new Date(2020, JAN, 1, 23, 30, 30)
+                minMoment = new Date(2010, 0, 1, 0, 30, 30)
+                maxMoment = new Date(2020, 0, 1, 23, 30, 30)
                 testComponent.min = minMoment
                 testComponent.max = maxMoment
                 fixture.detectChanges()
@@ -1751,16 +1738,16 @@ describe('NxtDateTimeComponent', () => {
             }))
 
             it('should use min and max dates specified by the input', () => {
-                expect(testComponent.dateTimePicker?.minDateTime).toEqual(
+                expect(testComponent.dateTimePicker?.min).toEqual(
                     minMoment
                 )
-                expect(testComponent.dateTimePicker?.maxDateTime).toEqual(
+                expect(testComponent.dateTimePicker?.max).toEqual(
                     maxMoment
                 )
             })
 
             it('should mark invalid when value is before minMoment', fakeAsync(() => {
-                testComponent.date = new Date(2009, DEC, 31)
+                testComponent.date = new Date(2009, 11, 31)
                 fixture.detectChanges()
                 flush()
                 fixture.detectChanges()
@@ -1772,7 +1759,7 @@ describe('NxtDateTimeComponent', () => {
             }))
 
             it('should mark invalid when value is after maxMoment', fakeAsync(() => {
-                testComponent.date = new Date(2020, JAN, 2)
+                testComponent.date = new Date(2020, 0, 2)
                 fixture.detectChanges()
                 flush()
 
@@ -1809,7 +1796,7 @@ describe('NxtDateTimeComponent', () => {
             }))
 
             it('should not mark invalid when value is between minMoment and maxMoment', fakeAsync(() => {
-                testComponent.date = new Date(2010, JAN, 2)
+                testComponent.date = new Date(2010, 0, 2)
                 fixture.detectChanges()
                 flush()
                 fixture.detectChanges()
@@ -1885,7 +1872,7 @@ describe('NxtDateTimeComponent', () => {
 
             beforeEach(fakeAsync(() => {
                 fixture = createComponent(DateTimePickerWithFilterValidation, [
-                    NxtTestDateTimeModule
+                    TestDateTimeModule
                 ])
                 fixture.detectChanges()
                 testComponent = fixture.componentInstance
@@ -1898,7 +1885,7 @@ describe('NxtDateTimeComponent', () => {
             }))
 
             it('should mark input invalid', fakeAsync(() => {
-                testComponent.date = new Date(2017, JAN, 1)
+                testComponent.date = new Date(2017, 0, 1)
                 fixture.detectChanges()
                 flush()
                 fixture.detectChanges()
@@ -1908,7 +1895,7 @@ describe('NxtDateTimeComponent', () => {
                         .classList
                 ).toContain('ng-invalid')
 
-                testComponent.date = new Date(2017, JAN, 2)
+                testComponent.date = new Date(2017, 0, 2)
                 fixture.detectChanges()
                 flush()
                 fixture.detectChanges()
@@ -1920,7 +1907,7 @@ describe('NxtDateTimeComponent', () => {
             }))
 
             it('should disable filtered calendar cells', fakeAsync(() => {
-                testComponent.date = new Date(2017, JAN, 3)
+                testComponent.date = new Date(2017, 0, 3)
                 fixture.detectChanges()
                 flush()
                 fixture.detectChanges()
@@ -1960,7 +1947,7 @@ describe('NxtDateTimeComponent', () => {
             beforeEach(fakeAsync(() => {
                 fixture = createComponent(
                     DateTimePickerWithChangeAndInputEvents,
-                    [NxtTestDateTimeModule]
+                    [TestDateTimeModule]
                 )
                 fixture.detectChanges()
                 testComponent = fixture.componentInstance
@@ -2239,7 +2226,7 @@ describe('NxtDateTimeComponent', () => {
 
             beforeEach(fakeAsync(() => {
                 fixture = createComponent(DateTimePickerWithISOStrings, [
-                    NxtTestDateTimeModule
+                    TestDateTimeModule
                 ])
                 fixture.detectChanges()
                 testComponent = fixture.componentInstance
@@ -2257,16 +2244,16 @@ describe('NxtDateTimeComponent', () => {
                 fixture.detectChanges()
 
                 expect(testComponent.dateTimePicker?.startAt).toEqual(
-                    new Date(2017, JUL, 1)
+                    new Date(2017, 6, 1)
                 )
                 expect(testComponent.dateTimePickerInput?.value).toEqual(
-                    new Date(2017, JUN, 1)
+                    new Date(2017, 5, 1)
                 )
                 expect(testComponent.dateTimePickerInput?.min).toEqual(
-                    new Date(2017, JAN, 1)
+                    new Date(2017, 0, 1)
                 )
                 expect(testComponent.dateTimePickerInput?.max).toEqual(
-                    new Date(2017, DEC, 31)
+                    new Date(2017, 11, 31)
                 )
             }))
         })
@@ -2277,7 +2264,7 @@ describe('NxtDateTimeComponent', () => {
 
             beforeEach(fakeAsync(() => {
                 fixture = createComponent(DateTimePickerWithEvents, [
-                    NxtTestDateTimeModule
+                    TestDateTimeModule
                 ])
                 fixture.detectChanges()
                 testComponent = fixture.componentInstance
@@ -2330,7 +2317,7 @@ describe('NxtDateTimeComponent', () => {
     `
 })
 class StandardDateTimePicker {
-    date: Date | null = new Date(2020, JAN, 1)
+    date: Date | null = new Date(2020, 0, 1)
     pickerType = 'both'
     pickerMode = 'popup'
     opened = false
@@ -2349,10 +2336,10 @@ class StandardDateTimePicker {
     `
 })
 class RangeDateTimePicker {
-    dates?: Array<Date | undefined> = [new Date(2020, JAN, 1), new Date(2020, FEB, 1)]
+    dates?: Array<Date | undefined> = [new Date(2020, 0, 1), new Date(2020, 1, 1)]
     selectMode = 'range'
     pickerType = 'both'
-    startAt = new Date(2020, JAN, 1)
+    startAt = new Date(2020, 0, 1)
     @ViewChild('dt', { static: true })
     dateTimePicker?: DateTimeComponent<Date>
     @ViewChild(DateTimeInputDirective, { static: true })
@@ -2385,8 +2372,8 @@ class NoInputDateTimePicker {
     `
 })
 class DateTimePickerWithStartAt {
-    date = new Date(2020, JAN, 1)
-    startDate = new Date(2010, JAN, 1)
+    date = new Date(2020, 0, 1)
+    startDate = new Date(2010, 0, 1)
     @ViewChild('dt', { static: true })
     dateTimePicker?: DateTimeComponent<Date>
 }
@@ -2400,7 +2387,7 @@ class DateTimePickerWithStartAt {
     `
 })
 class DateTimePickerWithStartView {
-    date = new Date(2020, JAN, 1)
+    date = new Date(2020, 0, 1)
     startView = 'month'
     @ViewChild('dt', { static: true })
     dateTimePicker?: DateTimeComponent<Date>
@@ -2481,7 +2468,7 @@ class DateTimePickerWithMinAndMaxValidation {
 @Component({
     template: `
         <input [(ngModel)]="date"
-               [nxtDateTimeFilter]="filter"
+               [dateTimeFilter]="filter"
                [nxtDateTime]="dt"
                [nxtDateTimeTrigger]="dt">
         <nxt-date-time [showSecondsTimer]="true" #dt></nxt-date-time>
@@ -2533,10 +2520,10 @@ class DateTimePickerWithChangeAndInputEvents {
   `
 })
 class DateTimePickerWithISOStrings {
-    value = new Date(2017, JUN, 1).toISOString()
-    min = new Date(2017, JAN, 1).toISOString()
-    max = new Date(2017, DEC, 31).toISOString()
-    startAt = new Date(2017, JUL, 1).toISOString()
+    value = new Date(2017, 5, 1).toISOString()
+    min = new Date(2017, 0, 1).toISOString()
+    max = new Date(2017, 11, 31).toISOString()
+    startAt = new Date(2017, 6, 1).toISOString()
     @ViewChild('dt', { static: true })
     dateTimePicker?: DateTimeComponent<Date>
     @ViewChild(DateTimeInputDirective, { static: true })

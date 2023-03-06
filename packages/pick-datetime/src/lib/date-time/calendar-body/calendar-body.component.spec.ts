@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { CalendarCell, CalendarBodyComponent } from './calendar-body.component'
 
-describe('NxtCalendarBodyComponent', () => {
+describe('CalendarBodyComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [
@@ -75,7 +75,7 @@ describe('NxtCalendarBodyComponent', () => {
 
 @Component({
     template: `
-        <table nxt-date-time-calendar-body
+        <table nxtDateTimeCalendarBody
                [rows]="rows"
                [todayValue]="todayValue"
                [selectedValues]="selectedValues"

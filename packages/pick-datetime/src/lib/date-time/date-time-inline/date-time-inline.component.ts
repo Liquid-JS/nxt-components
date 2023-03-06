@@ -66,7 +66,7 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
             mode !== 'rangeFrom' &&
             mode !== 'rangeTo'
         ) {
-            throw Error('NxtDateTime Error: invalid selectMode value!')
+            throw Error('DateTime Error: invalid selectMode value!')
         }
 
         this._selectMode = mode
@@ -101,7 +101,7 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
     }
 
     private _dateTimeFilter?: (date: T | undefined) => boolean
-    @Input('nxtDateTimeFilter')
+    @Input()
     get dateTimeFilter() {
         return this._dateTimeFilter
     }
@@ -113,13 +113,12 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
     /** The minimum valid date. */
     private _min?: T
 
-    get minDateTime() {
+    get min() {
         return this._min
     }
 
-    // eslint-disable-next-line @angular-eslint/no-input-rename
-    @Input('min')
-    set minDateTime(value: T | undefined) {
+    @Input()
+    set min(value: T | undefined) {
         this._min = this.getValidDate(this.dateTimeAdapter.deserialize(value))
         this.changeDetector.markForCheck()
     }
@@ -127,13 +126,12 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
     /** The maximum valid date. */
     private _max?: T
 
-    get maxDateTime() {
+    get max() {
         return this._max
     }
 
-    // eslint-disable-next-line @angular-eslint/no-input-rename
-    @Input('max')
-    set maxDateTime(value: T | undefined) {
+    @Input()
+    set max(value: T | undefined) {
         this._max = this.getValidDate(this.dateTimeAdapter.deserialize(value))
         this.changeDetector.markForCheck()
     }
@@ -227,7 +225,7 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
     }
 
     @HostBinding('class.nxt-dt-inline')
-    get nxtDTInlineClass(): boolean {
+    get inlineClass(): boolean {
         return true
     }
 

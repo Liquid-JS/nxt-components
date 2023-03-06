@@ -4,7 +4,6 @@ import { Subject, Subscription } from 'rxjs'
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
 
 @Component({
-    exportAs: 'nxtDateTimeTimerBox',
     selector: 'nxt-date-time-timer-box',
     templateUrl: './timer-box.component.html',
     styleUrls: ['./timer-box.component.scss'],
@@ -53,7 +52,7 @@ export class TimerBoxComponent implements OnInit, OnDestroy {
     }
 
     @HostBinding('class.nxt-dt-timer-box')
-    get nxtDTTimerBoxClass(): boolean {
+    get timerBoxClass(): boolean {
         return true
     }
 

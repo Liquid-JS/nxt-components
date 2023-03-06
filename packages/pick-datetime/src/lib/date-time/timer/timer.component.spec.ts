@@ -2,30 +2,17 @@
 import { Component, DebugElement, NgZone } from '@angular/core'
 import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { MockNgZone, NxtTestDateTimeModule } from 'packages/pick-datetime/src/test-helpers'
+import { MockNgZone, TestDateTimeModule } from 'packages/pick-datetime/src/test-helpers'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 import { DateTimeModule } from '../date-time.module'
 import { TimerComponent } from './timer.component'
 
-const JAN = 0
-const FEB = 1
-const MAR = 2
-const APR = 3
-const MAY = 4
-const JUN = 5
-const JUL = 6
-const AUG = 7
-const SEP = 8
-const OCT = 9
-const NOV = 10
-const DEC = 11
-
-describe('NxtTimerComponent', () => {
+describe('TimerComponent', () => {
     let _zone: MockNgZone | undefined
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [NxtTestDateTimeModule, DateTimeModule],
+            imports: [TestDateTimeModule, DateTimeModule],
             declarations: [StandardTimer],
             providers: [
                 DateTimeIntl,
@@ -142,14 +129,14 @@ describe('NxtTimerComponent', () => {
             fixture.detectChanges()
             flush()
             expect(testComponent.pickerMoment).toEqual(
-                new Date(2018, JAN, 31, 13, 30, 30)
+                new Date(2018, 0, 31, 13, 30, 30)
             )
 
             arrowBtns[1].click()
             fixture.detectChanges()
             flush()
             expect(testComponent.pickerMoment).toEqual(
-                new Date(2018, JAN, 31, 12, 30, 30)
+                new Date(2018, 0, 31, 12, 30, 30)
             )
 
             testComponent.stepHour = 2
@@ -160,14 +147,14 @@ describe('NxtTimerComponent', () => {
             fixture.detectChanges()
             flush()
             expect(testComponent.pickerMoment).toEqual(
-                new Date(2018, JAN, 31, 14, 30, 30)
+                new Date(2018, 0, 31, 14, 30, 30)
             )
 
             arrowBtns[1].click()
             fixture.detectChanges()
             flush()
             expect(testComponent.pickerMoment).toEqual(
-                new Date(2018, JAN, 31, 12, 30, 30)
+                new Date(2018, 0, 31, 12, 30, 30)
             )
         }))
 
@@ -183,14 +170,14 @@ describe('NxtTimerComponent', () => {
             fixture.detectChanges()
             flush()
             expect(testComponent.pickerMoment).toEqual(
-                new Date(2018, JAN, 31, 12, 31, 30)
+                new Date(2018, 0, 31, 12, 31, 30)
             )
 
             arrowBtns[3].click()
             fixture.detectChanges()
             flush()
             expect(testComponent.pickerMoment).toEqual(
-                new Date(2018, JAN, 31, 12, 30, 30)
+                new Date(2018, 0, 31, 12, 30, 30)
             )
 
             testComponent.stepMinute = 2
@@ -201,14 +188,14 @@ describe('NxtTimerComponent', () => {
             fixture.detectChanges()
             flush()
             expect(testComponent.pickerMoment).toEqual(
-                new Date(2018, JAN, 31, 12, 32, 30)
+                new Date(2018, 0, 31, 12, 32, 30)
             )
 
             arrowBtns[3].click()
             fixture.detectChanges()
             flush()
             expect(testComponent.pickerMoment).toEqual(
-                new Date(2018, JAN, 31, 12, 30, 30)
+                new Date(2018, 0, 31, 12, 30, 30)
             )
         }))
 
@@ -226,14 +213,14 @@ describe('NxtTimerComponent', () => {
             fixture.detectChanges()
             flush()
             expect(testComponent.pickerMoment).toEqual(
-                new Date(2018, JAN, 31, 12, 30, 31)
+                new Date(2018, 0, 31, 12, 30, 31)
             )
 
             arrowBtns[5].click()
             fixture.detectChanges()
             flush()
             expect(testComponent.pickerMoment).toEqual(
-                new Date(2018, JAN, 31, 12, 30, 30)
+                new Date(2018, 0, 31, 12, 30, 30)
             )
 
             testComponent.stepSecond = 2
@@ -244,14 +231,14 @@ describe('NxtTimerComponent', () => {
             fixture.detectChanges()
             flush()
             expect(testComponent.pickerMoment).toEqual(
-                new Date(2018, JAN, 31, 12, 30, 32)
+                new Date(2018, 0, 31, 12, 30, 32)
             )
 
             arrowBtns[5].click()
             fixture.detectChanges()
             flush()
             expect(testComponent.pickerMoment).toEqual(
-                new Date(2018, JAN, 31, 12, 30, 30)
+                new Date(2018, 0, 31, 12, 30, 30)
             )
         }))
 
@@ -270,7 +257,7 @@ describe('NxtTimerComponent', () => {
 
             expect(toggleBtn?.innerHTML).toContain('AM')
             expect(testComponent.pickerMoment).toEqual(
-                new Date(2018, JAN, 31, 0, 30, 30)
+                new Date(2018, 0, 31, 0, 30, 30)
             )
         }))
 
@@ -329,8 +316,8 @@ describe('NxtTimerComponent', () => {
                 [stepHour]="stepHour"
                 [stepMinute]="stepMinute"
                 [stepSecond]="stepSecond"
-                [minDateTime]="minDateTime"
-                [maxDateTime]="maxDateTime"
+                [min]="minDateTime"
+                [max]="maxDateTime"
                 (selectedChange)="handleSelectedChange($event)"></nxt-date-time-timer>
     `
 })
@@ -340,9 +327,9 @@ class StandardTimer {
     stepSecond = 1
     hour12Timer = false
     showSecondsTimer = false
-    pickerMoment = new Date(2018, JAN, 31, 12, 30, 30)
-    minDateTime = new Date(2018, JAN, 29, 12, 30, 30)
-    maxDateTime = new Date(2018, FEB, 1, 12, 30, 30)
+    pickerMoment = new Date(2018, 0, 31, 12, 30, 30)
+    minDateTime = new Date(2018, 0, 29, 12, 30, 30)
+    maxDateTime = new Date(2018, 1, 1, 12, 30, 30)
 
     handleSelectedChange(val: Date) {
         this.pickerMoment = val

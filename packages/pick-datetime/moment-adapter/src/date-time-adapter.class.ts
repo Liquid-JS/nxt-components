@@ -3,7 +3,7 @@ import moment, { Moment } from 'moment'
 import { DateTimeAdapter, NXT_DATE_TIME_LOCALE } from 'nxt-pick-datetime'
 
 /** Configurable options for {@see MomentDateAdapter}. */
-export interface NxtMomentDateTimeAdapterOptions {
+export interface MomentDateTimeAdapterOptions {
     /**
      * Turns the use of utc dates on or off.
      * Changing this will change how the DateTimePicker output value.
@@ -13,14 +13,14 @@ export interface NxtMomentDateTimeAdapterOptions {
 }
 
 /** InjectionToken for moment date adapter to configure options. */
-export const NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS = new InjectionToken<NxtMomentDateTimeAdapterOptions>(
+export const NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS = new InjectionToken<MomentDateTimeAdapterOptions>(
     'NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {
     providedIn: 'root',
     factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY
 })
 
 /** @docs-private */
-export function NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY(): NxtMomentDateTimeAdapterOptions {
+export function NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY(): MomentDateTimeAdapterOptions {
     return {
         useUtc: false
     }
@@ -50,13 +50,13 @@ export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
     constructor(
         @Optional()
         @Inject(NXT_DATE_TIME_LOCALE)
-        nxtDateTimeLocale?: string,
+        dateTimeLocale?: string,
         @Optional()
         @Inject(NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS)
-        private readonly options?: NxtMomentDateTimeAdapterOptions
+        private readonly options?: MomentDateTimeAdapterOptions
     ) {
         super()
-        this.setLocale(nxtDateTimeLocale || moment.locale())
+        this.setLocale(dateTimeLocale || moment.locale())
     }
 
     public override setLocale(locale: string) {

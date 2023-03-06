@@ -7,7 +7,7 @@ import { concatAll } from 'rxjs/operators'
 import { DialogConfig } from '../class/dialog-config.class'
 import { DialogRef } from '../class/dialog-ref.class'
 import { extendObject } from '../utils/object'
-import { NxtDialogContainerComponent } from './dialog-container/dialog-container.component'
+import { DialogContainerComponent } from './dialog-container/dialog-container.component'
 
 export const NXT_DIALOG_DATA = new InjectionToken<any>('NXT_DIALOG_DATA')
 
@@ -40,7 +40,7 @@ export const NXT_DIALOG_DEFAULT_OPTIONS = new InjectionToken<DialogConfig>(
 )
 
 @Injectable()
-export class NxtDialogService {
+export class DialogService {
     private readonly ariaHiddenElements = new Map<Element, string | null>()
 
     private readonly _openDialogsAtThisLevel: Array<DialogRef<any>> = []
@@ -95,8 +95,8 @@ export class NxtDialogService {
         private readonly defaultOptions: DialogConfig | undefined,
         @Optional()
         @SkipSelf()
-        @Inject(NxtDialogService)
-        private readonly parentDialog: NxtDialogService | undefined,
+        @Inject(DialogService)
+        private readonly parentDialog: DialogService | undefined,
         private readonly overlayContainer: OverlayContainer
     ) {
         this.scrollStrategy = scrollStrategy
@@ -158,7 +158,7 @@ export class NxtDialogService {
 
     private attachDialogContent<T>(
         componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
-        dialogContainer: NxtDialogContainerComponent,
+        dialogContainer: DialogContainerComponent,
         overlayRef: OverlayRef,
         config: DialogConfig
     ) {
@@ -199,7 +199,7 @@ export class NxtDialogService {
     private createInjector<T>(
         config: DialogConfig,
         dialogRef: DialogRef<T>,
-        dialogContainer: NxtDialogContainerComponent
+        dialogContainer: DialogContainerComponent
     ) {
         const userInjector =
             config &&
@@ -209,7 +209,7 @@ export class NxtDialogService {
         return Injector.create({
             providers: [
                 { provide: DialogRef, useValue: dialogRef },
-                { provide: NxtDialogContainerComponent, useValue: dialogContainer },
+                { provide: DialogContainerComponent, useValue: dialogContainer },
                 { provide: NXT_DIALOG_DATA, useValue: config.data }
             ],
             parent: userInjector || this.injector
@@ -224,13 +224,13 @@ export class NxtDialogService {
     private attachDialogContainer(
         overlayRef: OverlayRef,
         config: DialogConfig
-    ): NxtDialogContainerComponent {
+    ): DialogContainerComponent {
         const containerPortal = new ComponentPortal(
-            NxtDialogContainerComponent,
+            DialogContainerComponent,
             config.viewContainerRef
         )
         const containerRef: ComponentRef<
-            NxtDialogContainerComponent
+            DialogContainerComponent
         > = overlayRef.attach(containerPortal)
         containerRef.instance.setConfig(config)
 

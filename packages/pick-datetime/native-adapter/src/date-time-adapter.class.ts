@@ -89,10 +89,10 @@ export class NativeDateTimeAdapter extends DateTimeAdapter<Date> {
         platform: Platform,
         @Optional()
         @Inject(NXT_DATE_TIME_LOCALE)
-        nxtDateTimeLocale?: string
+        dateTimeLocale?: string
     ) {
         super()
-        super.setLocale(nxtDateTimeLocale)
+        super.setLocale(dateTimeLocale)
 
         // IE does its own time zone correction, so we disable this on IE.
         this.useUtcForDisplay = !platform.TRIDENT

@@ -22,7 +22,7 @@ export const NXT_DATETIME_VALIDATORS: any = {
 
 @Directive({
     selector: 'input[nxtDateTime]',
-    exportAs: 'nxtDateTimeInput',
+    exportAs: 'dateTimeInput',
     providers: [
         NXT_DATETIME_VALUE_ACCESSOR,
         NXT_DATETIME_VALIDATORS
@@ -32,21 +32,20 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     /**
      * The date time picker that this input is associated with.
      * */
-    @Input()
-    set nxtDateTime(value: DateTimeComponent<T>) {
+    @Input('nxtDateTime')
+    set dateTime(value: DateTimeComponent<T>) {
         this.registerDateTimePicker(value)
     }
 
+    private _dateTimeFilter?: (date?: T) => boolean
     /**
      * A function to filter date time
      */
     @Input()
-    set nxtDateTimeFilter(filter: (date?: T) => boolean) {
+    set dateTimeFilter(filter: ((date?: T) => boolean) | undefined) {
         this._dateTimeFilter = filter
         this.validatorOnChange?.()
     }
-
-    private _dateTimeFilter?: (date?: T) => boolean
     get dateTimeFilter() {
         return this._dateTimeFilter
     }
@@ -112,7 +111,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
             mode !== 'rangeFrom' &&
             mode !== 'rangeTo'
         ) {
-            throw Error('NxtDateTime Error: invalid selectMode value!')
+            throw Error('DateTime Error: invalid selectMode value!')
         }
 
         this._selectMode = mode
@@ -225,7 +224,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     /** The form control validator for whether the input parses. */
     private readonly parseValidator: ValidatorFn = () => this.lastValueValid
         ? null
-        : { nxtDateTimeParse: { text: this.elmRef.nativeElement.value } }
+        : { dateTimeParse: { text: this.elmRef.nativeElement.value } }
 
     /** The form control validator for the min date. */
     private readonly minValidator: ValidatorFn = (
@@ -239,7 +238,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
                 !controlValue ||
                 this.dateTimeAdapter.compare(this.min, controlValue) <= 0
                 ? null
-                : { nxtDateTimeMin: { min: this.min, actual: controlValue } }
+                : { dateTimeMin: { min: this.min, actual: controlValue } }
         } else if (this.isInRangeMode && control.value) {
             const controlValueFrom = this.getValidDate(
                 this.dateTimeAdapter.deserialize(control.value[0])
@@ -253,7 +252,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
                 this.dateTimeAdapter.compare(this.min, controlValueFrom) <= 0
                 ? null
                 : {
-                    nxtDateTimeMin: {
+                    dateTimeMin: {
                         min: this.min,
                         actual: [controlValueFrom, controlValueTo]
                     }
@@ -274,7 +273,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
                 !controlValue ||
                 this.dateTimeAdapter.compare(this.max, controlValue) >= 0
                 ? null
-                : { nxtDateTimeMax: { max: this.max, actual: controlValue } }
+                : { dateTimeMax: { max: this.max, actual: controlValue } }
         } else if (this.isInRangeMode && control.value) {
             const controlValueFrom = this.getValidDate(
                 this.dateTimeAdapter.deserialize(control.value[0])
@@ -288,7 +287,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
                 this.dateTimeAdapter.compare(this.max, controlValueTo) >= 0
                 ? null
                 : {
-                    nxtDateTimeMax: {
+                    dateTimeMax: {
                         max: this.max,
                         actual: [controlValueFrom, controlValueTo]
                     }
@@ -308,7 +307,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
             !controlValue ||
             this._dateTimeFilter(controlValue)
             ? null
-            : { nxtDateTimeFilter: true }
+            : { dateTimeFilter: true }
     }
 
     /**
@@ -333,7 +332,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
             !controlValueTo ||
             this.dateTimeAdapter.compare(controlValueFrom, controlValueTo) <= 0
             ? null
-            : { nxtDateTimeRange: true }
+            : { dateTimeRange: true }
     }
 
     /** The combined form control validator for this input. */
@@ -352,12 +351,12 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     public readonly disabledChange = new EventEmitter<boolean>()
 
     @HostBinding('attr.aria-haspopup')
-    get nxtDateTimeInputAriaHaspopup(): boolean {
+    get inputAriaHaspopup(): boolean {
         return true
     }
 
     @HostBinding('attr.aria-owns')
-    get nxtDateTimeInputAriaOwns() {
+    get inputAriaOwns() {
         return (this.dtPicker?.opened && this.dtPicker.id) || undefined
     }
 
@@ -372,7 +371,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     }
 
     @HostBinding('disabled')
-    get nxtDateTimeInputDisabled(): boolean {
+    get inputDisabled(): boolean {
         return this.disabled
     }
 
@@ -391,7 +390,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     public ngOnInit(): void {
         if (!this.dtPicker) {
             throw Error(
-                'NxtDateTimePicker: the picker input doesn\'t have any associated nxt-date-time component'
+                'DateTimePicker: the picker input doesn\'t have any associated nxt-date-time component'
             )
         }
     }

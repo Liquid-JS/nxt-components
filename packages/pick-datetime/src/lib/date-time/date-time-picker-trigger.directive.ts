@@ -7,7 +7,8 @@ import { DateTimeComponent } from './date-time-picker/date-time-picker.component
 })
 export class DateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterContentInit, OnDestroy {
 
-    @Input('nxtDateTimeTrigger') dtPicker?: DateTimeComponent<T>
+    @Input('nxtDateTimeTrigger')
+    dtPicker?: DateTimeComponent<T>
 
     private _disabled?: boolean
     @Input()
@@ -20,7 +21,7 @@ export class DateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterCont
     }
 
     @HostBinding('class.nxt-dt-trigger-disabled')
-    get nxtDTTriggerDisabledClass(): boolean {
+    get triggerDisabledClass(): boolean {
         return this.disabled
     }
 

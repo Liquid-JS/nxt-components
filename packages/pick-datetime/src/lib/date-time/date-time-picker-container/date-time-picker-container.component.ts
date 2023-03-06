@@ -7,18 +7,17 @@ import { DateTimeDirective } from '../../class/date-time.class'
 import { CalendarComponent } from '../calendar/calendar.component'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 import { TimerComponent } from '../timer/timer.component'
-import { nxtDateTimePickerAnimations } from './date-time-picker-container.animations'
+import { dateTimePickerAnimations } from './date-time-picker-container.animations'
 
 @Component({
-    exportAs: 'nxtDateTimeContainer',
     selector: 'nxt-date-time-container',
     templateUrl: './date-time-picker-container.component.html',
     styleUrls: ['./date-time-picker-container.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     preserveWhitespaces: false,
     animations: [
-        nxtDateTimePickerAnimations.transformPicker,
-        nxtDateTimePickerAnimations.fadeInPicker
+        dateTimePickerAnimations.transformPicker,
+        dateTimePickerAnimations.fadeInPicker
     ]
 })
 export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, AfterViewInit {
@@ -64,8 +63,8 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
         if (value) {
             this._clamPickerMoment = this.dateTimeAdapter.clampDate(
                 value,
-                this.picker?.minDateTime,
-                this.picker?.maxDateTime
+                this.picker?.min,
+                this.picker?.max
             )
         }
         this.cdRef.markForCheck()
@@ -135,37 +134,37 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
     }
 
     @HostBinding('class.nxt-dt-container')
-    get nxtDTContainerClass(): boolean {
+    get containerClass(): boolean {
         return true
     }
 
     @HostBinding('class.nxt-dt-popup-container')
-    get nxtDTPopupContainerClass(): boolean {
+    get popupContainerClass(): boolean {
         return this.picker?.pickerMode === 'popup'
     }
 
     @HostBinding('class.nxt-dt-dialog-container')
-    get nxtDTDialogContainerClass(): boolean {
+    get dialogContainerClass(): boolean {
         return this.picker?.pickerMode === 'dialog'
     }
 
     @HostBinding('class.nxt-dt-inline-container')
-    get nxtDTInlineContainerClass(): boolean {
+    get inlineContainerClass(): boolean {
         return this.picker?.pickerMode === 'inline'
     }
 
     @HostBinding('class.nxt-dt-container-disabled')
-    get nxtDTContainerDisabledClass(): boolean {
+    get containerDisabledClass(): boolean {
         return !!this.picker?.disabled
     }
 
     @HostBinding('attr.id')
-    get nxtDTContainerId(): string | undefined {
+    get containerId(): string | undefined {
         return this.picker?.id
     }
 
     @HostBinding('@transformPicker')
-    get nxtDTContainerAnimation(): any {
+    get containerAnimation(): any {
         return this.picker?.pickerMode === 'inline' ? '' : 'enter'
     }
 
@@ -431,8 +430,8 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
             )
             result = this.dateTimeAdapter.clampDate(
                 result,
-                this.picker.minDateTime,
-                this.picker.maxDateTime
+                this.picker.min,
+                this.picker.max
             )
         } else {
             result = this.dateTimeAdapter.clone(date)

@@ -57,7 +57,7 @@ const zoomFadeInFrom = {
         ])
     ]
 })
-export class NxtDialogContainerComponent extends BasePortalOutlet implements OnInit {
+export class DialogContainerComponent extends BasePortalOutlet implements OnInit {
     @ViewChild(CdkPortalOutlet, { static: true })
     portalOutlet?: CdkPortalOutlet
 
@@ -93,37 +93,37 @@ export class NxtDialogContainerComponent extends BasePortalOutlet implements OnI
     private elementFocusedBeforeDialogWasOpened?: HTMLElement
 
     @HostBinding('class.nxt-dialog-container')
-    get nxtDialogContainerClass(): boolean {
+    get dialogContainerClass(): boolean {
         return true
     }
 
     @HostBinding('attr.tabindex')
-    get nxtDialogContainerTabIndex(): number {
+    get dialogContainerTabIndex(): number {
         return -1
     }
 
     @HostBinding('attr.id')
-    get nxtDialogContainerId() {
+    get dialogContainerId() {
         return this._config?.id
     }
 
     @HostBinding('attr.role')
-    get nxtDialogContainerRole() {
+    get dialogContainerRole() {
         return this._config?.role
     }
 
     @HostBinding('attr.aria-labelledby')
-    get nxtDialogContainerAriaLabelledby() {
+    get dialogContainerAriaLabelledby() {
         return this.ariaLabelledBy
     }
 
     @HostBinding('attr.aria-describedby')
-    get nxtDialogContainerAriaDescribedby() {
+    get dialogContainerAriaDescribedby() {
         return this._config?.ariaDescribedBy
     }
 
     @HostBinding('@slideModal')
-    get nxtDialogContainerAnimation() {
+    get dialogContainerAnimation() {
         return { value: this.state, params: this.params }
     }
 

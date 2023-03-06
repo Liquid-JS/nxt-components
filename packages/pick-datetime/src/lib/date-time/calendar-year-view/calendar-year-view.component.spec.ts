@@ -2,28 +2,15 @@ import { DOWN_ARROW, END, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_
 import { Component, DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { dispatchKeyboardEvent, dispatchMouseEvent, NxtTestDateTimeModule } from '../../../test-helpers'
+import { dispatchKeyboardEvent, dispatchMouseEvent, TestDateTimeModule } from '../../../test-helpers'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 import { DateTimeModule } from '../date-time.module'
 import { YearViewComponent } from './calendar-year-view.component'
 
-const JAN = 0
-const FEB = 1
-const MAR = 2
-const APR = 3
-const MAY = 4
-const JUN = 5
-const JUL = 6
-const AUG = 7
-const SEP = 8
-const OCT = 9
-const NOV = 10
-const DEC = 11
-
-describe('NxtYearViewComponent', () => {
+describe('YearViewComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [NxtTestDateTimeModule, DateTimeModule],
+            imports: [TestDateTimeModule, DateTimeModule],
             declarations: [
                 StandardYearViewComponent,
                 YearViewWithDateFilterComponent
@@ -66,7 +53,7 @@ describe('NxtYearViewComponent', () => {
         })
 
         it('should NOT show selected month if in different year', () => {
-            testComponent.selected = new Date(2017, JAN, 10)
+            testComponent.selected = new Date(2017, 0, 10)
             fixture.detectChanges()
 
             const selectedElContent = yearViewElement.querySelector(
@@ -99,7 +86,7 @@ describe('NxtYearViewComponent', () => {
         })
 
         it('should allow selection of month with less days than current active date', () => {
-            testComponent.pickerMoment = new Date(2017, JUL, 31)
+            testComponent.pickerMoment = new Date(2017, 6, 31)
             fixture.detectChanges()
 
             const cellJune = yearViewElement.querySelector(
@@ -108,7 +95,7 @@ describe('NxtYearViewComponent', () => {
             dispatchMouseEvent(cellJune!, 'click')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2017, JUN, 30))
+            expect(testComponent.pickerMoment).toEqual(new Date(2017, 5, 30))
         })
 
         it('should decrement month on left arrow press', () => {
@@ -119,14 +106,14 @@ describe('NxtYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2017, DEC, 5)
+                new Date(2017, 11, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', LEFT_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2017, NOV, 5)
+                new Date(2017, 10, 5)
             )
         })
 
@@ -138,14 +125,14 @@ describe('NxtYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2018, FEB, 5)
+                new Date(2018, 1, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', RIGHT_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2018, MAR, 5)
+                new Date(2018, 2, 5)
             )
         })
 
@@ -157,27 +144,27 @@ describe('NxtYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2017, OCT, 5)
+                new Date(2017, 9, 5)
             )
 
-            yearViewInstance.pickerMoment = new Date(2018, JUL, 1)
+            yearViewInstance.pickerMoment = new Date(2018, 6, 1)
             fixture.detectChanges()
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', UP_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2018, APR, 1)
+                new Date(2018, 3, 1)
             )
 
-            yearViewInstance.pickerMoment = new Date(2018, DEC, 10)
+            yearViewInstance.pickerMoment = new Date(2018, 11, 10)
             fixture.detectChanges()
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', UP_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2018, SEP, 10)
+                new Date(2018, 8, 10)
             )
         })
 
@@ -189,32 +176,32 @@ describe('NxtYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2018, APR, 5)
+                new Date(2018, 3, 5)
             )
 
-            yearViewInstance.pickerMoment = new Date(2018, JUN, 1)
+            yearViewInstance.pickerMoment = new Date(2018, 5, 1)
             fixture.detectChanges()
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', DOWN_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2018, SEP, 1)
+                new Date(2018, 8, 1)
             )
 
-            yearViewInstance.pickerMoment = new Date(2018, SEP, 30)
+            yearViewInstance.pickerMoment = new Date(2018, 8, 30)
             fixture.detectChanges()
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', DOWN_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2018, DEC, 30)
+                new Date(2018, 11, 30)
             )
         })
 
         it('should go to first month of the year on home press', () => {
-            yearViewInstance.pickerMoment = new Date(2018, SEP, 30)
+            yearViewInstance.pickerMoment = new Date(2018, 8, 30)
             fixture.detectChanges()
 
             const calendarBodyEl = yearViewElement.querySelector(
@@ -224,19 +211,19 @@ describe('NxtYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2018, JAN, 30)
+                new Date(2018, 0, 30)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', HOME)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2018, JAN, 30)
+                new Date(2018, 0, 30)
             )
         })
 
         it('should go to last month of the year on end press', () => {
-            yearViewInstance.pickerMoment = new Date(2018, OCT, 31)
+            yearViewInstance.pickerMoment = new Date(2018, 9, 31)
             fixture.detectChanges()
 
             const calendarBodyEl = yearViewElement.querySelector(
@@ -246,19 +233,19 @@ describe('NxtYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2018, DEC, 31)
+                new Date(2018, 11, 31)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', END)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2018, DEC, 31)
+                new Date(2018, 11, 31)
             )
         })
 
         it('should go back one year on page up press', () => {
-            yearViewInstance.pickerMoment = new Date(2016, FEB, 29)
+            yearViewInstance.pickerMoment = new Date(2016, 1, 29)
             fixture.detectChanges()
 
             const calendarBodyEl = yearViewElement.querySelector(
@@ -268,19 +255,19 @@ describe('NxtYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2015, FEB, 28)
+                new Date(2015, 1, 28)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_UP)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2014, FEB, 28)
+                new Date(2014, 1, 28)
             )
         })
 
         it('should go forward one year on page down press', () => {
-            yearViewInstance.pickerMoment = new Date(2016, FEB, 29)
+            yearViewInstance.pickerMoment = new Date(2016, 1, 29)
             fixture.detectChanges()
 
             const calendarBodyEl = yearViewElement.querySelector(
@@ -290,14 +277,14 @@ describe('NxtYearViewComponent', () => {
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2017, FEB, 28)
+                new Date(2017, 1, 28)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_DOWN)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
-                new Date(2018, FEB, 28)
+                new Date(2018, 1, 28)
             )
         })
     })
@@ -342,8 +329,8 @@ describe('NxtYearViewComponent', () => {
     `
 })
 class StandardYearViewComponent {
-    selected = new Date(2018, JAN, 10)
-    pickerMoment = new Date(2018, JAN, 5)
+    selected = new Date(2018, 0, 10)
+    pickerMoment = new Date(2018, 0, 5)
 
     handleChange(date: Date): void {
         this.pickerMoment = new Date(date)
@@ -358,9 +345,9 @@ class StandardYearViewComponent {
     `
 })
 class YearViewWithDateFilterComponent {
-    pickerMoment = new Date(2018, JAN, 1)
+    pickerMoment = new Date(2018, 0, 1)
     dateFilter(date: Date) {
-        if (date.getMonth() == FEB) {
+        if (date.getMonth() == 1) {
             return false
         }
         return true

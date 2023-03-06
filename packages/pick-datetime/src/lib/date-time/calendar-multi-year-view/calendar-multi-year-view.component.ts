@@ -102,11 +102,11 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     /** The minimum selectable date. */
     private _minDate?: T
     @Input()
-    get minDate() {
+    get min() {
         return this._minDate
     }
 
-    set minDate(value: T | undefined) {
+    set min(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._minDate = this.getValidDate(value)
         if (this.initiated) {
@@ -117,11 +117,11 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     /** The maximum selectable date. */
     private _maxDate?: T
     @Input()
-    get maxDate() {
+    get max() {
         return this._maxDate
     }
 
-    set maxDate(value: T | undefined) {
+    set max(value: T | undefined) {
         value = this.dateTimeAdapter.deserialize(value)
         this._maxDate = this.getValidDate(value)
         if (this.initiated) {
@@ -203,12 +203,12 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     calendarBodyElm?: CalendarBodyComponent
 
     @HostBinding('class.nxt-dt-calendar-view')
-    get nxtDTCalendarView(): boolean {
+    get calendarView(): boolean {
         return true
     }
 
     @HostBinding('class.nxt-dt-calendar-multi-year-view')
-    get nxtDTCalendarMultiYearView(): boolean {
+    get calendarMultiYearView(): boolean {
         return true
     }
 
@@ -296,15 +296,15 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /** Whether the previous period button is enabled. */
     public previousEnabled(): boolean {
-        if (!this.minDate) {
+        if (!this.min) {
             return true
         }
-        return !this.minDate || !this.isSameYearList(this._pickerMoment, this.minDate)
+        return !this.min || !this.isSameYearList(this._pickerMoment, this.min)
     }
 
     /** Whether the next period button is enabled. */
     public nextEnabled(): boolean {
-        return !this.maxDate || !this.isSameYearList(this._pickerMoment, this.maxDate)
+        return !this.max || !this.isSameYearList(this._pickerMoment, this.max)
     }
 
     public handleCalendarKeydown(event: KeyboardEvent): void {
