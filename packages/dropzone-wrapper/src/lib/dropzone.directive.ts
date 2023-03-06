@@ -1,7 +1,9 @@
+/* eslint-disable @angular-eslint/no-output-rename */
+/* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 import { isPlatformBrowser } from '@angular/common'
 import { Directive, DoCheck, ElementRef, EventEmitter, Inject, Input, KeyValueDiffer, KeyValueDiffers, NgZone, OnChanges, OnDestroy, OnInit, Optional, Output, PLATFORM_ID, Renderer2, SimpleChanges } from '@angular/core'
 import Dropzone from 'dropzone'
-import { DropzoneConfig, DropzoneConfigInterface, DropzoneEvent, DropzoneEvents, DROPZONE_CONFIG } from './dropzone.interfaces'
+import { DropzoneConfig, DropzoneConfigInterface, DropzoneEvent, DropzoneEvents, NXT_DROPZONE_CONFIG } from './dropzone.interfaces'
 
 @Directive({
     selector: '[nxtDropzone]',
@@ -51,9 +53,18 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, OnChanges 
     @Output('queueComplete') DZ_QUEUECOMPLETE = new EventEmitter<any>()
     @Output('totalUploadProgress') DZ_TOTALUPLOADPROGRESS = new EventEmitter<any>()
 
-    constructor(private zone: NgZone, private renderer: Renderer2, private elementRef: ElementRef<HTMLElement>,
-        private differs: KeyValueDiffers, @Inject(PLATFORM_ID) private platformId: Object,
-        @Optional() @Inject(DROPZONE_CONFIG) private defaults: DropzoneConfigInterface) {
+    constructor(
+        private readonly zone: NgZone,
+        private readonly renderer: Renderer2,
+        private readonly elementRef: ElementRef<HTMLElement>,
+        private readonly differs: KeyValueDiffers,
+        @Inject(PLATFORM_ID)
+        // eslint-disable-next-line @typescript-eslint/ban-types
+        private readonly platformId: Object,
+        @Optional()
+        @Inject(NXT_DROPZONE_CONFIG)
+        private readonly defaults?: DropzoneConfigInterface | undefined
+    ) {
         const dz = Dropzone
 
         dz.autoDiscover = false
@@ -82,7 +93,7 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, OnChanges 
             this.instance.disable()
         }
 
-        if (this.DZ_INIT.observers.length) {
+        if (this.DZ_INIT.observed) {
             this.zone.run(() => {
                 this.DZ_INIT.emit(this.instance)
             })
@@ -116,7 +127,7 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, OnChanges 
 
                 const emitter = this[output as keyof DropzoneDirective] as EventEmitter<any>
 
-                if (emitter.observers.length > 0) {
+                if (emitter.observed) {
                     this.zone.run(() => {
                         emitter.emit(args)
                     })

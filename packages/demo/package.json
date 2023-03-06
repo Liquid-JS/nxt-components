@@ -1,0 +1,32 @@
+{
+    "name": "demo",
+    "version": "14.0.0",
+    "license": "MIT",
+    "repository": "https://github.com/Liquid-JS/nxt-components.git",
+    "private": true,
+    "scripts": {
+        "serve": "ng serve demo",
+        "build": "ng build demo --configuration \"production\"",
+        "lint": "ng lint demo",
+        "lint:fix": "yarn lint --fix",
+        "lint:sass": "stylelint \"src/**/*.scss\"",
+        "lint:sass:fix": "yarn lint:sass --fix"
+    },
+    "dependencies": {
+        "@angular/cdk": "<15.0.0",
+        "@angular/common": "<15.0.0",
+        "@angular/compiler": "<15.0.0",
+        "@angular/core": "<15.0.0",
+        "@angular/flex-layout": "^14.0.0-beta.41",
+        "@angular/forms": "<15.0.0",
+        "@angular/platform-browser": "<15.0.0",
+        "@angular/platform-browser-dynamic": "<15.0.0",
+        "@angular/router": "<15.0.0",
+        "bootstrap": "<4.0.0",
+        "diacritics": "^1.3.0",
+        "i18n-iso-countries": "^7.5.0",
+        "rxjs": "^7.8.0",
+        "tslib": "^2.3.0",
+        "zone.js": "^0.12.0"
+    }
+}

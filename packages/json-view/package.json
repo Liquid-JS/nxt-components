@@ -5,6 +5,15 @@
     "version": "14.0.0",
     "license": "MIT",
     "repository": "https://github.com/Liquid-JS/nxt-components.git",
+    "scripts": {
+        "watch": "ng build json-view --configuration \"development\" --watch",
+        "build": "ng build json-view --configuration \"production\"",
+        "lint": "ng lint json-view",
+        "lint:fix": "yarn lint --fix",
+        "lint:sass": "stylelint \"src/**/*.scss\"",
+        "lint:sass:fix": "yarn lint:sass --fix",
+        "test": "ng test json-view"
+    },
     "peerDependencies": {
         "@angular/common": "^14.2.0",
         "@angular/core": "^14.2.0"

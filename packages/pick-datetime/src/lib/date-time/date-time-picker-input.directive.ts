@@ -22,7 +22,7 @@ export const NXT_DATETIME_VALIDATORS: any = {
 
 @Directive({
     selector: 'input[nxtDateTime]',
-    exportAs: 'dateTimeInput',
+    exportAs: 'nxtDateTimeInput',
     providers: [
         NXT_DATETIME_VALUE_ACCESSOR,
         NXT_DATETIME_VALIDATORS

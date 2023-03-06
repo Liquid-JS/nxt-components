@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-output-rename */
 import { isPlatformBrowser } from '@angular/common'
 import { Component, EventEmitter, Inject, Input, OnInit, Output, PLATFORM_ID, ViewChild, ViewEncapsulation } from '@angular/core'
 import { DropzoneDirective } from './dropzone.directive'
@@ -60,14 +61,17 @@ export class DropzoneComponent implements OnInit {
 
     @ViewChild(DropzoneDirective, { static: true }) directiveRef?: DropzoneDirective
 
-    constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+    constructor(
+        // eslint-disable-next-line @typescript-eslint/ban-types
+        @Inject(PLATFORM_ID) private readonly platformId: Object
+    ) { }
 
     ngOnInit(): void {
         if (!isPlatformBrowser(this.platformId)) {
             return
         }
 
-        window.setTimeout(() => {
+        setTimeout(() => {
             DropzoneEvents.forEach((eventName: DropzoneEvent) => {
                 if (this.directiveRef) {
                     const output = `DZ_${eventName.toUpperCase()}`

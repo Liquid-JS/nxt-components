@@ -70,7 +70,6 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
     right: 0;
     z-index: $cdk-z-index-overlay-backdrop;
     pointer-events: auto;
-    -webkit-tap-highlight-color: transparent;
     transition: opacity $backdrop-animation-duration $backdrop-animation-timing-function;
     opacity: 0;
 
@@ -142,7 +141,7 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
     box-sizing: border-box;
     display: block;
     padding: 1.5em;
-    box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
     border-radius: 2px;
     overflow: auto;
     background: #fff;
@@ -272,9 +271,7 @@ $theme-color: #3f51b5;
         text-align: center;
         outline: 0;
         color: rgba(0, 0, 0, 0.85);
-        -webkit-appearance: none;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        -webkit-tap-highlight-color: transparent;
+        appearance: none;
     }
 
     .nxt-dt-calendar-cell-content {
@@ -404,7 +401,7 @@ $theme-color: #3f51b5;
         left: 50%;
         border-radius: 50%;
         transform: translateX(-50%);
-        background-color: currentColor;
+        background-color: currentcolor;
     }
 
     &:before {
@@ -421,7 +418,6 @@ $theme-color: #3f51b5;
     cursor: pointer;
     outline: none;
     border: none;
-    -webkit-tap-highlight-color: transparent;
     display: inline-block;
     white-space: nowrap;
     text-decoration: none;
@@ -480,7 +476,7 @@ $theme-color: #3f51b5;
     svg {
         width: 50%;
         height: 50%;
-        fill: currentColor;
+        fill: currentcolor;
     }
 }
 
@@ -572,7 +568,6 @@ $theme-color: #3f51b5;
 .nxt-dt-container-info {
     padding: 0 .5em;
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
 
     .nxt-dt-container-range {
         outline: none;
@@ -597,7 +592,7 @@ $theme-color: #3f51b5;
 .nxt-dt-container-disabled,
 .nxt-dt-trigger-disabled {
     opacity: 0.35;
-    filter: Alpha(Opacity = 35);
+    filter: Alpha(opacity = 35);
     background-image: none;
     cursor: default !important;
 }
@@ -609,7 +604,7 @@ $theme-color: #3f51b5;
     color: $theme-color;
 
     .nxt-dt-timer-hour12-box {
-        border: 1px solid currentColor;
+        border: 1px solid currentcolor;
         border-radius: 2px;
         transition: background 200ms ease;
 

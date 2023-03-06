@@ -16,7 +16,7 @@ export class CalendarCell {
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
     selector: '[nxtDateTimeCalendarBody]',
-    exportAs: 'dateTimeCalendarBody',
+    exportAs: 'nxtDateTimeCalendarBody',
     templateUrl: './calendar-body.component.html',
     styleUrls: ['./calendar-body.component.scss'],
     preserveWhitespaces: false,

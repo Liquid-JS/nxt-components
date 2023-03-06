@@ -5,6 +5,15 @@
     "version": "14.0.0",
     "license": "MIT",
     "repository": "https://github.com/Liquid-JS/nxt-components.git",
+    "scripts": {
+        "watch": "ng build pick-datetime --configuration \"development\" --watch",
+        "build": "ng build pick-datetime --configuration \"production\"",
+        "lint": "ng lint pick-datetime",
+        "lint:fix": "yarn lint --fix",
+        "lint:sass": "stylelint \"src/**/*.scss\"",
+        "lint:sass:fix": "yarn lint:sass --fix",
+        "test": "ng test pick-datetime"
+    },
     "peerDependencies": {
         "@angular/animations": "^14.2.0",
         "@angular/common": "^14.2.0",
