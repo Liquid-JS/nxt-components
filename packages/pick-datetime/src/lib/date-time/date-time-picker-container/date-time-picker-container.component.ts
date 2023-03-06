@@ -101,7 +101,7 @@ export class OwlDateTimeContainerComponent<T> implements OnInit, AfterContentIni
      * The range 'from' formatted value
      * */
     get fromFormattedValue(): string {
-        const value = this.picker?.selecteds?.[0]
+        const value = this.picker?.selecteds[0]
         return value
             ? this.dateTimeAdapter.format(value, this.picker?.formatString)
             : ''
@@ -111,7 +111,7 @@ export class OwlDateTimeContainerComponent<T> implements OnInit, AfterContentIni
      * The range 'to' formatted value
      * */
     get toFormattedValue(): string {
-        const value = this.picker?.selecteds?.[1]
+        const value = this.picker?.selecteds[1]
         return value
             ? this.dateTimeAdapter.format(value, this.picker?.formatString)
             : ''
@@ -334,7 +334,7 @@ export class OwlDateTimeContainerComponent<T> implements OnInit, AfterContentIni
         ) {
             this.activeSelectedIndex = index
 
-            const selected = this.picker?.selecteds?.[this.activeSelectedIndex]
+            const selected = this.picker?.selecteds[this.activeSelectedIndex]
             if (this.picker.selecteds && selected) {
                 this.pickerMoment = this.dateTimeAdapter.clone(selected)
             }
@@ -363,8 +363,8 @@ export class OwlDateTimeContainerComponent<T> implements OnInit, AfterContentIni
      * Select dates in range Mode
      */
     private dateSelectedInRangeMode(date?: T): Array<T | undefined> | undefined {
-        let from = this.picker?.selecteds?.[0]
-        let to = this.picker?.selecteds?.[1]
+        let from = this.picker?.selecteds[0]
+        let to = this.picker?.selecteds[1]
 
         const result = this.updateAndCheckCalendarDate(date)
 

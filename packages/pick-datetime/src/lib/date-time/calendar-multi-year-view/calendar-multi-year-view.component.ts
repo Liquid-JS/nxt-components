@@ -52,14 +52,14 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
         }
     }
 
-    private _selecteds?: Array<T | undefined>
+    private _selecteds = new Array<T | undefined>()
     @Input()
     get selecteds() {
         return this._selecteds
     }
 
-    set selecteds(values: Array<T | undefined> | undefined) {
-        this._selecteds = values?.map((v) => {
+    set selecteds(values: Array<T | undefined>) {
+        this._selecteds = values.map((v) => {
             v = this.dateTimeAdapter.deserialize(v)
             return this.getValidDate(v)
         })
@@ -403,6 +403,7 @@ export class OwlMultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /** Whether the given year is enabled. */
     private isYearEnabled(year: number) {
+
         // enable if it reaches here and there's no filter defined
         if (!this.dateFilter) {
             return true

@@ -1,8 +1,8 @@
 /* eslint-disable @angular-eslint/component-class-suffix */
-import { Component, DebugElement, EventEmitter, NgZone } from '@angular/core'
+import { Component, DebugElement, NgZone } from '@angular/core'
 import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { OwlTestDateTimeModule } from 'projects/nxt-pick-datetime/src/test-helpers'
+import { MockNgZone, OwlTestDateTimeModule } from 'packages/pick-datetime/src/test-helpers'
 import { OwlDateTimeIntl } from '../date-time-picker-intl.service'
 import { OwlDateTimeModule } from '../date-time.module'
 import { OwlTimerComponent } from './timer.component'
@@ -20,32 +20,16 @@ const OCT = 9
 const NOV = 10
 const DEC = 11
 
-class MockNgZone extends NgZone {
-    onStable: EventEmitter<any> = new EventEmitter(false)
-    constructor() {
-        super({ enableLongStackTrace: false })
-    }
-    run(fn: () => void): any {
-        return fn()
-    }
-    runOutsideAngular(fn: () => void): any {
-        return fn()
-    }
-    simulateZoneExit(): void {
-        this.onStable.emit(null)
-    }
-}
-
 describe('OwlTimerComponent', () => {
-    let zone: MockNgZone
+    let _zone: MockNgZone | undefined
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({
+        await TestBed.configureTestingModule({
             imports: [OwlTestDateTimeModule, OwlDateTimeModule],
             declarations: [StandardTimer],
             providers: [
                 OwlDateTimeIntl,
-                { provide: NgZone, useFactory: () => (zone = new MockNgZone()) }
+                { provide: NgZone, useFactory: () => (_zone = new MockNgZone()) }
             ]
         }).compileComponents()
     })
@@ -139,7 +123,7 @@ describe('OwlTimerComponent', () => {
                 'button.owl-dt-timer-hour12-box'
             )
 
-            toggleBtn.click()
+            toggleBtn?.click()
             fixture.detectChanges()
             flush()
 
@@ -278,13 +262,13 @@ describe('OwlTimerComponent', () => {
             const toggleBtn = timerElement.querySelector<HTMLButtonElement>(
                 'button.owl-dt-timer-hour12-box'
             )
-            expect(toggleBtn.innerHTML).toContain('PM')
+            expect(toggleBtn?.innerHTML).toContain('PM')
 
-            toggleBtn.click()
+            toggleBtn?.click()
             fixture.detectChanges()
             flush()
 
-            expect(toggleBtn.innerHTML).toContain('AM')
+            expect(toggleBtn?.innerHTML).toContain('AM')
             expect(testComponent.pickerMoment).toEqual(
                 new Date(2018, JAN, 31, 0, 30, 30)
             )

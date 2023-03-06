@@ -48,15 +48,15 @@ export class OwlYearViewComponent<T> implements OnInit, AfterContentInit, OnDest
         this.setSelectedMonths()
     }
 
-    private _selecteds?: Array<T | undefined>
+    private _selecteds = new Array<T | undefined>()
     @Input()
     get selecteds() {
         return this._selecteds
     }
 
-    set selecteds(values: Array<T | undefined> | undefined) {
+    set selecteds(values: Array<T | undefined>) {
         this._selecteds = []
-        values?.forEach(val => {
+        values.forEach(val => {
             const value = this.dateTimeAdapter.deserialize(val)
             this._selecteds!.push(this.getValidDate(value))
         })

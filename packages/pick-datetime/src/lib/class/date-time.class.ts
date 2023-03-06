@@ -128,7 +128,7 @@ export abstract class OwlDateTimeDirective<T> {
 
     abstract get selected(): T | undefined
 
-    abstract get selecteds(): Array<T | undefined> | undefined
+    abstract get selecteds(): Array<T | undefined>
 
     abstract get dateTimeFilter(): ((date: T | undefined) => boolean) | undefined
 

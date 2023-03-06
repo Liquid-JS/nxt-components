@@ -121,12 +121,10 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T> implements 
     }
 
     /** Whether the date time picker should be disabled. */
-    private _disabled: boolean = false
+    private _disabled?: boolean
     @Input()
     override get disabled(): boolean {
-        return this._disabled === undefined && this._dtInput
-            ? this._dtInput.disabled
-            : !!this._disabled
+        return this._disabled ?? !!this._dtInput?.disabled
     }
 
     override set disabled(value: boolean) {
@@ -223,12 +221,12 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T> implements 
         this.changeDetector.markForCheck()
     }
 
-    private _selecteds?: Array<T | undefined>
+    private _selecteds = new Array<T | undefined>()
     get selecteds() {
-        return this._selecteds
+        return this._selecteds || []
     }
 
-    set selecteds(values: Array<T | undefined> | undefined) {
+    set selecteds(values: Array<T | undefined>) {
         this._selecteds = values
         this.changeDetector.markForCheck()
     }
@@ -388,11 +386,11 @@ export class OwlDateTimeComponent<T> extends OwlDateTimeDirective<T> implements 
             this.pickerMode !== 'dialog' &&
             this.pickerType === 'calendar' &&
             ((this.selectMode === 'single' && this.selected) ||
-                (this.selectMode === 'rangeFrom' && this.selecteds?.[0]) ||
-                (this.selectMode === 'rangeTo' && this.selecteds?.[1]) ||
+                (this.selectMode === 'rangeFrom' && this.selecteds[0]) ||
+                (this.selectMode === 'rangeTo' && this.selecteds[1]) ||
                 (this.selectMode === 'range' &&
-                    this.selecteds?.[0] &&
-                    this.selecteds?.[1]))
+                    this.selecteds[0] &&
+                    this.selecteds[1]))
         ) {
             this.confirmSelect()
         }

@@ -82,14 +82,14 @@ export class OwlMonthViewComponent<T> implements OnInit, AfterContentInit, OnDes
         }
     }
 
-    private _selecteds?: Array<T | undefined>
+    private _selecteds = new Array<T | undefined>()
     @Input()
     get selecteds() {
-        return this._selecteds
+        return this._selecteds || []
     }
 
-    set selecteds(values: Array<T | undefined> | undefined) {
-        this._selecteds = values?.map(v => {
+    set selecteds(values: Array<T | undefined>) {
+        this._selecteds = values.map(v => {
             v = this.dateTimeAdapter.deserialize(v)
             return this.getValidDate(v)
         })

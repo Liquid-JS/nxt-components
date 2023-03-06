@@ -8,17 +8,17 @@ import { OwlDateTimeModule } from '../date-time.module'
 import { OwlMonthViewComponent } from './calendar-month-view.component'
 
 const JAN = 0
-    const FEB = 1
-    const MAR = 2
-    const APR = 3
-    const MAY = 4
-    const JUN = 5
-    const JUL = 6
-    const AUG = 7
-    const SEP = 8
-    const OCT = 9
-    const NOV = 10
-    const DEC = 11
+const FEB = 1
+const MAR = 2
+const APR = 3
+const MAY = 4
+const JUN = 5
+const JUL = 6
+const AUG = 7
+const SEP = 8
+const OCT = 9
+const NOV = 10
+const DEC = 11
 
 describe('OwlMonthViewComponent', () => {
     beforeEach(async () => {
@@ -62,7 +62,7 @@ describe('OwlMonthViewComponent', () => {
             const selectedEl = monthViewElement.querySelector(
                 '.owl-dt-calendar-cell-selected'
             )
-            expect(selectedEl.innerHTML.trim()).toBe('10')
+            expect(selectedEl?.innerHTML.trim()).toBe('10')
         })
 
         it('should NOT show selected date if in different month', () => {
@@ -78,7 +78,7 @@ describe('OwlMonthViewComponent', () => {
             const selectedElContent = monthViewElement.querySelector(
                 '.owl-dt-calendar-cell-active .owl-dt-calendar-cell-content'
             )
-            expect(selectedElContent.innerHTML.trim()).toBe('5')
+            expect(selectedElContent?.innerHTML.trim()).toBe('5')
         })
 
         it('should set Sunday as first day of week by default', () => {
@@ -111,14 +111,14 @@ describe('OwlMonthViewComponent', () => {
             const calendarBodyEl = monthViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', LEFT_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', LEFT_ARROW)
             fixture.detectChanges()
             expect(testComponent.pickerMoment).toEqual(new Date(2018, JAN, 4))
 
             monthViewInstance.pickerMoment = new Date(2017, JAN, 1)
             fixture.detectChanges()
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', LEFT_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', LEFT_ARROW)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2016, DEC, 31))
@@ -128,12 +128,12 @@ describe('OwlMonthViewComponent', () => {
             const calendarBodyEl = monthViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', RIGHT_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', RIGHT_ARROW)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2018, JAN, 6))
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', RIGHT_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', RIGHT_ARROW)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2018, JAN, 7))
@@ -143,7 +143,7 @@ describe('OwlMonthViewComponent', () => {
             const calendarBodyEl = monthViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', UP_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', UP_ARROW)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2017, DEC, 29))
@@ -151,7 +151,7 @@ describe('OwlMonthViewComponent', () => {
             monthViewInstance.pickerMoment = new Date(2017, JAN, 7)
             fixture.detectChanges()
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', UP_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', UP_ARROW)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2016, DEC, 31))
@@ -161,12 +161,12 @@ describe('OwlMonthViewComponent', () => {
             const calendarBodyEl = monthViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', DOWN_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', DOWN_ARROW)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2018, JAN, 12))
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', DOWN_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', DOWN_ARROW)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2018, JAN, 19))
@@ -179,12 +179,12 @@ describe('OwlMonthViewComponent', () => {
             const calendarBodyEl = monthViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', HOME)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', HOME)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2018, JAN, 1))
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', HOME)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', HOME)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2018, JAN, 1))
@@ -197,12 +197,12 @@ describe('OwlMonthViewComponent', () => {
             const calendarBodyEl = monthViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', END)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', END)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2018, JAN, 31))
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', END)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', END)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2018, JAN, 31))
@@ -212,12 +212,12 @@ describe('OwlMonthViewComponent', () => {
             const calendarBodyEl = monthViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', PAGE_UP)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_UP)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2017, DEC, 5))
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', PAGE_UP)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_UP)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2017, NOV, 5))
@@ -227,12 +227,12 @@ describe('OwlMonthViewComponent', () => {
             const calendarBodyEl = monthViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', PAGE_DOWN)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_DOWN)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2018, FEB, 5))
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', PAGE_DOWN)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_DOWN)
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2018, MAR, 5))
@@ -242,12 +242,12 @@ describe('OwlMonthViewComponent', () => {
             const calendarBodyEl = monthViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', LEFT_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', LEFT_ARROW)
             fixture.detectChanges()
 
             expect(testComponent.selected).toEqual(new Date(2018, JAN, 10))
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', ENTER)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', ENTER)
             fixture.detectChanges()
 
             expect(testComponent.selected).toEqual(new Date(2018, JAN, 4))
@@ -275,10 +275,10 @@ describe('OwlMonthViewComponent', () => {
             const cellTwo = monthViewNativeElement.querySelector(
                 '[aria-label="January 2, 2018"]'
             )
-            expect(cellOne.classList).toContain(
+            expect(cellOne?.classList).toContain(
                 'owl-dt-calendar-cell-disabled'
             )
-            expect(cellTwo.classList).not.toContain(
+            expect(cellTwo?.classList).not.toContain(
                 'owl-dt-calendar-cell-disabled'
             )
         })

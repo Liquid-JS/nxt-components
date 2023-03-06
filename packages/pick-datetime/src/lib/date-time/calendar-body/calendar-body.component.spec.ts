@@ -45,14 +45,14 @@ describe('OwlCalendarBodyComponent', () => {
 
         it('should highlight today', () => {
             const todayCell = calendarBodyNativeElement.querySelector('.owl-dt-calendar-cell-today')
-            expect(todayCell).not.toBeNull()
-            expect(todayCell.innerHTML.trim()).toBe('3')
+            expect(todayCell).not.toBeUndefined()
+            expect(todayCell?.innerHTML.trim()).toBe('3')
         })
 
         it('should highlight selected', () => {
             const selectedCell = calendarBodyNativeElement.querySelector('.owl-dt-calendar-cell-selected')
-            expect(selectedCell).not.toBeNull()
-            expect(selectedCell.innerHTML.trim()).toBe('4')
+            expect(selectedCell).not.toBeUndefined()
+            expect(selectedCell?.innerHTML.trim()).toBe('4')
         })
 
         it('cell should be selected on click', () => {

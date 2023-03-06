@@ -112,14 +112,14 @@ export function createMouseEvent(type: string, x = 0, y = 0, button = 0) {
 }
 
 export class MockNgZone extends NgZone {
-    onStable: EventEmitter<any> = new EventEmitter(false)
+    override onStable = new EventEmitter<any>(false)
     constructor() {
         super({ enableLongStackTrace: false })
     }
-    run(fn: () => void): any {
+    override run(fn: () => void): any {
         return fn()
     }
-    runOutsideAngular(fn: () => void): any {
+    override runOutsideAngular(fn: () => void): any {
         return fn()
     }
     simulateZoneExit(): void {
@@ -266,7 +266,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         return this.getDate(lastDateOfMonth)
     }
 
-    public differenceInCalendarDays(dateLeft: Date, dateRight: Date): number {
+    public differenceInCalendarDays(dateLeft: Date, dateRight: Date): number | undefined {
         if (this.isValid(dateLeft) && this.isValid(dateRight)) {
             const dateLeftStartOfDay = this.createDate(
                 this.getYear(dateLeft),
@@ -290,9 +290,8 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
             return Math.round(
                 (timeStampLeft - timeStampRight) / this.millisecondsInDay
             )
-        } else {
-            return null
         }
+        return
     }
 
     public getYearName(date: Date): string {
@@ -532,12 +531,12 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         return this.stripDirectionalityCharacters(date.toDateString())
     }
 
-    public parse(value: any, _parseFormat: any): Date | null {
+    public parse(value: any, _parseFormat: any): Date | undefined {
         // There is no way using the native JS Date to set the parse format or locale
         if (typeof value === 'number') {
             return new Date(value)
         }
-        return value ? new Date(Date.parse(value)) : null
+        return value ? new Date(Date.parse(value)) : undefined
     }
 
     /**
@@ -545,10 +544,10 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
      * (https://www.ietf.org/rfc/rfc3339.txt) into valid Dates and empty string into null. Returns an
      * invalid date for all other values.
      */
-    public deserialize(value: any): Date | null {
+    public override deserialize(value: any): Date | undefined {
         if (typeof value === 'string') {
             if (!value) {
-                return null
+                return undefined
             }
             // The `Date` constructor accepts formats other than ISO 8601, so we need to make sure the
             // string is the right format first.

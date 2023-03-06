@@ -431,6 +431,7 @@ export class OwlDateTimeInputDirective<T> implements OnInit, AfterContentInit, O
     }
 
     public writeValue(value: any): void {
+        value = value ?? undefined
         if (this.isInSingleMode) {
             this.value = value
         } else {

@@ -12,7 +12,7 @@ export class OwlDateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterC
     private _disabled?: boolean
     @Input()
     get disabled(): boolean {
-        return this._disabled === undefined ? !!this.dtPicker?.disabled : !!this._disabled
+        return this._disabled ?? !!this.dtPicker?.disabled
     }
 
     set disabled(value: boolean) {

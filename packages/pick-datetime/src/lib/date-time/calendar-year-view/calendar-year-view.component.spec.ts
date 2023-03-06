@@ -8,21 +8,21 @@ import { OwlDateTimeModule } from '../date-time.module'
 import { OwlYearViewComponent } from './calendar-year-view.component'
 
 const JAN = 0
-    const FEB = 1
-    const MAR = 2
-    const APR = 3
-    const MAY = 4
-    const JUN = 5
-    const JUL = 6
-    const AUG = 7
-    const SEP = 8
-    const OCT = 9
-    const NOV = 10
-    const DEC = 11
+const FEB = 1
+const MAR = 2
+const APR = 3
+const MAY = 4
+const JUN = 5
+const JUL = 6
+const AUG = 7
+const SEP = 8
+const OCT = 9
+const NOV = 10
+const DEC = 11
 
 describe('OwlYearViewComponent', () => {
     beforeEach(async () => {
-        TestBed.configureTestingModule({
+        await TestBed.configureTestingModule({
             imports: [OwlTestDateTimeModule, OwlDateTimeModule],
             declarations: [
                 StandardYearViewComponent,
@@ -59,10 +59,10 @@ describe('OwlYearViewComponent', () => {
         })
 
         it('should show selected month if in same year', () => {
-            const selectedElContent = yearViewElement.querySelector(
+            const selectedElContent = yearViewElement.querySelector<HTMLElement>(
                 '.owl-dt-calendar-cell-selected.owl-dt-calendar-cell-content'
             )
-            expect(selectedElContent.innerHTML.trim()).toBe('Jan')
+            expect(selectedElContent!.innerHTML.trim()).toBe('Jan')
         })
 
         it('should NOT show selected month if in different year', () => {
@@ -79,13 +79,13 @@ describe('OwlYearViewComponent', () => {
             const cellDecember = yearViewElement.querySelector(
                 '[aria-label="December 2018"]'
             )
-            dispatchMouseEvent(cellDecember, 'click')
+            dispatchMouseEvent(cellDecember!, 'click')
             fixture.detectChanges()
 
             const selectedElContent = yearViewElement.querySelector(
                 '.owl-dt-calendar-cell-active .owl-dt-calendar-cell-content'
             )
-            expect(selectedElContent.innerHTML.trim()).toBe('Dec')
+            expect(selectedElContent!.innerHTML.trim()).toBe('Dec')
         })
 
         it('should mark active date', () => {
@@ -93,7 +93,7 @@ describe('OwlYearViewComponent', () => {
                 '[aria-label="January 2018"]'
             )
             expect((cellDecember as HTMLElement).innerText.trim()).toBe('Jan')
-            expect(cellDecember.classList).toContain(
+            expect(cellDecember!.classList).toContain(
                 'owl-dt-calendar-cell-active'
             )
         })
@@ -105,7 +105,7 @@ describe('OwlYearViewComponent', () => {
             const cellJune = yearViewElement.querySelector(
                 '[aria-label="June 2017"]'
             )
-            dispatchMouseEvent(cellJune, 'click')
+            dispatchMouseEvent(cellJune!, 'click')
             fixture.detectChanges()
 
             expect(testComponent.pickerMoment).toEqual(new Date(2017, JUN, 30))
@@ -115,14 +115,14 @@ describe('OwlYearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', LEFT_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', LEFT_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
                 new Date(2017, DEC, 5)
             )
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', LEFT_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', LEFT_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -134,14 +134,14 @@ describe('OwlYearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', RIGHT_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', RIGHT_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
                 new Date(2018, FEB, 5)
             )
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', RIGHT_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', RIGHT_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -153,7 +153,7 @@ describe('OwlYearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', UP_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', UP_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -163,7 +163,7 @@ describe('OwlYearViewComponent', () => {
             yearViewInstance.pickerMoment = new Date(2018, JUL, 1)
             fixture.detectChanges()
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', UP_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', UP_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -173,7 +173,7 @@ describe('OwlYearViewComponent', () => {
             yearViewInstance.pickerMoment = new Date(2018, DEC, 10)
             fixture.detectChanges()
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', UP_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', UP_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -185,7 +185,7 @@ describe('OwlYearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', DOWN_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', DOWN_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -195,7 +195,7 @@ describe('OwlYearViewComponent', () => {
             yearViewInstance.pickerMoment = new Date(2018, JUN, 1)
             fixture.detectChanges()
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', DOWN_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', DOWN_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -205,7 +205,7 @@ describe('OwlYearViewComponent', () => {
             yearViewInstance.pickerMoment = new Date(2018, SEP, 30)
             fixture.detectChanges()
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', DOWN_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', DOWN_ARROW)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -220,14 +220,14 @@ describe('OwlYearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', HOME)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', HOME)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
                 new Date(2018, JAN, 30)
             )
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', HOME)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', HOME)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -242,14 +242,14 @@ describe('OwlYearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', END)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', END)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
                 new Date(2018, DEC, 31)
             )
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', END)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', END)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -264,14 +264,14 @@ describe('OwlYearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', PAGE_UP)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_UP)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
                 new Date(2015, FEB, 28)
             )
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', PAGE_UP)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_UP)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -286,14 +286,14 @@ describe('OwlYearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.owl-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', PAGE_DOWN)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_DOWN)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
                 new Date(2017, FEB, 28)
             )
 
-            dispatchKeyboardEvent(calendarBodyEl, 'keydown', PAGE_DOWN)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_DOWN)
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -323,10 +323,10 @@ describe('OwlYearViewComponent', () => {
             const cellFeb = yearViewNativeElement.querySelector(
                 '[aria-label="February 2018"]'
             )
-            expect(cellJan.classList).not.toContain(
+            expect(cellJan!.classList).not.toContain(
                 'owl-dt-calendar-cell-disabled'
             )
-            expect(cellFeb.classList).toContain(
+            expect(cellFeb!.classList).toContain(
                 'owl-dt-calendar-cell-disabled'
             )
         })

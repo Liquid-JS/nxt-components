@@ -196,12 +196,12 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T> imple
         this.changeDetector.markForCheck()
     }
 
-    private _selecteds?: Array<T | undefined>
+    private _selecteds = new Array<T | undefined>()
     get selecteds() {
         return this._selecteds
     }
 
-    set selecteds(values: Array<T | undefined> | undefined) {
+    set selecteds(values: Array<T | undefined>) {
         this._selecteds = values
         this.changeDetector.markForCheck()
     }
@@ -249,6 +249,7 @@ export class OwlDateTimeInlineComponent<T> extends OwlDateTimeDirective<T> imple
     }
 
     public writeValue(value: any): void {
+        value = value ?? undefined
         if (this.isInSingleMode) {
             this.value = value
             if (this.container)
