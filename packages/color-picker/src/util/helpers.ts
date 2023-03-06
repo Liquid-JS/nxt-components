@@ -65,7 +65,7 @@ export interface DirectiveCallbacks {
     sliderDragStart(event: SliderChangeEvent): void
     sliderChanged(event: SliderChangeEvent): void
     sliderDragEnd(event: SliderChangeEvent): void
-    presetColorsChanged(value: any[]): void
+    presetColorsChanged(value?: any[]): void
 }
 
 export interface DialogConfig {
@@ -87,7 +87,7 @@ export interface DialogConfig {
     cpUseRootViewContainer: boolean
     cpPosition: DialogPosition
     cpPresetLabel: boolean | string
-    cpPresetColors: string[]
+    cpPresetColors?: string[]
     cpMaxPresetColors: number
     cpOKButton: boolean
     cpCancelButton: boolean

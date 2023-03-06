@@ -7,7 +7,7 @@ import { ColorPickerComponent } from './color-picker/color-picker.component'
 })
 export class ColorPickerService {
 
-    private active: ColorPickerComponent = null
+    private active?: ColorPickerComponent
 
     constructor() { }
 

@@ -1,0 +1,25 @@
+{
+    "name": "nxt-color-picker",
+    "description": "Color picker widget for Angular",
+    "bugs": "https://github.com/Liquid-JS/nxt-components/issues",
+    "version": "14.0.3",
+    "license": "MIT",
+    "repository": "https://github.com/Liquid-JS/nxt-components.git",
+    "scripts": {
+        "watch": "ng build color-picker --configuration \"development\" --watch",
+        "build": "ng build color-picker --configuration \"production\"",
+        "lint": "ng lint color-picker",
+        "lint:fix": "yarn lint --fix",
+        "lint:sass": "stylelint \"src/**/*.scss\"",
+        "lint:sass:fix": "yarn lint:sass --fix",
+        "test": "ng test color-picker"
+    },
+    "peerDependencies": {
+        "@angular/cdk": "^14.2.0",
+        "@angular/common": "^14.2.0",
+        "@angular/core": "^14.2.0"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    }
+}

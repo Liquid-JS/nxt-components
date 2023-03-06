@@ -25,6 +25,9 @@
             "dom"
         ],
         "paths": {
+            "nxt-color-picker": [
+                "dist/color-picker"
+            ],
             "nxt-dropzone-wrapper": [
                 "dist/dropzone-wrapper"
             ],

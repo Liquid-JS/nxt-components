@@ -83,7 +83,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     cpCancelButton: boolean
 
     cpPresetLabel: boolean | string
-    cpPresetColors: string[]
+    cpPresetColors?: string[]
     cpMaxPresetColors: number
 
     cpAddColorButton: boolean
@@ -248,7 +248,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.setColorFromString(this.initialColor, false, true)
     }
 
-    setPresetConfig(cpPresetLabel: boolean | string, cpPresetColors: string[]) {
+    setPresetConfig(cpPresetLabel: boolean | string, cpPresetColors?: string[]) {
         this.cpPresetLabel = cpPresetLabel
         this.cpPresetColors = cpPresetColors
     }
@@ -673,8 +673,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     onAddPresetColor(value: string) {
-        if (!this.cpPresetColors.filter((color) => (color == value)).length) {
-            this.cpPresetColors = this.cpPresetColors.concat(value)
+        if (!this.cpPresetColors?.filter((color) => (color == value)).length) {
+            this.cpPresetColors = this.cpPresetColors?.concat(value)
 
             if (this.callbacks) {
                 this.callbacks.presetColorsChanged(this.cpPresetColors)
@@ -683,7 +683,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     onRemovePresetColor(value: string) {
-        this.cpPresetColors = this.cpPresetColors.filter((color) => (color != value))
+        this.cpPresetColors = this.cpPresetColors?.filter((color) => (color != value))
 
         if (this.callbacks) {
             this.callbacks.presetColorsChanged(this.cpPresetColors)
@@ -710,6 +710,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
                 this.callbacks.stateChanged(false)
             }
 
+            //@ts-ignore
             if (!this.cdRef['destroyed']) {
                 this.cdRef.detectChanges()
             }
@@ -777,7 +778,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.alphaSliderLight = transparentSliderLight(rgba)
 
         this.outputColor = formatOutput(this.hsva, this.cpOutputFormat, this.cpAlphaChannel)
-        this.selectedColor = formatOutput(this.hsva, OutputFormat.rgba, null)
+        this.selectedColor = formatOutput(this.hsva, OutputFormat.rgba)
 
         if (this.format !== ColorFormat.cmyk) {
             this.cmykColor = ''

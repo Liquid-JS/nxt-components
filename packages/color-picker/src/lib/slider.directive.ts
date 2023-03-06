@@ -8,10 +8,10 @@ export class SliderDirective {
 
     private isMoving = false
 
-    @Input() rgX: number
-    @Input() rgY: number
+    @Input() rgX?: number
+    @Input() rgY?: number
 
-    @Input() slider: string
+    @Input() slider?: string
 
     @Output() dragEnd = new EventEmitter()
     @Output() dragStart = new EventEmitter()

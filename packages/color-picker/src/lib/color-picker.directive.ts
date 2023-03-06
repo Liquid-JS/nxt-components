@@ -10,12 +10,12 @@ import { ColorPickerComponent } from './color-picker/color-picker.component'
 })
 export class ColorPickerDirective implements OnChanges, OnDestroy {
 
-    private dialog: ColorPickerComponent
+    private dialog?: ColorPickerComponent
 
     private dialogCreated: boolean = false
     private ignoreChanges: boolean = false
 
-    private cmpRef: ComponentRef<ColorPickerComponent>
+    private cmpRef?: ComponentRef<ColorPickerComponent>
 
     private readonly _callbacks: DirectiveCallbacks = {
         stateChanged: (state: boolean) => {
@@ -59,14 +59,14 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             this.cpPresetColorsChange.emit(value)
         }
     }
-    overlayRef: OverlayRef
+    overlayRef?: OverlayRef
 
     private get ignoredElements() {
         const ign = Array.isArray(this.cpIgnoredElements) ? this.cpIgnoredElements : [this.cpIgnoredElements]
         return ign.filter(el => !!el)
     }
 
-    @Input() cpColor: string
+    @Input() cpColor?: string
 
     @Input() cpWidth: string = '230px'
     @Input() cpHeight: string = 'auto'
@@ -85,7 +85,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Input() cpPositionOffset: number = 0
 
     @Input() cpPresetLabel: boolean | string = true
-    @Input() cpPresetColors: string[]
+    @Input() cpPresetColors?: string[]
 
     @Input() cpDisableInput: boolean = false
 
@@ -147,7 +147,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @HostListener('input', ['$event'])
     @HostListener('change', ['$event'])
     handleInput(event: Event) {
-        const value = ((event && event.target && event.target['value'] || '') + '').trim()
+        const value = (((event?.target as HTMLInputElement | null)?.['value'] || '') + '').trim()
 
         if (this.dialog) {
             this.dialog.setColorFromString(value, true)
@@ -162,40 +162,40 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.cpToggle && !this.cpDisabled) {
-            if (changes.cpToggle.currentValue) {
+        if (changes['cpToggle'] && !this.cpDisabled) {
+            if (changes['cpToggle'].currentValue) {
                 this.openDialog()
             } else {
                 this.closeDialog()
             }
         }
 
-        if (changes.cpColor) {
+        if (changes['cpColor']) {
             if (this.dialog && !this.ignoreChanges) {
                 if (this.cpDialogDisplay == DialogDisplay.inline) {
-                    this.dialog.setInitialColor(changes.cpColor.currentValue)
+                    this.dialog.setInitialColor(changes['cpColor'].currentValue)
                 }
 
-                this.dialog.setColorFromString(changes.cpColor.currentValue, false)
+                this.dialog.setColorFromString(changes['cpColor'].currentValue, false)
 
                 if (this.cpUseRootViewContainer && this.cpDialogDisplay != DialogDisplay.inline) {
-                    this.cmpRef.changeDetectorRef.detectChanges()
+                    this.cmpRef?.changeDetectorRef.detectChanges()
                 }
             }
 
             this.ignoreChanges = false
         }
 
-        if ((changes.cpPresetLabel || changes.cpPresetColors) && this.dialog) {
+        if ((changes['cpPresetLabel'] || changes['cpPresetColors']) && this.dialog) {
             this.dialog.setPresetConfig(this.cpPresetLabel, this.cpPresetColors)
         }
 
-        if (changes.cpDialogDisplay) {
+        if (changes['cpDialogDisplay']) {
             this.dispose()
             this.create()
         }
 
-        if ((changes.cpPosition || changes.cpPositionOffset) && this.cpDialogDisplay == DialogDisplay.popup) {
+        if ((changes['cpPosition'] || changes['cpPositionOffset']) && this.cpDialogDisplay == DialogDisplay.popup) {
             if (this.overlayRef) {
                 this.overlayRef.updatePositionStrategy(this.overlay.position()
                     .flexibleConnectedTo(this.elRef)
@@ -272,9 +272,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     }
 
     private setupDialog() {
-        if (this.dialog) {
-            this.dialog.setupDialog({ ...this, callbacks: this._callbacks, elementRef: this.elRef, color: this.cpColor })
-        }
+        this.dialog?.setupDialog({ ...this, callbacks: this._callbacks, elementRef: this.elRef, color: this.cpColor })
     }
 
     private getPositions(offset = 0) {

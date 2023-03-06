@@ -6,7 +6,7 @@ import { TextEvent } from '../util/helpers'
 })
 export class TextDirective {
 
-    @Input() rg: number
+    @Input() rg?: number
     @Input() text: any
 
     @Output() newValue = new EventEmitter<TextEvent>()
@@ -14,7 +14,7 @@ export class TextDirective {
     @HostListener('input', ['$event'])
     @HostListener('change', ['$event'])
     inputChange(event: Event) {
-        const value = ((event && event.target && event.target['value'] || '') + '').trim()
+        const value = (((event?.target as HTMLInputElement | null)?.['value'] || '') + '').trim()
 
         if (this.rg == undefined) {
             this.newValue.emit(value)

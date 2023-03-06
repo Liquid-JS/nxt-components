@@ -320,7 +320,7 @@ export function stringToCmyk(colorString: string = '', allowHex8: boolean = fals
     return cmyk
 }
 
-export function formatOutput(hsva: Hsva, outputFormat: OutputFormat, alphaChannel: AlphaChannel) {
+export function formatOutput(hsva: Hsva, outputFormat: OutputFormat, alphaChannel?: AlphaChannel) {
     if (outputFormat == OutputFormat.auto) {
         outputFormat = hsva.a < 1 ? OutputFormat.rgba : OutputFormat.hex
     }
