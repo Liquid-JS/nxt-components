@@ -2,7 +2,7 @@ export { DropzoneComponent } from './lib/dropzone.component'
 export { DropzoneDirective } from './lib/dropzone.directive'
 
 export {
-    DROPZONE_CONFIG,
+    NXT_DROPZONE_CONFIG,
 
     DropzoneConfig,
     DropzoneConfigInterface,

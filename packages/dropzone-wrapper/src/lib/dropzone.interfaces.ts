@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core'
 
-export const DROPZONE_CONFIG = new InjectionToken('DROPZONE_CONFIG')
+export const NXT_DROPZONE_CONFIG = new InjectionToken('NXT_DROPZONE_CONFIG')
 
 export type DropzoneEvent = 'error' | 'success' | 'sending' | 'canceled' | 'complete' |
     'processing' | 'drop' | 'dragStart' | 'dragEnd' | 'dragEnter' | 'dragOver' | 'dragLeave' |
