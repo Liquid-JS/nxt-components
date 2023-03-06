@@ -42,6 +42,9 @@
             ],
             "nxt-pick-datetime/native-adapter": [
                 "dist/pick-datetime/native-adapter"
+            ],
+            "nxt-sortablejs": [
+                "dist/sortablejs"
             ]
         }
     },

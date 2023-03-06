@@ -297,6 +297,46 @@
                     }
                 }
             }
+        },
+        "sortablejs": {
+            "projectType": "library",
+            "root": "packages/sortablejs",
+            "sourceRoot": "packages/sortablejs/src",
+            "prefix": "nxt",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "options": {
+                        "project": "packages/sortablejs/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "packages/sortablejs/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "packages/sortablejs/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "packages/sortablejs/src/test.ts",
+                        "tsConfig": "packages/sortablejs/tsconfig.spec.json",
+                        "karmaConfig": "packages/sortablejs/karma.conf.js"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "packages/sortablejs/**/*.ts",
+                            "packages/sortablejs/**/*.html"
+                        ]
+                    }
+                }
+            }
         }
     }
 }

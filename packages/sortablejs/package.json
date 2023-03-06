@@ -1,0 +1,33 @@
+{
+    "name": "nxt-sortablejs",
+    "description": "Angular sortablejs bindings.",
+    "bugs": "https://github.com/Liquid-JS/nxt-components/issues",
+    "version": "14.0.0",
+    "license": "MIT",
+    "repository": "https://github.com/Liquid-JS/nxt-components.git",
+    "keywords": [
+        "nxt-sortablejs",
+        "angular-sortablejs",
+        "sortablejs",
+        "angular",
+        "sortable",
+        "draggable"
+    ],
+    "scripts": {
+        "watch": "ng build sortablejs --configuration \"development\" --watch",
+        "build": "ng build sortablejs --configuration \"production\"",
+        "lint": "ng lint sortablejs",
+        "lint:fix": "yarn lint --fix",
+        "lint:sass": "stylelint \"src/**/*.scss\"",
+        "lint:sass:fix": "yarn lint:sass --fix",
+        "test": "ng test sortablejs"
+    },
+    "peerDependencies": {
+        "@angular/common": "^14.2.0",
+        "@angular/core": "^14.2.0",
+        "sortablejs": ">=1.14.0"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    }
+}

@@ -25,6 +25,7 @@
         "bootstrap": "<4.0.0",
         "diacritics": "^1.3.0",
         "i18n-iso-countries": "^7.5.0",
+        "ngx-bootstrap": "<10.1.0",
         "rxjs": "^7.8.0",
         "tslib": "^2.3.0",
         "zone.js": "^0.12.0"

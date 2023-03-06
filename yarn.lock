@@ -7171,6 +7171,13 @@ ng-packagr@<14.3.0:
   optionalDependencies:
     esbuild "^0.15.0"
 
+ngx-bootstrap@<10.1.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-10.0.0.tgz#1f9a37ae89f50016a845f551e7f2db578b9c39a8"
+  integrity sha512-0MCF+3APAAkFpOp/PGI20XFjtWVElg0YLghhCoWZJ/tkQ/MuoQ9BrO+5wC6V1TGi9n+6O9Ga+7+JTRGkwkLYCg==
+  dependencies:
+    tslib "^2.3.0"
+
 nice-napi@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/nice-napi/-/nice-napi-1.0.2.tgz#dc0ab5a1eac20ce548802fc5686eaa6bc654927b"
@@ -9169,6 +9176,11 @@ socks@^2.6.2:
   dependencies:
     ip "^2.0.0"
     smart-buffer "^4.2.0"
+
+sortablejs@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.15.0.tgz#53230b8aa3502bb77a29e2005808ffdb4a5f7e2a"
+  integrity sha512-bv9qgVMjUMf89wAvM6AxVvS/4MX3sPeN0+agqShejLU5z5GX4C75ow1O2e5k4L6XItUyAK3gH6AxSbXrOM5e8w==
 
 "source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.0.1, source-map-js@^1.0.2:
   version "1.0.2"
