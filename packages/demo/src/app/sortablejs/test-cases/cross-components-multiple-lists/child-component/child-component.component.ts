@@ -4,7 +4,7 @@ import {Options} from 'sortablejs';
 @Component({
   selector: 'app-child-component',
   templateUrl: './child-component.component.html',
-  styleUrls: ['./child-component.component.css'],
+  styleUrls: ['./child-component.component.scss'],
 })
 export class ChildComponentComponent {
 

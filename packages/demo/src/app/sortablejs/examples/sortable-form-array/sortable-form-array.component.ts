@@ -4,7 +4,7 @@ import { UntypedFormArray, UntypedFormControl } from '@angular/forms';
 @Component({
   selector: 'app-sortable-form-array',
   templateUrl: './sortable-form-array.component.html',
-  styleUrls: ['./sortable-form-array.component.css'],
+  styleUrls: ['./sortable-form-array.component.scss'],
 })
 export class SortableFormArrayComponent {
 

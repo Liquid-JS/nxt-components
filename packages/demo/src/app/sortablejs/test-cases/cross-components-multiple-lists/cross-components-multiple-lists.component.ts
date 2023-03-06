@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-cross-components-multiple-lists',
   templateUrl: './cross-components-multiple-lists.component.html',
-  styleUrls: ['./cross-components-multiple-lists.component.css'],
+  styleUrls: ['./cross-components-multiple-lists.component.scss'],
 })
 export class CrossComponentsMultipleListsComponent {
 

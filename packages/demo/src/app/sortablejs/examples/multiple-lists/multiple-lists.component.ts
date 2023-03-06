@@ -4,7 +4,7 @@ import {Options} from 'sortablejs';
 @Component({
   selector: 'app-multiple-lists',
   templateUrl: './multiple-lists.component.html',
-  styleUrls: ['./multiple-lists.component.css'],
+  styleUrls: ['./multiple-lists.component.scss'],
 })
 export class MultipleListsComponent {
 

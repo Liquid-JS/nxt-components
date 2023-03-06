@@ -17,6 +17,10 @@ const routes: Routes = [
     {
         path: 'pick-datetime',
         loadChildren: () => import('./pick-datetime/pick-datetime.module').then(m => m.AppPickDatetimeModule)
+    },
+    {
+        path: 'sortablejs',
+        loadChildren: () => import('./sortablejs/sortablejs.module').then(m => m.AppSortablejsModule)
     }
 ]
 

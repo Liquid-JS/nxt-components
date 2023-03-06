@@ -4,7 +4,7 @@ import {Options} from 'sortablejs';
 @Component({
   selector: 'app-sortable-with-options',
   templateUrl: './sortable-with-options.component.html',
-  styleUrls: ['./sortable-with-options.component.css'],
+  styleUrls: ['./sortable-with-options.component.scss'],
 })
 export class SortableWithOptionsComponent {
 
