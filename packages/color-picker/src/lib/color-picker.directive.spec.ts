@@ -12,7 +12,7 @@ describe('ColorPickerDirective', () => {
         parentEl = document.createElement('div')
         targetEl = document.createElement('div')
         parentEl.appendChild(targetEl)
-        directive = new ColorPickerDirective(inj, app, null, new ElementRef(targetEl))
+        directive = new ColorPickerDirective(inj, app, undefined as any, new ElementRef(targetEl), undefined as any)
     }))
 
     afterEach(() => {

@@ -2,12 +2,12 @@ import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/c
 import { TextEvent } from '../util/helpers'
 
 @Directive({
-    selector: '[cpText]'
+    selector: '[nxtText]'
 })
 export class TextDirective {
 
     @Input() rg?: number
-    @Input() text: any
+    @Input('nxtText') text: any
 
     @Output() newValue = new EventEmitter<TextEvent>()
 

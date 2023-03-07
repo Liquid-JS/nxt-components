@@ -44,88 +44,89 @@ yarn add nxt-color-picker
 import { ColorPickerModule } from 'nxt-color-picker';
 
 @NgModule({
-  ...
-  imports: [
     ...
-    ColorPickerModule
-  ]
+    imports: [
+        ...
+        ColorPickerModule
+    ]
 })
 ```
 
 ##### Use it in your HTML template:
 
 ```html
-<input [(cpColor)]="color" [style.background]="color"/>
+<input [(nxtColor)]="color" 
+    [style.background]="color"/>
 ```
 
 ```javascript
-[cpColor]                    // The color to show in the color picker dialog.
+[nxtColor]                  // The color to show in the color picker dialog.
 
-[cpWidth]                    // Use this option to set color picker dialog width ('230px').
-[cpHeight]                   // Use this option to force color picker dialog height ('auto').
+[width]                     // Use this option to set color picker dialog width ('230px').
+[height]                    // Use this option to force color picker dialog height ('auto').
 
-[cpToggle]                   // Sets the default open / close state of the color picker (false).
-[cpDisabled]                 // Disables opening of the color picker dialog via toggle / events.
+[toggle]                    // Sets the default open / close state of the color picker (false).
+[disabled]                  // Disables opening of the color picker dialog via toggle / events.
 
-[cpMode]                     // Dialog color mode: 'color', 'grayscale', 'presets' ('color').
+[mode]                      // Dialog color mode: 'color', 'grayscale', 'presets' ('color').
 
-[cpCmykEnabled]              // Enables CMYK input format and color change event (false).
+[cmykEnabled]               // Enables CMYK input format and color change event (false).
 
-[cpOutputFormat]             // Output color format: OutputFormat (OutputFormat.auto).
-[cpAlphaChannel]             // Alpha mode: AlphaChannel (AlphaChannel.enabled).
-[cpFallbackColor]            // Used when the color is not well-formed or is undefined ('#000').
+[outputFormat]              // Output color format: OutputFormat (OutputFormatEnum.auto).
+[alphaChannel]              // Alpha mode: AlphaChannel (AlphaChannelEnum.enabled).
+[fallbackColor]             // Used when the color is not well-formed or is undefined ('#000').
 
-[cpPosition]                 // Dialog position: DialogPosition (DialogPosition.right).
-[cpPositionOffset]           // Dialog offset percentage relative to the directive element (0).
+[position]                  // Dialog position: DialogPosition (DialogPositionEnum.right).
+[positionOffset]            // Dialog offset percentage relative to the directive element (0).
 
-[cpPresetLabel]              // Show label for preset colors (true). If string is given, it overrides the default label.
-[cpPresetColors]             // Array of preset colors to show in the color picker dialog ([]).
+[presetLabel]               // Show label for preset colors (true). If string is given, it overrides the default label.
+[presetColors]              // Array of preset colors to show in the color picker dialog ([]).
 
-[cpDisableInput]             // Disables / hides the color input field from the dialog (false).
+[disableInput]              // Disables / hides the color input field from the dialog (false).
 
-[cpDialogDisplay]            // Dialog positioning mode: DialogDisplay (DialogDisplay.popup).
-                             //   DialogDisplay.popup: dialog is shown as popup (fixed positioning).
-                             //   DialogDisplay.inline: dialog is shown permanently (static positioning).
+[dialogDisplay]             // Dialog positioning mode: DialogDisplay (DialogDisplayEnum.popup).
+                            //   DialogDisplayEnum.popup: dialog is shown as popup (fixed positioning).
+                            //   DialogDisplayEnum.inline: dialog is shown permanently (static positioning).
 
-[cpIgnoredElements]          // Array of HTML elements that will be ignored when clicked ([]).
+[ignoredElements]           // Array of HTML elements that will be ignored when clicked ([]).
 
-[cpSaveClickOutside]         // Save currently selected color when user clicks outside (true).
-[cpCloseClickOutside]        // Close the color picker dialog when user clicks outside (true).
+[saveClickOutside]          // Save currently selected color when user clicks outside (true).
+[closeClickOutside]         // Close the color picker dialog when user clicks outside (true).
 
-[cpOKButton]                 // Show an OK / Apply button which saves the color (false).
+[okButton]                  // Show an OK / Apply button which saves the color (false).
 
-[cpCancelButton]             // Show a Cancel / Reset button which resets the color (false).
+[cancelButton]              // Show a Cancel / Reset button which resets the color (false).
 
-[cpAddColorButton]           // Show an Add Color button which add the color into preset (false).
+[addColorButton]            // Show an Add Color button which add the color into preset (false).
 
-[cpMaxPresetColors]          // Use this option to set the max colors allowed in presets (6).
+[maxPresetColors]           // Use this option to set the max colors allowed in presets (6).
 
-[cpUseRootViewContainer]     // Create dialog component in the root view container (false).
-                             // Note: The root component needs to have public viewContainerRef.
+[useRootViewContainer]      // Create dialog component in the root view container (false).
+                            // Note: The root component needs to have public viewContainerRef.
 
-(cpOpen)                     // Current color value, send when dialog is opened (value: string).
-(cpClose)                    // Current color value, send when dialog is closed (value: string).
+(open)                      // Current color value, send when dialog is opened (value: string).
+(close)                     // Current color value, send when dialog is closed (value: string).
 
-(cpInputChange)              // Input name and its value, send when user changes color through inputs (value: InputChangeEvent).
+(inputChange)               // Input name and its value, send when user changes color through inputs (value: InputChangeEvent).
 
-(cpToggleChange)             // Status of the dialog, send when dialog is opened / closed (open: boolean).
+(toggleChange)              // Status of the dialog, send when dialog is opened / closed (open: boolean).
 
-(cpSliderDragStart)          // Slider name and current color, send when slider dragging starts (value: SliderChangeEvent).
-(cpSliderChange)             // Slider name and its value, send when user changes color through slider (value: SliderChangeEvent).
-(cpSliderDragEnd)            // Slider name and current color, send when slider dragging ends (value: SliderChangeEvent).
+(sliderDragStart)           // Slider name and current color, send when slider dragging starts (value: SliderChangeEvent).
+(sliderChange)              // Slider name and its value, send when user changes color through slider (value: SliderChangeEvent).
+(sliderDragEnd)             // Slider name and current color, send when slider dragging ends (value: SliderChangeEvent).
 
-(cpColorSelectCancel)        // Color select canceled, send when Cancel button is pressed (void).
-(cpColorSelect)              // Selected color value, send when OK button pressed or user clicks outside (if cpSaveClickOutside is true). (value: string).
-(cpColorChange)              // Changed color value, send when color is changed (value: string).
+(colorSelectCancel)         // Color select canceled, send when Cancel button is pressed (void).
+(colorSelect)               // Selected color value, send when OK button pressed or user clicks outside (if saveClickOutside is true). (value: string).
+(nxtColorChange)            // Changed color value, send when color is changed (value: string).
 
-(cpCmykColorChange)          // Outputs the color as CMYK string if CMYK is enabled (value: string).
+(cmykColorChange)           // Outputs the color as CMYK string if CMYK is enabled (value: string).
 
-(cpPresetColorsChange)       // Preset colors, send when 'Add Color' button is pressed (value: array).
+(presetColorsChange)        // Preset colors, send when 'Add Color' button is pressed (value: array).
 ```
 
 ##### Available control / helper functions (provided by the directive):
 
 ```javascript
-openDialog()                 // Opens the color picker dialog if not already open.
-closeDialog()                // Closes the color picker dialog if not already closed.
+openDialog()                // Opens the color picker dialog if not already open.
+closeDialog()               // Closes the color picker dialog if not already closed.
 ```

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { DialogDisplay } from '../util/types'
+import { DialogDisplayEnum } from '../util/types'
 import { ColorPickerComponent } from './color-picker/color-picker.component'
 
 @Injectable({
@@ -12,7 +12,7 @@ export class ColorPickerService {
     constructor() { }
 
     setActive(active: ColorPickerComponent) {
-        if (active && active.cpDialogDisplay == DialogDisplay.popup) {
+        if (active && active.dialogDisplay == DialogDisplayEnum.popup) {
             if (this.active && this.active != active) {
                 this.active.closeDialog()
             }

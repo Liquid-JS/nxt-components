@@ -3,21 +3,18 @@ import { cmykToRgb, denormalizeCMYK, denormalizeRGBA, formatCmyk, formatOutput, 
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Cmyk, Hsla, Hsva, Rgba } from '../../util/formats'
 import { ColorModeInternal, composedPath, CursorEvent, DialogConfig, DirectiveCallbacks, parseColorMode, sizeToString, SliderPosition, TextEvent } from '../../util/helpers'
-import { AlphaChannel, AlphaEnabledFormats, ColorFormat, DialogDisplay, DialogPosition, OutputFormat } from '../../util/types'
+import { AlphaChannel, AlphaChannelEnum, AlphaEnabledFormats, ColorFormat, ColorFormatEnum, DialogDisplay, DialogDisplayEnum, DialogPosition, DialogPositionEnum, OutputFormat, OutputFormatEnum } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
 
 @Component({
-    selector: 'cp-color-picker',
+    selector: 'nxt-color-picker',
     templateUrl: './color-picker.component.html',
     styleUrls: ['./color-picker.component.scss'],
     encapsulation: ViewEncapsulation.Emulated
 })
 export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked {
 
-    readonly alphaChannel = AlphaChannel
     readonly colorModeInternal = ColorModeInternal
-    readonly dialogDisplay = DialogDisplay
-    readonly colorFormat = ColorFormat
 
     private hsva?: Hsva
     private cmyk?: Cmyk
@@ -30,17 +27,17 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     private sliderH?: number
 
     private dialogInputFields: ColorFormat[] = [
-        ColorFormat.hex,
-        ColorFormat.rgba,
-        ColorFormat.hsla,
-        ColorFormat.cmyk
+        ColorFormatEnum.hex,
+        ColorFormatEnum.rgba,
+        ColorFormatEnum.hsla,
+        ColorFormatEnum.cmyk
     ]
 
     private callbacks?: DirectiveCallbacks
 
     show = false
 
-    format = ColorFormat.hex
+    format: ColorFormat = ColorFormatEnum.hex
     slider?: SliderPosition
 
     hexText?: string
@@ -59,34 +56,34 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     valueSliderLight = false
     alphaSliderLight = false
 
-    cpWidth?: string
-    cpHeight?: string
+    width?: string
+    height?: string
 
-    cpMode: ColorModeInternal = ColorModeInternal.color
+    mode: ColorModeInternal = ColorModeInternal.color
 
-    cpCmykEnabled = false
-    cpAlphaChannel = AlphaChannel.enabled
-    cpOutputFormat = OutputFormat.auto
+    cmykEnabled = false
+    alphaChannel: AlphaChannel = AlphaChannelEnum.enabled
+    outputFormat: OutputFormat = OutputFormatEnum.auto
 
-    cpDisableInput = false
-    cpDialogDisplay?: DialogDisplay
+    disableInput = false
+    dialogDisplay?: DialogDisplay
 
-    cpIgnoredElements?: any[]
+    ignoredElements?: any[]
 
-    cpSaveClickOutside = false
-    cpCloseClickOutside = false
+    saveClickOutside = false
+    closeClickOutside = false
 
-    cpPosition: DialogPosition = DialogPosition.right
+    position: DialogPosition = DialogPositionEnum.right
 
-    cpOKButton = false
+    okButton = false
 
-    cpCancelButton = false
+    cancelButton = false
 
-    cpPresetLabel: boolean | string = false
-    cpPresetColors?: string[]
-    cpMaxPresetColors?: number
+    presetLabel: boolean | string = false
+    presetColors?: string[]
+    maxPresetColors?: number
 
-    cpAddColorButton: boolean = false
+    addColorButton: boolean = false
 
     constructor(
         private elRef: ElementRef,
@@ -107,7 +104,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
             this.callbacks.colorSelectCanceled()
         }
 
-        if (this.show && this.cpDialogDisplay == DialogDisplay.popup) {
+        if (this.show && this.dialogDisplay == DialogDisplayEnum.popup) {
             this.closeColorPicker()
         }
     }
@@ -117,12 +114,12 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         event.stopPropagation()
         event.preventDefault()
 
-        if (this.show && this.cpDialogDisplay == DialogDisplay.popup) {
+        if (this.show && this.dialogDisplay == DialogDisplayEnum.popup) {
             if (this.outputColor && this.callbacks) {
                 this.callbacks.colorSelected(this.outputColor)
             }
 
-            if (this.cpDialogDisplay == DialogDisplay.popup) {
+            if (this.dialogDisplay == DialogDisplayEnum.popup) {
                 this.closeColorPicker()
             }
         }
@@ -132,11 +129,11 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     @HostListener('document:focusin', ['$event'])
     onFocusChange(event: MouseEvent | FocusEvent) {
         const path = new Set(composedPath(event))
-        const intersect = this.cpIgnoredElements?.find(el => path.has(el))
+        const intersect = this.ignoredElements?.find(el => path.has(el))
 
         if (!intersect) {
-            if (this.show && this.cpDialogDisplay == DialogDisplay.popup) {
-                if (this.cpSaveClickOutside) {
+            if (this.show && this.dialogDisplay == DialogDisplayEnum.popup) {
+                if (this.saveClickOutside) {
                     if (this.outputColor && this.callbacks) {
                         this.callbacks.colorSelected(this.outputColor)
                     }
@@ -144,7 +141,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
                     this.setColorFromString(this.initialColor, false)
 
                     if (this.callbacks) {
-                        if (this.cpCmykEnabled) {
+                        if (this.cmykEnabled) {
                             this.callbacks.cmykChanged(this.cmykColor)
                         }
 
@@ -152,10 +149,10 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
                     }
                 }
 
-                if (this.cpCloseClickOutside) {
+                if (this.closeClickOutside) {
                     this.closeColorPicker()
                 }
-            } else if (this.cpSaveClickOutside && this.outputColor && this.callbacks) {
+            } else if (this.saveClickOutside && this.outputColor && this.callbacks) {
                 this.callbacks.colorSelected(this.outputColor)
             }
         }
@@ -164,14 +161,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     ngOnInit() {
         this.slider = new SliderPosition(0, 0, 0, 0)
 
-        if (this.cpCmykEnabled) {
-            this.format = ColorFormat.cmyk
-        } else if (this.cpOutputFormat == OutputFormat.rgba) {
-            this.format = ColorFormat.rgba
-        } else if (this.cpOutputFormat == OutputFormat.hsla) {
-            this.format = ColorFormat.hsla
+        if (this.cmykEnabled) {
+            this.format = ColorFormatEnum.cmyk
+        } else if (this.outputFormat == OutputFormatEnum.rgba) {
+            this.format = ColorFormatEnum.rgba
+        } else if (this.outputFormat == OutputFormatEnum.hsla) {
+            this.format = ColorFormatEnum.hsla
         } else {
-            this.format = ColorFormat.hex
+            this.format = ColorFormatEnum.hex
         }
 
         this.openDialog(this.initialColor, false)
@@ -200,46 +197,46 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     setupDialog(config: DialogConfig) {
         this.setInitialColor(config.color)
 
-        this.cpMode = parseColorMode(config.cpMode)
+        this.mode = parseColorMode(config.mode)
 
         this.callbacks = config.callbacks
 
-        this.cpDisableInput = config.cpDisableInput
+        this.disableInput = config.disableInput
 
-        this.cpCmykEnabled = config.cpCmykEnabled
-        this.cpAlphaChannel = config.cpAlphaChannel
-        this.cpOutputFormat = config.cpOutputFormat
-        this.cpDialogDisplay = config.cpDialogDisplay
+        this.cmykEnabled = config.cmykEnabled
+        this.alphaChannel = config.alphaChannel
+        this.outputFormat = config.outputFormat
+        this.dialogDisplay = config.dialogDisplay
 
-        this.cpIgnoredElements = [
-            ...(Array.isArray(config.cpIgnoredElements) ? config.cpIgnoredElements : [config.cpIgnoredElements]),
+        this.ignoredElements = [
+            ...(Array.isArray(config.ignoredElements) ? config.ignoredElements : [config.ignoredElements]),
             this.elRef && this.elRef.nativeElement,
             config.elementRef && config.elementRef.nativeElement
         ].filter(e => !!e)
 
-        this.cpSaveClickOutside = config.cpSaveClickOutside
-        this.cpCloseClickOutside = config.cpCloseClickOutside
+        this.saveClickOutside = config.saveClickOutside
+        this.closeClickOutside = config.closeClickOutside
 
-        this.cpWidth = sizeToString(config.cpWidth)
-        this.cpHeight = sizeToString(config.cpHeight)
+        this.width = sizeToString(config.width)
+        this.height = sizeToString(config.height)
 
-        this.cpPosition = config.cpPosition
+        this.position = config.position
 
-        this.cpOKButton = config.cpOKButton
+        this.okButton = config.okButton
 
-        this.cpCancelButton = config.cpCancelButton
+        this.cancelButton = config.cancelButton
 
-        this.fallbackColor = config.cpFallbackColor || '#fff'
+        this.fallbackColor = config.fallbackColor || '#fff'
 
-        this.setPresetConfig(config.cpPresetLabel, config.cpPresetColors)
+        this.setPresetConfig(config.presetLabel, config.presetColors)
 
-        this.cpMaxPresetColors = config.cpMaxPresetColors
+        this.maxPresetColors = config.maxPresetColors
 
-        this.cpAddColorButton = config.cpAddColorButton
+        this.addColorButton = config.addColorButton
 
-        if (config.cpOutputFormat == OutputFormat.hex &&
-            config.cpAlphaChannel != AlphaChannel.always && config.cpAlphaChannel != AlphaChannel.forced) {
-            this.cpAlphaChannel = AlphaChannel.disabled
+        if (config.outputFormat == OutputFormatEnum.hex &&
+            config.alphaChannel != AlphaChannelEnum.always && config.alphaChannel != AlphaChannelEnum.forced) {
+            this.alphaChannel = AlphaChannelEnum.disabled
         }
     }
 
@@ -248,9 +245,9 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.setColorFromString(this.initialColor, false, true)
     }
 
-    setPresetConfig(cpPresetLabel: boolean | string, cpPresetColors?: string[]) {
-        this.cpPresetLabel = cpPresetLabel
-        this.cpPresetColors = cpPresetColors
+    setPresetConfig(presetLabel: boolean | string, presetColors?: string[]) {
+        this.presetLabel = presetLabel
+        this.presetColors = presetColors
     }
 
     setColorFromString(value: string, emit: boolean = true, update: boolean = true) {
@@ -263,7 +260,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
 
         if (hsva || cmyk) {
-            if (this.cpAlphaChannel == AlphaChannel.disabled) {
+            if (this.alphaChannel == AlphaChannelEnum.disabled) {
                 if (hsva)
                     hsva.a = 1
                 if (cmyk)
@@ -275,14 +272,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
             this.sliderH = this.hsva?.h
 
-            this.updateColorPicker(emit, update, (cmyk && this.cpCmykEnabled))
+            this.updateColorPicker(emit, update, (cmyk && this.cmykEnabled))
         }
     }
 
     stringToRgba(value: string) {
         const hsva = stringToHsva(value, true)
         if (hsva)
-            return formatOutput(hsva, OutputFormat.rgba, AlphaChannel.enabled)
+            return formatOutput(hsva, OutputFormatEnum.rgba, AlphaChannelEnum.enabled)
 
         return undefined
     }
@@ -300,7 +297,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     onFormatToggle(change: number) {
-        const availableFormats = this.dialogInputFields.length - (this.cpCmykEnabled ? 0 : 1)
+        const availableFormats = this.dialogInputFields.length - (this.cmykEnabled ? 0 : 1)
 
         const nextFormat = (((this.dialogInputFields.indexOf(this.format) + change) %
             availableFormats) + availableFormats) % availableFormats
@@ -407,7 +404,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
                 }
 
                 // Hex without alpha
-                if (value.length == 7 && this.cpAlphaChannel == AlphaChannel.forced) {
+                if (value.length == 7 && this.alphaChannel == AlphaChannelEnum.forced) {
                     value += Math.round((this.hsva?.a || 0) * 255).toString(16)
                 }
 
@@ -726,20 +723,20 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     onAddPresetColor(value: string) {
-        if (!this.cpPresetColors?.filter((color) => (color == value)).length) {
-            this.cpPresetColors = this.cpPresetColors?.concat(value)
+        if (!this.presetColors?.filter((color) => (color == value)).length) {
+            this.presetColors = this.presetColors?.concat(value)
 
             if (this.callbacks) {
-                this.callbacks.presetColorsChanged(this.cpPresetColors)
+                this.callbacks.presetColorsChanged(this.presetColors)
             }
         }
     }
 
     onRemovePresetColor(value: string) {
-        this.cpPresetColors = this.cpPresetColors?.filter((color) => (color != value))
+        this.presetColors = this.presetColors?.filter((color) => (color != value))
 
         if (this.callbacks) {
-            this.callbacks.presetColorsChanged(this.cpPresetColors)
+            this.callbacks.presetColorsChanged(this.presetColors)
         }
     }
 
@@ -774,7 +771,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.hsva = this.hsva || new Hsva(0, 0, 0, 0)
         this.cmyk = this.cmyk || new Cmyk(0, 0, 0, 0, 0)
 
-        if (this.cpMode == ColorModeInternal.grayscale) {
+        if (this.mode == ColorModeInternal.grayscale) {
             this.hsva.s = 0
         }
 
@@ -784,7 +781,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
         const hsla = hsva2hsla(this.hsva)
 
-        if (!this.cpCmykEnabled) {
+        if (!this.cmykEnabled) {
             rgba = denormalizeRGBA(hsvaToRgba(this.hsva))
         } else {
             if (!cmykInput) {
@@ -810,19 +807,19 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
             this.rgbaText = new Rgba(rgba.r, rgba.g, rgba.b, Math.round(rgba.a * 100) / 100)
 
-            if (this.cpCmykEnabled) {
+            if (this.cmykEnabled) {
                 this.cmykText = new Cmyk(this.cmyk.c, this.cmyk.m, this.cmyk.y, this.cmyk.k,
                     Math.round(this.cmyk.a * 100) / 100)
             }
 
-            const allowHex8 = this.cpAlphaChannel === AlphaChannel.always
+            const allowHex8 = this.alphaChannel === AlphaChannelEnum.always
 
             this.hexText = rgbaToHex(rgba, allowHex8)
             this.hexAlpha = this.rgbaText.a
         }
 
-        if (this.cpOutputFormat == OutputFormat.auto && this.hsva.a < 1 && !AlphaEnabledFormats.has(this.format)) {
-            this.format = this.hsva.a < 1 ? ColorFormat.rgba : ColorFormat.hex
+        if (this.outputFormat == OutputFormatEnum.auto && this.hsva.a < 1 && !AlphaEnabledFormats.has(this.format)) {
+            this.format = this.hsva.a < 1 ? ColorFormatEnum.rgba : ColorFormatEnum.hex
         }
 
         this.hueSliderColor = 'rgb(' + hue.r + ',' + hue.g + ',' + hue.b + ')'
@@ -833,13 +830,13 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.valueSliderLight = opaqueSliderLight(rgba)
         this.alphaSliderLight = transparentSliderLight(rgba)
 
-        this.outputColor = formatOutput(this.hsva, this.cpOutputFormat, this.cpAlphaChannel)
-        this.selectedColor = formatOutput(this.hsva, OutputFormat.rgba)
+        this.outputColor = formatOutput(this.hsva, this.outputFormat, this.alphaChannel)
+        this.selectedColor = formatOutput(this.hsva, OutputFormatEnum.rgba)
 
-        if (this.format !== ColorFormat.cmyk) {
+        if (this.format !== ColorFormatEnum.cmyk) {
             this.cmykColor = ''
         } else {
-            this.cmykColor = formatCmyk(this.cmyk, this.cpAlphaChannel)
+            this.cmykColor = formatCmyk(this.cmyk, this.alphaChannel)
         }
 
         this.slider = new SliderPosition(
@@ -850,7 +847,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         )
 
         if (emit && lastOutput != this.outputColor && this.callbacks) {
-            if (this.cpCmykEnabled) {
+            if (this.cmykEnabled) {
                 this.callbacks.cmykChanged(this.cmykColor)
             }
 

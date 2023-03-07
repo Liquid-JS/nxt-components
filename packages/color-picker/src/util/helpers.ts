@@ -72,26 +72,26 @@ export interface DialogConfig {
     callbacks: DirectiveCallbacks
     elementRef: ElementRef
     color: any
-    cpWidth: string
-    cpHeight: string
-    cpDialogDisplay: DialogDisplay
-    cpFallbackColor: string
-    cpMode: ColorMode
-    cpCmykEnabled: boolean
-    cpAlphaChannel: AlphaChannel
-    cpOutputFormat: OutputFormat
-    cpDisableInput: boolean
-    cpIgnoredElements: any[]
-    cpSaveClickOutside: boolean
-    cpCloseClickOutside: boolean
-    cpUseRootViewContainer: boolean
-    cpPosition: DialogPosition
-    cpPresetLabel: boolean | string
-    cpPresetColors?: string[]
-    cpMaxPresetColors: number
-    cpOKButton: boolean
-    cpCancelButton: boolean
-    cpAddColorButton: boolean
+    width: string
+    height: string
+    dialogDisplay: DialogDisplay
+    fallbackColor: string
+    mode: ColorMode
+    cmykEnabled: boolean
+    alphaChannel: AlphaChannel
+    outputFormat: OutputFormat
+    disableInput: boolean
+    ignoredElements: any[]
+    saveClickOutside: boolean
+    closeClickOutside: boolean
+    useRootViewContainer: boolean
+    position: DialogPosition
+    presetLabel: boolean | string
+    presetColors?: string[]
+    maxPresetColors: number
+    okButton: boolean
+    cancelButton: boolean
+    addColorButton: boolean
 }
 
 export function composedPath(event: Event): EventTarget[] {

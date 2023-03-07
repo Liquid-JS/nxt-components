@@ -1,27 +1,33 @@
-export enum ColorFormat {
+export enum ColorFormatEnum {
     hex = 'hex',
     rgba = 'rgba',
     hsla = 'hsla',
     cmyk = 'cmyk'
 }
 
-export const AlphaEnabledFormats = new Set([ColorFormat.hsla, ColorFormat.rgba, ColorFormat.cmyk])
+export type ColorFormat = `${ColorFormatEnum}`
 
-export enum OutputFormat {
+export const AlphaEnabledFormats = new Set<ColorFormat>([ColorFormatEnum.hsla, ColorFormatEnum.rgba, ColorFormatEnum.cmyk])
+
+export enum OutputFormatEnum {
     auto = 'auto',
     hex = 'hex',
     rgba = 'rgba',
     hsla = 'hsla'
 }
 
-export enum AlphaChannel {
+export type OutputFormat = `${OutputFormatEnum}`
+
+export enum AlphaChannelEnum {
     enabled = 'enabled',
     disabled = 'disabled',
     always = 'always',
     forced = 'forced'
 }
 
-export enum DialogPosition {
+export type AlphaChannel = `${AlphaChannelEnum}`
+
+export enum DialogPositionEnum {
     auto = 'auto',
     top = 'top',
     left = 'left',
@@ -29,10 +35,14 @@ export enum DialogPosition {
     bottom = 'bottom'
 }
 
-export enum DialogDisplay {
+export type DialogPosition = `${DialogPositionEnum}`
+
+export enum DialogDisplayEnum {
     popup = 'popup',
     inline = 'inline'
 }
+
+export type DialogDisplay = `${DialogDisplayEnum}`
 
 export type ColorMode = 'color' | 'c' | '1' | 'grayscale' | 'g' | '2' | 'presets' | 'p' | '3'
 

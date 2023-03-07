@@ -2,11 +2,11 @@ import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
 import { ApplicationRef, ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Injector, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewContainerRef } from '@angular/core'
 import { composedPath, DirectiveCallbacks } from '../util/helpers'
-import { AlphaChannel, ColorMode, DialogDisplay, DialogPosition, InputChangeEvent, OutputFormat, SliderChangeEvent } from '../util/types'
+import { AlphaChannel, AlphaChannelEnum, ColorMode, DialogDisplay, DialogDisplayEnum, DialogPosition, DialogPositionEnum, InputChangeEvent, OutputFormat, OutputFormatEnum, SliderChangeEvent } from '../util/types'
 import { ColorPickerComponent } from './color-picker/color-picker.component'
 
 @Directive({
-    selector: '[cpColor]'
+    selector: '[nxtColor]'
 })
 export class ColorPickerDirective implements OnChanges, OnDestroy {
 
@@ -19,111 +19,111 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
     private readonly _callbacks: DirectiveCallbacks = {
         stateChanged: (state: boolean) => {
-            this.cpToggleChange.emit(state)
+            this.toggleChange.emit(state)
 
             if (state) {
-                this.cpOpen.emit(this.cpColor)
+                this.open.emit(this.nxtColor)
             } else {
-                this.cpClose.emit(this.cpColor)
+                this.close.emit(this.nxtColor)
             }
         },
         cmykChanged: (value: string, ignore: boolean = true) => {
             this.ignoreChanges = ignore
 
-            this.cpCmykColorChange.emit(value)
+            this.cmykColorChange.emit(value)
         },
         colorChanged: (value: string, ignore: boolean = true) => {
             this.ignoreChanges = ignore
 
-            this.cpColorChange.emit(value)
+            this.nxtColorChange.emit(value)
         },
         colorSelectCanceled: () => {
-            this.cpColorSelectCancel.emit()
+            this.colorSelectCancel.emit()
         },
         colorSelected: (value: string) => {
-            this.cpColorSelect.emit(value)
+            this.colorSelect.emit(value)
         },
         inputChanged: (event: InputChangeEvent) => {
-            this.cpInputChange.emit(event)
+            this.inputChange.emit(event)
         },
         sliderDragStart: (event: SliderChangeEvent) => {
-            this.cpSliderDragStart.emit(event)
+            this.sliderDragStart.emit(event)
         },
         sliderChanged: (event: SliderChangeEvent) => {
-            this.cpSliderChange.emit(event)
+            this.sliderChange.emit(event)
         },
         sliderDragEnd: (event: SliderChangeEvent) => {
-            this.cpSliderDragEnd.emit(event)
+            this.sliderDragEnd.emit(event)
         },
         presetColorsChanged: (value: any[]) => {
-            this.cpPresetColorsChange.emit(value)
+            this.presetColorsChange.emit(value)
         }
     }
     overlayRef?: OverlayRef
 
-    private get ignoredElements() {
-        const ign = Array.isArray(this.cpIgnoredElements) ? this.cpIgnoredElements : [this.cpIgnoredElements]
+    private get resIgnoredElements() {
+        const ign = Array.isArray(this.ignoredElements) ? this.ignoredElements : [this.ignoredElements]
         return ign.filter(el => !!el)
     }
 
-    @Input() cpColor?: string
+    @Input() nxtColor?: string
 
-    @Input() cpWidth: string = '230px'
-    @Input() cpHeight: string = 'auto'
+    @Input() width: string = '230px'
+    @Input() height: string = 'auto'
 
-    @Input() cpToggle: boolean = false
-    @Input() cpDisabled: boolean = false
+    @Input() toggle: boolean = false
+    @Input() disabled: boolean = false
 
-    @Input() cpMode: ColorMode = 'color'
+    @Input() mode: ColorMode = 'color'
 
-    @Input() cpOutputFormat: OutputFormat = OutputFormat.auto
-    @Input() cpCmykEnabled: boolean = false
-    @Input() cpAlphaChannel: AlphaChannel = AlphaChannel.enabled
-    @Input() cpFallbackColor: string = ''
+    @Input() outputFormat: OutputFormat = OutputFormatEnum.auto
+    @Input() cmykEnabled: boolean = false
+    @Input() alphaChannel: AlphaChannel = AlphaChannelEnum.enabled
+    @Input() fallbackColor: string = ''
 
-    @Input() cpPosition: DialogPosition = DialogPosition.right
-    @Input() cpPositionOffset: number = 0
+    @Input() position: DialogPosition = DialogPositionEnum.right
+    @Input() positionOffset: number = 0
 
-    @Input() cpPresetLabel: boolean | string = true
-    @Input() cpPresetColors?: string[]
+    @Input() presetLabel: boolean | string = true
+    @Input() presetColors?: string[]
 
-    @Input() cpDisableInput: boolean = false
+    @Input() disableInput: boolean = false
 
-    @Input() cpDialogDisplay: DialogDisplay = DialogDisplay.popup
+    @Input() dialogDisplay: DialogDisplay = DialogDisplayEnum.popup
 
-    @Input() cpIgnoredElements = new Array<any>()
+    @Input() ignoredElements = new Array<any>()
 
-    @Input() cpSaveClickOutside: boolean = true
-    @Input() cpCloseClickOutside: boolean = true
+    @Input() saveClickOutside: boolean = true
+    @Input() closeClickOutside: boolean = true
 
-    @Input() cpOKButton: boolean = false
+    @Input() okButton: boolean = false
 
-    @Input() cpCancelButton: boolean = false
+    @Input() cancelButton: boolean = false
 
-    @Input() cpAddColorButton: boolean = false
+    @Input() addColorButton: boolean = false
 
-    @Input() cpMaxPresetColors: number = 6
+    @Input() maxPresetColors: number = 6
 
-    @Input() cpUseRootViewContainer: boolean = false
+    @Input() useRootViewContainer: boolean = false
 
-    @Output() cpOpen = new EventEmitter<string>(true)
-    @Output() cpClose = new EventEmitter<string>(true)
+    @Output() open = new EventEmitter<string>(true)
+    @Output() close = new EventEmitter<string>(true)
 
-    @Output() cpInputChange = new EventEmitter<InputChangeEvent>(true)
+    @Output() inputChange = new EventEmitter<InputChangeEvent>(true)
 
-    @Output() cpToggleChange = new EventEmitter<boolean>(true)
+    @Output() toggleChange = new EventEmitter<boolean>(true)
 
-    @Output() cpSliderDragStart = new EventEmitter<SliderChangeEvent>(true)
-    @Output() cpSliderChange = new EventEmitter<SliderChangeEvent>(true)
-    @Output() cpSliderDragEnd = new EventEmitter<SliderChangeEvent>(true)
+    @Output() sliderDragStart = new EventEmitter<SliderChangeEvent>(true)
+    @Output() sliderChange = new EventEmitter<SliderChangeEvent>(true)
+    @Output() sliderDragEnd = new EventEmitter<SliderChangeEvent>(true)
 
-    @Output() cpColorSelect = new EventEmitter<string>(true)
-    @Output() cpColorSelectCancel = new EventEmitter<void>(true)
-    @Output() cpColorChange = new EventEmitter<string>(false)
+    @Output() colorSelect = new EventEmitter<string>(true)
+    @Output() colorSelectCancel = new EventEmitter<void>(true)
+    @Output() nxtColorChange = new EventEmitter<string>(false)
 
-    @Output() cpCmykColorChange = new EventEmitter<string>(true)
+    @Output() cmykColorChange = new EventEmitter<string>(true)
 
-    @Output() cpPresetColorsChange = new EventEmitter<any[]>(true)
+    @Output() presetColorsChange = new EventEmitter<any[]>(true)
 
     constructor(
         private injector: Injector,
@@ -137,9 +137,9 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @HostListener('click', ['$event'])
     handleOpen(event: Event) {
         const path = new Set(composedPath(event))
-        const ignored = this.ignoredElements.find(el => path.has(el))
+        const ignored = this.resIgnoredElements.find(el => path.has(el))
 
-        if (!this.cpDisabled && !ignored) {
+        if (!this.disabled && !ignored) {
             this.openDialog()
         }
     }
@@ -152,8 +152,8 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         if (this.dialog) {
             this.dialog.setColorFromString(value, true)
         } else {
-            this.cpColor = value
-            this.cpColorChange.emit(this.cpColor)
+            this.nxtColor = value
+            this.nxtColorChange.emit(this.nxtColor)
         }
     }
 
@@ -162,23 +162,23 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes['cpToggle'] && !this.cpDisabled) {
-            if (changes['cpToggle'].currentValue) {
+        if (changes['toggle'] && !this.disabled) {
+            if (changes['toggle'].currentValue) {
                 this.openDialog()
             } else {
                 this.closeDialog()
             }
         }
 
-        if (changes['cpColor']) {
+        if (changes['nxtColor']) {
             if (this.dialog && !this.ignoreChanges) {
-                if (this.cpDialogDisplay == DialogDisplay.inline) {
-                    this.dialog.setInitialColor(changes['cpColor'].currentValue)
+                if (this.dialogDisplay == DialogDisplayEnum.inline) {
+                    this.dialog.setInitialColor(changes['nxtColor'].currentValue)
                 }
 
-                this.dialog.setColorFromString(changes['cpColor'].currentValue, false)
+                this.dialog.setColorFromString(changes['nxtColor'].currentValue, false)
 
-                if (this.cpUseRootViewContainer && this.cpDialogDisplay != DialogDisplay.inline) {
+                if (this.useRootViewContainer && this.dialogDisplay != DialogDisplayEnum.inline) {
                     this.cmpRef?.changeDetectorRef.detectChanges()
                 }
             }
@@ -186,20 +186,20 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             this.ignoreChanges = false
         }
 
-        if ((changes['cpPresetLabel'] || changes['cpPresetColors']) && this.dialog) {
-            this.dialog.setPresetConfig(this.cpPresetLabel, this.cpPresetColors)
+        if ((changes['presetLabel'] || changes['presetColors']) && this.dialog) {
+            this.dialog.setPresetConfig(this.presetLabel, this.presetColors)
         }
 
-        if (changes['cpDialogDisplay']) {
+        if (changes['dialogDisplay']) {
             this.dispose()
             this.create()
         }
 
-        if ((changes['cpPosition'] || changes['cpPositionOffset']) && this.cpDialogDisplay == DialogDisplay.popup) {
+        if ((changes['position'] || changes['positionOffset']) && this.dialogDisplay == DialogDisplayEnum.popup) {
             if (this.overlayRef) {
                 this.overlayRef.updatePositionStrategy(this.overlay.position()
                     .flexibleConnectedTo(this.elRef)
-                    .withPositions(this.getPositions(this.cpPositionOffset)))
+                    .withPositions(this.getPositions(this.positionOffset)))
             }
         }
     }
@@ -213,12 +213,12 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
                 this.dialog = this.cmpRef.instance
                 this.setupDialog()
             }
-            this.dialog.openDialog(this.cpColor)
+            this.dialog.openDialog(this.nxtColor)
         }
     }
 
     closeDialog() {
-        if (this.dialog && this.cpDialogDisplay == DialogDisplay.popup) {
+        if (this.dialog && this.dialogDisplay == DialogDisplayEnum.popup) {
             this.dialog.closeDialog()
         }
     }
@@ -239,23 +239,23 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
         this.dialogCreated = true
 
-        if (this.cpUseRootViewContainer && this.cpDialogDisplay != DialogDisplay.inline) {
+        if (this.useRootViewContainer && this.dialogDisplay != DialogDisplayEnum.inline) {
             const classOfRootComponent = this.appRef.componentTypes[0]
             const appInstance = this.injector.get(classOfRootComponent)
 
             vcRef = appInstance.vcRef || appInstance.viewContainerRef || this.vcRef
 
             if (vcRef == this.vcRef) {
-                console.warn('You are using cpUseRootViewContainer, but the root component is not exposing viewContainerRef! Please expose it by adding \'vcRef: ViewContainerRef\' to the constructor.')
+                console.warn('You are using useRootViewContainer, but the root component is not exposing viewContainerRef! Please expose it by adding \'vcRef: ViewContainerRef\' to the constructor.')
             }
         }
 
-        if (this.cpDialogDisplay != DialogDisplay.inline) {
+        if (this.dialogDisplay != DialogDisplayEnum.inline) {
             const pos = this.overlay.position()
                 .flexibleConnectedTo(this.elRef)
                 .withFlexibleDimensions(false)
                 .withPush(false)
-                .withPositions(this.getPositions(this.cpPositionOffset))
+                .withPositions(this.getPositions(this.positionOffset))
             this.overlayRef = this.overlay.create({ positionStrategy: pos, scrollStrategy: this.overlay.scrollStrategies.reposition({ autoClose: true }) })
             this.cmpRef = this.overlayRef.attach(new ComponentPortal(ColorPickerComponent, null, this.injector))
         } else {
@@ -272,16 +272,16 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     }
 
     private setupDialog() {
-        this.dialog?.setupDialog({ ...this, callbacks: this._callbacks, elementRef: this.elRef, color: this.cpColor })
+        this.dialog?.setupDialog({ ...this, callbacks: this._callbacks, elementRef: this.elRef, color: this.nxtColor })
     }
 
     private getPositions(offset = 0) {
         const pos: ConnectedPosition[] = []
-        const position = this.cpPosition || DialogPosition.auto
+        const position = this.position || DialogPositionEnum.auto
 
         const bb = this.elRef.nativeElement.getBoundingClientRect()
 
-        if (position == DialogPosition.auto || position == DialogPosition.bottom) {
+        if (position == DialogPositionEnum.auto || position == DialogPositionEnum.bottom) {
             pos.push({
                 originX: 'start',
                 originY: 'bottom',
@@ -292,7 +292,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             })
         }
 
-        if (position == DialogPosition.auto || position == DialogPosition.top) {
+        if (position == DialogPositionEnum.auto || position == DialogPositionEnum.top) {
             pos.push({
                 originX: 'start',
                 originY: 'top',
@@ -303,7 +303,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             })
         }
 
-        if (position == DialogPosition.auto || position == DialogPosition.left) {
+        if (position == DialogPositionEnum.auto || position == DialogPositionEnum.left) {
             pos.push({
                 originX: 'start',
                 originY: 'top',
@@ -314,7 +314,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             })
         }
 
-        if (position == DialogPosition.auto || position == DialogPosition.right) {
+        if (position == DialogPositionEnum.auto || position == DialogPositionEnum.right) {
             pos.push({
                 originX: 'end',
                 originY: 'top',

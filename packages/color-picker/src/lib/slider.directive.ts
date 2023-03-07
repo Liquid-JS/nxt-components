@@ -2,7 +2,7 @@ import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from
 import { CursorEvent } from '../util/helpers'
 
 @Directive({
-    selector: '[cpSlider]'
+    selector: '[nxtSlider]'
 })
 export class SliderDirective {
 
@@ -11,7 +11,7 @@ export class SliderDirective {
     @Input() rgX?: number
     @Input() rgY?: number
 
-    @Input() slider?: string
+    @Input('nxtSlider') slider?: string
 
     @Output() dragEnd = new EventEmitter()
     @Output() dragStart = new EventEmitter()

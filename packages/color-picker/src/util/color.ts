@@ -1,5 +1,5 @@
 import { Cmyk, Hsla, Hsva, Rgba } from './formats'
-import { AlphaChannel, OutputFormat } from './types'
+import { AlphaChannel, AlphaChannelEnum, OutputFormat, OutputFormatEnum } from './types'
 
 export function hsva2hsla(hsva: Hsva) {
     const h = hsva.h; const s = hsva.s; const v = hsva.v; const a = hsva.a
@@ -321,28 +321,28 @@ export function stringToCmyk(colorString: string = '', allowHex8: boolean = fals
 }
 
 export function formatOutput(hsva: Hsva, outputFormat: OutputFormat, alphaChannel?: AlphaChannel) {
-    if (outputFormat == OutputFormat.auto) {
-        outputFormat = hsva.a < 1 ? OutputFormat.rgba : OutputFormat.hex
+    if (outputFormat == OutputFormatEnum.auto) {
+        outputFormat = hsva.a < 1 ? OutputFormatEnum.rgba : OutputFormatEnum.hex
     }
 
     switch (outputFormat) {
-        case OutputFormat.hsla:
+        case OutputFormatEnum.hsla:
             const hsla = hsva2hsla(hsva)
 
             const hslaText = new Hsla(Math.round((hsla.h) * 360), Math.round(hsla.s * 100),
                 Math.round(hsla.l * 100), Math.round(hsla.a * 100) / 100)
 
-            if (hsva.a < 1 || alphaChannel == AlphaChannel.always) {
+            if (hsva.a < 1 || alphaChannel == AlphaChannelEnum.always) {
                 return 'hsla(' + hslaText.h + ',' + hslaText.s + '%,' + hslaText.l + '%,' +
                     hslaText.a + ')'
             } else {
                 return 'hsl(' + hslaText.h + ',' + hslaText.s + '%,' + hslaText.l + '%)'
             }
 
-        case OutputFormat.rgba:
+        case OutputFormatEnum.rgba:
             const rgba = denormalizeRGBA(hsvaToRgba(hsva))
 
-            if (hsva.a < 1 || alphaChannel == AlphaChannel.always) {
+            if (hsva.a < 1 || alphaChannel == AlphaChannelEnum.always) {
                 return 'rgba(' + rgba.r + ',' + rgba.g + ',' + rgba.b + ',' +
                     Math.round(rgba.a * 100) / 100 + ')'
             } else {
@@ -350,14 +350,14 @@ export function formatOutput(hsva: Hsva, outputFormat: OutputFormat, alphaChanne
             }
 
         default:
-            const allowHex8 = (alphaChannel == AlphaChannel.always || alphaChannel == AlphaChannel.forced)
+            const allowHex8 = (alphaChannel == AlphaChannelEnum.always || alphaChannel == AlphaChannelEnum.forced)
 
             return rgbaToHex(denormalizeRGBA(hsvaToRgba(hsva)), allowHex8)
     }
 }
 
 export function formatCmyk(cmyk: Cmyk, alphaChannel: AlphaChannel) {
-    if (cmyk.a < 1 || alphaChannel == AlphaChannel.always) {
+    if (cmyk.a < 1 || alphaChannel == AlphaChannelEnum.always) {
         return 'cmyka(' + cmyk.c + ',' + cmyk.m + ',' + cmyk.y + ',' + cmyk.k + ',' + cmyk.a + ')'
     } else {
         return 'cmyk(' + cmyk.c + ',' + cmyk.m + ',' + cmyk.y + ',' + cmyk.k + ')'
