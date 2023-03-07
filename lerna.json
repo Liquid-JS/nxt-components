@@ -1,13 +1,13 @@
 {
-    "packages": [
-        "packages/*"
-    ],
-    "version": "14.0.0",
-    "npmClient": "yarn",
-    "useWorkspaces": true,
-    "command": {
-        "publish": {
-            "conventionalCommits": true
-        }
+  "packages": [
+    "packages/*"
+  ],
+  "version": "15.0.0",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "publish": {
+      "conventionalCommits": true
     }
+  }
 }
