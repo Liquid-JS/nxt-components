@@ -1,14 +1,12 @@
 # nxt-flags
 
-[![GitHub license](https://img.shields.io/github/license/Liquid-JS/nxt-flags.svg)](https://github.com/Liquid-JS/nxt-flags/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/Liquid-JS/nxt-components.svg)](https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/dm/nxt-flags.svg)](https://www.npmjs.com/package/nxt-flags)
 [![scope](https://img.shields.io/npm/v/nxt-flags.svg)](https://www.npmjs.com/package/nxt-flags)
 
 Angular component to show country flags.
 
-[Demo](https://liquid-js.github.io/nxt-flags/)
-
-[Docs](https://liquid-js.github.io/nxt-flags/docs/)
+[Demo](https://liquid-js.github.io/nxt-components/flags)
 
 ## Install
 

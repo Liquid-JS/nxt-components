@@ -12,7 +12,7 @@
 
 ## Description
 
-Simple Angular date time picker. Online doc is [here](https://daniel-projects.firebaseapp.com/nxtng/date-time-picker), Online demo(StackBlitz) is [here](https://stackblitz.com/github/DanielYKPan/nxt-examples/tree/date-time-picker).
+Simple Angular date time picker. Online doc is [here](https://daniel-projects.firebaseapp.com/nxtng/date-time-picker), Online demo is [here](https://liquid-js.github.io/nxt-components/pick-datetime).
 This picker is responsive design, so feel free to try it in your desktops, tablets and mobile devices.
 
 ## How to Use
@@ -65,7 +65,7 @@ export class MyTestAppModule {}
 ```
 
 The examples above are quite basic. The picker has much more features, 
-and you could learn more about those from [demo page](https://danielykpan.github.io/date-time-picker/).
+and you could learn more about those from [demo page](https://liquid-js.github.io/nxt-components/pick-datetime).
 
 ## Animation
 
@@ -184,7 +184,7 @@ There are two pre-made modules, users need to import one of them or build your o
 
 ## Localization and DateTime Format
 
-Localization for different languages and formats is defined by `NXT_DATE_TIME_LOCALE` and `NXT_DATE_TIME_FORMATS` . You could learn more about this from [here](https://danielykpan.github.io/date-time-picker#locale-formats).
+Localization for different languages and formats is defined by `NXT_DATE_TIME_LOCALE` and `NXT_DATE_TIME_FORMATS`. You could learn more about this from [here](https://danielykpan.github.io/date-time-picker#locale-formats).
 
 ## Dependencies
 
@@ -193,7 +193,7 @@ none
 ## Demo
 
 -   Online doc is [here](https://daniel-projects.firebaseapp.com/nxtng/date-time-picker)
--   Online demo(StackBlitz) is [here](https://stackblitz.com/github/DanielYKPan/nxt-examples/tree/date-time-picker)
+-   Online demo is [here](https://liquid-js.github.io/nxt-components/pick-datetime)
 
 ## License
 

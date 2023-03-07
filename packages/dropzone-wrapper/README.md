@@ -8,11 +8,11 @@ This documentation is for the latest 13.x.x version which requires Angular 13 or
 
 ### Quick links
 
-[Example application](https://liquid-js.github.io/nxt-dropzone-wrapper/)
+[Example application](https://liquid-js.github.io/nxt-components/dropzone-wrapper)
  \|
-[StackBlitz example](https://stackblitz.com/github/Liquid-JS/nxt-dropzone-wrapper/tree/master)
+[Example](https://github.com/Liquid-JS/nxt-components/tree/master/packages/demo/src/app/dropzone-wrapper)
  \|
-[Dropzone documentation](http://www.dropzonejs.com/#configuration-options)
+[Dropzone documentation](https://docs.dropzone.dev/configuration/basics/configuration-options)
 
 ### Building the library
 

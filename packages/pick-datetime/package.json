@@ -5,6 +5,7 @@
     "version": "14.0.0",
     "license": "MIT",
     "repository": "https://github.com/Liquid-JS/nxt-components.git",
+    "homepage": "https://github.com/Liquid-JS/nxt-components/tree/master/packages/pick-datetime",
     "scripts": {
         "watch": "ng build pick-datetime --configuration \"development\" --watch",
         "build": "ng build pick-datetime --configuration \"production\"",

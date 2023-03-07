@@ -4,7 +4,7 @@ A JSON View component for Angular 13+ (an angular based JSON display component)
 
 ## Demo
 
-<https://liquid-js.github.io/nxt-json-view/>
+<https://liquid-js.github.io/nxt-components/json-view>
 
 ## installation
 

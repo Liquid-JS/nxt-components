@@ -7,6 +7,7 @@
     "scripts": {
         "serve": "ng serve demo",
         "build": "ng build demo --configuration \"production\"",
+        "deploy": "ng --project demo deploy --base-href /nxt-components/",
         "lint": "ng lint demo",
         "lint:fix": "yarn lint --fix",
         "lint:html": "js-beautify --type html -r -f ./src/**/*.html --config ./js-beautify.json",
