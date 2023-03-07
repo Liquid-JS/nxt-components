@@ -2,7 +2,7 @@ import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, HostListene
 import { cmykToRgb, denormalizeCMYK, denormalizeRGBA, formatCmyk, formatOutput, hsla2hsva, hsva2hsla, hsvaToRgba, normalizeCMYK, rgbaToCmyk, rgbaToHex, rgbaToHsva, stringToCmyk, stringToHsva } from '../../util/color'
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Cmyk, Hsla, Hsva, Rgba } from '../../util/formats'
-import { ColorModeInternal, composedPath, DialogConfig, DirectiveCallbacks, parseColorMode, sizeToString, SliderPosition } from '../../util/helpers'
+import { ColorModeInternal, composedPath, CursorEvent, DialogConfig, DirectiveCallbacks, parseColorMode, sizeToString, SliderPosition, TextEvent } from '../../util/helpers'
 import { AlphaChannel, AlphaEnabledFormats, ColorFormat, DialogDisplay, DialogPosition, OutputFormat } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
 
@@ -19,15 +19,15 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     readonly dialogDisplay = DialogDisplay
     readonly colorFormat = ColorFormat
 
-    private hsva: Hsva
-    private cmyk: Cmyk
+    private hsva?: Hsva
+    private cmyk?: Cmyk
 
-    private cmykColor: string
-    private outputColor: string
-    private initialColor: string
-    private fallbackColor: string
+    private cmykColor = ''
+    private outputColor = ''
+    private initialColor = ''
+    private fallbackColor?: string
 
-    private sliderH: number
+    private sliderH?: number
 
     private dialogInputFields: ColorFormat[] = [
         ColorFormat.hex,
@@ -36,57 +36,57 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         ColorFormat.cmyk
     ]
 
-    private callbacks: DirectiveCallbacks
+    private callbacks?: DirectiveCallbacks
 
-    show: boolean
+    show = false
 
-    format: ColorFormat
-    slider: SliderPosition
+    format = ColorFormat.hex
+    slider?: SliderPosition
 
-    hexText: string
-    hexAlpha: number
+    hexText?: string
+    hexAlpha?: number
 
-    cmykText: Cmyk
-    hslaText: Hsla
-    rgbaText: Rgba
+    cmykText?: Cmyk
+    hslaText?: Hsla
+    rgbaText?: Rgba
 
-    selectedColor: string
-    hueSliderColor: string
-    alphaSliderColor: string
+    selectedColor = ''
+    hueSliderColor?: string
+    alphaSliderColor?: string
 
     svSliderLight = false
     hueSliderLight = false
     valueSliderLight = false
     alphaSliderLight = false
 
-    cpWidth: string
-    cpHeight: string
+    cpWidth?: string
+    cpHeight?: string
 
     cpMode: ColorModeInternal = ColorModeInternal.color
 
-    cpCmykEnabled: boolean
-    cpAlphaChannel: AlphaChannel
-    cpOutputFormat: OutputFormat
+    cpCmykEnabled = false
+    cpAlphaChannel = AlphaChannel.enabled
+    cpOutputFormat = OutputFormat.auto
 
-    cpDisableInput: boolean
-    cpDialogDisplay: DialogDisplay
+    cpDisableInput = false
+    cpDialogDisplay?: DialogDisplay
 
-    cpIgnoredElements: any[]
+    cpIgnoredElements?: any[]
 
-    cpSaveClickOutside: boolean
-    cpCloseClickOutside: boolean
+    cpSaveClickOutside = false
+    cpCloseClickOutside = false
 
     cpPosition: DialogPosition = DialogPosition.right
 
-    cpOKButton: boolean
+    cpOKButton = false
 
-    cpCancelButton: boolean
+    cpCancelButton = false
 
-    cpPresetLabel: boolean | string
+    cpPresetLabel: boolean | string = false
     cpPresetColors?: string[]
-    cpMaxPresetColors: number
+    cpMaxPresetColors?: number
 
-    cpAddColorButton: boolean
+    cpAddColorButton: boolean = false
 
     constructor(
         private elRef: ElementRef,
@@ -132,7 +132,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     @HostListener('document:focusin', ['$event'])
     onFocusChange(event: MouseEvent | FocusEvent) {
         const path = new Set(composedPath(event))
-        const intersect = this.cpIgnoredElements.find(el => path.has(el))
+        const intersect = this.cpIgnoredElements?.find(el => path.has(el))
 
         if (!intersect) {
             if (this.show && this.cpDialogDisplay == DialogDisplay.popup) {
@@ -264,14 +264,16 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
         if (hsva || cmyk) {
             if (this.cpAlphaChannel == AlphaChannel.disabled) {
-                hsva.a = 1
-                cmyk.a = 1
+                if (hsva)
+                    hsva.a = 1
+                if (cmyk)
+                    cmyk.a = 1
             }
 
             this.hsva = hsva
             this.cmyk = cmyk ? denormalizeCMYK(cmyk) : cmyk
 
-            this.sliderH = this.hsva.h
+            this.sliderH = this.hsva?.h
 
             this.updateColorPicker(emit, update, (cmyk && this.cpCmykEnabled))
         }
@@ -306,76 +308,87 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.format = this.dialogInputFields[nextFormat]
     }
 
-    onColorChange(value: { s: number, v: number, rgX: number, rgY: number }) {
-        this.hsva.s = value.s / value.rgX
-        this.hsva.v = value.v / value.rgY
+    onColorChange(value: CursorEvent) {
+        if ('rgX' in value && 'rgY' in value) {
+            if (this.hsva) {
+                this.hsva.s = value.s / value.rgX
+                this.hsva.v = value.v / value.rgY
+            }
 
-        this.updateColorPicker()
-
-        if (this.callbacks) {
-            this.callbacks.sliderChanged({
-                slider: 'lightness',
-                value: this.hsva.v,
-                color: this.outputColor
-            })
-        }
-
-        if (this.callbacks) {
-            this.callbacks.sliderChanged({
-                slider: 'saturation',
-                value: this.hsva.s,
-                color: this.outputColor
-            })
-        }
-    }
-
-    onHueChange(value: { v: number, rgX: number }) {
-        this.hsva.h = value.v / value.rgX
-        this.sliderH = this.hsva.h
-
-        this.updateColorPicker()
-
-        if (this.callbacks) {
-            this.callbacks.sliderChanged({
-                slider: 'hue',
-                value: this.hsva.h,
-                color: this.outputColor
-            })
-        }
-    }
-
-    onValueChange(value: { v: number, rgX: number }) {
-        this.hsva.v = value.v / value.rgX
-
-        this.updateColorPicker()
-
-        if (this.callbacks) {
-            this.callbacks.sliderChanged({
-                slider: 'value',
-                value: this.hsva.v,
-                color: this.outputColor
-            })
-        }
-    }
-
-    onAlphaChange(value: { v: number, rgX: number }) {
-        this.hsva.a = value.v / value.rgX
-
-        this.updateColorPicker()
-
-        if (this.callbacks) {
-            this.callbacks.sliderChanged({
-                slider: 'alpha',
-                value: this.hsva.a,
-                color: this.outputColor
-            })
-        }
-    }
-
-    onHexInput(value: string) {
-        if (value == null) {
             this.updateColorPicker()
-        } else {
+
+            if (this.callbacks) {
+                this.callbacks.sliderChanged({
+                    slider: 'lightness',
+                    value: this.hsva?.v,
+                    color: this.outputColor
+                })
+            }
+
+            if (this.callbacks) {
+                this.callbacks.sliderChanged({
+                    slider: 'saturation',
+                    value: this.hsva?.s,
+                    color: this.outputColor
+                })
+            }
+        }
+    }
+
+    onHueChange(value: CursorEvent) {
+        if ('v' in value && 'rgX' in value) {
+            if (this.hsva)
+                this.hsva.h = value.v / value.rgX
+            this.sliderH = this.hsva?.h
+
+            this.updateColorPicker()
+
+            if (this.callbacks) {
+                this.callbacks.sliderChanged({
+                    slider: 'hue',
+                    value: this.hsva?.h,
+                    color: this.outputColor
+                })
+            }
+        }
+    }
+
+    onValueChange(value: CursorEvent) {
+        if ('v' in value && 'rgX' in value) {
+            if (this.hsva)
+                this.hsva.v = value.v / value.rgX
+
+            this.updateColorPicker()
+
+            if (this.callbacks) {
+                this.callbacks.sliderChanged({
+                    slider: 'value',
+                    value: this.hsva?.v,
+                    color: this.outputColor
+                })
+            }
+        }
+    }
+
+    onAlphaChange(value: CursorEvent) {
+        if ('v' in value && 'rgX' in value) {
+            if (this.hsva)
+                this.hsva.a = value.v / value.rgX
+
+            this.updateColorPicker()
+
+            if (this.callbacks) {
+                this.callbacks.sliderChanged({
+                    slider: 'alpha',
+                    value: this.hsva?.a,
+                    color: this.outputColor
+                })
+            }
+        }
+    }
+
+    onHexInput(value?: TextEvent) {
+        if (typeof value == 'string') {
             if (value && value[0] != '#') {
                 value = '#' + value
             }
@@ -395,7 +408,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
                 // Hex without alpha
                 if (value.length == 7 && this.cpAlphaChannel == AlphaChannel.forced) {
-                    value += Math.round(this.hsva.a * 255).toString(16)
+                    value += Math.round((this.hsva?.a || 0) * 255).toString(16)
                 }
 
                 this.setColorFromString(value, true, false)
@@ -409,266 +422,306 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
                     color: this.outputColor
                 })
             }
-        }
-    }
-
-    onRedInput(value: { v: number, rg: number }) {
-        const rgba = hsvaToRgba(this.hsva)
-
-        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
-
-        if (valid) {
-            rgba.r = value.v / value.rg
-
-            this.hsva = rgbaToHsva(rgba)
-
-            this.sliderH = this.hsva.h
-
+        } else {
             this.updateColorPicker()
         }
+    }
 
-        if (this.callbacks) {
-            this.callbacks.inputChanged({
-                input: 'red',
-                valid,
-                value: rgba.r,
-                color: this.outputColor
-            })
+    onRedInput(value: TextEvent) {
+        if (typeof value != 'string') {
+            const rgba = this.hsva ? hsvaToRgba(this.hsva) : new Rgba(0, 0, 0, 0)
+
+            const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+
+            if (valid) {
+                rgba.r = value.v / value.rg
+
+                this.hsva = rgbaToHsva(rgba)
+
+                this.sliderH = this.hsva.h
+
+                this.updateColorPicker()
+            }
+
+            if (this.callbacks) {
+                this.callbacks.inputChanged({
+                    input: 'red',
+                    valid,
+                    value: rgba.r,
+                    color: this.outputColor
+                })
+            }
         }
     }
 
-    onBlueInput(value: { v: number, rg: number }) {
-        const rgba = hsvaToRgba(this.hsva)
+    onBlueInput(value: TextEvent) {
+        if (typeof value != 'string') {
+            const rgba = this.hsva ? hsvaToRgba(this.hsva) : new Rgba(0, 0, 0, 0)
 
-        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+            const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
-        if (valid) {
-            rgba.b = value.v / value.rg
+            if (valid) {
+                rgba.b = value.v / value.rg
 
-            this.hsva = rgbaToHsva(rgba)
+                this.hsva = rgbaToHsva(rgba)
 
-            this.sliderH = this.hsva.h
+                this.sliderH = this.hsva.h
 
-            this.updateColorPicker()
-        }
+                this.updateColorPicker()
+            }
 
-        if (this.callbacks) {
-            this.callbacks.inputChanged({
-                input: 'blue',
-                valid,
-                value: rgba.b,
-                color: this.outputColor
-            })
-        }
-    }
-
-    onGreenInput(value: { v: number, rg: number }) {
-        const rgba = hsvaToRgba(this.hsva)
-
-        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
-
-        if (valid) {
-            rgba.g = value.v / value.rg
-
-            this.hsva = rgbaToHsva(rgba)
-
-            this.sliderH = this.hsva.h
-
-            this.updateColorPicker()
-        }
-
-        if (this.callbacks) {
-            this.callbacks.inputChanged({
-                input: 'green',
-                valid,
-                value: rgba.g,
-                color: this.outputColor
-            })
+            if (this.callbacks) {
+                this.callbacks.inputChanged({
+                    input: 'blue',
+                    valid,
+                    value: rgba.b,
+                    color: this.outputColor
+                })
+            }
         }
     }
 
-    onHueInput(value: { v: number, rg: number }) {
-        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+    onGreenInput(value: TextEvent) {
+        if (typeof value != 'string') {
+            const rgba = this.hsva ? hsvaToRgba(this.hsva) : new Rgba(0, 0, 0, 0)
 
-        if (valid) {
-            this.hsva.h = value.v / value.rg
+            const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
-            this.sliderH = this.hsva.h
+            if (valid) {
+                rgba.g = value.v / value.rg
 
-            this.updateColorPicker()
-        }
+                this.hsva = rgbaToHsva(rgba)
 
-        if (this.callbacks) {
-            this.callbacks.inputChanged({
-                input: 'hue',
-                valid,
-                value: this.hsva.h,
-                color: this.outputColor
-            })
-        }
-    }
+                this.sliderH = this.hsva.h
 
-    onValueInput(value: { v: number, rg: number }) {
-        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+                this.updateColorPicker()
+            }
 
-        if (valid) {
-            this.hsva.v = value.v / value.rg
-
-            this.updateColorPicker()
-        }
-
-        if (this.callbacks) {
-            this.callbacks.inputChanged({
-                input: 'value',
-                valid,
-                value: this.hsva.v,
-                color: this.outputColor
-            })
+            if (this.callbacks) {
+                this.callbacks.inputChanged({
+                    input: 'green',
+                    valid,
+                    value: rgba.g,
+                    color: this.outputColor
+                })
+            }
         }
     }
 
-    onAlphaInput(value: { v: number, rg: number }) {
-        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+    onHueInput(value: TextEvent) {
+        if (typeof value != 'string') {
+            const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
-        if (valid) {
-            this.hsva.a = value.v / value.rg
+            this.hsva = this.hsva || new Hsva(0, 0, 0, 0)
 
-            this.updateColorPicker()
-        }
+            if (valid) {
+                this.hsva.h = value.v / value.rg
 
-        if (this.callbacks) {
-            this.callbacks.inputChanged({
-                input: 'alpha',
-                valid,
-                value: this.hsva.a,
-                color: this.outputColor
-            })
-        }
-    }
+                this.sliderH = this.hsva.h
 
-    onLightnessInput(value: { v: number, rg: number }) {
-        const hsla = hsva2hsla(this.hsva)
+                this.updateColorPicker()
+            }
 
-        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
-
-        if (valid) {
-            hsla.l = value.v / value.rg
-
-            this.hsva = hsla2hsva(hsla)
-
-            this.sliderH = this.hsva.h
-
-            this.updateColorPicker()
-        }
-
-        if (this.callbacks) {
-            this.callbacks.inputChanged({
-                input: 'lightness',
-                valid,
-                value: hsla.l,
-                color: this.outputColor
-            })
+            if (this.callbacks) {
+                this.callbacks.inputChanged({
+                    input: 'hue',
+                    valid,
+                    value: this.hsva.h,
+                    color: this.outputColor
+                })
+            }
         }
     }
 
-    onSaturationInput(value: { v: number, rg: number }) {
-        const hsla = hsva2hsla(this.hsva)
+    onValueInput(value: TextEvent) {
+        if (typeof value != 'string') {
+            const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
-        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+            this.hsva = this.hsva || new Hsva(0, 0, 0, 0)
 
-        if (valid) {
-            hsla.s = value.v / value.rg
+            if (valid) {
+                this.hsva.v = value.v / value.rg
 
-            this.hsva = hsla2hsva(hsla)
+                this.updateColorPicker()
+            }
 
-            this.sliderH = this.hsva.h
-
-            this.updateColorPicker()
-        }
-
-        if (this.callbacks) {
-            this.callbacks.inputChanged({
-                input: 'saturation',
-                valid,
-                value: hsla.s,
-                color: this.outputColor
-            })
+            if (this.callbacks) {
+                this.callbacks.inputChanged({
+                    input: 'value',
+                    valid,
+                    value: this.hsva.v,
+                    color: this.outputColor
+                })
+            }
         }
     }
 
-    public onCyanInput(value: { v: number, rg: number }): void {
-        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+    onAlphaInput(value: TextEvent) {
+        if (typeof value != 'string') {
+            const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
-        if (valid) {
-            this.cmyk.c = value.v
+            this.hsva = this.hsva || new Hsva(0, 0, 0, 0)
 
-            this.updateColorPicker(true, true, true)
-        }
+            if (valid) {
+                this.hsva.a = value.v / value.rg
 
-        if (this.callbacks) {
-            this.callbacks.inputChanged({
-                input: 'cyan',
-                valid: true,
-                value: this.cmyk.c,
-                color: this.outputColor
-            })
-        }
-    }
+                this.updateColorPicker()
+            }
 
-    public onMagentaInput(value: { v: number, rg: number }): void {
-        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
-
-        if (valid) {
-            this.cmyk.m = value.v
-
-            this.updateColorPicker(true, true, true)
-        }
-
-        if (this.callbacks) {
-            this.callbacks.inputChanged({
-                input: 'magenta',
-                valid: true,
-                value: this.cmyk.m,
-                color: this.outputColor
-            })
+            if (this.callbacks) {
+                this.callbacks.inputChanged({
+                    input: 'alpha',
+                    valid,
+                    value: this.hsva.a,
+                    color: this.outputColor
+                })
+            }
         }
     }
 
-    public onYellowInput(value: { v: number, rg: number }): void {
-        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+    onLightnessInput(value: TextEvent) {
+        if (typeof value != 'string') {
+            const hsla = this.hsva ? hsva2hsla(this.hsva) : new Hsla(0, 0, 0, 0)
 
-        if (valid) {
-            this.cmyk.y = value.v
+            const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
-            this.updateColorPicker(true, true, true)
-        }
+            if (valid) {
+                hsla.l = value.v / value.rg
 
-        if (this.callbacks) {
-            this.callbacks.inputChanged({
-                input: 'yellow',
-                valid: true,
-                value: this.cmyk.y,
-                color: this.outputColor
-            })
+                this.hsva = hsla2hsva(hsla)
+
+                this.sliderH = this.hsva.h
+
+                this.updateColorPicker()
+            }
+
+            if (this.callbacks) {
+                this.callbacks.inputChanged({
+                    input: 'lightness',
+                    valid,
+                    value: hsla.l,
+                    color: this.outputColor
+                })
+            }
         }
     }
 
-    public onBlackInput(value: { v: number, rg: number }): void {
-        const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+    onSaturationInput(value: TextEvent) {
+        if (typeof value != 'string') {
+            const hsla = this.hsva ? hsva2hsla(this.hsva) : new Hsla(0, 0, 0, 0)
 
-        if (valid) {
-            this.cmyk.k = value.v
+            const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
-            this.updateColorPicker(true, true, true)
+            if (valid) {
+                hsla.s = value.v / value.rg
+
+                this.hsva = hsla2hsva(hsla)
+
+                this.sliderH = this.hsva.h
+
+                this.updateColorPicker()
+            }
+
+            if (this.callbacks) {
+                this.callbacks.inputChanged({
+                    input: 'saturation',
+                    valid,
+                    value: hsla.s,
+                    color: this.outputColor
+                })
+            }
         }
+    }
 
-        if (this.callbacks) {
-            this.callbacks.inputChanged({
-                input: 'black',
-                valid: true,
-                value: this.cmyk.k,
-                color: this.outputColor
-            })
+    public onCyanInput(value: TextEvent) {
+        if (typeof value != 'string') {
+            const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+
+            this.cmyk = this.cmyk || new Cmyk(0, 0, 0, 0, 0)
+
+            if (valid) {
+                this.cmyk.c = value.v
+
+                this.updateColorPicker(true, true, true)
+            }
+
+            if (this.callbacks) {
+                this.callbacks.inputChanged({
+                    input: 'cyan',
+                    valid: true,
+                    value: this.cmyk.c,
+                    color: this.outputColor
+                })
+            }
+        }
+    }
+
+    public onMagentaInput(value: TextEvent) {
+        if (typeof value != 'string') {
+            const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+
+            this.cmyk = this.cmyk || new Cmyk(0, 0, 0, 0, 0)
+
+            if (valid) {
+                this.cmyk.m = value.v
+
+                this.updateColorPicker(true, true, true)
+            }
+
+            if (this.callbacks) {
+                this.callbacks.inputChanged({
+                    input: 'magenta',
+                    valid: true,
+                    value: this.cmyk.m,
+                    color: this.outputColor
+                })
+            }
+        }
+    }
+
+    public onYellowInput(value: TextEvent) {
+        if (typeof value != 'string') {
+            const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+
+            this.cmyk = this.cmyk || new Cmyk(0, 0, 0, 0, 0)
+
+            if (valid) {
+                this.cmyk.y = value.v
+
+                this.updateColorPicker(true, true, true)
+            }
+
+            if (this.callbacks) {
+                this.callbacks.inputChanged({
+                    input: 'yellow',
+                    valid: true,
+                    value: this.cmyk.y,
+                    color: this.outputColor
+                })
+            }
+        }
+    }
+
+    public onBlackInput(value: TextEvent) {
+        if (typeof value != 'string') {
+            const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
+
+            this.cmyk = this.cmyk || new Cmyk(0, 0, 0, 0, 0)
+
+            if (valid) {
+                this.cmyk.k = value.v
+
+                this.updateColorPicker(true, true, true)
+            }
+
+            if (this.callbacks) {
+                this.callbacks.inputChanged({
+                    input: 'black',
+                    valid: true,
+                    value: this.cmyk.k,
+                    color: this.outputColor
+                })
+            }
         }
     }
 
@@ -718,6 +771,9 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     private updateColorPicker(emit: boolean = true, update: boolean = true, cmykInput: boolean = false) {
+        this.hsva = this.hsva || new Hsva(0, 0, 0, 0)
+        this.cmyk = this.cmyk || new Cmyk(0, 0, 0, 0, 0)
+
         if (this.cpMode == ColorModeInternal.grayscale) {
             this.hsva.s = 0
         }

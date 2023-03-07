@@ -162,7 +162,7 @@ export function denormalizeRGBA(rgba: Rgba) {
 }
 
 export function stringToHsva(colorString: string = '', allowHex8: boolean = false) {
-    let hsva: Hsva = null
+    let hsva: Hsva | undefined
 
     colorString = (colorString || '').toLowerCase()
 
@@ -241,7 +241,7 @@ export function stringToHsva(colorString: string = '', allowHex8: boolean = fals
     return hsva
 }
 export function stringToCmyk(colorString: string = '', allowHex8: boolean = false) {
-    let cmyk: Cmyk = null
+    let cmyk: Cmyk | undefined
 
     colorString = (colorString || '').toLowerCase()
 
