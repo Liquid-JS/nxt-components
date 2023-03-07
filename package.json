@@ -19,7 +19,8 @@
         "lint:fix": "yarn workspaces foreach run lint:fix",
         "lint:html": "yarn workspaces foreach run lint:html",
         "lint:sass": "yarn workspaces foreach run lint:sass",
-        "lint:sass:fix": "yarn workspaces foreach run lint:sass:fix"
+        "lint:sass:fix": "yarn workspaces foreach run lint:sass:fix",
+        "pages": "ng --project demo deploy --base-href /nxt-components/"
     },
     "dependencies": {
         "@angular/animations": "^15.2.1",
