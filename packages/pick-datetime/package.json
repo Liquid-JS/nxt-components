@@ -17,17 +17,17 @@
         "test:watch": "ng test pick-datetime"
     },
     "peerDependencies": {
-        "@angular/animations": "^14.2.0",
-        "@angular/cdk": "^14.2.0",
-        "@angular/common": "^14.2.0",
-        "@angular/core": "^14.2.0",
-        "@angular/forms": "^14.2.0",
-        "@angular/localize": "^14.2.0",
+        "@angular/animations": "^15.2.1",
+        "@angular/cdk": "^15.2.1",
+        "@angular/common": "^15.2.1",
+        "@angular/core": "^15.2.1",
+        "@angular/forms": "^15.2.1",
+        "@angular/localize": "^15.2.1",
         "moment": "^2.29.4",
         "rxjs": "^7.8.0"
     },
     "dependencies": {
-        "tslib": "^2.3.0"
+        "tslib": "^2.5.0"
     },
     "exports": {
         "./assets/picker.scss": {

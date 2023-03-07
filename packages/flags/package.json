@@ -17,10 +17,10 @@
         "test:watch": "ng test flags"
     },
     "peerDependencies": {
-        "@angular/common": "^14.2.0",
-        "@angular/core": "^14.2.0"
+        "@angular/common": "^15.2.1",
+        "@angular/core": "^15.2.1"
     },
     "dependencies": {
-        "tslib": "^2.3.0"
+        "tslib": "^2.5.0"
     }
 }

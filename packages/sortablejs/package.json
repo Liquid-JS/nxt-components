@@ -25,12 +25,12 @@
         "test:watch": "ng test sortablejs"
     },
     "peerDependencies": {
-        "@angular/common": "^14.2.0",
-        "@angular/core": "^14.2.0",
-        "sortablejs": ">=1.14.0"
+        "@angular/common": "^15.2.1",
+        "@angular/core": "^15.2.1",
+        "sortablejs": ">=1.15.0"
     },
     "dependencies": {
-        "tslib": "^2.3.0"
+        "tslib": "^2.5.0"
     },
     "devDependencies": {
         "@types/sortablejs": "^1.15.0"
