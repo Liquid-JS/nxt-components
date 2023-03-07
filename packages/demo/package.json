@@ -9,10 +9,12 @@
         "build": "ng build demo --configuration \"production\"",
         "lint": "ng lint demo",
         "lint:fix": "yarn lint --fix",
+        "lint:html": "js-beautify --type html -r -f ./src/**/*.html --config ./js-beautify.json",
         "lint:sass": "stylelint \"src/**/*.scss\"",
         "lint:sass:fix": "yarn lint:sass --fix"
     },
     "dependencies": {
+        "@angular/animations": "<15.0.0",
         "@angular/cdk": "<15.0.0",
         "@angular/common": "<15.0.0",
         "@angular/compiler": "<15.0.0",

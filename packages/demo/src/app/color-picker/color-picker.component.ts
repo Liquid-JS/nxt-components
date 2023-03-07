@@ -1,12 +1,13 @@
 import { Component } from '@angular/core'
-import { Cmyk, formatOutput, OutputFormat, stringToCmyk, stringToHsva } from 'nxt-color-picker'
+import { Cmyk, formatOutput, stringToCmyk, stringToHsva } from 'nxt-color-picker'
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    selector: 'app-color-picker',
+    templateUrl: './color-picker.component.html',
+    styleUrls: ['./color-picker.component.scss']
 })
-export class AppComponent {
+export class AppColorPickerComponent {
+
     toggle: boolean = false
 
     rgbaText: string = 'rgba(165, 26, 214, 0.2)'
@@ -59,7 +60,7 @@ export class AppComponent {
         const hsva = stringToHsva(color, true)
 
         if (hsva) {
-            return formatOutput(hsva, OutputFormat.rgba, null)
+            return formatOutput(hsva, 'rgba')
         }
 
         return ''

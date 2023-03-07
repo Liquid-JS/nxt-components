@@ -18,9 +18,11 @@
         "build": "ng build sortablejs --configuration \"production\"",
         "lint": "ng lint sortablejs",
         "lint:fix": "yarn lint --fix",
-        "lint:sass": "stylelint \"src/**/*.scss\"",
-        "lint:sass:fix": "yarn lint:sass --fix",
-        "test": "ng test sortablejs"
+        "_lint:html": "js-beautify --type html -r -f ./src/**/*.html --config ./js-beautify.json",
+        "_lint:sass": "stylelint \"src/**/*.scss\"",
+        "_lint:sass:fix": "yarn lint:sass --fix",
+        "test": "ng test sortablejs --no-watch",
+        "test:watch": "ng test sortablejs"
     },
     "peerDependencies": {
         "@angular/common": "^14.2.0",

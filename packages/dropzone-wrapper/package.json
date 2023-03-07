@@ -10,9 +10,11 @@
         "build": "ng build dropzone-wrapper --configuration \"production\"",
         "lint": "ng lint dropzone-wrapper",
         "lint:fix": "yarn lint --fix",
+        "lint:html": "js-beautify --type html -r -f ./src/**/*.html --config ./js-beautify.json",
         "lint:sass": "stylelint \"src/**/*.scss\"",
         "lint:sass:fix": "yarn lint:sass --fix",
-        "test": "ng test dropzone-wrapper"
+        "test": "ng test dropzone-wrapper --no-watch",
+        "test:watch": "ng test dropzone-wrapper"
     },
     "peerDependencies": {
         "@angular/common": "^14.2.0",

@@ -7,7 +7,7 @@
     [min]="0"
     [max]="23"
     [step]="stepHour"
-    [inputLabel]="'Hour'"
+    inputLabel="Hour"
     (inputChange)="setHourValueViaInput($event)"
     (valueChange)="setHourValue($event)"></nxt-date-time-timer-box>
 <nxt-date-time-timer-box [showDivider]="true"
@@ -19,7 +19,7 @@
     [min]="0"
     [max]="59"
     [step]="stepMinute"
-    [inputLabel]="'Minute'"
+    inputLabel="Minute"
     (inputChange)="setMinuteValue($event)"
     (valueChange)="setMinuteValue($event)"></nxt-date-time-timer-box>
 <nxt-date-time-timer-box *ngIf="showSecondsTimer"
@@ -32,7 +32,7 @@
     [min]="0"
     [max]="59"
     [step]="stepSecond"
-    [inputLabel]="'Second'"
+    inputLabel="Second"
     (inputChange)="setSecondValue($event)"
     (valueChange)="setSecondValue($event)"></nxt-date-time-timer-box>
 

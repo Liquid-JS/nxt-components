@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router'
 
 const routes: Routes = [
     {
+        path: 'color-picker',
+        loadChildren: () => import('./color-picker/color-picker.module').then(m => m.AppColorPickerModule)
+    },
+    {
         path: 'dropzone-wrapper',
         loadChildren: () => import('./dropzone-wrapper/dropzone-wrapper.module').then(m => m.AppDropzoneWrapperModule)
     },

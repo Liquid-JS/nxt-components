@@ -10,9 +10,11 @@
         "build": "ng build color-picker --configuration \"production\"",
         "lint": "ng lint color-picker",
         "lint:fix": "yarn lint --fix",
+        "lint:html": "js-beautify --type html -r -f ./src/**/*.html --config ./js-beautify.json",
         "lint:sass": "stylelint \"src/**/*.scss\"",
         "lint:sass:fix": "yarn lint:sass --fix",
-        "test": "ng test color-picker"
+        "test": "ng test color-picker --no-watch",
+        "test:watch": "ng test color-picker"
     },
     "peerDependencies": {
         "@angular/cdk": "^14.2.0",

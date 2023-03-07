@@ -1,0 +1,8 @@
+{
+    "html": {
+        "wrap_attributes": "force",
+        "wrap_line_length": 0
+    },
+    "end_with_newline": true,
+    "max_preserve_newlines": 1
+}

@@ -79,7 +79,7 @@ describe('CalendarBodyComponent', () => {
                [rows]="rows"
                [todayValue]="todayValue"
                [selectedValues]="selectedValues"
-               [selectMode]="'single'"
+               selectMode="single"
                [activeCell]="activeCell"
                (select)="handleSelect()">
         </table>`

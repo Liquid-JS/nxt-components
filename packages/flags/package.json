@@ -10,9 +10,11 @@
         "build": "ng build flags --configuration \"production\"",
         "lint": "ng lint flags",
         "lint:fix": "yarn lint --fix",
+        "lint:html": "js-beautify --type html -r -f ./src/**/*.html --config ./js-beautify.json",
         "lint:sass": "stylelint \"src/**/*.scss\"",
         "lint:sass:fix": "yarn lint:sass --fix",
-        "test": "ng test flags"
+        "test": "ng test flags --no-watch",
+        "test:watch": "ng test flags"
     },
     "peerDependencies": {
         "@angular/common": "^14.2.0",

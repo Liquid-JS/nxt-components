@@ -1,17 +1,17 @@
+import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
 import { ColorPickerModule } from 'nxt-color-picker'
-import { AppComponent } from './app.component'
+import { AppColorPickerRoutingModule } from './color-picker-routing.module'
+import { AppColorPickerComponent } from './color-picker.component'
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppColorPickerComponent
     ],
     imports: [
-        BrowserModule,
-        ColorPickerModule
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+        CommonModule,
+        ColorPickerModule,
+        AppColorPickerRoutingModule
+    ]
 })
-export class AppModule { }
+export class AppColorPickerModule { }
