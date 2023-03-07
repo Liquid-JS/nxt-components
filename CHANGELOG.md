@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.0.1](https://github.com/Liquid-JS/nxt-components/compare/v15.0.0...v15.0.1) (2023-03-07)
+
+
+### Bug Fixes
+
+* **nxt-flags:** exports ([eb7a0aa](https://github.com/Liquid-JS/nxt-components/commit/eb7a0aa09def8bf869bd8abfe1b754bc47a0816f))
+
+
+
+
+
 # 15.0.0 (2023-03-07)
 
 
