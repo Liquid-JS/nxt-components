@@ -23,5 +23,8 @@
     },
     "dependencies": {
         "tslib": "^2.5.0"
+    },
+    "exports": {
+        "./assets/flags/": "./assets/flags/"
     }
 }
