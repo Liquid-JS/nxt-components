@@ -25,6 +25,10 @@ const routes: Routes = [
     {
         path: 'sortablejs',
         loadChildren: () => import('./sortablejs/sortablejs.module').then(m => m.AppSortablejsModule)
+    },
+    {
+        path: '*',
+        redirectTo: ''
     }
 ]
 

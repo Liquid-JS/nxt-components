@@ -1,0 +1,7 @@
+.demo-content{
+    transform: translateZ(0);
+    
+    @media (min-width: 992px){
+        padding: 2rem;
+    }
+}

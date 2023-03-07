@@ -1,1 +1,41 @@
-<router-outlet></router-outlet>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand"
+        routerLink="/">nxt-components</a>
+    <button class="navbar-toggler"
+        type="button"
+        (click)="navbarCollapsed = !navbarCollapsed">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse"
+        [class.collapse]="navbarCollapsed">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a routerLink="/color-picker"
+                    class="nav-link">nxt-color-picker</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/dropzone-wrapper"
+                    class="nav-link">nxt-dropzone-wrapper</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/flags"
+                    class="nav-link">nxt-flags</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/json-view"
+                    class="nav-link">nxt-json-view</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/pick-datetime"
+                    class="nav-link">pick-datetime</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/sortablejs"
+                    class="nav-link">nxt-sortablejs</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="demo-content">
+    <router-outlet></router-outlet>
+</div>
