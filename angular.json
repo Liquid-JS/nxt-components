@@ -50,13 +50,16 @@
                                 "glob": "**/*",
                                 "input": "dist/flags/assets/flags",
                                 "output": "assets/flags"
-                            }
+                            },
+                            "packages/demo/src/manifest.webmanifest"
                         ],
                         "styles": [
                             "packages/demo/src/styles.scss",
                             "dist/pick-datetime/assets/picker.scss"
                         ],
-                        "scripts": []
+                        "scripts": [],
+                        "serviceWorker": true,
+                        "ngswConfigPath": "packages/demo/ngsw-config.json"
                     },
                     "configurations": {
                         "production": {
@@ -119,7 +122,8 @@
                         "inlineStyleLanguage": "scss",
                         "assets": [
                             "packages/demo/src/favicon.ico",
-                            "packages/demo/src/assets"
+                            "packages/demo/src/assets",
+                            "packages/demo/src/manifest.webmanifest"
                         ],
                         "styles": [
                             "packages/demo/src/styles.scss"
