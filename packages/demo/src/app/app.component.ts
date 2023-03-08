@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations'
-import { Component, ViewEncapsulation } from '@angular/core'
+import { Component } from '@angular/core'
 
 const visible = style({
     overflow: 'hidden',
@@ -19,7 +19,6 @@ const hidden = style({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated,
     animations: [
         trigger('expandCollapse', [
             transition('open => close', [

@@ -35,13 +35,16 @@
             "prefix": "app",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
+                    "builder": "@angular-builders/custom-webpack:browser",
                     "options": {
                         "outputPath": "dist/demo",
                         "index": "packages/demo/src/index.html",
                         "main": "packages/demo/src/main.ts",
                         "polyfills": "packages/demo/src/polyfills.ts",
                         "tsConfig": "packages/demo/tsconfig.app.json",
+                        "customWebpackConfig": {
+                            "path": "./angular-webpack.config.cjs"
+                        },
                         "inlineStyleLanguage": "scss",
                         "assets": [
                             "packages/demo/src/favicon.ico",
@@ -95,7 +98,7 @@
                     "defaultConfiguration": "production"
                 },
                 "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "builder": "@angular-builders/custom-webpack:dev-server",
                     "configurations": {
                         "production": {
                             "browserTarget": "demo:build:production"
@@ -107,13 +110,13 @@
                     "defaultConfiguration": "development"
                 },
                 "extract-i18n": {
-                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "builder": "@angular-builders/custom-webpack:extract-i18n",
                     "options": {
                         "browserTarget": "demo:build"
                     }
                 },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
+                    "builder": "@angular-builders/custom-webpack:karma",
                     "options": {
                         "main": "packages/demo/src/test.ts",
                         "polyfills": "packages/demo/src/polyfills.ts",

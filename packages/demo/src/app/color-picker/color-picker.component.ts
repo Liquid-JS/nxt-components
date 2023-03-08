@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 import { Cmyk, formatOutput, stringToCmyk, stringToHsva } from 'nxt-color-picker'
 
+import tpl from './color-picker.component.html'
+console.log(tpl)
+
 @Component({
     selector: 'app-color-picker',
     templateUrl: './color-picker.component.html',

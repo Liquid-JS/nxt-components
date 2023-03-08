@@ -15,7 +15,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular-devkit/architect@npm:0.1502.1, @angular-devkit/architect@npm:^0.1502.1":
+"@angular-builders/custom-webpack@npm:^15.0.0":
+  version: 15.0.0
+  resolution: "@angular-builders/custom-webpack@npm:15.0.0"
+  dependencies:
+    "@angular-devkit/architect": ">=0.1500.0 < 0.1600.0"
+    "@angular-devkit/build-angular": ^15.0.0
+    "@angular-devkit/core": ^15.0.0
+    lodash: ^4.17.15
+    ts-node: ^10.0.0
+    tsconfig-paths: ^4.1.0
+    webpack-merge: ^5.7.3
+  peerDependencies:
+    "@angular/compiler-cli": ^15.0.0
+  checksum: 3f69163c7893c1f5eadccfad76c8432ca8b38066cf43f54c16645b8435d73b30db20d5499d30f0dea620893daa68f32bc1eef1e7d08bdb6e19cf2245f4e13448
+  languageName: node
+  linkType: hard
+
+"@angular-devkit/architect@npm:0.1502.1, @angular-devkit/architect@npm:>=0.1500.0 < 0.1600.0, @angular-devkit/architect@npm:^0.1502.1":
   version: 0.1502.1
   resolution: "@angular-devkit/architect@npm:0.1502.1"
   dependencies:
@@ -25,7 +42,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular-devkit/build-angular@npm:^15.2.1":
+"@angular-devkit/build-angular@npm:^15.0.0, @angular-devkit/build-angular@npm:^15.2.1":
   version: 15.2.1
   resolution: "@angular-devkit/build-angular@npm:15.2.1"
   dependencies:
@@ -135,7 +152,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular-devkit/core@npm:15.2.1, @angular-devkit/core@npm:^15.2.1":
+"@angular-devkit/core@npm:15.2.1, @angular-devkit/core@npm:^15.0.0, @angular-devkit/core@npm:^15.2.1":
   version: 15.2.1
   resolution: "@angular-devkit/core@npm:15.2.1"
   dependencies:
@@ -11389,6 +11406,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nxt-components@workspace:."
   dependencies:
+    "@angular-builders/custom-webpack": ^15.0.0
     "@angular-devkit/architect": ^0.1502.1
     "@angular-devkit/build-angular": ^15.2.1
     "@angular-devkit/core": ^15.2.1
@@ -14407,7 +14425,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.8.1":
+"ts-node@npm:^10.0.0, ts-node@npm:^10.8.1":
   version: 10.9.1
   resolution: "ts-node@npm:10.9.1"
   dependencies:
@@ -14457,7 +14475,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsconfig-paths@npm:^4.1.2":
+"tsconfig-paths@npm:^4.1.0, tsconfig-paths@npm:^4.1.2":
   version: 4.1.2
   resolution: "tsconfig-paths@npm:4.1.2"
   dependencies:
@@ -15036,7 +15054,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-merge@npm:5.8.0":
+"webpack-merge@npm:5.8.0, webpack-merge@npm:^5.7.3":
   version: 5.8.0
   resolution: "webpack-merge@npm:5.8.0"
   dependencies:
