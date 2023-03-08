@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { FlagsModule } from 'nxt-flags'
+import { ContentWrapComponent } from '../content-wrap/content-wrap.component'
 import { AppFlagsRoutingModule } from './flags-routing.module'
 import { AppFlagsComponent } from './flags.component'
 
@@ -13,7 +14,8 @@ import { AppFlagsComponent } from './flags.component'
         CommonModule,
         FlagsModule,
         FormsModule,
-        AppFlagsRoutingModule
+        AppFlagsRoutingModule,
+        ContentWrapComponent
     ]
 })
 export class AppFlagsModule { }

@@ -1,38 +1,40 @@
-<h1>nxt-flags</h1>
+<app-content-wrap>
+    <h1>nxt-flags</h1>
 
-<select [(ngModel)]="code">
-    <option *ngFor="let i of data"
-        [value]="i.code">{{ i.name }} (ISO code: {{ i.code }})</option>
-</select>
+    <select [(ngModel)]="code">
+        <option *ngFor="let i of data"
+            [value]="i.code">{{ i.name }} (ISO code: {{ i.code }})</option>
+    </select>
 
-<h2>Format</h2>
-<h3>none</h3>
-<nxt-flag [country]="code"></nxt-flag>
-<h3>square</h3>
-<nxt-flag [country]="code"
-    [format]="flagFormat.Square"></nxt-flag>
-<h3>round</h3>
-<nxt-flag [country]="code"
-    [format]="flagFormat.Round"></nxt-flag>
-<h2>Size</h2>
-<h3>xxs</h3>
-<nxt-flag [country]="code"
-    size="xxs"></nxt-flag>
-<h3>xs</h3>
-<nxt-flag [country]="code"
-    size="xs"></nxt-flag>
-<h3>s</h3>
-<nxt-flag [country]="code"
-    size="s"></nxt-flag>
-<h3>m</h3>
-<nxt-flag [country]="code"
-    size="m"></nxt-flag>
-<h3>l</h3>
-<nxt-flag [country]="code"
-    size="l"></nxt-flag>
-<h3>xl</h3>
-<nxt-flag [country]="code"
-    size="xl"></nxt-flag>
-<h3>xxl</h3>
-<nxt-flag [country]="code"
-    size="xxl"></nxt-flag>
+    <h2>Format</h2>
+    <h3>none</h3>
+    <nxt-flag [country]="code"></nxt-flag>
+    <h3>square</h3>
+    <nxt-flag [country]="code"
+        [format]="flagFormat.Square"></nxt-flag>
+    <h3>round</h3>
+    <nxt-flag [country]="code"
+        [format]="flagFormat.Round"></nxt-flag>
+    <h2>Size</h2>
+    <h3>xxs</h3>
+    <nxt-flag [country]="code"
+        size="xxs"></nxt-flag>
+    <h3>xs</h3>
+    <nxt-flag [country]="code"
+        size="xs"></nxt-flag>
+    <h3>s</h3>
+    <nxt-flag [country]="code"
+        size="s"></nxt-flag>
+    <h3>m</h3>
+    <nxt-flag [country]="code"
+        size="m"></nxt-flag>
+    <h3>l</h3>
+    <nxt-flag [country]="code"
+        size="l"></nxt-flag>
+    <h3>xl</h3>
+    <nxt-flag [country]="code"
+        size="xl"></nxt-flag>
+    <h3>xxl</h3>
+    <nxt-flag [country]="code"
+        size="xxl"></nxt-flag>
+</app-content-wrap>

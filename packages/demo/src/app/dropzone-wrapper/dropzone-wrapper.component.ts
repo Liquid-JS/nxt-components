@@ -1,4 +1,5 @@
-import { Component, ViewChild } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { Title } from '@angular/platform-browser'
 import { DropzoneComponent, DropzoneConfigInterface, DropzoneDirective } from 'nxt-dropzone-wrapper'
 
 @Component({
@@ -6,7 +7,7 @@ import { DropzoneComponent, DropzoneConfigInterface, DropzoneDirective } from 'n
     templateUrl: './dropzone-wrapper.component.html',
     styleUrls: ['./dropzone-wrapper.component.scss']
 })
-export class AppDropzoneWrapperComponent {
+export class AppDropzoneWrapperComponent implements OnInit {
     public type: string = 'component'
 
     public disabled: boolean = false
@@ -22,7 +23,13 @@ export class AppDropzoneWrapperComponent {
     @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent
     @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective
 
-    constructor() { }
+    constructor(
+        private readonly title: Title
+    ) { }
+
+    ngOnInit(): void {
+        this.title.setTitle('nxt-dropzone-wrapper')
+    }
 
     public toggleType(): void {
         this.type = (this.type === 'component') ? 'directive' : 'component'

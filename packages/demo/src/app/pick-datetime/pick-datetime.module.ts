@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { DateTimeModule } from 'nxt-pick-datetime'
 import { NativeDateTimeModule } from 'nxt-pick-datetime/native-adapter'
+import { ContentWrapComponent } from '../content-wrap/content-wrap.component'
 import { AppPickDatetimeRoutingModule } from './pick-datetime-routing.module'
 import { AppPickDatetimeComponent } from './pick-datetime.component'
 
@@ -15,7 +16,8 @@ import { AppPickDatetimeComponent } from './pick-datetime.component'
         FormsModule,
         DateTimeModule,
         NativeDateTimeModule,
-        AppPickDatetimeRoutingModule
+        AppPickDatetimeRoutingModule,
+        ContentWrapComponent
     ],
     providers: [],
     bootstrap: [AppPickDatetimeComponent]

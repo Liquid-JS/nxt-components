@@ -1,4 +1,5 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
+import { Title } from '@angular/platform-browser'
 import { Cmyk, formatOutput, stringToCmyk, stringToHsva } from 'nxt-color-picker'
 
 @Component({
@@ -6,7 +7,7 @@ import { Cmyk, formatOutput, stringToCmyk, stringToHsva } from 'nxt-color-picker
     templateUrl: './color-picker.component.html',
     styleUrls: ['./color-picker.component.scss']
 })
-export class AppColorPickerComponent {
+export class AppColorPickerComponent implements OnInit {
 
     toggle: boolean = false
 
@@ -45,7 +46,13 @@ export class AppColorPickerComponent {
 
     cmykColor: Cmyk = new Cmyk(0, 0, 0, 0, 1)
 
-    constructor() { }
+    constructor(
+        private readonly title: Title
+    ) { }
+
+    ngOnInit(): void {
+        this.title.setTitle('nxt-color-picker')
+    }
 
     onEventLog(event: string, data: any) {
         console.log(event, data)

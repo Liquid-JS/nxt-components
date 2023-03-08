@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { Title } from '@angular/platform-browser'
 import { DateTimeComponent } from 'nxt-pick-datetime'
 
 @Component({
@@ -6,7 +7,7 @@ import { DateTimeComponent } from 'nxt-pick-datetime'
     templateUrl: './pick-datetime.component.html',
     styleUrls: ['./pick-datetime.component.scss']
 })
-export class AppPickDatetimeComponent implements AfterViewInit {
+export class AppPickDatetimeComponent implements OnInit {
     @ViewChild('date_range_component', { static: true })
     date_range_component?: DateTimeComponent<AppPickDatetimeComponent>
 
@@ -17,12 +18,11 @@ export class AppPickDatetimeComponent implements AfterViewInit {
 
     open_once = false
 
-    ngAfterViewInit() {
-        /*
-        if (!this.open_once) {
-            this.date_range_component.open();
-            this.open_once = true;
-        }
-        */
+    constructor(
+        private readonly title: Title
+    ) { }
+
+    ngOnInit(): void {
+        this.title.setTitle('nxt-pick-datetime')
     }
 }

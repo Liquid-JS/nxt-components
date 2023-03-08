@@ -1,11 +1,12 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
+import { Title } from '@angular/platform-browser'
 
 @Component({
     selector: 'app-json-view',
     templateUrl: './json-view.component.html',
     styleUrls: ['./json-view.component.scss']
 })
-export class AppJsonViewComponent {
+export class AppJsonViewComponent implements OnInit {
 
     levelLabels: { [key: number]: { [key: string]: string } } = {
         1: { object: 'My label' }
@@ -36,6 +37,14 @@ export class AppJsonViewComponent {
 
     customData = '{  }'
     customJson?: object
+
+    constructor(
+        private readonly title: Title
+    ) { }
+
+    ngOnInit(): void {
+        this.title.setTitle('nxt-json-view')
+    }
 
     ngModelChange($event: any) {
         try {

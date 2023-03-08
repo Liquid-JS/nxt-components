@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core'
+import { Component, OnInit, ViewEncapsulation } from '@angular/core'
+import { Title } from '@angular/platform-browser'
 
 @Component({
     selector: 'app-home',
@@ -6,6 +7,14 @@ import { Component, ViewEncapsulation } from '@angular/core'
     styleUrls: ['./home.component.scss'],
     encapsulation: ViewEncapsulation.Emulated
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+
+    constructor(
+        private readonly title: Title
+    ) { }
+
+    ngOnInit(): void {
+        this.title.setTitle('nxt-components')
+    }
 
 }

@@ -1,9 +1,12 @@
-<label for="daterange">Datetime range (click, then press 'Set' to modify):</label>
-<input [(ngModel)]="selectedMoments"
-    selectMode="range"
-    [nxtDateTimeTrigger]="date_range_component"
-    [nxtDateTime]="date_range_component"
-    style="width: 100%; color: cornflowerblue"
-    id="daterange"
-    matInput>
-<nxt-date-time #date_range_component></nxt-date-time>
+<app-content-wrap>
+    <h1>nxt-pick-datetime</h1>
+    <label for="daterange">Datetime range (click, then press 'Set' to modify):</label>
+    <input [(ngModel)]="selectedMoments"
+        selectMode="range"
+        [nxtDateTimeTrigger]="date_range_component"
+        [nxtDateTime]="date_range_component"
+        style="width: 100%; color: cornflowerblue"
+        id="daterange"
+        matInput>
+    <nxt-date-time #date_range_component></nxt-date-time>
+</app-content-wrap>

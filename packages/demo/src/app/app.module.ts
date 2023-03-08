@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ServiceWorkerModule } from '@angular/service-worker'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
+import { ContentWrapComponent } from './content-wrap/content-wrap.component'
 import { HomeComponent } from './home/home.component'
 
 @NgModule({
@@ -20,7 +21,8 @@ import { HomeComponent } from './home/home.component'
             // Register the ServiceWorker as soon as the application is stable
             // or after 30 seconds (whichever comes first).
             registrationStrategy: 'registerWhenStable:30000'
-        })
+        }),
+        ContentWrapComponent
     ],
     providers: [],
     bootstrap: [AppComponent]
