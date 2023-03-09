@@ -1,6 +1,7 @@
 import { Component, OnInit, Injector } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 import { Cmyk, formatOutput, stringToCmyk, stringToHsva } from 'nxt-color-picker'
+import { ExampleConfig } from '../../example/example.component'
 
 @Component({
     selector: 'app-color-picker',
@@ -8,6 +9,66 @@ import { Cmyk, formatOutput, stringToCmyk, stringToHsva } from 'nxt-color-picker
     styleUrls: ['./color-picker.component.scss']
 })
 export class AppColorPickerComponent implements OnInit {
+
+    readonly basicExample = Promise.all([
+        import('../examples/basic-example/basic-example.component'),
+        import('../examples/basic-example/basic-example.component.html?raw'),
+        import('../examples/basic-example/basic-example.component.ts?raw')
+    ]).then(([{ BasicExampleComponent }, tpl, src]) => ({
+        component: BasicExampleComponent,
+        name: 'Basic usage',
+        path: 'color-picker/examples/basic-example',
+        template: tpl.default.trim(),
+        source: src.default.trim()
+    } as ExampleConfig))
+
+    readonly grayscaleMode = Promise.all([
+        import('../examples/grayscale-mode/grayscale-mode.component'),
+        import('../examples/grayscale-mode/grayscale-mode.component.html?raw'),
+        import('../examples/grayscale-mode/grayscale-mode.component.ts?raw')
+    ]).then(([{ GrayscaleModeComponent }, tpl, src]) => ({
+        component: GrayscaleModeComponent,
+        name: 'Grayscale color mode',
+        path: 'color-picker/examples/grayscale-mode',
+        template: tpl.default.trim(),
+        source: src.default.trim()
+    } as ExampleConfig))
+
+    readonly showColor = Promise.all([
+        import('../examples/show-color/show-color.component'),
+        import('../examples/show-color/show-color.component.html?raw'),
+        import('../examples/show-color/show-color.component.ts?raw')
+    ]).then(([{ ShowColorComponent }, tpl, src]) => ({
+        component: ShowColorComponent,
+        name: 'Show the color in the input field',
+        path: 'color-picker/examples/show-color',
+        template: tpl.default.trim(),
+        source: src.default.trim()
+    } as ExampleConfig))
+
+    readonly outputFormat = Promise.all([
+        import('../examples/output-format/output-format.component'),
+        import('../examples/output-format/output-format.component.html?raw'),
+        import('../examples/output-format/output-format.component.ts?raw')
+    ]).then(([{ OutputFormatComponent }, tpl, src]) => ({
+        component: OutputFormatComponent,
+        name: 'Output format',
+        path: 'color-picker/examples/output-format',
+        template: tpl.default.trim(),
+        source: src.default.trim()
+    } as ExampleConfig))
+
+    readonly dialogPosition = Promise.all([
+        import('../examples/dialog-position/dialog-position.component'),
+        import('../examples/dialog-position/dialog-position.component.html?raw'),
+        import('../examples/dialog-position/dialog-position.component.ts?raw')
+    ]).then(([{ DialogPositionComponent }, tpl, src]) => ({
+        component: DialogPositionComponent,
+        name: 'Changing dialog position',
+        path: 'color-picker/examples/dialog-position',
+        template: tpl.default.trim(),
+        source: src.default.trim()
+    } as ExampleConfig))
 
     toggle: boolean = false
 
