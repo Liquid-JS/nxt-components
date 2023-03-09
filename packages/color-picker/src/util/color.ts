@@ -1,34 +1,46 @@
 import { Cmyk, Hsla, Hsva, Rgba } from './formats'
 import { AlphaChannel, AlphaChannelEnum, OutputFormat, OutputFormatEnum } from './types'
 
-export function hsva2hsla(hsva: Hsva) {
-    const h = hsva.h; const s = hsva.s; const v = hsva.v; const a = hsva.a
+function clamp(val: number, min: number, max: number) {
+    return Math.min(max, Math.max(val, min))
+}
+
+export function hsvaToHsla(hsva: Hsva) {
+    hsva = normalizeHSVA(hsva)
+    const h = hsva.h
+    const s = hsva.s
+    const v = hsva.v
+    const a = hsva.a
 
     if (v == 0) {
-        return new Hsla(h, 0, 0, a)
+        return new Hsla(h, 0, 0, a, true)
     } else if (s == 0 && v == 1) {
-        return new Hsla(h, 1, 1, a)
+        return new Hsla(h, 1, 1, a, true)
     } else {
         const l = v * (2 - s) / 2
 
-        return new Hsla(h, v * s / (1 - Math.abs(2 * l - 1)), l, a)
+        return new Hsla(h, v * s / (1 - Math.abs(2 * l - 1)), l, a, true)
     }
 }
 
-export function hsla2hsva(hsla: Hsla) {
-    const h = Math.min(hsla.h, 1); const s = Math.min(hsla.s, 1)
-    const l = Math.min(hsla.l, 1); const a = Math.min(hsla.a, 1)
+export function hslaToHsva(hsla: Hsla) {
+    hsla = normalizeHSLA(hsla)
+    const h = Math.min(hsla.h, 1)
+    const s = Math.min(hsla.s, 1)
+    const l = Math.min(hsla.l, 1)
+    const a = Math.min(hsla.a, 1)
 
     if (l == 0) {
-        return new Hsva(h, 0, 0, a)
+        return new Hsva(h, 0, 0, a, true)
     } else {
         const v = l + s * (1 - Math.abs(2 * l - 1)) / 2
 
-        return new Hsva(h, 2 * (v - l) / v, v, a)
+        return new Hsva(h, 2 * (v - l) / v, v, a, true)
     }
 }
 
 export function hsvaToRgba(hsva: Hsva) {
+    hsva = normalizeHSVA(hsva)
     let r: number; let g: number; let b: number
 
     const h = hsva.h; const s = hsva.s; const v = hsva.v; const a = hsva.a
@@ -76,24 +88,26 @@ export function hsvaToRgba(hsva: Hsva) {
             b = 0
     }
 
-    return new Rgba(r, g, b, a)
+    return new Rgba(r, g, b, a, true)
 }
 
 export function rgbaToCmyk(rgba: Rgba) {
+    rgba = normalizeRGBA(rgba)
     const k: number = 1 - Math.max(rgba.r, rgba.g, rgba.b)
 
     if (k == 1) {
-        return new Cmyk(0, 0, 0, 1, rgba.a)
+        return new Cmyk(0, 0, 0, 1, rgba.a, true)
     } else {
         const c = (1 - rgba.r - k) / (1 - k)
         const m = (1 - rgba.g - k) / (1 - k)
         const y = (1 - rgba.b - k) / (1 - k)
 
-        return new Cmyk(c, m, y, k, rgba.a)
+        return new Cmyk(c, m, y, k, rgba.a, true)
     }
 }
 
 export function rgbaToHsva(rgba: Rgba) {
+    rgba = normalizeRGBA(rgba)
     let h: number
 
     const r = Math.min(rgba.r, 1); const g = Math.min(rgba.g, 1)
@@ -125,15 +139,16 @@ export function rgbaToHsva(rgba: Rgba) {
         h /= 6
     }
 
-    return new Hsva(h, s, v, a)
+    return new Hsva(h, s, v, a, true)
 }
 
 export function rgbaToHex(rgba: Rgba, allowHex8?: boolean) {
+    rgba = denormalizeRGBA(rgba)
     /* tslint:disable:no-bitwise */
-    let hex = '#' + ((1 << 24) | (rgba.r << 16) | (rgba.g << 8) | rgba.b).toString(16).substring(1)
+    let hex = '#' + ((1 << 24) | (Math.round(rgba.r) << 16) | (Math.round(rgba.g) << 8) | Math.round(rgba.b)).toString(16).substring(1)
 
     if (allowHex8) {
-        hex += ((1 << 8) | Math.round(rgba.a * 255)).toString(16).substring(1)
+        hex += ((1 << 8) | clamp(Math.round(rgba.a * 255), 0, 255)).toString(16).substring(1)
     }
     /* tslint:enable:no-bitwise */
 
@@ -141,24 +156,111 @@ export function rgbaToHex(rgba: Rgba, allowHex8?: boolean) {
 }
 
 export function cmykToRgb(cmyk: Cmyk): Rgba {
+    cmyk = normalizeCMYK(cmyk)
     const r = (1 - cmyk.c) * (1 - cmyk.k)
     const g = (1 - cmyk.m) * (1 - cmyk.k)
     const b = (1 - cmyk.y) * (1 - cmyk.k)
 
-    return new Rgba(r, g, b, cmyk.a)
+    return new Rgba(r, g, b, cmyk.a, true)
 }
 
 export function normalizeCMYK(cmyk: Cmyk): Cmyk {
-    return new Cmyk(cmyk.c / 100, cmyk.m / 100, cmyk.y / 100, cmyk.k / 100, cmyk.a)
+    if (cmyk.normalized)
+        return cmyk
+    return new Cmyk(
+        clamp(cmyk.c / 100, 0, 1),
+        clamp(cmyk.m / 100, 0, 1),
+        clamp(cmyk.y / 100, 0, 1),
+        clamp(cmyk.k / 100, 0, 1),
+        clamp(cmyk.a, 0, 1),
+        true
+    )
 }
 
 export function denormalizeCMYK(cmyk: Cmyk): Cmyk {
-    return new Cmyk(Math.floor(cmyk.c * 100), Math.floor(cmyk.m * 100), Math.floor(cmyk.y * 100),
-        Math.floor(cmyk.k * 100), cmyk.a)
+    if (!cmyk.normalized)
+        return cmyk
+
+    return new Cmyk(
+        clamp(cmyk.c * 100, 0, 100),
+        clamp(cmyk.m * 100, 0, 100),
+        clamp(cmyk.y * 100, 0, 100),
+        clamp(cmyk.k * 100, 0, 100),
+        clamp(cmyk.a, 0, 1),
+        false
+    )
+}
+
+export function normalizeRGBA(rgba: Rgba) {
+    if (rgba.normalized)
+        return rgba
+    return new Rgba(
+        clamp(rgba.r / 255, 0, 1),
+        clamp(rgba.g / 255, 0, 1),
+        clamp(rgba.b / 255, 0, 1),
+        clamp(rgba.a, 0, 1),
+        true
+    )
 }
 
 export function denormalizeRGBA(rgba: Rgba) {
-    return new Rgba(Math.round(rgba.r * 255), Math.round(rgba.g * 255), Math.round(rgba.b * 255), rgba.a)
+    if (!rgba.normalized)
+        return rgba
+    return new Rgba(
+        clamp(rgba.r * 255, 0, 255),
+        clamp(rgba.g * 255, 0, 255),
+        clamp(rgba.b * 255, 0, 255),
+        clamp(rgba.a, 0, 1),
+        false
+    )
+}
+
+export function normalizeHSVA(hsva: Hsva) {
+    if (hsva.normalized)
+        return hsva
+    return new Hsva(
+        clamp(hsva.h / 360, 0, 1),
+        clamp(hsva.s / 100, 0, 1),
+        clamp(hsva.v / 100, 0, 1),
+        clamp(hsva.a, 0, 1),
+        true
+    )
+}
+
+export function denormalizeHSVA(hsva: Hsva) {
+    if (!hsva.normalized)
+        return hsva
+    return new Hsva(
+        clamp(hsva.h * 360, 0, 360),
+        clamp(hsva.s * 100, 0, 100),
+        clamp(hsva.v * 100, 0, 100),
+        clamp(hsva.a, 0, 1),
+        false
+    )
+}
+
+export function normalizeHSLA(hsla: Hsla) {
+    if (hsla.normalized)
+        return hsla
+    return new Hsla(
+        clamp(hsla.h / 360, 0, 1),
+        clamp(hsla.s / 100, 0, 1),
+        clamp(hsla.l / 100, 0, 1),
+        clamp(hsla.a, 0, 1),
+        true
+    )
+}
+
+export function denormalizeHSLA(hsla: Hsla) {
+    if (!hsla.normalized)
+        return hsla
+    return new Hsla(
+        clamp(hsla.h * 360, 0, 360),
+        clamp(hsla.s * 100, 0, 100),
+        clamp(hsla.l * 100, 0, 100),
+        clamp(hsla.a, 0, 1),
+        false
+    )
 }
 
 export function stringToHsva(colorString: string = '', allowHex8: boolean = false) {
@@ -169,51 +271,69 @@ export function stringToHsva(colorString: string = '', allowHex8: boolean = fals
     const stringParsers = [
         {
             re: /(cmyk)a?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*%?,\s*(\d{1,3})\s*%?,\s*(\d{1,3})\s*%?(?:,\s*(\d+(?:\.\d+)?)\s*)?\)/,
-            parse: (execResult: any) => new Cmyk(parseInt(execResult[2], 10) / 100,
-                parseInt(execResult[3], 10) / 100,
-                parseInt(execResult[4], 10) / 100,
-                parseInt(execResult[5], 10) / 100,
-                isNaN(parseFloat(execResult[6])) ? 1 : parseFloat(execResult[6]))
+            parse: (execResult: any) => new Cmyk(
+                parseFloat(execResult[2]) / 100,
+                parseFloat(execResult[3]) / 100,
+                parseFloat(execResult[4]) / 100,
+                parseFloat(execResult[5]) / 100,
+                isNaN(parseFloat(execResult[6])) ? 1 : parseFloat(execResult[6]),
+                true
+            )
         },
         {
             re: /(rgb)a?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*%?,\s*(\d{1,3})\s*%?(?:,\s*(\d+(?:\.\d+)?)\s*)?\)/,
-            parse: (execResult: any) => new Rgba(parseInt(execResult[2], 10) / 255,
-                parseInt(execResult[3], 10) / 255,
-                parseInt(execResult[4], 10) / 255,
-                isNaN(parseFloat(execResult[5])) ? 1 : parseFloat(execResult[5]))
+            parse: (execResult: any) => new Rgba(
+                parseFloat(execResult[2]) / 255,
+                parseFloat(execResult[3]) / 255,
+                parseFloat(execResult[4]) / 255,
+                isNaN(parseFloat(execResult[5])) ? 1 : parseFloat(execResult[5]),
+                true
+            )
         }, {
             re: /(hsl)a?\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)/,
-            parse: (execResult: any) => new Hsla(parseInt(execResult[2], 10) / 360,
-                parseInt(execResult[3], 10) / 100,
-                parseInt(execResult[4], 10) / 100,
-                isNaN(parseFloat(execResult[5])) ? 1 : parseFloat(execResult[5]))
+            parse: (execResult: any) => new Hsla(
+                parseFloat(execResult[2]) / 360,
+                parseFloat(execResult[3]) / 100,
+                parseFloat(execResult[4]) / 100,
+                isNaN(parseFloat(execResult[5])) ? 1 : parseFloat(execResult[5]),
+                true
+            )
         }
     ]
 
     if (allowHex8) {
         stringParsers.push({
             re: /#([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})?$/,
-            parse: (execResult: any) => new Rgba(parseInt(execResult[1], 16) / 255,
+            parse: (execResult: any) => new Rgba(
+                parseInt(execResult[1], 16) / 255,
                 parseInt(execResult[2], 16) / 255,
                 parseInt(execResult[3], 16) / 255,
-                parseInt(execResult[4] || 'FF', 16) / 255)
+                parseInt(execResult[4] || 'FF', 16) / 255,
+                true
+            )
         })
     } else {
         stringParsers.push({
             re: /#([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})$/,
-            parse: (execResult: any) => new Rgba(parseInt(execResult[1], 16) / 255,
+            parse: (execResult: any) => new Rgba(
+                parseInt(execResult[1], 16) / 255,
                 parseInt(execResult[2], 16) / 255,
                 parseInt(execResult[3], 16) / 255,
-                1)
+                1,
+                true
+            )
         })
     }
 
     stringParsers.push({
         re: /#([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])$/,
-        parse: (execResult: any) => new Rgba(parseInt(execResult[1] + execResult[1], 16) / 255,
+        parse: (execResult: any) => new Rgba(
+            parseInt(execResult[1] + execResult[1], 16) / 255,
             parseInt(execResult[2] + execResult[2], 16) / 255,
             parseInt(execResult[3] + execResult[3], 16) / 255,
-            1)
+            1,
+            true
+        )
     })
 
     for (const key in stringParsers) {
@@ -226,7 +346,7 @@ export function stringToHsva(colorString: string = '', allowHex8: boolean = fals
                 if (color instanceof Rgba) {
                     hsva = rgbaToHsva(color)
                 } else if (color instanceof Hsla) {
-                    hsva = hsla2hsva(color)
+                    hsva = hslaToHsva(color)
                 } else if (color instanceof Cmyk) {
                     hsva = rgbaToHsva(cmykToRgb(color))
                 } else {
@@ -248,51 +368,69 @@ export function stringToCmyk(colorString: string = '', allowHex8: boolean = fals
     const stringParsers = [
         {
             re: /(cmyk)a?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*%?,\s*(\d{1,3})\s*%?,\s*(\d{1,3})\s*%?(?:,\s*(\d+(?:\.\d+)?)\s*)?\)/,
-            parse: (execResult: any) => new Cmyk(parseInt(execResult[2], 10) / 100,
-                parseInt(execResult[3], 10) / 100,
-                parseInt(execResult[4], 10) / 100,
-                parseInt(execResult[5], 10) / 100,
-                isNaN(parseFloat(execResult[6])) ? 1 : parseFloat(execResult[6]))
+            parse: (execResult: any) => new Cmyk(
+                parseFloat(execResult[2]) / 100,
+                parseFloat(execResult[3]) / 100,
+                parseFloat(execResult[4]) / 100,
+                parseFloat(execResult[5]) / 100,
+                isNaN(parseFloat(execResult[6])) ? 1 : parseFloat(execResult[6]),
+                true
+            )
         },
         {
             re: /(rgb)a?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*%?,\s*(\d{1,3})\s*%?(?:,\s*(\d+(?:\.\d+)?)\s*)?\)/,
-            parse: (execResult: any) => new Rgba(parseInt(execResult[2], 10) / 255,
-                parseInt(execResult[3], 10) / 255,
-                parseInt(execResult[4], 10) / 255,
-                isNaN(parseFloat(execResult[5])) ? 1 : parseFloat(execResult[5]))
+            parse: (execResult: any) => new Rgba(
+                parseFloat(execResult[2]) / 255,
+                parseFloat(execResult[3]) / 255,
+                parseFloat(execResult[4]) / 255,
+                isNaN(parseFloat(execResult[5])) ? 1 : parseFloat(execResult[5]),
+                true
+            )
         }, {
             re: /(hsl)a?\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*(?:,\s*(\d+(?:\.\d+)?)\s*)?\)/,
-            parse: (execResult: any) => new Hsla(parseInt(execResult[2], 10) / 360,
-                parseInt(execResult[3], 10) / 100,
-                parseInt(execResult[4], 10) / 100,
-                isNaN(parseFloat(execResult[5])) ? 1 : parseFloat(execResult[5]))
+            parse: (execResult: any) => new Hsla(
+                parseFloat(execResult[2]) / 360,
+                parseFloat(execResult[3]) / 100,
+                parseFloat(execResult[4]) / 100,
+                isNaN(parseFloat(execResult[5])) ? 1 : parseFloat(execResult[5]),
+                true
+            )
         }
     ]
 
     if (allowHex8) {
         stringParsers.push({
             re: /#([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})?$/,
-            parse: (execResult: any) => new Rgba(parseInt(execResult[1], 16) / 255,
+            parse: (execResult: any) => new Rgba(
+                parseInt(execResult[1], 16) / 255,
                 parseInt(execResult[2], 16) / 255,
                 parseInt(execResult[3], 16) / 255,
-                parseInt(execResult[4] || 'FF', 16) / 255)
+                parseInt(execResult[4] || 'FF', 16) / 255,
+                true
+            )
         })
     } else {
         stringParsers.push({
             re: /#([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})$/,
-            parse: (execResult: any) => new Rgba(parseInt(execResult[1], 16) / 255,
+            parse: (execResult: any) => new Rgba(
+                parseInt(execResult[1], 16) / 255,
                 parseInt(execResult[2], 16) / 255,
                 parseInt(execResult[3], 16) / 255,
-                1)
+                1,
+                true
+            )
         })
     }
 
     stringParsers.push({
         re: /#([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])$/,
-        parse: (execResult: any) => new Rgba(parseInt(execResult[1] + execResult[1], 16) / 255,
+        parse: (execResult: any) => new Rgba(
+            parseInt(execResult[1] + execResult[1], 16) / 255,
             parseInt(execResult[2] + execResult[2], 16) / 255,
             parseInt(execResult[3] + execResult[3], 16) / 255,
-            1)
+            1,
+            true
+        )
     })
 
     for (const key in stringParsers) {
@@ -307,7 +445,7 @@ export function stringToCmyk(colorString: string = '', allowHex8: boolean = fals
                 } else if (color instanceof Hsva) {
                     cmyk = rgbaToCmyk(hsvaToRgba(color))
                 } else if (color instanceof Hsla) {
-                    cmyk = rgbaToCmyk(hsvaToRgba(hsla2hsva(color)))
+                    cmyk = rgbaToCmyk(hsvaToRgba(hslaToHsva(color)))
                 } else {
                     cmyk = color
                 }
@@ -327,26 +465,21 @@ export function formatOutput(hsva: Hsva, outputFormat: OutputFormat, alphaChanne
 
     switch (outputFormat) {
         case OutputFormatEnum.hsla:
-            const hsla = hsva2hsla(hsva)
-
-            const hslaText = new Hsla(Math.round((hsla.h) * 360), Math.round(hsla.s * 100),
-                Math.round(hsla.l * 100), Math.round(hsla.a * 100) / 100)
+            const hsla = denormalizeHSLA(hsvaToHsla(hsva))
 
             if (hsva.a < 1 || alphaChannel == AlphaChannelEnum.always) {
-                return 'hsla(' + hslaText.h + ',' + hslaText.s + '%,' + hslaText.l + '%,' +
-                    hslaText.a + ')'
+                return 'hsla(' + hsla.h.toFixed(0) + ',' + hsla.s.toFixed(0) + '%,' + hsla.l.toFixed(0) + '%,' + hsla.a.toFixed(2) + ')'
             } else {
-                return 'hsl(' + hslaText.h + ',' + hslaText.s + '%,' + hslaText.l + '%)'
+                return 'hsl(' + hsla.h.toFixed(0) + ',' + hsla.s.toFixed(0) + '%,' + hsla.l.toFixed(0) + '%)'
             }
 
         case OutputFormatEnum.rgba:
             const rgba = denormalizeRGBA(hsvaToRgba(hsva))
 
             if (hsva.a < 1 || alphaChannel == AlphaChannelEnum.always) {
-                return 'rgba(' + rgba.r + ',' + rgba.g + ',' + rgba.b + ',' +
-                    Math.round(rgba.a * 100) / 100 + ')'
+                return 'rgba(' + rgba.r.toFixed(0) + ',' + rgba.g.toFixed(0) + ',' + rgba.b.toFixed(0) + ',' + rgba.a.toFixed(2) + ')'
             } else {
-                return 'rgb(' + rgba.r + ',' + rgba.g + ',' + rgba.b + ')'
+                return 'rgb(' + rgba.r.toFixed(0) + ',' + rgba.g.toFixed(0) + ',' + rgba.b.toFixed(0) + ')'
             }
 
         default:
@@ -357,14 +490,17 @@ export function formatOutput(hsva: Hsva, outputFormat: OutputFormat, alphaChanne
 }
 
 export function formatCmyk(cmyk: Cmyk, alphaChannel: AlphaChannel) {
+    cmyk = denormalizeCMYK(cmyk)
     if (cmyk.a < 1 || alphaChannel == AlphaChannelEnum.always) {
-        return 'cmyka(' + cmyk.c + ',' + cmyk.m + ',' + cmyk.y + ',' + cmyk.k + ',' + cmyk.a + ')'
+        return 'cmyka(' + cmyk.c.toFixed(0) + ',' + cmyk.m.toFixed(0) + ',' + cmyk.y.toFixed(0) + ',' + cmyk.k.toFixed(0) + ',' + cmyk.a.toFixed(2) + ')'
     } else {
-        return 'cmyk(' + cmyk.c + ',' + cmyk.m + ',' + cmyk.y + ',' + cmyk.k + ')'
+        return 'cmyk(' + cmyk.c.toFixed(0) + ',' + cmyk.m.toFixed(0) + ',' + cmyk.y.toFixed(0) + ',' + cmyk.k.toFixed(0) + ')'
     }
 }
 
 export function calculateContrast(foreground: Rgba, background: Rgba) {
+    foreground = normalizeRGBA(foreground)
+    background = normalizeRGBA(background)
 
     if (Math.round(foreground.a * 100) < 100) {
         foreground = compositeColors(foreground, background)
@@ -377,13 +513,15 @@ export function calculateContrast(foreground: Rgba, background: Rgba) {
 }
 
 export function compositeColors(foreground: Rgba, background: Rgba) {
+    foreground = normalizeRGBA(foreground)
+    background = normalizeRGBA(background)
     const a = compositeAlpha(foreground.a, background.a)
 
     const r = compositeComponent(foreground.r, foreground.a, background.r, background.a, a)
     const g = compositeComponent(foreground.g, foreground.a, background.g, background.a, a)
     const b = compositeComponent(foreground.b, foreground.a, background.b, background.a, a)
 
-    return new Rgba(r, g, b, a)
+    return new Rgba(r, g, b, a, true)
 }
 
 export function compositeAlpha(foregroundAlpha: number, backgroundAlpha: number) {
@@ -398,19 +536,22 @@ export function compositeComponent(fgC: number, fgA: number, bgC: number, bgA: n
 }
 
 export function calculateLuminance(color: Rgba) {
-    let red = color.r / 255
+    color = normalizeRGBA(color)
+    let red = color.r
     red = red < 0.03928 ? red / 12.92 : Math.pow((red + 0.055) / 1.055, 2.4)
 
-    let green = color.g / 255
+    let green = color.g
     green = green < 0.03928 ? green / 12.92 : Math.pow((green + 0.055) / 1.055, 2.4)
 
-    let blue = color.b / 255
+    let blue = color.b
     blue = blue < 0.03928 ? blue / 12.92 : Math.pow((blue + 0.055) / 1.055, 2.4)
 
     return (0.2126 * red) + (0.7152 * green) + (0.0722 * blue)
 }
 
 export function calculateMinimumAlpha(foreground: Rgba, background: Rgba, minContrastRatio: number) {
+    foreground = normalizeRGBA(foreground)
+    background = normalizeRGBA(background)
     if (Math.round(background.a * 100) < 100) {
         return -1
     }

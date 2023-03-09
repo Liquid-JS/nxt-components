@@ -321,6 +321,13 @@ $light: #dadada;
         button {
             flex: auto 0 0;
             margin: math.div($baseSize, 4);
+            color: var(--nxt-color-picker-button-color, inherit);
+            background: var(--nxt-color-picker-button-background, #dadada);
+            padding: var(--nxt-color-picker-button-padding, #{math.div($baseSize, 4) math.div($baseSize, 2)});
+            border: var(--nxt-color-picker-button-border, none);
+            border-radius: var(--nxt-color-picker-button-border-radius, #{math.div($baseSize, 4)});
+            font-size: var(--nxt-color-picker-button-font-size, inherit);
+            font-weight: var(--nxt-color-picker-button-font-weight, inherit);
         }
     }
 }
