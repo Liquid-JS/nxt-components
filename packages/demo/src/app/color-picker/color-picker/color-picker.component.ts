@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Injector } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 import { Cmyk, formatOutput, stringToCmyk, stringToHsva } from 'nxt-color-picker'
-
-import tpl from './color-picker.component.html'
-console.log(tpl)
 
 @Component({
     selector: 'app-color-picker',
@@ -50,7 +47,8 @@ export class AppColorPickerComponent implements OnInit {
     cmykColor: Cmyk = new Cmyk(0, 0, 0, 0, 1)
 
     constructor(
-        private readonly title: Title
+        private readonly title: Title,
+        readonly injector: Injector
     ) { }
 
     ngOnInit(): void {

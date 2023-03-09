@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { AppColorPickerComponent } from './color-picker.component'
+import { AppColorPickerComponent } from './color-picker/color-picker.component'
 
 const routes: Routes = [
     { path: '', component: AppColorPickerComponent }

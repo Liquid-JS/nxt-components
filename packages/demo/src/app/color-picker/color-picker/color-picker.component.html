@@ -4,120 +4,22 @@
     <h4><b>based on <a href="https://github.com/Alberplz/angular2-color-picker">angular2-color-picker</a> and updates
             from <a href="https://github.com/zefoy/ngx-color-picker">ngx-color-picker</a></b></h4>
     <hr>
-    <div class="row">
-        <div class="col-md-5">
-            <input [style.background]="color1"
-                [(nxtColor)]="color1"
-                (open)="onEventLog('open', $event)"
-                (close)="onEventLog('close', $event)"
-                (inputChange)="onEventLog('inputChange', $event)"
-                (sliderDragStart)="onEventLog('sliderDragStart', $event)"
-                (sliderDragEnd)="onEventLog('sliderDragEnd', $event)" />
-        </div>
-        <div class="col-md-7">
-            <p>Usage:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;input [(nxtColor)]="color"
-    [style.background]="color"/&gt;</code></pre>
-                </div>
-            </div>
-            <p>Or:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;input [style.background]="color"
-    [nxtColor]="color"
-    (nxtColorChange)="color=$event"/&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-5">
-            <input [style.background]="color17"
-                [(nxtColor)]="color17"
-                mode="grayscale"
-                (open)="onEventLog('open', $event)"
-                (close)="onEventLog('close', $event)"
-                (inputChange)="onEventLog('inputChange', $event)"
-                (sliderDragStart)="onEventLog('sliderDragStart', $event)"
-                (sliderDragEnd)="onEventLog('sliderDragEnd', $event)" />
-        </div>
-        <div class="col-md-7">
-            <p>Grayscale color mode:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;input [(nxtColor)]="color" 
-    mode="grayscale"
-    [style.background]="color"/&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-5">
-            <input [value]="color2"
-                [style.background]="color2"
-                [(nxtColor)]="color2" />
-        </div>
-        <div class="col-md-7">
-            <p>Show the color in the input field:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;input [value]="color"
-    [style.background]="color"
-    [(nxtColor)]="color"/&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-5">
-            <input [value]="color3"
-                [style.background]="color3"
-                outputFormat="rgba"
-                [(nxtColor)]="color3" />
-            <br><br>
-            <input [value]="color4"
-                [style.background]="color4"
-                outputFormat="hsla"
-                [(nxtColor)]="color4" />
-        </div>
-        <div class="col-md-7">
-            <p>Output format:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;input [value]="color"
-    [style.background]="color"
-    outputFormat="rgba"
-    [(nxtColor)]="color"/&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-5">
-            <input [value]="color5"
-                [style.background]="color5"
-                position="bottom"
-                [(nxtColor)]="color5" />
-        </div>
-        <div class="col-md-7">
-            <p>Changing dialog position:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;input [value]="color"
-    [style.background]="color"
-    position="bottom"
-    [(nxtColor)]="color"/&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <app-example [injector]="injector"
+        [config]="(basicExample | async) ?? undefined"></app-example>
+
+    <app-example [injector]="injector"
+        [config]="(grayscaleMode | async) ?? undefined"></app-example>
+
+    <app-example [injector]="injector"
+        [config]="(showColor | async) ?? undefined"></app-example>
+
+    <app-example [injector]="injector"
+        [config]="(outputFormat | async) ?? undefined"></app-example>
+
+    <app-example [injector]="injector"
+        [config]="(dialogPosition | async) ?? undefined"></app-example>
+
     <hr>
     <div class="row">
         <div class="col-md-5">

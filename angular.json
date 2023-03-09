@@ -27,7 +27,8 @@
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
-                    "style": "scss"
+                    "style": "scss",
+                    "skipTests": true
                 }
             },
             "root": "packages/demo",
@@ -113,25 +114,6 @@
                     "builder": "@angular-builders/custom-webpack:extract-i18n",
                     "options": {
                         "browserTarget": "demo:build"
-                    }
-                },
-                "test": {
-                    "builder": "@angular-builders/custom-webpack:karma",
-                    "options": {
-                        "main": "packages/demo/src/test.ts",
-                        "polyfills": "packages/demo/src/polyfills.ts",
-                        "tsConfig": "packages/demo/tsconfig.spec.json",
-                        "karmaConfig": "packages/demo/karma.conf.js",
-                        "inlineStyleLanguage": "scss",
-                        "assets": [
-                            "packages/demo/src/favicon.ico",
-                            "packages/demo/src/assets",
-                            "packages/demo/src/manifest.webmanifest"
-                        ],
-                        "styles": [
-                            "packages/demo/src/styles.scss"
-                        ],
-                        "scripts": []
                     }
                 },
                 "lint": {
