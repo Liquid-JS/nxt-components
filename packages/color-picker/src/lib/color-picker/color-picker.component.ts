@@ -6,6 +6,9 @@ import { ColorModeInternal, composedPath, CursorEvent, DialogConfig, DirectiveCa
 import { AlphaChannel, AlphaChannelEnum, AlphaEnabledFormats, ColorFormat, ColorFormatEnum, DialogDisplay, DialogDisplayEnum, DialogPosition, DialogPositionEnum, OutputFormat, OutputFormatEnum } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
 
+/**
+ * @internal
+ */
 @Component({
     selector: 'nxt-color-picker',
     templateUrl: './color-picker.component.html',
@@ -209,7 +212,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         this.dialogDisplay = config.dialogDisplay
 
         this.ignoredElements = [
-            ...(Array.isArray(config.ignoredElements) ? config.ignoredElements : [config.ignoredElements]),
+            ...config.ignoredElements ?? [],
             this.elRef && this.elRef.nativeElement,
             config.elementRef && config.elementRef.nativeElement
         ].filter(e => !!e)

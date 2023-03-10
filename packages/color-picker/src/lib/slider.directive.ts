@@ -1,6 +1,9 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core'
 import { CursorEvent } from '../util/helpers'
 
+/**
+ * @internal
+ */
 @Directive({
     selector: '[nxtSlider]'
 })
