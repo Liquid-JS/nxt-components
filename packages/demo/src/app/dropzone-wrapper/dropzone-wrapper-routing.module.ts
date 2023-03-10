@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { AppDropzoneWrapperComponent } from './dropzone-wrapper.component'
+import { AppDropzoneWrapperComponent } from './dropzone-wrapper/dropzone-wrapper.component'
 
 const routes: Routes = [
     { path: '', component: AppDropzoneWrapperComponent }

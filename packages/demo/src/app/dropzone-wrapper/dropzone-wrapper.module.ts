@@ -4,7 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 import { DropzoneConfigInterface, DropzoneModule, NXT_DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
 import { ContentWrapComponent } from '../content-wrap/content-wrap.component'
 import { AppDropzoneWrapperRoutingModule } from './dropzone-wrapper-routing.module'
-import { AppDropzoneWrapperComponent } from './dropzone-wrapper.component'
+import { AppDropzoneWrapperComponent } from './dropzone-wrapper/dropzone-wrapper.component'
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     // Change this to your upload POST address:
