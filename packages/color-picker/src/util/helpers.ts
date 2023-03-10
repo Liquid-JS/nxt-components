@@ -91,7 +91,7 @@ export interface DialogConfig {
     maxPresetColors: number
     okButton: boolean
     cancelButton: boolean
-    addColorButton: boolean
+    presetColorsEditable: boolean
 }
 
 export function composedPath(event: Event): EventTarget[] {

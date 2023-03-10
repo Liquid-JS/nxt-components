@@ -97,7 +97,7 @@ import { ColorPickerModule } from 'nxt-color-picker';
 
 [cancelButton]              // Show a Cancel / Reset button which resets the color (false).
 
-[addColorButton]            // Show an Add Color button which add the color into preset (false).
+[presetColorsEditable]            // Show an Add Color button which add the color into preset (false).
 
 [maxPresetColors]           // Use this option to set the max colors allowed in presets (6).
 

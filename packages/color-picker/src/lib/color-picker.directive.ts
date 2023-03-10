@@ -100,7 +100,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
     @Input() cancelButton: boolean = false
 
-    @Input() addColorButton: boolean = false
+    @Input() presetColorsEditable: boolean = false
 
     @Input() maxPresetColors: number = 6
 

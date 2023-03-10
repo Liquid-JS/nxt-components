@@ -83,7 +83,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     presetColors?: string[]
     maxPresetColors?: number
 
-    addColorButton: boolean = false
+    presetColorsEditable: boolean = false
 
     constructor(
         private elRef: ElementRef,
@@ -232,7 +232,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
         this.maxPresetColors = config.maxPresetColors
 
-        this.addColorButton = config.addColorButton
+        this.presetColorsEditable = config.presetColorsEditable
 
         if (config.outputFormat == OutputFormatEnum.hex &&
             config.alphaChannel != AlphaChannelEnum.always && config.alphaChannel != AlphaChannelEnum.forced) {

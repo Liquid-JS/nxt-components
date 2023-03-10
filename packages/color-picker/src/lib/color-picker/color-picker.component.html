@@ -32,7 +32,7 @@
             <div class="color-picker__selected-color">
                 <div [ngStyle]="{ 
                     backgroundColor: selectedColor || ''
-                }"><button *ngIf="addColorButton && !(maxPresetColors && (presetColors?.length || 0) >= maxPresetColors)"
+                }"><button *ngIf="presetColorsEditable && !(maxPresetColors && (presetColors?.length || 0) >= maxPresetColors)"
                         type="button"
                         title="Add color to preset"
                         i18n-title="@@nxt-color-picker.button.add-color"
@@ -350,7 +350,7 @@
                         <div class="color-picker__preset-item-fill"
                             [ngStyle]="{ 
                         backgroundColor: rgba || ''
-                    }"><button *ngIf="addColorButton"
+                    }"><button *ngIf="presetColorsEditable"
                                 type="button"
                                 title="Remove Color"
                                 i18n-title="@@nxt-color-picker.button.remove-color"
