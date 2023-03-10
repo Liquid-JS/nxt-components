@@ -39,7 +39,13 @@ const routes: Routes = [
 ]
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, {
+        anchorScrolling: 'enabled',
+        scrollOffset: () => {
+            const header = document.querySelector('header.navbar')
+            return [0, (header?.clientHeight || 1) - 1]
+        }
+    })],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }

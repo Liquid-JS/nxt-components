@@ -1,0 +1,20 @@
+<input [style.background]="rgbColor"
+    [nxtColor]="rgbColor"
+    [cmykEnabled]="true"
+    (cmykColorChange)="cmykValue = $event; cmykColor = onChangeColorCmyk($event)"
+    (nxtColorChange)="rgbColor = $event" />
+<div>{{ cmykValue }}</div>
+<div class="cmyk-container">
+    <span class="cmyk-text"
+        style="color: rgb(0,255,255);"
+        [style.font-size.px]="96 * cmykColor.c">C</span>
+    <span class="cmyk-text"
+        style="color: rgb(255,0,255)"
+        [style.font-size.px]="96 * cmykColor.m">M</span>
+    <span class="cmyk-text"
+        style="color: rgb(255,255,0)"
+        [style.font-size.px]="96 * cmykColor.y">Y</span>
+    <span class="cmyk-text"
+        style="color: rgb(0,0,0)"
+        [style.font-size.px]="96 * cmykColor.k">K</span>
+</div>

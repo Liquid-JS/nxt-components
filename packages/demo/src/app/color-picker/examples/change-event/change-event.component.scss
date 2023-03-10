@@ -1,0 +1,16 @@
+.cmyk-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 144px;
+}
+
+.cmyk-text {
+    width: 72px;
+    font-weight: bolder;
+    line-height: 72px;
+    text-align: center;
+    text-shadow: 1px 1px 2px #bbb;
+    vertical-align: middle;
+}

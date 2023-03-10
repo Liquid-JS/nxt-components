@@ -1,7 +1,16 @@
-import { Component, OnInit, Injector } from '@angular/core'
+import { Component, Injector, OnInit } from '@angular/core'
 import { Title } from '@angular/platform-browser'
-import { Cmyk, formatOutput, stringToCmyk, stringToHsva } from 'nxt-color-picker'
 import { ExampleConfig } from '../../example/example.component'
+
+const extMap: {
+    html: keyof ExampleConfig
+    scss: keyof ExampleConfig
+    ts: keyof ExampleConfig
+} = {
+    html: 'template',
+    scss: 'style',
+    ts: 'source'
+}
 
 @Component({
     selector: 'app-color-picker',
@@ -10,102 +19,101 @@ import { ExampleConfig } from '../../example/example.component'
 })
 export class AppColorPickerComponent implements OnInit {
 
-    readonly basicExample = Promise.all([
-        import('../examples/basic-example/basic-example.component'),
-        import('../examples/basic-example/basic-example.component.html?raw'),
-        import('../examples/basic-example/basic-example.component.ts?raw')
-    ]).then(([{ BasicExampleComponent }, tpl, src]) => ({
-        component: BasicExampleComponent,
-        name: 'Basic usage',
-        path: 'color-picker/examples/basic-example',
-        template: tpl.default.trim(),
-        source: src.default.trim()
-    } as ExampleConfig))
-
-    readonly grayscaleMode = Promise.all([
-        import('../examples/grayscale-mode/grayscale-mode.component'),
-        import('../examples/grayscale-mode/grayscale-mode.component.html?raw'),
-        import('../examples/grayscale-mode/grayscale-mode.component.ts?raw')
-    ]).then(([{ GrayscaleModeComponent }, tpl, src]) => ({
-        component: GrayscaleModeComponent,
-        name: 'Grayscale color mode',
-        path: 'color-picker/examples/grayscale-mode',
-        template: tpl.default.trim(),
-        source: src.default.trim()
-    } as ExampleConfig))
-
-    readonly showColor = Promise.all([
-        import('../examples/show-color/show-color.component'),
-        import('../examples/show-color/show-color.component.html?raw'),
-        import('../examples/show-color/show-color.component.ts?raw')
-    ]).then(([{ ShowColorComponent }, tpl, src]) => ({
-        component: ShowColorComponent,
-        name: 'Show the color in the input field',
-        path: 'color-picker/examples/show-color',
-        template: tpl.default.trim(),
-        source: src.default.trim()
-    } as ExampleConfig))
-
-    readonly outputFormat = Promise.all([
-        import('../examples/output-format/output-format.component'),
-        import('../examples/output-format/output-format.component.html?raw'),
-        import('../examples/output-format/output-format.component.ts?raw')
-    ]).then(([{ OutputFormatComponent }, tpl, src]) => ({
-        component: OutputFormatComponent,
-        name: 'Output format',
-        path: 'color-picker/examples/output-format',
-        template: tpl.default.trim(),
-        source: src.default.trim()
-    } as ExampleConfig))
-
-    readonly dialogPosition = Promise.all([
-        import('../examples/dialog-position/dialog-position.component'),
-        import('../examples/dialog-position/dialog-position.component.html?raw'),
-        import('../examples/dialog-position/dialog-position.component.ts?raw')
-    ]).then(([{ DialogPositionComponent }, tpl, src]) => ({
-        component: DialogPositionComponent,
-        name: 'Changing dialog position',
-        path: 'color-picker/examples/dialog-position',
-        template: tpl.default.trim(),
-        source: src.default.trim()
-    } as ExampleConfig))
-
-    toggle: boolean = false
-
-    rgbaText: string = 'rgba(165, 26, 214, 0.2)'
-
-    arrayColors: any = {
-        color1: '#2883e9',
-        color2: '#e920e9',
-        color3: 'rgb(255,245,0)',
-        color4: 'rgb(236,64,64)',
-        color5: 'rgba(45,208,45,1)'
-    }
-
-    selectedColor: string = 'color1'
-
-    color1: string = '#2889e9'
-    color2: string = '#e920e9'
-    color3: string = '#fff500'
-    color4: string = 'rgb(236,64,64)'
-    color5: string = 'rgba(45,208,45,1)'
-    color6: string = '#1973c0'
-    color7: string = '#f200bd'
-    color8: string = '#a8ff00'
-    color9: string = '#278ce2'
-    color10: string = '#0a6211'
-    color11: string = '#f2ff00'
-    color12: string = '#f200bd'
-    color13: string = 'rgba(0,255,0,0.5)'
-    color14: string = 'rgb(0,255,255)'
-    color15: string = 'rgb(255,0,0)'
-    color16: string = '#a51ad633'
-    color17: string = '#666666'
-    color18: string = '#ff0000'
-
-    cmykValue: string = ''
-
-    cmykColor: Cmyk = new Cmyk(0, 0, 0, 0, 1)
+    readonly examples = Promise.all(new Array<{
+        path: string
+        name: string
+        description?: string
+        include: Array<keyof typeof extMap>
+    }>(
+        {
+            path: 'basic-example',
+            name: 'Basic usage',
+            include: ['html', 'ts']
+        },
+        {
+            path: 'grayscale-mode',
+            name: 'Grayscale color mode',
+            include: ['html']
+        },
+        {
+            path: 'show-color',
+            name: 'Show the color in the input field',
+            include: ['html']
+        },
+        {
+            path: 'output-format',
+            name: 'Output format',
+            include: ['html']
+        },
+        {
+            path: 'dialog-position',
+            name: 'Changing dialog position',
+            include: ['html']
+        },
+        {
+            path: 'dialog-offset',
+            name: 'Dialog offset',
+            description: 'You can introduce a offset of the color picker relative to the html element',
+            include: ['html', 'scss']
+        },
+        {
+            path: 'cancel-button',
+            name: 'Show cancel button',
+            include: ['html']
+        },
+        {
+            path: 'ok-button',
+            name: 'Show OK button',
+            include: ['html']
+        },
+        {
+            path: 'change-event',
+            name: 'Change color event',
+            include: ['html', 'scss', 'ts']
+        },
+        {
+            path: 'color-preset',
+            name: 'Preset colors',
+            include: ['html', 'ts']
+        },
+        {
+            path: 'manage-preset',
+            name: 'Add and remove preset colors',
+            include: ['html', 'ts']
+        },
+        {
+            path: 'toggle-button',
+            name: 'Use toggle with ignoredElements',
+            include: ['html', 'ts']
+        },
+        {
+            path: 'alpha-channel',
+            name: 'Change alpha channel behavior',
+            include: ['html', 'ts']
+        },
+        {
+            path: 'as-component',
+            name: 'Show the dialog permanently',
+            include: ['html', 'scss', 'ts']
+        }
+    )
+        .map(p => Promise.all([
+            import(`../examples/${p.path}/${p.path}.component`),
+            ...p.include.map(ext => import(`../examples/${p.path}/${p.path}.component.${ext}?raw`))
+        ])
+            .then(([cmp, ...tpl]) => Object.assign(
+                {
+                    component: Object.values(cmp).find(c => typeof c === 'function' && /^\s*class\s+/.test(c.toString())),
+                    name: p.name,
+                    description: p.description,
+                    path: `color-picker/examples/${p.path}`
+                } as ExampleConfig,
+                ...p.include.map((ext, i) => ({
+                    [extMap[ext]]: tpl[i].default.trim()
+                }))
+            ) as ExampleConfig)
+        )
+    )
 
     constructor(
         private readonly title: Title,
@@ -116,22 +124,7 @@ export class AppColorPickerComponent implements OnInit {
         this.title.setTitle('nxt-color-picker')
     }
 
-    onEventLog(event: string, data: any) {
-        console.log(event, data)
-    }
-
-    onChangeColorCmyk(color: string) {
-        const cmyk = stringToCmyk(color)
-        return cmyk || new Cmyk(0, 0, 0, 0, 1)
-    }
-
-    onChangeColorHex8(color: string) {
-        const hsva = stringToHsva(color, true)
-
-        if (hsva) {
-            return formatOutput(hsva, 'rgba')
-        }
-
-        return ''
+    exampleTrackBy(_i: number, val: ExampleConfig) {
+        return val.component
     }
 }

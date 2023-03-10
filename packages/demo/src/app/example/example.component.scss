@@ -1,7 +1,10 @@
 .example-tab-content {
     background: #fff;
     border: 1px solid #dee2e6;
-    border-top: none;
+
+    &:not(.example-tab-content--single){
+        border-top: none;
+    }
 
     pre {
         margin: 0;
@@ -38,6 +41,7 @@
     gap: 2rem 1rem;
     align-items: flex-start;
     justify-content: stretch;
+    padding-top: 1rem;
 }
 
 .example__title {   
@@ -56,6 +60,11 @@
         display: inline-flex;
         justify-content: flex-end;
     }
+
+    p {
+        flex: 100% 1 1;
+        margin: 0;
+    }
 }
 
 .example__preview {
@@ -68,10 +77,8 @@
     width: 0;
 }
 
-
-:host + ::ng-deep app-example {
+:host  + ::ng-deep app-example {
     .example-container {
-        padding-top: 1rem;
         border-top: 1px solid rgba(33, 37, 41, 0.25);
         margin-top: 2rem;
     }

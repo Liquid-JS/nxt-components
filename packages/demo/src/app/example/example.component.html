@@ -15,13 +15,15 @@
                         fill="currentColor" />
                 </svg>
                 View on GitHub</a></span>
+        <p *ngIf="config.description as desc">{{ desc }}</p>
     </div>
     <div class="example__preview">
         <ng-container [ngComponentOutlet]="config.component"
             [ngComponentOutletInjector]="injector"></ng-container>
     </div>
-    <div class="example__source">
-        <tabset *ngIf="sources">
+    <div class="example__source"
+        *ngIf="sources && sources.length">
+        <tabset *ngIf="sources.length > 1; else single">
             <tab *ngFor="let source of sources; trackBy tabTrackBy"
                 [heading]="source.tab"
                 class="example-tab-content">
@@ -30,5 +32,13 @@
                 [lineNumbers]="true"></code></pre>
             </tab>
         </tabset>
+        <ng-template #single>
+            <div *ngIf="sources?.[0] as source"
+                class="example-tab-content example-tab-content--single">
+                <pre><code [highlight]="source.code"
+                [languages]="[source.language]"
+                [lineNumbers]="true"></code></pre>
+            </div>
+        </ng-template>
     </div>
 </div>

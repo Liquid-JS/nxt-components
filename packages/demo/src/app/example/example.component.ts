@@ -6,6 +6,7 @@ import { HighlightModule } from 'ngx-highlightjs'
 export interface ExampleConfig {
     component: Type<any>
     name: string
+    description?: string
     path: string
     template?: string
     style?: string
@@ -45,15 +46,18 @@ export class ExampleComponent {
             })
         if (val?.style)
             sources.push({
-                tab: 'SCSS',
+                tab: 'CSS',
                 language: 'scss',
                 code: val.style
+                    .replace(/^(\s+)/gim, '$1$1')
+                    .replace(/^\}\n/gim, '}\n\n')
+                    .replace(/\n\n\n+/gim, '\n\n')
             })
         if (val?.source)
             sources.push({
                 tab: 'TS',
                 language: 'typescript',
-                code: val.source
+                code: val.source.replace(/.scss'/gim, '.css\'')
             })
         this.sources = sources.length ? sources : undefined
     }

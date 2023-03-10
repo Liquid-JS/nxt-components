@@ -1,0 +1,12 @@
+<input #ignoredInput
+    [style.background]="color"
+    fallbackColor="#f200bd"
+    [ignoredElements]="[ignoredButton, ignoredInput]"
+    [(toggle)]="toggle"
+    [(nxtColor)]="color" />
+<br><br>
+<button #ignoredButton
+    class="btn btn-primary"
+    (click)="toggle =! toggle;">Toggle</button>
+<br><br>
+<strong>Toggle status: {{ toggle }}</strong>

@@ -6,6 +6,6 @@ import { Component, ViewEncapsulation } from '@angular/core'
     styleUrls: ['./basic-example.component.scss'],
     encapsulation: ViewEncapsulation.Emulated
 })
-export class BasicExampleComponent {
+export class BaicExampeComponent {
     color = '#2889e9'
 }

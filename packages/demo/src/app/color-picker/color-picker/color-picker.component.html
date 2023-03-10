@@ -1,328 +1,48 @@
 <app-content-wrap>
     <h1>Angular Color Picker Directive</h1>
     <h4>A Color Picker Directive for Angular with no dependencies.</h4>
-    <h4><b>based on <a href="https://github.com/Alberplz/angular2-color-picker">angular2-color-picker</a> and updates
-            from <a href="https://github.com/zefoy/ngx-color-picker">ngx-color-picker</a></b></h4>
+    <h4><strong>based on <a href="https://github.com/Alberplz/angular2-color-picker">angular2-color-picker</a> and updates
+            from <a href="https://github.com/zefoy/ngx-color-picker">ngx-color-picker</a></strong></h4>
+
+    <br>
+
+    <div class="btn-group"
+        dropdown>
+        <button id="button-basic"
+            dropdownToggle
+            type="button"
+            class="btn btn-primary dropdown-toggle"
+            aria-controls="dropdown-basic">
+            Go to <span class="caret"></span>
+        </button>
+        <ul id="dropdown-basic"
+            *dropdownMenu
+            class="dropdown-menu"
+            role="menu"
+            aria-labelledby="button-basic">
+            <li role="menuitem"><a class="dropdown-item"
+                    routerLink="."
+                    fragment="api-docs">API docs</a>
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <li *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+                role="menuitem"><a class="dropdown-item"
+                    routerLink="."
+                    fragment="example-{{ i }}">{{ example.name }}</a></li>
+        </ul>
+    </div>
+
+    <hr class="no-padding">
+
+    <app-example *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+        [injector]="injector"
+        [config]="example"
+        id="example-{{ i }}"></app-example>
+
     <hr>
 
-    <app-example [injector]="injector"
-        [config]="(basicExample | async) ?? undefined"></app-example>
-
-    <app-example [injector]="injector"
-        [config]="(grayscaleMode | async) ?? undefined"></app-example>
-
-    <app-example [injector]="injector"
-        [config]="(showColor | async) ?? undefined"></app-example>
-
-    <app-example [injector]="injector"
-        [config]="(outputFormat | async) ?? undefined"></app-example>
-
-    <app-example [injector]="injector"
-        [config]="(dialogPosition | async) ?? undefined"></app-example>
-
-    <hr>
-    <div class="row">
-        <div class="col-md-5">
-            <span class="change-me"
-                [style.color]="color6"
-                position="bottom"
-                [positionOffset]="0.5"
-                [(nxtColor)]="color6">Change me!</span>
-        </div>
-        <div class="col-md-7">
-            <p>You can introduce a offset of the color picker relative to the html element:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;span [style.color]="color"
-    position="bottom"
-    [positionOffset]="0.5"
-    [(nxtColor)]="color"&gt;Change me!&lt;/span&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-5">
-            <input [value]="color7"
-                [style.background]="color7"
-                [cancelButton]="true"
-                [(nxtColor)]="color7" />
-        </div>
-        <div class="col-md-7">
-            <p>Show cancel button:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;input [value]="color"
-    [style.background]="color"
-    [cancelButton]="true"
-    [(nxtColor)]="color"/&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-5">
-            <input [value]="color8"
-                [style.background]="color8"
-                [cancelButton]="true"
-                [(nxtColor)]="color8" />
-        </div>
-        <div class="col-md-7">
-            <p>Change cancel button class, in this example we are using a bootstrap button:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;input [value]="color"
-    [style.background]="color"
-    [cancelButton]="true"
-    [(nxtColor)]="color"/&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-5">
-            <input [value]="color9"
-                [style.background]="color9"
-                [okButton]="true"
-                [saveClickOutside]="false"
-                [(nxtColor)]="color9" />
-        </div>
-        <div class="col-md-7">
-            <p>Show OK button:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;input [value]="color"
-    [style.background]="color"
-    [okButton]="true"
-    [saveClickOutside]="false"
-    [(nxtColor)]="color"/&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-5">
-            <input [style.background]="color10"
-                [nxtColor]="color10"
-                [cmykEnabled]="true"
-                (cmykColorChange)="cmykValue=$event;cmykColor=onChangeColorCmyk($event)"
-                (nxtColorChange)="color10=$event" />
-            <div class="clearfix"></div>
-            <div>{{cmykValue}}</div>
-            <div>
-                <span class="cmyk-text"
-                    style="color: rgb(0,255,255);"
-                    [style.font-size.px]="100 * cmykColor.c">C</span>
-                <span class="cmyk-text"
-                    style="color: rgb(255,0,255)"
-                    [style.font-size.px]="100 * cmykColor.m">M</span>
-            </div>
-            <div class="clearfix"></div>
-            <div>
-                <span class="cmyk-text"
-                    style="color: rgb(255,255,0)"
-                    [style.font-size.px]="100 * cmykColor.y">Y</span>
-                <span class="cmyk-text"
-                    [style.font-size.px]="100 * cmykColor.k">K</span>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="col-md-7">
-            <p>Change event color:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;input [style.background]="rgbColor"
-        [nxtColor]="color"
-        [cmykEnabled]="true"
-        (cmykColorChange)="color=$event;cmykColor=onChangeColorCmyk($event)"
-        (nxtColorChange)="rgbColor=$event"/&gt;
-&lt;span [style.font-size.px]="100 * cmykColor.c"/&gt;C&lt;/span/&gt;
-&lt;span [style.font-size.px]="100 * cmykColor.m"/&gt;M&lt;/span/&gt;
-&lt;span [style.font-size.px]="100 * cmykColor.y"/&gt;Y&lt;/span/&gt;
-&lt;span [style.font-size.px]="100 * cmykColor.k"/&gt;K&lt;/span/&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-5">
-            <input [style.background]="color11"
-                [presetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']"
-                [(nxtColor)]="color11" />
-        </div>
-        <div class="col-md-7">
-            <p>With preset colors:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;input [style.background]="color"
-        [presetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']"
-        [(nxtColor)]="color"/&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-5">
-            <input [style.background]="color13"
-                alphaChannel="always"
-                outputFormat="rgba"
-                [presetColors]="['#fff', '#2889e9']"
-                [addColorButton]="true"
-                [(nxtColor)]="color13" />
-        </div>
-        <div class="col-md-7">
-            <p>Add and remove preset colors:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;input [style.background]="color"
-        alphaChannel="always"
-        outputFormat="rgba"
-        [presetColors]="['#fff', '#2889e9']"
-        [addColorButton]="true"
-        [(nxtColor)]="color"/&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-5">
-            <input #ignoredInput
-                [style.background]="color12"
-                fallbackColor="#f200bd"
-                [ignoredElements]="[ignoredButton, ignoredInput]"
-                [(toggle)]="toggle"
-                [(nxtColor)]="color12" />
-            <div class="clearfix"></div>
-            <button #ignoredButton
-                class="btn btn-primary"
-                (click)="toggle=!toggle;">Toggle</button>
-            <br><br>
-            <div><b>Toggle status: {{toggle}}</b></div>
-        </div>
-        <div class="col-md-7">
-            <p>Use toggle with ignoredElements:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;input #ignoredInput
-    [style.background]="color"
-    [ignoredElements]="[ignoredButton, ignoredInput]"
-    [(toggle)]="toggle"
-    [(nxtColor)]="color"/&gt;
-&lt;button #ignoredButton (click)="toggle=!toggle"&gt;&lt;/button&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-5">
-            <input [value]="color14"
-                [style.background]="color14"
-                alphaChannel="always"
-                outputFormat="rgba"
-                [(nxtColor)]="color14" />
-            <br>
-            <input [value]="color13"
-                [style.background]="color13"
-                alphaChannel="disabled"
-                outputFormat="rgba"
-                [(nxtColor)]="color13" />
-            <br>
-            <input [value]="color16"
-                [style.background]="rgbaText"
-                alphaChannel="always"
-                outputFormat="hex"
-                [nxtColor]="color16"
-                (nxtColorChange)="rgbaText=onChangeColorHex8($event);color16=$event" />
-            <br>
-            <input [value]="color15"
-                [style.background]="color15"
-                alphaChannel="forced"
-                outputFormat="hex"
-                [(nxtColor)]="color15" />
-        </div>
-        <div class="col-md-7">
-            <p>Change alpha channel behaviour:</p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;input [value]="color"
-    [style.background]="color"
-    alphaChannel="always"
-    outputFormat="rgba"
-    [(nxtColor)]="color"/&gt;
-&lt;input [value]="color"
-    [style.background]="color13"
-    alphaChannel="disabled"
-    outputFormat="rgba"
-    [(nxtColor)]="color"/&gt;
-&lt;input [value]="color"
-    [style.background]="rgbaText"
-    alphaChannel="always"
-    outputFormat="hex"
-    [nxtColor]="color"
-    (nxtColorChange)="rgbaText=onChangeColorHex8($event);color16=$event"/&gt;
-&lt;input [value]="color"
-    [style.background]="color"
-    alphaChannel="forced"
-    outputFormat="hex"
-    [(nxtColor)]="color"/&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
     <div class="row"
-        style="height: 320px">
-        <div class="col-md-3">
-            <span [style.background]="arrayColors[selectedColor]"
-                [toggle]="true"
-                dialogDisplay="inline"
-                [cancelButton]="true"
-                [(nxtColor)]="arrayColors[selectedColor]"></span>
-        </div>
-        <div class="col-md-2">
-            <div class="color-box"
-                [style.background]="arrayColors['color1']"
-                (click)="selectedColor='color1'"></div>
-            <div class="color-box"
-                [style.background]="arrayColors['color2']"
-                (click)="selectedColor='color2'"></div>
-            <div class="color-box"
-                [style.background]="arrayColors['color3']"
-                (click)="selectedColor='color3'"></div>
-            <div class="color-box"
-                [style.background]="arrayColors['color4']"
-                (click)="selectedColor='color4'"></div>
-            <div class="color-box"
-                [style.background]="arrayColors['color5']"
-                (click)="selectedColor='color5'"></div>
-        </div>
-        <div class="col-md-7">
-            <p>Show the dialog permanently: </p>
-            <div class="card">
-                <div class="card-body">
-                    <pre><code>&lt;span [style.background]="arrayColors[selectedColor]"
-    [toggle]="true"
-    dialogDisplay="inline"
-    [cancelButton]="true"
-    [(nxtColor)]="arrayColors[selectedColor]"&gt;&lt;/span&gt;
-&lt;div [style.background]="arrayColors['color1']"
-    (click)="selectedColor='color1'"&gt;&lt;/div&gt;
-&lt;div [style.background]="arrayColors['color2']"
-    (click)="selectedColor='color2'"&gt;&lt;/div&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr><br>
-    <div class="row">
+        id="api-docs">
         <div class="col-md-12">
             <table class="table">
                 <thead>
@@ -341,49 +61,49 @@
                     <tr>
                         <td>width</td>
                         <td>
-                            <b>'230px'</b><br>
+                            <strong>'230px'</strong><br>
                             Use this option to set color picker dialog width (pixels).
                         </td>
                     </tr>
                     <tr>
                         <td>height</td>
                         <td>
-                            <b>'auto'</b><br>
+                            <strong>'auto'</strong><br>
                             Use this option to force color picker dialog height (pixels).
                         </td>
                     </tr>
                     <tr>
                         <td>toggle</td>
                         <td>
-                            <b>false</b>, true<br>
+                            <strong>false</strong>, true<br>
                             Input/ouput to open/close the color picker.
                         </td>
                     </tr>
                     <tr>
                         <td>disabled</td>
                         <td>
-                            <b>false</b>, true<br>
+                            <strong>false</strong>, true<br>
                             Disable colorpicker.
                         </td>
                     </tr>
                     <tr>
                         <td>mode</td>
                         <td>
-                            <b>'color'</b>, 'grayscale', 'presets'<br>
+                            <strong>'color'</strong>, 'grayscale', 'presets'<br>
                             Dialog color mode.
                         </td>
                     </tr>
                     <tr>
                         <td>cmykEnabled</td>
                         <td>
-                            <b>false</b>, true<br>
+                            <strong>false</strong>, true<br>
                             Enable cmyk color mode.
                         </td>
                     </tr>
                     <tr>
                         <td>outputFormat</td>
                         <td>
-                            <b>OutputFormatEnum.auto</b><br>
+                            <strong>OutputFormatEnum.auto</strong><br>
                             OutputFormatEnum.hex<br>
                             OutputFormatEnum.rgba<br>
                             OutputFormatEnum.hsla
@@ -392,7 +112,7 @@
                     <tr>
                         <td>alphaChannel</td>
                         <td>
-                            <b>AlphaChannelEnum.enabled</b><br>
+                            <strong>AlphaChannelEnum.enabled</strong><br>
                             AlphaChannelEnum.enabled: alpha channel is not included for hexadecimal (hex6) values or for
                             values without alpha (alpha = 1).<br>
                             AlphaChannelEnum.disabled: alpha channel is completely disabled.<br>
@@ -404,14 +124,14 @@
                     <tr>
                         <td>fallbackColor</td>
                         <td>
-                            <b>'#fff'</b><br>
+                            <strong>'#fff'</strong><br>
                             Is used when the color is not well-formed or not defined.
                         </td>
                     </tr>
                     <tr>
                         <td>position</td>
                         <td>
-                            <b>DialogPositionEnum.right</b><br>
+                            <strong>DialogPositionEnum.right</strong><br>
                             DialogPositionEnum.left<br>
                             DialogPositionEnum.top<br>
                             DialogPositionEnum.bottom
@@ -420,35 +140,35 @@
                     <tr>
                         <td>positionOffset</td>
                         <td>
-                            <b>0</b><br>
+                            <strong>0</strong><br>
                             Dialog offset (percent) relative to the element that contains the directive.
                         </td>
                     </tr>
                     <tr>
                         <td>presetLabel</td>
                         <td>
-                            <b>true</b><br>
+                            <strong>true</strong><br>
                             Show label for preset colors. If string is given, it overrides the default label.
                         </td>
                     </tr>
                     <tr>
                         <td>presetColors</td>
                         <td>
-                            <b>[]</b><br>
+                            <strong>[]</strong><br>
                             Array of preset colors to show in the color picker dialog.
                         </td>
                     </tr>
                     <tr>
                         <td>disableInput</td>
                         <td>
-                            <b>false</b>, true<br>
+                            <strong>false</strong>, true<br>
                             Disables / hides the color input field from the dialog.<br>
                         </td>
                     </tr>
                     <tr>
                         <td>dialogDisplay</td>
                         <td>
-                            <b>DialogDisplayEnum.popup</b><br>
+                            <strong>DialogDisplayEnum.popup</strong><br>
                             DialogDisplayEnum.popup: dialog is showed when user clicks in the directive.<br>
                             DialogDisplayEnum.inline: dialog is showed permanently. You can show/hide the dialog with
                             toggle.<br>
@@ -457,56 +177,56 @@
                     <tr>
                         <td>ignoredElements</td>
                         <td>
-                            <b>[]</b><br>
+                            <strong>[]</strong><br>
                             Array of HTML elements that will be ignored by the color picker when they are clicked.
                         </td>
                     </tr>
                     <tr>
                         <td>saveClickOutside</td>
                         <td>
-                            <b>true</b>, false<br>
+                            <strong>true</strong>, false<br>
                             If true the initial color is restored when user clicks outside.
                         </td>
                     </tr>
                     <tr>
                         <td>closeClickOutside</td>
                         <td>
-                            <b>true</b>, false<br>
+                            <strong>true</strong>, false<br>
                             If true the dialog closes when user clicks outside.
                         </td>
                     </tr>
                     <tr>
                         <td>okButton</td>
                         <td>
-                            <b>false</b>, true<br>
+                            <strong>false</strong>, true<br>
                             Shows the Ok button. Saves the selected color.
                         </td>
                     </tr>
                     <tr>
                         <td>cancelButton</td>
                         <td>
-                            <b>false</b>, true<br>
+                            <strong>false</strong>, true<br>
                             Shows the Cancel button. Cancel the selected color.
                         </td>
                     </tr>
                     <tr>
-                        <td>addColorButton</td>
+                        <td>presetColorsEditable</td>
                         <td>
-                            <b>false</b>, true<br>
+                            <strong>false</strong>, true<br>
                             Add or remove colors into your preset panel. The [presetColors] is needed<br>
                         </td>
                     </tr>
                     <tr>
                         <td>maxPresetColors</td>
                         <td>
-                            <b>6</b> (number)<br>
+                            <strong>6</strong> (number)<br>
                             Use this option to set the max colors allowed into preset panel.
                         </td>
                     </tr>
                     <tr>
                         <td>useRootViewContainer</td>
                         <td>
-                            <b>false</b>, true<br>
+                            <strong>false</strong>, true<br>
                             Create dialog component in the root view container instead the elements view container.<br>
                         </td>
                     </tr>
@@ -528,78 +248,78 @@
                     <tr>
                         <td>open</td>
                         <td>
-                            Current color value, send when dialog is opened. <b>(value: string)</b>
+                            Current color value, send when dialog is opened. <strong>(value: string)</strong>
                         </td>
                     </tr>
                     <tr>
                         <td>close</td>
                         <td>
-                            Current color value, send when dialog is closed. <b>(value: string)</b>
+                            Current color value, send when dialog is closed. <strong>(value: string)</strong>
                         </td>
                     </tr>
                     <tr>
                         <td>inputChange</td>
                         <td>
-                            Input name and its value, send when user changes color through inputs. <b>(value:
-                                InputChangeEvent)</b>
+                            Input name and its value, send when user changes color through inputs. <strong>(value:
+                                InputChangeEvent)</strong>
                         </td>
                     </tr>
                     <tr>
                         <td>toggleChange</td>
                         <td>
-                            Status of the dialog, send when dialog is opened / closed. <b>(open: boolean)</b>
+                            Status of the dialog, send when dialog is opened / closed. <strong>(open: boolean)</strong>
                         </td>
                     </tr>
                     <tr>
                         <td>sliderDragStart</td>
                         <td>
-                            Slider name and current color, send when slider dragging starts. <b>(value:
-                                SliderChangeEvent)</b>
+                            Slider name and current color, send when slider dragging starts. <strong>(value:
+                                SliderChangeEvent)</strong>
                         </td>
                     </tr>
                     <tr>
                         <td>sliderChange</td>
                         <td>
-                            Slider name and its value, send when user changes color through slider. <b>(value:
-                                SliderChangeEvent)</b>
+                            Slider name and its value, send when user changes color through slider. <strong>(value:
+                                SliderChangeEvent)</strong>
                         </td>
                     </tr>
                     <tr>
                         <td>sliderDragEnd</td>
                         <td>
-                            Slider name and current color, send when slider dragging ends. <b>(value:
-                                SliderChangeEvent)</b>
+                            Slider name and current color, send when slider dragging ends. <strong>(value:
+                                SliderChangeEvent)</strong>
                         </td>
                     </tr>
                     <tr>
                         <td>colorSelectCancel</td>
                         <td>
-                            Color select canceled, send when Cancel button is pressed. <b>(void)</b>
+                            Color select canceled, send when Cancel button is pressed. <strong>(void)</strong>
                         </td>
                     </tr>
                     <tr>
                         <td>colorSelect</td>
                         <td>
                             Selected color value, send when user presses the OK button or clicks outside (if
-                            <i>saveClickOutside</i> is true). <b>(value: string)</b>
+                            <i>saveClickOutside</i> is true). <strong>(value: string)</strong>
                         </td>
                     </tr>
                     <tr>
                         <td>nxtColorChange</td>
                         <td>
-                            Changed color value, send when color is changed. <b>(value: string)</b>
+                            Changed color value, send when color is changed. <strong>(value: string)</strong>
                         </td>
                     </tr>
                     <tr>
                         <td>cmykColorChange</td>
                         <td>
-                            Changed CMYK value, send when CMYK is enabled. <b>(value: string)</b>
+                            Changed CMYK value, send when CMYK is enabled. <strong>(value: string)</strong>
                         </td>
                     </tr>
                     <tr>
                         <td>presetColorsChange</td>
                         <td>
-                            Preset colors value, send when Add Color button is pressed. <b>(value: array)</b>
+                            Preset colors value, send when Add Color button is pressed. <strong>(value: array)</strong>
                         </td>
                     </tr>
                 </tbody>

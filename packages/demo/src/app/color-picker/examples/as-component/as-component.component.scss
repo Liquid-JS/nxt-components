@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: space-around;
+}
+
+.color-box {
+    width: 100px;
+    height: 24px;
+    cursor: pointer;
+
+    & + &{
+        margin-top: 16px;
+    }
+}
