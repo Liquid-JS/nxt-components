@@ -1,43 +1,32 @@
 <app-content-wrap>
     <h1>nxt-json-view</h1>
-    <div class="panel panel-default">
-        <div class="panel-heading">Basic</div>
-        <div class="panel-body">
-            <nxt-json-view [data]="data"></nxt-json-view>
-        </div>
+    <br>
+
+    <div class="btn-group"
+        dropdown>
+        <button id="button-basic"
+            dropdownToggle
+            type="button"
+            class="btn btn-primary dropdown-toggle"
+            aria-controls="dropdown-basic">
+            Go to <span class="caret"></span>
+        </button>
+        <ul id="dropdown-basic"
+            *dropdownMenu
+            class="dropdown-menu"
+            role="menu"
+            aria-labelledby="button-basic">
+            <li *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+                role="menuitem"><a class="dropdown-item"
+                    routerLink="."
+                    fragment="example-{{ i }}">{{ example.name }}</a></li>
+        </ul>
     </div>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">With expansion parameters</div>
-        <div class="panel-body">
-            <nxt-json-view [data]="data"
-                [levelOpen]="0"></nxt-json-view>
-        </div>
-    </div>
+    <hr class="no-padding">
 
-    <div class="panel panel-default">
-        <div class="panel-heading">With levelLabels {{levelLabels | json}}</div>
-        <div class="panel-body">
-            <nxt-json-view [data]="data"
-                [levelOpen]="0"
-                [levelLabels]="levelLabels"></nxt-json-view>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">live test</div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <textarea class="form-control"
-                        rows="15"
-                        [ngModel]="customData"
-                        (ngModelChange)="ngModelChange($event)"></textarea>
-                </div>
-                <div class="col-md-6">
-                    <nxt-json-view [data]="customJson"></nxt-json-view>
-                </div>
-            </div>
-        </div>
-    </div>
+    <app-example *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+        [injector]="injector"
+        [config]="example"
+        id="example-{{ i }}"></app-example>
 </app-content-wrap>

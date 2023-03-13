@@ -52,6 +52,7 @@ export class AppFlagsComponent implements OnInit {
             ) as ExampleConfig)
         )
     )
+
     constructor(
         private readonly title: Title,
         readonly injector: Injector

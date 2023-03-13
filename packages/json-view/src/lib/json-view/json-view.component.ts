@@ -9,5 +9,5 @@ import { Component, Input, ViewEncapsulation } from '@angular/core'
 export class JsonViewComponent {
     @Input() data: any
     @Input() levelOpen?: number
-    @Input() levelLabels?: { [key: number]: { [key: string]: string } }
+    @Input() levelLabels?: { [level: number]: { [key: string]: string } }
 }
