@@ -334,13 +334,19 @@ $theme-color: #3f51b5;
         background: rgba($theme-color, 0.2);
 
         &.nxt-dt-calendar-cell-range-from {
-            border-top-left-radius: 999px;
-            border-bottom-left-radius: 999px;
+            border-top-left-radius: 50%;
+
+            &:not(.nxt-dt-calendar-cell-range-from-long){
+                border-bottom-left-radius: 50%;
+            }
         }
 
         &.nxt-dt-calendar-cell-range-to {
-            border-top-right-radius: 999px;
-            border-bottom-right-radius: 999px;
+            border-bottom-right-radius: 50%;
+
+            &:not(.nxt-dt-calendar-cell-range-to-long) {
+                border-top-right-radius: 50%;
+            }
         }
     }
 }
