@@ -1,0 +1,57 @@
+<select [(ngModel)]="code"
+    class="form-select">
+    <option *ngFor="let i of data"
+        [value]="i.code">{{ i.name }} (ISO code: {{ i.code }})</option>
+</select>
+
+<div>
+    <div>
+        <h3 class="h5">Size</h3>
+
+        <h4 class="h6">xxs</h4>
+        <nxt-flag [country]="code"
+            size="xxs"></nxt-flag>
+
+        <h4 class="h6">xs</h4>
+        <nxt-flag [country]="code"
+            size="xs"></nxt-flag>
+
+        <h4 class="h6">s</h4>
+        <nxt-flag [country]="code"
+            size="s"></nxt-flag>
+
+        <h4 class="h6">m</h4>
+        <nxt-flag [country]="code"
+            size="m"></nxt-flag>
+
+        <h4 class="h6">l</h4>
+        <nxt-flag [country]="code"
+            size="l"></nxt-flag>
+
+        <h4 class="h6">xl</h4>
+        <nxt-flag [country]="code"
+            size="xl"></nxt-flag>
+
+        <h4 class="h6">xxl</h4>
+        <nxt-flag [country]="code"
+            size="xxl"></nxt-flag>
+
+        <h4 class="h6">Custom size</h4>
+        <nxt-flag [country]="code"
+            [size]="120"></nxt-flag>
+    </div>
+    <div>
+        <h3 class="h5">Format</h3>
+
+        <h4 class="h6">none</h4>
+        <nxt-flag [country]="code"></nxt-flag>
+
+        <h4 class="h6">square</h4>
+        <nxt-flag [country]="code"
+            format="square"></nxt-flag>
+
+        <h4 class="h6">round</h4>
+        <nxt-flag [country]="code"
+            format="round"></nxt-flag>
+    </div>
+</div>

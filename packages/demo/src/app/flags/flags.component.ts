@@ -1,9 +1,18 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Injector, OnInit } from '@angular/core'
 import { Title } from '@angular/platform-browser'
-import { remove as removeDiacritics } from 'diacritics'
-import { getName, registerLocale } from 'i18n-iso-countries'
+import { registerLocale } from 'i18n-iso-countries'
 import locl from 'i18n-iso-countries/langs/en.json'
-import { FlagDatabaseKey, FlagFormat } from 'nxt-flags'
+import { ExampleConfig } from '../example/example.component'
+
+const extMap: {
+    html: keyof ExampleConfig
+    scss: keyof ExampleConfig
+    ts: keyof ExampleConfig
+} = {
+    html: 'template',
+    scss: 'style',
+    ts: 'source'
+}
 
 registerLocale(locl)
 
@@ -14,32 +23,45 @@ registerLocale(locl)
 })
 export class AppFlagsComponent implements OnInit {
 
-    code: FlagDatabaseKey = 'es'
-    data: Array<{ code: string, name: string }>
-    readonly flagFormat = FlagFormat
-
+    readonly examples = Promise.all(new Array<{
+        path: string
+        name: string
+        description?: string
+        include: Array<keyof typeof extMap>
+    }>(
+        {
+            path: 'basic-example',
+            name: 'Basic usage',
+            include: ['html', 'ts']
+        }
+    )
+        .map(p => Promise.all([
+            import(`./examples/${p.path}/${p.path}.component`),
+            ...p.include.map(ext => import(`./examples/${p.path}/${p.path}.component.${ext}?raw`))
+        ])
+            .then(([cmp, ...tpl]) => Object.assign(
+                {
+                    component: Object.values(cmp).find(c => typeof c === 'function' && /^\s*class\s+/.test(c.toString())),
+                    name: p.name,
+                    description: p.description,
+                    path: `flags/examples/${p.path}`
+                } as ExampleConfig,
+                ...p.include.map((ext, i) => ({
+                    [extMap[ext]]: tpl[i].default.trim()
+                }))
+            ) as ExampleConfig)
+        )
+    )
     constructor(
-        private readonly title: Title
-    ) {
-        const codes = Object.keys(locl.countries)
-        this.data = codes.map(c => ({
-            code: c.toLowerCase(),
-            name: getName(c.toUpperCase(), 'en')
-        })).filter(({ name }) => !!name)
-            .sort((a, b) => normalizeCompare(a.name, b.name))
-    }
+        private readonly title: Title,
+        readonly injector: Injector
+    ) { }
 
     ngOnInit(): void {
         this.title.setTitle('nxt-flags')
     }
-}
 
-function normalizeCompare(a: string, b: string) {
-    return normalize(a).localeCompare(normalize(b))
-}
-
-function normalize(val: string) {
-    return removeDiacritics('' + (val || ''))
-        .toLowerCase()
-        .trim()
+    exampleTrackBy(_i: number, val: ExampleConfig) {
+        return val.component
+    }
 }

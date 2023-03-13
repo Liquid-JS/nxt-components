@@ -1,8 +1,8 @@
 import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core'
 import { FlagDatabase, FlagDatabaseKey } from '../database'
-import { FlagFormat, FlagSize } from '../types'
+import { FlagFormat, FlagFormatEnum, FlagSize } from '../types'
 
-const availableFormats = new Set(Object.values(FlagFormat))
+const availableFormats = new Set<FlagFormat>(Object.values(FlagFormatEnum))
 const availableCodes = new Set(Object.values(FlagDatabase))
 
 @Component({
@@ -25,11 +25,11 @@ export class FlagComponent {
         }
     }
 
-    private _format = FlagFormat.None
+    private _format: FlagFormat = FlagFormatEnum.None
     @Input() set format(val: FlagFormat) {
         this._format = availableFormats.has(val)
             ? val
-            : FlagFormat.None
+            : FlagFormatEnum.None
     }
 
     private _size = 48
@@ -43,28 +43,33 @@ export class FlagComponent {
         }
     }
 
+    /** @internal */
     @HostBinding('style.width.px')
     get width() {
         return this._size
     }
 
+    /** @internal */
     @HostBinding('style.height.px')
     get height() {
-        return this._format == FlagFormat.None
+        return this._format == FlagFormatEnum.None
             ? Math.floor(this._size / 1.5)
             : this._size
     }
 
+    /** @internal */
     @HostBinding('style.borderRadius')
     get radius() {
-        return this._format == FlagFormat.Round ? '100%' : '0%'
+        return this._format == FlagFormatEnum.Round ? '100%' : '0%'
     }
 
+    /** @internal */
     @HostBinding('style.backgroundImage')
     get image() {
         return `url(assets/flags/${this._code}.svg)`
     }
 
+    /** @internal */
     @HostBinding('style.display')
     get display() {
         return this._code

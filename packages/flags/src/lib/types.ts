@@ -1,8 +1,10 @@
-export enum FlagFormat {
+export enum FlagFormatEnum {
     None = 'none',
     Round = 'round',
     Square = 'square'
 }
+
+export type FlagFormat = `${FlagFormatEnum}`
 
 export enum FlagSize {
     xxs = 8,
