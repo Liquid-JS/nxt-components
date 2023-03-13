@@ -171,7 +171,7 @@ export abstract class DateTimeDirective<T> {
     /**
      * Date Time Checker to check if the give dateTime is selectable
      */
-    public dateTimeChecker = (dateTime: T | undefined) => (
+    dateTimeChecker = (dateTime: T | undefined) => (
         !!dateTime &&
         (!this.dateTimeFilter || this.dateTimeFilter(dateTime)) &&
         (!this.min || this.dateTimeAdapter.compare(dateTime, this.min) >= 0) &&

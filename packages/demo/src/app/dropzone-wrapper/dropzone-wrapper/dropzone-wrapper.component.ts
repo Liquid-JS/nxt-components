@@ -1,6 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core'
+import { Component, Injector, OnInit } from '@angular/core'
 import { Title } from '@angular/platform-browser'
-import { DropzoneComponent, DropzoneConfigInterface, DropzoneDirective } from 'nxt-dropzone-wrapper'
+import { ExampleConfig } from '../../example/example.component'
+
+const extMap: {
+    html: keyof ExampleConfig
+    scss: keyof ExampleConfig
+    ts: keyof ExampleConfig
+} = {
+    html: 'template',
+    scss: 'style',
+    ts: 'source'
+}
 
 @Component({
     selector: 'app-dropzone-wrapper',
@@ -8,68 +18,47 @@ import { DropzoneComponent, DropzoneConfigInterface, DropzoneDirective } from 'n
     styleUrls: ['./dropzone-wrapper.component.scss']
 })
 export class AppDropzoneWrapperComponent implements OnInit {
-    public type: string = 'component'
 
-    public disabled: boolean = false
-
-    public config: DropzoneConfigInterface = {
-        clickable: true,
-        maxFiles: 1,
-        autoReset: null,
-        errorReset: null,
-        cancelReset: null
-    }
-
-    @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent
-    @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective
+    readonly examples = Promise.all(new Array<{
+        path: string
+        name: string
+        description?: string
+        include: Array<keyof typeof extMap>
+    }>(
+        {
+            path: 'sandbox',
+            name: 'Basic usage',
+            include: ['html', 'ts']
+        }
+    )
+        .map(p => Promise.all([
+            import(`../examples/${p.path}/${p.path}.component`),
+            ...p.include.map(ext => import(`../examples/${p.path}/${p.path}.component.${ext}?raw`))
+        ])
+            .then(([cmp, ...tpl]) => Object.assign(
+                {
+                    component: Object.values(cmp).find(c => typeof c === 'function' && /^\s*class\s+/.test(c.toString())),
+                    name: p.name,
+                    description: p.description,
+                    path: `dropzone-wrapper/examples/${p.path}`
+                } as ExampleConfig,
+                ...p.include.map((ext, i) => ({
+                    [extMap[ext]]: tpl[i].default.trim()
+                }))
+            ) as ExampleConfig)
+        )
+    )
 
     constructor(
-        private readonly title: Title
+        private readonly title: Title,
+        readonly injector: Injector
     ) { }
 
     ngOnInit(): void {
         this.title.setTitle('nxt-dropzone-wrapper')
     }
 
-    public toggleType(): void {
-        this.type = (this.type === 'component') ? 'directive' : 'component'
-    }
-
-    public toggleDisabled(): void {
-        this.disabled = !this.disabled
-    }
-
-    public toggleAutoReset(): void {
-        this.config.autoReset = this.config.autoReset ? null : 5000
-        this.config.errorReset = this.config.errorReset ? null : 5000
-        this.config.cancelReset = this.config.cancelReset ? null : 5000
-    }
-
-    public toggleMultiUpload(): void {
-        this.config.maxFiles = this.config.maxFiles ? 0 : 1
-    }
-
-    public toggleClickAction(): void {
-        this.config.clickable = !this.config.clickable
-    }
-
-    public resetDropzoneUploads(): void {
-        if (this.type === 'directive' && this.directiveRef) {
-            this.directiveRef.reset()
-        } else if (this.type === 'component' && this.componentRef && this.componentRef.directiveRef) {
-            this.componentRef.directiveRef.reset()
-        }
-    }
-
-    public onUploadInit(args: any): void {
-        console.log('onUploadInit:', args)
-    }
-
-    public onUploadError(args: any): void {
-        console.log('onUploadError:', args)
-    }
-
-    public onUploadSuccess(args: any): void {
-        console.log('onUploadSuccess:', args)
+    exampleTrackBy(_i: number, val: ExampleConfig) {
+        return val.component
     }
 }

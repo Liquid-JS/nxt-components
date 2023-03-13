@@ -33,6 +33,8 @@ export interface SourceDef {
 })
 export class ExampleComponent {
 
+    @Input() asTab = false
+
     _config?: ExampleConfig
     sources?: SourceDef[]
     @Input() set config(val: ExampleConfig | undefined) {

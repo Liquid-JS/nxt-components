@@ -169,12 +169,12 @@ export class TimerComponent<T> implements OnInit {
         private readonly dateTimeAdapter: DateTimeAdapter<T>
     ) { }
 
-    public ngOnInit() { }
+    ngOnInit() { }
 
     /**
      * Focus to the host element
      * */
-    public focus() {
+    focus() {
         this.ngZone.runOutsideAngular(() => {
             this.ngZone.onStable
                 .asObservable()
@@ -189,7 +189,7 @@ export class TimerComponent<T> implements OnInit {
      * Set the hour value via typing into timer box input
      * We need this to handle the hour value when the timer is in hour12 mode
      * */
-    public setHourValueViaInput(hours: number): void {
+    setHourValueViaInput(hours: number): void {
         if (this.hour12Timer && this.isPM && hours >= 1 && hours <= 11) {
             hours = hours + 12
         } else if (this.hour12Timer && !this.isPM && hours === 12) {
@@ -199,25 +199,25 @@ export class TimerComponent<T> implements OnInit {
         this.setHourValue(hours)
     }
 
-    public setHourValue(hours: number): void {
+    setHourValue(hours: number): void {
         const m = this.dateTimeAdapter.setHours(this.pickerMoment, hours)
         this.selectedChange.emit(m)
         this.cdRef.markForCheck()
     }
 
-    public setMinuteValue(minutes: number): void {
+    setMinuteValue(minutes: number): void {
         const m = this.dateTimeAdapter.setMinutes(this.pickerMoment, minutes)
         this.selectedChange.emit(m)
         this.cdRef.markForCheck()
     }
 
-    public setSecondValue(seconds: number): void {
+    setSecondValue(seconds: number): void {
         const m = this.dateTimeAdapter.setSeconds(this.pickerMoment, seconds)
         this.selectedChange.emit(m)
         this.cdRef.markForCheck()
     }
 
-    public setMeridiem(event: any): void {
+    setMeridiem(event: any): void {
         this.isPM = !this.isPM
 
         let hours = this.hourValue
@@ -238,7 +238,7 @@ export class TimerComponent<T> implements OnInit {
     /**
      * Check if the up hour button is enabled
      */
-    public upHourEnabled(): boolean {
+    upHourEnabled(): boolean {
         return (
             !this.max ||
             this.compareHours(this.stepHour, this.max) < 1
@@ -248,7 +248,7 @@ export class TimerComponent<T> implements OnInit {
     /**
      * Check if the down hour button is enabled
      */
-    public downHourEnabled(): boolean {
+    downHourEnabled(): boolean {
         return (
             !this.min ||
             this.compareHours(-this.stepHour, this.min) > -1
@@ -258,7 +258,7 @@ export class TimerComponent<T> implements OnInit {
     /**
      * Check if the up minute button is enabled
      */
-    public upMinuteEnabled(): boolean {
+    upMinuteEnabled(): boolean {
         return (
             !this.max ||
             this.compareMinutes(this.stepMinute, this.max) < 1
@@ -268,7 +268,7 @@ export class TimerComponent<T> implements OnInit {
     /**
      * Check if the down minute button is enabled
      */
-    public downMinuteEnabled(): boolean {
+    downMinuteEnabled(): boolean {
         return (
             !this.min ||
             this.compareMinutes(-this.stepMinute, this.min) > -1
@@ -278,7 +278,7 @@ export class TimerComponent<T> implements OnInit {
     /**
      * Check if the up second button is enabled
      */
-    public upSecondEnabled(): boolean {
+    upSecondEnabled(): boolean {
         return (
             !this.max ||
             this.compareSeconds(this.stepSecond, this.max) < 1
@@ -288,7 +288,7 @@ export class TimerComponent<T> implements OnInit {
     /**
      * Check if the down second button is enabled
      */
-    public downSecondEnabled(): boolean {
+    downSecondEnabled(): boolean {
         return (
             !this.min ||
             this.compareSeconds(-this.stepSecond, this.min) > -1

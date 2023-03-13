@@ -23,15 +23,15 @@ export class DialogRef<T> {
     /**
      * The instance of component opened into modal
      * */
-    public componentInstance?: T
+    componentInstance?: T
 
     /** Whether the user is allowed to close the dialog. */
-    public disableClose = !!this.container.config?.disableClose
+    disableClose = !!this.container.config?.disableClose
 
     constructor(
         private readonly overlayRef: OverlayRef,
         private readonly container: DialogContainerComponent,
-        public readonly id?: string,
+        readonly id?: string,
         location?: Location
     ) {
         this.container.animationStateChanged
@@ -71,7 +71,7 @@ export class DialogRef<T> {
         }
     }
 
-    public close(dialogResult?: any) {
+    close(dialogResult?: any) {
         this.result = dialogResult
 
         this.container.animationStateChanged
@@ -91,14 +91,14 @@ export class DialogRef<T> {
     /**
      * Gets an observable that emits when the overlay's backdrop has been clicked.
      */
-    public backdropClick() {
+    backdropClick() {
         return this.overlayRef.backdropClick()
     }
 
     /**
      * Gets an observable that emits when keydown events are targeted on the overlay.
      */
-    public keydownEvents() {
+    keydownEvents() {
         return this.overlayRef.keydownEvents()
     }
 
@@ -107,7 +107,7 @@ export class DialogRef<T> {
      *
      * @param position New dialog position.
      */
-    public updatePosition(position?: DialogPosition): this {
+    updatePosition(position?: DialogPosition): this {
         const strategy = this.getPositionStrategy()
 
         if (position && (position.left || position.right)) {
@@ -145,19 +145,19 @@ export class DialogRef<T> {
         return this
     }
 
-    public isAnimating(): boolean {
+    isAnimating(): boolean {
         return this.container.isAnimating
     }
 
-    public afterOpen() {
+    afterOpen() {
         return this._afterOpen$.asObservable()
     }
 
-    public beforeClose() {
+    beforeClose() {
         return this._beforeClose$.asObservable()
     }
 
-    public afterClosed() {
+    afterClosed() {
         return this._afterClosed$.asObservable()
     }
 

@@ -1,19 +1,22 @@
 /* eslint-disable @angular-eslint/no-output-rename */
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core'
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core'
 import { DropzoneDirective } from './dropzone.directive'
-import { DropzoneConfigInterface } from './dropzone.interfaces'
+import { DropzoneConfigInterface, DropzoneListeners, NXT_DROPZONE_LISTENERS } from './dropzone.interfaces'
 
 @Component({
     selector: 'nxt-dropzone',
-    exportAs: 'nxtDropzone',
     templateUrl: './dropzone.component.html',
     styleUrls: [
         './dropzone.component.scss',
         '../../../../node_modules/dropzone/dist/dropzone.css'
     ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    providers: [{
+        provide: NXT_DROPZONE_LISTENERS,
+        useValue: forwardRef(() => DropzoneComponent)
+    }]
 })
-export class DropzoneComponent implements OnInit {
+export class DropzoneComponent implements OnInit, DropzoneListeners {
 
     @Input() disabled: boolean = false
 

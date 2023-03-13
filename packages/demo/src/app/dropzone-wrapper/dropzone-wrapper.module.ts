@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { FlexLayoutModule } from '@angular/flex-layout'
+import { FormsModule } from '@angular/forms'
 import { DropzoneConfigInterface, DropzoneModule, NXT_DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
 import { ContentWrapComponent } from '../content-wrap/content-wrap.component'
+import { ExampleComponent } from '../example/example.component'
 import { AppDropzoneWrapperRoutingModule } from './dropzone-wrapper-routing.module'
 import { AppDropzoneWrapperComponent } from './dropzone-wrapper/dropzone-wrapper.component'
+import { SandboxComponent } from './examples/sandbox/sandbox.component'
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     // Change this to your upload POST address:
@@ -15,14 +17,16 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
 
 @NgModule({
     declarations: [
-        AppDropzoneWrapperComponent
+        AppDropzoneWrapperComponent,
+        SandboxComponent
     ],
     imports: [
         DropzoneModule,
         CommonModule,
-        FlexLayoutModule,
+        FormsModule,
         AppDropzoneWrapperRoutingModule,
-        ContentWrapComponent
+        ContentWrapComponent,
+        ExampleComponent
     ],
     exports: [],
     providers: [

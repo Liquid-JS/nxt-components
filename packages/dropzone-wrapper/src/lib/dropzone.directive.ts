@@ -2,16 +2,13 @@
 import { isPlatformBrowser } from '@angular/common'
 import { Directive, DoCheck, ElementRef, EventEmitter, HostBinding, Inject, Input, KeyValueDiffers, NgZone, OnDestroy, OnInit, Optional, Output, PLATFORM_ID } from '@angular/core'
 import Dropzone from 'dropzone'
-import { DropzoneComponent } from './dropzone.component'
-import { DropzoneConfig, DropzoneConfigInterface, DropzoneEvent, DropzoneEvents, internalChanges, NXT_DROPZONE_CONFIG } from './dropzone.interfaces'
-
-Dropzone.autoDiscover = false
+import { DropzoneConfig, DropzoneConfigInterface, DropzoneEvent, DropzoneEvents, DropzoneListeners, internalChanges, NXT_DROPZONE_CONFIG, NXT_DROPZONE_LISTENERS } from './dropzone.interfaces'
 
 @Directive({
     selector: '[nxtDropzone]',
     exportAs: 'nxtDropzone'
 })
-export class DropzoneDirective implements OnInit, OnDestroy, DoCheck {
+export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneListeners {
 
     private instance?: Dropzone
 
@@ -141,8 +138,8 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck {
         @Inject(NXT_DROPZONE_CONFIG)
         private readonly defaults?: DropzoneConfigInterface,
         @Optional()
-        @Inject(DropzoneComponent)
-        private readonly component?: DropzoneComponent
+        @Inject(NXT_DROPZONE_LISTENERS)
+        private readonly component?: DropzoneListeners
     ) { }
 
     /** @internal */
@@ -179,7 +176,7 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck {
     }
 
     /** @internal */
-    public reset(cancel?: boolean) {
+    reset(cancel?: boolean) {
         if (this.instance) {
             this.zone.runOutsideAngular(() => {
                 this.instance!.removeAllFiles(cancel)

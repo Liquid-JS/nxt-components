@@ -213,16 +213,16 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     /**
      * The date of the month that today falls on.
      * */
-    public todayDate?: number
+    todayDate?: number
 
     /**
      * An array to hold all selectedDates' value
      * the value is the day number in current month
      * */
-    public selectedDates?: Array<number | undefined>
+    selectedDates?: Array<number | undefined>
 
     // the index of cell that contains the first date of the month
-    public firstRowOffset: number = 0
+    firstRowOffset: number = 0
 
     /**
      * Callback to invoke when a new date is selected
@@ -256,7 +256,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
         private readonly dateTimeFormats: DateTimeFormats
     ) { }
 
-    public ngOnInit() {
+    ngOnInit() {
         this.generateWeekDays()
 
         this.localeSub = this.dateTimeAdapter.localeChanges.subscribe(() => {
@@ -266,12 +266,12 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
         })
     }
 
-    public ngAfterContentInit(): void {
+    ngAfterContentInit(): void {
         this.generateCalendar()
         this.initiated = true
     }
 
-    public ngOnDestroy(): void {
+    ngOnDestroy(): void {
         this.localeSub?.unsubscribe()
         this.localeSub = undefined
     }
@@ -279,7 +279,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     /**
      * Handle a calendarCell selected
      */
-    public selectCalendarCell(cell: CalendarCell): void {
+    selectCalendarCell(cell: CalendarCell): void {
         // Cases in which the date would not be selected
         // 1, the calendar cell is NOT enabled (is NOT valid)
         // 2, the selected date is NOT in current picker's month and the hideOtherMonths is enabled
@@ -307,7 +307,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     /**
      * Handle keydown event on calendar body
      */
-    public handleCalendarKeydown(event: KeyboardEvent): void {
+    handleCalendarKeydown(event: KeyboardEvent): void {
         let moment
         switch (event.keyCode) {
             // minus 1 day
@@ -543,7 +543,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     /**
      * Check if the give dates are defined and in the same month
      */
-    public isSameMonth(dateLeft?: T, dateRight?: T): boolean {
+    isSameMonth(dateLeft?: T, dateRight?: T): boolean {
         return !!(
             dateLeft &&
             dateRight &&

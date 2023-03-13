@@ -28,8 +28,8 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
     @ViewChild(TimerComponent)
     timer?: TimerComponent<T>
 
-    public picker?: DateTimeDirective<T>
-    public activeSelectedIndex = 0 // The current active SelectedIndex in range select mode (0: 'from', 1: 'to')
+    picker?: DateTimeDirective<T>
+    activeSelectedIndex = 0 // The current active SelectedIndex in range select mode (0: 'from', 1: 'to')
 
     /**
      * Stream emits when try to hide picker
@@ -175,25 +175,25 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
         private readonly dateTimeAdapter: DateTimeAdapter<T>
     ) { }
 
-    public ngOnInit() { }
+    ngOnInit() { }
 
-    public ngAfterContentInit(): void {
+    ngAfterContentInit(): void {
         this.initPicker()
     }
 
-    public ngAfterViewInit(): void {
+    ngAfterViewInit(): void {
         this.focusPicker()
     }
 
     @HostListener('@transformPicker.done', ['$event'])
-    public handleContainerAnimationDone(event: AnimationEvent): void {
+    handleContainerAnimationDone(event: AnimationEvent): void {
         const toState = event.toState
         if (toState === 'enter') {
             this.pickerOpened$.next()
         }
     }
 
-    public dateSelected(date?: T): void {
+    dateSelected(date?: T): void {
         let result
 
         if (this.picker?.isInSingleMode) {
@@ -219,7 +219,7 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
         }
     }
 
-    public timeSelected(time?: T): void {
+    timeSelected(time?: T): void {
         this.pickerMoment = this.dateTimeAdapter.clone(time)
 
         if (!this.picker?.dateTimeChecker(this.pickerMoment)) {
@@ -263,7 +263,7 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
     /**
      * Handle click on cancel button
      */
-    public onCancelClicked(event: Event): void {
+    onCancelClicked(event: Event): void {
         this.hidePicker$.next()
         event.preventDefault()
         return
@@ -272,7 +272,7 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
     /**
      * Handle click on set button
      */
-    public onSetClicked(event: Event): void {
+    onSetClicked(event: Event): void {
         if (!this.picker?.dateTimeChecker?.(this.pickerMoment)) {
             this.hidePicker$.next()
             event.preventDefault()
@@ -287,7 +287,7 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
     /**
      * Handle click on inform radio group
      */
-    public handleClickOnInfoGroup(event: any, index: number): void {
+    handleClickOnInfoGroup(event: any, index: number): void {
         this.setActiveSelectedIndex(index)
         event.preventDefault()
         event.stopPropagation()
@@ -296,7 +296,7 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
     /**
      * Handle click on inform radio group
      */
-    public handleKeydownOnInfoGroup(
+    handleKeydownOnInfoGroup(
         event: any,
         next: any,
         index: number

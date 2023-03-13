@@ -17,13 +17,20 @@
                 View on GitHub</a></span>
         <p *ngIf="config.description as desc">{{ desc }}</p>
     </div>
-    <div class="example__preview">
+    <div *ngIf="!asTab"
+        class="example__preview">
         <ng-container [ngComponentOutlet]="config.component"
             [ngComponentOutletInjector]="injector"></ng-container>
     </div>
     <div class="example__source"
         *ngIf="sources && sources.length">
-        <tabset *ngIf="sources.length > 1; else single">
+        <tabset *ngIf="sources.length > 1 || asTab; else single">
+            <tab *ngIf="asTab"
+                heading="Preview"
+                class="example-tab-preview">
+                <ng-container [ngComponentOutlet]="config.component"
+                    [ngComponentOutletInjector]="injector"></ng-container>
+            </tab>
             <tab *ngFor="let source of sources; trackBy tabTrackBy"
                 [heading]="source.tab"
                 class="example-tab-content">

@@ -6,7 +6,7 @@ export class Cmyk {
         public k: number,
         public a: number,
         /** Wheter values are normalized to [0..1] */
-        public readonly normalized = true
+        readonly normalized = true
     ) { }
 }
 
@@ -17,7 +17,7 @@ export class Hsla {
         public l: number,
         public a: number,
         /** Wheter values are normalized to [0..1] */
-        public readonly normalized = true
+        readonly normalized = true
     ) { }
 }
 
@@ -28,7 +28,7 @@ export class Hsva {
         public v: number,
         public a: number,
         /** Wheter values are normalized to [0..1] */
-        public readonly normalized = true
+        readonly normalized = true
     ) { }
 }
 
@@ -39,6 +39,6 @@ export class Rgba {
         public b: number,
         public a: number,
         /** Wheter values are normalized to [0..1] */
-        public readonly normalized = true
+        readonly normalized = true
     ) { }
 }

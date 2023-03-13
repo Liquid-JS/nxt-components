@@ -218,10 +218,10 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
         private readonly dateTimeAdapter: DateTimeAdapter<T>
     ) { }
 
-    public ngOnInit() {
+    ngOnInit() {
     }
 
-    public ngAfterContentInit(): void {
+    ngAfterContentInit(): void {
         this._todayYear = this.dateTimeAdapter.getYear(this.dateTimeAdapter.now())
         this.generateYearList()
         this.initiated = true
@@ -230,7 +230,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     /**
      * Handle a calendarCell selected
      */
-    public selectCalendarCell(cell: CalendarCell): void {
+    selectCalendarCell(cell: CalendarCell): void {
         this.selectYear(cell.value)
     }
 
@@ -257,7 +257,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     /**
      * Generate the previous year list
      * */
-    public prevYearList(event: any): void {
+    prevYearList(event: any): void {
         this._pickerMoment = this.dateTimeAdapter.addCalendarYears(this.pickerMoment, -1 * YEAR_ROWS * YEARS_PER_ROW)
         this.generateYearList()
         event.preventDefault()
@@ -266,13 +266,13 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     /**
      * Generate the next year list
      * */
-    public nextYearList(event: any): void {
+    nextYearList(event: any): void {
         this._pickerMoment = this.dateTimeAdapter.addCalendarYears(this.pickerMoment, YEAR_ROWS * YEARS_PER_ROW)
         this.generateYearList()
         event.preventDefault()
     }
 
-    public generateYearList(): void {
+    generateYearList(): void {
         this._years = []
 
         const pickerMomentYear = this.dateTimeAdapter.getYear(this._pickerMoment)
@@ -295,7 +295,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     }
 
     /** Whether the previous period button is enabled. */
-    public previousEnabled(): boolean {
+    previousEnabled(): boolean {
         if (!this.min) {
             return true
         }
@@ -303,11 +303,11 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     }
 
     /** Whether the next period button is enabled. */
-    public nextEnabled(): boolean {
+    nextEnabled(): boolean {
         return !this.max || !this.isSameYearList(this._pickerMoment, this.max)
     }
 
-    public handleCalendarKeydown(event: KeyboardEvent): void {
+    handleCalendarKeydown(event: KeyboardEvent): void {
         let moment
         switch (event.keyCode) {
             // minus 1 year

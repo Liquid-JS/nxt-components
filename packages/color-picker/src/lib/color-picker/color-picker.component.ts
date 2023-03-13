@@ -633,7 +633,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    public onCyanInput(value: TextEvent) {
+    onCyanInput(value: TextEvent) {
         if (typeof value != 'string') {
             const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
@@ -656,7 +656,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    public onMagentaInput(value: TextEvent) {
+    onMagentaInput(value: TextEvent) {
         if (typeof value != 'string') {
             const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
@@ -679,7 +679,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    public onYellowInput(value: TextEvent) {
+    onYellowInput(value: TextEvent) {
         if (typeof value != 'string') {
             const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 
@@ -702,7 +702,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    public onBlackInput(value: TextEvent) {
+    onBlackInput(value: TextEvent) {
         if (typeof value != 'string') {
             const valid = !isNaN(value.v) && value.v >= 0 && value.v <= value.rg
 

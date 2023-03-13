@@ -44,11 +44,11 @@ export const NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER = {
 export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit, OnDestroy {
     /** Custom class for the picker backdrop. */
     @Input()
-    public backdropClass: string | string[] = []
+    backdropClass: string | string[] = []
 
     /** Custom class for the picker overlay pane. */
     @Input()
-    public panelClass: string | string[] = []
+    panelClass: string | string[] = []
 
     /** The date to open the calendar to initially. */
     private _startAt?: T
@@ -153,7 +153,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
      * Learn more this from https://material.angular.io/cdk/overlay/overview#scroll-strategies
      * */
     @Input()
-    public scrollStrategy?: ScrollStrategy
+    scrollStrategy?: ScrollStrategy
 
     /**
      * Callback when the picker is closed
@@ -184,12 +184,12 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     /**
      * Emit when the selected value has been confirmed
      * */
-    public readonly confirmSelectedChange = new EventEmitter<Array<T | undefined> | T>()
+    readonly confirmSelectedChange = new EventEmitter<Array<T | undefined> | T>()
 
     /**
      * Emits when the date time picker is disabled.
      * */
-    public readonly disabledChange = new EventEmitter<boolean>()
+    readonly disabledChange = new EventEmitter<boolean>()
 
     private pickerContainerPortal?: ComponentPortal<
         DateTimeContainerComponent<T>
@@ -274,9 +274,9 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         super(dateTimeAdapter, dateTimeFormats)
     }
 
-    public ngOnInit() { }
+    ngOnInit() { }
 
-    public ngOnDestroy(): void {
+    ngOnDestroy(): void {
         this.close()
         this.dtInputSub?.unsubscribe()
         this.dtInputSub = undefined
@@ -287,7 +287,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         }
     }
 
-    public registerInput(input: DateTimeInputDirective<T>): void {
+    registerInput(input: DateTimeInputDirective<T>): void {
         if (this._dtInput) {
             throw Error(
                 'A Nxt DateTimePicker can only be associated with a single input.'
@@ -304,7 +304,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         })
     }
 
-    public open(): void {
+    open(): void {
         if (this._opened || this.disabled) {
             return
         }
@@ -365,7 +365,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     /**
      * Selects the given date
      */
-    public select(date: T[] | T): void {
+    select(date: T[] | T): void {
         if (Array.isArray(date)) {
             this.selecteds = [...date]
         } else {
@@ -398,21 +398,21 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     /**
      * Emits the selected year in multi-year view
      * */
-    public selectYear(normalizedYear: T): void {
+    selectYear(normalizedYear: T): void {
         this.yearSelected.emit(normalizedYear)
     }
 
     /**
      * Emits selected month in year view
      * */
-    public selectMonth(normalizedMonth: T): void {
+    selectMonth(normalizedMonth: T): void {
         this.monthSelected.emit(normalizedMonth)
     }
 
     /**
      * Hide the picker
      */
-    public close(): void {
+    close(): void {
         if (!this._opened) {
             return
         }
@@ -469,7 +469,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     /**
      * Confirm the selected value
      */
-    public confirmSelect(_event?: any): void {
+    confirmSelect(_event?: any): void {
         if (this.isInSingleMode) {
             const selected =
                 this.selected || this.startAt || this.dateTimeAdapter.now()

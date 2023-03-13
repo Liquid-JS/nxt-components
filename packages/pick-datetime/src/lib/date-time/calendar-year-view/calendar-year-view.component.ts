@@ -159,13 +159,13 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
 
     private initiated = false
 
-    public todayMonth?: number
+    todayMonth?: number
 
     /**
      * An array to hold all selectedDates' month value
      * the value is the month number in current year
      * */
-    public selectedMonths?: Array<number | undefined>
+    selectedMonths?: Array<number | undefined>
 
     /**
      * Callback to invoke when a new month is selected
@@ -206,19 +206,19 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
         this.monthNames = this.dateTimeAdapter.getMonthNames('short')
     }
 
-    public ngOnInit() {
+    ngOnInit() {
         this.localeSub = this.dateTimeAdapter.localeChanges.subscribe(() => {
             this.generateMonthList()
             this.cdRef.markForCheck()
         })
     }
 
-    public ngAfterContentInit(): void {
+    ngAfterContentInit(): void {
         this.generateMonthList()
         this.initiated = true
     }
 
-    public ngOnDestroy(): void {
+    ngOnDestroy(): void {
         this.localeSub?.unsubscribe()
         this.localeSub = undefined
     }
@@ -226,7 +226,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
     /**
      * Handle a calendarCell selected
      */
-    public selectCalendarCell(cell: CalendarCell): void {
+    selectCalendarCell(cell: CalendarCell): void {
         this.selectMonth(cell.value)
     }
 
@@ -263,7 +263,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
     /**
      * Handle keydown event on calendar body
      */
-    public handleCalendarKeydown(event: KeyboardEvent): void {
+    handleCalendarKeydown(event: KeyboardEvent): void {
         let moment
         switch (event.keyCode) {
             // minus 1 month

@@ -59,7 +59,7 @@ export class TimerBoxComponent implements OnInit, OnDestroy {
     constructor() {
     }
 
-    public ngOnInit() {
+    ngOnInit() {
         this.inputStreamSub = this.inputStream.pipe(
             debounceTime(500),
             distinctUntilChanged()
@@ -71,20 +71,20 @@ export class TimerBoxComponent implements OnInit, OnDestroy {
         })
     }
 
-    public ngOnDestroy(): void {
+    ngOnDestroy(): void {
         this.inputStreamSub?.unsubscribe()
         this.inputStreamSub = undefined
     }
 
-    public upBtnClicked(): void {
+    upBtnClicked(): void {
         this.updateValue(this.value + this.step)
     }
 
-    public downBtnClicked(): void {
+    downBtnClicked(): void {
         this.updateValue(this.value - this.step)
     }
 
-    public handleInputChange(val: string): void {
+    handleInputChange(val: string): void {
         this.inputStream.next(val)
     }
 

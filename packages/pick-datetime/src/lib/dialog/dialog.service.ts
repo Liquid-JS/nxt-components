@@ -105,7 +105,7 @@ export class DialogService {
         }
     }
 
-    public open<T>(
+    open<T>(
         componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
         config?: DialogConfig
     ): DialogRef<any> {
@@ -139,7 +139,7 @@ export class DialogService {
     /**
      * Closes all of the currently-open dialogs.
      */
-    public closeAll(): void {
+    closeAll(): void {
         let i = this.openDialogs.length
 
         while (i--) {
@@ -152,7 +152,7 @@ export class DialogService {
      *
      * @param id ID to use when looking up the dialog.
      */
-    public getDialogById(id: string): DialogRef<any> | undefined {
+    getDialogById(id: string): DialogRef<any> | undefined {
         return this.openDialogs.find(dialog => dialog.id === id)
     }
 

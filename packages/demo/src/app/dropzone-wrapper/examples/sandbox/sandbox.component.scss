@@ -1,0 +1,22 @@
+.demo-dz-column {
+    display: flex;
+    flex-direction: column;
+
+    &.col{
+        flex: 300px 2 1;
+    }
+
+    .dropzone-container {
+        flex: auto 1 1;
+    }
+}
+
+.row {
+    gap: var(--bs-gutter-x);
+    margin: 0;
+}
+
+.col {
+    flex: 250px 1 1;
+    padding: 0;
+}

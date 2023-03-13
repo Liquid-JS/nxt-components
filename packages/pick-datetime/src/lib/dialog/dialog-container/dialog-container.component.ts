@@ -65,12 +65,12 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
     private focusTrap?: ConfigurableFocusTrap
 
     /** ID of the element that should be considered as the dialog's label. */
-    public ariaLabelledBy?: string
+    ariaLabelledBy?: string
 
     /** Emits when an animation state changes. */
-    public readonly animationStateChanged = new EventEmitter<AnimationEvent>()
+    readonly animationStateChanged = new EventEmitter<AnimationEvent>()
 
-    public isAnimating = false
+    isAnimating = false
 
     private _config?: DialogConfig
     get config() {
@@ -138,12 +138,12 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
         super()
     }
 
-    public ngOnInit() { }
+    ngOnInit() { }
 
     /**
      * Attach a ComponentPortal as content to this dialog container.
      */
-    public attachComponentPortal<T>(
+    attachComponentPortal<T>(
         portal: ComponentPortal<T>
     ): ComponentRef<T> {
         if (this.portalOutlet?.hasAttached()) {
@@ -156,13 +156,13 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
         return this.portalOutlet!.attachComponentPortal(portal)
     }
 
-    public attachTemplatePortal<C>(
+    attachTemplatePortal<C>(
         _portal: TemplatePortal<C>
     ): EmbeddedViewRef<C> {
         throw new Error('Method not implemented.')
     }
 
-    public setConfig(config: DialogConfig): void {
+    setConfig(config: DialogConfig): void {
         this._config = config
 
         if (config.event) {
@@ -171,13 +171,13 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
     }
 
     @HostListener('@slideModal.start', ['$event'])
-    public onAnimationStart(event: AnimationEvent): void {
+    onAnimationStart(event: AnimationEvent): void {
         this.isAnimating = true
         this.animationStateChanged.emit(event)
     }
 
     @HostListener('@slideModal.done', ['$event'])
-    public onAnimationDone(event: AnimationEvent): void {
+    onAnimationDone(event: AnimationEvent): void {
         if (event.toState === 'enter') {
             this.trapFocus()
         } else if (event.toState === 'exit') {
@@ -188,7 +188,7 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
         this.isAnimating = false
     }
 
-    public startExitAnimation() {
+    startExitAnimation() {
         this.state = 'exit'
         this.changeDetector.markForCheck()
     }

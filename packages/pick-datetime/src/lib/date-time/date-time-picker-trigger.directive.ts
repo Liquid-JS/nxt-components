@@ -31,26 +31,26 @@ export class DateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterCont
         protected readonly changeDetector: ChangeDetectorRef
     ) { }
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
     }
 
-    public ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges) {
         if ('datepicker' in changes) {
             this.watchStateChanges()
         }
     }
 
-    public ngAfterContentInit() {
+    ngAfterContentInit() {
         this.watchStateChanges()
     }
 
-    public ngOnDestroy(): void {
+    ngOnDestroy(): void {
         this.stateChanges?.unsubscribe()
         this.stateChanges = undefined
     }
 
     @HostListener('click', ['$event'])
-    public handleClickOnHost(event: Event): void {
+    handleClickOnHost(event: Event): void {
         if (this.dtPicker) {
             this.dtPicker.open()
             event.stopPropagation()
