@@ -6,7 +6,7 @@ import { ContentWrapComponent } from '../content-wrap/content-wrap.component'
 import { ExampleComponent } from '../example/example.component'
 import { BasicExampleComponent } from './examples/basic-example/basic-example.component'
 import { AppFlagsRoutingModule } from './flags-routing.module'
-import { AppFlagsComponent } from './flags.component'
+import { AppFlagsComponent } from './flags/flags.component'
 
 @NgModule({
     declarations: [
