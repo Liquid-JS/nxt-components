@@ -2,19 +2,12 @@ import { InjectionToken } from '@angular/core'
 
 export const NXT_DROPZONE_CONFIG = new InjectionToken('NXT_DROPZONE_CONFIG')
 
-export type DropzoneEvent = 'error' | 'success' | 'sending' | 'canceled' | 'complete' |
-    'processing' | 'drop' | 'dragStart' | 'dragEnd' | 'dragEnter' | 'dragOver' | 'dragLeave' |
-    'thumbnail' | 'addedFile' | 'addedFiles' | 'removedFile' | 'uploadProgress' | 'maxFilesReached' |
-    'maxFilesExceeded' | 'errorMultiple' | 'successMultiple' | 'sendingMultiple' | 'canceledMultiple' |
-    'completeMultiple' | 'processingMultiple' | 'reset' | 'queueComplete' | 'totalUploadProgress'
+/** @internal */
+export type DropzoneEvent = 'init' | 'drop' | 'dragStart' | 'dragEnd' | 'dragEnter' | 'dragOver' | 'dragLeave' | 'paste' | 'reset' | 'addedFile' | 'addedFiles' | 'removedFile' | 'thumbnail' | 'error' | 'errorMultiple' | 'processing' | 'processingMultiple' | 'uploadProgress' | 'totalUploadProgress' | 'sending' | 'sendingMultiple' | 'success' | 'successMultiple' | 'canceled' | 'canceledMultiple' | 'complete' | 'completeMultiple' | 'maxFilesExceeded' | 'maxFilesReached' | 'queueComplete'
 
+/** @internal */
 export const DropzoneEvents: DropzoneEvent[] = [
-    'error',
-    'success',
-    'sending',
-    'canceled',
-    'complete',
-    'processing',
+    'init',
 
     'drop',
     'dragStart',
@@ -22,179 +15,62 @@ export const DropzoneEvents: DropzoneEvent[] = [
     'dragEnter',
     'dragOver',
     'dragLeave',
+    'paste',
 
-    'thumbnail',
+    'reset',
+
     'addedFile',
     'addedFiles',
     'removedFile',
-    'uploadProgress',
-    'maxFilesReached',
-    'maxFilesExceeded',
+    'thumbnail',
 
+    'error',
     'errorMultiple',
-    'successMultiple',
-    'sendingMultiple',
-    'canceledMultiple',
-    'completeMultiple',
+
+    'processing',
     'processingMultiple',
 
-    'reset',
-    'queueComplete',
-    'totalUploadProgress'
+    'uploadProgress',
+    'totalUploadProgress',
+
+    'sending',
+    'sendingMultiple',
+
+    'success',
+    'successMultiple',
+
+    'canceled',
+    'canceledMultiple',
+
+    'complete',
+    'completeMultiple',
+
+    'maxFilesExceeded',
+    'maxFilesReached',
+
+    'queueComplete'
 ]
 
-export interface DropzoneConfigInterface {
-    timeout?: number
-
+export interface DropzoneConfigInterface extends Dropzone.DropzoneOptions {
     autoReset?: number | null
     errorReset?: number | null
     cancelReset?: number | null
-
-    url?: string | DropzoneUrlFunction
-    method?: string | DropzoneMethodFunction
-
-    params?: any | DropzoneParamsFunction
-    headers?: any | DropzoneHeadersFunction
-
-    init?: DropzoneInitFunction
-    accept?: DropzoneAcceptFunction
-    resize?: DropzoneResizeFunction
-    fallback?: DropzoneFallbackFunction
-    renameFile?: DropzoneRenameFileFunction
-    transformFile?: DropzoneTransformFileFunction
-    chunksUploaded?: DropzoneChunksUploadedFunction
-
-    withCredentials?: boolean
-
-    previewsContainer?: any
-    hiddenInputContainer?: any
-
-    clickable?: string | string[] | boolean
-    paramName?: any
-    capture?: string
-    maxFiles?: number
-    maxFilesize?: number
-    filesizeBase?: number
-    acceptedFiles?: string
-    forceFallback?: boolean
-    addRemoveLinks?: boolean
-    uploadMultiple?: boolean
-    parallelUploads?: number
-    resizeWidth?: number
-    resizeHeight?: number
-    resizeMethod?: 'contain' | 'crop'
-    resizeQuality?: number
-    resizeMimeType?: string
-    thumbnailWidth?: number
-    thumbnailHeight?: number
-    thumbnailMethod?: 'contain' | 'crop'
-    previewTemplate?: string
-    autoQueue?: boolean
-    autoProcessQueue?: boolean
-    ignoreHiddenFiles?: boolean
-    maxThumbnailFilesize?: number
-    createImageThumbnails?: boolean
-
-    chunking?: boolean
-    chunkSize?: number
-    retryChunks?: boolean
-    forceChunking?: boolean
-    retryChunksLimit?: number
-    parallelChunkUploads?: boolean
-
-    dictFileSizeUnits?: any
-
-    dictDefaultMessage?: string
-    dictFallbackMessage?: string
-
-    dictFileTooBig?: string
-    dictResponseError?: string
-    dictInvalidFileType?: string
-
-    dictRemoveFile?: string
-    dictCancelUpload?: string
-    dictUploadCanceled?: string
-    dictFallbackText?: string
-    dictMaxFilesExceeded?: string
-    dictRemoveFileConfirmation?: string
-    dictCancelUploadConfirmation?: string
 }
 
-export class DropzoneConfig implements DropzoneConfigInterface {
-    timeout?: number
+/** @internal */
+export const internalChanges = new Set([
+    'autoReset',
+    'errorReset',
+    'cancelReset'
+])
 
+/** @internal */
+export class DropzoneConfig implements DropzoneConfigInterface {
     autoReset?: number
     errorReset?: number
     cancelReset?: number
 
-    url?: string | DropzoneUrlFunction
-    method?: string | DropzoneMethodFunction
-
-    params?: any | DropzoneParamsFunction
-    headers?: any | DropzoneHeadersFunction
-
-    init?: DropzoneInitFunction
-    accept?: DropzoneAcceptFunction
-    resize?: DropzoneResizeFunction
-    fallback?: DropzoneFallbackFunction
-    renameFile?: DropzoneRenameFileFunction
-    transformFile?: DropzoneTransformFileFunction
-    chunksUploaded?: DropzoneChunksUploadedFunction
-
-    withCredentials?: boolean
-
-    previewsContainer?: any
-    hiddenInputContainer?: any
-
-    clickable?: string | string[] | boolean
-    paramName?: any
-    capture?: string
     maxFiles?: number
-    maxFilesize?: number
-    filesizeBase?: number
-    acceptedFiles?: string
-    forceFallback?: boolean
-    addRemoveLinks?: boolean
-    uploadMultiple?: boolean
-    parallelUploads?: number
-    resizeWidth?: number
-    resizeHeight?: number
-    resizeMethod?: 'contain' | 'crop'
-    resizeQuality?: number
-    resizeMimeType?: string
-    thumbnailWidth?: number
-    thumbnailHeight?: number
-    thumbnailMethod?: 'contain' | 'crop'
-    previewTemplate?: string
-    autoQueue?: boolean
-    autoProcessQueue?: boolean
-    ignoreHiddenFiles?: boolean
-    maxThumbnailFilesize?: number
-    createImageThumbnails?: boolean
-
-    chunking?: boolean
-    chunkSize?: number
-    retryChunks?: boolean
-    forceChunking?: boolean
-    retryChunksLimit?: number
-    parallelChunkUploads?: boolean
-
-    dictFileSizeUnits?: any
-
-    dictDefaultMessage?: string
-    dictFallbackMessage?: string
-
-    dictFileTooBig?: string
-    dictResponseError?: string
-    dictInvalidFileType?: string
-
-    dictRemoveFile?: string
-    dictCancelUpload?: string
-    dictUploadCanceled?: string
-    dictFallbackText?: string
-    dictMaxFilesExceeded?: string
-    dictRemoveFileConfirmation?: string
-    dictCancelUploadConfirmation?: string
 
     constructor(config: DropzoneConfigInterface = {}) {
         this.assign(config)
@@ -204,8 +80,12 @@ export class DropzoneConfig implements DropzoneConfigInterface {
         target = target || this
 
         for (const key in config) {
-            if (config[key] != null && !(Array.isArray(config[key])) &&
-                typeof config[key] === 'object' && !(config[key] instanceof HTMLElement)) {
+            if (config[key] != null
+                && config[key] != undefined
+                && !Array.isArray(config[key])
+                && typeof config[key] === 'object'
+                && !(config[key] instanceof HTMLElement)
+            ) {
                 target[key] = {}
 
                 this.assign(config[key], target[key])
@@ -215,19 +95,3 @@ export class DropzoneConfig implements DropzoneConfigInterface {
         }
     }
 }
-
-export type DropzoneUrlFunction = (files: any) => string
-export type DropzoneMethodFunction = (files: any) => string
-
-export type DropzoneParamsFunction = (files: any, xhr: any, chunk?: any) => any
-export type DropzoneHeadersFunction = () => any
-
-export type DropzoneInitFunction = () => any
-export type DropzoneFallbackFunction = () => HTMLElement
-
-export type DropzoneAcceptFunction = (file: File, done: (error?: string | Error) => void) => any
-export type DropzoneResizeFunction = (file: File, width: number, height: number, resizeMethod: string) => any
-
-export type DropzoneRenameFileFunction = (file: File) => string
-export type DropzoneTransformFileFunction = (file: File, done: (file: string | Blob) => void) => any
-export type DropzoneChunksUploadedFunction = (file: File, done: (error?: string | Error) => void) => any

@@ -1,24 +1,8 @@
 export { DropzoneComponent } from './lib/dropzone.component'
 export { DropzoneDirective } from './lib/dropzone.directive'
-
 export {
-    NXT_DROPZONE_CONFIG,
-
-    DropzoneConfig,
     DropzoneConfigInterface,
-
-    DropzoneUrlFunction,
-    DropzoneMethodFunction,
-    DropzoneParamsFunction,
-    DropzoneHeadersFunction,
-
-    DropzoneInitFunction,
-    DropzoneFallbackFunction,
-    DropzoneAcceptFunction,
-    DropzoneResizeFunction,
-    DropzoneRenameFileFunction,
-    DropzoneTransformFileFunction,
-    DropzoneChunksUploadedFunction
+    NXT_DROPZONE_CONFIG
 } from './lib/dropzone.interfaces'
-
 export { DropzoneModule } from './lib/dropzone.module'
+

@@ -15,7 +15,8 @@
         "lint:sass": "stylelint \"src/**/*.scss\"",
         "lint:sass:fix": "yarn lint:sass --fix",
         "test": "ng test dropzone-wrapper --no-watch",
-        "test:watch": "ng test dropzone-wrapper"
+        "test:watch": "ng test dropzone-wrapper",
+        "docs": "npx compodoc -c .compodocrc.json"
     },
     "peerDependencies": {
         "@angular/common": "^15.2.1",
