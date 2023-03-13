@@ -7,12 +7,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core'
     encapsulation: ViewEncapsulation.Emulated
 })
 export class JsonViewComponent {
-
     @Input() data: any
     @Input() levelOpen?: number
     @Input() levelLabels?: { [key: number]: { [key: string]: string } }
-
-    key?: string
-    level: number = 0
-
 }

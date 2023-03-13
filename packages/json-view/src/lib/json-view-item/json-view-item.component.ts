@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core'
 import { isArray, isBoolean, isNumber, isObject, isString, isUndefined } from '../utils/utils'
 
+/** @internal */
 @Component({
     selector: 'nxt-json-view-item',
     templateUrl: './json-view-item.component.html',

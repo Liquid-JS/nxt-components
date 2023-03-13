@@ -15,7 +15,8 @@
         "lint:sass": "stylelint \"src/**/*.scss\"",
         "lint:sass:fix": "yarn lint:sass --fix",
         "test": "ng test json-view --no-watch",
-        "test:watch": "ng test json-view"
+        "test:watch": "ng test json-view",
+        "docs": "npx compodoc -c .compodocrc.json"
     },
     "peerDependencies": {
         "@angular/common": "^15.2.1",
