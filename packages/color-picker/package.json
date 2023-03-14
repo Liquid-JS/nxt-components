@@ -19,10 +19,10 @@
         "docs": "npx compodoc -c .compodocrc.json"
     },
     "peerDependencies": {
-        "@angular/cdk": "^15.2.1",
-        "@angular/common": "^15.2.1",
-        "@angular/core": "^15.2.1",
-        "@angular/localize": "^15.2.1"
+        "@angular/cdk": "^15.2.2",
+        "@angular/common": "^15.2.2",
+        "@angular/core": "^15.2.2",
+        "@angular/localize": "^15.2.2"
     },
     "dependencies": {
         "tslib": "^2.5.0"

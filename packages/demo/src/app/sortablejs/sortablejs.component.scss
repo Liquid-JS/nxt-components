@@ -1,4 +1,4 @@
-$color_1: rgba(255, 255, 255, .75);
+$color_1: rgba(255, 255, 255, 0.75);
 $color_2: #6c757d;
 $color_3: #007bff;
 $color_4: #343a40;
@@ -23,18 +23,20 @@ $color_4: #343a40;
     }
 
     .nav-link {
-        padding-top: .75rem;
-        padding-bottom: .75rem;
-        font-size: .875rem;   
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        font-size: 0.875rem;
         font-weight: 500;
         color: $color_2;
         transition: color 0.2s ease-in-out;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             color: $color_4;
         }
 
-        &.active, &:active {
+        &.active,
+        &:active {
             color: $color_3;
         }
     }

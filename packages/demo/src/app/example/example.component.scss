@@ -2,7 +2,7 @@
     background: #fff;
     border: 1px solid #dee2e6;
 
-    &:not(.example-tab-content--single){
+    &:not(.example-tab-content--single) {
         border-top: none;
     }
 
@@ -52,14 +52,15 @@
     padding-top: 1rem;
 }
 
-.example__title {   
+.example__title {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     align-items: center;
     flex: 100% 1 1;
 
-    h2, span {
+    h2,
+    span {
         flex: auto 1 1;
         margin: 0;
     }
@@ -85,7 +86,7 @@
     width: 0;
 }
 
-:host  + ::ng-deep app-example {
+:host + ::ng-deep app-example {
     .example-container {
         border-top: 1px solid rgba(33, 37, 41, 0.25);
         margin-top: 2rem;

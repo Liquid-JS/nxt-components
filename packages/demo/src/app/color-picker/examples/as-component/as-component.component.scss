@@ -10,7 +10,7 @@
     height: 24px;
     cursor: pointer;
 
-    & + &{
+    & + & {
         margin-top: 16px;
     }
 }

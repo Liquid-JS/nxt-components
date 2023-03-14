@@ -26,8 +26,8 @@
         "test:watch": "ng test sortablejs"
     },
     "peerDependencies": {
-        "@angular/common": "^15.2.1",
-        "@angular/core": "^15.2.1",
+        "@angular/common": "^15.2.2",
+        "@angular/core": "^15.2.2",
         "sortablejs": ">=1.15.0"
     },
     "dependencies": {
