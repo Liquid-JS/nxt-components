@@ -15,7 +15,8 @@
         "lint:sass": "stylelint \"src/**/*.scss\"",
         "lint:sass:fix": "yarn lint:sass --fix",
         "test": "ng test pick-datetime --no-watch",
-        "test:watch": "ng test pick-datetime"
+        "test:watch": "ng test pick-datetime",
+        "docs": "npx compodoc -c .compodocrc.json"
     },
     "peerDependencies": {
         "@angular/animations": "^15.2.1",

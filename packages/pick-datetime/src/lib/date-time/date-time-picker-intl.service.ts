@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { LocalizeFn } from '@angular/localize/init'
 import { Subject } from 'rxjs'
 
+/** @internal */
 declare const $localize: LocalizeFn
 
 @Injectable({

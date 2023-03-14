@@ -16,7 +16,7 @@ import { DateTimeIntl } from '../date-time-picker-intl.service'
 export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterViewChecked, OnDestroy {
     /**
      * Date filter for the month and year view
-     * */
+     */
     @Input()
     dateFilter?: DateFilter<T>
 
@@ -115,7 +115,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
 
     /**
      * Whether to hide dates in other months at the start or end of the current month.
-     * */
+     */
     @Input()
     hideOtherMonths: boolean = false
 
@@ -133,13 +133,13 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
 
     /**
      * Emits the selected year. This doesn't imply a change on the selected date
-     * */
+     */
     @Output()
     readonly yearSelected = new EventEmitter<T>()
 
     /**
      * Emits the selected month. This doesn't imply a change on the selected date
-     * */
+     */
     @Output()
     readonly monthSelected = new EventEmitter<T>()
 
@@ -220,7 +220,9 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
 
     /**
      * Bind class 'nxt-dt-calendar' to host
-     * */
+     *
+     * @internal
+     */
     @HostBinding('class.nxt-dt-calendar')
     get calendarClass(): boolean {
         return true
@@ -277,7 +279,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
 
     /**
      * Handles user clicks on the previous button.
-     * */
+     */
     previousClicked(): void {
         this.pickerMoment = this.isMonthView
             ? this.dateTimeAdapter.addCalendarMonths(this.pickerMoment, -1)
@@ -288,7 +290,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
 
     /**
      * Handles user clicks on the next button.
-     * */
+     */
     nextClicked(): void {
         this.pickerMoment = this.isMonthView
             ? this.dateTimeAdapter.addCalendarMonths(this.pickerMoment, 1)
@@ -359,7 +361,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
 
     /**
      * Focus to the host element
-     * */
+     */
     focusActiveCell() {
         this.ngZone.runOutsideAngular(() => {
             this.ngZone.onStable

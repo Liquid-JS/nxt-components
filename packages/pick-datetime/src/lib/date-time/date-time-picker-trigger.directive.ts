@@ -20,6 +20,7 @@ export class DateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterCont
         this._disabled = value
     }
 
+    /** @internal */
     @HostBinding('class.nxt-dt-trigger-disabled')
     get triggerDisabledClass(): boolean {
         return this.disabled

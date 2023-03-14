@@ -5,19 +5,23 @@ import { DOCUMENT } from '@angular/common'
 import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EmbeddedViewRef, EventEmitter, HostBinding, HostListener, Inject, OnInit, Optional, ViewChild } from '@angular/core'
 import { DialogConfig } from '../../class/dialog-config.class'
 
+/** @internal */
 export type DialogContainerState = 'void' | 'enter' | 'exit'
 
+/** @internal */
 const zoomFadeIn = {
     opacity: 0,
     transform: 'translateX({{ x }}) translateY({{ y }}) scale({{scale}})'
 }
 
+/** @internal */
 const zoomFadeInFrom = {
     opacity: 0,
     transform: 'translateX({{ x }}) translateY({{ y }}) scale({{scale}})',
     transformOrigin: '{{ ox }} {{ oy }}'
 }
 
+/** @internal */
 @Component({
     selector: 'nxt-dialog-container',
     templateUrl: './dialog-container.component.html',
@@ -92,36 +96,43 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
     // This would help us to refocus back to element when the dialog was closed.
     private elementFocusedBeforeDialogWasOpened?: HTMLElement
 
+    /** @internal */
     @HostBinding('class.nxt-dialog-container')
     get dialogContainerClass(): boolean {
         return true
     }
 
+    /** @internal */
     @HostBinding('attr.tabindex')
     get dialogContainerTabIndex(): number {
         return -1
     }
 
+    /** @internal */
     @HostBinding('attr.id')
     get dialogContainerId() {
         return this._config?.id
     }
 
+    /** @internal */
     @HostBinding('attr.role')
     get dialogContainerRole() {
         return this._config?.role
     }
 
+    /** @internal */
     @HostBinding('attr.aria-labelledby')
     get dialogContainerAriaLabelledby() {
         return this.ariaLabelledBy
     }
 
+    /** @internal */
     @HostBinding('attr.aria-describedby')
     get dialogContainerAriaDescribedby() {
         return this._config?.ariaDescribedBy
     }
 
+    /** @internal */
     @HostBinding('@slideModal')
     get dialogContainerAnimation() {
         return { value: this.state, params: this.params }

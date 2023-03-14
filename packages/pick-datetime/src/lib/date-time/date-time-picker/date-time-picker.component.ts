@@ -14,12 +14,16 @@ import { DialogService } from '../../dialog/dialog.service'
 import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
 import { DateTimeInputDirective } from '../date-time-picker-input.directive'
 
-/** Injection token that determines the scroll handling while the dtPicker is open. */
+/**
+ * Injection token that determines the scroll handling while the dtPicker is open.
+ *
+ * @internal
+ */
 export const NXT_DTPICKER_SCROLL_STRATEGY = new InjectionToken<
     () => ScrollStrategy
 >('NXT_DTPICKER_SCROLL_STRATEGY')
 
-/** @docs-private */
+/** @internal */
 export function NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY(
     overlay: Overlay
 ): () => BlockScrollStrategy {
@@ -27,7 +31,7 @@ export function NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY(
     return fn
 }
 
-/** @docs-private */
+/** @internal */
 export const NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER = {
     provide: NXT_DTPICKER_SCROLL_STRATEGY,
     deps: [Overlay],
@@ -151,44 +155,44 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     /**
      * The scroll strategy when the picker is open
      * Learn more this from https://material.angular.io/cdk/overlay/overview#scroll-strategies
-     * */
+     */
     @Input()
     scrollStrategy?: ScrollStrategy
 
     /**
      * Callback when the picker is closed
-     * */
+     */
     @Output()
     readonly afterPickerClosed = new EventEmitter<void>()
 
     /**
      * Callback when the picker is open
-     * */
+     */
     @Output()
     readonly afterPickerOpen = new EventEmitter<void>()
 
     /**
      * Emits selected year in multi-year view
      * This doesn't imply a change on the selected date.
-     * */
+     */
     @Output()
     readonly yearSelected = new EventEmitter<T>()
 
     /**
      * Emits selected month in year view
      * This doesn't imply a change on the selected date.
-     * */
+     */
     @Output()
     readonly monthSelected = new EventEmitter<T>()
 
     /**
      * Emit when the selected value has been confirmed
-     * */
+     */
     readonly confirmSelectedChange = new EventEmitter<Array<T | undefined> | T>()
 
     /**
      * Emits when the date time picker is disabled.
-     * */
+     */
     readonly disabledChange = new EventEmitter<boolean>()
 
     private pickerContainerPortal?: ComponentPortal<
@@ -380,7 +384,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
          *    the 'selecteds' has 'from'(selecteds[0]) and 'to'(selecteds[1]) values.
          * 4) selectMode is 'rangeFrom' and selecteds[0] has value.
          * 5) selectMode is 'rangeTo' and selecteds[1] has value.
-         * */
+         */
         if (
             this.pickerMode !== 'dialog' &&
             this.pickerType === 'calendar' &&
@@ -397,14 +401,14 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
 
     /**
      * Emits the selected year in multi-year view
-     * */
+     */
     selectYear(normalizedYear: T): void {
         this.yearSelected.emit(normalizedYear)
     }
 
     /**
      * Emits selected month in year view
-     * */
+     */
     selectMonth(normalizedMonth: T): void {
         this.monthSelected.emit(normalizedMonth)
     }
@@ -579,7 +583,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
 
     /**
      * Create the popup PositionStrategy.
-     * */
+     */
     private createPopupPositionStrategy(): PositionStrategy | undefined {
         if (this._dtInput)
             return this.overlay

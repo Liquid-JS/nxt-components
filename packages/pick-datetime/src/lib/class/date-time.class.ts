@@ -3,6 +3,7 @@ import { Directive, EventEmitter, Inject, Input } from '@angular/core'
 import { DateTimeAdapter } from './date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from './date-time-format.class'
 
+/** @internal */
 let nextUniqueId = 0
 
 export type PickerType = 'both' | 'calendar' | 'timer'

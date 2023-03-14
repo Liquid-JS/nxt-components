@@ -1,5 +1,6 @@
-export { DateTimeAdapter, NXT_DATE_TIME_LOCALE, NXT_DATE_TIME_LOCALE_PROVIDER } from './lib/class/date-time-adapter.class'
+export { DateTimeAdapter } from './lib/class/date-time-adapter.class'
 export { DateTimeFormats, NXT_DATE_TIME_FORMATS } from './lib/class/date-time-format.class'
+export { DateFilter, PickerMode, PickerType, RenderItem, SelectMode, ViewType } from './lib/class/date-time.class'
 export { MonthViewComponent } from './lib/date-time/calendar-month-view/calendar-month-view.component'
 export { MultiYearViewComponent } from './lib/date-time/calendar-multi-year-view/calendar-multi-year-view.component'
 export { YearViewComponent } from './lib/date-time/calendar-year-view/calendar-year-view.component'

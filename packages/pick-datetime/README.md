@@ -184,7 +184,7 @@ There are two pre-made modules, users need to import one of them or build your o
 
 ## Localization and DateTime Format
 
-Localization for different languages and formats is defined by `NXT_DATE_TIME_LOCALE` and `NXT_DATE_TIME_FORMATS`. You could learn more about this from [here](https://danielykpan.github.io/date-time-picker#locale-formats).
+Localization for different languages and formats is defined by `LOCALE_ID` and `NXT_DATE_TIME_FORMATS`. You could learn more about this from [here](https://danielykpan.github.io/date-time-picker#locale-formats).
 
 ## Dependencies
 

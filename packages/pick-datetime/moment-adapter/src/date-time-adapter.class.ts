@@ -1,6 +1,6 @@
-import { Inject, Injectable, InjectionToken, Optional } from '@angular/core'
+import { Inject, Injectable, InjectionToken, LOCALE_ID, Optional } from '@angular/core'
 import moment, { Moment } from 'moment'
-import { DateTimeAdapter, NXT_DATE_TIME_LOCALE } from 'nxt-pick-datetime'
+import { DateTimeAdapter } from 'nxt-pick-datetime'
 
 /** Configurable options for {@see MomentDateAdapter}. */
 export interface MomentDateTimeAdapterOptions {
@@ -19,14 +19,18 @@ export const NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS = new InjectionToken<MomentDat
     factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY
 })
 
-/** @docs-private */
+/** @internal */
 export function NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY(): MomentDateTimeAdapterOptions {
     return {
         useUtc: false
     }
 }
 
-/** Creates an array and fills it with values. */
+/**
+ * Creates an array and fills it with values.
+ *
+ * @internal
+ */
 function range<T>(length: number, valueFunction: (index: number) => T): T[] {
     const valuesArray = Array(length)
     for (let i = 0; i < length; i++) {
@@ -49,7 +53,7 @@ export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
 
     constructor(
         @Optional()
-        @Inject(NXT_DATE_TIME_LOCALE)
+        @Inject(LOCALE_ID)
         dateTimeLocale?: string,
         @Optional()
         @Inject(NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS)

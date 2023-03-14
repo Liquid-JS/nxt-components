@@ -5,7 +5,10 @@ import { DateFilter, SelectMode } from '../../class/date-time.class'
 import { CalendarCell, CalendarBodyComponent } from '../calendar-body/calendar-body.component'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 
+/** @internal */
 export const YEARS_PER_ROW = 3
+
+/** @internal */
 export const YEAR_ROWS = 7
 
 @Component({
@@ -20,7 +23,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /**
      * The select mode of the picker;
-     * */
+     */
     private _selectMode: SelectMode = 'single'
     @Input()
     get selectMode(): SelectMode {
@@ -85,7 +88,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /**
      * A function used to filter which dates are selectable
-     * */
+     */
     private _dateFilter?: DateFilter<T>
     @Input()
     get dateFilter() {
@@ -179,14 +182,14 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /**
      * Callback to invoke when a new month is selected
-     * */
+     */
     // eslint-disable-next-line @angular-eslint/no-output-native
     @Output()
     readonly change = new EventEmitter<T>()
 
     /**
      * Emits the selected year. This doesn't imply a change on the selected date
-     * */
+     */
     @Output()
     readonly yearSelected = new EventEmitter<T>()
 
@@ -200,13 +203,15 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /** The body of calendar table */
     @ViewChild(CalendarBodyComponent, { static: true })
-    calendarBodyElm?: CalendarBodyComponent
+    private calendarBodyElm?: CalendarBodyComponent
 
+    /** @internal */
     @HostBinding('class.nxt-dt-calendar-view')
     get calendarView(): boolean {
         return true
     }
 
+    /** @internal */
     @HostBinding('class.nxt-dt-calendar-multi-year-view')
     get calendarMultiYearView(): boolean {
         return true
@@ -256,7 +261,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /**
      * Generate the previous year list
-     * */
+     */
     prevYearList(event: any): void {
         this._pickerMoment = this.dateTimeAdapter.addCalendarYears(this.pickerMoment, -1 * YEAR_ROWS * YEARS_PER_ROW)
         this.generateYearList()
@@ -265,7 +270,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /**
      * Generate the next year list
-     * */
+     */
     nextYearList(event: any): void {
         this._pickerMoment = this.dateTimeAdapter.addCalendarYears(this.pickerMoment, YEAR_ROWS * YEARS_PER_ROW)
         this.generateYearList()

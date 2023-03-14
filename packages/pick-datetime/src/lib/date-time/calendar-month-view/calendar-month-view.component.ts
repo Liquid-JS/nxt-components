@@ -7,7 +7,10 @@ import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-fo
 import { DateFilter, SelectMode } from '../../class/date-time.class'
 import { CalendarCell, CalendarBodyComponent } from '../calendar-body/calendar-body.component'
 
+/** @internal */
 const DAYS_PER_WEEK = 7
+
+/** @internal */
 const WEEKS_PER_VIEW = 6
 
 @Component({
@@ -20,14 +23,14 @@ const WEEKS_PER_VIEW = 6
 export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestroy {
     /**
      * Whether to hide dates in other months at the start or end of the current month.
-     * */
+     */
     @Input()
     hideOtherMonths: boolean = false
 
     /**
      * Define the first day of a week
      * Sunday: 0 ~ Saturday: 6
-     * */
+     */
     private _firstDayOfWeek: number = 0
     @Input()
     get firstDayOfWeek(): number {
@@ -49,7 +52,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
 
     /**
      * The select mode of the picker;
-     * */
+     */
     private _selectMode: SelectMode = 'single'
     @Input()
     get selectMode(): SelectMode {
@@ -123,7 +126,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
 
     /**
      * A function used to filter which dates are selectable
-     * */
+     */
     private _dateFilter?: DateFilter<T>
     @Input()
     get dateFilter() {
@@ -212,13 +215,13 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
 
     /**
      * The date of the month that today falls on.
-     * */
+     */
     todayDate?: number
 
     /**
      * An array to hold all selectedDates' value
      * the value is the day number in current month
-     * */
+     */
     selectedDates?: Array<number | undefined>
 
     // the index of cell that contains the first date of the month
@@ -226,13 +229,13 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
 
     /**
      * Callback to invoke when a new date is selected
-     * */
+     */
     @Output()
     readonly selectedChange = new EventEmitter<T | undefined>()
 
     /**
      * Callback to invoke when any date is selected.
-     * */
+     */
     @Output()
     readonly userSelection = new EventEmitter<void>()
 
@@ -242,8 +245,9 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
 
     /** The body of calendar table */
     @ViewChild(CalendarBodyComponent, { static: true })
-    calendarBodyElm?: CalendarBodyComponent
+    private calendarBodyElm?: CalendarBodyComponent
 
+    /** @internal */
     @HostBinding('class.nxt-dt-calendar-view')
     get calendarView(): boolean {
         return true
@@ -411,7 +415,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
 
     /**
      * Generate the calendar weekdays array
-     * */
+     */
     private generateWeekDays(): void {
         const longWeekdays = this.dateTimeAdapter.getDayOfWeekNames('long')
         const shortWeekdays = this.dateTimeAdapter.getDayOfWeekNames('short')
@@ -429,7 +433,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
 
     /**
      * Generate the calendar days array
-     * */
+     */
     private generateCalendar(): void {
         if (!this.pickerMoment) {
             return
@@ -560,7 +564,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
      * Set the selectedDates value.
      * In single mode, it has only one value which represent the selected date
      * In range mode, it would has two values, one for the fromValue and the other for the toValue
-     * */
+     */
     private setSelectedDates(): void {
         this.selectedDates = []
 

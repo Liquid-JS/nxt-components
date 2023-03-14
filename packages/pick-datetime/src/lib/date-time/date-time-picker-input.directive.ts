@@ -1,6 +1,6 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion'
 import { DOWN_ARROW } from '@angular/cdk/keycodes'
-import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core'
+import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit, Output, Provider, Renderer2 } from '@angular/core'
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../class/date-time-adapter.class'
@@ -8,13 +8,15 @@ import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../class/date-time-forma
 import { SelectMode } from '../class/date-time.class'
 import { DateTimeComponent } from './date-time-picker/date-time-picker.component'
 
-export const NXT_DATETIME_VALUE_ACCESSOR: any = {
+/** @internal */
+export const NXT_DATETIME_VALUE_ACCESSOR: Provider = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => DateTimeInputDirective),
     multi: true
 }
 
-export const NXT_DATETIME_VALIDATORS: any = {
+/** @internal */
+export const NXT_DATETIME_VALIDATORS: Provider = {
     provide: NG_VALIDATORS,
     useExisting: forwardRef(() => DateTimeInputDirective),
     multi: true
@@ -31,7 +33,7 @@ export const NXT_DATETIME_VALIDATORS: any = {
 export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDestroy, ControlValueAccessor, Validator {
     /**
      * The date time picker that this input is associated with.
-     * */
+     */
     @Input('nxtDateTime')
     set dateTime(value: DateTimeComponent<T>) {
         this.registerDateTimePicker(value)
@@ -175,7 +177,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
 
     /**
      * Callback to invoke when `change` event is fired on this `<input>`
-     * */
+     */
     @Output()
     readonly dateTimeChange = new EventEmitter<{
         source: DateTimeInputDirective<T>
@@ -185,7 +187,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
 
     /**
      * Callback to invoke when an `input` event is fired on this `<input>`.
-     * */
+     */
     @Output()
     readonly dateTimeInput = new EventEmitter<{
         source: DateTimeInputDirective<T>
@@ -313,7 +315,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     /**
      * The form control validator for the range.
      * Check whether the 'before' value is before the 'to' value
-     * */
+     */
     private readonly rangeValidator: ValidatorFn = (
         control
     ) => {
@@ -350,26 +352,31 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     /** Emits when the disabled state has changed */
     readonly disabledChange = new EventEmitter<boolean>()
 
+    /** @internal */
     @HostBinding('attr.aria-haspopup')
     get inputAriaHaspopup(): boolean {
         return true
     }
 
+    /** @internal */
     @HostBinding('attr.aria-owns')
     get inputAriaOwns() {
         return (this.dtPicker?.opened && this.dtPicker.id) || undefined
     }
 
+    /** @internal */
     @HostBinding('attr.min')
     get minIso8601() {
         return this.min ? this.dateTimeAdapter.toIso8601(this.min) : undefined
     }
 
+    /** @internal */
     @HostBinding('attr.max')
     get maxIso8601() {
         return this.max ? this.dateTimeAdapter.toIso8601(this.max) : undefined
     }
 
+    /** @internal */
     @HostBinding('disabled')
     get inputDisabled(): boolean {
         return this.disabled
@@ -460,7 +467,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
 
     /**
      * Open the picker when user hold alt + DOWN_ARROW
-     * */
+     */
     @HostListener('keydown', ['$event'])
     handleKeydownOnHost(event: KeyboardEvent): void {
         if (event.altKey && event.keyCode === DOWN_ARROW) {

@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, O
 import { Subject, Subscription } from 'rxjs'
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
 
+/** @internal */
 @Component({
     selector: 'nxt-date-time-timer-box',
     templateUrl: './timer-box.component.html',
@@ -26,7 +27,7 @@ export class TimerBoxComponent implements OnInit, OnDestroy {
     /**
      * Value would be displayed in the box
      * If it is undefiend, the box would display [value]
-     * */
+     */
     @Input() boxValue?: number
 
     @Input() value: number = 0
@@ -51,6 +52,7 @@ export class TimerBoxComponent implements OnInit, OnDestroy {
         return this.boxValue || this.value
     }
 
+    /** @internal */
     @HostBinding('class.nxt-dt-timer-box')
     get timerBoxClass(): boolean {
         return true

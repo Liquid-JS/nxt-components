@@ -1,6 +1,7 @@
 import { NoopScrollStrategy, ScrollStrategy } from '@angular/cdk/overlay'
 import { ViewContainerRef } from '@angular/core'
 
+/** @internal */
 let uniqueId = 0
 
 /** Possible overrides for a dialog's position. */
@@ -34,7 +35,7 @@ export class DialogConfig {
 
     /**
      * Custom style for the backdrop
-     * */
+     */
     backdropStyle?: any
 
     /** Data being injected into the child component. */
@@ -55,22 +56,22 @@ export class DialogConfig {
 
     /**
      * Custom class for the pane
-     * */
+     */
     paneClass?: string | string[] = ''
 
     /**
      * Mouse Event
-     * */
+     */
     event?: MouseEvent
 
     /**
      * Custom class for the backdrop
-     * */
+     */
     backdropClass?: string | string[] = ''
 
     /**
      * Whether the dialog should close when the user goes backwards/forwards in history.
-     * */
+     */
     closeOnNavigation?: boolean = true
 
     /** Width of the dialog. */
@@ -82,25 +83,25 @@ export class DialogConfig {
     /**
      * The min-width of the overlay panel.
      * If a number is provided, pixel units are assumed.
-     * */
+     */
     minWidth?: number | string
 
     /**
      * The min-height of the overlay panel.
      * If a number is provided, pixel units are assumed.
-     * */
+     */
     minHeight?: number | string
 
     /**
      * The max-width of the overlay panel.
      * If a number is provided, pixel units are assumed.
-     * */
+     */
     maxWidth?: number | string = '85vw'
 
     /**
      * The max-height of the overlay panel.
      * If a number is provided, pixel units are assumed.
-     * */
+     */
     maxHeight?: number | string
 
     /** Position overrides. */
@@ -109,7 +110,7 @@ export class DialogConfig {
     /**
      * The scroll strategy when the dialog is open
      * Learn more this from https://material.angular.io/cdk/overlay/overview#scroll-strategies
-     * */
+     */
     scrollStrategy?: ScrollStrategy = new NoopScrollStrategy()
 
     viewContainerRef?: ViewContainerRef

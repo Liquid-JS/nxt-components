@@ -1,12 +1,13 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion'
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Inject, Input, OnInit, Output, ViewChild } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Inject, Input, OnInit, Output, Provider, ViewChild } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateTimeDirective, PickerMode, PickerType, SelectMode } from '../../class/date-time.class'
 import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
 
-export const NXT_DATETIME_VALUE_ACCESSOR: any = {
+/** @internal */
+export const NXT_DATETIME_VALUE_ACCESSOR: Provider = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => DateTimeInlineComponent),
     multi: true
@@ -23,7 +24,7 @@ export const NXT_DATETIME_VALUE_ACCESSOR: any = {
 export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements OnInit, ControlValueAccessor {
 
     @ViewChild(DateTimeContainerComponent, { static: true })
-    container?: DateTimeContainerComponent<T>
+    private container?: DateTimeContainerComponent<T>
 
     /**
      * Set the type of the dateTime picker
@@ -173,14 +174,14 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
     /**
      * Emits selected year in multi-year view
      * This doesn't imply a change on the selected date.
-     * */
+     */
     @Output()
     readonly yearSelected = new EventEmitter<T>()
 
     /**
      * Emits selected month in year view
      * This doesn't imply a change on the selected date.
-     * */
+     */
     @Output()
     readonly monthSelected = new EventEmitter<T>()
 
@@ -224,6 +225,7 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
         )
     }
 
+    /** @internal */
     @HostBinding('class.nxt-dt-inline')
     get inlineClass(): boolean {
         return true
@@ -289,14 +291,14 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
 
     /**
      * Emits the selected year in multi-year view
-     * */
+     */
     selectYear(normalizedYear: T): void {
         this.yearSelected.emit(normalizedYear)
     }
 
     /**
      * Emits selected month in year view
-     * */
+     */
     selectMonth(normalizedMonth: T): void {
         this.monthSelected.emit(normalizedMonth)
     }

@@ -1,8 +1,12 @@
 import { Platform } from '@angular/cdk/platform'
-import { Inject, Injectable, Optional } from '@angular/core'
-import { DateTimeAdapter, NXT_DATE_TIME_LOCALE } from 'nxt-pick-datetime'
+import { Inject, Injectable, LOCALE_ID, Optional } from '@angular/core'
+import { DateTimeAdapter } from 'nxt-pick-datetime'
 
-/** The default month names to use if Intl API is not available. */
+/**
+ * The default month names to use if Intl API is not available.
+ *
+ * @internal
+ */
 const DEFAULT_MONTH_NAMES = {
     long: [
         'January',
@@ -35,7 +39,11 @@ const DEFAULT_MONTH_NAMES = {
     narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
 }
 
-/** The default day of the week names to use if Intl API is not available. */
+/**
+ * The default day of the week names to use if Intl API is not available.
+ *
+ * @internal
+ */
 const DEFAULT_DAY_OF_WEEK_NAMES = {
     long: [
         'Sunday',
@@ -50,20 +58,34 @@ const DEFAULT_DAY_OF_WEEK_NAMES = {
     narrow: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
 }
 
-/** The default date names to use if Intl API is not available. */
+/**
+ * The default date names to use if Intl API is not available.
+ *
+ * @internal
+ */
 const DEFAULT_DATE_NAMES = range(31, i => String(i + 1))
 
-/** Whether the browser supports the Intl API. */
+/**
+ * Whether the browser supports the Intl API.
+ *
+ * @internal
+ */
 const SUPPORTS_INTL_API = typeof Intl !== 'undefined'
 
 /**
  * Matches strings that have the form of a valid RFC 3339 string
  * (https://tools.ietf.org/html/rfc3339). Note that the string may not actually be a valid date
  * because the regex will match strings an with out of bounds month, date, etc.
+ *
+ * @internal
  */
 const ISO_8601_REGEX = /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|(?:(?:\+|-)\d{2}:\d{2}))?)?$/
 
-/** Creates an array and fills it with values. */
+/**
+ * Creates an array and fills it with values.
+ *
+ * @internal
+ */
 function range<T>(length: number, valueFunction: (index: number) => T): T[] {
     const valuesArray = Array(length)
     for (let i = 0; i < length; i++) {
@@ -88,7 +110,7 @@ export class NativeDateTimeAdapter extends DateTimeAdapter<Date> {
     constructor(
         platform: Platform,
         @Optional()
-        @Inject(NXT_DATE_TIME_LOCALE)
+        @Inject(LOCALE_ID)
         dateTimeLocale?: string
     ) {
         super()

@@ -22,7 +22,7 @@ export class DialogRef<T> {
 
     /**
      * The instance of component opened into modal
-     * */
+     */
     componentInstance?: T
 
     /** Whether the user is allowed to close the dialog. */

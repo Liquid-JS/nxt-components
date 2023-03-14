@@ -1,0 +1,18 @@
+{
+    "$schema": "../../node_modules/@compodoc/compodoc/src/config/schema.json",
+    "tsconfig": "./tsconfig.lib.json",
+    "exportFormat": "html",
+    "minimal": false,
+    "silent": true,
+    "disablePrivate": true,
+    "disableInternal": true,
+    "disableSourceCode": true,
+    "disableCoverage": true,
+    "disableDomTree": true,
+    "disableDependencies": true,
+    "disableRoutesGraph": true,
+    "disableTemplateTab": true,
+    "disableGraph": true,
+    "hideGenerator": true,
+    "output": "../../docs/nxt-pick-datetime"
+}

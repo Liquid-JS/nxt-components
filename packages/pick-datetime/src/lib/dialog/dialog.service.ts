@@ -9,15 +9,19 @@ import { DialogRef } from '../class/dialog-ref.class'
 import { extendObject } from '../utils/object'
 import { DialogContainerComponent } from './dialog-container/dialog-container.component'
 
+/** @internal */
 export const NXT_DIALOG_DATA = new InjectionToken<any>('NXT_DIALOG_DATA')
 
 /**
  * Injection token that determines the scroll handling while the dialog is open.
- * */
+ *
+ * @internal
+ */
 export const NXT_DIALOG_SCROLL_STRATEGY = new InjectionToken<
     () => ScrollStrategy
 >('NXT_DIALOG_SCROLL_STRATEGY')
 
+/** @internal */
 export function NXT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(
     overlay: Overlay
 ): () => ScrollStrategy {
@@ -25,20 +29,23 @@ export function NXT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(
     return fn
 }
 
-/** @docs-private */
+/** @internal */
 export const NXT_DIALOG_SCROLL_STRATEGY_PROVIDER = {
     provide: NXT_DIALOG_SCROLL_STRATEGY,
     deps: [Overlay],
     useFactory: NXT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY
 }
 
-/** I
- * njection token that can be used to specify default dialog options.
- * */
+/**
+ * Injection token that can be used to specify default dialog options.
+ *
+ * @internal
+ */
 export const NXT_DIALOG_DEFAULT_OPTIONS = new InjectionToken<DialogConfig>(
     'NXT_DIALOG_DEFAULT_OPTIONS'
 )
 
+/** @internal */
 @Injectable()
 export class DialogService {
     private readonly ariaHiddenElements = new Map<Element, string | null>()
@@ -315,6 +322,8 @@ export class DialogService {
  * @param config Config to be modified.
  * @param defaultOptions Default config setting
  * @returns The new configuration object.
+ *
+ * @internal
  */
 function applyConfigDefaults(
     config?: DialogConfig,

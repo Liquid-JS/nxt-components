@@ -13,6 +13,7 @@ export class CalendarCell {
     ) { }
 }
 
+/** @internal */
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
     selector: '[nxtDateTimeCalendarBody]',
@@ -31,13 +32,13 @@ export class CalendarBodyComponent implements OnInit {
 
     /**
      * The cells to display in the table.
-     * */
+     */
     @Input()
     rows?: CalendarCell[][]
 
     /**
      * The number of columns in the table.
-     * */
+     */
     @Input()
     numCols = 7
 
@@ -49,13 +50,13 @@ export class CalendarBodyComponent implements OnInit {
 
     /**
      * The value in the table that corresponds to today.
-     * */
+     */
     @Input()
     todayValue?: number
 
     /**
      * The value in the table that is currently selected.
-     * */
+     */
     @Input()
     selectedValues?: Array<number | undefined>
 
@@ -67,11 +68,12 @@ export class CalendarBodyComponent implements OnInit {
 
     /**
      * Emit when a calendar cell is selected
-     * */
+     */
     @Output()
     // eslint-disable-next-line @angular-eslint/no-output-native
     readonly select = new EventEmitter<CalendarCell>()
 
+    /** @internal */
     @HostBinding('class.nxt-dt-calendar-body')
     get calendarBodyClass(): boolean {
         return true
@@ -128,7 +130,7 @@ export class CalendarBodyComponent implements OnInit {
 
     /**
      * Check if the cell in the range
-     * */
+     */
     isInRange(value: number): boolean {
         if (this.isInRangeMode) {
             const fromValue = this.selectedValues?.[0]
@@ -145,7 +147,7 @@ export class CalendarBodyComponent implements OnInit {
 
     /**
      * Check if the cell is the range from
-     * */
+     */
     isRangeFrom(value: number): boolean {
         if (this.isInRangeMode) {
             const fromValue = this.selectedValues?.[0]
@@ -156,7 +158,7 @@ export class CalendarBodyComponent implements OnInit {
 
     /**
      * Check if the cell is the range to
-     * */
+     */
     isRangeTo(value: number): boolean {
         if (this.isInRangeMode) {
             const toValue = this.selectedValues?.[1]
@@ -167,7 +169,7 @@ export class CalendarBodyComponent implements OnInit {
 
     /**
      * Focus to a active cell
-     * */
+     */
     focusActiveCell(): void {
         this.ngZone.runOutsideAngular(() => {
             this.ngZone.onStable

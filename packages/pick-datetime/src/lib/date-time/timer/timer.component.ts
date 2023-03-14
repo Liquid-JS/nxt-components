@@ -87,7 +87,7 @@ export class TimerComponent<T> implements OnInit {
      * The value would be displayed in hourBox.
      * We need this because the value displayed in hourBox it not
      * the same as the hourValue when the timer is in hour12Timer mode.
-     * */
+     */
     get hourBoxValue(): number {
         let hours = this.hourValue
 
@@ -151,11 +151,13 @@ export class TimerComponent<T> implements OnInit {
     @Output()
     readonly selectedChange = new EventEmitter<T>()
 
+    /** @internal */
     @HostBinding('class.nxt-dt-timer')
     get timerClass(): boolean {
         return true
     }
 
+    /** @internal */
     @HostBinding('attr.tabindex')
     get timeTabIndex(): number {
         return -1
@@ -173,7 +175,7 @@ export class TimerComponent<T> implements OnInit {
 
     /**
      * Focus to the host element
-     * */
+     */
     focus() {
         this.ngZone.runOutsideAngular(() => {
             this.ngZone.onStable
@@ -188,7 +190,7 @@ export class TimerComponent<T> implements OnInit {
     /**
      * Set the hour value via typing into timer box input
      * We need this to handle the hour value when the timer is in hour12 mode
-     * */
+     */
     setHourValueViaInput(hours: number): void {
         if (this.hour12Timer && this.isPM && hours >= 1 && hours <= 11) {
             hours = hours + 12
@@ -300,7 +302,7 @@ export class TimerComponent<T> implements OnInit {
      * 1 is after the comparedDate
      * -1 is before the comparedDate
      * 0 is equal the comparedDate
-     * */
+     */
     private compareHours(amount: number, comparedDate: T): number {
         const hours = this.dateTimeAdapter.getHours(this.pickerMoment) + amount
         const result = this.dateTimeAdapter.setHours(this.pickerMoment, hours)
@@ -312,7 +314,7 @@ export class TimerComponent<T> implements OnInit {
      * 1 is after the comparedDate
      * -1 is before the comparedDate
      * 0 is equal the comparedDate
-     * */
+     */
     private compareMinutes(amount: number, comparedDate: T): number {
         const minutes =
             this.dateTimeAdapter.getMinutes(this.pickerMoment) + amount
@@ -328,7 +330,7 @@ export class TimerComponent<T> implements OnInit {
      * 1 is after the comparedDate
      * -1 is before the comparedDate
      * 0 is equal the comparedDate
-     * */
+     */
     private compareSeconds(amount: number, comparedDate: T): number {
         const seconds =
             this.dateTimeAdapter.getSeconds(this.pickerMoment) + amount

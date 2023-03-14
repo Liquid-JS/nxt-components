@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core'
 import { DialogContainerComponent } from './dialog-container/dialog-container.component'
 import { DialogService, NXT_DIALOG_SCROLL_STRATEGY_PROVIDER } from './dialog.service'
 
+/** @internal */
 @NgModule({
     declarations: [
         DialogContainerComponent

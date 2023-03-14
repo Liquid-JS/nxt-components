@@ -1,7 +1,7 @@
 // Based on @angular/cdk/testing
 import { Platform, PlatformModule } from '@angular/cdk/platform'
 import { EventEmitter, Inject, Injectable, NgModule, NgZone, Optional } from '@angular/core'
-import { DateTimeAdapter, NXT_DATE_TIME_LOCALE } from './lib/class/date-time-adapter.class'
+import { DateTimeAdapter, LOCALE_ID } from './lib/class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from './lib/class/date-time-format.class'
 
 export function dispatchEvent(node: Node | Window, event: Event): Event {
@@ -213,7 +213,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
     constructor(
         platform: Platform,
         @Optional()
-        @Inject(NXT_DATE_TIME_LOCALE)
+        @Inject(LOCALE_ID)
         dateTimeLocale?: string
     ) {
         super()

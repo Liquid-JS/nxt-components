@@ -1,5 +1,8 @@
 import { DateTimeFormats } from 'nxt-pick-datetime'
 
+/**
+ * @internal
+ */
 export const NXT_NATIVE_DATE_TIME_FORMATS: DateTimeFormats = {
     parseInput: null,
     fullPickerInput: { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' },
