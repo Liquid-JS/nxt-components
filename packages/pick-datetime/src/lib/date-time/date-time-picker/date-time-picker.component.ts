@@ -1,5 +1,4 @@
 import { coerceArray, coerceBooleanProperty } from '@angular/cdk/coercion'
-import { ESCAPE, UP_ARROW } from '@angular/cdk/keycodes'
 import { BlockScrollStrategy, Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
 import { DOCUMENT } from '@angular/common'
@@ -572,10 +571,10 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
                 .pipe(
                     filter(
                         event =>
-                            !!(event.keyCode === ESCAPE ||
+                            !!(event.code.toLowerCase() === 'escape' ||
                                 (this._dtInput &&
                                     event.altKey &&
-                                    event.keyCode === UP_ARROW))
+                                    event.code.toLowerCase() === 'arrowup'))
                     )
                 )
         ).subscribe(() => this.close())

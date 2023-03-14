@@ -1,5 +1,4 @@
 import { coerceNumberProperty } from '@angular/cdk/coercion'
-import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
@@ -313,9 +312,9 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
      */
     handleCalendarKeydown(event: KeyboardEvent): void {
         let moment
-        switch (event.keyCode) {
+        switch (event.code.toLowerCase()) {
             // minus 1 day
-            case LEFT_ARROW:
+            case 'arrowleft':
                 moment = this.dateTimeAdapter.addCalendarDays(
                     this.pickerMoment,
                     -1
@@ -324,7 +323,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // add 1 day
-            case RIGHT_ARROW:
+            case 'arrowright':
                 moment = this.dateTimeAdapter.addCalendarDays(
                     this.pickerMoment,
                     1
@@ -333,7 +332,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // minus 1 week
-            case UP_ARROW:
+            case 'arrowup':
                 moment = this.dateTimeAdapter.addCalendarDays(
                     this.pickerMoment,
                     -7
@@ -342,7 +341,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // add 1 week
-            case DOWN_ARROW:
+            case 'arrowdown':
                 moment = this.dateTimeAdapter.addCalendarDays(
                     this.pickerMoment,
                     7
@@ -351,7 +350,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // move to first day of current month
-            case HOME:
+            case 'home':
                 moment = this.dateTimeAdapter.addCalendarDays(
                     this.pickerMoment,
                     1 - this.dateTimeAdapter.getDate(this.pickerMoment)
@@ -360,7 +359,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // move to last day of current month
-            case END:
+            case 'end':
                 moment = this.dateTimeAdapter.addCalendarDays(
                     this.pickerMoment,
                     this.dateTimeAdapter.getNumDaysInMonth(this.pickerMoment) -
@@ -370,7 +369,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // minus 1 month (or 1 year)
-            case PAGE_UP:
+            case 'pageup':
                 moment = event.altKey
                     ? this.dateTimeAdapter.addCalendarYears(
                         this.pickerMoment,
@@ -384,7 +383,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // add 1 month (or 1 year)
-            case PAGE_DOWN:
+            case 'pagedown':
                 moment = event.altKey
                     ? this.dateTimeAdapter.addCalendarYears(
                         this.pickerMoment,
@@ -398,7 +397,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // select the pickerMoment
-            case ENTER:
+            case 'enter':
                 if (!this.dateFilter || this.dateFilter(this.pickerMoment, 'date')) {
                     this.selectDate(
                         this.dateTimeAdapter.getDate(this.pickerMoment)

@@ -1,5 +1,4 @@
 import { AnimationEvent } from '@angular/animations'
-import { ESCAPE } from '@angular/cdk/keycodes'
 import { GlobalPositionStrategy, OverlayRef } from '@angular/cdk/overlay'
 import { Location } from '@angular/common'
 import { Subject, SubscriptionLike as ISubscription } from 'rxjs'
@@ -59,7 +58,7 @@ export class DialogRef<T> {
             })
 
         this.overlayRef.keydownEvents()
-            .pipe(filter(event => event.keyCode === ESCAPE && !this.disableClose))
+            .pipe(filter(event => event.code.toLowerCase() === 'escape' && !this.disableClose))
             .subscribe(() => this.close())
 
         if (location) {

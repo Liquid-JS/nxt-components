@@ -1,4 +1,3 @@
-import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
@@ -269,9 +268,9 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
      */
     handleCalendarKeydown(event: KeyboardEvent): void {
         let moment
-        switch (event.keyCode) {
+        switch (event.code.toLowerCase()) {
             // minus 1 month
-            case LEFT_ARROW:
+            case 'arrowleft':
                 moment = this.dateTimeAdapter.addCalendarMonths(
                     this.pickerMoment,
                     -1
@@ -280,7 +279,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // add 1 month
-            case RIGHT_ARROW:
+            case 'arrowright':
                 moment = this.dateTimeAdapter.addCalendarMonths(
                     this.pickerMoment,
                     1
@@ -289,7 +288,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // minus 3 months
-            case UP_ARROW:
+            case 'arrowup':
                 moment = this.dateTimeAdapter.addCalendarMonths(
                     this.pickerMoment,
                     -3
@@ -298,7 +297,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // add 3 months
-            case DOWN_ARROW:
+            case 'arrowdown':
                 moment = this.dateTimeAdapter.addCalendarMonths(
                     this.pickerMoment,
                     3
@@ -307,7 +306,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // move to first month of current year
-            case HOME:
+            case 'home':
                 moment = this.dateTimeAdapter.addCalendarMonths(
                     this.pickerMoment,
                     -this.dateTimeAdapter.getMonth(this.pickerMoment)
@@ -316,7 +315,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // move to last month of current year
-            case END:
+            case 'end':
                 moment = this.dateTimeAdapter.addCalendarMonths(
                     this.pickerMoment,
                     11 - this.dateTimeAdapter.getMonth(this.pickerMoment)
@@ -325,7 +324,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // minus 1 year (or 10 year)
-            case PAGE_UP:
+            case 'pageup':
                 moment = this.dateTimeAdapter.addCalendarYears(
                     this.pickerMoment,
                     event.altKey ? -10 : -1
@@ -334,7 +333,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // add 1 year (or 10 year)
-            case PAGE_DOWN:
+            case 'pagedown':
                 moment = this.dateTimeAdapter.addCalendarYears(
                     this.pickerMoment,
                     event.altKey ? 10 : 1
@@ -343,7 +342,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // Select current month
-            case ENTER:
+            case 'enter':
                 this.selectMonth(
                     this.dateTimeAdapter.getMonth(this.pickerMoment)
                 )

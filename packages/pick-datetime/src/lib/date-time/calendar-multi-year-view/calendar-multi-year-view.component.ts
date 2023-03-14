@@ -1,4 +1,3 @@
-import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Input, OnInit, Output, ViewChild } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
@@ -314,58 +313,58 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     handleCalendarKeydown(event: KeyboardEvent): void {
         let moment
-        switch (event.keyCode) {
+        switch (event.code.toLowerCase()) {
             // minus 1 year
-            case LEFT_ARROW:
+            case 'arrowleft':
                 moment = this.dateTimeAdapter.addCalendarYears(this._pickerMoment, -1)
                 this.pickerMomentChange.emit(moment)
                 break
 
             // add 1 year
-            case RIGHT_ARROW:
+            case 'arrowright':
                 moment = this.dateTimeAdapter.addCalendarYears(this._pickerMoment, 1)
                 this.pickerMomentChange.emit(moment)
                 break
 
             // minus 3 years
-            case UP_ARROW:
+            case 'arrowup':
                 moment = this.dateTimeAdapter.addCalendarYears(this._pickerMoment, -1 * YEARS_PER_ROW)
                 this.pickerMomentChange.emit(moment)
                 break
 
             // add 3 years
-            case DOWN_ARROW:
+            case 'arrowdown':
                 moment = this.dateTimeAdapter.addCalendarYears(this._pickerMoment, YEARS_PER_ROW)
                 this.pickerMomentChange.emit(moment)
                 break
 
             // go to the first year of the year page
-            case HOME:
+            case 'home':
                 moment = this.dateTimeAdapter.addCalendarYears(this._pickerMoment,
                     -this.dateTimeAdapter.getYear(this._pickerMoment) % (YEARS_PER_ROW * YEAR_ROWS))
                 this.pickerMomentChange.emit(moment)
                 break
 
             // go to the last year of the year page
-            case END:
+            case 'end':
                 moment = this.dateTimeAdapter.addCalendarYears(this._pickerMoment,
                     (YEARS_PER_ROW * YEAR_ROWS) - this.dateTimeAdapter.getYear(this._pickerMoment) % (YEARS_PER_ROW * YEAR_ROWS) - 1)
                 this.pickerMomentChange.emit(moment)
                 break
 
             // minus 1 year page (or 10 year pages)
-            case PAGE_UP:
+            case 'pageup':
                 moment = this.dateTimeAdapter.addCalendarYears(this.pickerMoment, event.altKey ? -10 * (YEARS_PER_ROW * YEAR_ROWS) : -1 * (YEARS_PER_ROW * YEAR_ROWS))
                 this.pickerMomentChange.emit(moment)
                 break
 
             // add 1 year page (or 10 year pages)
-            case PAGE_DOWN:
+            case 'pagedown':
                 moment = this.dateTimeAdapter.addCalendarYears(this.pickerMoment, event.altKey ? 10 * (YEARS_PER_ROW * YEAR_ROWS) : (YEARS_PER_ROW * YEAR_ROWS))
                 this.pickerMomentChange.emit(moment)
                 break
 
-            case ENTER:
+            case 'enter':
                 this.selectYear(this.dateTimeAdapter.getYear(this._pickerMoment))
                 this.keyboardEnter.emit()
                 break

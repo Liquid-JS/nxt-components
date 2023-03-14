@@ -1,7 +1,7 @@
 // Based on @angular/cdk/testing
 import { Platform, PlatformModule } from '@angular/cdk/platform'
-import { EventEmitter, Inject, Injectable, NgModule, NgZone, Optional } from '@angular/core'
-import { DateTimeAdapter, LOCALE_ID } from './lib/class/date-time-adapter.class'
+import { EventEmitter, Inject, Injectable, LOCALE_ID, NgModule, NgZone, Optional } from '@angular/core'
+import { DateTimeAdapter } from './lib/class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from './lib/class/date-time-format.class'
 
 export function dispatchEvent(node: Node | Window, event: Event): Event {
@@ -22,8 +22,22 @@ export function createFakeEvent(
     canBubble = false,
     cancelable = true
 ) {
-    const event = document.createEvent('Event')
-    event.initEvent(type, canBubble, cancelable)
+    const init = [type, { bubbles: canBubble, cancelable }] as const
+    let event: Event
+    switch (type) {
+        case 'input':
+        case 'change':
+            event = new InputEvent(...init)
+            break
+
+        case 'focus':
+        case 'blur':
+            event = new FocusEvent(...init)
+            break
+
+        default:
+            throw new Error(`Unknown event type ${type}`)
+    }
     return event
 }
 
@@ -84,29 +98,23 @@ export function dispatchMouseEvent(
 
 /** Creates a browser MouseEvent with the specified options. */
 export function createMouseEvent(type: string, x = 0, y = 0, button = 0) {
-    const event = document.createEvent('MouseEvent')
-
-    event.initMouseEvent(
-        type,
-        true /* canBubble */,
-        false /* cancelable */,
-        window /* view */,
-        0 /* detail */,
-        x /* screenX */,
-        y /* screenY */,
-        x /* clientX */,
-        y /* clientY */,
-        false /* ctrlKey */,
-        false /* altKey */,
-        false /* shiftKey */,
-        false /* metaKey */,
-        button /* button */,
-        null /* relatedTarget */
-    )
-
-    // `initMouseEvent` doesn't allow us to pass the `buttons` and
-    // defaults it to 0 which looks like a fake event.
-    Object.defineProperty(event, 'buttons', { get: () => 1 })
+    const event = new MouseEvent(type, {
+        bubbles: true,
+        cancelable: false,
+        view: window,
+        detail: 0,
+        screenX: x,
+        screenY: y,
+        clientX: x,
+        clientY: y,
+        ctrlKey: false,
+        altKey: false,
+        shiftKey: false,
+        metaKey: false,
+        button,
+        buttons: 1,
+        relatedTarget: null
+    })
 
     return event
 }

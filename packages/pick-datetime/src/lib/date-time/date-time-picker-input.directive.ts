@@ -1,5 +1,4 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion'
-import { DOWN_ARROW } from '@angular/cdk/keycodes'
 import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit, Output, Provider, Renderer2 } from '@angular/core'
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs'
@@ -470,7 +469,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
      */
     @HostListener('keydown', ['$event'])
     handleKeydownOnHost(event: KeyboardEvent): void {
-        if (event.altKey && event.keyCode === DOWN_ARROW) {
+        if (event.altKey && event.code.toLowerCase() === 'ArrowDown') {
             this.dtPicker?.open()
             event.preventDefault()
         }
