@@ -1,23 +1,27 @@
-<input [value]="color1"
+<input class="form-control"
+    [value]="color1"
     [style.background]="color1"
     alphaChannel="always"
     outputFormat="rgba"
     [(nxtColor)]="color1" />
-<br><br>
-<input [value]="color2"
+<br>
+<input class="form-control"
+    [value]="color2"
     [style.background]="color2"
     alphaChannel="disabled"
     outputFormat="rgba"
     [(nxtColor)]="color2" />
-<br><br>
-<input [value]="color3"
+<br>
+<input class="form-control"
+    [value]="color3"
     [style.background]="rgbaText"
     alphaChannel="always"
     outputFormat="hex"
     [nxtColor]="color3"
     (nxtColorChange)="rgbaText = onChangeColorHex8($event); color3 = $event" />
-<br><br>
-<input [value]="color4"
+<br>
+<input class="form-control"
+    [value]="color4"
     [style.background]="color4"
     alphaChannel="forced"
     outputFormat="hex"

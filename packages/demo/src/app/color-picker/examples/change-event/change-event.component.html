@@ -1,4 +1,5 @@
-<input [style.background]="rgbColor"
+<input class="form-control"
+    [style.background]="rgbColor"
     [nxtColor]="rgbColor"
     [cmykEnabled]="true"
     (cmykColorChange)="cmykValue = $event; cmykColor = onChangeColorCmyk($event)"

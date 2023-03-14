@@ -1,12 +1,33 @@
 <app-content-wrap>
     <h1>nxt-pick-datetime</h1>
-    <label for="daterange">Datetime range (click, then press 'Set' to modify):</label>
-    <input [(ngModel)]="selectedMoments"
-        selectMode="range"
-        [nxtDateTimeTrigger]="date_range_component"
-        [nxtDateTime]="date_range_component"
-        style="width: 100%; color: cornflowerblue"
-        id="daterange"
-        matInput>
-    <nxt-date-time #date_range_component></nxt-date-time>
+    <br>
+
+    <div class="btn-group"
+        dropdown>
+        <button id="button-basic"
+            dropdownToggle
+            type="button"
+            class="btn btn-primary dropdown-toggle"
+            aria-controls="dropdown-basic">
+            Go to <span class="caret"></span>
+        </button>
+        <ul id="dropdown-basic"
+            *dropdownMenu
+            class="dropdown-menu"
+            role="menu"
+            aria-labelledby="button-basic">
+            <li *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+                role="menuitem"><a class="dropdown-item"
+                    routerLink="."
+                    fragment="example-{{ i }}">{{ example.name }}</a></li>
+        </ul>
+    </div>
+
+    <hr class="no-padding">
+
+    <app-example *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+        [injector]="injector"
+        [config]="example"
+        id="example-{{ i }}"></app-example>
+
 </app-content-wrap>

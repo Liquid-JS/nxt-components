@@ -1,0 +1,7 @@
+<input class="form-control"
+    [(ngModel)]="date"
+    placeholder="Date"
+    [nxtDateTimeTrigger]="picker"
+    [nxtDateTime]="picker">
+<nxt-date-time #picker
+    pickerType="calendar"></nxt-date-time>
