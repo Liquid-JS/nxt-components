@@ -1,5 +1,4 @@
 /* eslint-disable @angular-eslint/component-class-suffix */
-import { ENTER, RIGHT_ARROW } from '@angular/cdk/keycodes'
 import { Component, NgZone } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
@@ -215,11 +214,11 @@ describe('CalendarComponent', () => {
                         dispatchKeyboardEvent(
                             tableBodyEl,
                             'keydown',
-                            RIGHT_ARROW
+                            'ArrowRight'
                         )
                         fixture.detectChanges()
 
-                        dispatchKeyboardEvent(tableBodyEl, 'keydown', ENTER)
+                        dispatchKeyboardEvent(tableBodyEl, 'keydown', 'Enter')
                         fixture.detectChanges()
 
                         expect(calendarInstance.currentView).toBe('month')
@@ -248,11 +247,11 @@ describe('CalendarComponent', () => {
                         dispatchKeyboardEvent(
                             tableBodyEl,
                             'keydown',
-                            RIGHT_ARROW
+                            'ArrowRight'
                         )
                         fixture.detectChanges()
 
-                        dispatchKeyboardEvent(tableBodyEl, 'keydown', ENTER)
+                        dispatchKeyboardEvent(tableBodyEl, 'keydown', 'Enter')
                         fixture.detectChanges()
 
                         expect(calendarInstance.currentView).toBe('year')

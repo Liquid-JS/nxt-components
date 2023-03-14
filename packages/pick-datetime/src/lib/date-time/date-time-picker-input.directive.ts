@@ -465,7 +465,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     }
 
     /**
-     * Open the picker when user hold alt + DOWN_ARROW
+     * Open the picker when user hold alt + ArrowDown
      */
     @HostListener('keydown', ['$event'])
     handleKeydownOnHost(event: KeyboardEvent): void {

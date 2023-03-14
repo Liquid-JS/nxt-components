@@ -44,43 +44,43 @@ export function createFakeEvent(
 export function dispatchKeyboardEvent(
     node: Node,
     type: string,
-    keyCode: number,
+    code: string,
     target?: Element
 ): KeyboardEvent {
     return dispatchEvent(
         node,
-        createKeyboardEvent(type, keyCode, target)
+        createKeyboardEvent(type, code, target)
     ) as KeyboardEvent
 }
 
 export function createKeyboardEvent(
     type: string,
-    keyCode: number,
-    target?: Element,
-    key?: string
+    code: string,
+    target?: Element
 ) {
-    const event = document.createEvent('KeyboardEvent') as any
-    const originalPreventDefault = event.preventDefault
+    const event = new KeyboardEvent(type, {
+        code,
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        ctrlKey: false,
+        altKey: false,
+        shiftKey: false,
+        metaKey: false
 
-    // Firefox does not support `initKeyboardEvent`, but supports `initKeyEvent`.
-    if (event.initKeyEvent) {
-        event.initKeyEvent(type, true, true, window, 0, 0, 0, 0, 0, keyCode)
-    } else {
-        event.initKeyboardEvent(type, true, true, window, 0, key, 0, '', false)
-    }
+    })
+    const originalPreventDefault = event.preventDefault
 
     // Webkit Browsers don't set the keyCode when calling the init function.
     // See related bug https://bugs.webkit.org/show_bug.cgi?id=16735
     Object.defineProperties(event, {
-        keyCode: { get: () => keyCode },
-        key: { get: () => key },
         target: { get: () => target }
     })
 
     // IE won't set `defaultPrevented` on synthetic events so we need to do it manually.
     event.preventDefault = function () {
         Object.defineProperty(event, 'defaultPrevented', { get: () => true })
-        return originalPreventDefault.apply(this, arguments)
+        return originalPreventDefault.apply(this, arguments as any)
     }
 
     return event

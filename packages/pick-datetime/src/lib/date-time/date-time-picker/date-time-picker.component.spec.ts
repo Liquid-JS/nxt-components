@@ -1,5 +1,4 @@
 /* eslint-disable @angular-eslint/component-class-suffix */
-import { ENTER, ESCAPE, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
 import { OverlayContainer } from '@angular/cdk/overlay'
 import { Component, FactoryProvider, Type, ValueProvider, ViewChild } from '@angular/core'
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing'
@@ -179,7 +178,7 @@ describe('DateTimeComponent', () => {
                 )
             }))
 
-            it('should close the popup when pressing ESCAPE', fakeAsync(() => {
+            it('should close the popup when pressing Escape', fakeAsync(() => {
                 testComponent.dateTimePicker?.open()
                 fixture.detectChanges()
                 flush()
@@ -190,7 +189,7 @@ describe('DateTimeComponent', () => {
                         true
                     )
 
-                dispatchKeyboardEvent(document.body, 'keydown', ESCAPE)
+                dispatchKeyboardEvent(document.body, 'keydown', 'Escape')
                 fixture.detectChanges()
                 flush()
 
@@ -414,14 +413,14 @@ describe('DateTimeComponent', () => {
                 )
             }))
 
-            it('should close the picker popup panel using ALT + UP_ARROW', fakeAsync(() => {
+            it('should close the picker popup panel using ALT + ArrowUp', fakeAsync(() => {
                 testComponent.dateTimePicker?.open()
                 fixture.detectChanges()
                 flush()
 
                 expect(testComponent.dateTimePicker?.opened).toBe(true)
 
-                const event = createKeyboardEvent('keydown', UP_ARROW)
+                const event = createKeyboardEvent('keydown', 'ArrowUp')
                 Object.defineProperty(event, 'altKey', { get: () => true })
 
                 testComponent.dateTimePicker?.['popupRef']?.['_keyboardDispatcher']['_keydownListener'](event)
@@ -526,11 +525,11 @@ describe('DateTimeComponent', () => {
                     dispatchKeyboardEvent(
                         calendarBodyEl!,
                         'keydown',
-                        RIGHT_ARROW
+                        'ArrowRight'
                     )
                     fixture.detectChanges()
                     flush()
-                    dispatchKeyboardEvent(calendarBodyEl!, 'keydown', ENTER)
+                    dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'Enter')
                     fixture.detectChanges()
                     flush()
 

@@ -1,5 +1,4 @@
 import { AnimationEvent } from '@angular/animations'
-import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, SPACE, UP_ARROW } from '@angular/cdk/keycodes'
 import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, ViewChild } from '@angular/core'
 import { Subject } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
@@ -310,17 +309,17 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
         index: number
     ): void {
         switch (event.keyCode) {
-            case DOWN_ARROW:
-            case RIGHT_ARROW:
-            case UP_ARROW:
-            case LEFT_ARROW:
+            case 'ArrowDown':
+            case 'ArrowRight':
+            case 'ArrowUp':
+            case 'ArrowLeft':
                 next.focus()
                 this.setActiveSelectedIndex(index === 0 ? 1 : 0)
                 event.preventDefault()
                 event.stopPropagation()
                 break
 
-            case SPACE:
+            case 'Space':
                 this.setActiveSelectedIndex(index)
                 event.preventDefault()
                 event.stopPropagation()
