@@ -12,7 +12,7 @@ export class GettingStartedComponent implements OnInit {
 
     readonly installScript = 'npm install --save nxt-color-picker'
 
-    readonly importModule = `import { ColorPickerModule } from 'nxt-color-picker';
+    readonly importModule = `import { ColorPickerModule } from 'nxt-color-picker'
 
 @NgModule({
     ...

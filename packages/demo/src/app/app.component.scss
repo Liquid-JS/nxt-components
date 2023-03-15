@@ -13,6 +13,10 @@ svg.github {
     flex: auto 1 1;
 }
 
+.nav.flex-column {
+    flex-wrap: nowrap;
+}
+
 .sidebar {
     position: fixed;
     top: 0;

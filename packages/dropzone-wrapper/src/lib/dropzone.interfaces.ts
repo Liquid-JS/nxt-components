@@ -1,6 +1,6 @@
 import { EventEmitter, InjectionToken } from '@angular/core'
 
-export const NXT_DROPZONE_CONFIG = new InjectionToken<DropzoneConfigInterface>('NXT_DROPZONE_CONFIG')
+export const NXT_DROPZONE_CONFIG = new InjectionToken<DropzoneConfig>('NXT_DROPZONE_CONFIG')
 
 /** @internal */
 export type DropzoneEvent = 'init' | 'drop' | 'dragStart' | 'dragEnd' | 'dragEnter' | 'dragOver' | 'dragLeave' | 'paste' | 'reset' | 'addedFile' | 'addedFiles' | 'removedFile' | 'thumbnail' | 'error' | 'errorMultiple' | 'processing' | 'processingMultiple' | 'uploadProgress' | 'totalUploadProgress' | 'sending' | 'sendingMultiple' | 'success' | 'successMultiple' | 'canceled' | 'canceledMultiple' | 'complete' | 'completeMultiple' | 'maxFilesExceeded' | 'maxFilesReached' | 'queueComplete'
@@ -51,7 +51,7 @@ export const DropzoneEvents: DropzoneEvent[] = [
     'queueComplete'
 ]
 
-export interface DropzoneConfigInterface extends Dropzone.DropzoneOptions {
+export interface DropzoneConfig extends Dropzone.DropzoneOptions {
     /**
      * Time in ms until input resets after a successful upload
      */
@@ -74,18 +74,18 @@ export const internalChanges = new Set([
 ])
 
 /** @internal */
-export class DropzoneConfig implements DropzoneConfigInterface {
+export class _DropzoneConfig implements DropzoneConfig {
     autoReset?: number
     errorReset?: number
     cancelReset?: number
 
     maxFiles?: number
 
-    constructor(config: DropzoneConfigInterface = {}) {
+    constructor(config: DropzoneConfig = {}) {
         this.assign(config)
     }
 
-    assign(config: DropzoneConfigInterface | any = {}, target?: any) {
+    assign(config: DropzoneConfig | any = {}, target?: any) {
         target = target || this
 
         for (const key in config) {

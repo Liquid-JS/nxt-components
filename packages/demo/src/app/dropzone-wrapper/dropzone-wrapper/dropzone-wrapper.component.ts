@@ -28,6 +28,7 @@ export class AppDropzoneWrapperComponent implements OnInit {
         {
             path: 'sandbox',
             name: 'Basic usage',
+            description: 'This example does not actually upload any of the selected files, only simulates the upload process.',
             include: ['html', 'ts']
         }
     )

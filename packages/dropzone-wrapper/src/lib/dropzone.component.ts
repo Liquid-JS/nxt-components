@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/no-output-rename */
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core'
 import { DropzoneDirective } from './dropzone.directive'
-import { DropzoneConfigInterface, DropzoneListeners, NXT_DROPZONE_LISTENERS } from './dropzone.interfaces'
+import { DropzoneConfig, DropzoneListeners, NXT_DROPZONE_LISTENERS } from './dropzone.interfaces'
 
 @Component({
     selector: 'nxt-dropzone',
@@ -18,13 +18,18 @@ import { DropzoneConfigInterface, DropzoneListeners, NXT_DROPZONE_LISTENERS } fr
 })
 export class DropzoneComponent implements OnInit, DropzoneListeners {
 
+    /** Disables / detaches Dropzone from the element */
     @Input() disabled: boolean = false
 
-    @Input() config?: DropzoneConfigInterface
+    /** Custom config to override the global defaults */
+    @Input() config?: DropzoneConfig
 
+    /** Message to show for the user on the upload area */
     @Input() message: string = 'Click or drag files to upload'
+    /** Placeholder image to be shown as the upload area */
     @Input() placeholder: string = ''
 
+    /** Use 'dropzone' class (use provided default styles) */
     @Input() useDropzoneClass: boolean = true
 
     @Output('init') readonly DZ_INIT = new EventEmitter<Dropzone>()

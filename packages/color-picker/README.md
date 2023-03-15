@@ -21,7 +21,7 @@ npm install --save nxt-color-picker
 ### Import color picker module
 
 ```ts
-import { ColorPickerModule } from 'nxt-color-picker';
+import { ColorPickerModule } from 'nxt-color-picker'
 
 @NgModule({
     ...

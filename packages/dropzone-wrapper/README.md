@@ -1,56 +1,35 @@
-# Angular Dropzone Wrapper
+# Angular Dropzone wrapper
 
 [![GitHub license](https://img.shields.io/github/license/Liquid-JS/nxt-components.svg)](https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/dm/nxt-dropzone-wrapper.svg)](https://www.npmjs.com/package/nxt-dropzone-wrapper)
 [![scope](https://img.shields.io/npm/v/nxt-dropzone-wrapper.svg)](https://www.npmjs.com/package/nxt-dropzone-wrapper)
 
-This is an Angular wrapper library for the [Dropzone](http://www.dropzonejs.com/). To use this library you should get familiar with the Dropzone documentation as well since this documentation only explains details specific to this wrapper.
+This is an Angular wrapper library for the [Dropzone](http://www.dropzonejs.com/). For full documentation on Dropzone configuration options see [Dropzone documentation](https://docs.dropzone.dev/configuration/basics/configuration-options).
 
-This documentation is for the latest 13.x.x version which requires Angular 13 or newer.
+## Quick links
 
-### Quick links
+-   [Demo](https://liquid-js.github.io/nxt-components/demo/dropzone-wrapper)
+-   [Getting started](https://liquid-js.github.io/nxt-components/demo/dropzone-wrapper/getting-started)
+-   [API docs](https://liquid-js.github.io/nxt-components/docs/nxt-dropzone-wrapper)
+-   [Dropzone documentation](https://docs.dropzone.dev/configuration/basics/configuration-options)
 
-[Example application](https://liquid-js.github.io/nxt-components/demo/dropzone-wrapper)
- \|
-[Example](https://github.com/Liquid-JS/nxt-components/tree/master/packages/demo/src/app/dropzone-wrapper)
- \|
-[Dropzone documentation](https://docs.dropzone.dev/configuration/basics/configuration-options)
+### Installing
 
-### Building the library
-
-```bash
-npm install
-npm run build
+```sh
+npm install --save nxt-dropzone-wrapper
 ```
 
-### Running the example
+### Import and configure dropzone wrapper module
 
-```bash
-npm install
-npm run start
-```
+```ts
+import { DropzoneConfig, DropzoneModule, NXT_DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
 
-### Installing and usage
-
-```bash
-npm install nxt-dropzone-wrapper --save
-```
-
-##### Load the module for your app (with global configuration):
-
-Providing the global configuration is optional and when used you should only provide the configuration in your root module.
-
-```javascript
-import { DropzoneModule } from 'nxt-dropzone-wrapper';
-import { DROPZONE_CONFIG } from 'nxt-dropzone-wrapper';
-import { DropzoneConfigInterface } from 'nxt-dropzone-wrapper';
-
-const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
+const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
     // Change this to your upload POST address:
     url: 'https://httpbin.org/post',
     maxFilesize: 50,
     acceptedFiles: 'image/*'
-};
+}
 
 @NgModule({
     ...
@@ -60,22 +39,18 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     ],
     providers: [
         {
-            provide: DROPZONE_CONFIG,
+            provide: NXT_DROPZONE_CONFIG,
             useValue: DEFAULT_DROPZONE_CONFIG
         }
     ]
 })
 ```
 
-##### Use it in your HTML template (with custom configuration):
+### Include it in HTML template
 
 This library provides two ways to create a Dropzone element, component for simple use cases and directive for more custom use cases.
 
-**COMPONENT USAGE**
-
-Simply replace the element that would ordinarily be passed to `Dropzone` with the dropzone component.
-
-**NOTE:** Component provides couple additional features from directive such as the placeholder image. If you don't need them or want to create custom component then you might want to use the directive instead.
+#### Use dropzone component
 
 ```html
 <nxt-dropzone [config]="config"
@@ -84,34 +59,9 @@ Simply replace the element that would ordinarily be passed to `Dropzone` with th
     (success)="onUploadSuccess($event)"></nxt-dropzone>
 ```
 
-```javascript
-[config]                // Custom config to override the global defaults.
+#### Use dropzone directive
 
-[disabled]              // Disables / detaches Dropzone from the element.
-
-[message]               // Message to show for the user on the upload area.
-[placeholder]           // Placeholder image to be shown as the upload area.
-
-[useDropzoneClass]      // Use 'dropzone' class (use provided default styles).
-
-(error)                 // Event handler for the Dropzone upload error event.
-(success)               // Event handler for the Dropzone upload success event.
-(canceled)              // Event handler for the Dropzone upload canceled event.
-
-(<dropzoneEvent>)       // All Dropzone events / callbacks work as bindings.
-                        // Event names are in camel case (not lower case).
-                        // Example: maxfilesreached -> maxFilesReached
-```
-
-**DIRECTIVE USAGE**
-
-When using only the directive you need to provide your own theming or import the default theme:
-
-```css
-@import '~dropzone/dist/dropzone.css';
-```
-
-Dropzone directive can be used in form or div element with optional custom configuration:
+When using only the directive you need to provide your own theming or import the default theme (`dropzone/dist/dropzone.css`).
 
 ```html
 <div class="dropzone"
@@ -119,52 +69,3 @@ Dropzone directive can be used in form or div element with optional custom confi
     (error)="onUploadError($event)"
     (success)="onUploadSuccess($event)"></div>
 ```
-
-```javascript
-[nxtDropzone]           // Can be used to provide optional custom config.
-
-[disabled]              // Disables / detaches Dropzone from the element.
-
-(error)                 // Event handler for the Dropzone upload error event.
-(success)               // Event handler for the Dropzone upload success event.
-(canceled)              // Event handler for the Dropzone upload canceled event.
-
-(<dropzoneEvent>)       // All Dropzone events / callbacks work as bindings.
-                        // Event names are in camel case (not lower case).
-                        // Example: maxfilesreached -> maxFilesReached
-```
-
-##### Available configuration options (custom / global configuration):
-
-This library supports all Dropzone configuration options and few extra options for easier usage.
-
-**LIBRARY OPTIONS**
-
-```javascript
-autoReset               // Time for resetting component after upload (Default: null).
-errorReset              // Time for resetting component after an error (Default: null).
-cancelReset             // Time for resetting component after canceling (Default: null).
-```
-
-**DROPZONE OPTIONS**
-
-```javascript
-url                     // Upload url where to send the upload request (Default: '').
-method                  // HTTP method to use communicating with the server (Default: 'post').
-headers                 // Object of additional headers to send to the server (Default: null).
-paramName               // Name of the file parameter that gets transferred (Default: 'file').
-maxFilesize             // Maximum file size for the upload files in megabytes (Default: null).
-acceptedFiles           // Comma separated list of mime types or file extensions (Default: null).
-```
-
-For more detailed documentation with all the supported Dropzone events / options see the Dropzone documentation.
-
-##### Available control / helper functions (provided by the directive):
-
-```javascript
-dropzone()              // Returns reference to the Dropzone instance for full API access.
-
-reset(cancel?)          // Removes all processed files (optionally cancels uploads as well).
-```
-
-Above functions can be accessed through the directive reference (available as directiveRef in the component).

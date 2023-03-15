@@ -1,7 +1,7 @@
 import { Component, ViewChild, ViewEncapsulation } from '@angular/core'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Dropzone from 'dropzone'
-import { DropzoneComponent, DropzoneConfigInterface, DropzoneDirective } from 'nxt-dropzone-wrapper'
+import { DropzoneComponent, DropzoneConfig, DropzoneDirective } from 'nxt-dropzone-wrapper'
 
 @Component({
     selector: 'app-sandbox',
@@ -16,7 +16,7 @@ export class SandboxComponent {
     disabled = false
     autoReset = false
 
-    config: DropzoneConfigInterface = {
+    config: DropzoneConfig = {
         clickable: true,
         maxFiles: 1
     }

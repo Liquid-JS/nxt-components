@@ -2,8 +2,8 @@
     "pipes": [],
     "interfaces": [
         {
-            "name": "DropzoneConfigInterface",
-            "id": "interface-DropzoneConfigInterface-6b04ea2b8b35c99e2b1317adf1a5b72ce4ffb4ba713fa206caf1f0870887258452e511654700a3ea37520a938735ddf0fc84454225d4877a2b03eee12d1f0f06",
+            "name": "DropzoneConfig",
+            "id": "interface-DropzoneConfig-e188ab4e0870bc45b65ab28e40ce598dbebd27a5e8990edeaf22db7a87cfc17fd548ec43d76ea28b9ce138cffdcc35a350038a6581b62fcbad16bab7649078cc",
             "file": "src/lib/dropzone.interfaces.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -52,7 +52,7 @@
     "directives": [
         {
             "name": "DropzoneDirective",
-            "id": "directive-DropzoneDirective-17e4b1d540d01a21d77939a68b2c9c66c90444fc96186be71fb820d737ec2cacebba78db462d605ff67d827f9669daee616512b2b1ebd903552e95f1fbaf8661",
+            "id": "directive-DropzoneDirective-a13748e49674a190395549b96d53d3a7367eeab290a506e0a0b5afe6a028ed2c74d1bb4c9d6d5bf101427fde7210205986272d5372f735349bf2f5e077342c6c",
             "file": "src/lib/dropzone.directive.ts",
             "type": "directive",
             "description": "",
@@ -64,7 +64,9 @@
                     "name": "disabled",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "rawdescription": "\nDisables / detaches Dropzone from the element",
+                    "description": "<p>Disables / detaches Dropzone from the element</p>\n",
+                    "line": 17,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -72,8 +74,10 @@
                     "name": "nxtDropzone",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
-                    "type": "DropzoneConfigInterface",
+                    "rawdescription": "\nCan be used to provide optional custom config",
+                    "description": "<p>Can be used to provide optional custom config</p>\n",
+                    "line": 37,
+                    "type": "DropzoneConfig",
                     "decorators": []
                 }
             ],
@@ -83,210 +87,210 @@
                     "defaultValue": "this.component?.DZ_ADDEDFILE\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 61
+                    "line": 63
                 },
                 {
                     "name": "addedFiles",
                     "defaultValue": "this.component?.DZ_ADDEDFILES\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 63
+                    "line": 65
                 },
                 {
                     "name": "canceled",
                     "defaultValue": "this.component?.DZ_CANCELED\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 96
+                    "line": 98
                 },
                 {
                     "name": "canceledMultiple",
                     "defaultValue": "this.component?.DZ_CANCELEDMULTIPLE\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 98
+                    "line": 100
                 },
                 {
                     "name": "complete",
                     "defaultValue": "this.component?.DZ_COMPLETE\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 101
+                    "line": 103
                 },
                 {
                     "name": "completeMultiple",
                     "defaultValue": "this.component?.DZ_COMPLETEMULTIPLE\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 103
+                    "line": 105
                 },
                 {
                     "name": "dragEnd",
                     "defaultValue": "this.component?.DZ_DRAGEND\n        ?? new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 47
+                    "line": 49
                 },
                 {
                     "name": "dragEnter",
                     "defaultValue": "this.component?.DZ_DRAGENTER\n        ?? new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 49
+                    "line": 51
                 },
                 {
                     "name": "dragLeave",
                     "defaultValue": "this.component?.DZ_DRAGLEAVE\n        ?? new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 53
+                    "line": 55
                 },
                 {
                     "name": "dragOver",
                     "defaultValue": "this.component?.DZ_DRAGOVER\n        ?? new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 51
+                    "line": 53
                 },
                 {
                     "name": "dragStart",
                     "defaultValue": "this.component?.DZ_DRAGSTART\n        ?? new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 45
+                    "line": 47
                 },
                 {
                     "name": "drop",
                     "defaultValue": "this.component?.DZ_DROP\n        ?? new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 43
+                    "line": 45
                 },
                 {
                     "name": "error",
                     "defaultValue": "this.component?.DZ_ERROR\n        ?? new EventEmitter<[Dropzone.DropzoneFile, string | Error]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 70
+                    "line": 72
                 },
                 {
                     "name": "errorMultiple",
                     "defaultValue": "this.component?.DZ_ERRORMULTIPLE\n        ?? new EventEmitter<[Dropzone.DropzoneFile[], string | Error]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 72
+                    "line": 74
                 },
                 {
                     "name": "init",
                     "defaultValue": "this.component?.DZ_INIT\n        ?? new EventEmitter<Dropzone>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40
+                    "line": 42
                 },
                 {
                     "name": "maxFilesExceeded",
                     "defaultValue": "this.component?.DZ_MAXFILESEXCEEDED\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 106
+                    "line": 108
                 },
                 {
                     "name": "maxFilesReached",
                     "defaultValue": "this.component?.DZ_MAXFILESREACHED\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 108
+                    "line": 110
                 },
                 {
                     "name": "paste",
                     "defaultValue": "this.component?.DZ_PASTE\n        ?? new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 55
+                    "line": 57
                 },
                 {
                     "name": "processing",
                     "defaultValue": "this.component?.DZ_PROCESSING\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 75
+                    "line": 77
                 },
                 {
                     "name": "processingMultiple",
                     "defaultValue": "this.component?.DZ_PROCESSINGMULTIPLE\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 77
+                    "line": 79
                 },
                 {
                     "name": "queueComplete",
                     "defaultValue": "this.component?.DZ_QUEUECOMPLETE\n        ?? new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 111
+                    "line": 113
                 },
                 {
                     "name": "removedFile",
                     "defaultValue": "this.component?.DZ_REMOVEDFILE\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 65
+                    "line": 67
                 },
                 {
                     "name": "reset",
                     "defaultValue": "this.component?.DZ_RESET\n        ?? new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 58
+                    "line": 60
                 },
                 {
                     "name": "sending",
                     "defaultValue": "this.component?.DZ_SENDING\n        ?? new EventEmitter<[Dropzone.DropzoneFile, XMLHttpRequest, FormData]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 85
+                    "line": 87
                 },
                 {
                     "name": "sendingMultiple",
                     "defaultValue": "this.component?.DZ_SENDINGMULTIPLE\n        ?? new EventEmitter<[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 87
+                    "line": 89
                 },
                 {
                     "name": "success",
                     "defaultValue": "this.component?.DZ_SUCCESS\n        // eslint-disable-next-line @typescript-eslint/ban-types\n        ?? new EventEmitter<[Dropzone.DropzoneFile, Object | string]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 90
+                    "line": 92
                 },
                 {
                     "name": "successMultiple",
                     "defaultValue": "this.component?.DZ_SUCCESSMULTIPLE\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 93
+                    "line": 95
                 },
                 {
                     "name": "thumbnail",
                     "defaultValue": "this.component?.DZ_THUMBNAIL\n        ?? new EventEmitter<[Dropzone.DropzoneFile, string]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 67
+                    "line": 69
                 },
                 {
                     "name": "totalUploadProgress",
                     "defaultValue": "this.component?.DZ_TOTALUPLOADPROGRESS\n        ?? new EventEmitter<[number, number, number]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 82
+                    "line": 84
                 },
                 {
                     "name": "uploadProgress",
                     "defaultValue": "this.component?.DZ_UPLOADPROGRESS\n        ?? new EventEmitter<[Dropzone.DropzoneFile, number, number]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 80
+                    "line": 82
                 }
             ],
             "deprecated": false,
@@ -333,7 +337,7 @@
                     },
                     {
                         "name": "defaults",
-                        "type": "DropzoneConfigInterface",
+                        "type": "DropzoneConfig",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "optional": true
@@ -346,7 +350,7 @@
                         "optional": true
                     }
                 ],
-                "line": 128,
+                "line": 130,
                 "jsdoctags": [
                     {
                         "name": "zone",
@@ -386,7 +390,7 @@
                     },
                     {
                         "name": "defaults",
-                        "type": "DropzoneConfigInterface",
+                        "type": "DropzoneConfig",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "optional": true,
@@ -423,7 +427,9 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 16,
+                        "line": 17,
+                        "rawdescription": "\nDisables / detaches Dropzone from the element",
+                        "description": "<p>Disables / detaches Dropzone from the element</p>\n",
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -440,7 +446,7 @@
                         "name": "disabled",
                         "type": "",
                         "returnType": "",
-                        "line": 30
+                        "line": 31
                     }
                 },
                 "dropzone": {
@@ -449,7 +455,7 @@
                         "name": "dropzone",
                         "type": "",
                         "returnType": "",
-                        "line": 114
+                        "line": 116
                     }
                 }
             }
@@ -458,7 +464,7 @@
     "components": [
         {
             "name": "DropzoneComponent",
-            "id": "component-DropzoneComponent-4d19f24912de8a4c516a353e8357285ce5494def972dd6ff74664689f1c4631cb40656a71174dc943b9584d56090b535c3fb8f8a41647bb77f5bee9422db596e",
+            "id": "component-DropzoneComponent-20ab85cc58b49680013830719a741ab777a466aac490e4495aa8764566ba3a83d4e632a497f47965660a3d672f2f19c57b62cfdef8c1dea4f78bf3ee2409f04f",
             "file": "src/lib/dropzone.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -487,8 +493,10 @@
                     "name": "config",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 23,
-                    "type": "DropzoneConfigInterface",
+                    "rawdescription": "\nCustom config to override the global defaults",
+                    "description": "<p>Custom config to override the global defaults</p>\n",
+                    "line": 25,
+                    "type": "DropzoneConfig",
                     "decorators": []
                 },
                 {
@@ -496,7 +504,9 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "rawdescription": "\nDisables / detaches Dropzone from the element",
+                    "description": "<p>Disables / detaches Dropzone from the element</p>\n",
+                    "line": 22,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -505,7 +515,9 @@
                     "defaultValue": "'Click or drag files to upload'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 25,
+                    "rawdescription": "\nMessage to show for the user on the upload area",
+                    "description": "<p>Message to show for the user on the upload area</p>\n",
+                    "line": 28,
                     "type": "string",
                     "decorators": []
                 },
@@ -514,7 +526,9 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "rawdescription": "\nPlaceholder image to be shown as the upload area",
+                    "description": "<p>Placeholder image to be shown as the upload area</p>\n",
+                    "line": 30,
                     "type": "string",
                     "decorators": []
                 },
@@ -523,7 +537,9 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "rawdescription": "\nUse 'dropzone' class (use provided default styles)",
+                    "description": "<p>Use &#39;dropzone&#39; class (use provided default styles)</p>\n",
+                    "line": 33,
                     "type": "boolean",
                     "decorators": []
                 }
@@ -534,7 +550,7 @@
                     "defaultValue": "new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 42,
+                    "line": 47,
                     "type": "EventEmitter"
                 },
                 {
@@ -542,7 +558,7 @@
                     "defaultValue": "new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 43,
+                    "line": 48,
                     "type": "EventEmitter"
                 },
                 {
@@ -550,7 +566,7 @@
                     "defaultValue": "new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 63,
+                    "line": 68,
                     "type": "EventEmitter"
                 },
                 {
@@ -558,7 +574,7 @@
                     "defaultValue": "new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 64,
+                    "line": 69,
                     "type": "EventEmitter"
                 },
                 {
@@ -566,7 +582,7 @@
                     "defaultValue": "new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 66,
+                    "line": 71,
                     "type": "EventEmitter"
                 },
                 {
@@ -574,7 +590,7 @@
                     "defaultValue": "new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 67,
+                    "line": 72,
                     "type": "EventEmitter"
                 },
                 {
@@ -582,7 +598,7 @@
                     "defaultValue": "new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 39,
                     "type": "EventEmitter"
                 },
                 {
@@ -590,7 +606,7 @@
                     "defaultValue": "new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 40,
                     "type": "EventEmitter"
                 },
                 {
@@ -598,7 +614,7 @@
                     "defaultValue": "new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 37,
+                    "line": 42,
                     "type": "EventEmitter"
                 },
                 {
@@ -606,7 +622,7 @@
                     "defaultValue": "new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
+                    "line": 41,
                     "type": "EventEmitter"
                 },
                 {
@@ -614,7 +630,7 @@
                     "defaultValue": "new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 38,
                     "type": "EventEmitter"
                 },
                 {
@@ -622,7 +638,7 @@
                     "defaultValue": "new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 37,
                     "type": "EventEmitter"
                 },
                 {
@@ -630,7 +646,7 @@
                     "defaultValue": "new EventEmitter<[Dropzone.DropzoneFile, string | Error]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 47,
+                    "line": 52,
                     "type": "EventEmitter"
                 },
                 {
@@ -638,7 +654,7 @@
                     "defaultValue": "new EventEmitter<[Dropzone.DropzoneFile[], string | Error]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 48,
+                    "line": 53,
                     "type": "EventEmitter"
                 },
                 {
@@ -646,7 +662,7 @@
                     "defaultValue": "new EventEmitter<Dropzone>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 35,
                     "type": "EventEmitter"
                 },
                 {
@@ -654,7 +670,7 @@
                     "defaultValue": "new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 69,
+                    "line": 74,
                     "type": "EventEmitter"
                 },
                 {
@@ -662,7 +678,7 @@
                     "defaultValue": "new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 70,
+                    "line": 75,
                     "type": "EventEmitter"
                 },
                 {
@@ -670,7 +686,7 @@
                     "defaultValue": "new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 38,
+                    "line": 43,
                     "type": "EventEmitter"
                 },
                 {
@@ -678,7 +694,7 @@
                     "defaultValue": "new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 50,
+                    "line": 55,
                     "type": "EventEmitter"
                 },
                 {
@@ -686,7 +702,7 @@
                     "defaultValue": "new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 51,
+                    "line": 56,
                     "type": "EventEmitter"
                 },
                 {
@@ -694,7 +710,7 @@
                     "defaultValue": "new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 72,
+                    "line": 77,
                     "type": "EventEmitter"
                 },
                 {
@@ -702,7 +718,7 @@
                     "defaultValue": "new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 44,
+                    "line": 49,
                     "type": "EventEmitter"
                 },
                 {
@@ -710,7 +726,7 @@
                     "defaultValue": "new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40,
+                    "line": 45,
                     "type": "EventEmitter"
                 },
                 {
@@ -718,7 +734,7 @@
                     "defaultValue": "new EventEmitter<[Dropzone.DropzoneFile, XMLHttpRequest, FormData]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 56,
+                    "line": 61,
                     "type": "EventEmitter"
                 },
                 {
@@ -726,7 +742,7 @@
                     "defaultValue": "new EventEmitter<[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 57,
+                    "line": 62,
                     "type": "EventEmitter"
                 },
                 {
@@ -734,7 +750,7 @@
                     "defaultValue": "new EventEmitter<[Dropzone.DropzoneFile, Object | string]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 60,
+                    "line": 65,
                     "type": "EventEmitter"
                 },
                 {
@@ -742,7 +758,7 @@
                     "defaultValue": "new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 61,
+                    "line": 66,
                     "type": "EventEmitter"
                 },
                 {
@@ -750,7 +766,7 @@
                     "defaultValue": "new EventEmitter<[Dropzone.DropzoneFile, string]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 45,
+                    "line": 50,
                     "type": "EventEmitter"
                 },
                 {
@@ -758,7 +774,7 @@
                     "defaultValue": "new EventEmitter<[number, number, number]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 54,
+                    "line": 59,
                     "type": "EventEmitter"
                 },
                 {
@@ -766,7 +782,7 @@
                     "defaultValue": "new EventEmitter<[Dropzone.DropzoneFile, number, number]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 53,
+                    "line": 58,
                     "type": "EventEmitter"
                 }
             ],
@@ -778,7 +794,7 @@
                     "type": "DropzoneDirective",
                     "optional": true,
                     "description": "",
-                    "line": 74,
+                    "line": 79,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -813,7 +829,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 74
+                "line": 79
             },
             "implements": [
                 "OnInit",
@@ -883,7 +899,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new InjectionToken<DropzoneConfigInterface>('NXT_DROPZONE_CONFIG')"
+                "defaultValue": "new InjectionToken<DropzoneConfig>('NXT_DROPZONE_CONFIG')"
             }
         ],
         "functions": [],
@@ -899,7 +915,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new InjectionToken<DropzoneConfigInterface>('NXT_DROPZONE_CONFIG')"
+                    "defaultValue": "new InjectionToken<DropzoneConfig>('NXT_DROPZONE_CONFIG')"
                 }
             ]
         },

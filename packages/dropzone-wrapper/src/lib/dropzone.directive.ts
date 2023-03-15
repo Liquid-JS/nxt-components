@@ -2,7 +2,7 @@
 import { isPlatformBrowser } from '@angular/common'
 import { Directive, DoCheck, ElementRef, EventEmitter, HostBinding, Inject, Input, KeyValueDiffers, NgZone, OnDestroy, OnInit, Optional, Output, PLATFORM_ID } from '@angular/core'
 import Dropzone from 'dropzone'
-import { DropzoneConfig, DropzoneConfigInterface, DropzoneEvent, DropzoneEvents, DropzoneListeners, internalChanges, NXT_DROPZONE_CONFIG, NXT_DROPZONE_LISTENERS } from './dropzone.interfaces'
+import { _DropzoneConfig, DropzoneConfig, DropzoneEvent, DropzoneEvents, DropzoneListeners, internalChanges, NXT_DROPZONE_CONFIG, NXT_DROPZONE_LISTENERS } from './dropzone.interfaces'
 
 @Directive({
     selector: '[nxtDropzone]',
@@ -13,6 +13,7 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
     private instance?: Dropzone
 
     private _disabled = false
+    /** Disables / detaches Dropzone from the element */
     @Input() set disabled(val: boolean) {
         val = !!val
         if (val != this._disabled && this.instance) {
@@ -31,8 +32,9 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
         return this._disabled
     }
 
-    private _params = new DropzoneConfig(this.defaults)
-    @Input('nxtDropzone') config?: DropzoneConfigInterface
+    private _params = new _DropzoneConfig(this.defaults)
+    /** Can be used to provide optional custom config */
+    @Input('nxtDropzone') config?: DropzoneConfig
 
     private configDiff = this.differs.find(this.config || {}).create()
     private paramDiff = this.differs.find(this._params).create()
@@ -136,7 +138,7 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
         private readonly platformId: Object,
         @Optional()
         @Inject(NXT_DROPZONE_CONFIG)
-        private readonly defaults?: DropzoneConfigInterface,
+        private readonly defaults?: DropzoneConfig,
         @Optional()
         @Inject(NXT_DROPZONE_LISTENERS)
         private readonly component?: DropzoneListeners
@@ -157,7 +159,7 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
         const changes = this.configDiff.diff(this.config || {} as any)
 
         if (changes) {
-            const newParams = new DropzoneConfig(this.defaults)
+            const newParams = new _DropzoneConfig(this.defaults)
             newParams.assign(this.config)
             const d = this.paramDiff.diff(newParams as any)
             if (d) {

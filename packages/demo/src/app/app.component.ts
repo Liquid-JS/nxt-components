@@ -28,7 +28,18 @@ const hidden = style({
             transition('close => open', [
                 hidden,
                 animate('0.3s ease-in-out', visible)
+            ]),
+            transition('* => void', [
+                visible,
+                animate('0.3s ease-in-out', hidden)
+            ]),
+            transition('void => *', [
+                hidden,
+                animate('0.3s ease-in-out', visible)
             ])
+        ]),
+        trigger('blockInitialRenderAnimation', [
+            transition(':enter', [])
         ])
     ]
 })
@@ -53,7 +64,21 @@ export class AppComponent {
         },
         {
             label: 'nxt-dropzone-wrapper',
-            link: '/dropzone-wrapper'
+            link: '/dropzone-wrapper',
+            children: [
+                {
+                    label: 'Getting started',
+                    link: 'getting-started'
+                },
+                {
+                    label: 'API docs',
+                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-dropzone-wrapper'
+                },
+                {
+                    label: 'Dropzone documentation',
+                    url: 'https://docs.dropzone.dev/configuration/basics/configuration-options'
+                }
+            ]
         },
         {
             label: 'nxt-flags',
