@@ -16,7 +16,8 @@
         "lint:sass:fix": "yarn lint:sass --fix",
         "test": "ng test flags --no-watch",
         "test:watch": "ng test flags",
-        "docs": "npx compodoc -c .compodocrc.json"
+        "docs": "npx compodoc -c .compodocrc.json",
+        "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/flags"
     },
     "peerDependencies": {
         "@angular/common": "^15.2.2",

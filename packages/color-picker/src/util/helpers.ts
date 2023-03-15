@@ -89,7 +89,7 @@ export interface DirectiveCallbacks {
     sliderDragStart(event: SliderChangeEvent): void
     sliderChanged(event: SliderChangeEvent): void
     sliderDragEnd(event: SliderChangeEvent): void
-    presetColorsChanged(value?: any[]): void
+    presetColorsChanged(value?: string[]): void
 }
 
 /**

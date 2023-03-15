@@ -1,0 +1,123 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "JsonViewComponent",
+            "id": "component-JsonViewComponent-fa24746c91b6f9cb606d94df9361294dfeec207d003e625a702c43bf04b647c51109b210910c86df724247a35d4c9533865831f7aac7b311ae6986ed22e15885",
+            "file": "src/lib/json-view/json-view.component.ts",
+            "encapsulation": [
+                "ViewEncapsulation.Emulated"
+            ],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "nxt-json-view",
+            "styleUrls": [
+                "./json-view.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./json-view.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "data",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "any",
+                    "decorators": []
+                },
+                {
+                    "name": "levelLabels",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "literal type",
+                    "decorators": []
+                },
+                {
+                    "name": "levelOpen",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\n",
+                    "styleUrl": "./json-view.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"nxt-json-view\">\n    <nxt-json-view-item [data]=\"data\"\n        [level]=\"0\"\n        [levelOpen]=\"levelOpen\"\n        [levelLabels]=\"levelLabels\"\n        class=\"json-view\"></nxt-json-view-item>\n</div>\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "JsonViewModule",
+            "id": "module-JsonViewModule-031f9b70474597d9d270400565dac363601f6e709132447aab1ff2b4978792f393a1f0e815fdb893c148cea3b156c6ed1884b3bfe0a94e68533cfd72092f3f04",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/lib/json-view.module.ts",
+            "methods": [],
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "JsonViewComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "JsonViewComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": []
+}

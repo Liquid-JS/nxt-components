@@ -39,7 +39,17 @@ export class AppComponent {
     readonly menuItems = [
         {
             label: 'nxt-color-picker',
-            link: '/color-picker'
+            link: '/color-picker',
+            children: [
+                {
+                    label: 'Getting started',
+                    link: 'getting-started'
+                },
+                {
+                    label: 'API docs',
+                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-color-picker'
+                }
+            ]
         },
         {
             label: 'nxt-dropzone-wrapper',

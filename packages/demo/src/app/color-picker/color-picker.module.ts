@@ -2,8 +2,11 @@ import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { ColorPickerModule } from 'nxt-color-picker'
+import { CodeBlockComponent } from '../code-block/code-block.component'
 import { ContentWrapComponent } from '../content-wrap/content-wrap.component'
 import { ExampleComponent } from '../example/example.component'
+import { InputsTableComponent } from '../inputs-table/inputs-table.component'
+import { OutputsTableComponent } from '../outputs-table/outputs-table.component'
 import { AppColorPickerRoutingModule } from './color-picker-routing.module'
 import { AppColorPickerComponent } from './color-picker/color-picker.component'
 import { AlphaChannelComponent } from './examples/alpha-channel/alpha-channel.component'
@@ -20,6 +23,7 @@ import { OkButtonComponent } from './examples/ok-button/ok-button.component'
 import { OutputFormatComponent } from './examples/output-format/output-format.component'
 import { ShowColorComponent } from './examples/show-color/show-color.component'
 import { ToggleButtonComponent } from './examples/toggle-button/toggle-button.component'
+import { GettingStartedComponent } from './getting-started/getting-started.component'
 
 @NgModule({
     declarations: [
@@ -37,7 +41,8 @@ import { ToggleButtonComponent } from './examples/toggle-button/toggle-button.co
         ManagePresetComponent,
         ToggleButtonComponent,
         AlphaChannelComponent,
-        AsComponentComponent
+        AsComponentComponent,
+        GettingStartedComponent
     ],
     imports: [
         CommonModule,
@@ -45,7 +50,10 @@ import { ToggleButtonComponent } from './examples/toggle-button/toggle-button.co
         AppColorPickerRoutingModule,
         ContentWrapComponent,
         ExampleComponent,
-        BsDropdownModule
+        BsDropdownModule,
+        CodeBlockComponent,
+        InputsTableComponent,
+        OutputsTableComponent
     ]
 })
 export class AppColorPickerModule { }

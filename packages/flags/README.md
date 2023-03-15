@@ -6,7 +6,7 @@
 
 Angular component to show country flags.
 
-[Demo](https://liquid-js.github.io/nxt-components/flags)
+[Demo](https://liquid-js.github.io/nxt-components/demo/flags)
 
 ## Install
 

@@ -1,6 +1,8 @@
 # Angular Dropzone Wrapper
 
-<a href="https://badge.fury.io/js/nxt-dropzone-wrapper"><img src="https://badge.fury.io/js/nxt-dropzone-wrapper.svg" align="right" alt="npm version" height="18"></a>
+[![GitHub license](https://img.shields.io/github/license/Liquid-JS/nxt-components.svg)](https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/dm/nxt-dropzone-wrapper.svg)](https://www.npmjs.com/package/nxt-dropzone-wrapper)
+[![scope](https://img.shields.io/npm/v/nxt-dropzone-wrapper.svg)](https://www.npmjs.com/package/nxt-dropzone-wrapper)
 
 This is an Angular wrapper library for the [Dropzone](http://www.dropzonejs.com/). To use this library you should get familiar with the Dropzone documentation as well since this documentation only explains details specific to this wrapper.
 
@@ -8,7 +10,7 @@ This documentation is for the latest 13.x.x version which requires Angular 13 or
 
 ### Quick links
 
-[Example application](https://liquid-js.github.io/nxt-components/dropzone-wrapper)
+[Example application](https://liquid-js.github.io/nxt-components/demo/dropzone-wrapper)
  \|
 [Example](https://github.com/Liquid-JS/nxt-components/tree/master/packages/demo/src/app/dropzone-wrapper)
  \|

@@ -2,6 +2,7 @@ import { isDevMode, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ServiceWorkerModule } from '@angular/service-worker'
+import { TooltipModule } from 'ngx-bootstrap/tooltip'
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
@@ -23,7 +24,8 @@ import { HomeComponent } from './home/home.component'
             // or after 30 seconds (whichever comes first).
             registrationStrategy: 'registerWhenStable:30000'
         }),
-        ContentWrapComponent
+        ContentWrapComponent,
+        TooltipModule.forRoot()
     ],
     providers: [
         {
@@ -35,7 +37,9 @@ import { HomeComponent } from './home/home.component'
                 languages: {
                     typescript: () => import('highlight.js/lib/languages/typescript'),
                     scss: () => import('highlight.js/lib/languages/scss'),
-                    xml: () => import('highlight.js/lib/languages/xml')
+                    xml: () => import('highlight.js/lib/languages/xml'),
+                    bash: () => import('highlight.js/lib/languages/bash'),
+                    shell: () => import('highlight.js/lib/languages/shell')
                 }
             }
         }

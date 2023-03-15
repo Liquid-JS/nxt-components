@@ -12,13 +12,11 @@ import { Component } from '@angular/core'
         max-width: 1200px;
         margin: 0 auto;
         overflow-x: auto;
-        padding-right: calc(var(--bs-gutter-x) * 0.5);
-        padding-left: calc(var(--bs-gutter-x) * 0.5);
     }
     `],
     // eslint-disable-next-line @angular-eslint/no-host-metadata-property
     host: {
-        class: 'px-md-4 pt-4 pt-md-5 pb-2'
+        class: 'px-md-4 pt-4 pt-md-5 pb-4'
     }
 })
 export class ContentWrapComponent { }

@@ -37,6 +37,10 @@ svg.github {
             color: $color_3;
         }
     }
+
+    .nav-item > .nav {
+        margin-inline-start: 1rem;
+    }
 }
 
 @media (min-width: 768px) {

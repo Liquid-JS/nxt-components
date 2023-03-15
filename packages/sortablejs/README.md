@@ -1,12 +1,16 @@
 # nxt-sortablejs
 
+[![GitHub license](https://img.shields.io/github/license/Liquid-JS/nxt-components.svg)](https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/dm/nxt-sortablejs.svg)](https://www.npmjs.com/package/nxt-sortablejs)
+[![scope](https://img.shields.io/npm/v/nxt-sortablejs.svg)](https://www.npmjs.com/package/nxt-sortablejs)
+
 This package is an Angular 2+ binding for [Sortable.js](https://github.com/RubaXa/Sortable). Supports standard arrays and Angular `FormArray`.
 
 Previously known as angular-sortablejs.
 
 ## Demo
 
-See the library in action in a [demo](https://liquid-js.github.io/nxt-components/sortablejs) project (the source is located in `src` directory).
+See the library in action in a [demo](https://liquid-js.github.io/nxt-components/demo/sortablejs) project (the source is located in `src` directory).
 
 Trees are also supported: [tree with fake root element (\*ngFor once, root can also be hidden anyway)](https://stackblitz.com/edit/angular-o1pq84) or [without (\*ngFor 2 times)](https://stackblitz.com/edit/angular-ptu94s).
 

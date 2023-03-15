@@ -1,0 +1,516 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "FlagComponent",
+            "id": "component-FlagComponent-4d2f5f2e241ce29b263db6b59cc64377618438490544e15b9871bf10328fce6de0d5ce7a338d43dc2d1996decdba1ebf6bfd72614ea70f1d406a5a3129ba049d",
+            "file": "src/lib/flag/flag.component.ts",
+            "encapsulation": [
+                "ViewEncapsulation.Emulated"
+            ],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "nxt-flag",
+            "styleUrls": [
+                "./flag.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./flag.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "country",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "FlagDatabaseKey",
+                    "decorators": []
+                },
+                {
+                    "name": "format",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "FlagFormat",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 36,
+                    "type": "number | ",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n    display: inline-block;\n    background-repeat: no-repeat;\n    background-position: center;\n    background-size: cover;\n}\n",
+                    "styleUrl": "./flag.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 78
+            },
+            "accessors": {
+                "country": {
+                    "name": "country",
+                    "setSignature": {
+                        "name": "country",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "val",
+                                "type": "FlagDatabaseKey",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 17,
+                        "jsdoctags": [
+                            {
+                                "name": "val",
+                                "type": "FlagDatabaseKey",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "format": {
+                    "name": "format",
+                    "setSignature": {
+                        "name": "format",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "val",
+                                "type": "FlagFormat",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 29,
+                        "jsdoctags": [
+                            {
+                                "name": "val",
+                                "type": "FlagFormat",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "size": {
+                    "name": "size",
+                    "setSignature": {
+                        "name": "size",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "val",
+                                "type": "number | ",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 36,
+                        "jsdoctags": [
+                            {
+                                "name": "val",
+                                "type": "number | ",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "templateData": "\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "FlagsModule",
+            "id": "module-FlagsModule-e2bc24deedce17b74df823185d8859c1ce3e0c57c094b3168ea637352825468e482f4af4f3f1a8dafcd05fecb64522d759e5dc8fdb4c126a37092bc7eaa7dac5",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/lib/flags.module.ts",
+            "methods": [],
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "FlagComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "FlagComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "availableCodes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/lib/flag/flag.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new Set(Object.values(FlagDatabase))"
+            },
+            {
+                "name": "availableFormats",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/lib/flag/flag.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new Set<FlagFormat>(Object.values(FlagFormatEnum))"
+            },
+            {
+                "name": "FlagDatabase",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/lib/database.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n    'ad': 'ad',\n    'and': 'ad',\n    'andorra': 'ad',\n    'ae': 'ae',\n    'are': 'ae',\n    'united-arab-emirates-(the)': 'ae',\n    'af': 'af',\n    'afg': 'af',\n    'afghanistan': 'af',\n    'ag': 'ag',\n    'atg': 'ag',\n    'antigua-and-barbuda': 'ag',\n    'al': 'al',\n    'alb': 'al',\n    'albania': 'al',\n    'am': 'am',\n    'arm': 'am',\n    'armenia': 'am',\n    'ao': 'ao',\n    'ago': 'ao',\n    'angola': 'ao',\n    'ar': 'ar',\n    'arg': 'ar',\n    'argentina': 'ar',\n    'at': 'at',\n    'aut': 'at',\n    'austria': 'at',\n    'au': 'au',\n    'aus': 'au',\n    'australia': 'au',\n    'az': 'az',\n    'aze': 'az',\n    'azerbaijan': 'az',\n    'ba': 'ba',\n    'bih': 'ba',\n    'bosnia-and-herzegovina': 'ba',\n    'bb': 'bb',\n    'brb': 'bb',\n    'barbados': 'bb',\n    'bd': 'bd',\n    'bgd': 'bd',\n    'bangladesh': 'bd',\n    'be': 'be',\n    'bel': 'be',\n    'belgium': 'be',\n    'bf': 'bf',\n    'bfa': 'bf',\n    'burkina-faso': 'bf',\n    'bg': 'bg',\n    'bgr': 'bg',\n    'bulgaria': 'bg',\n    'bh': 'bh',\n    'bhr': 'bh',\n    'bahrain': 'bh',\n    'bi': 'bi',\n    'bdi': 'bi',\n    'burundi': 'bi',\n    'bj': 'bj',\n    'ben': 'bj',\n    'benin': 'bj',\n    'bn': 'bn',\n    'brn': 'bn',\n    'brunei-darussalam': 'bn',\n    'bo': 'bo',\n    'bol': 'bo',\n    'bolivia': 'bo',\n    'br': 'br',\n    'bra': 'br',\n    'brazil': 'br',\n    'bs': 'bs',\n    'bhs': 'bs',\n    'bahamas': 'bs',\n    'bt': 'bt',\n    'btn': 'bt',\n    'bhutan': 'bt',\n    'bw': 'bw',\n    'bwa': 'bw',\n    'botswana': 'bw',\n    'by': 'by',\n    'blr': 'by',\n    'belarus': 'by',\n    'bz': 'bz',\n    'blz': 'bz',\n    'belize': 'bz',\n    'ca': 'ca',\n    'can': 'ca',\n    'canada': 'ca',\n    'cd': 'cd',\n    'cod': 'cd',\n    'the-democratic-republic-of-the-congo': 'cd',\n    'cf': 'cf',\n    'caf': 'cf',\n    'central-african-republic': 'cf',\n    'cg': 'cg',\n    'cog': 'cg',\n    'congo': 'cg',\n    'ch': 'ch',\n    'che': 'ch',\n    'switzerland': 'ch',\n    'ci': 'ci',\n    'civ': 'ci',\n    'cote-d-ivoire': 'ci',\n    'cl': 'cl',\n    'chl': 'cl',\n    'chile': 'cl',\n    'cm': 'cm',\n    'cmr': 'cm',\n    'cameroon': 'cm',\n    'cn': 'cn',\n    'chn': 'cn',\n    'china': 'cn',\n    'co': 'co',\n    'col': 'co',\n    'colombia': 'co',\n    'cr': 'cr',\n    'cri': 'cr',\n    'costa-rica': 'cr',\n    'cu': 'cu',\n    'cub': 'cu',\n    'cuba': 'cu',\n    'cv': 'cv',\n    'cpv': 'cv',\n    'cabo-verde [f]': 'cv',\n    'cy': 'cy',\n    'cyp': 'cy',\n    'cyprus': 'cy',\n    'cz': 'cz',\n    'cze': 'cz',\n    'czechia': 'cz',\n    'de': 'de',\n    'deu': 'de',\n    'germany': 'de',\n    'dj': 'dj',\n    'dji': 'dj',\n    'djibouti': 'dj',\n    'dk': 'dk',\n    'dnk': 'dk',\n    'denmark': 'dk',\n    'dm': 'dm',\n    'dma': 'dm',\n    'dominica': 'dm',\n    'do': 'do',\n    'dom': 'do',\n    'dominican-republic': 'do',\n    'dz': 'dz',\n    'dza': 'dz',\n    'algeria': 'dz',\n    'ec': 'ec',\n    'ecu': 'ec',\n    'ecuador': 'ec',\n    'ee': 'ee',\n    'est': 'ee',\n    'estonia': 'ee',\n    'eg': 'eg',\n    'egy': 'eg',\n    'egypt': 'eg',\n    'er': 'er',\n    'eri': 'er',\n    'eritrea': 'er',\n    'es': 'es',\n    'esp': 'es',\n    'spain': 'es',\n    'et': 'et',\n    'eth': 'et',\n    'ethiopia': 'et',\n    'fi': 'fi',\n    'fin': 'fi',\n    'finland': 'fi',\n    'fj': 'fj',\n    'fji': 'fj',\n    'fiji': 'fj',\n    'fm': 'fm',\n    'fsm': 'fm',\n    'micronesia': 'fm',\n    'fr': 'fr',\n    'fra': 'fr',\n    'france': 'fr',\n    'ga': 'ga',\n    'gab': 'ga',\n    'gabon': 'ga',\n    'gb': 'gb',\n    'gbr': 'gb',\n    'united-kingdom': 'gb',\n    'uk': 'gb',\n    'great-britain': 'gb',\n    'gd': 'gd',\n    'grd': 'gd',\n    'grenada': 'gd',\n    'ge': 'ge',\n    'geo': 'ge',\n    'georgia': 'ge',\n    'gh': 'gh',\n    'gha': 'gh',\n    'ghana': 'gh',\n    'gm': 'gm',\n    'gmb': 'gm',\n    'gambia': 'gm',\n    'gn': 'gn',\n    'gin': 'gn',\n    'guinea': 'gn',\n    'gq': 'gq',\n    'gnq': 'gq',\n    'equatorial-guinea': 'gq',\n    'gr': 'gr',\n    'grc': 'gr',\n    'greece': 'gr',\n    'gt': 'gt',\n    'gtm': 'gt',\n    'guatemala': 'gt',\n    'gw': 'gw',\n    'gnb': 'gw',\n    'guinea-bissau': 'gw',\n    'gy': 'gy',\n    'guy': 'gy',\n    'guyana': 'gy',\n    'hn': 'hn',\n    'hnd': 'hn',\n    'honduras': 'hn',\n    'hr': 'hr',\n    'hrv': 'hr',\n    'croatia': 'hr',\n    'ht': 'ht',\n    'hti': 'ht',\n    'haiti': 'ht',\n    'hu': 'hu',\n    'hun': 'hu',\n    'hungary': 'hu',\n    'id': 'id',\n    'idn': 'id',\n    'indonesia': 'id',\n    'ie': 'ie',\n    'irl': 'ie',\n    'ireland': 'ie',\n    'il': 'il',\n    'isr': 'il',\n    'israel': 'il',\n    'in': 'in',\n    'ind': 'in',\n    'india': 'in',\n    'iq': 'iq',\n    'irq': 'iq',\n    'iraq': 'iq',\n    'ir': 'ir',\n    'irn': 'ir',\n    'iran': 'ir',\n    'is': 'is',\n    'isl': 'is',\n    'iceland': 'is',\n    'it': 'it',\n    'ita': 'it',\n    'italy': 'it',\n    'jm': 'jm',\n    'jam': 'jm',\n    'jamaica': 'jm',\n    'jo': 'jo',\n    'jor': 'jo',\n    'jordan': 'jo',\n    'jp': 'jp',\n    'jpn': 'jp',\n    'japan': 'jp',\n    'ke': 'ke',\n    'ken': 'ke',\n    'kenya': 'ke',\n    'kg': 'kg',\n    'kgz': 'kg',\n    'kyrgyzstan': 'kg',\n    'kh': 'kh',\n    'khm': 'kh',\n    'cambodia': 'kh',\n    'ki': 'ki',\n    'kir': 'ki',\n    'kiribati': 'ki',\n    'km': 'km',\n    'com': 'km',\n    'comoros': 'km',\n    'kn': 'kn',\n    'kna': 'kn',\n    'saint-kitts-and-nevis': 'kn',\n    'kp': 'kp',\n    'prk': 'kp',\n    'north-korea': 'kp',\n    'kr': 'kr',\n    'kor': 'kr',\n    'south-korea': 'kr',\n    'kw': 'kw',\n    'kwt': 'kw',\n    'kuwait': 'kw',\n    'kz': 'kz',\n    'kaz': 'kz',\n    'kazakhstan': 'kz',\n    'la': 'la',\n    'lao': 'la',\n    'laos': 'la',\n    'lb': 'lb',\n    'lbn': 'lb',\n    'lebanon': 'lb',\n    'lc': 'lc',\n    'lca': 'lc',\n    'saint-lucia': 'lc',\n    'li': 'li',\n    'lie': 'li',\n    'liechtenstein': 'li',\n    'lk': 'lk',\n    'lka': 'lk',\n    'sri-lanka': 'lk',\n    'lr': 'lr',\n    'lbr': 'lr',\n    'liberia': 'lr',\n    'ls': 'ls',\n    'lso': 'ls',\n    'lesotho': 'ls',\n    'lt': 'lt',\n    'ltu': 'lt',\n    'lithuania': 'lt',\n    'lu': 'lu',\n    'lux': 'lu',\n    'luxembourg': 'lu',\n    'lv': 'lv',\n    'lva': 'lv',\n    'latvia': 'lv',\n    'ly': 'ly',\n    'lby': 'ly',\n    'libya': 'ly',\n    'ma': 'ma',\n    'mar': 'ma',\n    'morocco': 'ma',\n    'mc': 'mc',\n    'mco': 'mc',\n    'monaco': 'mc',\n    'md': 'md',\n    'mda': 'md',\n    'moldova': 'md',\n    'me': 'me',\n    'mne': 'me',\n    'montenegro': 'me',\n    'mg': 'mg',\n    'mdg': 'mg',\n    'madagascar': 'mg',\n    'mh': 'mh',\n    'mhl': 'mh',\n    'marshall-islands': 'mh',\n    'mk': 'mk',\n    'mkd': 'mk',\n    'north-macedonia': 'mk',\n    'ml': 'ml',\n    'mli': 'ml',\n    'mali': 'ml',\n    'mm': 'mm',\n    'mmr': 'mm',\n    'myanmar': 'mm',\n    'mn': 'mn',\n    'mng': 'mn',\n    'mongolia': 'mn',\n    'mr': 'mr',\n    'mrt': 'mr',\n    'mauritania': 'mr',\n    'mt': 'mt',\n    'mlt': 'mt',\n    'malta': 'mt',\n    'mu': 'mu',\n    'mus': 'mu',\n    'mauritius': 'mu',\n    'mv': 'mv',\n    'mdv': 'mv',\n    'maldives': 'mv',\n    'mw': 'mw',\n    'mwi': 'mw',\n    'malawi': 'mw',\n    'mx': 'mx',\n    'mex': 'mx',\n    'mexico': 'mx',\n    'my': 'my',\n    'mys': 'my',\n    'malaysia': 'my',\n    'mz': 'mz',\n    'moz': 'mz',\n    'mozambique': 'mz',\n    'na': 'na',\n    'nam': 'na',\n    'namibia': 'na',\n    'ne': 'ne',\n    'ner': 'ne',\n    'niger': 'ne',\n    'ng': 'ng',\n    'nga': 'ng',\n    'nigeria': 'ng',\n    'ni': 'ni',\n    'nic': 'ni',\n    'nicaragua': 'ni',\n    'nl': 'nl',\n    'nld': 'nl',\n    'netherlands': 'nl',\n    'no': 'no',\n    'nor': 'no',\n    'norway': 'no',\n    'bv': 'no',\n    'bvt': 'no',\n    'bouvet-island': 'no',\n    'no-bv': 'no',\n    'aq': 'aq',\n    'ata': 'aq',\n    'antarctica': 'aq',\n    'tf': 'tf',\n    'atf': 'tf',\n    'french-southern-territories': 'tf',\n    'fr-tf': 'tf',\n    'hm': 'au',\n    'hmd': 'au',\n    'heard-island-and-mcdonald-islands': 'au',\n    'au-hm': 'au',\n    'gs': 'gs',\n    'sgs': 'gs',\n    'south-georgia-and-the-south-sandwich-islands': 'gs',\n    'uk-gs': 'gs',\n    'um': 'us',\n    'umi': 'us',\n    'united-states-minor-outlying-islands': 'us',\n    'us-um': 'us',\n    'np': 'np',\n    'npl': 'np',\n    'nepal': 'np',\n    'nr': 'nr',\n    'nru': 'nr',\n    'nauru': 'nr',\n    'nz': 'nz',\n    'nzl': 'nz',\n    'new-zealand': 'nz',\n    'om': 'om',\n    'omn': 'om',\n    'oman': 'om',\n    'pa': 'pa',\n    'pan': 'pa',\n    'panama': 'pa',\n    'pe': 'pe',\n    'per': 'pe',\n    'peru': 'pe',\n    'pg': 'pg',\n    'png': 'pg',\n    'papua-new-guinea': 'pg',\n    'ph': 'ph',\n    'phl': 'ph',\n    'philippines': 'ph',\n    'pk': 'pk',\n    'pak': 'pk',\n    'pakistan': 'pk',\n    'pl': 'pl',\n    'pol': 'pl',\n    'poland': 'pl',\n    'pt': 'pt',\n    'prt': 'pt',\n    'portugal': 'pt',\n    'pw': 'pw',\n    'plw': 'pw',\n    'palau': 'pw',\n    'py': 'py',\n    'pry': 'py',\n    'paraguay': 'py',\n    'qa': 'qa',\n    'qat': 'qa',\n    'qatar': 'qa',\n    'ro': 'ro',\n    'rou': 'ro',\n    'romania': 'ro',\n    'rs': 'rs',\n    'srb': 'rs',\n    'serbia': 'rs',\n    'ru': 'ru',\n    'rus': 'ru',\n    'russia': 'ru',\n    'rw': 'rw',\n    'rwa': 'rw',\n    'rwanda': 'rw',\n    'sa': 'sa',\n    'sau': 'sa',\n    'saudi-arabia': 'sa',\n    'sb': 'sb',\n    'slb': 'sb',\n    'solomon-islands': 'sb',\n    'sc': 'sc',\n    'syc': 'sc',\n    'seychelles': 'sc',\n    'sd': 'sd',\n    'sdn': 'sd',\n    'sudan': 'sd',\n    'se': 'se',\n    'swe': 'se',\n    'sweden': 'se',\n    'sg': 'sg',\n    'sgp': 'sg',\n    'singapore': 'sg',\n    'si': 'si',\n    'svn': 'si',\n    'slovenia': 'si',\n    'sk': 'sk',\n    'svk': 'sk',\n    'slovakia': 'sk',\n    'sl': 'sl',\n    'sle': 'sl',\n    'sierra-leone': 'sl',\n    'sm': 'sm',\n    'smr': 'sm',\n    'san-marino': 'sm',\n    'sn': 'sn',\n    'sen': 'sn',\n    'senegal': 'sn',\n    'so': 'so',\n    'som': 'so',\n    'somalia': 'so',\n    'sr': 'sr',\n    'sur': 'sr',\n    'suriname': 'sr',\n    'ss': 'ss',\n    'ssd': 'ss',\n    'south-sudan': 'ss',\n    'st': 'st',\n    'stp': 'st',\n    'sao-tome-and-principe': 'st',\n    'sv': 'sv',\n    'slv': 'sv',\n    'el-salvador': 'sv',\n    'sy': 'sy',\n    'syr': 'sy',\n    'syria': 'sy',\n    'sz': 'sz',\n    'swz': 'sz',\n    'eswatini': 'sz',\n    'td': 'td',\n    'tcd': 'td',\n    'chad': 'td',\n    'tg': 'tg',\n    'tgo': 'tg',\n    'togo': 'tg',\n    'th': 'th',\n    'tha': 'th',\n    'thailand': 'th',\n    'tj': 'tj',\n    'tjk': 'tj',\n    'tajikistan': 'tj',\n    'tl': 'tl',\n    'tls': 'tl',\n    'timor-leste': 'tl',\n    'tm': 'tm',\n    'tkm': 'tm',\n    'turkmenistan': 'tm',\n    'tn': 'tn',\n    'tun': 'tn',\n    'tunisia': 'tn',\n    'to': 'to',\n    'ton': 'to',\n    'tonga': 'to',\n    'tr': 'tr',\n    'tur': 'tr',\n    'turkey': 'tr',\n    'tt': 'tt',\n    'tto': 'tt',\n    'trinidad-and-tobago': 'tt',\n    'tv': 'tv',\n    'tuv': 'tv',\n    'tuvalu': 'tv',\n    'tz': 'tz',\n    'tza': 'tz',\n    'tanzania': 'tz',\n    'ua': 'ua',\n    'ukr': 'ua',\n    'ukraine': 'ua',\n    'ug': 'ug',\n    'uga': 'ug',\n    'uganda': 'ug',\n    'us': 'us',\n    'usa': 'us',\n    'united-states-of-america': 'us',\n    'uy': 'uy',\n    'ury': 'uy',\n    'uruguay': 'uy',\n    'uz': 'uz',\n    'uzb': 'uz',\n    'uzbekistan': 'uz',\n    'vc': 'vc',\n    'vct': 'vc',\n    'saint-vincent-and-the-grenadines': 'vc',\n    've': 've',\n    'ven': 've',\n    'venezuela': 've',\n    'vn': 'vn',\n    'vnm': 'vn',\n    'viet-nam': 'vn',\n    'vu': 'vu',\n    'vut': 'vu',\n    'vanuatu': 'vu',\n    'ws': 'ws',\n    'wsm': 'ws',\n    'samoa': 'ws',\n    'ye': 'ye',\n    'yem': 'ye',\n    'yemen': 'ye',\n    'za': 'za',\n    'zaf': 'za',\n    'south-africa': 'za',\n    'zm': 'zm',\n    'zmb': 'zm',\n    'zambia': 'zm',\n    'zw': 'zw',\n    'zwe': 'zw',\n    'zimbabwe': 'zw',\n    'cc': 'cc',\n    'cck': 'cc',\n    'cocos-islands': 'cc',\n    'au-cc': 'cc',\n    'cx': 'cx',\n    'cxr': 'cx',\n    'christmas-island': 'cx',\n    'au-cx': 'cx',\n    'nf': 'nf',\n    'nfk': 'nf',\n    'norfolk-island': 'nf',\n    'au-nf': 'nf',\n    'hk': 'hk',\n    'hkg': 'hk',\n    'hong-kong': 'hk',\n    'cn-hk': 'hk',\n    'mo': 'mo',\n    'mac': 'mo',\n    'macao': 'mo',\n    'cn-mo': 'mo',\n    'tw': 'tw',\n    'twn': 'tw',\n    'taiwan': 'tw',\n    'cn-tw': 'tw',\n    'fo': 'fo',\n    'fro': 'fo',\n    'faroe-islands': 'fo',\n    'dk-fo': 'fo',\n    'gl': 'gl',\n    'grl': 'gl',\n    'greenland': 'gl',\n    'dk-gl': 'gl',\n    'ax': 'ax',\n    'ala': 'ax',\n    'aland-islands': 'ax',\n    'fi-ax': 'ax',\n    'bl': 'bl',\n    'blm': 'bl',\n    'saint-barthelemy': 'bl',\n    'fr-bl': 'bl',\n    'gf': 'gf',\n    'guf': 'gf',\n    'french-guiana': 'gf',\n    'fr-gf': 'gf',\n    'gp': 'gp',\n    'glp': 'gp',\n    'guadeloupe': 'gp',\n    'fr-gp': 'gp',\n    'mf': 'fr',\n    'maf': 'fr',\n    'saint-martin': 'fr',\n    'fr-mf': 'fr',\n    'xk': 'xk',\n    'xxk': 'xk',\n    'kosovo': 'xk',\n    'mq': 'mq',\n    'mtq': 'mq',\n    'martinique': 'mq',\n    'fr-mq': 'mq',\n    'nc': 'nc',\n    'ncl': 'nc',\n    'new-caledonia': 'nc',\n    'fr-nc': 'nc',\n    'pf': 'pf',\n    'pyf': 'pf',\n    'french-polynesia': 'pf',\n    'fr-pf': 'pf',\n    'pm': 'pm',\n    'spm': 'pm',\n    'saint-pierre-and-miquelon': 'pm',\n    'fr-pm': 'pm',\n    're': 'fr',\n    'reu': 'fr',\n    'reunion': 'fr',\n    'fr-re': 'fr',\n    'wf': 'wf',\n    'wlf': 'wf',\n    'wallis-and-futuna': 'wf',\n    'fr-wf': 'wf',\n    'yt': 'yt',\n    'myt': 'yt',\n    'mayotte': 'yt',\n    'fr-yt': 'yt',\n    'gg': 'gg',\n    'ggy': 'gg',\n    'guernsey': 'gg',\n    'gb-gg': 'gg',\n    'im': 'im',\n    'imn': 'im',\n    'isle-of-man': 'im',\n    'gb-im': 'im',\n    'je': 'je',\n    'jey': 'je',\n    'jersey': 'je',\n    'gb-je': 'je',\n    'aw': 'aw',\n    'abw': 'aw',\n    'aruba': 'aw',\n    'nl-aw': 'aw',\n    'bq': 'bq',\n    'bes': 'bq',\n    'bonaire': 'bq',\n    'nl-bq': 'bq',\n    'cw': 'cw',\n    'cuw': 'cw',\n    'curaçao': 'cw',\n    'nl-cw': 'cw',\n    'sx': 'sx',\n    'sxm': 'sx',\n    'sint-maarten': 'sx',\n    'nl-sx': 'sx',\n    'sj': 'no',\n    'sjm': 'no',\n    'svalbard': 'no',\n    'no-sj': 'no',\n    'ck': 'ck',\n    'cok': 'ck',\n    'cook-islands': 'ck',\n    'nz-ck': 'ck',\n    'nu': 'nu',\n    'niu': 'nu',\n    'niue': 'nu',\n    'nz-nu': 'nu',\n    'tk': 'tk',\n    'tkl': 'tk',\n    'tokelau': 'tk',\n    'nz-tk': 'tk',\n    'ai': 'ai',\n    'aia': 'ai',\n    'anguilla': 'ai',\n    'uk-ai': 'ai',\n    'bm': 'bm',\n    'bmu': 'bm',\n    'bermuda': 'bm',\n    'uk-bm': 'bm',\n    'fk': 'fk',\n    'flk': 'fk',\n    'falkland-islands': 'fk',\n    'uk-fk': 'fk',\n    'gi': 'gi',\n    'gib': 'gi',\n    'gibraltar': 'gi',\n    'uk-gi': 'gi',\n    'io': 'io',\n    'iot': 'io',\n    'british-indian-ocean-territory': 'io',\n    'uk-io': 'io',\n    'ky': 'ky',\n    'cym': 'ky',\n    'cayman-islands': 'ky',\n    'uk-ky': 'ky',\n    'ms': 'ms',\n    'msr': 'ms',\n    'montserrat': 'ms',\n    'uk-ms': 'ms',\n    'pn': 'pn',\n    'pcn': 'pn',\n    'pitcairn': 'pn',\n    'uk-pn': 'pn',\n    'sh': 'sh',\n    'shn': 'sh',\n    'saint-helena': 'sh',\n    'uk-sh': 'sh',\n    'tc': 'tc',\n    'tca': 'tc',\n    'turks-and-caicos-islands': 'tc',\n    'uk-tc': 'tc',\n    'vg': 'vg',\n    'vgb': 'vg',\n    'british-virgin-islands': 'vg',\n    'uk-vg': 'vg',\n    'as': 'as',\n    'asm': 'as',\n    'american-samoa': 'as',\n    'us-as': 'as',\n    'gu': 'gu',\n    'gum': 'gu',\n    'guam': 'gu',\n    'us-gu': 'gu',\n    'mp': 'mp',\n    'mnp': 'mp',\n    'northern-mariana-islands': 'mp',\n    'us-mp': 'mp',\n    'pr': 'pr',\n    'pri': 'pr',\n    'puerto-rico': 'pr',\n    'us-pr': 'pr',\n    'vi': 'vi',\n    'vir': 'vi',\n    'us-virgin-islands': 'vi',\n    'us-vi': 'vi',\n    'eh': 'eh',\n    'esh': 'eh',\n    'western-sahara': 'eh',\n    'ps': 'ps',\n    'pse': 'ps',\n    'palestine': 'ps',\n    'va': 'va',\n    'vat': 'va',\n    'holy-see': 'va',\n    'vatican-city': 'va',\n    'xx': 'xx'\n}"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "FlagDatabaseKey",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "",
+                "file": "src/lib/database.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
+            },
+            {
+                "name": "FlagFormat",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": " `${FlagFormatEnum}`",
+                "file": "src/lib/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 197
+            }
+        ],
+        "enumerations": [
+            {
+                "name": "FlagFormatEnum",
+                "childs": [
+                    {
+                        "name": "None",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "none"
+                    },
+                    {
+                        "name": "Round",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "round"
+                    },
+                    {
+                        "name": "Square",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "square"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/lib/types.ts"
+            },
+            {
+                "name": "FlagSize",
+                "childs": [
+                    {
+                        "name": "xxs",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 8
+                    },
+                    {
+                        "name": "xs",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 16
+                    },
+                    {
+                        "name": "s",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 24
+                    },
+                    {
+                        "name": "m",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 32
+                    },
+                    {
+                        "name": "l",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 48
+                    },
+                    {
+                        "name": "xl",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 64
+                    },
+                    {
+                        "name": "xxl",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": 96
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/lib/types.ts"
+            }
+        ],
+        "groupedVariables": {
+            "src/lib/flag/flag.component.ts": [
+                {
+                    "name": "availableCodes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/lib/flag/flag.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new Set(Object.values(FlagDatabase))"
+                },
+                {
+                    "name": "availableFormats",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/lib/flag/flag.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new Set<FlagFormat>(Object.values(FlagFormatEnum))"
+                }
+            ],
+            "src/lib/database.ts": [
+                {
+                    "name": "FlagDatabase",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/lib/database.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n    'ad': 'ad',\n    'and': 'ad',\n    'andorra': 'ad',\n    'ae': 'ae',\n    'are': 'ae',\n    'united-arab-emirates-(the)': 'ae',\n    'af': 'af',\n    'afg': 'af',\n    'afghanistan': 'af',\n    'ag': 'ag',\n    'atg': 'ag',\n    'antigua-and-barbuda': 'ag',\n    'al': 'al',\n    'alb': 'al',\n    'albania': 'al',\n    'am': 'am',\n    'arm': 'am',\n    'armenia': 'am',\n    'ao': 'ao',\n    'ago': 'ao',\n    'angola': 'ao',\n    'ar': 'ar',\n    'arg': 'ar',\n    'argentina': 'ar',\n    'at': 'at',\n    'aut': 'at',\n    'austria': 'at',\n    'au': 'au',\n    'aus': 'au',\n    'australia': 'au',\n    'az': 'az',\n    'aze': 'az',\n    'azerbaijan': 'az',\n    'ba': 'ba',\n    'bih': 'ba',\n    'bosnia-and-herzegovina': 'ba',\n    'bb': 'bb',\n    'brb': 'bb',\n    'barbados': 'bb',\n    'bd': 'bd',\n    'bgd': 'bd',\n    'bangladesh': 'bd',\n    'be': 'be',\n    'bel': 'be',\n    'belgium': 'be',\n    'bf': 'bf',\n    'bfa': 'bf',\n    'burkina-faso': 'bf',\n    'bg': 'bg',\n    'bgr': 'bg',\n    'bulgaria': 'bg',\n    'bh': 'bh',\n    'bhr': 'bh',\n    'bahrain': 'bh',\n    'bi': 'bi',\n    'bdi': 'bi',\n    'burundi': 'bi',\n    'bj': 'bj',\n    'ben': 'bj',\n    'benin': 'bj',\n    'bn': 'bn',\n    'brn': 'bn',\n    'brunei-darussalam': 'bn',\n    'bo': 'bo',\n    'bol': 'bo',\n    'bolivia': 'bo',\n    'br': 'br',\n    'bra': 'br',\n    'brazil': 'br',\n    'bs': 'bs',\n    'bhs': 'bs',\n    'bahamas': 'bs',\n    'bt': 'bt',\n    'btn': 'bt',\n    'bhutan': 'bt',\n    'bw': 'bw',\n    'bwa': 'bw',\n    'botswana': 'bw',\n    'by': 'by',\n    'blr': 'by',\n    'belarus': 'by',\n    'bz': 'bz',\n    'blz': 'bz',\n    'belize': 'bz',\n    'ca': 'ca',\n    'can': 'ca',\n    'canada': 'ca',\n    'cd': 'cd',\n    'cod': 'cd',\n    'the-democratic-republic-of-the-congo': 'cd',\n    'cf': 'cf',\n    'caf': 'cf',\n    'central-african-republic': 'cf',\n    'cg': 'cg',\n    'cog': 'cg',\n    'congo': 'cg',\n    'ch': 'ch',\n    'che': 'ch',\n    'switzerland': 'ch',\n    'ci': 'ci',\n    'civ': 'ci',\n    'cote-d-ivoire': 'ci',\n    'cl': 'cl',\n    'chl': 'cl',\n    'chile': 'cl',\n    'cm': 'cm',\n    'cmr': 'cm',\n    'cameroon': 'cm',\n    'cn': 'cn',\n    'chn': 'cn',\n    'china': 'cn',\n    'co': 'co',\n    'col': 'co',\n    'colombia': 'co',\n    'cr': 'cr',\n    'cri': 'cr',\n    'costa-rica': 'cr',\n    'cu': 'cu',\n    'cub': 'cu',\n    'cuba': 'cu',\n    'cv': 'cv',\n    'cpv': 'cv',\n    'cabo-verde [f]': 'cv',\n    'cy': 'cy',\n    'cyp': 'cy',\n    'cyprus': 'cy',\n    'cz': 'cz',\n    'cze': 'cz',\n    'czechia': 'cz',\n    'de': 'de',\n    'deu': 'de',\n    'germany': 'de',\n    'dj': 'dj',\n    'dji': 'dj',\n    'djibouti': 'dj',\n    'dk': 'dk',\n    'dnk': 'dk',\n    'denmark': 'dk',\n    'dm': 'dm',\n    'dma': 'dm',\n    'dominica': 'dm',\n    'do': 'do',\n    'dom': 'do',\n    'dominican-republic': 'do',\n    'dz': 'dz',\n    'dza': 'dz',\n    'algeria': 'dz',\n    'ec': 'ec',\n    'ecu': 'ec',\n    'ecuador': 'ec',\n    'ee': 'ee',\n    'est': 'ee',\n    'estonia': 'ee',\n    'eg': 'eg',\n    'egy': 'eg',\n    'egypt': 'eg',\n    'er': 'er',\n    'eri': 'er',\n    'eritrea': 'er',\n    'es': 'es',\n    'esp': 'es',\n    'spain': 'es',\n    'et': 'et',\n    'eth': 'et',\n    'ethiopia': 'et',\n    'fi': 'fi',\n    'fin': 'fi',\n    'finland': 'fi',\n    'fj': 'fj',\n    'fji': 'fj',\n    'fiji': 'fj',\n    'fm': 'fm',\n    'fsm': 'fm',\n    'micronesia': 'fm',\n    'fr': 'fr',\n    'fra': 'fr',\n    'france': 'fr',\n    'ga': 'ga',\n    'gab': 'ga',\n    'gabon': 'ga',\n    'gb': 'gb',\n    'gbr': 'gb',\n    'united-kingdom': 'gb',\n    'uk': 'gb',\n    'great-britain': 'gb',\n    'gd': 'gd',\n    'grd': 'gd',\n    'grenada': 'gd',\n    'ge': 'ge',\n    'geo': 'ge',\n    'georgia': 'ge',\n    'gh': 'gh',\n    'gha': 'gh',\n    'ghana': 'gh',\n    'gm': 'gm',\n    'gmb': 'gm',\n    'gambia': 'gm',\n    'gn': 'gn',\n    'gin': 'gn',\n    'guinea': 'gn',\n    'gq': 'gq',\n    'gnq': 'gq',\n    'equatorial-guinea': 'gq',\n    'gr': 'gr',\n    'grc': 'gr',\n    'greece': 'gr',\n    'gt': 'gt',\n    'gtm': 'gt',\n    'guatemala': 'gt',\n    'gw': 'gw',\n    'gnb': 'gw',\n    'guinea-bissau': 'gw',\n    'gy': 'gy',\n    'guy': 'gy',\n    'guyana': 'gy',\n    'hn': 'hn',\n    'hnd': 'hn',\n    'honduras': 'hn',\n    'hr': 'hr',\n    'hrv': 'hr',\n    'croatia': 'hr',\n    'ht': 'ht',\n    'hti': 'ht',\n    'haiti': 'ht',\n    'hu': 'hu',\n    'hun': 'hu',\n    'hungary': 'hu',\n    'id': 'id',\n    'idn': 'id',\n    'indonesia': 'id',\n    'ie': 'ie',\n    'irl': 'ie',\n    'ireland': 'ie',\n    'il': 'il',\n    'isr': 'il',\n    'israel': 'il',\n    'in': 'in',\n    'ind': 'in',\n    'india': 'in',\n    'iq': 'iq',\n    'irq': 'iq',\n    'iraq': 'iq',\n    'ir': 'ir',\n    'irn': 'ir',\n    'iran': 'ir',\n    'is': 'is',\n    'isl': 'is',\n    'iceland': 'is',\n    'it': 'it',\n    'ita': 'it',\n    'italy': 'it',\n    'jm': 'jm',\n    'jam': 'jm',\n    'jamaica': 'jm',\n    'jo': 'jo',\n    'jor': 'jo',\n    'jordan': 'jo',\n    'jp': 'jp',\n    'jpn': 'jp',\n    'japan': 'jp',\n    'ke': 'ke',\n    'ken': 'ke',\n    'kenya': 'ke',\n    'kg': 'kg',\n    'kgz': 'kg',\n    'kyrgyzstan': 'kg',\n    'kh': 'kh',\n    'khm': 'kh',\n    'cambodia': 'kh',\n    'ki': 'ki',\n    'kir': 'ki',\n    'kiribati': 'ki',\n    'km': 'km',\n    'com': 'km',\n    'comoros': 'km',\n    'kn': 'kn',\n    'kna': 'kn',\n    'saint-kitts-and-nevis': 'kn',\n    'kp': 'kp',\n    'prk': 'kp',\n    'north-korea': 'kp',\n    'kr': 'kr',\n    'kor': 'kr',\n    'south-korea': 'kr',\n    'kw': 'kw',\n    'kwt': 'kw',\n    'kuwait': 'kw',\n    'kz': 'kz',\n    'kaz': 'kz',\n    'kazakhstan': 'kz',\n    'la': 'la',\n    'lao': 'la',\n    'laos': 'la',\n    'lb': 'lb',\n    'lbn': 'lb',\n    'lebanon': 'lb',\n    'lc': 'lc',\n    'lca': 'lc',\n    'saint-lucia': 'lc',\n    'li': 'li',\n    'lie': 'li',\n    'liechtenstein': 'li',\n    'lk': 'lk',\n    'lka': 'lk',\n    'sri-lanka': 'lk',\n    'lr': 'lr',\n    'lbr': 'lr',\n    'liberia': 'lr',\n    'ls': 'ls',\n    'lso': 'ls',\n    'lesotho': 'ls',\n    'lt': 'lt',\n    'ltu': 'lt',\n    'lithuania': 'lt',\n    'lu': 'lu',\n    'lux': 'lu',\n    'luxembourg': 'lu',\n    'lv': 'lv',\n    'lva': 'lv',\n    'latvia': 'lv',\n    'ly': 'ly',\n    'lby': 'ly',\n    'libya': 'ly',\n    'ma': 'ma',\n    'mar': 'ma',\n    'morocco': 'ma',\n    'mc': 'mc',\n    'mco': 'mc',\n    'monaco': 'mc',\n    'md': 'md',\n    'mda': 'md',\n    'moldova': 'md',\n    'me': 'me',\n    'mne': 'me',\n    'montenegro': 'me',\n    'mg': 'mg',\n    'mdg': 'mg',\n    'madagascar': 'mg',\n    'mh': 'mh',\n    'mhl': 'mh',\n    'marshall-islands': 'mh',\n    'mk': 'mk',\n    'mkd': 'mk',\n    'north-macedonia': 'mk',\n    'ml': 'ml',\n    'mli': 'ml',\n    'mali': 'ml',\n    'mm': 'mm',\n    'mmr': 'mm',\n    'myanmar': 'mm',\n    'mn': 'mn',\n    'mng': 'mn',\n    'mongolia': 'mn',\n    'mr': 'mr',\n    'mrt': 'mr',\n    'mauritania': 'mr',\n    'mt': 'mt',\n    'mlt': 'mt',\n    'malta': 'mt',\n    'mu': 'mu',\n    'mus': 'mu',\n    'mauritius': 'mu',\n    'mv': 'mv',\n    'mdv': 'mv',\n    'maldives': 'mv',\n    'mw': 'mw',\n    'mwi': 'mw',\n    'malawi': 'mw',\n    'mx': 'mx',\n    'mex': 'mx',\n    'mexico': 'mx',\n    'my': 'my',\n    'mys': 'my',\n    'malaysia': 'my',\n    'mz': 'mz',\n    'moz': 'mz',\n    'mozambique': 'mz',\n    'na': 'na',\n    'nam': 'na',\n    'namibia': 'na',\n    'ne': 'ne',\n    'ner': 'ne',\n    'niger': 'ne',\n    'ng': 'ng',\n    'nga': 'ng',\n    'nigeria': 'ng',\n    'ni': 'ni',\n    'nic': 'ni',\n    'nicaragua': 'ni',\n    'nl': 'nl',\n    'nld': 'nl',\n    'netherlands': 'nl',\n    'no': 'no',\n    'nor': 'no',\n    'norway': 'no',\n    'bv': 'no',\n    'bvt': 'no',\n    'bouvet-island': 'no',\n    'no-bv': 'no',\n    'aq': 'aq',\n    'ata': 'aq',\n    'antarctica': 'aq',\n    'tf': 'tf',\n    'atf': 'tf',\n    'french-southern-territories': 'tf',\n    'fr-tf': 'tf',\n    'hm': 'au',\n    'hmd': 'au',\n    'heard-island-and-mcdonald-islands': 'au',\n    'au-hm': 'au',\n    'gs': 'gs',\n    'sgs': 'gs',\n    'south-georgia-and-the-south-sandwich-islands': 'gs',\n    'uk-gs': 'gs',\n    'um': 'us',\n    'umi': 'us',\n    'united-states-minor-outlying-islands': 'us',\n    'us-um': 'us',\n    'np': 'np',\n    'npl': 'np',\n    'nepal': 'np',\n    'nr': 'nr',\n    'nru': 'nr',\n    'nauru': 'nr',\n    'nz': 'nz',\n    'nzl': 'nz',\n    'new-zealand': 'nz',\n    'om': 'om',\n    'omn': 'om',\n    'oman': 'om',\n    'pa': 'pa',\n    'pan': 'pa',\n    'panama': 'pa',\n    'pe': 'pe',\n    'per': 'pe',\n    'peru': 'pe',\n    'pg': 'pg',\n    'png': 'pg',\n    'papua-new-guinea': 'pg',\n    'ph': 'ph',\n    'phl': 'ph',\n    'philippines': 'ph',\n    'pk': 'pk',\n    'pak': 'pk',\n    'pakistan': 'pk',\n    'pl': 'pl',\n    'pol': 'pl',\n    'poland': 'pl',\n    'pt': 'pt',\n    'prt': 'pt',\n    'portugal': 'pt',\n    'pw': 'pw',\n    'plw': 'pw',\n    'palau': 'pw',\n    'py': 'py',\n    'pry': 'py',\n    'paraguay': 'py',\n    'qa': 'qa',\n    'qat': 'qa',\n    'qatar': 'qa',\n    'ro': 'ro',\n    'rou': 'ro',\n    'romania': 'ro',\n    'rs': 'rs',\n    'srb': 'rs',\n    'serbia': 'rs',\n    'ru': 'ru',\n    'rus': 'ru',\n    'russia': 'ru',\n    'rw': 'rw',\n    'rwa': 'rw',\n    'rwanda': 'rw',\n    'sa': 'sa',\n    'sau': 'sa',\n    'saudi-arabia': 'sa',\n    'sb': 'sb',\n    'slb': 'sb',\n    'solomon-islands': 'sb',\n    'sc': 'sc',\n    'syc': 'sc',\n    'seychelles': 'sc',\n    'sd': 'sd',\n    'sdn': 'sd',\n    'sudan': 'sd',\n    'se': 'se',\n    'swe': 'se',\n    'sweden': 'se',\n    'sg': 'sg',\n    'sgp': 'sg',\n    'singapore': 'sg',\n    'si': 'si',\n    'svn': 'si',\n    'slovenia': 'si',\n    'sk': 'sk',\n    'svk': 'sk',\n    'slovakia': 'sk',\n    'sl': 'sl',\n    'sle': 'sl',\n    'sierra-leone': 'sl',\n    'sm': 'sm',\n    'smr': 'sm',\n    'san-marino': 'sm',\n    'sn': 'sn',\n    'sen': 'sn',\n    'senegal': 'sn',\n    'so': 'so',\n    'som': 'so',\n    'somalia': 'so',\n    'sr': 'sr',\n    'sur': 'sr',\n    'suriname': 'sr',\n    'ss': 'ss',\n    'ssd': 'ss',\n    'south-sudan': 'ss',\n    'st': 'st',\n    'stp': 'st',\n    'sao-tome-and-principe': 'st',\n    'sv': 'sv',\n    'slv': 'sv',\n    'el-salvador': 'sv',\n    'sy': 'sy',\n    'syr': 'sy',\n    'syria': 'sy',\n    'sz': 'sz',\n    'swz': 'sz',\n    'eswatini': 'sz',\n    'td': 'td',\n    'tcd': 'td',\n    'chad': 'td',\n    'tg': 'tg',\n    'tgo': 'tg',\n    'togo': 'tg',\n    'th': 'th',\n    'tha': 'th',\n    'thailand': 'th',\n    'tj': 'tj',\n    'tjk': 'tj',\n    'tajikistan': 'tj',\n    'tl': 'tl',\n    'tls': 'tl',\n    'timor-leste': 'tl',\n    'tm': 'tm',\n    'tkm': 'tm',\n    'turkmenistan': 'tm',\n    'tn': 'tn',\n    'tun': 'tn',\n    'tunisia': 'tn',\n    'to': 'to',\n    'ton': 'to',\n    'tonga': 'to',\n    'tr': 'tr',\n    'tur': 'tr',\n    'turkey': 'tr',\n    'tt': 'tt',\n    'tto': 'tt',\n    'trinidad-and-tobago': 'tt',\n    'tv': 'tv',\n    'tuv': 'tv',\n    'tuvalu': 'tv',\n    'tz': 'tz',\n    'tza': 'tz',\n    'tanzania': 'tz',\n    'ua': 'ua',\n    'ukr': 'ua',\n    'ukraine': 'ua',\n    'ug': 'ug',\n    'uga': 'ug',\n    'uganda': 'ug',\n    'us': 'us',\n    'usa': 'us',\n    'united-states-of-america': 'us',\n    'uy': 'uy',\n    'ury': 'uy',\n    'uruguay': 'uy',\n    'uz': 'uz',\n    'uzb': 'uz',\n    'uzbekistan': 'uz',\n    'vc': 'vc',\n    'vct': 'vc',\n    'saint-vincent-and-the-grenadines': 'vc',\n    've': 've',\n    'ven': 've',\n    'venezuela': 've',\n    'vn': 'vn',\n    'vnm': 'vn',\n    'viet-nam': 'vn',\n    'vu': 'vu',\n    'vut': 'vu',\n    'vanuatu': 'vu',\n    'ws': 'ws',\n    'wsm': 'ws',\n    'samoa': 'ws',\n    'ye': 'ye',\n    'yem': 'ye',\n    'yemen': 'ye',\n    'za': 'za',\n    'zaf': 'za',\n    'south-africa': 'za',\n    'zm': 'zm',\n    'zmb': 'zm',\n    'zambia': 'zm',\n    'zw': 'zw',\n    'zwe': 'zw',\n    'zimbabwe': 'zw',\n    'cc': 'cc',\n    'cck': 'cc',\n    'cocos-islands': 'cc',\n    'au-cc': 'cc',\n    'cx': 'cx',\n    'cxr': 'cx',\n    'christmas-island': 'cx',\n    'au-cx': 'cx',\n    'nf': 'nf',\n    'nfk': 'nf',\n    'norfolk-island': 'nf',\n    'au-nf': 'nf',\n    'hk': 'hk',\n    'hkg': 'hk',\n    'hong-kong': 'hk',\n    'cn-hk': 'hk',\n    'mo': 'mo',\n    'mac': 'mo',\n    'macao': 'mo',\n    'cn-mo': 'mo',\n    'tw': 'tw',\n    'twn': 'tw',\n    'taiwan': 'tw',\n    'cn-tw': 'tw',\n    'fo': 'fo',\n    'fro': 'fo',\n    'faroe-islands': 'fo',\n    'dk-fo': 'fo',\n    'gl': 'gl',\n    'grl': 'gl',\n    'greenland': 'gl',\n    'dk-gl': 'gl',\n    'ax': 'ax',\n    'ala': 'ax',\n    'aland-islands': 'ax',\n    'fi-ax': 'ax',\n    'bl': 'bl',\n    'blm': 'bl',\n    'saint-barthelemy': 'bl',\n    'fr-bl': 'bl',\n    'gf': 'gf',\n    'guf': 'gf',\n    'french-guiana': 'gf',\n    'fr-gf': 'gf',\n    'gp': 'gp',\n    'glp': 'gp',\n    'guadeloupe': 'gp',\n    'fr-gp': 'gp',\n    'mf': 'fr',\n    'maf': 'fr',\n    'saint-martin': 'fr',\n    'fr-mf': 'fr',\n    'xk': 'xk',\n    'xxk': 'xk',\n    'kosovo': 'xk',\n    'mq': 'mq',\n    'mtq': 'mq',\n    'martinique': 'mq',\n    'fr-mq': 'mq',\n    'nc': 'nc',\n    'ncl': 'nc',\n    'new-caledonia': 'nc',\n    'fr-nc': 'nc',\n    'pf': 'pf',\n    'pyf': 'pf',\n    'french-polynesia': 'pf',\n    'fr-pf': 'pf',\n    'pm': 'pm',\n    'spm': 'pm',\n    'saint-pierre-and-miquelon': 'pm',\n    'fr-pm': 'pm',\n    're': 'fr',\n    'reu': 'fr',\n    'reunion': 'fr',\n    'fr-re': 'fr',\n    'wf': 'wf',\n    'wlf': 'wf',\n    'wallis-and-futuna': 'wf',\n    'fr-wf': 'wf',\n    'yt': 'yt',\n    'myt': 'yt',\n    'mayotte': 'yt',\n    'fr-yt': 'yt',\n    'gg': 'gg',\n    'ggy': 'gg',\n    'guernsey': 'gg',\n    'gb-gg': 'gg',\n    'im': 'im',\n    'imn': 'im',\n    'isle-of-man': 'im',\n    'gb-im': 'im',\n    'je': 'je',\n    'jey': 'je',\n    'jersey': 'je',\n    'gb-je': 'je',\n    'aw': 'aw',\n    'abw': 'aw',\n    'aruba': 'aw',\n    'nl-aw': 'aw',\n    'bq': 'bq',\n    'bes': 'bq',\n    'bonaire': 'bq',\n    'nl-bq': 'bq',\n    'cw': 'cw',\n    'cuw': 'cw',\n    'curaçao': 'cw',\n    'nl-cw': 'cw',\n    'sx': 'sx',\n    'sxm': 'sx',\n    'sint-maarten': 'sx',\n    'nl-sx': 'sx',\n    'sj': 'no',\n    'sjm': 'no',\n    'svalbard': 'no',\n    'no-sj': 'no',\n    'ck': 'ck',\n    'cok': 'ck',\n    'cook-islands': 'ck',\n    'nz-ck': 'ck',\n    'nu': 'nu',\n    'niu': 'nu',\n    'niue': 'nu',\n    'nz-nu': 'nu',\n    'tk': 'tk',\n    'tkl': 'tk',\n    'tokelau': 'tk',\n    'nz-tk': 'tk',\n    'ai': 'ai',\n    'aia': 'ai',\n    'anguilla': 'ai',\n    'uk-ai': 'ai',\n    'bm': 'bm',\n    'bmu': 'bm',\n    'bermuda': 'bm',\n    'uk-bm': 'bm',\n    'fk': 'fk',\n    'flk': 'fk',\n    'falkland-islands': 'fk',\n    'uk-fk': 'fk',\n    'gi': 'gi',\n    'gib': 'gi',\n    'gibraltar': 'gi',\n    'uk-gi': 'gi',\n    'io': 'io',\n    'iot': 'io',\n    'british-indian-ocean-territory': 'io',\n    'uk-io': 'io',\n    'ky': 'ky',\n    'cym': 'ky',\n    'cayman-islands': 'ky',\n    'uk-ky': 'ky',\n    'ms': 'ms',\n    'msr': 'ms',\n    'montserrat': 'ms',\n    'uk-ms': 'ms',\n    'pn': 'pn',\n    'pcn': 'pn',\n    'pitcairn': 'pn',\n    'uk-pn': 'pn',\n    'sh': 'sh',\n    'shn': 'sh',\n    'saint-helena': 'sh',\n    'uk-sh': 'sh',\n    'tc': 'tc',\n    'tca': 'tc',\n    'turks-and-caicos-islands': 'tc',\n    'uk-tc': 'tc',\n    'vg': 'vg',\n    'vgb': 'vg',\n    'british-virgin-islands': 'vg',\n    'uk-vg': 'vg',\n    'as': 'as',\n    'asm': 'as',\n    'american-samoa': 'as',\n    'us-as': 'as',\n    'gu': 'gu',\n    'gum': 'gu',\n    'guam': 'gu',\n    'us-gu': 'gu',\n    'mp': 'mp',\n    'mnp': 'mp',\n    'northern-mariana-islands': 'mp',\n    'us-mp': 'mp',\n    'pr': 'pr',\n    'pri': 'pr',\n    'puerto-rico': 'pr',\n    'us-pr': 'pr',\n    'vi': 'vi',\n    'vir': 'vi',\n    'us-virgin-islands': 'vi',\n    'us-vi': 'vi',\n    'eh': 'eh',\n    'esh': 'eh',\n    'western-sahara': 'eh',\n    'ps': 'ps',\n    'pse': 'ps',\n    'palestine': 'ps',\n    'va': 'va',\n    'vat': 'va',\n    'holy-see': 'va',\n    'vatican-city': 'va',\n    'xx': 'xx'\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {
+            "src/lib/types.ts": [
+                {
+                    "name": "FlagFormatEnum",
+                    "childs": [
+                        {
+                            "name": "None",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "none"
+                        },
+                        {
+                            "name": "Round",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "round"
+                        },
+                        {
+                            "name": "Square",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "square"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/lib/types.ts"
+                },
+                {
+                    "name": "FlagSize",
+                    "childs": [
+                        {
+                            "name": "xxs",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 8
+                        },
+                        {
+                            "name": "xs",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 16
+                        },
+                        {
+                            "name": "s",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 24
+                        },
+                        {
+                            "name": "m",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 32
+                        },
+                        {
+                            "name": "l",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 48
+                        },
+                        {
+                            "name": "xl",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 64
+                        },
+                        {
+                            "name": "xxl",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": 96
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/lib/types.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {
+            "src/lib/database.ts": [
+                {
+                    "name": "FlagDatabaseKey",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "",
+                    "file": "src/lib/database.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
+                }
+            ],
+            "src/lib/types.ts": [
+                {
+                    "name": "FlagFormat",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": " `${FlagFormatEnum}`",
+                    "file": "src/lib/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 197
+                }
+            ]
+        }
+    }
+}

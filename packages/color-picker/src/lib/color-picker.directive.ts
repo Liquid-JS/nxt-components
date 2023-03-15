@@ -55,7 +55,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         sliderDragEnd: (event: SliderChangeEvent) => {
             this.sliderDragEnd.emit(event)
         },
-        presetColorsChanged: (value: any[]) => {
+        presetColorsChanged: (value: string[]) => {
             this.presetColorsChange.emit(value)
         }
     }
@@ -168,7 +168,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Output() cmykColorChange = new EventEmitter<string>(true)
 
     /** Preset colors, emit when preset color is added / removed */
-    @Output() presetColorsChange = new EventEmitter<any[]>(true)
+    @Output() presetColorsChange = new EventEmitter<string[]>(true)
 
     /** @internal */
     constructor(

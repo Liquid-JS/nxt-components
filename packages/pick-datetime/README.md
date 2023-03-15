@@ -1,7 +1,8 @@
 # Angular Date Time Picker
 
-[![npm](https://img.shields.io/npm/v/nxt-pick-datetime.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/nxt-pick-datetime)
+[![GitHub license](https://img.shields.io/github/license/Liquid-JS/nxt-components.svg)](https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/dm/nxt-pick-datetime.svg)](https://www.npmjs.com/package/nxt-pick-datetime)
+[![scope](https://img.shields.io/npm/v/nxt-pick-datetime.svg)](https://www.npmjs.com/package/nxt-pick-datetime)
 
 **Angular date time picker - Angular reusable UI component**
 **This package supports Angular 9**
@@ -12,7 +13,7 @@
 
 ## Description
 
-Simple Angular date time picker. Online doc is [here](https://daniel-projects.firebaseapp.com/nxtng/date-time-picker), Online demo is [here](https://liquid-js.github.io/nxt-components/pick-datetime).
+Simple Angular date time picker. Online doc is [here](https://daniel-projects.firebaseapp.com/nxtng/date-time-picker), Online demo is [here](https://liquid-js.github.io/nxt-components/demo/pick-datetime).
 This picker is responsive design, so feel free to try it in your desktops, tablets and mobile devices.
 
 ## How to Use
@@ -65,7 +66,7 @@ export class MyTestAppModule {}
 ```
 
 The examples above are quite basic. The picker has much more features, 
-and you could learn more about those from [demo page](https://liquid-js.github.io/nxt-components/pick-datetime).
+and you could learn more about those from [demo page](https://liquid-js.github.io/nxt-components/demo/pick-datetime).
 
 ## Animation
 
@@ -193,7 +194,7 @@ none
 ## Demo
 
 -   Online doc is [here](https://daniel-projects.firebaseapp.com/nxtng/date-time-picker)
--   Online demo is [here](https://liquid-js.github.io/nxt-components/pick-datetime)
+-   Online demo is [here](https://liquid-js.github.io/nxt-components/demo/pick-datetime)
 
 ## License
 

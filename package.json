@@ -15,12 +15,14 @@
         "build": "yarn workspaces foreach --exclude demo run build",
         "build:demo": "yarn workspace demo build",
         "serve": "yarn workspace demo serve",
+        "watch": "yarn workspaces foreach --exclude demo -p run watch",
         "lint": "yarn workspaces foreach run lint",
         "lint:fix": "yarn workspaces foreach run lint:fix",
         "lint:html": "yarn workspaces foreach run lint:html",
         "lint:sass": "yarn workspaces foreach run lint:sass",
         "lint:sass:fix": "yarn workspaces foreach run lint:sass:fix",
-        "pages": "ng --project demo deploy --base-href /nxt-components/"
+        "docs": "yarn workspaces foreach run docs && yarn workspaces foreach run docs:json",
+        "pages": "rimraf docs && yarn docs && yarn build:demo --base-href /nxt-components/demo/ && ngh --dir docs"
     },
     "dependencies": {
         "@angular/animations": "^15.2.2",
@@ -81,6 +83,7 @@
         "ng-packagr": "^15.2.2",
         "npm-check-updates": "^16.7.12",
         "postcss": "^8.4.21",
+        "rimraf": "^4.4.0",
         "stylelint": "<15.0.0",
         "stylelint-config-standard-scss": "<7.0.0",
         "typedoc": "^0.23.26",

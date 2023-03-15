@@ -38,7 +38,7 @@ export class SandboxComponent {
 
     toggleAutoReset(value: boolean) {
         this.autoReset = !!value
-        const timeout = this.autoReset ? undefined : 5000
+        const timeout = this.autoReset ? 5000 : undefined
         this.config.autoReset = timeout
         this.config.errorReset = timeout
         this.config.cancelReset = timeout

@@ -38,7 +38,7 @@
                 "build": {
                     "builder": "@angular-builders/custom-webpack:browser",
                     "options": {
-                        "outputPath": "dist/demo",
+                        "outputPath": "docs/demo",
                         "index": "packages/demo/src/index.html",
                         "main": "packages/demo/src/main.ts",
                         "polyfills": "packages/demo/src/polyfills.ts",

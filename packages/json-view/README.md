@@ -1,10 +1,14 @@
 # nxt-json-view
 
+[![GitHub license](https://img.shields.io/github/license/Liquid-JS/nxt-components.svg)](https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/dm/nxt-json-view.svg)](https://www.npmjs.com/package/nxt-json-view)
+[![scope](https://img.shields.io/npm/v/nxt-json-view.svg)](https://www.npmjs.com/package/nxt-json-view)
+
 A JSON View component for Angular 13+ (an angular based JSON display component)
 
 ## Demo
 
-<https://liquid-js.github.io/nxt-components/json-view>
+<https://liquid-js.github.io/nxt-components/demo/json-view>
 
 ## installation
 

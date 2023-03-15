@@ -3,7 +3,8 @@
     "ignorePatterns": [
         "packages",
         "node_modules",
-        "dist"
+        "dist",
+        "docs"
     ],
     "overrides": [
         {
