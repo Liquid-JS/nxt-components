@@ -9,7 +9,7 @@
     "components": [
         {
             "name": "FlagComponent",
-            "id": "component-FlagComponent-4d2f5f2e241ce29b263db6b59cc64377618438490544e15b9871bf10328fce6de0d5ce7a338d43dc2d1996decdba1ebf6bfd72614ea70f1d406a5a3129ba049d",
+            "id": "component-FlagComponent-712743ec5a48ff8319c551100220e2826652e4df2cf101a991edc4cf1816abe7ddaa2e6641872ea016c45d1df4a710d1375309c05d12a41b933cfd57c1a3f668",
             "file": "src/lib/flag/flag.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.Emulated"
@@ -32,7 +32,9 @@
                     "name": "country",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "rawdescription": "\nISO 3166-1-alpha-2 country code",
+                    "description": "<p>ISO 3166-1-alpha-2 country code</p>\n",
+                    "line": 18,
                     "type": "FlagDatabaseKey",
                     "decorators": []
                 },
@@ -40,7 +42,9 @@
                     "name": "format",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "rawdescription": "\nFlag format",
+                    "description": "<p>Flag format</p>\n",
+                    "line": 31,
                     "type": "FlagFormat",
                     "decorators": []
                 },
@@ -48,8 +52,10 @@
                     "name": "size",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
-                    "type": "number | ",
+                    "rawdescription": "\nFlag width, either value in pixels or FlagSizeAlias",
+                    "description": "<p>Flag width, either value in pixels or FlagSizeAlias</p>\n",
+                    "line": 39,
+                    "type": "number | FlagSizeAlias",
                     "decorators": []
                 }
             ],
@@ -77,7 +83,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 78
+                "line": 81
             },
             "accessors": {
                 "country": {
@@ -96,7 +102,9 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 17,
+                        "line": 18,
+                        "rawdescription": "\nISO 3166-1-alpha-2 country code",
+                        "description": "<p>ISO 3166-1-alpha-2 country code</p>\n",
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -126,7 +134,9 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 29,
+                        "line": 31,
+                        "rawdescription": "\nFlag format",
+                        "description": "<p>Flag format</p>\n",
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -150,17 +160,19 @@
                         "args": [
                             {
                                 "name": "val",
-                                "type": "number | ",
+                                "type": "number | FlagSizeAlias",
                                 "deprecated": false,
                                 "deprecationMessage": ""
                             }
                         ],
                         "returnType": "void",
-                        "line": 36,
+                        "line": 39,
+                        "rawdescription": "\nFlag width, either value in pixels or FlagSizeAlias",
+                        "description": "<p>Flag width, either value in pixels or FlagSizeAlias</p>\n",
                         "jsdoctags": [
                             {
                                 "name": "val",
-                                "type": "number | ",
+                                "type": "number | FlagSizeAlias",
                                 "deprecated": false,
                                 "deprecationMessage": "",
                                 "tagName": {
@@ -275,6 +287,17 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 197
+            },
+            {
+                "name": "FlagSizeAlias",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "",
+                "file": "src/lib/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 192
             }
         ],
         "enumerations": [
@@ -509,6 +532,17 @@
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 197
+                },
+                {
+                    "name": "FlagSizeAlias",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "",
+                    "file": "src/lib/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 192
                 }
             ]
         }

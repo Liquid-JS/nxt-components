@@ -62,6 +62,6 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
     ) { }
 
     ngOnInit(): void {
-        this.title.setTitle('Getting started | nxt-dropzone')
+        this.title.setTitle('Getting started | nxt-dropzone-wrapper')
     }
 }

@@ -1,6 +1,6 @@
 import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core'
 import { FlagDatabase, FlagDatabaseKey } from '../database'
-import { FlagFormat, FlagFormatEnum, FlagSize } from '../types'
+import { FlagFormat, FlagFormatEnum, FlagSize, FlagSizeAlias } from '../types'
 
 const availableFormats = new Set<FlagFormat>(Object.values(FlagFormatEnum))
 const availableCodes = new Set(Object.values(FlagDatabase))
@@ -14,6 +14,7 @@ const availableCodes = new Set(Object.values(FlagDatabase))
 export class FlagComponent {
 
     private _code?: string
+    /** ISO 3166-1-alpha-2 country code */
     @Input() set country(val: FlagDatabaseKey) {
         const lc: FlagDatabaseKey | undefined = (val && val.toLowerCase() as any) || undefined
         if (lc && lc in FlagDatabase) {
@@ -26,6 +27,7 @@ export class FlagComponent {
     }
 
     private _format: FlagFormat = FlagFormatEnum.None
+    /** Flag format */
     @Input() set format(val: FlagFormat) {
         this._format = availableFormats.has(val)
             ? val
@@ -33,9 +35,10 @@ export class FlagComponent {
     }
 
     private _size = 48
-    @Input() set size(val: number | keyof typeof FlagSize) {
+    /** Flag width, either value in pixels or FlagSizeAlias */
+    @Input() set size(val: number | FlagSizeAlias) {
         if (typeof val == 'string' && val.toLowerCase() in FlagSize) {
-            this._size = FlagSize[val.toLowerCase() as (keyof typeof FlagSize)]
+            this._size = FlagSize[val.toLowerCase() as (FlagSizeAlias)]
         } else {
             this._size = Number.isInteger(val) && val > 0
                 ? Number(val)

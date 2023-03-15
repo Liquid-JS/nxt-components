@@ -15,3 +15,5 @@ export enum FlagSize {
     xl = 64,
     xxl = 96
 }
+
+export type FlagSizeAlias = keyof typeof FlagSize

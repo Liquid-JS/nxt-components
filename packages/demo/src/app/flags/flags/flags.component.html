@@ -1,5 +1,19 @@
 <app-content-wrap>
-    <h1>nxt-flags</h1>
+    <h1>Angular country flags</h1>
+    <p>
+        <a href="https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Liquid-JS/nxt-components.svg"
+                alt="GitHub license"></a>&nbsp;
+        <a href="https://www.npmjs.com/package/nxt-flags"><img src="https://img.shields.io/npm/dm/nxt-flags.svg"
+                alt="npm"></a>&nbsp;
+        <a href="https://www.npmjs.com/package/nxt-flags"><img src="https://img.shields.io/npm/v/nxt-flags.svg"
+                alt="scope"></a>
+    </p>
+    <p>Angular component to show flags based on country ISO code.</p>
+
+    <ul>
+        <li><a [routerLink]="'./getting-started'"><strong>Getting started</strong></a></li>
+        <li><a href="https://liquid-js.github.io/nxt-components/docs/nxt-flags"><strong>API docs</strong></a></li>
+    </ul>
 
     <app-example *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
         [injector]="injector"

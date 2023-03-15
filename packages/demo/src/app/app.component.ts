@@ -82,7 +82,17 @@ export class AppComponent {
         },
         {
             label: 'nxt-flags',
-            link: '/flags'
+            link: '/flags',
+            children: [
+                {
+                    label: 'Getting started',
+                    link: 'getting-started'
+                },
+                {
+                    label: 'API docs',
+                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-flags'
+                }
+            ]
         },
         {
             label: 'nxt-json-view',
