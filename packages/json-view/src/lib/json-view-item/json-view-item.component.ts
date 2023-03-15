@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core'
+import { LevelLabels } from '../utils/interfaces'
 import { isArray, isBoolean, isNumber, isObject, isString, isUndefined } from '../utils/utils'
 
 /** @internal */
@@ -23,7 +24,7 @@ export class JsonViewItemComponent implements OnInit {
     @Input() key?: string
     @Input() level: number = 0
     @Input() levelOpen?: number
-    @Input() levelLabels?: { [key: number]: { [key: string]: string } }
+    @Input() levelLabels?: LevelLabels
 
     isOpen: boolean = false
     childrenKeys?: string[]

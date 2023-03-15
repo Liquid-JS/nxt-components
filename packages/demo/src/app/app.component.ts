@@ -86,7 +86,17 @@ export class AppComponent {
         },
         {
             label: 'nxt-json-view',
-            link: '/json-view'
+            link: '/json-view',
+            children: [
+                {
+                    label: 'Getting started',
+                    link: 'getting-started'
+                },
+                {
+                    label: 'API docs',
+                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-json-view'
+                }
+            ]
         },
         {
             label: 'nxt-pick-datetime',

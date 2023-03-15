@@ -16,7 +16,7 @@ This is an Angular wrapper library for the [Dropzone](http://www.dropzonejs.com/
 ### Installing
 
 ```sh
-npm install --save nxt-dropzone-wrapper
+npm install --save nxt-dropzone-wrapper dropzone
 ```
 
 ### Import and configure dropzone wrapper module

@@ -10,7 +10,7 @@ import docs from '../documentation.json'
 })
 export class GettingStartedComponent implements OnInit {
 
-    readonly installScript = 'npm install --save nxt-dropzone-wrapper'
+    readonly installScript = 'npm install --save nxt-dropzone-wrapper dropzone'
 
     readonly importModule = `import { DropzoneConfig, DropzoneModule, NXT_DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
 

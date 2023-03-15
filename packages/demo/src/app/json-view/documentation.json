@@ -1,6 +1,35 @@
 {
     "pipes": [],
-    "interfaces": [],
+    "interfaces": [
+        {
+            "name": "LevelLabels",
+            "id": "interface-LevelLabels-5b4a265617bc7cb727510602e82a1ec16c08725540b2ebe9ba67fa533594e80490594437becc9f495aac065a3e2ec704744949974e087938e9356e013f5c369c",
+            "file": "src/lib/utils/interfaces.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "properties": [],
+            "indexSignatures": [
+                {
+                    "id": "index-declaration-5b4a265617bc7cb727510602e82a1ec16c08725540b2ebe9ba67fa533594e80490594437becc9f495aac065a3e2ec704744949974e087938e9356e013f5c369c",
+                    "args": [
+                        {
+                            "name": "level",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "literal type",
+                    "line": 1,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "kind": 175,
+            "methods": []
+        }
+    ],
     "injectables": [],
     "guards": [],
     "interceptors": [],
@@ -9,7 +38,7 @@
     "components": [
         {
             "name": "JsonViewComponent",
-            "id": "component-JsonViewComponent-fa24746c91b6f9cb606d94df9361294dfeec207d003e625a702c43bf04b647c51109b210910c86df724247a35d4c9533865831f7aac7b311ae6986ed22e15885",
+            "id": "component-JsonViewComponent-98cf3d6f63994cc304ae0b94d01f5ece87007558999a465227c8e57e674c6bf62b2714aa56b0ec9664dd5e3e1c369bad3253dfa82477b18bf8aa2d5819416d45",
             "file": "src/lib/json-view/json-view.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.Emulated"
@@ -32,7 +61,9 @@
                     "name": "data",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 10,
+                    "rawdescription": "\nJSON data, any valid JSON object",
+                    "description": "<p>JSON data, any valid JSON object</p>\n",
+                    "line": 12,
                     "type": "any",
                     "decorators": []
                 },
@@ -40,15 +71,19 @@
                     "name": "levelLabels",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12,
-                    "type": "literal type",
+                    "rawdescription": "\nCustom labels for elements within the hierarcy",
+                    "description": "<p>Custom labels for elements within the hierarcy</p>\n",
+                    "line": 16,
+                    "type": "LevelLabels",
                     "decorators": []
                 },
                 {
                     "name": "levelOpen",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 11,
+                    "rawdescription": "\nInitial number of levels to be expanded",
+                    "description": "<p>Initial number of levels to be expanded</p>\n",
+                    "line": 14,
                     "type": "number",
                     "decorators": []
                 }
