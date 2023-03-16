@@ -2,7 +2,7 @@ import { Inject, Injectable, InjectionToken, LOCALE_ID, Optional } from '@angula
 import moment, { Moment } from 'moment'
 import { DateTimeAdapter } from 'nxt-pick-datetime'
 
-/** Configurable options for {@see MomentDateAdapter}. */
+/** Configurable options for {@see MomentDateAdapter} */
 export interface MomentDateTimeAdapterOptions {
     /**
      * Turns the use of utc dates on or off.
@@ -12,7 +12,7 @@ export interface MomentDateTimeAdapterOptions {
     useUtc: boolean
 }
 
-/** InjectionToken for moment date adapter to configure options. */
+/** InjectionToken for moment date adapter to configure options */
 export const NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS = new InjectionToken<MomentDateTimeAdapterOptions>(
     'NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {
     providedIn: 'root',
@@ -274,7 +274,7 @@ export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
         return super.deserialize(value)
     }
 
-    /** Creates a Moment instance while respecting the current UTC settings. */
+    /** Creates a Moment instance while respecting the current UTC settings */
     private createMoment(...args: any[]): Moment {
         return (this.options && this.options.useUtc) ? moment.utc(...args) : moment(...args)
     }

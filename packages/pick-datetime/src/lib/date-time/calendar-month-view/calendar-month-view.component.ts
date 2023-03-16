@@ -1,10 +1,9 @@
-import { coerceNumberProperty } from '@angular/cdk/coercion'
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
-import { CalendarCell, CalendarBodyComponent } from '../calendar-body/calendar-body.component'
+import { CalendarBodyComponent, CalendarCell } from '../calendar-body/calendar-body.component'
 
 /** @internal */
 const DAYS_PER_WEEK = 7
@@ -21,7 +20,7 @@ const WEEKS_PER_VIEW = 6
 })
 export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestroy {
     /**
-     * Whether to hide dates in other months at the start or end of the current month.
+     * Whether to hide dates in other months at the start or end of the current month
      */
     @Input()
     hideOtherMonths: boolean = false
@@ -37,7 +36,6 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     }
 
     set firstDayOfWeek(val: number) {
-        val = coerceNumberProperty(val)
         if (val >= 0 && val <= 6 && val !== this._firstDayOfWeek) {
             this._firstDayOfWeek = val
 
@@ -66,7 +64,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
         }
     }
 
-    /** The currently selected date. */
+    /** The currently selected date */
     private _selected?: T
     @Input()
     get selected() {
@@ -126,21 +124,21 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     /**
      * A function used to filter which dates are selectable
      */
-    private _dateFilter?: DateFilter<T>
+    private _dateTimeFilter?: DateFilter<T>
     @Input()
-    get dateFilter() {
-        return this._dateFilter
+    get dateTimeFilter() {
+        return this._dateTimeFilter
     }
 
-    set dateFilter(filter: DateFilter<T> | undefined) {
-        this._dateFilter = filter
+    set dateTimeFilter(filter: DateFilter<T> | undefined) {
+        this._dateTimeFilter = filter
         if (this.initiated) {
             this.generateCalendar()
             this.cdRef.markForCheck()
         }
     }
 
-    /** The minimum selectable date. */
+    /** The minimum selectable date */
     private _minDate?: T
     @Input()
     get min() {
@@ -156,7 +154,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
         }
     }
 
-    /** The maximum selectable date. */
+    /** The maximum selectable date */
     private _maxDate?: T
     @Input()
     get max() {
@@ -238,7 +236,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     @Output()
     readonly userSelection = new EventEmitter<void>()
 
-    /** Emits when any date is activated. */
+    /** Emits when any date is activated */
     @Output()
     readonly pickerMomentChange = new EventEmitter<T>()
 
@@ -398,7 +396,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
 
             // select the pickerMoment
             case 'enter':
-                if (!this.dateFilter || this.dateFilter(this.pickerMoment, 'date')) {
+                if (!this.dateTimeFilter || this.dateTimeFilter(this.pickerMoment, 'date')) {
                     this.selectDate(
                         this.dateTimeAdapter.getDate(this.pickerMoment)
                     )
@@ -525,7 +523,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     private isDateEnabled(date: T): boolean {
         return (
             !!date &&
-            (!this.dateFilter || this.dateFilter(date, 'date')) &&
+            (!this.dateTimeFilter || this.dateTimeFilter(date, 'date')) &&
             (!this.min ||
                 this.dateTimeAdapter.compare(date, this.min) >= 0) &&
             (!this.max ||

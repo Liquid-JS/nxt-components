@@ -18,7 +18,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
      * Date filter for the month and year view
      */
     @Input()
-    dateFilter?: DateFilter<T>
+    dateTimeFilter?: DateFilter<T>
 
     /**
      * Set the first day of week
@@ -26,7 +26,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     @Input()
     firstDayOfWeek = 0
 
-    /** The minimum selectable date. */
+    /** The minimum selectable date */
     private _minDate?: T
     @Input()
     get min() {
@@ -46,7 +46,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
             : undefined
     }
 
-    /** The maximum selectable date. */
+    /** The maximum selectable date */
     private _maxDate?: T
     @Input()
     get max() {
@@ -82,7 +82,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     @Input()
     selectMode?: SelectMode
 
-    /** The currently selected moment. */
+    /** The currently selected moment */
     private _selected?: T
     @Input()
     get selected() {
@@ -108,37 +108,41 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     }
 
     /**
-     * The view that the calendar should start in.
+     * The view that the calendar should start in
      */
     @Input()
     startView: 'month' | 'year' | 'multi-years' = 'month'
 
     /**
-     * Whether to hide dates in other months at the start or end of the current month.
+     * Whether to hide dates in other months at the start or end of the current month
      */
     @Input()
     hideOtherMonths: boolean = false
 
-    /** Emits when the currently picker moment changes. */
+    /** Emits when the currently picker moment changes */
     @Output()
     readonly pickerMomentChange = new EventEmitter<T>()
 
-    /** Emits when the currently selected date changes. */
+    /** Emits when the currently selected date changes */
     @Output()
     readonly selectedChange = new EventEmitter<T | undefined>()
 
-    /** Emits when any date is selected. */
+    /** Emits when any date is selected */
     @Output()
     readonly userSelection = new EventEmitter<void>()
 
     /**
-     * Emits the selected year. This doesn't imply a change on the selected date
+     * Emits the selected year
+     *
+     * This doesn't imply a change on the selected date.
      */
     @Output()
     readonly yearSelected = new EventEmitter<T>()
 
     /**
-     * Emits the selected month. This doesn't imply a change on the selected date
+     * Emits the selected month
+     *
+     * This doesn't imply a change on the selected date.
      */
     @Output()
     readonly monthSelected = new EventEmitter<T>()
@@ -209,9 +213,9 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     /**
      * Date filter for the month and year view
      */
-    dateFilterForViews = (date?: T) => (
+    dateTimeFilterForViews = (date?: T) => (
         !!date &&
-        (!this.dateFilter || this.dateFilter(date, 'date')) &&
+        (!this.dateTimeFilter || this.dateTimeFilter(date, 'date')) &&
         (!this.min ||
             this.dateTimeAdapter.compare(date, this.min) >= 0) &&
         (!this.max ||
@@ -300,7 +304,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     }
 
     dateSelected(date?: T): void {
-        if (!this.dateFilterForViews(date)) {
+        if (!this.dateTimeFilterForViews(date)) {
             return
         }
 

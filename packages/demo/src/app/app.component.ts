@@ -110,7 +110,17 @@ export class AppComponent {
         },
         {
             label: 'nxt-pick-datetime',
-            link: '/pick-datetime'
+            link: '/pick-datetime',
+            children: [
+                {
+                    label: 'Getting started',
+                    link: 'getting-started'
+                },
+                {
+                    label: 'API docs',
+                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-pick-datetime'
+                }
+            ]
         },
         {
             label: 'nxt-sortablejs',

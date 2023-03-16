@@ -6,7 +6,7 @@ export { MultiYearViewComponent } from './lib/date-time/calendar-multi-year-view
 export { YearViewComponent } from './lib/date-time/calendar-year-view/calendar-year-view.component'
 export { CalendarComponent } from './lib/date-time/calendar/calendar.component'
 export { DateTimeInlineComponent } from './lib/date-time/date-time-inline/date-time-inline.component'
-export { DateTimeInputDirective } from './lib/date-time/date-time-picker-input.directive'
+export { DateTimeInputDirective, DateTimeInputEvent } from './lib/date-time/date-time-picker-input.directive'
 export { DateTimeIntl } from './lib/date-time/date-time-picker-intl.service'
 export { DateTimeTriggerDirective } from './lib/date-time/date-time-picker-trigger.directive'
 export { DateTimeComponent } from './lib/date-time/date-time-picker/date-time-picker.component'

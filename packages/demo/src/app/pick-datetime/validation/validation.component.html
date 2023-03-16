@@ -1,0 +1,10 @@
+<app-content-wrap>
+    <h1>Validation</h1>
+    <p>When used with <code>[ngModel]</code> or <code>[formControl]</code>, date & time picker provides control validation.</p>
+
+    <app-example *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+        [injector]="injector"
+        [config]="example"
+        id="example-{{ i }}"></app-example>
+
+</app-content-wrap>

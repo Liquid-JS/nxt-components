@@ -734,7 +734,7 @@
     "directives": [
         {
             "name": "ColorPickerDirective",
-            "id": "directive-ColorPickerDirective-085e4db976efc43403aa538d20ff0660c87fd1ef88a857b6ada25d4e81edfdf2c6e164afe538a156db2175b1a11acbdbb817b1098511418d2890c07b0690f8b8",
+            "id": "directive-ColorPickerDirective-3b253274494ad7215ac923a55a7532fd56ab9b44d0f1acc7afaedc602c770d0ee1f4b2807f8a854b5aebfa1657bd4daab4d29da4dff8ee411d4f572a1540d3ae",
             "file": "src/lib/color-picker.directive.ts",
             "type": "directive",
             "description": "",
@@ -875,8 +875,8 @@
                     "name": "nxtColor",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nThe color to show in the color picker dialog.",
-                    "description": "<p>The color to show in the color picker dialog.</p>\n",
+                    "rawdescription": "\nThe color to show in the color picker dialog",
+                    "description": "<p>The color to show in the color picker dialog</p>\n",
                     "line": 70,
                     "type": "string",
                     "decorators": []
@@ -1068,8 +1068,8 @@
                     "defaultValue": "new EventEmitter<string>(true)",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nCurrent color value, emit when dialog is opened",
-                    "description": "<p>Current color value, emit when dialog is opened</p>\n",
+                    "rawdescription": "\nCurrent color value, emit when dialog is isOpen",
+                    "description": "<p>Current color value, emit when dialog is isOpen</p>\n",
                     "line": 143,
                     "type": "EventEmitter"
                 },
@@ -1118,8 +1118,8 @@
                     "defaultValue": "new EventEmitter<boolean>(true)",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nStatus of the dialog, emit when dialog is opened / closed",
-                    "description": "<p>Status of the dialog, emit when dialog is opened / closed</p>\n",
+                    "rawdescription": "\nStatus of the dialog, emit when dialog is isOpen / closed",
+                    "description": "<p>Status of the dialog, emit when dialog is isOpen / closed</p>\n",
                     "line": 151,
                     "type": "EventEmitter"
                 }

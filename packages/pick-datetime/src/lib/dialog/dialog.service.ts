@@ -54,14 +54,14 @@ export class DialogService {
     private readonly _afterOpenAtThisLevel = new Subject<DialogRef<any>>()
     private readonly _afterAllClosedAtThisLevel = new Subject<void>()
 
-    /** Keeps track of the currently-open dialogs. */
+    /** Keeps track of the currently-open dialogs */
     get openDialogs(): Array<DialogRef<any>> {
         return this.parentDialog
             ? this.parentDialog.openDialogs
             : this._openDialogsAtThisLevel
     }
 
-    /** Stream that emits when a dialog has been opened. */
+    /** Stream that emits when a dialog has been isOpen */
     get afterOpen(): Subject<DialogRef<any>> {
         return this.parentDialog
             ? this.parentDialog.afterOpen

@@ -25,7 +25,7 @@
         <th cdk-header-cell
             *cdkHeaderCellDef>Default value</th>
         <td cdk-cell
-            *cdkCellDef="let input">{{ input.defaultValue ?? 'undefined' }}</td>
+            *cdkCellDef="let input"><code>{{ input.defaultValue ?? 'undefined' }}</code></td>
     </ng-container>
 
     <ng-container cdkColumnDef="description">

@@ -340,12 +340,12 @@ class StandardYearViewComponent {
     template: `
         <nxt-date-time-year-view
                 [(pickerMoment)]="pickerMoment"
-                [dateFilter]="dateFilter"></nxt-date-time-year-view>
+                [dateTimeFilter]="dateTimeFilter"></nxt-date-time-year-view>
     `
 })
 class YearViewWithDateFilterComponent {
     pickerMoment = new Date(2018, 0, 1)
-    dateFilter(date: Date) {
+    dateTimeFilter(date: Date) {
         if (date.getMonth() == 1) {
             return false
         }

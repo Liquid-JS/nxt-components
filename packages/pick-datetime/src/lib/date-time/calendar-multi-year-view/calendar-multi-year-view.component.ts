@@ -37,7 +37,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
         }
     }
 
-    /** The currently selected date. */
+    /** The currently selected date */
     private _selected?: T
     @Input()
     get selected() {
@@ -88,20 +88,20 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     /**
      * A function used to filter which dates are selectable
      */
-    private _dateFilter?: DateFilter<T>
+    private _dateTimeFilter?: DateFilter<T>
     @Input()
-    get dateFilter() {
-        return this._dateFilter
+    get dateTimeFilter() {
+        return this._dateTimeFilter
     }
 
-    set dateFilter(filter: DateFilter<T> | undefined) {
-        this._dateFilter = filter
+    set dateTimeFilter(filter: DateFilter<T> | undefined) {
+        this._dateTimeFilter = filter
         if (this.initiated) {
             this.generateYearList()
         }
     }
 
-    /** The minimum selectable date. */
+    /** The minimum selectable date */
     private _minDate?: T
     @Input()
     get min() {
@@ -116,7 +116,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
         }
     }
 
-    /** The maximum selectable date. */
+    /** The maximum selectable date */
     private _maxDate?: T
     @Input()
     get max() {
@@ -187,12 +187,14 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     readonly change = new EventEmitter<T>()
 
     /**
-     * Emits the selected year. This doesn't imply a change on the selected date
+     * Emits the selected year
+     *
+     * This doesn't imply a change on the selected date.
      */
     @Output()
     readonly yearSelected = new EventEmitter<T>()
 
-    /** Emits when any date is activated. */
+    /** Emits when any date is activated */
     @Output()
     readonly pickerMomentChange: EventEmitter<T> = new EventEmitter<T>()
 
@@ -298,7 +300,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     }
 
-    /** Whether the previous period button is enabled. */
+    /** Whether the previous period button is enabled */
     previousEnabled(): boolean {
         if (!this.min) {
             return true
@@ -306,7 +308,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
         return !this.min || !this.isSameYearList(this._pickerMoment, this.min)
     }
 
-    /** Whether the next period button is enabled. */
+    /** Whether the next period button is enabled */
     nextEnabled(): boolean {
         return !this.max || !this.isSameYearList(this._pickerMoment, this.max)
     }
@@ -405,11 +407,11 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
         }
     }
 
-    /** Whether the given year is enabled. */
+    /** Whether the given year is enabled */
     private isYearEnabled(year: number) {
 
         // enable if it reaches here and there's no filter defined
-        if (!this.dateFilter) {
+        if (!this.dateTimeFilter) {
             return true
         }
 
@@ -418,7 +420,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
         // If any date in the year is enabled count the year as enabled.
         for (let date = firstOfYear; this.dateTimeAdapter.getYear(date) == year;
             date = this.dateTimeAdapter.addCalendarDays(date, 1)) {
-            if (this.dateFilter(date, 'year')) {
+            if (this.dateTimeFilter(date, 'year')) {
                 return true
             }
         }

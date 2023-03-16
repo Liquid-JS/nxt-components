@@ -289,12 +289,12 @@ class StandardMultiYearViewComponent {
     template: `
         <nxt-date-time-multi-year-view
                 [(pickerMoment)]="pickerMoment"
-                [dateFilter]="dateFilter"></nxt-date-time-multi-year-view>
+                [dateTimeFilter]="dateTimeFilter"></nxt-date-time-multi-year-view>
     `
 })
 class MultiYearViewWithDateFilterComponent {
     pickerMoment = new Date(2018, 0, 1)
-    dateFilter(date: Date) {
+    dateTimeFilter(date: Date) {
         return date.getFullYear() !== 2018
     }
 }

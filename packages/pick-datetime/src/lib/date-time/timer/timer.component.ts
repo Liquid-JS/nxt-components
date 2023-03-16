@@ -23,7 +23,7 @@ export class TimerComponent<T> implements OnInit {
         this._pickerMoment = this.getValidDate(value) || this.dateTimeAdapter.now()
     }
 
-    /** The minimum selectable date time. */
+    /** The minimum selectable date time */
     private _minDateTime?: T
     @Input()
     get min() {
@@ -35,7 +35,7 @@ export class TimerComponent<T> implements OnInit {
         this._minDateTime = this.getValidDate(value)
     }
 
-    /** The maximum selectable date time. */
+    /** The maximum selectable date time */
     private _maxDateTime?: T
     @Input()
     get max() {

@@ -65,13 +65,13 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
     @ViewChild(CdkPortalOutlet, { static: true })
     portalOutlet?: CdkPortalOutlet
 
-    /** The class that traps and manages focus within the dialog. */
+    /** The class that traps and manages focus within the dialog */
     private focusTrap?: ConfigurableFocusTrap
 
-    /** ID of the element that should be considered as the dialog's label. */
+    /** ID of the element that should be considered as the dialog's label */
     ariaLabelledBy?: string
 
-    /** Emits when an animation state changes. */
+    /** Emits when an animation state changes */
     readonly animationStateChanged = new EventEmitter<AnimationEvent>()
 
     isAnimating = false

@@ -1,0 +1,34 @@
+<app-content-wrap>
+    <h1>Getting started with nxt-pick-datetime</h1>
+
+    <h2 class="h4">Installing</h2>
+    <app-code-block [code]="installScript"
+        [languages]="['shell']"></app-code-block>
+
+    <br>
+
+    <h2 class="h4">Import main module and DateTime adapter provider</h2>
+    <p>The date & time picker was built to be date implementation agnostic. It comes with two modules providing date adapter implementation, or you can provide your own adapter by implementing <code>DateTimeAdapter</code>.</p>
+
+    <ul>
+        <li><code>NativeDateTimeModule</code> - support for native JavaScript Date object</li>
+        <li><code>MomentDateTimeModule</code> - support for MomentJs</li>
+    </ul>
+    <app-code-block [code]="importModule"
+        [languages]="['typescript']"></app-code-block>
+    <br>
+
+    <h2 class="h4">Use it in a template</h2>
+    <app-code-block [code]="includeHTML"
+        [languages]="['html']"></app-code-block>
+    <br>
+
+    <h2 class="h3">Configuration options</h2>
+    <ng-container *ngFor="let item of inps; index as i">
+        <br *ngIf="i > 0">
+        <h3 class="h5">{{ item.selector }}</h3>
+        <app-inputs-table [inputs]="item.inputs"></app-inputs-table>
+        <app-outputs-table [outputs]="item.outputs"></app-outputs-table>
+    </ng-container>
+
+</app-content-wrap>

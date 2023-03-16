@@ -109,8 +109,8 @@ describe('DateTimeComponent', () => {
                 ).not.toBeNull()
             })
 
-            it('should open dateTimePicker if opened input is set to true', fakeAsync(() => {
-                testComponent.opened = true
+            it('should open dateTimePicker if isOpen input is set to true', fakeAsync(() => {
+                testComponent.isOpen = true
                 fixture.detectChanges()
                 flush()
 
@@ -118,7 +118,7 @@ describe('DateTimeComponent', () => {
                     document.querySelector('.nxt-dt-container')
                 ).not.toBeNull()
 
-                testComponent.opened = false
+                testComponent.isOpen = false
                 fixture.detectChanges()
                 flush()
 
@@ -183,7 +183,7 @@ describe('DateTimeComponent', () => {
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.dateTimePicker?.opened)
+                expect(testComponent.dateTimePicker?.isOpen)
                     .withContext('Expected dateTimePicker to be open.')
                     .toBe(
                         true
@@ -193,7 +193,7 @@ describe('DateTimeComponent', () => {
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.dateTimePicker?.opened)
+                expect(testComponent.dateTimePicker?.isOpen)
                     .withContext('Expected dateTimePicker to be closed.')
                     .toBe(
                         false
@@ -225,8 +225,8 @@ describe('DateTimeComponent', () => {
                 testComponent.dateTimePicker?.open()
                 fixture.detectChanges()
                 flush()
-                expect(testComponent.dateTimePicker?.opened)
-                    .withContext('Expected dateTimePicker to be opened.')
+                expect(testComponent.dateTimePicker?.isOpen)
+                    .withContext('Expected dateTimePicker to be isOpen.')
                     .toBe(
                         true
                     )
@@ -243,7 +243,7 @@ describe('DateTimeComponent', () => {
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.dateTimePicker?.opened)
+                expect(testComponent.dateTimePicker?.isOpen)
                     .withContext('Expected dateTimePicker to be closed.')
                     .toBe(
                         false
@@ -254,8 +254,8 @@ describe('DateTimeComponent', () => {
                 testComponent.dateTimePicker?.open()
                 fixture.detectChanges()
                 flush()
-                expect(testComponent.dateTimePicker?.opened)
-                    .withContext('Expected dateTimePicker to be opened.')
+                expect(testComponent.dateTimePicker?.isOpen)
+                    .withContext('Expected dateTimePicker to be isOpen.')
                     .toBe(
                         true
                     )
@@ -278,7 +278,7 @@ describe('DateTimeComponent', () => {
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.dateTimePicker?.opened)
+                expect(testComponent.dateTimePicker?.isOpen)
                     .withContext('Expected dateTimePicker to be closed.')
                     .toBe(
                         false
@@ -292,8 +292,8 @@ describe('DateTimeComponent', () => {
                 testComponent.dateTimePicker?.open()
                 fixture.detectChanges()
                 flush()
-                expect(testComponent.dateTimePicker?.opened)
-                    .withContext('Expected dateTimePicker to be opened.')
+                expect(testComponent.dateTimePicker?.isOpen)
+                    .withContext('Expected dateTimePicker to be isOpen.')
                     .toBe(
                         true
                     )
@@ -313,7 +313,7 @@ describe('DateTimeComponent', () => {
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.dateTimePicker?.opened)
+                expect(testComponent.dateTimePicker?.isOpen)
                     .withContext('Expected dateTimePicker to be closed.')
                     .toBe(
                         false
@@ -327,8 +327,8 @@ describe('DateTimeComponent', () => {
                 testComponent.dateTimePicker?.open()
                 fixture.detectChanges()
                 flush()
-                expect(testComponent.dateTimePicker?.opened)
-                    .withContext('Expected dateTimePicker to be opened.')
+                expect(testComponent.dateTimePicker?.isOpen)
+                    .withContext('Expected dateTimePicker to be isOpen.')
                     .toBe(
                         true
                     )
@@ -354,7 +354,7 @@ describe('DateTimeComponent', () => {
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.dateTimePicker?.opened)
+                expect(testComponent.dateTimePicker?.isOpen)
                     .withContext('Expected dateTimePicker to be closed.')
                     .toBe(
                         false
@@ -370,7 +370,7 @@ describe('DateTimeComponent', () => {
                 )
             })
 
-            it('input should aria-owns nxt-date-time-container after opened in popup mode', fakeAsync(() => {
+            it('input should aria-owns nxt-date-time-container after isOpen in popup mode', fakeAsync(() => {
                 const inputEl = fixture.debugElement.query(By.css('input'))
                     .nativeElement
                 expect(inputEl.getAttribute('aria-owns')).toBeNull()
@@ -390,7 +390,7 @@ describe('DateTimeComponent', () => {
                 )
             }))
 
-            it('input should aria-owns nxt-date-time-container after opened in dialog mode', fakeAsync(() => {
+            it('input should aria-owns nxt-date-time-container after isOpen in dialog mode', fakeAsync(() => {
                 testComponent.pickerMode = 'dialog'
                 fixture.detectChanges()
 
@@ -418,7 +418,7 @@ describe('DateTimeComponent', () => {
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.dateTimePicker?.opened).toBe(true)
+                expect(testComponent.dateTimePicker?.isOpen).toBe(true)
 
                 const event = createKeyboardEvent('keydown', 'ArrowUp')
                 Object.defineProperty(event, 'altKey', { get: () => true })
@@ -427,7 +427,7 @@ describe('DateTimeComponent', () => {
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.dateTimePicker?.opened).toBe(false)
+                expect(testComponent.dateTimePicker?.isOpen).toBe(false)
             }))
 
             describe('with only calendar', () => {
@@ -448,8 +448,8 @@ describe('DateTimeComponent', () => {
                     testComponent.dateTimePicker?.open()
                     fixture.detectChanges()
                     flush()
-                    expect(testComponent.dateTimePicker?.opened)
-                        .withContext('Expected dateTimePicker to be opened.')
+                    expect(testComponent.dateTimePicker?.isOpen)
+                        .withContext('Expected dateTimePicker to be isOpen.')
                         .toBe(
                             true
                         )
@@ -469,8 +469,8 @@ describe('DateTimeComponent', () => {
                     testComponent.dateTimePicker?.open()
                     fixture.detectChanges()
                     flush()
-                    expect(testComponent.dateTimePicker?.opened)
-                        .withContext('Expected dateTimePicker to be opened.')
+                    expect(testComponent.dateTimePicker?.isOpen)
+                        .withContext('Expected dateTimePicker to be isOpen.')
                         .toBe(
                             true
                         )
@@ -490,7 +490,7 @@ describe('DateTimeComponent', () => {
                     fixture.detectChanges()
                     flush()
 
-                    expect(testComponent.dateTimePicker?.opened)
+                    expect(testComponent.dateTimePicker?.isOpen)
                         .withContext('Expected dateTimePicker to be closed.')
                         .toBe(
                             false
@@ -504,8 +504,8 @@ describe('DateTimeComponent', () => {
                     testComponent.dateTimePicker?.open()
                     fixture.detectChanges()
                     flush()
-                    expect(testComponent.dateTimePicker?.opened)
-                        .withContext('Expected dateTimePicker to be opened.')
+                    expect(testComponent.dateTimePicker?.isOpen)
+                        .withContext('Expected dateTimePicker to be isOpen.')
                         .toBe(
                             true
                         )
@@ -533,7 +533,7 @@ describe('DateTimeComponent', () => {
                     fixture.detectChanges()
                     flush()
 
-                    expect(testComponent.dateTimePicker?.opened)
+                    expect(testComponent.dateTimePicker?.isOpen)
                         .withContext('Expected dateTimePicker to be closed.')
                         .toBe(
                             false
@@ -547,8 +547,8 @@ describe('DateTimeComponent', () => {
                     testComponent.dateTimePicker?.open()
                     fixture.detectChanges()
                     flush()
-                    expect(testComponent.dateTimePicker?.opened)
-                        .withContext('Expected dateTimePicker to be opened.')
+                    expect(testComponent.dateTimePicker?.isOpen)
+                        .withContext('Expected dateTimePicker to be isOpen.')
                         .toBe(
                             true
                         )
@@ -571,7 +571,7 @@ describe('DateTimeComponent', () => {
                     fixture.detectChanges()
                     flush()
 
-                    expect(testComponent.dateTimePicker?.opened)
+                    expect(testComponent.dateTimePicker?.isOpen)
                         .withContext('Expected dateTimePicker to be closed.')
                         .toBe(
                             false
@@ -600,8 +600,8 @@ describe('DateTimeComponent', () => {
                     testComponent.dateTimePicker?.open()
                     fixture.detectChanges()
                     flush()
-                    expect(testComponent.dateTimePicker?.opened)
-                        .withContext('Expected dateTimePicker to be opened.')
+                    expect(testComponent.dateTimePicker?.isOpen)
+                        .withContext('Expected dateTimePicker to be isOpen.')
                         .toBe(
                             true
                         )
@@ -864,8 +864,8 @@ describe('DateTimeComponent', () => {
                     fixture.detectChanges()
                     flush()
 
-                    expect(testComponent.dateTimePicker?.opened)
-                        .withContext('Expected dateTimePicker to be opened.')
+                    expect(testComponent.dateTimePicker?.isOpen)
+                        .withContext('Expected dateTimePicker to be isOpen.')
                         .toBe(
                             true
                         )
@@ -905,7 +905,7 @@ describe('DateTimeComponent', () => {
                     expect(testComponent.dateTimePicker?.selecteds.length).toBe(
                         2
                     )
-                    expect(testComponent.dateTimePicker?.opened)
+                    expect(testComponent.dateTimePicker?.isOpen)
                         .withContext('Expected dateTimePicker to be closed.')
                         .toBe(
                             false
@@ -947,7 +947,7 @@ describe('DateTimeComponent', () => {
                 ).not.toThrow()
             })
 
-            it('should throw when opened with no registered inputs', fakeAsync(() => {
+            it('should throw when isOpen with no registered inputs', fakeAsync(() => {
                 expect(() => testComponent.dateTimePicker?.open()).toThrow()
             }))
         })
@@ -2275,12 +2275,12 @@ describe('DateTimeComponent', () => {
                 flush()
             }))
 
-            it('should dispatch an event when a dateTimePicker is opened', fakeAsync(() => {
+            it('should dispatch an event when a dateTimePicker is isOpen', fakeAsync(() => {
                 testComponent.dateTimePicker?.open()
                 fixture.detectChanges()
                 flush()
 
-                expect(testComponent.openedSpy).toHaveBeenCalled()
+                expect(testComponent.isOpenSpy).toHaveBeenCalled()
             }))
 
             it('should dispatch an event when a dateTimePicker is closed', fakeAsync(() => {
@@ -2309,7 +2309,7 @@ describe('DateTimeComponent', () => {
 @Component({
     template: `
         <input [nxtDateTime]="dt" [value]="date">
-        <nxt-date-time [opened]="opened"
+        <nxt-date-time [isOpen]="isOpen"
                        [disabled]="disabled"
                        [pickerType]="pickerType"
                        [pickerMode]="pickerMode" #dt></nxt-date-time>
@@ -2319,7 +2319,7 @@ class StandardDateTimePicker {
     date: Date | null = new Date(2020, 0, 1)
     pickerType = 'both'
     pickerMode = 'popup'
-    opened = false
+    isOpen = false
     disabled = false
     @ViewChild('dt', { static: true })
     dateTimePicker?: DateTimeComponent<Date>
@@ -2532,12 +2532,12 @@ class DateTimePickerWithISOStrings {
 @Component({
     template: `
     <input [(ngModel)]="selected" [nxtDateTime]="dt">
-    <nxt-date-time (afterPickerOpen)="openedSpy()" (afterPickerClosed)="closedSpy()" #dt></nxt-date-time>
+    <nxt-date-time (afterPickerOpen)="isOpenSpy()" (close)="closedSpy()" #dt></nxt-date-time>
   `
 })
 class DateTimePickerWithEvents {
     selected: Date | null = null
-    openedSpy = jasmine.createSpy('opened spy')
+    isOpenSpy = jasmine.createSpy('isOpen spy')
     closedSpy = jasmine.createSpy('closed spy')
     @ViewChild('dt', { static: true })
     dateTimePicker?: DateTimeComponent<Date>

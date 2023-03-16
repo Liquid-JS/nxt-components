@@ -96,7 +96,7 @@ export function dispatchMouseEvent(
     return dispatchEvent(node, event) as MouseEvent
 }
 
-/** Creates a browser MouseEvent with the specified options. */
+/** Creates a browser MouseEvent with the specified options */
 export function createMouseEvent(type: string, x = 0, y = 0, button = 0) {
     const event = new MouseEvent(type, {
         bubbles: true,
@@ -135,7 +135,7 @@ export class MockNgZone extends NgZone {
     }
 }
 
-/** The default month names to use if Intl API is not available. */
+/** The default month names to use if Intl API is not available */
 const DEFAULT_MONTH_NAMES = {
     long: [
         'January',
@@ -168,7 +168,7 @@ const DEFAULT_MONTH_NAMES = {
     narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
 }
 
-/** The default day of the week names to use if Intl API is not available. */
+/** The default day of the week names to use if Intl API is not available */
 const DEFAULT_DAY_OF_WEEK_NAMES = {
     long: [
         'Sunday',
@@ -183,10 +183,10 @@ const DEFAULT_DAY_OF_WEEK_NAMES = {
     narrow: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
 }
 
-/** The default date names to use if Intl API is not available. */
+/** The default date names to use if Intl API is not available */
 const DEFAULT_DATE_NAMES = range(31, i => String(i + 1))
 
-/** Whether the browser supports the Intl API. */
+/** Whether the browser supports the Intl API */
 const SUPPORTS_INTL_API = typeof Intl !== 'undefined'
 
 /**
@@ -196,7 +196,7 @@ const SUPPORTS_INTL_API = typeof Intl !== 'undefined'
  */
 const ISO_8601_REGEX = /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|(?:(?:\+|-)\d{2}:\d{2}))?)?$/
 
-/** Creates an array and fills it with values. */
+/** Creates an array and fills it with values */
 function range<T>(length: number, valueFunction: (index: number) => T): T[] {
     const valuesArray = Array(length)
     for (let i = 0; i < length; i++) {
@@ -207,7 +207,7 @@ function range<T>(length: number, valueFunction: (index: number) => T): T[] {
 
 @Injectable()
 export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
-    /** Whether to clamp the date between 1 and 9999 to avoid IE and Edge errors. */
+    /** Whether to clamp the date between 1 and 9999 to avoid IE and Edge errors */
     private readonly _clampDate: boolean
 
     /**

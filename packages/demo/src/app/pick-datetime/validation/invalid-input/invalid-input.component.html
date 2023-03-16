@@ -1,0 +1,12 @@
+<input class="form-control"
+    [ngClass]="{ 'is-invalid': dateTimeControl.invalid }"
+    [(ngModel)]="value"
+    #dateTimeControl="ngModel"
+    placeholder="Date and time"
+    [nxtDateTimeTrigger]="picker"
+    [nxtDateTime]="picker">
+<nxt-date-time #picker></nxt-date-time>
+<div class="invalid-feedback"
+    *ngIf="dateTimeControl.errors?.['dateTimeParse'] as parseError">
+    Input is not a valid date string, received "{{ parseError.text }}".
+</div>

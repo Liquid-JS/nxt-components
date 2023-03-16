@@ -287,12 +287,12 @@ class StandardMonthViewComponent {
     template: `
         <nxt-date-time-month-view
                 [(pickerMoment)]="pickerMoment"
-                [dateFilter]="dateFilter"></nxt-date-time-month-view>
+                [dateTimeFilter]="dateTimeFilter"></nxt-date-time-month-view>
     `
 })
 class MonthViewWithDateFilterComponent {
     pickerMoment = new Date(2018, 0, 1)
-    dateFilter(date: Date) {
+    dateTimeFilter(date: Date) {
         return date.getDate() % 2 == 0
     }
 }

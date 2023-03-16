@@ -12,7 +12,8 @@ $cdk-overlay-dark-backdrop-background: rgba(0, 0, 0, 0.288);
 $backdrop-animation-duration: 400ms !default;
 $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
 
-.cdk-overlay-container, .cdk-global-overlay-wrapper {
+.cdk-overlay-container,
+.cdk-global-overlay-wrapper {
     // Disable events from being captured on the overlay container.
     pointer-events: none;
 
@@ -95,7 +96,8 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
     // capturing the user's mouse scroll events. Since we also can't use something like
     // `rgba(0, 0, 0, 0)`, we work around the inconsistency by not setting the background at
     // all and using `opacity` to make the element transparent.
-    &, &.cdk-overlay-backdrop-showing {
+    &,
+    &.cdk-overlay-backdrop-showing {
         opacity: 0;
     }
 }
@@ -185,7 +187,7 @@ $theme-color: #3f51b5;
     align-items: center;
     font-size: 1em;
     width: 100%;
-    padding: .5em;
+    padding: 0.5em;
     color: #000000;
 
     .nxt-dt-calendar-control-content {
@@ -195,7 +197,7 @@ $theme-color: #3f51b5;
         align-items: center;
 
         .nxt-dt-calendar-control-button {
-            padding: 0 .8em;
+            padding: 0 0.8em;
 
             &:hover {
                 background-color: rgba(0, 0, 0, 0.12);
@@ -208,7 +210,7 @@ $theme-color: #3f51b5;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    padding: 0 .5em .5em;
+    padding: 0 0.5em 0.5em;
     outline: 0;
 }
 
@@ -225,7 +227,7 @@ $theme-color: #3f51b5;
         width: calc(100% - 3em);
 
         .nxt-dt-calendar-header th {
-            padding-bottom: .25em;
+            padding-bottom: 0.25em;
         }
     }
 }
@@ -240,7 +242,7 @@ $theme-color: #3f51b5;
 
         .nxt-dt-weekdays {
             th {
-                font-size: .7em;
+                font-size: 0.7em;
                 font-weight: 400;
                 text-align: center;
                 padding-bottom: 1em;
@@ -250,14 +252,14 @@ $theme-color: #3f51b5;
         .nxt-dt-calendar-table-divider {
             position: relative;
             height: 1px;
-            padding-bottom: .5em;
+            padding-bottom: 0.5em;
 
             &:after {
-                content: '';
+                content: "";
                 position: absolute;
                 top: 0;
-                left: -.5em;
-                right: -.5em;
+                left: -0.5em;
+                right: -0.5em;
                 height: 1px;
                 background: rgba(0, 0, 0, 0.12);
             }
@@ -284,7 +286,7 @@ $theme-color: #3f51b5;
         box-sizing: border-box;
         width: 90%;
         height: 90%;
-        font-size: .8em;
+        font-size: 0.8em;
         line-height: 1;
         border: 1px solid transparent;
         border-radius: 999px;
@@ -293,7 +295,7 @@ $theme-color: #3f51b5;
     }
 
     .nxt-dt-calendar-cell-out {
-        opacity: .2;
+        opacity: 0.2;
     }
 
     .nxt-dt-calendar-cell-today:not(.nxt-dt-calendar-cell-selected) {
@@ -317,7 +319,7 @@ $theme-color: #3f51b5;
         }
 
         & > .nxt-dt-calendar-cell-content.nxt-dt-calendar-cell-selected {
-            opacity: .4;
+            opacity: 0.4;
         }
 
         & > .nxt-dt-calendar-cell-today:not(.nxt-dt-calendar-cell-selected) {
@@ -336,7 +338,7 @@ $theme-color: #3f51b5;
         &.nxt-dt-calendar-cell-range-from {
             border-top-left-radius: 50%;
 
-            &:not(.nxt-dt-calendar-cell-range-from-long){
+            &:not(.nxt-dt-calendar-cell-range-from-long) {
                 border-bottom-left-radius: 50%;
             }
         }
@@ -356,7 +358,7 @@ $theme-color: #3f51b5;
     justify-content: center;
     width: 100%;
     height: 7em;
-    padding: .5em;
+    padding: 0.5em;
     outline: none;
 }
 
@@ -366,6 +368,7 @@ $theme-color: #3f51b5;
     flex-direction: column;
     align-items: center;
     width: 25%;
+    flex: 5em 0 1;
     height: 100%;
 }
 
@@ -375,7 +378,7 @@ $theme-color: #3f51b5;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: .2em 0;
+    margin: 0.2em 0;
 
     .nxt-dt-timer-input {
         display: block;
@@ -385,7 +388,7 @@ $theme-color: #3f51b5;
         border-radius: 3px;
         outline: medium none;
         font-size: 1.2em;
-        padding: .2em;
+        padding: 0.2em;
     }
 }
 
@@ -393,16 +396,16 @@ $theme-color: #3f51b5;
     display: inline-block;
     align-self: flex-end;
     position: absolute;
-    width: .6em;
+    width: 0.6em;
     height: 100%;
-    left: -.3em;
+    left: -0.3em;
 
     &:before,
     &:after {
-        content: '';
+        content: "";
         display: inline-block;
-        width: .35em;
-        height: .35em;
+        width: 0.35em;
+        height: 0.35em;
         position: absolute;
         left: 50%;
         border-radius: 50%;
@@ -446,7 +449,7 @@ $theme-color: #3f51b5;
 .nxt-dt-control-period-button {
     .nxt-dt-control-button-content {
         height: 1.5em;
-        padding: 0 .5em;
+        padding: 0 0.5em;
         border-radius: 3px;
         transition: background-color 100ms linear;
     }
@@ -461,7 +464,7 @@ $theme-color: #3f51b5;
         align-items: center;
         width: 1em;
         height: 1em;
-        margin: .1em;
+        margin: 0.1em;
         transition: transform 200ms ease;
     }
 }
@@ -572,7 +575,7 @@ $theme-color: #3f51b5;
 }
 
 .nxt-dt-container-info {
-    padding: 0 .5em;
+    padding: 0 0.5em;
     cursor: pointer;
 
     .nxt-dt-container-range {
@@ -581,8 +584,8 @@ $theme-color: #3f51b5;
         .nxt-dt-container-range-content {
             display: flex;
             justify-content: space-between;
-            padding: .5em 0;
-            font-size: .8em;
+            padding: 0.5em 0;
+            font-size: 0.8em;
         }
 
         &:last-child {
@@ -617,10 +620,11 @@ $theme-color: #3f51b5;
         .nxt-dt-control-button-content {
             width: 100%;
             height: 100%;
-            padding: .5em;
+            padding: 0.5em;
         }
 
-        &:focus, &:hover {
+        &:focus,
+        &:hover {
             .nxt-dt-control-button-content {
                 background: $theme-color;
                 color: #ffffff;

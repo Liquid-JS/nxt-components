@@ -36,7 +36,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
         }
     }
 
-    /** The currently selected date. */
+    /** The currently selected date */
     private _selected?: T
     @Input()
     get selected() {
@@ -88,20 +88,20 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
     /**
      * A function used to filter which dates are selectable
      */
-    private _dateFilter?: DateFilter<T>
+    private _dateTimeFilter?: DateFilter<T>
     @Input()
-    get dateFilter() {
-        return this._dateFilter
+    get dateTimeFilter() {
+        return this._dateTimeFilter
     }
 
-    set dateFilter(filter: DateFilter<T> | undefined) {
-        this._dateFilter = filter
+    set dateTimeFilter(filter: DateFilter<T> | undefined) {
+        this._dateTimeFilter = filter
         if (this.initiated) {
             this.generateMonthList()
         }
     }
 
-    /** The minimum selectable date. */
+    /** The minimum selectable date */
     private _minDate?: T
     @Input()
     get min() {
@@ -116,7 +116,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
         }
     }
 
-    /** The maximum selectable date. */
+    /** The maximum selectable date */
     private _maxDate?: T
     @Input()
     get max() {
@@ -177,12 +177,14 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
     readonly change = new EventEmitter<T>()
 
     /**
-     * Emits the selected year. This doesn't imply a change on the selected date
+     * Emits the selected year
+     *
+     * This doesn't imply a change on the selected date.
      */
     @Output()
     readonly monthSelected = new EventEmitter<T>()
 
-    /** Emits when any date is activated. */
+    /** Emits when any date is activated */
     @Output()
     readonly pickerMomentChange = new EventEmitter<T>()
 
@@ -428,7 +430,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
         ) {
             if (
                 !!date &&
-                (!this.dateFilter || this.dateFilter(date, 'month')) &&
+                (!this.dateTimeFilter || this.dateTimeFilter(date, 'month')) &&
                 (!this.min ||
                     this.dateTimeAdapter.compare(date, this.min) >= 0) &&
                 (!this.max ||

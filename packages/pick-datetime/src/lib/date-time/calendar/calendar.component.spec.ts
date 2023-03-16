@@ -478,7 +478,7 @@ class CalendarWithMinMax {
         <nxt-date-time-calendar [(selected)]="selected"
                                 [selectMode]="selectMode"
                                 [pickerMoment]="pickerMoment"
-                                [dateFilter]="dateFilter"></nxt-date-time-calendar>
+                                [dateTimeFilter]="dateTimeFilter"></nxt-date-time-calendar>
     `
 })
 class CalendarWithDateFilter {
@@ -486,7 +486,7 @@ class CalendarWithDateFilter {
     selected?: Date
     pickerMoment = new Date(2018, 0, 31)
 
-    dateFilter(date: Date) {
+    dateTimeFilter(date: Date) {
         return !(date.getDate() % 2) && date.getMonth() !== 10
     }
 }

@@ -16,15 +16,15 @@ export class DialogRef<T> {
 
     private readonly _afterClosed$ = new Subject<void>()
 
-    /** Subscription to changes in the user's location. */
+    /** Subscription to changes in the user's location */
     private locationChanged?: ISubscription
 
     /**
-     * The instance of component opened into modal
+     * The instance of component isOpen into modal
      */
     componentInstance?: T
 
-    /** Whether the user is allowed to close the dialog. */
+    /** Whether the user is allowed to close the dialog */
     disableClose = !!this.container.config?.disableClose
 
     constructor(
@@ -160,7 +160,7 @@ export class DialogRef<T> {
         return this._afterClosed$.asObservable()
     }
 
-    /** Fetches the position strategy object from the overlay ref. */
+    /** Fetches the position strategy object from the overlay ref */
     private getPositionStrategy(): GlobalPositionStrategy {
         return this.overlayRef.getConfig().positionStrategy as GlobalPositionStrategy
     }

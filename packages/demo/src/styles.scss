@@ -9,4 +9,8 @@
     --bs-body-bg: var(--bs-gray-100);
 }
 
+.cdk-overlay-container {
+    z-index: 10011 !important;
+}
+
 @import "./scss/highlight";

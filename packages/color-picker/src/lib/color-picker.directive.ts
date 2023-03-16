@@ -66,7 +66,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         return ign.filter(el => !!el)
     }
 
-    /** The color to show in the color picker dialog. */
+    /** The color to show in the color picker dialog */
     @Input() nxtColor?: string
 
     /** Use this option to set color picker dialog width */
@@ -139,7 +139,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
      */
     @Input() useRootViewContainer: boolean = false
 
-    /** Current color value, emit when dialog is opened */
+    /** Current color value, emit when dialog is isOpen */
     @Output() open = new EventEmitter<string>(true)
     /** Current color value, emit when dialog is closed */
     @Output() close = new EventEmitter<string>(true)
@@ -147,7 +147,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     /** Input name and its value, emit when user changes color through inputs */
     @Output() inputChange = new EventEmitter<InputChangeEvent>(true)
 
-    /** Status of the dialog, emit when dialog is opened / closed */
+    /** Status of the dialog, emit when dialog is isOpen / closed */
     @Output() toggleChange = new EventEmitter<boolean>(true)
 
     /** Slider name and current color, emit when slider dragging starts */

@@ -4,18 +4,18 @@ import { ViewContainerRef } from '@angular/core'
 /** @internal */
 let uniqueId = 0
 
-/** Possible overrides for a dialog's position. */
+/** Possible overrides for a dialog's position */
 export interface DialogPosition {
-    /** Override for the dialog's top position. */
+    /** Override for the dialog's top position */
     top?: string
 
-    /** Override for the dialog's bottom position. */
+    /** Override for the dialog's bottom position */
     bottom?: string
 
-    /** Override for the dialog's left position. */
+    /** Override for the dialog's left position */
     left?: string
 
-    /** Override for the dialog's right position. */
+    /** Override for the dialog's right position */
     right?: string
 }
 
@@ -26,11 +26,11 @@ export class DialogConfig {
     ariaDescribedBy?: string
 
     /**
-     * Whether to focus the dialog when the dialog is opened
+     * Whether to focus the dialog when the dialog is isOpen
      */
     autoFocus = true
 
-    /** Whether the dialog has a backdrop. */
+    /** Whether the dialog has a backdrop */
     hasBackdrop?= true
 
     /**
@@ -38,10 +38,10 @@ export class DialogConfig {
      */
     backdropStyle?: any
 
-    /** Data being injected into the child component. */
+    /** Data being injected into the child component */
     data?: any
 
-    /** Whether the user can use escape or clicking outside to close a modal. */
+    /** Whether the user can use escape or clicking outside to close a modal */
     disableClose?= false
 
     /**
@@ -74,10 +74,10 @@ export class DialogConfig {
      */
     closeOnNavigation?: boolean = true
 
-    /** Width of the dialog. */
+    /** Width of the dialog */
     width?: string = ''
 
-    /** Height of the dialog. */
+    /** Height of the dialog */
     height?: string = ''
 
     /**
@@ -104,7 +104,7 @@ export class DialogConfig {
      */
     maxHeight?: number | string
 
-    /** Position overrides. */
+    /** Position overrides */
     position?: DialogPosition
 
     /**
