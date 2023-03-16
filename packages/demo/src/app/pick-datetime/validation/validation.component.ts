@@ -41,6 +41,11 @@ export class ValidationComponent implements OnInit {
             path: 'filter',
             name: 'Custom date filtering function',
             include: ['html', 'ts']
+        },
+        {
+            path: 'range',
+            name: 'Invalid date range',
+            include: ['html', 'ts']
         }
     )
         .map(p => Promise.all([

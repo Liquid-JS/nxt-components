@@ -117,6 +117,18 @@ export class AppComponent {
                     link: 'getting-started'
                 },
                 {
+                    label: 'Accessibility',
+                    link: 'accessibility'
+                },
+                {
+                    label: 'Validation',
+                    link: 'validation'
+                },
+                {
+                    label: 'Custom date adapter',
+                    link: 'custom-adapter'
+                },
+                {
                     label: 'API docs',
                     url: 'https://liquid-js.github.io/nxt-components/docs/nxt-pick-datetime'
                 }

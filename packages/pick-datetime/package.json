@@ -12,7 +12,7 @@
         "lint": "ng lint pick-datetime",
         "lint:fix": "yarn lint --fix",
         "lint:html": "js-beautify --type html -r -f ./src/**/*.html --config ./js-beautify.json",
-        "lint:sass": "stylelint \"src/**/*.scss\"",
+        "lint:sass": "stylelint \"src/**/*.scss\" \"assets/**/*.scss\"",
         "lint:sass:fix": "yarn lint:sass --fix",
         "test": "ng test pick-datetime --no-watch",
         "test:watch": "ng test pick-datetime",

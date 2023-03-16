@@ -1,6 +1,31 @@
 <app-content-wrap>
     <h1>Validation</h1>
     <p>When used with <code>[ngModel]</code> or <code>[formControl]</code>, date & time picker provides control validation.</p>
+    <br>
+
+    <h2>Examples <div class="btn-group"
+            dropdown>
+            <button id="button-basic"
+                dropdownToggle
+                type="button"
+                class="btn btn-primary dropdown-toggle"
+                aria-controls="dropdown-basic">
+                Go to <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic"
+                *dropdownMenu
+                class="dropdown-menu"
+                role="menu"
+                aria-labelledby="button-basic">
+                <li *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+                    role="menuitem"><a class="dropdown-item"
+                        routerLink="."
+                        fragment="example-{{ i }}">{{ example.name }}</a></li>
+            </ul>
+        </div>
+    </h2>
+
+    <hr class="no-padding">
 
     <app-example *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
         [injector]="injector"

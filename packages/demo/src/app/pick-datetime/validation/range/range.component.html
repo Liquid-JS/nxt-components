@@ -1,0 +1,13 @@
+<input class="form-control"
+    [ngClass]="{ 'is-invalid': dateTimeControl.invalid }"
+    [(ngModel)]="value"
+    #dateTimeControl="ngModel"
+    placeholder="Date and time"
+    selectMode="range"
+    [nxtDateTimeTrigger]="picker"
+    [nxtDateTime]="picker">
+<nxt-date-time #picker></nxt-date-time>
+<div class="invalid-feedback"
+    *ngIf="dateTimeControl.errors?.['dateTimeRange']">
+    "Range.to" should be greater than "range.from".
+</div>

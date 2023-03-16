@@ -10,6 +10,7 @@ import { ExampleComponent } from '../example/example.component'
 import { InputsTableComponent } from '../inputs-table/inputs-table.component'
 import { OutputsTableComponent } from '../outputs-table/outputs-table.component'
 import { AccessibilityComponent } from './accessibility/accessibility.component'
+import { CustomAdapterComponent } from './custom-adapter/custom-adapter.component'
 import { BasicExampleComponent } from './examples/basic-example/basic-example.component'
 import { CalendarOnlyComponent } from './examples/calendar-only/calendar-only.component'
 import { FilterRestrictionComponent } from './examples/filter-restriction/filter-restriction.component'
@@ -23,6 +24,7 @@ import { AppPickDatetimeComponent } from './pick-datetime/pick-datetime.componen
 import { FilterComponent } from './validation/filter/filter.component'
 import { InvalidInputComponent } from './validation/invalid-input/invalid-input.component'
 import { ValidateMinMaxComponent } from './validation/min-max/min-max.component'
+import { RangeComponent } from './validation/range/range.component'
 import { ValidationComponent } from './validation/validation.component'
 
 @NgModule({
@@ -40,7 +42,9 @@ import { ValidationComponent } from './validation/validation.component'
         ValidationComponent,
         InvalidInputComponent,
         ValidateMinMaxComponent,
-        FilterComponent
+        FilterComponent,
+        RangeComponent,
+        CustomAdapterComponent
     ],
     imports: [
         CommonModule,

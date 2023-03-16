@@ -4,7 +4,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs'
 import { HighlightModule } from 'ngx-highlightjs'
 
 export interface ExampleConfig {
-    component: Type<any>
+    component?: Type<any>
     name: string
     description?: string
     path: string
