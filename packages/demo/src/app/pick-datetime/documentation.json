@@ -79,7 +79,7 @@
         },
         {
             "name": "DateTimeInputEvent",
-            "id": "interface-DateTimeInputEvent-114b56408b5d0da99e26d85c04e9b8626d01ab420b217968a159ae3ae9174cfb38bd18d854ad0c395ba7a976d9067490895da302314d45ce0461f367ea829fcc",
+            "id": "interface-DateTimeInputEvent-7ea4f7ddb2dcf53c48f9288ff2555b1b83b45294d64753e0ba3184d43b38e5a5b1e99badbb46b41fe378f43fb42371812e2fd280c77727da9f7f36fc333db32c",
             "file": "src/lib/date-time/date-time-picker-input.directive.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -6399,7 +6399,7 @@
         },
         {
             "name": "DateTimeInputDirective",
-            "id": "directive-DateTimeInputDirective-114b56408b5d0da99e26d85c04e9b8626d01ab420b217968a159ae3ae9174cfb38bd18d854ad0c395ba7a976d9067490895da302314d45ce0461f367ea829fcc",
+            "id": "directive-DateTimeInputDirective-7ea4f7ddb2dcf53c48f9288ff2555b1b83b45294d64753e0ba3184d43b38e5a5b1e99badbb46b41fe378f43fb42371812e2fd280c77727da9f7f36fc333db32c",
             "file": "src/lib/date-time/date-time-picker-input.directive.ts",
             "type": "directive",
             "description": "",

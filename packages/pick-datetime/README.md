@@ -24,7 +24,7 @@ npm install --save moment   # if you want to use MomentDateTimeModule
 
 ### Import main module and DateTime adapter provider
 
-The date & time picker was built to be date implementation agnostic. It comes with two modules providing date adapter implementation, or you can provide your own adapter by implementing `DateTimeAdapter`.
+The date & time picker was built to be date implementation agnostic. It comes with two modules providing date adapter implementation, or you can provide your own adapter by implementing `DateTimeAdapter` (see [documentation](https://liquid-js.github.io/nxt-components/demo/pick-datetime/custom-adapter)).
 
 -   `NativeDateTimeModule` - support for native JavaScript Date object
 -   `MomentDateTimeModule` - support for MomentJs

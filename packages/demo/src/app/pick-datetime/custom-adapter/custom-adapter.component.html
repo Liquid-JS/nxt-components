@@ -1,7 +1,6 @@
 <app-content-wrap>
-    <h1>Writing custom date adapter</h1>
+    <h1>Writing a custom date adapter</h1>
     <p>If neither of the provided date adapters is suitable for your project, you it't possible to create your own date-time implementation. Making the picker work with a different date & time implementation is as easy as extending <code>DateTimeAdapter</code>. You will also want to provide a matching <code>NXT_DATE_TIME_FORMATS</code> to configure formatting strings for your implementation.</p>
-    <br>
 
     <app-example *ngIf="(exampleImpl | async) as config"
         [injector]="injector"

@@ -23,6 +23,6 @@ export class CustomAdapterComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.title.setTitle('Writing custom date adapter | nxt-pick-datetime')
+        this.title.setTitle('Writing a custom date adapter | nxt-pick-datetime')
     }
 }
