@@ -35,13 +35,12 @@ const getIndexesFromEvent = (event: SortableEvent) => {
 }
 
 @Directive({
-    // eslint-disable-next-line @angular-eslint/directive-selector
-    selector: '[sortablejs]'
+    selector: '[nxtSortablejs]'
 })
 export class SortablejsDirective implements OnInit, OnChanges, OnDestroy {
 
-    @Input()
-    sortablejs: SortableData // array or a FormArray
+    @Input('nxtSortablejs')
+    data: SortableData // array or a FormArray
 
     @Input()
     sortablejsContainer?: string
@@ -54,7 +53,7 @@ export class SortablejsDirective implements OnInit, OnChanges, OnDestroy {
 
     @Output() sortablejsInit = new EventEmitter()
 
-    private sortableInstance: any
+    private sortableInstance?: Sortable
 
     constructor(
         @Optional() @Inject(GLOBALS) private globalConfig: Options,
@@ -81,7 +80,7 @@ export class SortablejsDirective implements OnInit, OnChanges, OnDestroy {
             Object.keys(currentOptions).forEach(optionName => {
                 if (currentOptions[optionName as keyof Options] !== previousOptions[optionName as keyof Options]) {
                     // use low-level option setter
-                    this.sortableInstance.option(optionName, this.options[optionName as keyof Options])
+                    this.sortableInstance?.option(optionName as keyof Options, this.options[optionName as keyof Options])
                 }
             })
         }
@@ -103,12 +102,12 @@ export class SortablejsDirective implements OnInit, OnChanges, OnDestroy {
     }
 
     private getBindings(): SortablejsBindings {
-        if (!this.sortablejs) {
+        if (!this.data) {
             return new SortablejsBindings([])
-        } else if (this.sortablejs instanceof SortablejsBindings) {
-            return this.sortablejs
+        } else if (this.data instanceof SortablejsBindings) {
+            return this.data
         } else {
-            return new SortablejsBindings([this.sortablejs])
+            return new SortablejsBindings([this.data])
         }
     }
 
@@ -129,7 +128,10 @@ export class SortablejsDirective implements OnInit, OnChanges, OnDestroy {
     }
 
     private get isCloning() {
-        return this.sortableInstance.options.group.checkPull(this.sortableInstance, this.sortableInstance) === 'clone'
+        const groupOptions = this.sortableInstance?.options.group
+        return groupOptions && (typeof groupOptions != 'string')
+            ? groupOptions.checkPull?.(this.sortableInstance!, this.sortableInstance!, null as any, null as any) === 'clone'
+            : groupOptions === 'clone'
     }
 
     private clone<T>(item: T): T {

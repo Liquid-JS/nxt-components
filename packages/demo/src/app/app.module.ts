@@ -39,7 +39,8 @@ import { HomeComponent } from './home/home.component'
                     scss: () => import('highlight.js/lib/languages/scss'),
                     xml: () => import('highlight.js/lib/languages/xml'),
                     bash: () => import('highlight.js/lib/languages/bash'),
-                    shell: () => import('highlight.js/lib/languages/shell')
+                    shell: () => import('highlight.js/lib/languages/shell'),
+                    json: () => import('highlight.js/lib/languages/json')
                 }
             }
         }

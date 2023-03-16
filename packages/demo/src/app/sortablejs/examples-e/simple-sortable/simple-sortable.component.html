@@ -17,14 +17,14 @@ Actually everything can be sortable.
 
 <div class="clearfix">
     <div class="btn-group-vertical float-left"
-        [sortablejs]="cities">
+        [nxtSortablejs]="cities">
         <button type="button"
             class="btn btn-secondary"
             *ngFor="let city of cities">{{ city }}</button>
     </div>
 
     <div class="btn-group ml-3"
-        [sortablejs]="cities">
+        [nxtSortablejs]="cities">
         <button type="button"
             class="btn btn-secondary"
             *ngFor="let city of cities">{{ city }}</button>
@@ -34,7 +34,7 @@ Actually everything can be sortable.
 <h2 class="mt-4 mb-3">Cards</h2>
 
 <div class="row"
-    [sortablejs]="cities">
+    [nxtSortablejs]="cities">
     <div class="col-sm-4 my-3"
         *ngFor="let city of cities">
         <div class="card">
@@ -47,7 +47,7 @@ Actually everything can be sortable.
 <h2 class="mt-4 mb-3">Navigation</h2>
 
 <ul class="nav nav-pills mb-3"
-    [sortablejs]="cities">
+    [nxtSortablejs]="cities">
     <li class="nav-item"
         *ngFor="let city of cities">
         <a class="nav-link active mr-1">{{ city }}</a>
@@ -57,7 +57,7 @@ Actually everything can be sortable.
 <nav aria-label="breadcrumb"
     role="navigation">
     <ol class="breadcrumb"
-        [sortablejs]="cities">
+        [nxtSortablejs]="cities">
         <li class="breadcrumb-item active"
             *ngFor="let city of cities">{{ city }}</li>
     </ol>

@@ -38,7 +38,9 @@ export class SortableWithOptionsComponent {
 
     scrollableOptions: Options = {
         scroll: true,
-        scrollSensitivity: 100
+        scrollSensitivity: 100,
+        // @ts-ignore Most browsers handle scrolling well, this forces custom scrolling which uses `scrollSensitivity`
+        forceAutoScrollFallback: true
     }
 
 }

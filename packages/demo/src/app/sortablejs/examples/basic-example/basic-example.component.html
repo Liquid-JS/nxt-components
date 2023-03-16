@@ -1,0 +1,56 @@
+<h3 class="h4">Button groups</h3>
+
+<div class="btn-group-vertical"
+    [nxtSortablejs]="cities">
+    <button type="button"
+        class="btn btn-secondary"
+        *ngFor="let city of cities">{{ city }}</button>
+</div>
+
+<br><br>
+
+<div class="btn-group"
+    [nxtSortablejs]="cities">
+    <button type="button"
+        class="btn btn-secondary"
+        *ngFor="let city of cities">{{ city }}</button>
+</div>
+
+<br><br>
+
+<h3 class="h4">Cards</h3>
+
+<div class="row"
+    [nxtSortablejs]="cities">
+    <div class="col mb-4"
+        *ngFor="let city of cities">
+        <div class="card">
+            <div class="card-header">{{ city }}</div>
+            <div class="card-body">{{ city }} description</div>
+        </div>
+    </div>
+</div>
+
+<h3 class="h4">Navigation</h3>
+
+<ul class="nav nav-pills mb-3"
+    [nxtSortablejs]="cities">
+    <li class="nav-item"
+        *ngFor="let city of cities">
+        <a class="nav-link active mr-1">{{ city }}</a>
+    </li>
+</ul>
+
+<nav aria-label="breadcrumb"
+    role="navigation">
+    <ol class="breadcrumb"
+        [nxtSortablejs]="cities">
+        <li class="breadcrumb-item active"
+            *ngFor="let city of cities">{{ city }}</li>
+    </ol>
+</nav>
+
+<h3 class="h4">The actual model</h3>
+
+<app-code-block [code]="cities | json"
+    [languages]="['json']"></app-code-block>
