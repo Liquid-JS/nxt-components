@@ -28,14 +28,14 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/sortablejs"
     },
     "peerDependencies": {
-        "@angular/common": "^15.2.2",
-        "@angular/core": "^15.2.2",
+        "@angular/common": "^15.2.3",
+        "@angular/core": "^15.2.3",
         "sortablejs": ">=1.15.0"
     },
     "dependencies": {
         "tslib": "^2.5.0"
     },
     "devDependencies": {
-        "@types/sortablejs": "^1.15.0"
+        "@types/sortablejs": "^1.15.1"
     }
 }
