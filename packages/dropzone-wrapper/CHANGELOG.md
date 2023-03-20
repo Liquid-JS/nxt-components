@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-alpha.0](https://github.com/Liquid-JS/nxt-components/compare/v15.0.1...v16.0.0-alpha.0) (2023-03-20)
+
+
+* feat(nxt-dropzone-wrapper)!: add correct typings, remove old types ([e212b10](https://github.com/Liquid-JS/nxt-components/commit/e212b101ef3537a7d77eb11aa26ffea7db76ce30))
+
+
+### BREAKING CHANGES
+
+* remove exports for helper types, since they're now provided by dropzone.js
+
+
+
+
+
 # 15.0.0 (2023-03-07)
 
 

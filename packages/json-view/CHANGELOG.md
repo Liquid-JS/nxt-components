@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-alpha.0](https://github.com/Liquid-JS/nxt-components/compare/v15.0.1...v16.0.0-alpha.0) (2023-03-20)
+
+
+### Features
+
+* **nxt-json-view:** customize colors ([1d6b2ff](https://github.com/Liquid-JS/nxt-components/commit/1d6b2fff31c43b831c941243f460d0ce62486efe))
+
+
+
+
+
 # 15.0.0 (2023-03-07)
 
 

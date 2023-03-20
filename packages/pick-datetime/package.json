@@ -2,7 +2,7 @@
     "name": "nxt-pick-datetime",
     "description": "Date time picker for Angular",
     "bugs": "https://github.com/Liquid-JS/nxt-components/issues",
-    "version": "15.0.0",
+    "version": "16.0.0-alpha.0",
     "license": "MIT",
     "repository": "https://github.com/Liquid-JS/nxt-components.git",
     "homepage": "https://github.com/Liquid-JS/nxt-components/tree/master/packages/pick-datetime",

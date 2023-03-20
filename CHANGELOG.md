@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-alpha.0](https://github.com/Liquid-JS/nxt-components/compare/v15.0.1...v16.0.0-alpha.0) (2023-03-20)
+
+
+### Bug Fixes
+
+* **demo:** sortable link ([12da171](https://github.com/Liquid-JS/nxt-components/commit/12da171deda478607d14abc454316f96c1b26857))
+* gitignore ([07c6fb7](https://github.com/Liquid-JS/nxt-components/commit/07c6fb7a6c546c8252c10d0e88e2514f4b2350b2))
+
+
+* feat(nxt-pick-datetime)!: docs, use global LOCALE_ID ([5ad4eb0](https://github.com/Liquid-JS/nxt-components/commit/5ad4eb02095a2c9bb7bb3c23cc69f71cb92f70e6))
+* feat(nxt-dropzone-wrapper)!: add correct typings, remove old types ([e212b10](https://github.com/Liquid-JS/nxt-components/commit/e212b101ef3537a7d77eb11aa26ffea7db76ce30))
+* fix(nxt-color-picker)!: rename `addColorButton` => `presetColorsEditable` ([97a6622](https://github.com/Liquid-JS/nxt-components/commit/97a6622011e1bdc84af6269b48d2e33ab835c9ed))
+
+
+### Features
+
+* **demo:** add service worker ([19d0e15](https://github.com/Liquid-JS/nxt-components/commit/19d0e15fbbc74ce49cb32832fb191b1fea94c8ad))
+* **demo:** demo page layout ([b7cd95a](https://github.com/Liquid-JS/nxt-components/commit/b7cd95a80fa2f50f8a4c97ae1a15969ad53e2411))
+* import code snippets ([1ab89d9](https://github.com/Liquid-JS/nxt-components/commit/1ab89d96b1e18e95bb81fdf1aaaafdab1311192e))
+* **nxt-color-picker:** ensure normalized colors ([f529445](https://github.com/Liquid-JS/nxt-components/commit/f52944582d97540c3c083f3f056fad895925d953))
+* **nxt-json-view:** customize colors ([1d6b2ff](https://github.com/Liquid-JS/nxt-components/commit/1d6b2fff31c43b831c941243f460d0ce62486efe))
+* **nxt-pick-datetime:** date range selection format ([99af361](https://github.com/Liquid-JS/nxt-components/commit/99af361aa6c318efd9732714d2301d09489e8527))
+
+
+### BREAKING CHANGES
+
+* drop NXT_LOCALE, use global LOCALE_ID
+* remove exports for helper types, since they're now provided by dropzone.js
+* rename `addColorButton` => `presetColorsEditable` to better reflect its purpose
+
+
+
+
+
 ## [15.0.1](https://github.com/Liquid-JS/nxt-components/compare/v15.0.0...v15.0.1) (2023-03-07)
 
 ### Bug Fixes

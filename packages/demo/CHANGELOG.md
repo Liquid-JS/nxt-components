@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-alpha.0](https://github.com/Liquid-JS/nxt-components/compare/v15.0.1...v16.0.0-alpha.0) (2023-03-20)
+
+
+### Bug Fixes
+
+* **demo:** sortable link ([12da171](https://github.com/Liquid-JS/nxt-components/commit/12da171deda478607d14abc454316f96c1b26857))
+
+
+### Features
+
+* **demo:** add service worker ([19d0e15](https://github.com/Liquid-JS/nxt-components/commit/19d0e15fbbc74ce49cb32832fb191b1fea94c8ad))
+* **demo:** demo page layout ([b7cd95a](https://github.com/Liquid-JS/nxt-components/commit/b7cd95a80fa2f50f8a4c97ae1a15969ad53e2411))
+* import code snippets ([1ab89d9](https://github.com/Liquid-JS/nxt-components/commit/1ab89d96b1e18e95bb81fdf1aaaafdab1311192e))
+
+
+
+
+
 # 15.0.0 (2023-03-07)
 
 
