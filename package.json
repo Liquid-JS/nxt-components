@@ -23,7 +23,7 @@
         "lint:sass": "yarn workspaces foreach run lint:sass",
         "lint:sass:fix": "yarn workspaces foreach run lint:sass:fix",
         "docs": "yarn workspaces foreach run docs && yarn workspaces foreach run docs:json",
-        "pages": "rimraf docs && yarn docs && yarn build:demo --base-href /nxt-components/demo/ && ngh --dir docs"
+        "pages": "rimraf docs && yarn docs && yarn build:demo --base-href /nxt-components/demo/ && cp dist/demo/index.html dist/demo/404.html && ngh --dir docs"
     },
     "dependencies": {
         "@angular/animations": "^15.2.3",

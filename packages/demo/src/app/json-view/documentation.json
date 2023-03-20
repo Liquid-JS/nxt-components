@@ -3,7 +3,7 @@
     "interfaces": [
         {
             "name": "LevelLabels",
-            "id": "interface-LevelLabels-5b4a265617bc7cb727510602e82a1ec16c08725540b2ebe9ba67fa533594e80490594437becc9f495aac065a3e2ec704744949974e087938e9356e013f5c369c",
+            "id": "interface-LevelLabels-b3bf53d2b0a9e1ab8e0207c39f8d242961d91431b8822f4821f4b37a58f8dae6dde7878085d361cf4f67915f11c2858eba6f7ac8d9a0615ee59b47790fd5d8ca",
             "file": "src/lib/utils/interfaces.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -11,7 +11,7 @@
             "properties": [],
             "indexSignatures": [
                 {
-                    "id": "index-declaration-5b4a265617bc7cb727510602e82a1ec16c08725540b2ebe9ba67fa533594e80490594437becc9f495aac065a3e2ec704744949974e087938e9356e013f5c369c",
+                    "id": "index-declaration-b3bf53d2b0a9e1ab8e0207c39f8d242961d91431b8822f4821f4b37a58f8dae6dde7878085d361cf4f67915f11c2858eba6f7ac8d9a0615ee59b47790fd5d8ca",
                     "args": [
                         {
                             "name": "level",
