@@ -2,7 +2,7 @@
 import { isPlatformBrowser } from '@angular/common'
 import { Directive, DoCheck, ElementRef, EventEmitter, HostBinding, Inject, Input, KeyValueDiffers, NgZone, OnDestroy, OnInit, Optional, Output, PLATFORM_ID } from '@angular/core'
 import Dropzone from 'dropzone'
-import { _DropzoneConfig, DropzoneConfig, DropzoneEvent, DropzoneEvents, DropzoneListeners, internalChanges, NXT_DROPZONE_CONFIG, NXT_DROPZONE_LISTENERS } from './dropzone.interfaces'
+import { DropzoneConfig, DropzoneEvent, DropzoneEvents, DropzoneListeners, internalChanges, NXT_DROPZONE_CONFIG, NXT_DROPZONE_LISTENERS, _DropzoneConfig } from './dropzone.interfaces'
 
 @Directive({
     selector: '[nxtDropzone]',
@@ -32,7 +32,9 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
         return this._disabled
     }
 
-    private _params = new _DropzoneConfig(this.defaults)
+    private _params = this.defaults
+        ? new _DropzoneConfig(this.defaults)
+        : undefined
     /** Can be used to provide optional custom config */
     @Input('nxtDropzone') config?: DropzoneConfig
 
@@ -120,13 +122,13 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
     /** @internal */
     @HostBinding('class.dz-single')
     get isSingle() {
-        return this._params.maxFiles === 1
+        return this._params?.maxFiles === 1
     }
 
     /** @internal */
     @HostBinding('class.dz-multiple')
     get isMultiple() {
-        return this._params.maxFiles !== 1
+        return this._params?.maxFiles !== 1
     }
 
     constructor(
@@ -159,8 +161,13 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
         const changes = this.configDiff.diff(this.config || {} as any)
 
         if (changes) {
-            const newParams = new _DropzoneConfig(this.defaults)
-            newParams.assign(this.config)
+            let newParams = this.defaults
+                ? new _DropzoneConfig(this.defaults)
+                : undefined
+            if (newParams && this.config)
+                newParams.assign(this.config)
+            else if (this.config)
+                newParams = new _DropzoneConfig(this.config)
             const d = this.paramDiff.diff(newParams as any)
             if (d) {
                 this._params = newParams
@@ -187,7 +194,7 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
     }
 
     private initInstance() {
-        if (!isPlatformBrowser(this.platformId)) {
+        if (!isPlatformBrowser(this.platformId) || !this._params) {
             return
         }
 
@@ -207,20 +214,20 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
 
         // Add auto reset handling for events
         this.instance!.on('success', () => {
-            if ((this._params.autoReset ?? -1) >= 0) {
-                setTimeout(() => this.reset(), this._params.autoReset)
+            if ((this._params?.autoReset ?? -1) >= 0) {
+                setTimeout(() => this.reset(), this._params?.autoReset)
             }
         })
 
         this.instance!.on('error', () => {
-            if ((this._params.errorReset ?? -1) >= 0) {
-                setTimeout(() => this.reset(), this._params.errorReset)
+            if ((this._params?.errorReset ?? -1) >= 0) {
+                setTimeout(() => this.reset(), this._params?.errorReset)
             }
         })
 
         this.instance!.on('canceled', () => {
-            if ((this._params.cancelReset ?? -1) >= 0) {
-                setTimeout(() => this.reset(), this._params.cancelReset)
+            if ((this._params?.cancelReset ?? -1) >= 0) {
+                setTimeout(() => this.reset(), this._params?.cancelReset)
             }
         })
 
