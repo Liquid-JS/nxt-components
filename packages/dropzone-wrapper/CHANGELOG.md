@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-alpha.3](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.2...v16.0.0-alpha.3) (2023-03-20)
+
+
+### Bug Fixes
+
+* **nxt-dropzone-wrapper:** change detection ([759ba81](https://github.com/Liquid-JS/nxt-components/commit/759ba81d51344b6f04e0dc2c36e4b6dba8936452))
+
+
+
+
+
 # [16.0.0-alpha.2](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.1...v16.0.0-alpha.2) (2023-03-20)
 
 
