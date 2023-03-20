@@ -1,0 +1,28 @@
+<app-content-wrap>
+    <h1>Getting started with nxt-sortablejs</h1>
+
+    <h2 class="h4">Installing</h2>
+    <app-code-block [code]="installScript"
+        [languages]="['shell']"></app-code-block>
+
+    <br>
+
+    <h2 class="h4">Import Sortablejs module</h2>
+    <app-code-block [code]="importLocal"
+        [languages]="['typescript']"></app-code-block>
+    <br>
+    <p>If you want to cofigure global Sortablejs options, include <code>SortablejsModule.forRoot</code> in your application.</p>
+    <app-code-block [code]="importGlobal"
+        [languages]="['typescript']"></app-code-block>
+    <br>
+
+    <h2 class="h4">Use it in a template</h2>
+    <app-code-block [code]="includeHTML"
+        [languages]="['html']"></app-code-block>
+    <br>
+
+    <h2 class="h3">Configuration options</h2>
+    <app-inputs-table [inputs]="inputs"></app-inputs-table>
+    <app-outputs-table [outputs]="outputs"></app-outputs-table>
+
+</app-content-wrap>

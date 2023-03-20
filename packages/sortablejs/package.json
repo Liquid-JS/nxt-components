@@ -23,7 +23,9 @@
         "_lint:sass": "stylelint \"src/**/*.scss\"",
         "_lint:sass:fix": "yarn lint:sass --fix",
         "test": "ng test sortablejs --no-watch",
-        "test:watch": "ng test sortablejs"
+        "test:watch": "ng test sortablejs",
+        "docs": "npx compodoc -c .compodocrc.json",
+        "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/sortablejs"
     },
     "peerDependencies": {
         "@angular/common": "^15.2.2",

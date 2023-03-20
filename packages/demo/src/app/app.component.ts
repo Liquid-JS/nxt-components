@@ -136,7 +136,17 @@ export class AppComponent {
         },
         {
             label: 'nxt-sortablejs',
-            link: '/sortablejs'
+            link: '/sortablejs',
+            children: [
+                {
+                    label: 'Getting started',
+                    link: 'getting-started'
+                },
+                {
+                    label: 'API docs',
+                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-sortablejs'
+                }
+            ]
         }
     ]
 

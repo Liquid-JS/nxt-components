@@ -13,13 +13,17 @@ import {
     Renderer2,
     SimpleChange
 } from '@angular/core'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { type AbstractControl, type FormArray } from '@angular/forms'
 import Sortable, { Options, SortableEvent } from 'sortablejs'
 import { GLOBALS } from './globals'
 import { SortablejsBindings } from './sortablejs-bindings'
 import { SortablejsService } from './sortablejs.service'
 
-export type SortableData = any | any[]
+export type SortableData<T> = T extends AbstractControl ? (FormArray<T> | T[]) : T[]
+export type CloneFunction<T> = (item: T) => T
 
+/** @internal */
 const getIndexesFromEvent = (event: SortableEvent) => {
     if (event.hasOwnProperty('newDraggableIndex') && event.hasOwnProperty('oldDraggableIndex')) {
         return {
@@ -37,41 +41,54 @@ const getIndexesFromEvent = (event: SortableEvent) => {
 @Directive({
     selector: '[nxtSortablejs]'
 })
-export class SortablejsDirective implements OnInit, OnChanges, OnDestroy {
+export class SortablejsDirective<T> implements OnInit, OnChanges, OnDestroy {
 
+    /** Input data, can be Array or FormArray */
     @Input('nxtSortablejs')
-    data: SortableData // array or a FormArray
+    data?: SortableData<T>
 
+    /**
+     * CSS selector for the sortable container
+     *
+     * Mostly required when used with custom components which wrap items in multiple containers. In that case,
+     * this should be the selector for the direct HTML parent of sortable items.
+     */
     @Input()
     sortablejsContainer?: string
 
+    /** Sortablejs configuration */
     @Input()
-    sortablejsOptions?: Options
+    config?: Options
 
+    /** A function invoked when cloning items from template dataset into target dataset */
     @Input()
-    sortablejsCloneFunction?: (item: any) => any
+    cloneFunction?: CloneFunction<T>
 
-    @Output() sortablejsInit = new EventEmitter()
+    /** Initialised a new Sortablejs instance */
+    @Output() readonly init = new EventEmitter<Sortable>()
 
     private sortableInstance?: Sortable
 
     constructor(
-        @Optional() @Inject(GLOBALS) private globalConfig: Options,
-        private service: SortablejsService,
-        private element: ElementRef,
-        private zone: NgZone,
-        private renderer: Renderer2
-    ) {
-    }
+        @Optional()
+        @Inject(GLOBALS)
+        private readonly globalConfig: Options | undefined,
+        private readonly service: SortablejsService,
+        private readonly element: ElementRef,
+        private readonly zone: NgZone,
+        private readonly renderer: Renderer2
+    ) { }
 
+    /** @internal */
     ngOnInit() {
         if (Sortable?.create!) { // Sortable does not exist in angular universal (SSR)
             this.create()
         }
     }
 
-    ngOnChanges(changes: { [prop in keyof SortablejsDirective]: SimpleChange }) {
-        const optionsChange = changes.sortablejsOptions
+    /** @internal */
+    ngOnChanges(changes: { [prop in keyof SortablejsDirective<T>]: SimpleChange }) {
+        const optionsChange = changes.config
 
         if (optionsChange && !optionsChange.isFirstChange()) {
             const previousOptions: Options = optionsChange.previousValue
@@ -86,6 +103,7 @@ export class SortablejsDirective implements OnInit, OnChanges, OnDestroy {
         }
     }
 
+    /** @internal */
     ngOnDestroy() {
         if (this.sortableInstance) {
             this.sortableInstance.destroy()
@@ -97,11 +115,11 @@ export class SortablejsDirective implements OnInit, OnChanges, OnDestroy {
 
         setTimeout(() => {
             this.sortableInstance = Sortable.create(container, this.options)
-            this.sortablejsInit.emit(this.sortableInstance)
+            this.init.emit(this.sortableInstance)
         }, 0)
     }
 
-    private getBindings(): SortablejsBindings {
+    private getBindings(): SortablejsBindings<T> {
         if (!this.data) {
             return new SortablejsBindings([])
         } else if (this.data instanceof SortablejsBindings) {
@@ -116,7 +134,7 @@ export class SortablejsDirective implements OnInit, OnChanges, OnDestroy {
     }
 
     private get optionsWithoutEvents() {
-        return { ...(this.globalConfig || {}), ...(this.sortablejsOptions || {}) }
+        return { ...(this.globalConfig || {}), ...(this.config || {}) }
     }
 
     private proxyEvent(eventName: string, ...params: any[]) {
@@ -134,9 +152,9 @@ export class SortablejsDirective implements OnInit, OnChanges, OnDestroy {
             : groupOptions === 'clone'
     }
 
-    private clone<T>(item: T): T {
+    private clone(item: T): T {
         // by default pass the item through, no cloning performed
-        return (this.sortablejsCloneFunction || (subitem => subitem))(item)
+        return (this.cloneFunction || (subitem => subitem))(item)
     }
 
     private get overridenOptions(): Options {

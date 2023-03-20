@@ -1,0 +1,8 @@
+<ul class="list-group"
+    [nxtSortablejs]="scrollableItems"
+    [config]="scrollableOptions">
+    <li class="list-group-item"
+        *ngFor="let item of scrollableItems">
+        Element {{ item }}
+    </li>
+</ul>

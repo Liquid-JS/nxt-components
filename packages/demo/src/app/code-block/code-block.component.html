@@ -3,7 +3,8 @@
     [languages]="languages ?? []"
     [lineNumbers]="false"></code></pre>
 
-    <button type="button"
+    <button *ngIf="copy"
+        type="button"
         class="btn"
         [tooltip]="'Copied to clipboard'"
         [triggers]="''"
