@@ -10,7 +10,7 @@ A color picker widget for Angular with no dependencies.
 
 -   [Demo](https://liquid-js.github.io/nxt-components/demo/color-picker)
 -   [Getting started](https://liquid-js.github.io/nxt-components/demo/color-picker/getting-started)
--   [API docs](https://liquid-js.github.io/nxt-components/docs/nxt-color-picker)
+-   [API docs](https://liquid-js.github.io/nxt-components/nxt-color-picker)
 
 ### Installing
 

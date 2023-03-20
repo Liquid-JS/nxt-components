@@ -10,7 +10,7 @@ Angular component to show flags based on country ISO code.
 
 -   [Demo](https://liquid-js.github.io/nxt-components/demo/flags)
 -   [Getting started](https://liquid-js.github.io/nxt-components/demo/flags/getting-started)
--   [API docs](https://liquid-js.github.io/nxt-components/docs/nxt-flags)
+-   [API docs](https://liquid-js.github.io/nxt-components/nxt-flags)
 
 ### Installing
 

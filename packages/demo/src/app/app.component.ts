@@ -58,7 +58,7 @@ export class AppComponent {
                 },
                 {
                     label: 'API docs',
-                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-color-picker'
+                    url: 'https://liquid-js.github.io/nxt-components/nxt-color-picker'
                 }
             ]
         },
@@ -72,7 +72,7 @@ export class AppComponent {
                 },
                 {
                     label: 'API docs',
-                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-dropzone-wrapper'
+                    url: 'https://liquid-js.github.io/nxt-components/nxt-dropzone-wrapper'
                 },
                 {
                     label: 'Dropzone documentation',
@@ -90,7 +90,7 @@ export class AppComponent {
                 },
                 {
                     label: 'API docs',
-                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-flags'
+                    url: 'https://liquid-js.github.io/nxt-components/nxt-flags'
                 }
             ]
         },
@@ -104,7 +104,7 @@ export class AppComponent {
                 },
                 {
                     label: 'API docs',
-                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-json-view'
+                    url: 'https://liquid-js.github.io/nxt-components/nxt-json-view'
                 }
             ]
         },
@@ -130,7 +130,7 @@ export class AppComponent {
                 },
                 {
                     label: 'API docs',
-                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-pick-datetime'
+                    url: 'https://liquid-js.github.io/nxt-components/nxt-pick-datetime'
                 }
             ]
         },
@@ -144,7 +144,7 @@ export class AppComponent {
                 },
                 {
                     label: 'API docs',
-                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-sortablejs'
+                    url: 'https://liquid-js.github.io/nxt-components/nxt-sortablejs'
                 }
             ]
         }

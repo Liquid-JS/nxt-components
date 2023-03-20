@@ -10,7 +10,7 @@ An interactive JSON view component for Angular.
 
 -   [Demo](https://liquid-js.github.io/nxt-components/demo/json-view)
 -   [Getting started](https://liquid-js.github.io/nxt-components/demo/json-view/getting-started)
--   [API docs](https://liquid-js.github.io/nxt-components/docs/nxt-json-view)
+-   [API docs](https://liquid-js.github.io/nxt-components/nxt-json-view)
 
 ### Installing
 

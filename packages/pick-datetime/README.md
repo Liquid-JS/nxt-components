@@ -13,7 +13,7 @@ Simple responsive Angular date and time picker.
 -   [Accessibility](https://liquid-js.github.io/nxt-components/demo/pick-datetime/accessibility)
 -   [Validation](https://liquid-js.github.io/nxt-components/demo/pick-datetime/validation)
 -   [Custom date adapter](https://liquid-js.github.io/nxt-components/demo/pick-datetime/custom-adapter)
--   [API docs](https://liquid-js.github.io/nxt-components/docs/nxt-pick-datetime)
+-   [API docs](https://liquid-js.github.io/nxt-components/nxt-pick-datetime)
 
 ### Installing
 

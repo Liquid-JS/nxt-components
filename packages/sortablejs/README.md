@@ -10,7 +10,7 @@ This package provides Angular binding for [Storablejs](https://github.com/Sortab
 
 -   [Demo](https://liquid-js.github.io/nxt-components/demo/sortablejs)
 -   [Getting started](https://liquid-js.github.io/nxt-components/demo/sortablejs/getting-started)
--   [API docs](https://liquid-js.github.io/nxt-components/docs/nxt-sortablejs)
+-   [API docs](https://liquid-js.github.io/nxt-components/nxt-sortablejs)
 
 ### Installing
 

@@ -10,7 +10,7 @@ This is an Angular wrapper library for the [Dropzone](http://www.dropzonejs.com/
 
 -   [Demo](https://liquid-js.github.io/nxt-components/demo/dropzone-wrapper)
 -   [Getting started](https://liquid-js.github.io/nxt-components/demo/dropzone-wrapper/getting-started)
--   [API docs](https://liquid-js.github.io/nxt-components/docs/nxt-dropzone-wrapper)
+-   [API docs](https://liquid-js.github.io/nxt-components/nxt-dropzone-wrapper)
 -   [Dropzone documentation](https://docs.dropzone.dev/configuration/basics/configuration-options)
 
 ### Installing
