@@ -1,4 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core'
+import { LevelLabels } from '../utils/interfaces'
 
 @Component({
     selector: 'nxt-json-view',
@@ -7,12 +8,10 @@ import { Component, Input, ViewEncapsulation } from '@angular/core'
     encapsulation: ViewEncapsulation.Emulated
 })
 export class JsonViewComponent {
-
+    /** JSON data, any valid JSON object */
     @Input() data: any
+    /** Initial number of levels to be expanded */
     @Input() levelOpen?: number
-    @Input() levelLabels?: { [key: number]: { [key: string]: string } }
-
-    key?: string
-    level: number = 0
-
+    /** Custom labels for elements within the hierarcy */
+    @Input() levelLabels?: LevelLabels
 }

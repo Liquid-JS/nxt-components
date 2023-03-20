@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { LocalizeFn } from '@angular/localize/init'
 import { Subject } from 'rxjs'
 
+/** @internal */
 declare const $localize: LocalizeFn
 
 @Injectable({
@@ -33,28 +34,28 @@ export class DateTimeIntl {
     /** A label for the down hour button (used by screen readers).  */
     downHourLabel = $localize`:@@nxt-pick-datetime.down-hour:Minus a hour`
 
-    /** A label for the previous month button (used by screen readers). */
+    /** A label for the previous month button (used by screen readers) */
     prevMonthLabel = $localize`:@@nxt-pick-datetime.prev-month:Previous month`
 
-    /** A label for the next month button (used by screen readers). */
+    /** A label for the next month button (used by screen readers) */
     nextMonthLabel = $localize`:@@nxt-pick-datetime.next-month:Next month`
 
-    /** A label for the previous year button (used by screen readers). */
+    /** A label for the previous year button (used by screen readers) */
     prevYearLabel = $localize`:@@nxt-pick-datetime.prev-year:Previous year`
 
-    /** A label for the next year button (used by screen readers). */
+    /** A label for the next year button (used by screen readers) */
     nextYearLabel = $localize`:@@nxt-pick-datetime.next-year:Next year`
 
-    /** A label for the previous multi-year button (used by screen readers). */
+    /** A label for the previous multi-year button (used by screen readers) */
     prevMultiYearLabel = $localize`:@@nxt-pick-datetime.prev-multi-year:Previous 21 years`
 
-    /** A label for the next multi-year button (used by screen readers). */
+    /** A label for the next multi-year button (used by screen readers) */
     nextMultiYearLabel = $localize`:@@nxt-pick-datetime.next-multi-year:Next 21 years`
 
-    /** A label for the 'switch to month view' button (used by screen readers). */
+    /** A label for the 'switch to month view' button (used by screen readers) */
     switchToMonthViewLabel = $localize`:@@nxt-pick-datetime.switch-to-month:Change to month view`
 
-    /** A label for the 'switch to year view' button (used by screen readers). */
+    /** A label for the 'switch to year view' button (used by screen readers) */
     switchToMultiYearViewLabel = $localize`:@@nxt-pick-datetime.switch-to-year-month:Choose month and year`
 
     /** A label for the cancel button */

@@ -1,12 +1,13 @@
 import { SortablejsBinding } from './sortablejs-binding'
 import { SortableData } from './sortablejs.directive'
 
-export class SortablejsBindings {
+/** @internal */
+export class SortablejsBindings<T> {
 
-    bindings: SortablejsBinding[]
+    bindings: Array<SortablejsBinding<T>>
 
-    constructor(bindingTargets: SortableData[]) {
-        this.bindings = bindingTargets.map(target => new SortablejsBinding(target))
+    constructor(bindingTargets: Array<SortableData<T>>) {
+        this.bindings = bindingTargets.map(target => new SortablejsBinding<T>(target))
     }
 
     injectIntoEvery(index: number, items: any[]) {

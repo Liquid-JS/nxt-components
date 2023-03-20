@@ -1,0 +1,91 @@
+<div class="row">
+    <div class="col">
+        <h3 class="h5">Controls</h3>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="is-directive"
+                name="is-directive"
+                [ngModel]="type == 'directive'"
+                (ngModelChange)="type = $event ? 'directive' : 'component'">
+            <label class="form-check-label"
+                for="is-directive">Directive</label>
+        </div>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="is-disabled"
+                name="is-disabled"
+                [ngModel]="disabled"
+                (ngModelChange)="disabled = !!$event">
+            <label class="form-check-label"
+                for="is-disabled">Disabled</label>
+        </div>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="is-multiple"
+                name="is-multiple"
+                [ngModel]="config.maxFiles != 1"
+                (ngModelChange)="config.maxFiles = $event ? undefined : 1">
+            <label class="form-check-label"
+                for="is-multiple">Upload multiple files</label>
+        </div>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="auto-reset"
+                name="auto-reset"
+                [ngModel]="autoReset"
+                (ngModelChange)="toggleAutoReset($event)">
+            <label class="form-check-label"
+                for="auto-reset">Auto reset</label>
+        </div>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="click-action"
+                name="click-action"
+                [ngModel]="config.clickable"
+                (ngModelChange)="config.clickable = !!$event">
+            <label class="form-check-label"
+                for="click-action">Click action</label>
+        </div>
+
+        <br>
+
+        <button type="button"
+            class="btn btn-primary"
+            (click)="resetDropzone()">Reset upload area</button>
+    </div>
+    <div class="col demo-dz-column">
+        <h3 class="h5">Dropzone</h3>
+        <div *ngIf="type == 'directive'; else component"
+            class="dropzone dropzone-container"
+            [nxtDropzone]="config"
+            [disabled]="disabled"
+            (init)="onUploadInit($event)"
+            (error)="onUploadError($event)"
+            (success)="onUploadSuccess($event)"></div>
+
+        <ng-template #component>
+            <nxt-dropzone class="dropzone-container"
+                [config]="config"
+                [disabled]="disabled"
+                message="Click or drag images here to upload"
+                (init)="onUploadInit($event)"
+                (error)="onUploadError($event)"
+                (success)="onUploadSuccess($event)"></nxt-dropzone>
+        </ng-template>
+    </div>
+</div>

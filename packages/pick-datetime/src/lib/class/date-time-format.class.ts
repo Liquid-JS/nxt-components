@@ -10,5 +10,5 @@ export interface DateTimeFormats {
     monthYearA11yLabel: any
 }
 
-/** InjectionToken for date time picker that can be used to override default format. */
+/** InjectionToken for date time picker that can be used to override default format */
 export const NXT_DATE_TIME_FORMATS = new InjectionToken<DateTimeFormats>('NXT_DATE_TIME_FORMATS')

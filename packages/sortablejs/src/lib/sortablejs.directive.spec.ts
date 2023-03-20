@@ -5,7 +5,7 @@ import { SortablejsModule } from './sortablejs.module'
 describe('SortablejsDirective', () => {
     @Component({
         template: `
-        <div [sortablejs]="items">
+        <div [nxtSortablejs]="items">
             <div *ngFor="let item of items">{{item}}</div>
         </div>
     `

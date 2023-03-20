@@ -1,5 +1,5 @@
 @import "bootstrap/dist/css/bootstrap.css";
-@import '@angular/cdk/overlay-prebuilt.css';
+@import "@angular/cdk/overlay-prebuilt.css";
 
 .navbar {
     --bs-navbar-padding-x: 1rem;
@@ -8,3 +8,9 @@
 :root {
     --bs-body-bg: var(--bs-gray-100);
 }
+
+.cdk-overlay-container {
+    z-index: 10011 !important;
+}
+
+@import "./scss/highlight";

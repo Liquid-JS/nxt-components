@@ -1,0 +1,9 @@
+<input class="form-control"
+    placeholder="Date Time:"
+    [(ngModel)]="date"
+    [min]="min"
+    [max]="max"
+    [nxtDateTimeTrigger]="picker"
+    [nxtDateTime]="picker">
+<nxt-date-time #picker
+    [startAt]="startAt"></nxt-date-time>

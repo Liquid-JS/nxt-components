@@ -1,61 +1,136 @@
 /* eslint-disable @angular-eslint/no-output-rename */
-/* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 import { isPlatformBrowser } from '@angular/common'
-import { Directive, DoCheck, ElementRef, EventEmitter, Inject, Input, KeyValueDiffer, KeyValueDiffers, NgZone, OnChanges, OnDestroy, OnInit, Optional, Output, PLATFORM_ID, Renderer2, SimpleChanges } from '@angular/core'
+import { Directive, DoCheck, ElementRef, EventEmitter, HostBinding, Inject, Input, KeyValueDiffers, NgZone, OnDestroy, OnInit, Optional, Output, PLATFORM_ID } from '@angular/core'
 import Dropzone from 'dropzone'
-import { DropzoneConfig, DropzoneConfigInterface, DropzoneEvent, DropzoneEvents, NXT_DROPZONE_CONFIG } from './dropzone.interfaces'
+import { _DropzoneConfig, DropzoneConfig, DropzoneEvent, DropzoneEvents, DropzoneListeners, internalChanges, NXT_DROPZONE_CONFIG, NXT_DROPZONE_LISTENERS } from './dropzone.interfaces'
 
 @Directive({
     selector: '[nxtDropzone]',
     exportAs: 'nxtDropzone'
 })
-export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, OnChanges {
-    private instance: any
+export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneListeners {
 
-    private configDiff: KeyValueDiffer<string, any> | null = null
+    private instance?: Dropzone
 
-    @Input() disabled: boolean = false
+    private _disabled = false
+    /** Disables / detaches Dropzone from the element */
+    @Input() set disabled(val: boolean) {
+        val = !!val
+        if (val != this._disabled && this.instance) {
+            if (val)
+                this.zone.runOutsideAngular(() => {
+                    this.instance!.disable()
+                })
+            else
+                this.zone.runOutsideAngular(() => {
+                    this.instance!.enable()
+                })
+        }
+        this._disabled = val
+    }
+    get disabled() {
+        return this._disabled
+    }
 
-    @Input('nxtDropzone') config?: DropzoneConfigInterface
+    private _params = new _DropzoneConfig(this.defaults)
+    /** Can be used to provide optional custom config */
+    @Input('nxtDropzone') config?: DropzoneConfig
 
-    @Output('init') DZ_INIT = new EventEmitter<any>()
+    private configDiff = this.differs.find(this.config || {}).create()
+    private paramDiff = this.differs.find(this._params).create()
 
-    @Output('error') DZ_ERROR = new EventEmitter<any>()
-    @Output('success') DZ_SUCCESS = new EventEmitter<any>()
-    @Output('sending') DZ_SENDING = new EventEmitter<any>()
-    @Output('canceled') DZ_CANCELED = new EventEmitter<any>()
-    @Output('complete') DZ_COMPLETE = new EventEmitter<any>()
-    @Output('processing') DZ_PROCESSING = new EventEmitter<any>()
+    @Output('init') readonly DZ_INIT = this.component?.DZ_INIT
+        ?? new EventEmitter<Dropzone>()
 
-    @Output('drop') DZ_DROP = new EventEmitter<any>()
-    @Output('dragStart') DZ_DRAGSTART = new EventEmitter<any>()
-    @Output('dragEnd') DZ_DRAGEND = new EventEmitter<any>()
-    @Output('dragEnter') DZ_DRAGENTER = new EventEmitter<any>()
-    @Output('dragOver') DZ_DRAGOVER = new EventEmitter<any>()
-    @Output('dragLeave') DZ_DRAGLEAVE = new EventEmitter<any>()
+    @Output('drop') readonly DZ_DROP = this.component?.DZ_DROP
+        ?? new EventEmitter<DragEvent>()
+    @Output('dragStart') readonly DZ_DRAGSTART = this.component?.DZ_DRAGSTART
+        ?? new EventEmitter<DragEvent>()
+    @Output('dragEnd') readonly DZ_DRAGEND = this.component?.DZ_DRAGEND
+        ?? new EventEmitter<DragEvent>()
+    @Output('dragEnter') readonly DZ_DRAGENTER = this.component?.DZ_DRAGENTER
+        ?? new EventEmitter<DragEvent>()
+    @Output('dragOver') readonly DZ_DRAGOVER = this.component?.DZ_DRAGOVER
+        ?? new EventEmitter<DragEvent>()
+    @Output('dragLeave') readonly DZ_DRAGLEAVE = this.component?.DZ_DRAGLEAVE
+        ?? new EventEmitter<DragEvent>()
+    @Output('paste') readonly DZ_PASTE = this.component?.DZ_PASTE
+        ?? new EventEmitter<DragEvent>()
 
-    @Output('thumbnail') DZ_THUMBNAIL = new EventEmitter<any>()
-    @Output('addedFile') DZ_ADDEDFILE = new EventEmitter<any>()
-    @Output('addedFiles') DZ_ADDEDFILES = new EventEmitter<any>()
-    @Output('removedFile') DZ_REMOVEDFILE = new EventEmitter<any>()
-    @Output('uploadProgress') DZ_UPLOADPROGRESS = new EventEmitter<any>()
-    @Output('maxFilesReached') DZ_MAXFILESREACHED = new EventEmitter<any>()
-    @Output('maxFilesExceeded') DZ_MAXFILESEXCEEDED = new EventEmitter<any>()
+    @Output('reset') readonly DZ_RESET = this.component?.DZ_RESET
+        ?? new EventEmitter<void>()
 
-    @Output('errorMultiple') DZ_ERRORMULTIPLE = new EventEmitter<any>()
-    @Output('successMultiple') DZ_SUCCESSMULTIPLE = new EventEmitter<any>()
-    @Output('sendingMultiple') DZ_SENDINGMULTIPLE = new EventEmitter<any>()
-    @Output('canceledMultiple') DZ_CANCELEDMULTIPLE = new EventEmitter<any>()
-    @Output('completeMultiple') DZ_COMPLETEMULTIPLE = new EventEmitter<any>()
-    @Output('processingMultiple') DZ_PROCESSINGMULTIPLE = new EventEmitter<any>()
+    @Output('addedFile') readonly DZ_ADDEDFILE = this.component?.DZ_ADDEDFILE
+        ?? new EventEmitter<Dropzone.DropzoneFile>()
+    @Output('addedFiles') readonly DZ_ADDEDFILES = this.component?.DZ_ADDEDFILES
+        ?? new EventEmitter<Dropzone.DropzoneFile>()
+    @Output('removedFile') readonly DZ_REMOVEDFILE = this.component?.DZ_REMOVEDFILE
+        ?? new EventEmitter<Dropzone.DropzoneFile>()
+    @Output('thumbnail') readonly DZ_THUMBNAIL = this.component?.DZ_THUMBNAIL
+        ?? new EventEmitter<[Dropzone.DropzoneFile, string]>()
 
-    @Output('reset') DZ_RESET = new EventEmitter<any>()
-    @Output('queueComplete') DZ_QUEUECOMPLETE = new EventEmitter<any>()
-    @Output('totalUploadProgress') DZ_TOTALUPLOADPROGRESS = new EventEmitter<any>()
+    @Output('error') readonly DZ_ERROR = this.component?.DZ_ERROR
+        ?? new EventEmitter<[Dropzone.DropzoneFile, string | Error]>()
+    @Output('errorMultiple') readonly DZ_ERRORMULTIPLE = this.component?.DZ_ERRORMULTIPLE
+        ?? new EventEmitter<[Dropzone.DropzoneFile[], string | Error]>()
+
+    @Output('processing') readonly DZ_PROCESSING = this.component?.DZ_PROCESSING
+        ?? new EventEmitter<Dropzone.DropzoneFile>()
+    @Output('processingMultiple') readonly DZ_PROCESSINGMULTIPLE = this.component?.DZ_PROCESSINGMULTIPLE
+        ?? new EventEmitter<Dropzone.DropzoneFile[]>()
+
+    @Output('uploadProgress') readonly DZ_UPLOADPROGRESS = this.component?.DZ_UPLOADPROGRESS
+        ?? new EventEmitter<[Dropzone.DropzoneFile, number, number]>()
+    @Output('totalUploadProgress') readonly DZ_TOTALUPLOADPROGRESS = this.component?.DZ_TOTALUPLOADPROGRESS
+        ?? new EventEmitter<[number, number, number]>()
+
+    @Output('sending') readonly DZ_SENDING = this.component?.DZ_SENDING
+        ?? new EventEmitter<[Dropzone.DropzoneFile, XMLHttpRequest, FormData]>()
+    @Output('sendingMultiple') readonly DZ_SENDINGMULTIPLE = this.component?.DZ_SENDINGMULTIPLE
+        ?? new EventEmitter<[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]>()
+
+    @Output('success') readonly DZ_SUCCESS = this.component?.DZ_SUCCESS
+        // eslint-disable-next-line @typescript-eslint/ban-types
+        ?? new EventEmitter<[Dropzone.DropzoneFile, Object | string]>()
+    @Output('successMultiple') readonly DZ_SUCCESSMULTIPLE = this.component?.DZ_SUCCESSMULTIPLE
+        ?? new EventEmitter<Dropzone.DropzoneFile[]>()
+
+    @Output('canceled') readonly DZ_CANCELED = this.component?.DZ_CANCELED
+        ?? new EventEmitter<Dropzone.DropzoneFile>()
+    @Output('canceledMultiple') readonly DZ_CANCELEDMULTIPLE = this.component?.DZ_CANCELEDMULTIPLE
+        ?? new EventEmitter<Dropzone.DropzoneFile[]>()
+
+    @Output('complete') readonly DZ_COMPLETE = this.component?.DZ_COMPLETE
+        ?? new EventEmitter<Dropzone.DropzoneFile>()
+    @Output('completeMultiple') readonly DZ_COMPLETEMULTIPLE = this.component?.DZ_COMPLETEMULTIPLE
+        ?? new EventEmitter<Dropzone.DropzoneFile[]>()
+
+    @Output('maxFilesExceeded') readonly DZ_MAXFILESEXCEEDED = this.component?.DZ_MAXFILESEXCEEDED
+        ?? new EventEmitter<Dropzone.DropzoneFile>()
+    @Output('maxFilesReached') readonly DZ_MAXFILESREACHED = this.component?.DZ_MAXFILESREACHED
+        ?? new EventEmitter<Dropzone.DropzoneFile[]>()
+
+    @Output('queueComplete') readonly DZ_QUEUECOMPLETE = this.component?.DZ_QUEUECOMPLETE
+        ?? new EventEmitter<void>()
+
+    get dropzone() {
+        return this.instance
+    }
+
+    /** @internal */
+    @HostBinding('class.dz-single')
+    get isSingle() {
+        return this._params.maxFiles === 1
+    }
+
+    /** @internal */
+    @HostBinding('class.dz-multiple')
+    get isMultiple() {
+        return this._params.maxFiles !== 1
+    }
 
     constructor(
         private readonly zone: NgZone,
-        private readonly renderer: Renderer2,
         private readonly elementRef: ElementRef<HTMLElement>,
         private readonly differs: KeyValueDiffers,
         @Inject(PLATFORM_ID)
@@ -63,34 +138,65 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, OnChanges 
         private readonly platformId: Object,
         @Optional()
         @Inject(NXT_DROPZONE_CONFIG)
-        private readonly defaults?: DropzoneConfigInterface | undefined
-    ) {
-        const dz = Dropzone
+        private readonly defaults?: DropzoneConfig,
+        @Optional()
+        @Inject(NXT_DROPZONE_LISTENERS)
+        private readonly component?: DropzoneListeners
+    ) { }
 
-        dz.autoDiscover = false
+    /** @internal */
+    ngOnInit(): void {
+        this.initInstance()
     }
 
-    ngOnInit(): void {
+    /** @internal */
+    ngOnDestroy(): void {
+        this.destroyInstance()
+    }
+
+    /** @internal */
+    ngDoCheck(): void {
+        const changes = this.configDiff.diff(this.config || {} as any)
+
+        if (changes) {
+            const newParams = new _DropzoneConfig(this.defaults)
+            newParams.assign(this.config)
+            const d = this.paramDiff.diff(newParams as any)
+            if (d) {
+                this._params = newParams
+                let hasChanges = false
+                d.forEachItem(r => {
+                    if (!internalChanges.has(r.key as any) && r.currentValue !== r.previousValue)
+                        hasChanges = true
+                })
+                if (hasChanges && this.instance) {
+                    this.destroyInstance()
+                    this.initInstance()
+                }
+            }
+        }
+    }
+
+    /** @internal */
+    reset(cancel?: boolean) {
+        if (this.instance) {
+            this.zone.runOutsideAngular(() => {
+                this.instance!.removeAllFiles(cancel)
+            })
+        }
+    }
+
+    private initInstance() {
         if (!isPlatformBrowser(this.platformId)) {
             return
         }
 
-        const params = new DropzoneConfig(this.defaults)
-
-        params.assign(this.config) // Custom configuration
-
-        this.renderer.addClass(this.elementRef.nativeElement,
-            (params.maxFiles === 1) ? 'dz-single' : 'dz-multiple')
-
-        this.renderer.removeClass(this.elementRef.nativeElement,
-            (params.maxFiles === 1) ? 'dz-multiple' : 'dz-single')
-
         this.zone.runOutsideAngular(() => {
-            this.instance = new Dropzone(this.elementRef.nativeElement, params)
+            this.instance = new Dropzone(this.elementRef.nativeElement, this._params)
         })
 
         if (this.disabled) {
-            this.instance.disable()
+            this.instance!.disable()
         }
 
         if (this.DZ_INIT.observed) {
@@ -100,27 +206,27 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, OnChanges 
         }
 
         // Add auto reset handling for events
-        this.instance.on('success', () => {
-            if (params.autoReset != null) {
-                setTimeout(() => this.reset(), params.autoReset)
+        this.instance!.on('success', () => {
+            if ((this._params.autoReset ?? -1) >= 0) {
+                setTimeout(() => this.reset(), this._params.autoReset)
             }
         })
 
-        this.instance.on('error', () => {
-            if (params.errorReset != null) {
-                setTimeout(() => this.reset(), params.errorReset)
+        this.instance!.on('error', () => {
+            if ((this._params.errorReset ?? -1) >= 0) {
+                setTimeout(() => this.reset(), this._params.errorReset)
             }
         })
 
-        this.instance.on('canceled', () => {
-            if (params.cancelReset != null) {
-                setTimeout(() => this.reset(), params.cancelReset)
+        this.instance!.on('canceled', () => {
+            if ((this._params.cancelReset ?? -1) >= 0) {
+                setTimeout(() => this.reset(), this._params.cancelReset)
             }
         })
 
         // Add native Dropzone event handling
         DropzoneEvents.forEach((eventName: DropzoneEvent) => {
-            this.instance.on(eventName.toLowerCase(), (...args: any[]) => {
+            this.instance!.on(eventName.toLowerCase(), (...args: any[]) => {
                 args = (args.length === 1) ? args[0] : args
 
                 const output = `DZ_${eventName.toUpperCase()}`
@@ -134,61 +240,15 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, OnChanges 
                 }
             })
         })
-
-        if (!this.configDiff) {
-            this.configDiff = this.differs.find(this.config || {}).create()
-
-            this.configDiff.diff(this.config || {})
-        }
     }
 
-    ngOnDestroy(): void {
+    private destroyInstance() {
         if (this.instance) {
             this.zone.runOutsideAngular(() => {
-                this.instance.destroy()
+                this.instance!.destroy()
             })
 
-            this.instance = null
-        }
-    }
-
-    ngDoCheck(): void {
-        if (!this.disabled && this.configDiff) {
-            const changes = this.configDiff.diff(this.config || {})
-
-            if (changes && this.instance) {
-                this.ngOnDestroy()
-
-                this.ngOnInit()
-            }
-        }
-    }
-
-    ngOnChanges(changes: SimpleChanges): void {
-        if (this.instance && changes['disabled']) {
-            if (changes['disabled'].currentValue !== changes['disabled'].previousValue) {
-                if (changes['disabled'].currentValue === false) {
-                    this.zone.runOutsideAngular(() => {
-                        this.instance.enable()
-                    })
-                } else if (changes['disabled'].currentValue === true) {
-                    this.zone.runOutsideAngular(() => {
-                        this.instance.disable()
-                    })
-                }
-            }
-        }
-    }
-
-    public dropzone(): any {
-        return this.instance
-    }
-
-    public reset(cancel?: boolean): void {
-        if (this.instance) {
-            this.zone.runOutsideAngular(() => {
-                this.instance.removeAllFiles(cancel)
-            })
+            this.instance = undefined
         }
     }
 }

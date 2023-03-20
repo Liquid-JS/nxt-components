@@ -1,0 +1,3718 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "InputChangeEvent",
+            "id": "interface-InputChangeEvent-97fdf6385dabb714574ca4f268bd7574f8941d5bf9304b7aba5453b132ff8b99878d066e74c9f204a63c75fc634e480082887750f99d3e105b3b2736e5af6201",
+            "file": "src/util/types.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "properties": [
+                {
+                    "name": "color",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 53
+                },
+                {
+                    "name": "input",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 50
+                },
+                {
+                    "name": "valid",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 51
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number | string",
+                    "optional": false,
+                    "description": "",
+                    "line": 52
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
+            "name": "SliderChangeEvent",
+            "id": "interface-SliderChangeEvent-97fdf6385dabb714574ca4f268bd7574f8941d5bf9304b7aba5453b132ff8b99878d066e74c9f204a63c75fc634e480082887750f99d3e105b3b2736e5af6201",
+            "file": "src/util/types.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "properties": [
+                {
+                    "name": "color",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 59
+                },
+                {
+                    "name": "slider",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 57
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number | string",
+                    "optional": true,
+                    "description": "",
+                    "line": 58
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        }
+    ],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [
+        {
+            "name": "Cmyk",
+            "id": "class-Cmyk-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
+            "file": "src/util/formats.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "c",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "m",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "y",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "k",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "a",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "normalized",
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "true"
+                    }
+                ],
+                "line": 1,
+                "jsdoctags": [
+                    {
+                        "name": "c",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "m",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "y",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "k",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "a",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "normalized",
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "true",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "a",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 7,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "c",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 3,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "k",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "m",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 4,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "y",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 5,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "Hsla",
+            "id": "class-Hsla-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
+            "file": "src/util/formats.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "h",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "s",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "l",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "a",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "normalized",
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "true"
+                    }
+                ],
+                "line": 13,
+                "jsdoctags": [
+                    {
+                        "name": "h",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "s",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "l",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "a",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "normalized",
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "true",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "a",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "h",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "l",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "s",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "Hsva",
+            "id": "class-Hsva-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
+            "file": "src/util/formats.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "h",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "s",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "v",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "a",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "normalized",
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "true"
+                    }
+                ],
+                "line": 24,
+                "jsdoctags": [
+                    {
+                        "name": "h",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "s",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "v",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "a",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "normalized",
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "true",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "a",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 29,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "h",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 26,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "s",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "v",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "Rgba",
+            "id": "class-Rgba-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
+            "file": "src/util/formats.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "r",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "g",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "b",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "a",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "normalized",
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "true"
+                    }
+                ],
+                "line": 35,
+                "jsdoctags": [
+                    {
+                        "name": "r",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "g",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "b",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "a",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "normalized",
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "true",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "a",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "b",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "g",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 38,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "r",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 37,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [
+        {
+            "name": "ColorPickerDirective",
+            "id": "directive-ColorPickerDirective-3b253274494ad7215ac923a55a7532fd56ab9b44d0f1acc7afaedc602c770d0ee1f4b2807f8a854b5aebfa1657bd4daab4d29da4dff8ee411d4f572a1540d3ae",
+            "file": "src/lib/color-picker.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "selector": "[nxtColor]",
+            "providers": [],
+            "inputsClass": [
+                {
+                    "name": "alphaChannel",
+                    "defaultValue": "AlphaChannelEnum.enabled",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAlpha channel mode",
+                    "description": "<p>Alpha channel mode</p>\n",
+                    "line": 91,
+                    "type": "AlphaChannel",
+                    "decorators": []
+                },
+                {
+                    "name": "cancelButton",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShow a Cancel / Reset button which resets the color",
+                    "description": "<p>Show a Cancel / Reset button which resets the color</p>\n",
+                    "line": 127,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "closeClickOutside",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nClose the color picker dialog when user clicks outside",
+                    "description": "<p>Close the color picker dialog when user clicks outside</p>\n",
+                    "line": 121,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "cmykEnabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEnables CMYK input format and color change event",
+                    "description": "<p>Enables CMYK input format and color change event</p>\n",
+                    "line": 86,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "dialogDisplay",
+                    "defaultValue": "DialogDisplayEnum.popup",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDialog positioning mode",
+                    "description": "<p>Dialog positioning mode</p>\n",
+                    "line": 113,
+                    "type": "DialogDisplay",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDisables opening of the color picker dialog via toggle",
+                    "description": "<p>Disables opening of the color picker dialog via toggle</p>\n",
+                    "line": 80,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "disableInput",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDisables / hides the color input field from the dialog",
+                    "description": "<p>Disables / hides the color input field from the dialog</p>\n",
+                    "line": 110,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "fallbackColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUsed when the color is not well-formed or is undefined",
+                    "description": "<p>Used when the color is not well-formed or is undefined</p>\n",
+                    "line": 93,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "height",
+                    "defaultValue": "'auto'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUse this option to force color picker dialog height",
+                    "description": "<p>Use this option to force color picker dialog height</p>\n",
+                    "line": 75,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "ignoredElements",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nArray of HTML elements that will be ignored when clicked",
+                    "description": "<p>Array of HTML elements that will be ignored when clicked</p>\n",
+                    "line": 116,
+                    "type": "any[]",
+                    "decorators": []
+                },
+                {
+                    "name": "maxPresetColors",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUse this option to set the max colors allowed in presets",
+                    "description": "<p>Use this option to set the max colors allowed in presets</p>\n",
+                    "line": 133,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "mode",
+                    "defaultValue": "'color'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDialog color mode",
+                    "description": "<p>Dialog color mode</p>\n",
+                    "line": 83,
+                    "type": "ColorMode",
+                    "decorators": []
+                },
+                {
+                    "name": "nxtColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nThe color to show in the color picker dialog",
+                    "description": "<p>The color to show in the color picker dialog</p>\n",
+                    "line": 70,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "okButton",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShow an OK / Apply button which saves the color",
+                    "description": "<p>Show an OK / Apply button which saves the color</p>\n",
+                    "line": 124,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "outputFormat",
+                    "defaultValue": "OutputFormatEnum.auto",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nOutput color format",
+                    "description": "<p>Output color format</p>\n",
+                    "line": 89,
+                    "type": "OutputFormat",
+                    "decorators": []
+                },
+                {
+                    "name": "position",
+                    "defaultValue": "DialogPositionEnum.right",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDialog position",
+                    "description": "<p>Dialog position</p>\n",
+                    "line": 96,
+                    "type": "DialogPosition",
+                    "decorators": []
+                },
+                {
+                    "name": "positionOffset",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDialog offset percentage relative to the directive element",
+                    "description": "<p>Dialog offset percentage relative to the directive element</p>\n",
+                    "line": 98,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "presetColors",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nArray of preset colors to show in the color picker dialog",
+                    "description": "<p>Array of preset colors to show in the color picker dialog</p>\n",
+                    "line": 107,
+                    "type": "string[]",
+                    "decorators": []
+                },
+                {
+                    "name": "presetColorsEditable",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShow buttons to add / remove preset colors",
+                    "description": "<p>Show buttons to add / remove preset colors</p>\n",
+                    "line": 130,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "presetLabel",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nShow label for preset colors\n\nIf string is given, it overrides the default label.\n",
+                    "description": "<p>Show label for preset colors</p>\n<p>If string is given, it overrides the default label.</p>\n",
+                    "line": 105,
+                    "type": "boolean | string",
+                    "decorators": []
+                },
+                {
+                    "name": "saveClickOutside",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSave currently selected color when user clicks outside",
+                    "description": "<p>Save currently selected color when user clicks outside</p>\n",
+                    "line": 119,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "toggle",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSets the default open / close state of the color picker",
+                    "description": "<p>Sets the default open / close state of the color picker</p>\n",
+                    "line": 78,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "useRootViewContainer",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nCreate dialog component in the root view container\n\nNote: The root component needs to have public viewContainerRef.\n",
+                    "description": "<p>Create dialog component in the root view container</p>\n<p>Note: The root component needs to have public viewContainerRef.</p>\n",
+                    "line": 140,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "width",
+                    "defaultValue": "'230px'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nUse this option to set color picker dialog width",
+                    "description": "<p>Use this option to set color picker dialog width</p>\n",
+                    "line": 73,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "close",
+                    "defaultValue": "new EventEmitter<string>(true)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nCurrent color value, emit when dialog is closed",
+                    "description": "<p>Current color value, emit when dialog is closed</p>\n",
+                    "line": 145,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "cmykColorChange",
+                    "defaultValue": "new EventEmitter<string>(true)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nOutputs the color as CMYK string if CMYK is enabled",
+                    "description": "<p>Outputs the color as CMYK string if CMYK is enabled</p>\n",
+                    "line": 168,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "colorSelect",
+                    "defaultValue": "new EventEmitter<string>(true)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nColor select canceled, emit when Cancel button is pressed",
+                    "description": "<p>Color select canceled, emit when Cancel button is pressed</p>\n",
+                    "line": 161,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "colorSelectCancel",
+                    "defaultValue": "new EventEmitter<void>(true)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSelected color value, emit when OK button pressed or user clicks outside (if saveClickOutside is true)",
+                    "description": "<p>Selected color value, emit when OK button pressed or user clicks outside (if saveClickOutside is true)</p>\n",
+                    "line": 163,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "inputChange",
+                    "defaultValue": "new EventEmitter<InputChangeEvent>(true)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nInput name and its value, emit when user changes color through inputs",
+                    "description": "<p>Input name and its value, emit when user changes color through inputs</p>\n",
+                    "line": 148,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "nxtColorChange",
+                    "defaultValue": "new EventEmitter<string>(false)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nChanged color value, emit when color changes",
+                    "description": "<p>Changed color value, emit when color changes</p>\n",
+                    "line": 165,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "open",
+                    "defaultValue": "new EventEmitter<string>(true)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nCurrent color value, emit when dialog is isOpen",
+                    "description": "<p>Current color value, emit when dialog is isOpen</p>\n",
+                    "line": 143,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "presetColorsChange",
+                    "defaultValue": "new EventEmitter<string[]>(true)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPreset colors, emit when preset color is added / removed",
+                    "description": "<p>Preset colors, emit when preset color is added / removed</p>\n",
+                    "line": 171,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "sliderChange",
+                    "defaultValue": "new EventEmitter<SliderChangeEvent>(true)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSlider name and its value, emit when user changes color through slider",
+                    "description": "<p>Slider name and its value, emit when user changes color through slider</p>\n",
+                    "line": 156,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "sliderDragEnd",
+                    "defaultValue": "new EventEmitter<SliderChangeEvent>(true)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSlider name and current color, emit when slider dragging ends",
+                    "description": "<p>Slider name and current color, emit when slider dragging ends</p>\n",
+                    "line": 158,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "sliderDragStart",
+                    "defaultValue": "new EventEmitter<SliderChangeEvent>(true)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSlider name and current color, emit when slider dragging starts",
+                    "description": "<p>Slider name and current color, emit when slider dragging starts</p>\n",
+                    "line": 154,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "toggleChange",
+                    "defaultValue": "new EventEmitter<boolean>(true)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nStatus of the dialog, emit when dialog is isOpen / closed",
+                    "description": "<p>Status of the dialog, emit when dialog is isOpen / closed</p>\n",
+                    "line": 151,
+                    "type": "EventEmitter"
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "closeDialog",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 270,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "openDialog",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 257,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "implements": [
+                "OnChanges",
+                "OnDestroy"
+            ]
+        }
+    ],
+    "components": [],
+    "modules": [
+        {
+            "name": "ColorPickerModule",
+            "id": "module-ColorPickerModule-a21816942879839161b717073377abe36be6ba3e0f8f62c302cc78c4aeb843dbe8333696e179ddf41c24f793ce53fc36a017c06e389c2c8d6e9d19c1a8eb62ce",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/lib/color-picker.module.ts",
+            "methods": [],
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ColorPickerDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ColorPickerDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "AlphaEnabledFormats",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/util/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new Set<ColorFormat>([ColorFormatEnum.hsla, ColorFormatEnum.rgba, ColorFormatEnum.cmyk])"
+            }
+        ],
+        "functions": [
+            {
+                "name": "calculateContrast",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "foreground",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "background",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "foreground",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "background",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "calculateLuminance",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "color",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "color",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "calculateMinimumAlpha",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "foreground",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "background",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "minContrastRatio",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "foreground",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "background",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "minContrastRatio",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "clamp",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "val",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "min",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "max",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "val",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "min",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "max",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "cmykToRgb",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "cmyk",
+                        "type": "Cmyk",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "Rgba",
+                "jsdoctags": [
+                    {
+                        "name": "cmyk",
+                        "type": "Cmyk",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "compositeAlpha",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "foregroundAlpha",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "backgroundAlpha",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "foregroundAlpha",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "backgroundAlpha",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "compositeColors",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "foreground",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "background",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "foreground",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "background",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "compositeComponent",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "fgC",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "fgA",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "bgC",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "bgA",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "a",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "fgC",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "fgA",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "bgC",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "bgA",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "a",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "denormalizeCMYK",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "cmyk",
+                        "type": "Cmyk",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "Cmyk",
+                "jsdoctags": [
+                    {
+                        "name": "cmyk",
+                        "type": "Cmyk",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "denormalizeHSLA",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "hsla",
+                        "type": "Hsla",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "hsla",
+                        "type": "Hsla",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "denormalizeHSVA",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "hsva",
+                        "type": "Hsva",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "hsva",
+                        "type": "Hsva",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "denormalizeRGBA",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "rgba",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "rgba",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "formatCmyk",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "cmyk",
+                        "type": "Cmyk",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "alphaChannel",
+                        "type": "AlphaChannel",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "cmyk",
+                        "type": "Cmyk",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "alphaChannel",
+                        "type": "AlphaChannel",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "formatOutput",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "hsva",
+                        "type": "Hsva",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "outputFormat",
+                        "type": "OutputFormat",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "alphaChannel",
+                        "type": "AlphaChannel",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "hsva",
+                        "type": "Hsva",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "outputFormat",
+                        "type": "OutputFormat",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "alphaChannel",
+                        "type": "AlphaChannel",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "hslaToHsva",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "hsla",
+                        "type": "Hsla",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "hsla",
+                        "type": "Hsla",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "hsvaToHsla",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "hsva",
+                        "type": "Hsva",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "hsva",
+                        "type": "Hsva",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "hsvaToRgba",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "hsva",
+                        "type": "Hsva",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "hsva",
+                        "type": "Hsva",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "normalizeCMYK",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "cmyk",
+                        "type": "Cmyk",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "Cmyk",
+                "jsdoctags": [
+                    {
+                        "name": "cmyk",
+                        "type": "Cmyk",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "normalizeHSLA",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "hsla",
+                        "type": "Hsla",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "hsla",
+                        "type": "Hsla",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "normalizeHSVA",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "hsva",
+                        "type": "Hsva",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "hsva",
+                        "type": "Hsva",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "normalizeRGBA",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "rgba",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "rgba",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "rgbaToCmyk",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "rgba",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "rgba",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "rgbaToHex",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "rgba",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "allowHex8",
+                        "type": "boolean",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "rgba",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "allowHex8",
+                        "type": "boolean",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "rgbaToHsva",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "rgba",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "rgba",
+                        "type": "Rgba",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "stringToCmyk",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "colorString",
+                        "type": "string",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "''"
+                    },
+                    {
+                        "name": "allowHex8",
+                        "type": "boolean",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "false"
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "colorString",
+                        "type": "string",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "''",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "allowHex8",
+                        "type": "boolean",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "false",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "stringToHsva",
+                "file": "src/util/color.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "colorString",
+                        "type": "string",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "''"
+                    },
+                    {
+                        "name": "allowHex8",
+                        "type": "boolean",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "false"
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "colorString",
+                        "type": "string",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "''",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "allowHex8",
+                        "type": "boolean",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "defaultValue": "false",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typealiases": [
+            {
+                "name": "AlphaChannel",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": " `${AlphaChannelEnum}`",
+                "file": "src/util/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 197
+            },
+            {
+                "name": "ColorFormat",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": " `${ColorFormatEnum}`",
+                "file": "src/util/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 197
+            },
+            {
+                "name": "ColorMode",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"color\" | \"c\" | \"1\" | \"grayscale\" | \"g\" | \"2\" | \"presets\" | \"p\" | \"3\"",
+                "file": "src/util/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 186
+            },
+            {
+                "name": "DialogDisplay",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": " `${DialogDisplayEnum}`",
+                "file": "src/util/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 197
+            },
+            {
+                "name": "DialogPosition",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": " `${DialogPositionEnum}`",
+                "file": "src/util/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 197
+            },
+            {
+                "name": "OutputFormat",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": " `${OutputFormatEnum}`",
+                "file": "src/util/types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 197
+            }
+        ],
+        "enumerations": [
+            {
+                "name": "AlphaChannelEnum",
+                "childs": [
+                    {
+                        "name": "enabled",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "enabled"
+                    },
+                    {
+                        "name": "disabled",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "disabled"
+                    },
+                    {
+                        "name": "always",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "always"
+                    },
+                    {
+                        "name": "forced",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "forced"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/util/types.ts"
+            },
+            {
+                "name": "ColorFormatEnum",
+                "childs": [
+                    {
+                        "name": "hex",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "hex"
+                    },
+                    {
+                        "name": "rgba",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "rgba"
+                    },
+                    {
+                        "name": "hsla",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "hsla"
+                    },
+                    {
+                        "name": "cmyk",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "cmyk"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/util/types.ts"
+            },
+            {
+                "name": "DialogDisplayEnum",
+                "childs": [
+                    {
+                        "name": "popup",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "popup"
+                    },
+                    {
+                        "name": "inline",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "inline"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/util/types.ts"
+            },
+            {
+                "name": "DialogPositionEnum",
+                "childs": [
+                    {
+                        "name": "auto",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "auto"
+                    },
+                    {
+                        "name": "top",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "top"
+                    },
+                    {
+                        "name": "left",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "left"
+                    },
+                    {
+                        "name": "right",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "right"
+                    },
+                    {
+                        "name": "bottom",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "bottom"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/util/types.ts"
+            },
+            {
+                "name": "OutputFormatEnum",
+                "childs": [
+                    {
+                        "name": "auto",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "auto"
+                    },
+                    {
+                        "name": "hex",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "hex"
+                    },
+                    {
+                        "name": "rgba",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "rgba"
+                    },
+                    {
+                        "name": "hsla",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "hsla"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/util/types.ts"
+            }
+        ],
+        "groupedVariables": {
+            "src/util/types.ts": [
+                {
+                    "name": "AlphaEnabledFormats",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/util/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new Set<ColorFormat>([ColorFormatEnum.hsla, ColorFormatEnum.rgba, ColorFormatEnum.cmyk])"
+                }
+            ]
+        },
+        "groupedFunctions": {
+            "src/util/color.ts": [
+                {
+                    "name": "calculateContrast",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "foreground",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "background",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "foreground",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "background",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "calculateLuminance",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "color",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "color",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "calculateMinimumAlpha",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "foreground",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "background",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "minContrastRatio",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "foreground",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "background",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "minContrastRatio",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "clamp",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "val",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "min",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "max",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "val",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "min",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "max",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "cmykToRgb",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "cmyk",
+                            "type": "Cmyk",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "Rgba",
+                    "jsdoctags": [
+                        {
+                            "name": "cmyk",
+                            "type": "Cmyk",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "compositeAlpha",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "foregroundAlpha",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "backgroundAlpha",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "foregroundAlpha",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "backgroundAlpha",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "compositeColors",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "foreground",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "background",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "foreground",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "background",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "compositeComponent",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "fgC",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "fgA",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "bgC",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "bgA",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "a",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "fgC",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "fgA",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "bgC",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "bgA",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "a",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "denormalizeCMYK",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "cmyk",
+                            "type": "Cmyk",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "Cmyk",
+                    "jsdoctags": [
+                        {
+                            "name": "cmyk",
+                            "type": "Cmyk",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "denormalizeHSLA",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "hsla",
+                            "type": "Hsla",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "hsla",
+                            "type": "Hsla",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "denormalizeHSVA",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "hsva",
+                            "type": "Hsva",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "hsva",
+                            "type": "Hsva",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "denormalizeRGBA",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "rgba",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "rgba",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "formatCmyk",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "cmyk",
+                            "type": "Cmyk",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "alphaChannel",
+                            "type": "AlphaChannel",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "cmyk",
+                            "type": "Cmyk",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "alphaChannel",
+                            "type": "AlphaChannel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "formatOutput",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "hsva",
+                            "type": "Hsva",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "outputFormat",
+                            "type": "OutputFormat",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "alphaChannel",
+                            "type": "AlphaChannel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "hsva",
+                            "type": "Hsva",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "outputFormat",
+                            "type": "OutputFormat",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "alphaChannel",
+                            "type": "AlphaChannel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "hslaToHsva",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "hsla",
+                            "type": "Hsla",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "hsla",
+                            "type": "Hsla",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "hsvaToHsla",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "hsva",
+                            "type": "Hsva",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "hsva",
+                            "type": "Hsva",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "hsvaToRgba",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "hsva",
+                            "type": "Hsva",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "hsva",
+                            "type": "Hsva",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "normalizeCMYK",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "cmyk",
+                            "type": "Cmyk",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "Cmyk",
+                    "jsdoctags": [
+                        {
+                            "name": "cmyk",
+                            "type": "Cmyk",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "normalizeHSLA",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "hsla",
+                            "type": "Hsla",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "hsla",
+                            "type": "Hsla",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "normalizeHSVA",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "hsva",
+                            "type": "Hsva",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "hsva",
+                            "type": "Hsva",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "normalizeRGBA",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "rgba",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "rgba",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "rgbaToCmyk",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "rgba",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "rgba",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "rgbaToHex",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "rgba",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "allowHex8",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "rgba",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "allowHex8",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "rgbaToHsva",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "rgba",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "rgba",
+                            "type": "Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "stringToCmyk",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "colorString",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "''"
+                        },
+                        {
+                            "name": "allowHex8",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "false"
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "colorString",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "''",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "allowHex8",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "false",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "stringToHsva",
+                    "file": "src/util/color.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "colorString",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "''"
+                        },
+                        {
+                            "name": "allowHex8",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "false"
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "colorString",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "''",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "allowHex8",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "false",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "groupedEnumerations": {
+            "src/util/types.ts": [
+                {
+                    "name": "AlphaChannelEnum",
+                    "childs": [
+                        {
+                            "name": "enabled",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "enabled"
+                        },
+                        {
+                            "name": "disabled",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "disabled"
+                        },
+                        {
+                            "name": "always",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "always"
+                        },
+                        {
+                            "name": "forced",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "forced"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/util/types.ts"
+                },
+                {
+                    "name": "ColorFormatEnum",
+                    "childs": [
+                        {
+                            "name": "hex",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "hex"
+                        },
+                        {
+                            "name": "rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "rgba"
+                        },
+                        {
+                            "name": "hsla",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "hsla"
+                        },
+                        {
+                            "name": "cmyk",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "cmyk"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/util/types.ts"
+                },
+                {
+                    "name": "DialogDisplayEnum",
+                    "childs": [
+                        {
+                            "name": "popup",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "popup"
+                        },
+                        {
+                            "name": "inline",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "inline"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/util/types.ts"
+                },
+                {
+                    "name": "DialogPositionEnum",
+                    "childs": [
+                        {
+                            "name": "auto",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "auto"
+                        },
+                        {
+                            "name": "top",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "top"
+                        },
+                        {
+                            "name": "left",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "left"
+                        },
+                        {
+                            "name": "right",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "right"
+                        },
+                        {
+                            "name": "bottom",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "bottom"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/util/types.ts"
+                },
+                {
+                    "name": "OutputFormatEnum",
+                    "childs": [
+                        {
+                            "name": "auto",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "auto"
+                        },
+                        {
+                            "name": "hex",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "hex"
+                        },
+                        {
+                            "name": "rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "rgba"
+                        },
+                        {
+                            "name": "hsla",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "hsla"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/util/types.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {
+            "src/util/types.ts": [
+                {
+                    "name": "AlphaChannel",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": " `${AlphaChannelEnum}`",
+                    "file": "src/util/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 197
+                },
+                {
+                    "name": "ColorFormat",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": " `${ColorFormatEnum}`",
+                    "file": "src/util/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 197
+                },
+                {
+                    "name": "ColorMode",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"color\" | \"c\" | \"1\" | \"grayscale\" | \"g\" | \"2\" | \"presets\" | \"p\" | \"3\"",
+                    "file": "src/util/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 186
+                },
+                {
+                    "name": "DialogDisplay",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": " `${DialogDisplayEnum}`",
+                    "file": "src/util/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 197
+                },
+                {
+                    "name": "DialogPosition",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": " `${DialogPositionEnum}`",
+                    "file": "src/util/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 197
+                },
+                {
+                    "name": "OutputFormat",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": " `${OutputFormatEnum}`",
+                    "file": "src/util/types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 197
+                }
+            ]
+        }
+    }
+}

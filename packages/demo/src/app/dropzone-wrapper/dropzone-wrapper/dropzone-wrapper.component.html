@@ -1,0 +1,24 @@
+<app-content-wrap>
+    <h1>Angular Dropzone wrapper</h1>
+    <p>
+        <a href="https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Liquid-JS/nxt-components.svg"
+                alt="GitHub license"></a>&nbsp;
+        <a href="https://www.npmjs.com/package/nxt-dropzone-wrapper"><img src="https://img.shields.io/npm/dm/nxt-dropzone-wrapper.svg"
+                alt="npm"></a>&nbsp;
+        <a href="https://www.npmjs.com/package/nxt-dropzone-wrapper"><img src="https://img.shields.io/npm/v/nxt-dropzone-wrapper.svg"
+                alt="scope"></a>
+    </p>
+    <p>This is an Angular wrapper library for the <a href="http://www.dropzonejs.com/">Dropzone</a>. For full documentation on Dropzone configuration options see <a href="https://docs.dropzone.dev/configuration/basics/configuration-options">Dropzone documentation</a>.</p>
+
+    <ul>
+        <li><a [routerLink]="'./getting-started'"><strong>Getting started</strong></a></li>
+        <li><a href="https://liquid-js.github.io/nxt-components/docs/nxt-dropzone-wrapper"><strong>API docs</strong></a></li>
+        <li><a href="https://docs.dropzone.dev/configuration/basics/configuration-options"><strong>Dropzone documentation</strong></a></li>
+    </ul>
+
+    <app-example *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+        [injector]="injector"
+        [config]="example"
+        [asTab]="true"
+        id="example-{{ i }}"></app-example>
+</app-content-wrap>

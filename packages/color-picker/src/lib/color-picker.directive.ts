@@ -55,76 +55,122 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         sliderDragEnd: (event: SliderChangeEvent) => {
             this.sliderDragEnd.emit(event)
         },
-        presetColorsChanged: (value: any[]) => {
+        presetColorsChanged: (value: string[]) => {
             this.presetColorsChange.emit(value)
         }
     }
-    overlayRef?: OverlayRef
+    private overlayRef?: OverlayRef
 
     private get resIgnoredElements() {
         const ign = Array.isArray(this.ignoredElements) ? this.ignoredElements : [this.ignoredElements]
         return ign.filter(el => !!el)
     }
 
+    /** The color to show in the color picker dialog */
     @Input() nxtColor?: string
 
+    /** Use this option to set color picker dialog width */
     @Input() width: string = '230px'
+    /** Use this option to force color picker dialog height */
     @Input() height: string = 'auto'
 
+    /** Sets the default open / close state of the color picker */
     @Input() toggle: boolean = false
+    /** Disables opening of the color picker dialog via toggle */
     @Input() disabled: boolean = false
 
+    /** Dialog color mode */
     @Input() mode: ColorMode = 'color'
 
-    @Input() outputFormat: OutputFormat = OutputFormatEnum.auto
+    /** Enables CMYK input format and color change event */
     @Input() cmykEnabled: boolean = false
-    @Input() alphaChannel: AlphaChannel = AlphaChannelEnum.enabled
-    @Input() fallbackColor: string = ''
 
+    /** Output color format */
+    @Input() outputFormat: OutputFormat = OutputFormatEnum.auto
+    /** Alpha channel mode */
+    @Input() alphaChannel: AlphaChannel = AlphaChannelEnum.enabled
+    /** Used when the color is not well-formed or is undefined */
+    @Input() fallbackColor?: string
+
+    /** Dialog position */
     @Input() position: DialogPosition = DialogPositionEnum.right
+    /** Dialog offset percentage relative to the directive element */
     @Input() positionOffset: number = 0
 
+    /**
+     * Show label for preset colors
+     *
+     * If string is given, it overrides the default label.
+     */
     @Input() presetLabel: boolean | string = true
+    /** Array of preset colors to show in the color picker dialog */
     @Input() presetColors?: string[]
 
+    /** Disables / hides the color input field from the dialog */
     @Input() disableInput: boolean = false
 
+    /** Dialog positioning mode */
     @Input() dialogDisplay: DialogDisplay = DialogDisplayEnum.popup
 
-    @Input() ignoredElements = new Array<any>()
+    /** Array of HTML elements that will be ignored when clicked */
+    @Input() ignoredElements?: any[]
 
+    /** Save currently selected color when user clicks outside */
     @Input() saveClickOutside: boolean = true
+    /** Close the color picker dialog when user clicks outside */
     @Input() closeClickOutside: boolean = true
 
+    /** Show an OK / Apply button which saves the color */
     @Input() okButton: boolean = false
 
+    /** Show a Cancel / Reset button which resets the color */
     @Input() cancelButton: boolean = false
 
-    @Input() addColorButton: boolean = false
+    /** Show buttons to add / remove preset colors */
+    @Input() presetColorsEditable: boolean = false
 
-    @Input() maxPresetColors: number = 6
+    /** Use this option to set the max colors allowed in presets */
+    @Input() maxPresetColors?: number
 
+    /**
+     * Create dialog component in the root view container
+     *
+     * Note: The root component needs to have public viewContainerRef.
+     */
     @Input() useRootViewContainer: boolean = false
 
+    /** Current color value, emit when dialog is isOpen */
     @Output() open = new EventEmitter<string>(true)
+    /** Current color value, emit when dialog is closed */
     @Output() close = new EventEmitter<string>(true)
 
+    /** Input name and its value, emit when user changes color through inputs */
     @Output() inputChange = new EventEmitter<InputChangeEvent>(true)
 
+    /** Status of the dialog, emit when dialog is isOpen / closed */
     @Output() toggleChange = new EventEmitter<boolean>(true)
 
+    /** Slider name and current color, emit when slider dragging starts */
     @Output() sliderDragStart = new EventEmitter<SliderChangeEvent>(true)
+    /** Slider name and its value, emit when user changes color through slider */
     @Output() sliderChange = new EventEmitter<SliderChangeEvent>(true)
+    /** Slider name and current color, emit when slider dragging ends */
     @Output() sliderDragEnd = new EventEmitter<SliderChangeEvent>(true)
 
+    /** Color select canceled, emit when Cancel button is pressed */
     @Output() colorSelect = new EventEmitter<string>(true)
+    /** Selected color value, emit when OK button pressed or user clicks outside (if saveClickOutside is true) */
     @Output() colorSelectCancel = new EventEmitter<void>(true)
+    /** Changed color value, emit when color changes */
     @Output() nxtColorChange = new EventEmitter<string>(false)
 
+    /** Outputs the color as CMYK string if CMYK is enabled */
     @Output() cmykColorChange = new EventEmitter<string>(true)
 
-    @Output() presetColorsChange = new EventEmitter<any[]>(true)
+    /** Preset colors, emit when preset color is added / removed */
+    @Output() presetColorsChange = new EventEmitter<string[]>(true)
 
+    /** @internal */
     constructor(
         private injector: Injector,
         private appRef: ApplicationRef,
@@ -133,6 +179,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         private overlay: Overlay
     ) { }
 
+    /** @internal */
     @HostListener('focus', ['$event'])
     @HostListener('click', ['$event'])
     handleOpen(event: Event) {
@@ -144,6 +191,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         }
     }
 
+    /** @internal */
     @HostListener('input', ['$event'])
     @HostListener('change', ['$event'])
     handleInput(event: Event) {
@@ -157,10 +205,12 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         }
     }
 
+    /** @internal */
     ngOnDestroy() {
         this.dispose()
     }
 
+    /** @internal */
     ngOnChanges(changes: SimpleChanges) {
         if (changes['toggle'] && !this.disabled) {
             if (changes['toggle'].currentValue) {

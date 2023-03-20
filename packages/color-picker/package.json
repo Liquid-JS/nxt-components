@@ -15,13 +15,15 @@
         "lint:sass": "stylelint \"src/**/*.scss\"",
         "lint:sass:fix": "yarn lint:sass --fix",
         "test": "ng test color-picker --no-watch",
-        "test:watch": "ng test color-picker"
+        "test:watch": "ng test color-picker",
+        "docs": "npx compodoc -c .compodocrc.json",
+        "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/color-picker"
     },
     "peerDependencies": {
-        "@angular/cdk": "^15.2.1",
-        "@angular/common": "^15.2.1",
-        "@angular/core": "^15.2.1",
-        "@angular/localize": "^15.2.1"
+        "@angular/cdk": "^15.2.3",
+        "@angular/common": "^15.2.3",
+        "@angular/core": "^15.2.3",
+        "@angular/localize": "^15.2.3"
     },
     "dependencies": {
         "tslib": "^2.5.0"

@@ -1,0 +1,12 @@
+:host {
+    & > div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem 1rem;
+        padding-top: 1rem;
+
+        & > div {
+            flex: auto 1 1;
+        }
+    }
+}

@@ -1,5 +1,4 @@
-import { coerceArray, coerceBooleanProperty } from '@angular/cdk/coercion'
-import { ESCAPE, UP_ARROW } from '@angular/cdk/keycodes'
+import { coerceArray } from '@angular/cdk/coercion'
 import { BlockScrollStrategy, Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
 import { DOCUMENT } from '@angular/common'
@@ -14,12 +13,16 @@ import { DialogService } from '../../dialog/dialog.service'
 import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
 import { DateTimeInputDirective } from '../date-time-picker-input.directive'
 
-/** Injection token that determines the scroll handling while the dtPicker is open. */
+/**
+ * Injection token that determines the scroll handling while the dtPicker is open.
+ *
+ * @internal
+ */
 export const NXT_DTPICKER_SCROLL_STRATEGY = new InjectionToken<
     () => ScrollStrategy
 >('NXT_DTPICKER_SCROLL_STRATEGY')
 
-/** @docs-private */
+/** @internal */
 export function NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY(
     overlay: Overlay
 ): () => BlockScrollStrategy {
@@ -27,7 +30,7 @@ export function NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY(
     return fn
 }
 
-/** @docs-private */
+/** @internal */
 export const NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER = {
     provide: NXT_DTPICKER_SCROLL_STRATEGY,
     deps: [Overlay],
@@ -42,16 +45,20 @@ export const NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER = {
     preserveWhitespaces: false
 })
 export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit, OnDestroy {
-    /** Custom class for the picker backdrop. */
+    /** Custom class for the picker backdrop */
     @Input()
-    public backdropClass: string | string[] = []
+    backdropClass?: string | string[]
 
-    /** Custom class for the picker overlay pane. */
+    /** Custom class for the picker overlay pane */
     @Input()
-    public panelClass: string | string[] = []
+    panelClass?: string | string[]
 
-    /** The date to open the calendar to initially. */
     private _startAt?: T
+    /**
+     * The date to show when picker opens
+     *
+     * Defaults to selected date (if available) or current date.
+     */
     @Input()
     get startAt() {
         // If an explicit startAt is set we start there, otherwise we start at whatever the currently
@@ -81,13 +88,14 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         )
     }
 
+    private _pickerType: PickerType = 'both'
     /**
      * Set the type of the dateTime picker
-     *      'both' -- show both calendar and timer
-     *      'calendar' -- show only calendar
-     *      'timer' -- show only timer
+     *
+     * -    `'both'` - show both calendar and timer
+     * -    `'calendar'` - show only calendar
+     * -    `'timer'` - show only timer
      */
-    private _pickerType: PickerType = 'both'
     @Input()
     get pickerType(): PickerType {
         return this._pickerType
@@ -102,10 +110,13 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         }
     }
 
+    private _pickerMode: PickerMode = 'popup'
     /**
-     * Whether the picker open as a dialog
+     * The style the picker would open as
+     *
+     * -    `'popup'` - display picker attached to the trigger element
+     * -    `'dialog'` - display picker as a dialog
      */
-    _pickerMode: PickerMode = 'popup'
     @Input()
     get pickerMode() {
         return this._pickerMode
@@ -119,29 +130,29 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         }
     }
 
-    /** Whether the date time picker should be disabled. */
     private _disabled?: boolean
+    /** Whether the date time picker should be disabled */
     @Input()
     override get disabled(): boolean {
         return this._disabled ?? !!this._dtInput?.disabled
     }
 
     override set disabled(value: boolean) {
-        value = coerceBooleanProperty(value)
+        value = !!value
         if (value !== this._disabled) {
             this._disabled = value
             this.disabledChange.next(value)
         }
     }
 
-    /** Whether the calendar is open. */
-    private _opened: boolean = false
+    private _isOpen: boolean = false
+    /** Whether the calendar is open */
     @Input()
-    get opened(): boolean {
-        return this._opened
+    get isOpen(): boolean {
+        return this._isOpen
     }
 
-    set opened(val: boolean) {
+    set isOpen(val: boolean) {
         if (val)
             this.open()
         else
@@ -149,47 +160,56 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     }
 
     /**
-     * The scroll strategy when the picker is open
-     * Learn more this from https://material.angular.io/cdk/overlay/overview#scroll-strategies
-     * */
+     * The scroll strategy when the picker is open (see [CDK documentation](https://material.angular.io/cdk/overlay/overview#scroll-strategies))
+     */
     @Input()
-    public scrollStrategy?: ScrollStrategy
+    scrollStrategy?: ScrollStrategy
+
+    /**
+     * Callback when the picker is opened
+     */
+    // eslint-disable-next-line @angular-eslint/no-output-rename
+    @Output('open')
+    readonly afterPickerOpened = new EventEmitter<void>()
 
     /**
      * Callback when the picker is closed
-     * */
-    @Output()
+     */
+    // eslint-disable-next-line @angular-eslint/no-output-rename
+    @Output('close')
     readonly afterPickerClosed = new EventEmitter<void>()
 
     /**
-     * Callback when the picker is open
-     * */
-    @Output()
-    readonly afterPickerOpen = new EventEmitter<void>()
-
-    /**
      * Emits selected year in multi-year view
+     *
      * This doesn't imply a change on the selected date.
-     * */
+     */
     @Output()
     readonly yearSelected = new EventEmitter<T>()
 
     /**
      * Emits selected month in year view
+     *
      * This doesn't imply a change on the selected date.
-     * */
+     */
     @Output()
     readonly monthSelected = new EventEmitter<T>()
 
     /**
-     * Emit when the selected value has been confirmed
-     * */
-    public readonly confirmSelectedChange = new EventEmitter<Array<T | undefined> | T>()
+     * Emits when picker open state changes
+     */
+    @Output()
+    readonly isOpenChange = new EventEmitter<boolean>()
 
     /**
-     * Emits when the date time picker is disabled.
-     * */
-    public readonly disabledChange = new EventEmitter<boolean>()
+     * Emit when the selected value has been confirmed
+     */
+    readonly confirmSelectedChange = new EventEmitter<Array<T | undefined> | T>()
+
+    /**
+     * Emits when the date time picker is disabled
+     */
+    readonly disabledChange = new EventEmitter<boolean>()
 
     private pickerContainerPortal?: ComponentPortal<
         DateTimeContainerComponent<T>
@@ -202,7 +222,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     private confirmSelectedStreamSub?: Subscription
     private pickerOpenedStreamSub?: Subscription
 
-    /** The element that was focused before the date time picker was opened. */
+    /** The element that was focused before the date time picker was isOpen */
     private focusedElementBeforeOpen?: HTMLElement
 
     private _dtInput?: DateTimeInputDirective<T>
@@ -230,12 +250,12 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         this.changeDetector.markForCheck()
     }
 
-    /** The minimum selectable date. */
+    /** The minimum selectable date */
     get min() {
         return (this._dtInput && this._dtInput.min)
     }
 
-    /** The maximum selectable date. */
+    /** The maximum selectable date */
     get max() {
         return (this._dtInput && this._dtInput.max)
     }
@@ -274,9 +294,9 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         super(dateTimeAdapter, dateTimeFormats)
     }
 
-    public ngOnInit() { }
+    ngOnInit() { }
 
-    public ngOnDestroy(): void {
+    ngOnDestroy(): void {
         this.close()
         this.dtInputSub?.unsubscribe()
         this.dtInputSub = undefined
@@ -287,7 +307,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         }
     }
 
-    public registerInput(input: DateTimeInputDirective<T>): void {
+    registerInput(input: DateTimeInputDirective<T>): void {
         if (this._dtInput) {
             throw Error(
                 'A Nxt DateTimePicker can only be associated with a single input.'
@@ -304,8 +324,8 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         })
     }
 
-    public open(): void {
-        if (this._opened || this.disabled) {
+    open(): void {
+        if (this._isOpen || this.disabled) {
             return
         }
 
@@ -365,7 +385,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     /**
      * Selects the given date
      */
-    public select(date: T[] | T): void {
+    select(date: T[] | T): void {
         if (Array.isArray(date)) {
             this.selecteds = [...date]
         } else {
@@ -380,7 +400,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
          *    the 'selecteds' has 'from'(selecteds[0]) and 'to'(selecteds[1]) values.
          * 4) selectMode is 'rangeFrom' and selecteds[0] has value.
          * 5) selectMode is 'rangeTo' and selecteds[1] has value.
-         * */
+         */
         if (
             this.pickerMode !== 'dialog' &&
             this.pickerType === 'calendar' &&
@@ -397,23 +417,23 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
 
     /**
      * Emits the selected year in multi-year view
-     * */
-    public selectYear(normalizedYear: T): void {
+     */
+    selectYear(normalizedYear: T): void {
         this.yearSelected.emit(normalizedYear)
     }
 
     /**
      * Emits selected month in year view
-     * */
-    public selectMonth(normalizedMonth: T): void {
+     */
+    selectMonth(normalizedMonth: T): void {
         this.monthSelected.emit(normalizedMonth)
     }
 
     /**
      * Hide the picker
      */
-    public close(): void {
-        if (!this._opened) {
+    close(): void {
+        if (!this._isOpen) {
             return
         }
 
@@ -443,8 +463,9 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         }
 
         const completeClose = () => {
-            if (this._opened) {
-                this._opened = false
+            if (this._isOpen) {
+                this._isOpen = false
+                this.isOpenChange.emit(this._isOpen)
                 this.afterPickerClosed.emit()
                 this.focusedElementBeforeOpen = undefined
             }
@@ -469,7 +490,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     /**
      * Confirm the selected value
      */
-    public confirmSelect(_event?: any): void {
+    confirmSelect(_event?: any): void {
         if (this.isInSingleMode) {
             const selected =
                 this.selected || this.startAt || this.dateTimeAdapter.now()
@@ -492,9 +513,12 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
                 autoFocus: false,
                 backdropClass: [
                     'cdk-overlay-dark-backdrop',
-                    ...coerceArray(this.backdropClass)
+                    ...this.backdropClass ? coerceArray(this.backdropClass) : []
                 ],
-                paneClass: ['nxt-dt-dialog', ...coerceArray(this.panelClass)],
+                paneClass: [
+                    'nxt-dt-dialog',
+                    ...this.panelClass ? coerceArray(this.panelClass) : []
+                ],
                 viewContainerRef: this.viewContainerRef,
                 scrollStrategy: this.scrollStrategy || this.defaultScrollStrategy()
             }
@@ -502,8 +526,9 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         this.pickerContainer = this.dialogRef.componentInstance
 
         this.dialogRef.afterOpen().subscribe(() => {
-            this.afterPickerOpen.emit()
-            this._opened = true
+            this._isOpen = true
+            this.isOpenChange.emit(this._isOpen)
+            this.afterPickerOpened.emit()
         })
         this.dialogRef.afterClosed().subscribe(() => this.close())
     }
@@ -540,8 +565,9 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
             this.pickerOpenedStreamSub = this.pickerContainer?.pickerOpenedStream
                 .pipe(take(1))
                 .subscribe(() => {
-                    this.afterPickerOpen.emit()
-                    this._opened = true
+                    this._isOpen = true
+                    this.isOpenChange.emit(this._isOpen)
+                    this.afterPickerOpened.emit()
                 })
         }
     }
@@ -552,10 +578,13 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
             hasBackdrop: true,
             backdropClass: [
                 'cdk-overlay-transparent-backdrop',
-                ...coerceArray(this.backdropClass)
+                ...this.backdropClass ? coerceArray(this.backdropClass) : []
             ],
             scrollStrategy: this.scrollStrategy || this.defaultScrollStrategy(),
-            panelClass: ['nxt-dt-popup', ...coerceArray(this.panelClass)]
+            panelClass: [
+                'nxt-dt-popup',
+                ...this.panelClass ? coerceArray(this.panelClass) : []
+            ]
         })
 
         this.popupRef = this.overlay.create(overlayConfig)
@@ -568,10 +597,10 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
                 .pipe(
                     filter(
                         event =>
-                            !!(event.keyCode === ESCAPE ||
+                            !!(event.code.toLowerCase() === 'escape' ||
                                 (this._dtInput &&
                                     event.altKey &&
-                                    event.keyCode === UP_ARROW))
+                                    event.code.toLowerCase() === 'arrowup'))
                     )
                 )
         ).subscribe(() => this.close())
@@ -579,7 +608,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
 
     /**
      * Create the popup PositionStrategy.
-     * */
+     */
     private createPopupPositionStrategy(): PositionStrategy | undefined {
         if (this._dtInput)
             return this.overlay

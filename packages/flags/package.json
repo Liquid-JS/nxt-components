@@ -15,11 +15,13 @@
         "lint:sass": "stylelint \"src/**/*.scss\"",
         "lint:sass:fix": "yarn lint:sass --fix",
         "test": "ng test flags --no-watch",
-        "test:watch": "ng test flags"
+        "test:watch": "ng test flags",
+        "docs": "npx compodoc -c .compodocrc.json",
+        "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/flags"
     },
     "peerDependencies": {
-        "@angular/common": "^15.2.1",
-        "@angular/core": "^15.2.1"
+        "@angular/common": "^15.2.3",
+        "@angular/core": "^15.2.3"
     },
     "dependencies": {
         "tslib": "^2.5.0"

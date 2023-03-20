@@ -1,40 +1,19 @@
-import { inject, InjectionToken, LOCALE_ID } from '@angular/core'
 import { Observable, Subject } from 'rxjs'
 
-/** InjectionToken for date time picker that can be used to override default locale code. */
-export const NXT_DATE_TIME_LOCALE = new InjectionToken<string>(
-    'NXT_DATE_TIME_LOCALE',
-    {
-        providedIn: 'root',
-        factory: NXT_DATE_TIME_LOCALE_FACTORY
-    }
-)
-
-/** @docs-private */
-export function NXT_DATE_TIME_LOCALE_FACTORY(): string {
-    return inject(LOCALE_ID)
-}
-
-/** Provider for NXT_DATE_TIME_LOCALE injection token. */
-export const NXT_DATE_TIME_LOCALE_PROVIDER = {
-    provide: NXT_DATE_TIME_LOCALE,
-    useExisting: LOCALE_ID
-}
-
 export abstract class DateTimeAdapter<T> {
-    /** The locale to use for all dates. */
+    /** The locale to use for all dates */
     protected locale: any
 
-    /** A stream that emits when the locale changes. */
+    /** A stream that emits when the locale changes */
     protected _localeChanges = new Subject<void>()
     get localeChanges(): Observable<void> {
         return this._localeChanges
     }
 
-    /** total milliseconds in a day. */
+    /** total milliseconds in a day */
     protected readonly millisecondsInDay = 86400000
 
-    /** total milliseconds in a minute. */
+    /** total milliseconds in a minute */
     protected readonly milliseondsInMinute = 60000
 
     /**

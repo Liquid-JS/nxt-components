@@ -9,15 +9,19 @@ import { DialogRef } from '../class/dialog-ref.class'
 import { extendObject } from '../utils/object'
 import { DialogContainerComponent } from './dialog-container/dialog-container.component'
 
+/** @internal */
 export const NXT_DIALOG_DATA = new InjectionToken<any>('NXT_DIALOG_DATA')
 
 /**
  * Injection token that determines the scroll handling while the dialog is open.
- * */
+ *
+ * @internal
+ */
 export const NXT_DIALOG_SCROLL_STRATEGY = new InjectionToken<
     () => ScrollStrategy
 >('NXT_DIALOG_SCROLL_STRATEGY')
 
+/** @internal */
 export function NXT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(
     overlay: Overlay
 ): () => ScrollStrategy {
@@ -25,20 +29,23 @@ export function NXT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(
     return fn
 }
 
-/** @docs-private */
+/** @internal */
 export const NXT_DIALOG_SCROLL_STRATEGY_PROVIDER = {
     provide: NXT_DIALOG_SCROLL_STRATEGY,
     deps: [Overlay],
     useFactory: NXT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY
 }
 
-/** I
- * njection token that can be used to specify default dialog options.
- * */
+/**
+ * Injection token that can be used to specify default dialog options.
+ *
+ * @internal
+ */
 export const NXT_DIALOG_DEFAULT_OPTIONS = new InjectionToken<DialogConfig>(
     'NXT_DIALOG_DEFAULT_OPTIONS'
 )
 
+/** @internal */
 @Injectable()
 export class DialogService {
     private readonly ariaHiddenElements = new Map<Element, string | null>()
@@ -47,14 +54,14 @@ export class DialogService {
     private readonly _afterOpenAtThisLevel = new Subject<DialogRef<any>>()
     private readonly _afterAllClosedAtThisLevel = new Subject<void>()
 
-    /** Keeps track of the currently-open dialogs. */
+    /** Keeps track of the currently-open dialogs */
     get openDialogs(): Array<DialogRef<any>> {
         return this.parentDialog
             ? this.parentDialog.openDialogs
             : this._openDialogsAtThisLevel
     }
 
-    /** Stream that emits when a dialog has been opened. */
+    /** Stream that emits when a dialog has been isOpen */
     get afterOpen(): Subject<DialogRef<any>> {
         return this.parentDialog
             ? this.parentDialog.afterOpen
@@ -105,7 +112,7 @@ export class DialogService {
         }
     }
 
-    public open<T>(
+    open<T>(
         componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
         config?: DialogConfig
     ): DialogRef<any> {
@@ -139,7 +146,7 @@ export class DialogService {
     /**
      * Closes all of the currently-open dialogs.
      */
-    public closeAll(): void {
+    closeAll(): void {
         let i = this.openDialogs.length
 
         while (i--) {
@@ -152,7 +159,7 @@ export class DialogService {
      *
      * @param id ID to use when looking up the dialog.
      */
-    public getDialogById(id: string): DialogRef<any> | undefined {
+    getDialogById(id: string): DialogRef<any> | undefined {
         return this.openDialogs.find(dialog => dialog.id === id)
     }
 
@@ -315,6 +322,8 @@ export class DialogService {
  * @param config Config to be modified.
  * @param defaultOptions Default config setting
  * @returns The new configuration object.
+ *
+ * @internal
  */
 function applyConfigDefaults(
     config?: DialogConfig,

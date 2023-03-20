@@ -32,7 +32,7 @@
             <div class="color-picker__selected-color">
                 <div [ngStyle]="{ 
                     backgroundColor: selectedColor || ''
-                }"><button *ngIf="addColorButton && !(maxPresetColors && (presetColors?.length || 0) >= maxPresetColors)"
+                }"><button *ngIf="presetColorsEditable && !(maxPresetColors && (presetColors?.length || 0) >= maxPresetColors)"
                         type="button"
                         title="Add color to preset"
                         i18n-title="@@nxt-color-picker.button.add-color"
@@ -106,7 +106,7 @@
                         max="100"
                         nxtText
                         [rg]="100"
-                        [value]="hslaText?.l"
+                        [value]="hslaText?.l?.toFixed(0)"
                         (keyup.enter)="onAccept($event)"
                         (newValue)="onValueInput($event)" />
                     <span class="color-picker__input-field-label">V</span>
@@ -117,10 +117,10 @@
                         pattern="[0-9]+([\.,][0-9]{1,2})?"
                         min="0"
                         max="1"
-                        step="0.1"
+                        step="0.01"
                         nxtText
                         [rg]="1"
-                        [value]="hslaText?.a"
+                        [value]="formatAlpha(hslaText?.a)"
                         (keyup.enter)="onAccept($event)"
                         (newValue)="onAlphaInput($event)" />
                     <span class="color-picker__input-field-label">A</span>
@@ -136,7 +136,7 @@
                                 max="360"
                                 nxtText
                                 [rg]="360"
-                                [value]="hslaText?.h"
+                                [value]="hslaText?.h?.toFixed(0)"
                                 (keyup.enter)="onAccept($event)"
                                 (newValue)="onHueInput($event)" />
                             <span class="color-picker__input-field-label">H</span>
@@ -148,7 +148,7 @@
                                 max="100"
                                 nxtText
                                 [rg]="100"
-                                [value]="hslaText?.s"
+                                [value]="hslaText?.s?.toFixed(0)"
                                 (keyup.enter)="onAccept($event)"
                                 (newValue)="onSaturationInput($event)" />
                             <span class="color-picker__input-field-label">S</span>
@@ -160,7 +160,7 @@
                                 max="100"
                                 nxtText
                                 [rg]="100"
-                                [value]="hslaText?.l"
+                                [value]="hslaText?.l?.toFixed(0)"
                                 (keyup.enter)="onAccept($event)"
                                 (newValue)="onLightnessInput($event)" />
                             <span class="color-picker__input-field-label">L</span>
@@ -171,10 +171,10 @@
                                 pattern="[0-9]+([\.,][0-9]{1,2})?"
                                 min="0"
                                 max="1"
-                                step="0.1"
+                                step="0.01"
                                 nxtText
                                 [rg]="1"
-                                [value]="hslaText?.a"
+                                [value]="formatAlpha(hslaText?.a)"
                                 (keyup.enter)="onAccept($event)"
                                 (newValue)="onAlphaInput($event)" />
                             <span class="color-picker__input-field-label">A</span>
@@ -188,7 +188,7 @@
                                 max="255"
                                 nxtText
                                 [rg]="255"
-                                [value]="rgbaText?.r"
+                                [value]="rgbaText?.r?.toFixed(0)"
                                 (keyup.enter)="onAccept($event)"
                                 (newValue)="onRedInput($event)" />
                             <span class="color-picker__input-field-label">R</span>
@@ -200,7 +200,7 @@
                                 max="255"
                                 nxtText
                                 [rg]="255"
-                                [value]="rgbaText?.g"
+                                [value]="rgbaText?.g?.toFixed(0)"
                                 (keyup.enter)="onAccept($event)"
                                 (newValue)="onGreenInput($event)" />
                             <span class="color-picker__input-field-label">G</span>
@@ -212,7 +212,7 @@
                                 max="255"
                                 nxtText
                                 [rg]="255"
-                                [value]="rgbaText?.b"
+                                [value]="rgbaText?.b?.toFixed(0)"
                                 (keyup.enter)="onAccept($event)"
                                 (newValue)="onBlueInput($event)" />
                             <span class="color-picker__input-field-label">B</span>
@@ -223,10 +223,10 @@
                                 pattern="[0-9]+([\.,][0-9]{1,2})?"
                                 min="0"
                                 max="1"
-                                step="0.1"
+                                step="0.01"
                                 nxtText
                                 [rg]="1"
-                                [value]="hslaText?.a"
+                                [value]="formatAlpha(hslaText?.a)"
                                 (keyup.enter)="onAccept($event)"
                                 (newValue)="onAlphaInput($event)" />
                             <span class="color-picker__input-field-label">A</span>
@@ -240,7 +240,7 @@
                                 max="100"
                                 nxtText
                                 [rg]="100"
-                                [value]="cmykText?.c"
+                                [value]="cmykText?.c?.toFixed(0)"
                                 (keyup.enter)="onAccept($event)"
                                 (newValue)="onCyanInput($event)" />
                             <span class="color-picker__input-field-label">C</span>
@@ -252,7 +252,7 @@
                                 max="100"
                                 nxtText
                                 [rg]="100"
-                                [value]="cmykText?.m"
+                                [value]="cmykText?.m?.toFixed(0)"
                                 (keyup.enter)="onAccept($event)"
                                 (newValue)="onMagentaInput($event)" />
                             <span class="color-picker__input-field-label">M</span>
@@ -264,7 +264,7 @@
                                 max="100"
                                 nxtText
                                 [rg]="100"
-                                [value]="cmykText?.y"
+                                [value]="cmykText?.y?.toFixed(0)"
                                 (keyup.enter)="onAccept($event)"
                                 (newValue)="onYellowInput($event)" />
                             <span class="color-picker__input-field-label">Y</span>
@@ -276,7 +276,7 @@
                                 max="100"
                                 nxtText
                                 [rg]="100"
-                                [value]="cmykText?.k"
+                                [value]="cmykText?.k?.toFixed(0)"
                                 (keyup.enter)="onAccept($event)"
                                 (newValue)="onBlackInput($event)" />
                             <span class="color-picker__input-field-label">K</span>
@@ -287,10 +287,10 @@
                                 pattern="[0-9]+([\.,][0-9]{1,2})?"
                                 min="0"
                                 max="1"
-                                step="0.1"
+                                step="0.01"
                                 nxtText
                                 [rg]="1"
-                                [value]="cmykText?.c"
+                                [value]="formatAlpha(cmykText?.a)"
                                 (keyup.enter)="onAccept($event)"
                                 (newValue)="onAlphaInput($event)" />
                             <span class="color-picker__input-field-label">A</span>
@@ -311,10 +311,10 @@
                                 pattern="[0-9]+([\.,][0-9]{1,2})?"
                                 min="0"
                                 max="1"
-                                step="0.1"
+                                step="0.01"
                                 nxtText
                                 [rg]="1"
-                                [value]="hexAlpha"
+                                [value]="formatAlpha(hexAlpha)"
                                 (keyup.enter)="onAccept($event)"
                                 (newValue)="onAlphaInput($event)" />
                             <span class="color-picker__input-field-label">A</span>
@@ -350,7 +350,7 @@
                         <div class="color-picker__preset-item-fill"
                             [ngStyle]="{ 
                         backgroundColor: rgba || ''
-                    }"><button *ngIf="addColorButton"
+                    }"><button *ngIf="presetColorsEditable"
                                 type="button"
                                 title="Remove Color"
                                 i18n-title="@@nxt-color-picker.button.remove-color"

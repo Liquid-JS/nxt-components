@@ -1,11 +1,13 @@
-import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Input, OnInit, Output, ViewChild } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
 import { CalendarCell, CalendarBodyComponent } from '../calendar-body/calendar-body.component'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 
+/** @internal */
 export const YEARS_PER_ROW = 3
+
+/** @internal */
 export const YEAR_ROWS = 7
 
 @Component({
@@ -20,7 +22,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /**
      * The select mode of the picker;
-     * */
+     */
     private _selectMode: SelectMode = 'single'
     @Input()
     get selectMode(): SelectMode {
@@ -35,7 +37,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
         }
     }
 
-    /** The currently selected date. */
+    /** The currently selected date */
     private _selected?: T
     @Input()
     get selected() {
@@ -85,21 +87,21 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /**
      * A function used to filter which dates are selectable
-     * */
-    private _dateFilter?: DateFilter<T>
+     */
+    private _dateTimeFilter?: DateFilter<T>
     @Input()
-    get dateFilter() {
-        return this._dateFilter
+    get dateTimeFilter() {
+        return this._dateTimeFilter
     }
 
-    set dateFilter(filter: DateFilter<T> | undefined) {
-        this._dateFilter = filter
+    set dateTimeFilter(filter: DateFilter<T> | undefined) {
+        this._dateTimeFilter = filter
         if (this.initiated) {
             this.generateYearList()
         }
     }
 
-    /** The minimum selectable date. */
+    /** The minimum selectable date */
     private _minDate?: T
     @Input()
     get min() {
@@ -114,7 +116,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
         }
     }
 
-    /** The maximum selectable date. */
+    /** The maximum selectable date */
     private _maxDate?: T
     @Input()
     get max() {
@@ -179,18 +181,20 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /**
      * Callback to invoke when a new month is selected
-     * */
+     */
     // eslint-disable-next-line @angular-eslint/no-output-native
     @Output()
     readonly change = new EventEmitter<T>()
 
     /**
-     * Emits the selected year. This doesn't imply a change on the selected date
-     * */
+     * Emits the selected year
+     *
+     * This doesn't imply a change on the selected date.
+     */
     @Output()
     readonly yearSelected = new EventEmitter<T>()
 
-    /** Emits when any date is activated. */
+    /** Emits when any date is activated */
     @Output()
     readonly pickerMomentChange: EventEmitter<T> = new EventEmitter<T>()
 
@@ -200,13 +204,15 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /** The body of calendar table */
     @ViewChild(CalendarBodyComponent, { static: true })
-    calendarBodyElm?: CalendarBodyComponent
+    private calendarBodyElm?: CalendarBodyComponent
 
+    /** @internal */
     @HostBinding('class.nxt-dt-calendar-view')
     get calendarView(): boolean {
         return true
     }
 
+    /** @internal */
     @HostBinding('class.nxt-dt-calendar-multi-year-view')
     get calendarMultiYearView(): boolean {
         return true
@@ -218,10 +224,10 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
         private readonly dateTimeAdapter: DateTimeAdapter<T>
     ) { }
 
-    public ngOnInit() {
+    ngOnInit() {
     }
 
-    public ngAfterContentInit(): void {
+    ngAfterContentInit(): void {
         this._todayYear = this.dateTimeAdapter.getYear(this.dateTimeAdapter.now())
         this.generateYearList()
         this.initiated = true
@@ -230,7 +236,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     /**
      * Handle a calendarCell selected
      */
-    public selectCalendarCell(cell: CalendarCell): void {
+    selectCalendarCell(cell: CalendarCell): void {
         this.selectYear(cell.value)
     }
 
@@ -256,8 +262,8 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /**
      * Generate the previous year list
-     * */
-    public prevYearList(event: any): void {
+     */
+    prevYearList(event: any): void {
         this._pickerMoment = this.dateTimeAdapter.addCalendarYears(this.pickerMoment, -1 * YEAR_ROWS * YEARS_PER_ROW)
         this.generateYearList()
         event.preventDefault()
@@ -265,14 +271,14 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     /**
      * Generate the next year list
-     * */
-    public nextYearList(event: any): void {
+     */
+    nextYearList(event: any): void {
         this._pickerMoment = this.dateTimeAdapter.addCalendarYears(this.pickerMoment, YEAR_ROWS * YEARS_PER_ROW)
         this.generateYearList()
         event.preventDefault()
     }
 
-    public generateYearList(): void {
+    generateYearList(): void {
         this._years = []
 
         const pickerMomentYear = this.dateTimeAdapter.getYear(this._pickerMoment)
@@ -294,73 +300,73 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
     }
 
-    /** Whether the previous period button is enabled. */
-    public previousEnabled(): boolean {
+    /** Whether the previous period button is enabled */
+    previousEnabled(): boolean {
         if (!this.min) {
             return true
         }
         return !this.min || !this.isSameYearList(this._pickerMoment, this.min)
     }
 
-    /** Whether the next period button is enabled. */
-    public nextEnabled(): boolean {
+    /** Whether the next period button is enabled */
+    nextEnabled(): boolean {
         return !this.max || !this.isSameYearList(this._pickerMoment, this.max)
     }
 
-    public handleCalendarKeydown(event: KeyboardEvent): void {
+    handleCalendarKeydown(event: KeyboardEvent): void {
         let moment
-        switch (event.keyCode) {
+        switch (event.code.toLowerCase()) {
             // minus 1 year
-            case LEFT_ARROW:
+            case 'arrowleft':
                 moment = this.dateTimeAdapter.addCalendarYears(this._pickerMoment, -1)
                 this.pickerMomentChange.emit(moment)
                 break
 
             // add 1 year
-            case RIGHT_ARROW:
+            case 'arrowright':
                 moment = this.dateTimeAdapter.addCalendarYears(this._pickerMoment, 1)
                 this.pickerMomentChange.emit(moment)
                 break
 
             // minus 3 years
-            case UP_ARROW:
+            case 'arrowup':
                 moment = this.dateTimeAdapter.addCalendarYears(this._pickerMoment, -1 * YEARS_PER_ROW)
                 this.pickerMomentChange.emit(moment)
                 break
 
             // add 3 years
-            case DOWN_ARROW:
+            case 'arrowdown':
                 moment = this.dateTimeAdapter.addCalendarYears(this._pickerMoment, YEARS_PER_ROW)
                 this.pickerMomentChange.emit(moment)
                 break
 
             // go to the first year of the year page
-            case HOME:
+            case 'home':
                 moment = this.dateTimeAdapter.addCalendarYears(this._pickerMoment,
                     -this.dateTimeAdapter.getYear(this._pickerMoment) % (YEARS_PER_ROW * YEAR_ROWS))
                 this.pickerMomentChange.emit(moment)
                 break
 
             // go to the last year of the year page
-            case END:
+            case 'end':
                 moment = this.dateTimeAdapter.addCalendarYears(this._pickerMoment,
                     (YEARS_PER_ROW * YEAR_ROWS) - this.dateTimeAdapter.getYear(this._pickerMoment) % (YEARS_PER_ROW * YEAR_ROWS) - 1)
                 this.pickerMomentChange.emit(moment)
                 break
 
             // minus 1 year page (or 10 year pages)
-            case PAGE_UP:
+            case 'pageup':
                 moment = this.dateTimeAdapter.addCalendarYears(this.pickerMoment, event.altKey ? -10 * (YEARS_PER_ROW * YEAR_ROWS) : -1 * (YEARS_PER_ROW * YEAR_ROWS))
                 this.pickerMomentChange.emit(moment)
                 break
 
             // add 1 year page (or 10 year pages)
-            case PAGE_DOWN:
+            case 'pagedown':
                 moment = this.dateTimeAdapter.addCalendarYears(this.pickerMoment, event.altKey ? 10 * (YEARS_PER_ROW * YEAR_ROWS) : (YEARS_PER_ROW * YEAR_ROWS))
                 this.pickerMomentChange.emit(moment)
                 break
 
-            case ENTER:
+            case 'enter':
                 this.selectYear(this.dateTimeAdapter.getYear(this._pickerMoment))
                 this.keyboardEnter.emit()
                 break
@@ -401,11 +407,11 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
         }
     }
 
-    /** Whether the given year is enabled. */
+    /** Whether the given year is enabled */
     private isYearEnabled(year: number) {
 
         // enable if it reaches here and there's no filter defined
-        if (!this.dateFilter) {
+        if (!this.dateTimeFilter) {
             return true
         }
 
@@ -414,7 +420,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
         // If any date in the year is enabled count the year as enabled.
         for (let date = firstOfYear; this.dateTimeAdapter.getYear(date) == year;
             date = this.dateTimeAdapter.addCalendarDays(date, 1)) {
-            if (this.dateFilter(date, 'year')) {
+            if (this.dateTimeFilter(date, 'year')) {
                 return true
             }
         }

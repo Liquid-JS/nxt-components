@@ -1,5 +1,4 @@
 import { AnimationEvent } from '@angular/animations'
-import { ESCAPE } from '@angular/cdk/keycodes'
 import { GlobalPositionStrategy, OverlayRef } from '@angular/cdk/overlay'
 import { Location } from '@angular/common'
 import { Subject, SubscriptionLike as ISubscription } from 'rxjs'
@@ -17,21 +16,21 @@ export class DialogRef<T> {
 
     private readonly _afterClosed$ = new Subject<void>()
 
-    /** Subscription to changes in the user's location. */
+    /** Subscription to changes in the user's location */
     private locationChanged?: ISubscription
 
     /**
-     * The instance of component opened into modal
-     * */
-    public componentInstance?: T
+     * The instance of component isOpen into modal
+     */
+    componentInstance?: T
 
-    /** Whether the user is allowed to close the dialog. */
-    public disableClose = !!this.container.config?.disableClose
+    /** Whether the user is allowed to close the dialog */
+    disableClose = !!this.container.config?.disableClose
 
     constructor(
         private readonly overlayRef: OverlayRef,
         private readonly container: DialogContainerComponent,
-        public readonly id?: string,
+        readonly id?: string,
         location?: Location
     ) {
         this.container.animationStateChanged
@@ -59,7 +58,7 @@ export class DialogRef<T> {
             })
 
         this.overlayRef.keydownEvents()
-            .pipe(filter(event => event.keyCode === ESCAPE && !this.disableClose))
+            .pipe(filter(event => event.code.toLowerCase() === 'escape' && !this.disableClose))
             .subscribe(() => this.close())
 
         if (location) {
@@ -71,7 +70,7 @@ export class DialogRef<T> {
         }
     }
 
-    public close(dialogResult?: any) {
+    close(dialogResult?: any) {
         this.result = dialogResult
 
         this.container.animationStateChanged
@@ -91,14 +90,14 @@ export class DialogRef<T> {
     /**
      * Gets an observable that emits when the overlay's backdrop has been clicked.
      */
-    public backdropClick() {
+    backdropClick() {
         return this.overlayRef.backdropClick()
     }
 
     /**
      * Gets an observable that emits when keydown events are targeted on the overlay.
      */
-    public keydownEvents() {
+    keydownEvents() {
         return this.overlayRef.keydownEvents()
     }
 
@@ -107,7 +106,7 @@ export class DialogRef<T> {
      *
      * @param position New dialog position.
      */
-    public updatePosition(position?: DialogPosition): this {
+    updatePosition(position?: DialogPosition): this {
         const strategy = this.getPositionStrategy()
 
         if (position && (position.left || position.right)) {
@@ -145,23 +144,23 @@ export class DialogRef<T> {
         return this
     }
 
-    public isAnimating(): boolean {
+    isAnimating(): boolean {
         return this.container.isAnimating
     }
 
-    public afterOpen() {
+    afterOpen() {
         return this._afterOpen$.asObservable()
     }
 
-    public beforeClose() {
+    beforeClose() {
         return this._beforeClose$.asObservable()
     }
 
-    public afterClosed() {
+    afterClosed() {
         return this._afterClosed$.asObservable()
     }
 
-    /** Fetches the position strategy object from the overlay ref. */
+    /** Fetches the position strategy object from the overlay ref */
     private getPositionStrategy(): GlobalPositionStrategy {
         return this.overlayRef.getConfig().positionStrategy as GlobalPositionStrategy
     }

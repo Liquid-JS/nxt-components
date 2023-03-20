@@ -1,49 +1,43 @@
-# nxt-json-view
+# Angular JSON viewer
 
-A JSON View component for Angular 13+ (an angular based JSON display component)
+[![GitHub license](https://img.shields.io/github/license/Liquid-JS/nxt-components.svg)](https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/dm/nxt-json-view.svg)](https://www.npmjs.com/package/nxt-json-view)
+[![scope](https://img.shields.io/npm/v/nxt-json-view.svg)](https://www.npmjs.com/package/nxt-json-view)
 
-## Demo
+An interactive JSON view component for Angular.
 
-<https://liquid-js.github.io/nxt-components/json-view>
+## Quick links
 
-## installation
+-   [Demo](https://liquid-js.github.io/nxt-components/demo/json-view)
+-   [Getting started](https://liquid-js.github.io/nxt-components/demo/json-view/getting-started)
+-   [API docs](https://liquid-js.github.io/nxt-components/docs/nxt-json-view)
 
-```sh
-npm install nxt-json-view --save
-```
-
-## use
-
--   Install the dependency package：`nxt-json-view`
+### Installing
 
 ```sh
-npm install nxt-json-view --save
+npm install --save nxt-json-view
 ```
 
--   Import in module `JsonViewModule`
+### Import JSON view module
 
 ```ts
-import { JsonViewModule } from 'nxt-json-view';
+import { JsonViewModule } from 'nxt-json-view'
 
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
+    ...
     imports: [
-        BrowserModule,
+        ...
         JsonViewModule
-    ],
-    bootstrap: [AppComponent]
+    ]
 })
-export class AppModule { }
 ```
 
--   Prepare JSON data
+### Prepare JSON data
 
-```js
+```ts
 data = {
     "name": "nxt-json-view",
-    "url": "https://github.com/killzoner/nxt-json-view",
+    "url": "https://github.com/Liquid-JS/nxt-components/tree/master/packages/json-view",
     "string": "github",
     "number": 88,
     "boolean": true,
@@ -63,21 +57,11 @@ data = {
     ],
     "date": new Date(),
     "null": null
-};
+}
 ```
 
--   Use on template page
+### Use it in a template
 
 ```html
 <nxt-json-view [data]="data"></nxt-json-view>
 ```
-
-# Document
-
--   `data` - `Object` - Data
--   `levelOpen` - `number` - Initialize the number of layers to be expanded (initial value: 0)
-
-# stand by
-
--   If the project is helpful to you, please click on the star,Thank you
--   If you have ideas, questions, and bugs about the project, welcome to discuss.

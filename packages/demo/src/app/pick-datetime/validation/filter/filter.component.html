@@ -1,0 +1,13 @@
+<input class="form-control"
+    [ngClass]="{ 'is-invalid': dateTimeControl.invalid }"
+    [(ngModel)]="value"
+    #dateTimeControl="ngModel"
+    placeholder="Date and time"
+    [nxtDateTimeTrigger]="picker"
+    [nxtDateTime]="picker"
+    [dateTimeFilter]="dateTimeFilter">
+<nxt-date-time #picker></nxt-date-time>
+<div class="invalid-feedback"
+    *ngIf="dateTimeControl.errors?.['dateTimeFilter']">
+    Selected date can't be a Sunday.
+</div>

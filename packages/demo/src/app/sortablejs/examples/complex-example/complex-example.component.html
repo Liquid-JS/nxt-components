@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col mb-4">
+        <strong>1. This list cannot accept items</strong>
+        <ul class="mt-2 list-group sortable"
+            [nxtSortablejs]="list1"
+            [config]="list1Options">
+            <li class="list-group-item"
+                *ngFor="let item of list1">Element {{ item }}</li>
+        </ul>
+    </div>
+
+    <div class="col mb-4">
+        <strong>2. This is a <em>normal</em> list</strong>
+        <ul class="mt-2 list-group sortable"
+            [nxtSortablejs]="list2"
+            [config]="list2Options">
+            <li class="list-group-item"
+                *ngFor="let item of list2">Element {{ item }}</li>
+        </ul>
+    </div>
+
+    <div class="col mb-4">
+        <strong>3. This list clones its children</strong>
+        <ul class="mt-2 list-group sortable"
+            [nxtSortablejs]="list3"
+            [config]="list3Options">
+            <li class="list-group-item"
+                *ngFor="let item of list3">Element {{ item }}</li>
+        </ul>
+    </div>
+
+    <div class="col mb-4">
+        <strong>4. Only items from #1 can be put here</strong>
+        <ul class="mt-2 list-group sortable"
+            [nxtSortablejs]="list4"
+            [config]="list4Options">
+            <li class="list-group-item"
+                *ngFor="let item of list4">Element {{ item }}</li>
+        </ul>
+    </div>
+</div>
+
+<h3 class="h4">List states</h3>
+
+<div class="row">
+    <div class="col mb-4">
+        <app-code-block [code]="list1 | json"
+            [languages]="['json']"
+            [copy]="false"></app-code-block>
+    </div>
+    <div class="col mb-4">
+        <app-code-block [code]="list2 | json"
+            [languages]="['json']"
+            [copy]="false"></app-code-block>
+    </div>
+    <div class="col mb-4">
+        <app-code-block [code]="list3 | json"
+            [languages]="['json']"
+            [copy]="false"></app-code-block>
+    </div>
+    <div class="col mb-4">
+        <app-code-block [code]="list4 | json"
+            [languages]="['json']"
+            [copy]="false"></app-code-block>
+    </div>
+</div>

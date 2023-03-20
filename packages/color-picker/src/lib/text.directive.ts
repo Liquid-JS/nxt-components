@@ -1,6 +1,9 @@
 import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core'
 import { TextEvent } from '../util/helpers'
 
+/**
+ * @internal
+ */
 @Directive({
     selector: '[nxtText]'
 })

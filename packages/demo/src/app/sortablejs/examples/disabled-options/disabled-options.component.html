@@ -1,0 +1,17 @@
+<ul class="list-group"
+    [nxtSortablejs]="draggableItems"
+    [config]="draggableOptions">
+    <li class="list-group-item"
+        *ngFor="let item of draggableItems"
+        [class.draggable]="item.draggable"
+        [class.disabled]="!item.draggable">
+        Element {{ item.text }}
+    </li>
+</ul>
+<br>
+
+<h3 class="h4">The actual model</h3>
+
+<app-code-block [code]="draggableItems | json"
+    [languages]="['json']"
+    [copy]="false"></app-code-block>

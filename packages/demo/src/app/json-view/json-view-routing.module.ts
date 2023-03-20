@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { AppJsonViewComponent } from './json-view.component'
+import { GettingStartedComponent } from './getting-started/getting-started.component'
+import { AppJsonViewComponent } from './json-view/json-view.component'
 
 const routes: Routes = [
-    { path: '', component: AppJsonViewComponent }
+    { path: '', pathMatch: 'full', component: AppJsonViewComponent },
+    { path: 'getting-started', component: GettingStartedComponent }
 ]
 
 @NgModule({

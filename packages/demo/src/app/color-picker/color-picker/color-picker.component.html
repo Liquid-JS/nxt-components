@@ -1,0 +1,43 @@
+<app-content-wrap>
+    <h1>Angular color picker</h1>
+    <p>
+        <a href="https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Liquid-JS/nxt-components.svg"
+                alt="GitHub license"></a>&nbsp;
+        <a href="https://www.npmjs.com/package/nxt-color-picker"><img src="https://img.shields.io/npm/dm/nxt-color-picker.svg"
+                alt="npm"></a>&nbsp;
+        <a href="https://www.npmjs.com/package/nxt-color-picker"><img src="https://img.shields.io/npm/v/nxt-color-picker.svg"
+                alt="scope"></a>
+    </p>
+    <p>A color picker widget for Angular with no dependencies.</p>
+
+    <ul>
+        <li><a [routerLink]="'./getting-started'"><strong>Getting started</strong></a></li>
+        <li><a href="https://liquid-js.github.io/nxt-components/docs/nxt-color-picker"><strong>API docs</strong></a></li>
+    </ul>
+    <br>
+
+    <h2>Demo <div class="btn-group"
+            dropdown>
+            <button dropdownToggle
+                type="button"
+                class="btn btn-primary dropdown-toggle">
+                Go to <span class="caret"></span>
+            </button>
+            <ul *dropdownMenu
+                class="dropdown-menu"
+                role="menu">
+                <li *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+                    role="menuitem"><a class="dropdown-item"
+                        routerLink="."
+                        fragment="example-{{ i }}">{{ example.name }}</a></li>
+            </ul>
+        </div>
+    </h2>
+
+    <hr class="no-padding">
+
+    <app-example *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+        [injector]="injector"
+        [config]="example"
+        id="example-{{ i }}"></app-example>
+</app-content-wrap>

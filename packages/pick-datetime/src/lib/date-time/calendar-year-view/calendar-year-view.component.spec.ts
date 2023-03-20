@@ -1,4 +1,3 @@
-import { DOWN_ARROW, END, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
 import { Component, DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
@@ -102,14 +101,14 @@ describe('YearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.nxt-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', LEFT_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowLeft')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
                 new Date(2017, 11, 5)
             )
 
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', LEFT_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowLeft')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -121,14 +120,14 @@ describe('YearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.nxt-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', RIGHT_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowRight')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
                 new Date(2018, 1, 5)
             )
 
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', RIGHT_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowRight')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -140,7 +139,7 @@ describe('YearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.nxt-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', UP_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowUp')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -150,7 +149,7 @@ describe('YearViewComponent', () => {
             yearViewInstance.pickerMoment = new Date(2018, 6, 1)
             fixture.detectChanges()
 
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', UP_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowUp')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -160,7 +159,7 @@ describe('YearViewComponent', () => {
             yearViewInstance.pickerMoment = new Date(2018, 11, 10)
             fixture.detectChanges()
 
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', UP_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowUp')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -172,7 +171,7 @@ describe('YearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.nxt-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', DOWN_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowDown')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -182,7 +181,7 @@ describe('YearViewComponent', () => {
             yearViewInstance.pickerMoment = new Date(2018, 5, 1)
             fixture.detectChanges()
 
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', DOWN_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowDown')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -192,7 +191,7 @@ describe('YearViewComponent', () => {
             yearViewInstance.pickerMoment = new Date(2018, 8, 30)
             fixture.detectChanges()
 
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', DOWN_ARROW)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowDown')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -207,14 +206,14 @@ describe('YearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.nxt-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', HOME)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'Home')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
                 new Date(2018, 0, 30)
             )
 
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', HOME)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'Home')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -229,14 +228,14 @@ describe('YearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.nxt-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', END)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'End')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
                 new Date(2018, 11, 31)
             )
 
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', END)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'End')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -251,14 +250,14 @@ describe('YearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.nxt-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_UP)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'PageUp')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
                 new Date(2015, 1, 28)
             )
 
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_UP)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'PageUp')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -273,14 +272,14 @@ describe('YearViewComponent', () => {
             const calendarBodyEl = yearViewElement.querySelector(
                 '.nxt-dt-calendar-body'
             )
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_DOWN)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'PageDown')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
                 new Date(2017, 1, 28)
             )
 
-            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', PAGE_DOWN)
+            dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'PageDown')
             fixture.detectChanges()
 
             expect(yearViewInstance.pickerMoment).toEqual(
@@ -341,12 +340,12 @@ class StandardYearViewComponent {
     template: `
         <nxt-date-time-year-view
                 [(pickerMoment)]="pickerMoment"
-                [dateFilter]="dateFilter"></nxt-date-time-year-view>
+                [dateTimeFilter]="dateTimeFilter"></nxt-date-time-year-view>
     `
 })
 class YearViewWithDateFilterComponent {
     pickerMoment = new Date(2018, 0, 1)
-    dateFilter(date: Date) {
+    dateTimeFilter(date: Date) {
         if (date.getMonth() == 1) {
             return false
         }

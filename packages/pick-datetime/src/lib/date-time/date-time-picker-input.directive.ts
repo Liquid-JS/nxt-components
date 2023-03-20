@@ -1,23 +1,29 @@
-import { coerceBooleanProperty } from '@angular/cdk/coercion'
-import { DOWN_ARROW } from '@angular/cdk/keycodes'
-import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit, Output, Renderer2 } from '@angular/core'
+import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit, Output, Provider, Renderer2 } from '@angular/core'
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../class/date-time-format.class'
-import { SelectMode } from '../class/date-time.class'
+import { DateFilter, SelectMode } from '../class/date-time.class'
 import { DateTimeComponent } from './date-time-picker/date-time-picker.component'
 
-export const NXT_DATETIME_VALUE_ACCESSOR: any = {
+/** @internal */
+export const NXT_DATETIME_VALUE_ACCESSOR: Provider = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => DateTimeInputDirective),
     multi: true
 }
 
-export const NXT_DATETIME_VALIDATORS: any = {
+/** @internal */
+export const NXT_DATETIME_VALIDATORS: Provider = {
     provide: NG_VALIDATORS,
     useExisting: forwardRef(() => DateTimeInputDirective),
     multi: true
+}
+
+export interface DateTimeInputEvent<T> {
+    source: DateTimeInputDirective<T>
+    value?: T | Array<T | undefined>
+    input: HTMLInputElement
 }
 
 @Directive({
@@ -30,19 +36,19 @@ export const NXT_DATETIME_VALIDATORS: any = {
 })
 export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDestroy, ControlValueAccessor, Validator {
     /**
-     * The date time picker that this input is associated with.
-     * */
+     * The date & time picker this input is associated with
+     */
     @Input('nxtDateTime')
     set dateTime(value: DateTimeComponent<T>) {
         this.registerDateTimePicker(value)
     }
 
-    private _dateTimeFilter?: (date?: T) => boolean
+    private _dateTimeFilter?: DateFilter<T>
     /**
-     * A function to filter date time
+     * A function to filter available date & time
      */
     @Input()
-    set dateTimeFilter(filter: ((date?: T) => boolean) | undefined) {
+    set dateTimeFilter(filter: DateFilter<T> | undefined) {
         this._dateTimeFilter = filter
         this.validatorOnChange?.()
     }
@@ -50,15 +56,15 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         return this._dateTimeFilter
     }
 
-    /** Whether the date time picker's input is disabled. */
-    @Input()
     private _disabled = false
+    /** Whether the date & time picker input is disabled */
+    @Input()
     get disabled() {
         return this._disabled
     }
 
     set disabled(value: boolean) {
-        const newValue = coerceBooleanProperty(value)
+        const newValue = !!value
         const element = this.elmRef.nativeElement
 
         if (this._disabled !== newValue) {
@@ -71,8 +77,8 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         }
     }
 
-    /** The minimum valid date. */
     private _min?: T
+    /** The minimum valid date */
     @Input()
     get min() {
         return this._min
@@ -83,8 +89,8 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         this.validatorOnChange?.()
     }
 
-    /** The maximum valid date. */
     private _max?: T
+    /** The maximum valid date */
     @Input()
     get max() {
         return this._max
@@ -95,10 +101,15 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         this.validatorOnChange?.()
     }
 
-    /**
-     * The picker's select mode
-     */
     private _selectMode: SelectMode = 'single'
+    /**
+     * The picker select mode
+     *
+     * -    `'single'` - select a single date
+     * -    `'range'` - select a range [from, to]
+     * -    `'rangeFrom'` - an open range with a fixed start date
+     * -    `'rangeTo'` - an open range with a fixed end date
+     */
     @Input()
     get selectMode() {
         return this._selectMode
@@ -175,23 +186,15 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
 
     /**
      * Callback to invoke when `change` event is fired on this `<input>`
-     * */
+     */
     @Output()
-    readonly dateTimeChange = new EventEmitter<{
-        source: DateTimeInputDirective<T>
-        value?: T | Array<T | undefined>
-        input: HTMLInputElement
-    }>()
+    readonly dateTimeChange = new EventEmitter<DateTimeInputEvent<T>>()
 
     /**
      * Callback to invoke when an `input` event is fired on this `<input>`.
-     * */
+     */
     @Output()
-    readonly dateTimeInput = new EventEmitter<{
-        source: DateTimeInputDirective<T>
-        value?: T | Array<T | undefined>
-        input: HTMLInputElement
-    }>()
+    readonly dateTimeInput = new EventEmitter<DateTimeInputEvent<T>>()
 
     get elementRef() {
         return this.elmRef
@@ -209,8 +212,8 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         )
     }
 
-    /** The date-time-picker that this input is associated with. */
-    public dtPicker?: DateTimeComponent<T>
+    /** The date-time-picker that this input is associated with */
+    dtPicker?: DateTimeComponent<T>
 
     private dtPickerSub?: Subscription
     private localeSub?: Subscription
@@ -221,12 +224,12 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     private onModelTouched?: () => void
     private validatorOnChange?: () => void
 
-    /** The form control validator for whether the input parses. */
+    /** The form control validator for whether the input parses */
     private readonly parseValidator: ValidatorFn = () => this.lastValueValid
         ? null
         : { dateTimeParse: { text: this.elmRef.nativeElement.value } }
 
-    /** The form control validator for the min date. */
+    /** The form control validator for the min date */
     private readonly minValidator: ValidatorFn = (
         control
     ) => {
@@ -261,7 +264,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         return null
     }
 
-    /** The form control validator for the max date. */
+    /** The form control validator for the max date */
     private readonly maxValidator: ValidatorFn = (
         control
     ) => {
@@ -296,7 +299,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         return null
     }
 
-    /** The form control validator for the date filter. */
+    /** The form control validator for the date filter */
     private readonly filterValidator: ValidatorFn = (
         control: AbstractControl
     ): ValidationErrors | null => {
@@ -313,7 +316,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     /**
      * The form control validator for the range.
      * Check whether the 'before' value is before the 'to' value
-     * */
+     */
     private readonly rangeValidator: ValidatorFn = (
         control
     ) => {
@@ -335,7 +338,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
             : { dateTimeRange: true }
     }
 
-    /** The combined form control validator for this input. */
+    /** The combined form control validator for this input */
     private readonly validator = Validators.compose([
         this.parseValidator,
         this.minValidator,
@@ -344,32 +347,37 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         this.rangeValidator
     ])
 
-    /** Emits when the value changes (either due to user input or programmatic change). */
-    public readonly valueChange = new EventEmitter<Array<T | undefined> | T | undefined>()
+    /** Emits when the value changes (either due to user input or programmatic change) */
+    readonly valueChange = new EventEmitter<Array<T | undefined> | T | undefined>()
 
     /** Emits when the disabled state has changed */
-    public readonly disabledChange = new EventEmitter<boolean>()
+    readonly disabledChange = new EventEmitter<boolean>()
 
+    /** @internal */
     @HostBinding('attr.aria-haspopup')
     get inputAriaHaspopup(): boolean {
         return true
     }
 
+    /** @internal */
     @HostBinding('attr.aria-owns')
     get inputAriaOwns() {
-        return (this.dtPicker?.opened && this.dtPicker.id) || undefined
+        return (this.dtPicker?.isOpen && this.dtPicker.id) || undefined
     }
 
+    /** @internal */
     @HostBinding('attr.min')
     get minIso8601() {
         return this.min ? this.dateTimeAdapter.toIso8601(this.min) : undefined
     }
 
+    /** @internal */
     @HostBinding('attr.max')
     get maxIso8601() {
         return this.max ? this.dateTimeAdapter.toIso8601(this.max) : undefined
     }
 
+    /** @internal */
     @HostBinding('disabled')
     get inputDisabled(): boolean {
         return this.disabled
@@ -387,7 +395,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         })
     }
 
-    public ngOnInit(): void {
+    ngOnInit(): void {
         if (!this.dtPicker) {
             throw Error(
                 'DateTimePicker: the picker input doesn\'t have any associated nxt-date-time component'
@@ -395,7 +403,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         }
     }
 
-    public ngAfterContentInit(): void {
+    ngAfterContentInit(): void {
         this.dtPickerSub = this.dtPicker?.confirmSelectedChange.subscribe(
             (selecteds: T[] | T) => {
                 if (Array.isArray(selecteds)) {
@@ -420,7 +428,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         )
     }
 
-    public ngOnDestroy(): void {
+    ngOnDestroy(): void {
         this.dtPickerSub?.unsubscribe()
         this.dtPickerSub = undefined
         this.localeSub?.unsubscribe()
@@ -429,7 +437,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         this.disabledChange.complete()
     }
 
-    public writeValue(value: any): void {
+    writeValue(value: any): void {
         value = value ?? undefined
         if (this.isInSingleMode) {
             this.value = value
@@ -438,44 +446,44 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         }
     }
 
-    public registerOnChange(fn: any): void {
+    registerOnChange(fn: any): void {
         this.onModelChange = fn
     }
 
-    public registerOnTouched(fn: any): void {
+    registerOnTouched(fn: any): void {
         this.onModelTouched = fn
     }
 
-    public setDisabledState(isDisabled: boolean): void {
+    setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled
     }
 
-    public validate(c: AbstractControl) {
+    validate(c: AbstractControl) {
         return this.validator ? this.validator(c) : null
     }
 
-    public registerOnValidatorChange(fn: () => void): void {
+    registerOnValidatorChange(fn: () => void): void {
         this.validatorOnChange = fn
     }
 
     /**
-     * Open the picker when user hold alt + DOWN_ARROW
-     * */
+     * Open the picker when user hold alt + ArrowDown
+     */
     @HostListener('keydown', ['$event'])
-    public handleKeydownOnHost(event: KeyboardEvent): void {
-        if (event.altKey && event.keyCode === DOWN_ARROW) {
+    handleKeydownOnHost(event: KeyboardEvent): void {
+        if (event.altKey && event.code.toLowerCase() === 'arrowdown') {
             this.dtPicker?.open()
             event.preventDefault()
         }
     }
 
     @HostListener('blur', ['$event'])
-    public handleBlurOnHost(_event: Event): void {
+    handleBlurOnHost(_event: Event): void {
         this.onModelTouched?.()
     }
 
     @HostListener('input', ['$event'])
-    public handleInputOnHost(event: any): void {
+    handleInputOnHost(event: any): void {
         const value = event.target.value
         if (this._selectMode === 'single') {
             this.changeInputInSingleMode(value)
@@ -487,7 +495,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     }
 
     @HostListener('change', ['$event'])
-    public handleChangeOnHost(_event: any): void {
+    handleChangeOnHost(_event: any): void {
 
         let v
         if (this.isInSingleMode) {
@@ -506,7 +514,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     /**
      * Set the native input property 'value'
      */
-    public formatNativeInputValue(): void {
+    formatNativeInputValue(): void {
         if (this.isInSingleMode) {
             this.renderer.setProperty(
                 this.elmRef.nativeElement,

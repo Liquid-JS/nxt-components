@@ -1,7 +1,7 @@
 // Based on @angular/cdk/testing
 import { Platform, PlatformModule } from '@angular/cdk/platform'
-import { EventEmitter, Inject, Injectable, NgModule, NgZone, Optional } from '@angular/core'
-import { DateTimeAdapter, NXT_DATE_TIME_LOCALE } from './lib/class/date-time-adapter.class'
+import { EventEmitter, Inject, Injectable, LOCALE_ID, NgModule, NgZone, Optional } from '@angular/core'
+import { DateTimeAdapter } from './lib/class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from './lib/class/date-time-format.class'
 
 export function dispatchEvent(node: Node | Window, event: Event): Event {
@@ -22,51 +22,65 @@ export function createFakeEvent(
     canBubble = false,
     cancelable = true
 ) {
-    const event = document.createEvent('Event')
-    event.initEvent(type, canBubble, cancelable)
+    const init = [type, { bubbles: canBubble, cancelable }] as const
+    let event: Event
+    switch (type) {
+        case 'input':
+        case 'change':
+            event = new InputEvent(...init)
+            break
+
+        case 'focus':
+        case 'blur':
+            event = new FocusEvent(...init)
+            break
+
+        default:
+            throw new Error(`Unknown event type ${type}`)
+    }
     return event
 }
 
 export function dispatchKeyboardEvent(
     node: Node,
     type: string,
-    keyCode: number,
+    code: string,
     target?: Element
 ): KeyboardEvent {
     return dispatchEvent(
         node,
-        createKeyboardEvent(type, keyCode, target)
+        createKeyboardEvent(type, code, target)
     ) as KeyboardEvent
 }
 
 export function createKeyboardEvent(
     type: string,
-    keyCode: number,
-    target?: Element,
-    key?: string
+    code: string,
+    target?: Element
 ) {
-    const event = document.createEvent('KeyboardEvent') as any
-    const originalPreventDefault = event.preventDefault
+    const event = new KeyboardEvent(type, {
+        code,
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        ctrlKey: false,
+        altKey: false,
+        shiftKey: false,
+        metaKey: false
 
-    // Firefox does not support `initKeyboardEvent`, but supports `initKeyEvent`.
-    if (event.initKeyEvent) {
-        event.initKeyEvent(type, true, true, window, 0, 0, 0, 0, 0, keyCode)
-    } else {
-        event.initKeyboardEvent(type, true, true, window, 0, key, 0, '', false)
-    }
+    })
+    const originalPreventDefault = event.preventDefault
 
     // Webkit Browsers don't set the keyCode when calling the init function.
     // See related bug https://bugs.webkit.org/show_bug.cgi?id=16735
     Object.defineProperties(event, {
-        keyCode: { get: () => keyCode },
-        key: { get: () => key },
         target: { get: () => target }
     })
 
     // IE won't set `defaultPrevented` on synthetic events so we need to do it manually.
     event.preventDefault = function () {
         Object.defineProperty(event, 'defaultPrevented', { get: () => true })
-        return originalPreventDefault.apply(this, arguments)
+        return originalPreventDefault.apply(this, arguments as any)
     }
 
     return event
@@ -82,31 +96,25 @@ export function dispatchMouseEvent(
     return dispatchEvent(node, event) as MouseEvent
 }
 
-/** Creates a browser MouseEvent with the specified options. */
+/** Creates a browser MouseEvent with the specified options */
 export function createMouseEvent(type: string, x = 0, y = 0, button = 0) {
-    const event = document.createEvent('MouseEvent')
-
-    event.initMouseEvent(
-        type,
-        true /* canBubble */,
-        false /* cancelable */,
-        window /* view */,
-        0 /* detail */,
-        x /* screenX */,
-        y /* screenY */,
-        x /* clientX */,
-        y /* clientY */,
-        false /* ctrlKey */,
-        false /* altKey */,
-        false /* shiftKey */,
-        false /* metaKey */,
-        button /* button */,
-        null /* relatedTarget */
-    )
-
-    // `initMouseEvent` doesn't allow us to pass the `buttons` and
-    // defaults it to 0 which looks like a fake event.
-    Object.defineProperty(event, 'buttons', { get: () => 1 })
+    const event = new MouseEvent(type, {
+        bubbles: true,
+        cancelable: false,
+        view: window,
+        detail: 0,
+        screenX: x,
+        screenY: y,
+        clientX: x,
+        clientY: y,
+        ctrlKey: false,
+        altKey: false,
+        shiftKey: false,
+        metaKey: false,
+        button,
+        buttons: 1,
+        relatedTarget: null
+    })
 
     return event
 }
@@ -127,7 +135,7 @@ export class MockNgZone extends NgZone {
     }
 }
 
-/** The default month names to use if Intl API is not available. */
+/** The default month names to use if Intl API is not available */
 const DEFAULT_MONTH_NAMES = {
     long: [
         'January',
@@ -160,7 +168,7 @@ const DEFAULT_MONTH_NAMES = {
     narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
 }
 
-/** The default day of the week names to use if Intl API is not available. */
+/** The default day of the week names to use if Intl API is not available */
 const DEFAULT_DAY_OF_WEEK_NAMES = {
     long: [
         'Sunday',
@@ -175,10 +183,10 @@ const DEFAULT_DAY_OF_WEEK_NAMES = {
     narrow: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
 }
 
-/** The default date names to use if Intl API is not available. */
+/** The default date names to use if Intl API is not available */
 const DEFAULT_DATE_NAMES = range(31, i => String(i + 1))
 
-/** Whether the browser supports the Intl API. */
+/** Whether the browser supports the Intl API */
 const SUPPORTS_INTL_API = typeof Intl !== 'undefined'
 
 /**
@@ -188,7 +196,7 @@ const SUPPORTS_INTL_API = typeof Intl !== 'undefined'
  */
 const ISO_8601_REGEX = /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|(?:(?:\+|-)\d{2}:\d{2}))?)?$/
 
-/** Creates an array and fills it with values. */
+/** Creates an array and fills it with values */
 function range<T>(length: number, valueFunction: (index: number) => T): T[] {
     const valuesArray = Array(length)
     for (let i = 0; i < length; i++) {
@@ -199,7 +207,7 @@ function range<T>(length: number, valueFunction: (index: number) => T): T[] {
 
 @Injectable()
 export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
-    /** Whether to clamp the date between 1 and 9999 to avoid IE and Edge errors. */
+    /** Whether to clamp the date between 1 and 9999 to avoid IE and Edge errors */
     private readonly _clampDate: boolean
 
     /**
@@ -213,7 +221,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
     constructor(
         platform: Platform,
         @Optional()
-        @Inject(NXT_DATE_TIME_LOCALE)
+        @Inject(LOCALE_ID)
         dateTimeLocale?: string
     ) {
         super()
@@ -224,39 +232,39 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         this._clampDate = platform.TRIDENT || platform.EDGE
     }
 
-    public getYear(date: Date): number {
+    getYear(date: Date): number {
         return date.getFullYear()
     }
 
-    public getMonth(date: Date): number {
+    getMonth(date: Date): number {
         return date.getMonth()
     }
 
-    public getDay(date: Date): number {
+    getDay(date: Date): number {
         return date.getDay()
     }
 
-    public getDate(date: Date): number {
+    getDate(date: Date): number {
         return date.getDate()
     }
 
-    public getHours(date: Date): number {
+    getHours(date: Date): number {
         return date.getHours()
     }
 
-    public getMinutes(date: Date): number {
+    getMinutes(date: Date): number {
         return date.getMinutes()
     }
 
-    public getSeconds(date: Date): number {
+    getSeconds(date: Date): number {
         return date.getSeconds()
     }
 
-    public getTime(date: Date): number {
+    getTime(date: Date): number {
         return date.getTime()
     }
 
-    public getNumDaysInMonth(date: Date): number {
+    getNumDaysInMonth(date: Date): number {
         const lastDateOfMonth = this.createDateWithOverflow(
             this.getYear(date),
             this.getMonth(date) + 1,
@@ -266,7 +274,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         return this.getDate(lastDateOfMonth)
     }
 
-    public differenceInCalendarDays(dateLeft: Date, dateRight: Date): number | undefined {
+    differenceInCalendarDays(dateLeft: Date, dateRight: Date): number | undefined {
         if (this.isValid(dateLeft) && this.isValid(dateRight)) {
             const dateLeftStartOfDay = this.createDate(
                 this.getYear(dateLeft),
@@ -294,7 +302,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         return
     }
 
-    public getYearName(date: Date): string {
+    getYearName(date: Date): string {
         if (SUPPORTS_INTL_API) {
             const dtf = new Intl.DateTimeFormat(this.locale, {
                 year: 'numeric',
@@ -305,7 +313,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         return String(this.getYear(date))
     }
 
-    public getMonthNames(style: 'long' | 'short' | 'narrow'): string[] {
+    getMonthNames(style: 'long' | 'short' | 'narrow'): string[] {
         if (SUPPORTS_INTL_API) {
             const dtf = new Intl.DateTimeFormat(this.locale, {
                 month: style,
@@ -320,7 +328,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         return DEFAULT_MONTH_NAMES[style]
     }
 
-    public getDayOfWeekNames(style: 'long' | 'short' | 'narrow'): string[] {
+    getDayOfWeekNames(style: 'long' | 'short' | 'narrow'): string[] {
         if (SUPPORTS_INTL_API) {
             const dtf = new Intl.DateTimeFormat(this.locale, {
                 weekday: style,
@@ -336,7 +344,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         return DEFAULT_DAY_OF_WEEK_NAMES[style]
     }
 
-    public getDateNames(): string[] {
+    getDateNames(): string[] {
         if (SUPPORTS_INTL_API) {
             const dtf = new Intl.DateTimeFormat(this.locale, {
                 day: 'numeric',
@@ -351,11 +359,11 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         return DEFAULT_DATE_NAMES
     }
 
-    public toIso8601(date: Date): string {
+    toIso8601(date: Date): string {
         return date.toISOString()
     }
 
-    public isEqual(dateLeft: Date, dateRight: Date): boolean {
+    isEqual(dateLeft: Date, dateRight: Date): boolean {
         if (this.isValid(dateLeft) && this.isValid(dateRight)) {
             return dateLeft.getTime() === dateRight.getTime()
         } else {
@@ -363,7 +371,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         }
     }
 
-    public isSameDay(dateLeft: Date, dateRight: Date): boolean {
+    isSameDay(dateLeft: Date, dateRight: Date): boolean {
         if (this.isValid(dateLeft) && this.isValid(dateRight)) {
             const dateLeftStartOfDay = this.clone(dateLeft)
             const dateRightStartOfDay = this.clone(dateRight)
@@ -377,23 +385,23 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         }
     }
 
-    public isValid(date: Date): boolean {
+    isValid(date: Date): boolean {
         return date && !isNaN(date.getTime())
     }
 
-    public invalid(): Date {
+    invalid(): Date {
         return new Date(NaN)
     }
 
-    public isDateInstance(obj: any): boolean {
+    isDateInstance(obj: any): boolean {
         return obj instanceof Date
     }
 
-    public addCalendarYears(date: Date, amount: number): Date {
+    addCalendarYears(date: Date, amount: number): Date {
         return this.addCalendarMonths(date, amount * 12)
     }
 
-    public addCalendarMonths(date: Date, amount: number): Date {
+    addCalendarMonths(date: Date, amount: number): Date {
         const result = this.clone(date)
         amount = Number(amount)
 
@@ -409,32 +417,32 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         return result
     }
 
-    public addCalendarDays(date: Date, amount: number): Date {
+    addCalendarDays(date: Date, amount: number): Date {
         const result = this.clone(date)
         amount = Number(amount)
         result.setDate(result.getDate() + amount)
         return result
     }
 
-    public setHours(date: Date, amount: number): Date {
+    setHours(date: Date, amount: number): Date {
         const result = this.clone(date)
         result.setHours(amount)
         return result
     }
 
-    public setMinutes(date: Date, amount: number): Date {
+    setMinutes(date: Date, amount: number): Date {
         const result = this.clone(date)
         result.setMinutes(amount)
         return result
     }
 
-    public setSeconds(date: Date, amount: number): Date {
+    setSeconds(date: Date, amount: number): Date {
         const result = this.clone(date)
         result.setSeconds(amount)
         return result
     }
 
-    public createDate(
+    createDate(
         year: number,
         month: number,
         date: number,
@@ -492,7 +500,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         return result
     }
 
-    public clone(date: Date): Date {
+    clone(date: Date): Date {
         return this.createDate(
             this.getYear(date),
             this.getMonth(date),
@@ -503,11 +511,11 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         )
     }
 
-    public now(): Date {
+    now(): Date {
         return new Date()
     }
 
-    public format(date: Date, displayFormat: any): string {
+    format(date: Date, displayFormat: any): string {
         if (!this.isValid(date)) {
             throw Error('JSNativeDate: Cannot format invalid date.')
         }
@@ -531,7 +539,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
         return this.stripDirectionalityCharacters(date.toDateString())
     }
 
-    public parse(value: any, _parseFormat: any): Date | undefined {
+    parse(value: any, _parseFormat: any): Date | undefined {
         // There is no way using the native JS Date to set the parse format or locale
         if (typeof value === 'number') {
             return new Date(value)
@@ -544,7 +552,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
      * (https://www.ietf.org/rfc/rfc3339.txt) into valid Dates and empty string into null. Returns an
      * invalid date for all other values.
      */
-    public override deserialize(value: any): Date | undefined {
+    override deserialize(value: any): Date | undefined {
         if (typeof value === 'string') {
             if (!value) {
                 return undefined

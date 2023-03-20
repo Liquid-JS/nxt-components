@@ -1,0 +1,307 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [
+        {
+            "name": "SortablejsDirective",
+            "id": "directive-SortablejsDirective-9bded85fdeadd25b137b3bf48d4546920010e30d24bddc5b2c53b7b069d241cd4a74ed1d47d6bda69c098cba6a4d7efe07248aae0ae0137f3f75da1f87a7c19d",
+            "file": "src/lib/sortablejs.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "selector": "[nxtSortablejs]",
+            "providers": [],
+            "inputsClass": [
+                {
+                    "name": "cloneFunction",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nA function invoked when cloning items from template dataset into target dataset",
+                    "description": "<p>A function invoked when cloning items from template dataset into target dataset</p>\n",
+                    "line": 65,
+                    "type": "CloneFunction<T>",
+                    "decorators": []
+                },
+                {
+                    "name": "config",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSortablejs configuration",
+                    "description": "<p>Sortablejs configuration</p>\n",
+                    "line": 61,
+                    "type": "Options",
+                    "decorators": []
+                },
+                {
+                    "name": "nxtSortablejs",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nInput data, can be Array or FormArray",
+                    "description": "<p>Input data, can be Array or FormArray</p>\n",
+                    "line": 48,
+                    "type": "SortableData<T>",
+                    "decorators": []
+                },
+                {
+                    "name": "sortablejsContainer",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nCSS selector for the sortable container\n\nMostly required when used with custom components which wrap items in multiple containers. In that case,\nthis should be the selector for the direct HTML parent of sortable items.\n",
+                    "description": "<p>CSS selector for the sortable container</p>\n<p>Mostly required when used with custom components which wrap items in multiple containers. In that case,\nthis should be the selector for the direct HTML parent of sortable items.</p>\n",
+                    "line": 57,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "init",
+                    "defaultValue": "new EventEmitter<Sortable>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nInitialised a new Sortablejs instance",
+                    "description": "<p>Initialised a new Sortablejs instance</p>\n",
+                    "line": 68,
+                    "type": "EventEmitter"
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "implements": [
+                "OnInit",
+                "OnChanges",
+                "OnDestroy"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "globalConfig",
+                        "type": "Options | undefined",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "service",
+                        "type": "SortablejsService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "element",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "zone",
+                        "type": "NgZone",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 70,
+                "jsdoctags": [
+                    {
+                        "name": "globalConfig",
+                        "type": "Options | undefined",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "service",
+                        "type": "SortablejsService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "element",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "zone",
+                        "type": "NgZone",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "components": [],
+    "modules": [
+        {
+            "name": "SortablejsModule",
+            "id": "module-SortablejsModule-09cc6f1683a7d55ece227871dc619199fe1aea5a4dd79b7e4609c4a6f2f678764161b453d5c7473fe738710c67aef08c383ab4392dc3ea8509a65ab74b33e1f8",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/lib/sortablejs.module.ts",
+            "methods": [
+                {
+                    "name": "forRoot",
+                    "args": [
+                        {
+                            "name": "globalOptions",
+                            "type": "Options",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "ModuleWithProviders<SortablejsModule>",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "globalOptions",
+                            "type": "Options",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SortablejsDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SortablejsDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "CloneFunction",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "function",
+                "file": "src/lib/sortablejs.directive.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 178
+            },
+            {
+                "name": "SortableData",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "",
+                "file": "src/lib/sortablejs.directive.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 188
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {},
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "src/lib/sortablejs.directive.ts": [
+                {
+                    "name": "CloneFunction",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "function",
+                    "file": "src/lib/sortablejs.directive.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 178
+                },
+                {
+                    "name": "SortableData",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "",
+                    "file": "src/lib/sortablejs.directive.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 188
+                }
+            ]
+        }
+    }
+}

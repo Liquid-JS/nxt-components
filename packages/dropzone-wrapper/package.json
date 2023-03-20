@@ -15,11 +15,13 @@
         "lint:sass": "stylelint \"src/**/*.scss\"",
         "lint:sass:fix": "yarn lint:sass --fix",
         "test": "ng test dropzone-wrapper --no-watch",
-        "test:watch": "ng test dropzone-wrapper"
+        "test:watch": "ng test dropzone-wrapper",
+        "docs": "npx compodoc -c .compodocrc.json",
+        "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/dropzone-wrapper"
     },
     "peerDependencies": {
-        "@angular/common": "^15.2.1",
-        "@angular/core": "^15.2.1",
+        "@angular/common": "^15.2.3",
+        "@angular/core": "^15.2.3",
         "dropzone": "^6.0.0-beta.2"
     },
     "dependencies": {

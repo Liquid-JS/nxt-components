@@ -1,0 +1,27 @@
+<input class="form-control"
+    [ngClass]="{ 'is-invalid': minDateTimeControl.invalid }"
+    [(ngModel)]="value"
+    #minDateTimeControl="ngModel"
+    placeholder="Date and time"
+    [nxtDateTimeTrigger]="pickerMin"
+    [nxtDateTime]="pickerMin"
+    [min]="min">
+<nxt-date-time #pickerMin></nxt-date-time>
+<div class="invalid-feedback"
+    *ngIf="minDateTimeControl.errors?.['dateTimeMin'] as minError">
+    Selected value should be after "{{ minError.min | date:'short' }}", received "{{ minError.actual | date:'short' }}".
+</div>
+<br>
+<input class="form-control"
+    [ngClass]="{ 'is-invalid': maxDateTimeControl.invalid }"
+    [(ngModel)]="value"
+    #maxDateTimeControl="ngModel"
+    placeholder="Date and time"
+    [nxtDateTimeTrigger]="pickerMax"
+    [nxtDateTime]="pickerMax"
+    [max]="max">
+<nxt-date-time #pickerMax></nxt-date-time>
+<div class="invalid-feedback"
+    *ngIf="maxDateTimeControl.errors?.['dateTimeMax'] as maxError">
+    Selected value should be before "{{ maxError.max | date:'short' }}", received "{{ maxError.actual | date:'short' }}".
+</div>

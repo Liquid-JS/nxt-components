@@ -1,20 +1,21 @@
 import { NoopScrollStrategy, ScrollStrategy } from '@angular/cdk/overlay'
 import { ViewContainerRef } from '@angular/core'
 
+/** @internal */
 let uniqueId = 0
 
-/** Possible overrides for a dialog's position. */
+/** Possible overrides for a dialog's position */
 export interface DialogPosition {
-    /** Override for the dialog's top position. */
+    /** Override for the dialog's top position */
     top?: string
 
-    /** Override for the dialog's bottom position. */
+    /** Override for the dialog's bottom position */
     bottom?: string
 
-    /** Override for the dialog's left position. */
+    /** Override for the dialog's left position */
     left?: string
 
-    /** Override for the dialog's right position. */
+    /** Override for the dialog's right position */
     right?: string
 }
 
@@ -22,97 +23,97 @@ export class DialogConfig {
     /**
      * ID of the element that describes the dialog.
      */
-    public ariaDescribedBy?: string
+    ariaDescribedBy?: string
 
     /**
-     * Whether to focus the dialog when the dialog is opened
+     * Whether to focus the dialog when the dialog is isOpen
      */
-    public autoFocus = true
+    autoFocus = true
 
-    /** Whether the dialog has a backdrop. */
-    public hasBackdrop?= true
+    /** Whether the dialog has a backdrop */
+    hasBackdrop?= true
 
     /**
      * Custom style for the backdrop
-     * */
-    public backdropStyle?: any
+     */
+    backdropStyle?: any
 
-    /** Data being injected into the child component. */
-    public data?: any
+    /** Data being injected into the child component */
+    data?: any
 
-    /** Whether the user can use escape or clicking outside to close a modal. */
-    public disableClose?= false
+    /** Whether the user can use escape or clicking outside to close a modal */
+    disableClose?= false
 
     /**
      * ID for the modal. If omitted, a unique one will be generated.
      */
-    public id?: string
+    id?: string
 
     /**
      * The ARIA role of the dialog element.
      */
-    public role?: 'dialog' | 'alertdialog' = 'dialog'
+    role?: 'dialog' | 'alertdialog' = 'dialog'
 
     /**
      * Custom class for the pane
-     * */
-    public paneClass?: string | string[] = ''
+     */
+    paneClass?: string | string[] = ''
 
     /**
      * Mouse Event
-     * */
-    public event?: MouseEvent
+     */
+    event?: MouseEvent
 
     /**
      * Custom class for the backdrop
-     * */
-    public backdropClass?: string | string[] = ''
+     */
+    backdropClass?: string | string[] = ''
 
     /**
      * Whether the dialog should close when the user goes backwards/forwards in history.
-     * */
-    public closeOnNavigation?: boolean = true
+     */
+    closeOnNavigation?: boolean = true
 
-    /** Width of the dialog. */
-    public width?: string = ''
+    /** Width of the dialog */
+    width?: string = ''
 
-    /** Height of the dialog. */
-    public height?: string = ''
+    /** Height of the dialog */
+    height?: string = ''
 
     /**
      * The min-width of the overlay panel.
      * If a number is provided, pixel units are assumed.
-     * */
-    public minWidth?: number | string
+     */
+    minWidth?: number | string
 
     /**
      * The min-height of the overlay panel.
      * If a number is provided, pixel units are assumed.
-     * */
-    public minHeight?: number | string
+     */
+    minHeight?: number | string
 
     /**
      * The max-width of the overlay panel.
      * If a number is provided, pixel units are assumed.
-     * */
-    public maxWidth?: number | string = '85vw'
+     */
+    maxWidth?: number | string = '85vw'
 
     /**
      * The max-height of the overlay panel.
      * If a number is provided, pixel units are assumed.
-     * */
-    public maxHeight?: number | string
+     */
+    maxHeight?: number | string
 
-    /** Position overrides. */
-    public position?: DialogPosition
+    /** Position overrides */
+    position?: DialogPosition
 
     /**
      * The scroll strategy when the dialog is open
      * Learn more this from https://material.angular.io/cdk/overlay/overview#scroll-strategies
-     * */
-    public scrollStrategy?: ScrollStrategy = new NoopScrollStrategy()
+     */
+    scrollStrategy?: ScrollStrategy = new NoopScrollStrategy()
 
-    public viewContainerRef?: ViewContainerRef
+    viewContainerRef?: ViewContainerRef
 
     constructor() {
         this.id = `nxt-dialog-${uniqueId++}`

@@ -1,20 +1,32 @@
 import { ElementRef } from '@angular/core'
 import { AlphaChannel, ColorMode, DialogDisplay, DialogPosition, InputChangeEvent, OutputFormat, SliderChangeEvent } from './types'
 
+/**
+ * @internal
+ */
 export class SliderPosition {
     constructor(public h: number, public s: number, public v: number, public a: number) { }
 }
 
+/**
+ * @internal
+ */
 export class SliderDimension {
     constructor(public h: number, public s: number, public v: number, public a: number) { }
 }
 
+/**
+ * @internal
+ */
 export enum ColorModeInternal {
     color,
     grayscale,
     presets
 }
 
+/**
+ * @internal
+ */
 export function parseColorMode(mode: string) {
     switch (mode.toString().toUpperCase()) {
         case '1':
@@ -37,6 +49,9 @@ export function parseColorMode(mode: string) {
     }
 }
 
+/**
+ * @internal
+ */
 export function sizeToString(val: any) {
     const strVal = ((val || 'auto') + '').trim().toLowerCase()
     if (strVal.match(/^\d+[a-z%]+$/) || strVal == 'auto') {
@@ -51,10 +66,19 @@ export function sizeToString(val: any) {
     return 'auto'
 }
 
+/**
+ * @internal
+ */
 export type CursorEvent = { v: number, rgX: number } | { v: number, rgY: number } | { v: number, s: number, rgX: number, rgY: number }
 
+/**
+ * @internal
+ */
 export type TextEvent = string | { v: number, rg: number }
 
+/**
+ * @internal
+ */
 export interface DirectiveCallbacks {
     stateChanged(state: boolean): void
     cmykChanged(valuse: string, ignore?: boolean): void
@@ -65,9 +89,12 @@ export interface DirectiveCallbacks {
     sliderDragStart(event: SliderChangeEvent): void
     sliderChanged(event: SliderChangeEvent): void
     sliderDragEnd(event: SliderChangeEvent): void
-    presetColorsChanged(value?: any[]): void
+    presetColorsChanged(value?: string[]): void
 }
 
+/**
+ * @internal
+ */
 export interface DialogConfig {
     callbacks: DirectiveCallbacks
     elementRef: ElementRef
@@ -75,25 +102,28 @@ export interface DialogConfig {
     width: string
     height: string
     dialogDisplay: DialogDisplay
-    fallbackColor: string
+    fallbackColor?: string
     mode: ColorMode
     cmykEnabled: boolean
     alphaChannel: AlphaChannel
     outputFormat: OutputFormat
     disableInput: boolean
-    ignoredElements: any[]
+    ignoredElements?: any[]
     saveClickOutside: boolean
     closeClickOutside: boolean
     useRootViewContainer: boolean
     position: DialogPosition
     presetLabel: boolean | string
     presetColors?: string[]
-    maxPresetColors: number
+    maxPresetColors?: number
     okButton: boolean
     cancelButton: boolean
-    addColorButton: boolean
+    presetColorsEditable: boolean
 }
 
+/**
+ * @internal
+ */
 export function composedPath(event: Event): EventTarget[] {
     if (event.composedPath) {
         return event.composedPath()

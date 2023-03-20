@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations'
-import { Component, ViewEncapsulation } from '@angular/core'
+import { Component } from '@angular/core'
 
 const visible = style({
     overflow: 'hidden',
@@ -19,7 +19,6 @@ const hidden = style({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated,
     animations: [
         trigger('expandCollapse', [
             transition('open => close', [
@@ -29,7 +28,18 @@ const hidden = style({
             transition('close => open', [
                 hidden,
                 animate('0.3s ease-in-out', visible)
+            ]),
+            transition('* => void', [
+                visible,
+                animate('0.3s ease-in-out', hidden)
+            ]),
+            transition('void => *', [
+                hidden,
+                animate('0.3s ease-in-out', visible)
             ])
+        ]),
+        trigger('blockInitialRenderAnimation', [
+            transition(':enter', [])
         ])
     ]
 })
@@ -40,27 +50,103 @@ export class AppComponent {
     readonly menuItems = [
         {
             label: 'nxt-color-picker',
-            link: '/color-picker'
+            link: '/color-picker',
+            children: [
+                {
+                    label: 'Getting started',
+                    link: 'getting-started'
+                },
+                {
+                    label: 'API docs',
+                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-color-picker'
+                }
+            ]
         },
         {
             label: 'nxt-dropzone-wrapper',
-            link: '/dropzone-wrapper'
+            link: '/dropzone-wrapper',
+            children: [
+                {
+                    label: 'Getting started',
+                    link: 'getting-started'
+                },
+                {
+                    label: 'API docs',
+                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-dropzone-wrapper'
+                },
+                {
+                    label: 'Dropzone documentation',
+                    url: 'https://docs.dropzone.dev/configuration/basics/configuration-options'
+                }
+            ]
         },
         {
             label: 'nxt-flags',
-            link: '/flags'
+            link: '/flags',
+            children: [
+                {
+                    label: 'Getting started',
+                    link: 'getting-started'
+                },
+                {
+                    label: 'API docs',
+                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-flags'
+                }
+            ]
         },
         {
             label: 'nxt-json-view',
-            link: '/json-view'
+            link: '/json-view',
+            children: [
+                {
+                    label: 'Getting started',
+                    link: 'getting-started'
+                },
+                {
+                    label: 'API docs',
+                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-json-view'
+                }
+            ]
         },
         {
             label: 'nxt-pick-datetime',
-            link: '/pick-datetime'
+            link: '/pick-datetime',
+            children: [
+                {
+                    label: 'Getting started',
+                    link: 'getting-started'
+                },
+                {
+                    label: 'Accessibility',
+                    link: 'accessibility'
+                },
+                {
+                    label: 'Validation',
+                    link: 'validation'
+                },
+                {
+                    label: 'Custom date adapter',
+                    link: 'custom-adapter'
+                },
+                {
+                    label: 'API docs',
+                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-pick-datetime'
+                }
+            ]
         },
         {
             label: 'nxt-sortablejs',
-            link: '/sortablejs'
+            link: '/sortablejs',
+            children: [
+                {
+                    label: 'Getting started',
+                    link: 'getting-started'
+                },
+                {
+                    label: 'API docs',
+                    url: 'https://liquid-js.github.io/nxt-components/docs/nxt-sortablejs'
+                }
+            ]
         }
     ]
 

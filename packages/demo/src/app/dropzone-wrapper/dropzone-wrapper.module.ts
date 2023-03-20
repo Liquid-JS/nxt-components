@@ -1,12 +1,18 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { FlexLayoutModule } from '@angular/flex-layout'
-import { DropzoneConfigInterface, DropzoneModule, NXT_DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
+import { FormsModule } from '@angular/forms'
+import { DropzoneConfig, DropzoneModule, NXT_DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
+import { CodeBlockComponent } from '../code-block/code-block.component'
 import { ContentWrapComponent } from '../content-wrap/content-wrap.component'
+import { ExampleComponent } from '../example/example.component'
+import { InputsTableComponent } from '../inputs-table/inputs-table.component'
+import { OutputsTableComponent } from '../outputs-table/outputs-table.component'
 import { AppDropzoneWrapperRoutingModule } from './dropzone-wrapper-routing.module'
-import { AppDropzoneWrapperComponent } from './dropzone-wrapper.component'
+import { AppDropzoneWrapperComponent } from './dropzone-wrapper/dropzone-wrapper.component'
+import { SandboxComponent } from './examples/sandbox/sandbox.component'
+import { GettingStartedComponent } from './getting-started/getting-started.component'
 
-const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
+const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
     // Change this to your upload POST address:
     url: 'https://httpbin.org/post',
     acceptedFiles: 'image/*',
@@ -15,14 +21,20 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
 
 @NgModule({
     declarations: [
-        AppDropzoneWrapperComponent
+        AppDropzoneWrapperComponent,
+        SandboxComponent,
+        GettingStartedComponent
     ],
     imports: [
         DropzoneModule,
         CommonModule,
-        FlexLayoutModule,
+        FormsModule,
         AppDropzoneWrapperRoutingModule,
-        ContentWrapComponent
+        ContentWrapComponent,
+        ExampleComponent,
+        CodeBlockComponent,
+        InputsTableComponent,
+        OutputsTableComponent
     ],
     exports: [],
     providers: [

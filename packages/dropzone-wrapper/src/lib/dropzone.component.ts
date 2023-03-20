@@ -1,91 +1,90 @@
 /* eslint-disable @angular-eslint/no-output-rename */
-import { isPlatformBrowser } from '@angular/common'
-import { Component, EventEmitter, Inject, Input, OnInit, Output, PLATFORM_ID, ViewChild, ViewEncapsulation } from '@angular/core'
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core'
 import { DropzoneDirective } from './dropzone.directive'
-import { DropzoneConfigInterface, DropzoneEvent, DropzoneEvents } from './dropzone.interfaces'
+import { DropzoneConfig, DropzoneListeners, NXT_DROPZONE_LISTENERS } from './dropzone.interfaces'
 
 @Component({
     selector: 'nxt-dropzone',
-    exportAs: 'nxtDropzone',
     templateUrl: './dropzone.component.html',
     styleUrls: [
         './dropzone.component.scss',
         '../../../../node_modules/dropzone/dist/dropzone.css'
     ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    providers: [{
+        provide: NXT_DROPZONE_LISTENERS,
+        useValue: forwardRef(() => DropzoneComponent)
+    }]
 })
-export class DropzoneComponent implements OnInit {
+export class DropzoneComponent implements OnInit, DropzoneListeners {
+
+    /** Disables / detaches Dropzone from the element */
     @Input() disabled: boolean = false
 
-    @Input() config?: DropzoneConfigInterface
+    /** Custom config to override the global defaults */
+    @Input() config?: DropzoneConfig
 
+    /** Message to show for the user on the upload area */
     @Input() message: string = 'Click or drag files to upload'
+    /** Placeholder image to be shown as the upload area */
     @Input() placeholder: string = ''
 
+    /** Use 'dropzone' class (use provided default styles) */
     @Input() useDropzoneClass: boolean = true
 
-    @Output('init') DZ_INIT = new EventEmitter<any>()
+    @Output('init') readonly DZ_INIT = new EventEmitter<Dropzone>()
 
-    @Output('error') DZ_ERROR = new EventEmitter<any>()
-    @Output('success') DZ_SUCCESS = new EventEmitter<any>()
-    @Output('sending') DZ_SENDING = new EventEmitter<any>()
-    @Output('canceled') DZ_CANCELED = new EventEmitter<any>()
-    @Output('complete') DZ_COMPLETE = new EventEmitter<any>()
-    @Output('processing') DZ_PROCESSING = new EventEmitter<any>()
+    @Output('drop') readonly DZ_DROP = new EventEmitter<DragEvent>()
+    @Output('dragStart') readonly DZ_DRAGSTART = new EventEmitter<DragEvent>()
+    @Output('dragEnd') readonly DZ_DRAGEND = new EventEmitter<DragEvent>()
+    @Output('dragEnter') readonly DZ_DRAGENTER = new EventEmitter<DragEvent>()
+    @Output('dragOver') readonly DZ_DRAGOVER = new EventEmitter<DragEvent>()
+    @Output('dragLeave') readonly DZ_DRAGLEAVE = new EventEmitter<DragEvent>()
+    @Output('paste') readonly DZ_PASTE = new EventEmitter<DragEvent>()
 
-    @Output('drop') DZ_DROP = new EventEmitter<any>()
-    @Output('dragStart') DZ_DRAGSTART = new EventEmitter<any>()
-    @Output('dragEnd') DZ_DRAGEND = new EventEmitter<any>()
-    @Output('dragEnter') DZ_DRAGENTER = new EventEmitter<any>()
-    @Output('dragOver') DZ_DRAGOVER = new EventEmitter<any>()
-    @Output('dragLeave') DZ_DRAGLEAVE = new EventEmitter<any>()
+    @Output('reset') readonly DZ_RESET = new EventEmitter<void>()
 
-    @Output('thumbnail') DZ_THUMBNAIL = new EventEmitter<any>()
-    @Output('addedFile') DZ_ADDEDFILE = new EventEmitter<any>()
-    @Output('addedFiles') DZ_ADDEDFILES = new EventEmitter<any>()
-    @Output('removedFile') DZ_REMOVEDFILE = new EventEmitter<any>()
-    @Output('uploadProgress') DZ_UPLOADPROGRESS = new EventEmitter<any>()
-    @Output('maxFilesReached') DZ_MAXFILESREACHED = new EventEmitter<any>()
-    @Output('maxFilesExceeded') DZ_MAXFILESEXCEEDED = new EventEmitter<any>()
+    @Output('addedFile') readonly DZ_ADDEDFILE = new EventEmitter<Dropzone.DropzoneFile>()
+    @Output('addedFiles') readonly DZ_ADDEDFILES = new EventEmitter<Dropzone.DropzoneFile>()
+    @Output('removedFile') readonly DZ_REMOVEDFILE = new EventEmitter<Dropzone.DropzoneFile>()
+    @Output('thumbnail') readonly DZ_THUMBNAIL = new EventEmitter<[Dropzone.DropzoneFile, string]>()
 
-    @Output('errorMultiple') DZ_ERRORMULTIPLE = new EventEmitter<any>()
-    @Output('successMultiple') DZ_SUCCESSMULTIPLE = new EventEmitter<any>()
-    @Output('sendingMultiple') DZ_SENDINGMULTIPLE = new EventEmitter<any>()
-    @Output('canceledMultiple') DZ_CANCELEDMULTIPLE = new EventEmitter<any>()
-    @Output('completeMultiple') DZ_COMPLETEMULTIPLE = new EventEmitter<any>()
-    @Output('processingMultiple') DZ_PROCESSINGMULTIPLE = new EventEmitter<any>()
+    @Output('error') readonly DZ_ERROR = new EventEmitter<[Dropzone.DropzoneFile, string | Error]>()
+    @Output('errorMultiple') readonly DZ_ERRORMULTIPLE = new EventEmitter<[Dropzone.DropzoneFile[], string | Error]>()
 
-    @Output('reset') DZ_RESET = new EventEmitter<any>()
-    @Output('queueComplete') DZ_QUEUECOMPLETE = new EventEmitter<any>()
-    @Output('totalUploadProgress') DZ_TOTALUPLOADPROGRESS = new EventEmitter<any>()
+    @Output('processing') readonly DZ_PROCESSING = new EventEmitter<Dropzone.DropzoneFile>()
+    @Output('processingMultiple') readonly DZ_PROCESSINGMULTIPLE = new EventEmitter<Dropzone.DropzoneFile[]>()
 
-    @ViewChild(DropzoneDirective, { static: true }) directiveRef?: DropzoneDirective
+    @Output('uploadProgress') readonly DZ_UPLOADPROGRESS = new EventEmitter<[Dropzone.DropzoneFile, number, number]>()
+    @Output('totalUploadProgress') readonly DZ_TOTALUPLOADPROGRESS = new EventEmitter<[number, number, number]>()
 
-    constructor(
-        // eslint-disable-next-line @typescript-eslint/ban-types
-        @Inject(PLATFORM_ID) private readonly platformId: Object
-    ) { }
+    @Output('sending') readonly DZ_SENDING = new EventEmitter<[Dropzone.DropzoneFile, XMLHttpRequest, FormData]>()
+    @Output('sendingMultiple') readonly DZ_SENDINGMULTIPLE = new EventEmitter<[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]>()
 
-    ngOnInit(): void {
-        if (!isPlatformBrowser(this.platformId)) {
-            return
-        }
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    @Output('success') readonly DZ_SUCCESS = new EventEmitter<[Dropzone.DropzoneFile, Object | string]>()
+    @Output('successMultiple') readonly DZ_SUCCESSMULTIPLE = new EventEmitter<Dropzone.DropzoneFile[]>()
 
-        setTimeout(() => {
-            DropzoneEvents.forEach((eventName: DropzoneEvent) => {
-                if (this.directiveRef) {
-                    const output = `DZ_${eventName.toUpperCase()}`
+    @Output('canceled') readonly DZ_CANCELED = new EventEmitter<Dropzone.DropzoneFile>()
+    @Output('canceledMultiple') readonly DZ_CANCELEDMULTIPLE = new EventEmitter<Dropzone.DropzoneFile[]>()
 
-                    const directiveOutput = output as keyof DropzoneDirective
-                    const componentOutput = output as keyof DropzoneComponent
+    @Output('complete') readonly DZ_COMPLETE = new EventEmitter<Dropzone.DropzoneFile>()
+    @Output('completeMultiple') readonly DZ_COMPLETEMULTIPLE = new EventEmitter<Dropzone.DropzoneFile[]>()
 
-                    this.directiveRef[directiveOutput] = this[componentOutput] as any
-                }
-            })
-        }, 0)
-    }
+    @Output('maxFilesExceeded') readonly DZ_MAXFILESEXCEEDED = new EventEmitter<Dropzone.DropzoneFile>()
+    @Output('maxFilesReached') readonly DZ_MAXFILESREACHED = new EventEmitter<Dropzone.DropzoneFile[]>()
 
-    public getPlaceholder(): string {
+    @Output('queueComplete') readonly DZ_QUEUECOMPLETE = new EventEmitter<void>()
+
+    @ViewChild(DropzoneDirective) directiveRef?: DropzoneDirective
+
+    constructor() { }
+
+    /** @internal */
+    ngOnInit(): void { }
+
+    /** @internal */
+    getPlaceholder(): string {
         return 'url(' + encodeURI(this.placeholder) + ')'
     }
 }

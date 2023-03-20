@@ -13,6 +13,7 @@ export class CalendarCell {
     ) { }
 }
 
+/** @internal */
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
     selector: '[nxtDateTimeCalendarBody]',
@@ -31,13 +32,13 @@ export class CalendarBodyComponent implements OnInit {
 
     /**
      * The cells to display in the table.
-     * */
+     */
     @Input()
     rows?: CalendarCell[][]
 
     /**
      * The number of columns in the table.
-     * */
+     */
     @Input()
     numCols = 7
 
@@ -49,13 +50,13 @@ export class CalendarBodyComponent implements OnInit {
 
     /**
      * The value in the table that corresponds to today.
-     * */
+     */
     @Input()
     todayValue?: number
 
     /**
      * The value in the table that is currently selected.
-     * */
+     */
     @Input()
     selectedValues?: Array<number | undefined>
 
@@ -67,11 +68,12 @@ export class CalendarBodyComponent implements OnInit {
 
     /**
      * Emit when a calendar cell is selected
-     * */
+     */
     @Output()
     // eslint-disable-next-line @angular-eslint/no-output-native
-    public readonly select = new EventEmitter<CalendarCell>()
+    readonly select = new EventEmitter<CalendarCell>()
 
+    /** @internal */
     @HostBinding('class.nxt-dt-calendar-body')
     get calendarBodyClass(): boolean {
         return true
@@ -94,13 +96,13 @@ export class CalendarBodyComponent implements OnInit {
         private readonly ngZone: NgZone
     ) { }
 
-    public ngOnInit() { }
+    ngOnInit() { }
 
-    public selectCell(cell: CalendarCell): void {
+    selectCell(cell: CalendarCell): void {
         this.select.emit(cell)
     }
 
-    public isActiveCell(rowIndex: number, colIndex: number): boolean {
+    isActiveCell(rowIndex: number, colIndex: number): boolean {
         const cellNumber = rowIndex * this.numCols + colIndex
         return cellNumber === this.activeCell
     }
@@ -108,7 +110,7 @@ export class CalendarBodyComponent implements OnInit {
     /**
      * Check if the cell is selected
      */
-    public isSelected(value: number): boolean {
+    isSelected(value: number): boolean {
         if (!this.selectedValues || this.selectedValues.length === 0) {
             return false
         }
@@ -128,8 +130,8 @@ export class CalendarBodyComponent implements OnInit {
 
     /**
      * Check if the cell in the range
-     * */
-    public isInRange(value: number): boolean {
+     */
+    isInRange(value: number): boolean {
         if (this.isInRangeMode) {
             const fromValue = this.selectedValues?.[0]
             const toValue = this.selectedValues?.[1]
@@ -145,8 +147,8 @@ export class CalendarBodyComponent implements OnInit {
 
     /**
      * Check if the cell is the range from
-     * */
-    public isRangeFrom(value: number): boolean {
+     */
+    isRangeFrom(value: number): boolean {
         if (this.isInRangeMode) {
             const fromValue = this.selectedValues?.[0]
             return fromValue !== undefined && value === fromValue
@@ -156,8 +158,8 @@ export class CalendarBodyComponent implements OnInit {
 
     /**
      * Check if the cell is the range to
-     * */
-    public isRangeTo(value: number): boolean {
+     */
+    isRangeTo(value: number): boolean {
         if (this.isInRangeMode) {
             const toValue = this.selectedValues?.[1]
             return toValue !== undefined && value === toValue
@@ -167,8 +169,8 @@ export class CalendarBodyComponent implements OnInit {
 
     /**
      * Focus to a active cell
-     * */
-    public focusActiveCell(): void {
+     */
+    focusActiveCell(): void {
         this.ngZone.runOutsideAngular(() => {
             this.ngZone.onStable
                 .asObservable()

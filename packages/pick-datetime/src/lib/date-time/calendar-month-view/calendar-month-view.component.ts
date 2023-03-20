@@ -1,13 +1,14 @@
-import { coerceNumberProperty } from '@angular/cdk/coercion'
-import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
-import { CalendarCell, CalendarBodyComponent } from '../calendar-body/calendar-body.component'
+import { CalendarBodyComponent, CalendarCell } from '../calendar-body/calendar-body.component'
 
+/** @internal */
 const DAYS_PER_WEEK = 7
+
+/** @internal */
 const WEEKS_PER_VIEW = 6
 
 @Component({
@@ -19,15 +20,15 @@ const WEEKS_PER_VIEW = 6
 })
 export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestroy {
     /**
-     * Whether to hide dates in other months at the start or end of the current month.
-     * */
+     * Whether to hide dates in other months at the start or end of the current month
+     */
     @Input()
     hideOtherMonths: boolean = false
 
     /**
      * Define the first day of a week
      * Sunday: 0 ~ Saturday: 6
-     * */
+     */
     private _firstDayOfWeek: number = 0
     @Input()
     get firstDayOfWeek(): number {
@@ -35,7 +36,6 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     }
 
     set firstDayOfWeek(val: number) {
-        val = coerceNumberProperty(val)
         if (val >= 0 && val <= 6 && val !== this._firstDayOfWeek) {
             this._firstDayOfWeek = val
 
@@ -49,7 +49,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
 
     /**
      * The select mode of the picker;
-     * */
+     */
     private _selectMode: SelectMode = 'single'
     @Input()
     get selectMode(): SelectMode {
@@ -64,7 +64,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
         }
     }
 
-    /** The currently selected date. */
+    /** The currently selected date */
     private _selected?: T
     @Input()
     get selected() {
@@ -123,22 +123,22 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
 
     /**
      * A function used to filter which dates are selectable
-     * */
-    private _dateFilter?: DateFilter<T>
+     */
+    private _dateTimeFilter?: DateFilter<T>
     @Input()
-    get dateFilter() {
-        return this._dateFilter
+    get dateTimeFilter() {
+        return this._dateTimeFilter
     }
 
-    set dateFilter(filter: DateFilter<T> | undefined) {
-        this._dateFilter = filter
+    set dateTimeFilter(filter: DateFilter<T> | undefined) {
+        this._dateTimeFilter = filter
         if (this.initiated) {
             this.generateCalendar()
             this.cdRef.markForCheck()
         }
     }
 
-    /** The minimum selectable date. */
+    /** The minimum selectable date */
     private _minDate?: T
     @Input()
     get min() {
@@ -154,7 +154,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
         }
     }
 
-    /** The maximum selectable date. */
+    /** The maximum selectable date */
     private _maxDate?: T
     @Input()
     get max() {
@@ -212,38 +212,39 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
 
     /**
      * The date of the month that today falls on.
-     * */
-    public todayDate?: number
+     */
+    todayDate?: number
 
     /**
      * An array to hold all selectedDates' value
      * the value is the day number in current month
-     * */
-    public selectedDates?: Array<number | undefined>
+     */
+    selectedDates?: Array<number | undefined>
 
     // the index of cell that contains the first date of the month
-    public firstRowOffset: number = 0
+    firstRowOffset: number = 0
 
     /**
      * Callback to invoke when a new date is selected
-     * */
+     */
     @Output()
     readonly selectedChange = new EventEmitter<T | undefined>()
 
     /**
      * Callback to invoke when any date is selected.
-     * */
+     */
     @Output()
     readonly userSelection = new EventEmitter<void>()
 
-    /** Emits when any date is activated. */
+    /** Emits when any date is activated */
     @Output()
     readonly pickerMomentChange = new EventEmitter<T>()
 
     /** The body of calendar table */
     @ViewChild(CalendarBodyComponent, { static: true })
-    calendarBodyElm?: CalendarBodyComponent
+    private calendarBodyElm?: CalendarBodyComponent
 
+    /** @internal */
     @HostBinding('class.nxt-dt-calendar-view')
     get calendarView(): boolean {
         return true
@@ -256,7 +257,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
         private readonly dateTimeFormats: DateTimeFormats
     ) { }
 
-    public ngOnInit() {
+    ngOnInit() {
         this.generateWeekDays()
 
         this.localeSub = this.dateTimeAdapter.localeChanges.subscribe(() => {
@@ -266,12 +267,12 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
         })
     }
 
-    public ngAfterContentInit(): void {
+    ngAfterContentInit(): void {
         this.generateCalendar()
         this.initiated = true
     }
 
-    public ngOnDestroy(): void {
+    ngOnDestroy(): void {
         this.localeSub?.unsubscribe()
         this.localeSub = undefined
     }
@@ -279,7 +280,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     /**
      * Handle a calendarCell selected
      */
-    public selectCalendarCell(cell: CalendarCell): void {
+    selectCalendarCell(cell: CalendarCell): void {
         // Cases in which the date would not be selected
         // 1, the calendar cell is NOT enabled (is NOT valid)
         // 2, the selected date is NOT in current picker's month and the hideOtherMonths is enabled
@@ -307,11 +308,11 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     /**
      * Handle keydown event on calendar body
      */
-    public handleCalendarKeydown(event: KeyboardEvent): void {
+    handleCalendarKeydown(event: KeyboardEvent): void {
         let moment
-        switch (event.keyCode) {
+        switch (event.code.toLowerCase()) {
             // minus 1 day
-            case LEFT_ARROW:
+            case 'arrowleft':
                 moment = this.dateTimeAdapter.addCalendarDays(
                     this.pickerMoment,
                     -1
@@ -320,7 +321,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // add 1 day
-            case RIGHT_ARROW:
+            case 'arrowright':
                 moment = this.dateTimeAdapter.addCalendarDays(
                     this.pickerMoment,
                     1
@@ -329,7 +330,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // minus 1 week
-            case UP_ARROW:
+            case 'arrowup':
                 moment = this.dateTimeAdapter.addCalendarDays(
                     this.pickerMoment,
                     -7
@@ -338,7 +339,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // add 1 week
-            case DOWN_ARROW:
+            case 'arrowdown':
                 moment = this.dateTimeAdapter.addCalendarDays(
                     this.pickerMoment,
                     7
@@ -347,7 +348,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // move to first day of current month
-            case HOME:
+            case 'home':
                 moment = this.dateTimeAdapter.addCalendarDays(
                     this.pickerMoment,
                     1 - this.dateTimeAdapter.getDate(this.pickerMoment)
@@ -356,7 +357,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // move to last day of current month
-            case END:
+            case 'end':
                 moment = this.dateTimeAdapter.addCalendarDays(
                     this.pickerMoment,
                     this.dateTimeAdapter.getNumDaysInMonth(this.pickerMoment) -
@@ -366,7 +367,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // minus 1 month (or 1 year)
-            case PAGE_UP:
+            case 'pageup':
                 moment = event.altKey
                     ? this.dateTimeAdapter.addCalendarYears(
                         this.pickerMoment,
@@ -380,7 +381,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // add 1 month (or 1 year)
-            case PAGE_DOWN:
+            case 'pagedown':
                 moment = event.altKey
                     ? this.dateTimeAdapter.addCalendarYears(
                         this.pickerMoment,
@@ -394,8 +395,8 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
                 break
 
             // select the pickerMoment
-            case ENTER:
-                if (!this.dateFilter || this.dateFilter(this.pickerMoment, 'date')) {
+            case 'enter':
+                if (!this.dateTimeFilter || this.dateTimeFilter(this.pickerMoment, 'date')) {
                     this.selectDate(
                         this.dateTimeAdapter.getDate(this.pickerMoment)
                     )
@@ -411,7 +412,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
 
     /**
      * Generate the calendar weekdays array
-     * */
+     */
     private generateWeekDays(): void {
         const longWeekdays = this.dateTimeAdapter.getDayOfWeekNames('long')
         const shortWeekdays = this.dateTimeAdapter.getDayOfWeekNames('short')
@@ -429,7 +430,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
 
     /**
      * Generate the calendar days array
-     * */
+     */
     private generateCalendar(): void {
         if (!this.pickerMoment) {
             return
@@ -522,7 +523,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     private isDateEnabled(date: T): boolean {
         return (
             !!date &&
-            (!this.dateFilter || this.dateFilter(date, 'date')) &&
+            (!this.dateTimeFilter || this.dateTimeFilter(date, 'date')) &&
             (!this.min ||
                 this.dateTimeAdapter.compare(date, this.min) >= 0) &&
             (!this.max ||
@@ -543,7 +544,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     /**
      * Check if the give dates are defined and in the same month
      */
-    public isSameMonth(dateLeft?: T, dateRight?: T): boolean {
+    isSameMonth(dateLeft?: T, dateRight?: T): boolean {
         return !!(
             dateLeft &&
             dateRight &&
@@ -560,7 +561,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
      * Set the selectedDates value.
      * In single mode, it has only one value which represent the selected date
      * In range mode, it would has two values, one for the fromValue and the other for the toValue
-     * */
+     */
     private setSelectedDates(): void {
         this.selectedDates = []
 

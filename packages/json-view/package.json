@@ -15,11 +15,13 @@
         "lint:sass": "stylelint \"src/**/*.scss\"",
         "lint:sass:fix": "yarn lint:sass --fix",
         "test": "ng test json-view --no-watch",
-        "test:watch": "ng test json-view"
+        "test:watch": "ng test json-view",
+        "docs": "npx compodoc -c .compodocrc.json",
+        "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/json-view"
     },
     "peerDependencies": {
-        "@angular/common": "^15.2.1",
-        "@angular/core": "^15.2.1"
+        "@angular/common": "^15.2.3",
+        "@angular/core": "^15.2.3"
     },
     "dependencies": {
         "tslib": "^2.5.0"

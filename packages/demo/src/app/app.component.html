@@ -34,12 +34,28 @@
             <div class="position-sticky p-2 sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item"
-                        *ngFor="let item of menuItems">
+                        *ngFor="let item of menuItems"
+                        @blockInitialRenderAnimation>
                         <a [routerLink]="item.link"
                             class="nav-link"
                             routerLinkActive="active"
+                            #active="routerLinkActive"
                             (click)="toggle(true)">
                             {{ item.label }}</a>
+                        <ul *ngIf="active.isActive && item.children?.length && item.children as submenu"
+                            class="nav flex-column"
+                            @expandCollapse>
+                            <li class="nav-item"
+                                *ngFor="let child of submenu"><a *ngIf="child.link"
+                                    [routerLink]="[item.link, child.link]"
+                                    class="nav-link"
+                                    routerLinkActive="active"
+                                    (click)="toggle(true)">
+                                    {{ child.label }}</a><a *ngIf="child.url"
+                                    href="{{ child.url }}"
+                                    class="nav-link">
+                                    {{ child.label }}</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>

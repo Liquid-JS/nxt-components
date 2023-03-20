@@ -1,0 +1,192 @@
+$color_1: #24292e;
+$color_2: #6a737d;
+$color_3: #005cc5;
+$color_4: #e36209;
+$color_5: #6f42c1;
+$color_6: #22863a;
+$color_7: #d73a49;
+$color_8: #032f62;
+$color_9: #b31d28;
+$background-color_1: rgba(#ff001e, 0.1);
+$background-color_2: rgba(#00ff44, 0.1);
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    color: $color_1;
+}
+
+.hljs-comment {
+    color: $color_2;
+}
+
+.hljs-punctuation {
+    color: $color_2;
+}
+
+.hljs-attr {
+    color: $color_3;
+}
+
+.hljs-attribute {
+    color: $color_3;
+}
+
+.hljs-meta {
+    color: $color_3;
+}
+
+.hljs-selector-attr {
+    color: $color_3;
+}
+
+.hljs-selector-class {
+    color: $color_3;
+}
+
+.hljs-selector-id {
+    color: $color_3;
+}
+
+.hljs-variable {
+    color: $color_4;
+}
+
+.hljs-literal {
+    color: $color_4;
+}
+
+.hljs-number {
+    color: $color_4;
+}
+
+.hljs-doctag {
+    color: $color_4;
+}
+
+.hljs-params {
+    color: $color_1;
+}
+
+.hljs-function {
+    color: $color_5;
+}
+
+.hljs-class {
+    color: $color_6;
+}
+
+.hljs-tag {
+    color: $color_6;
+}
+
+.hljs-title {
+    color: $color_6;
+}
+
+.hljs-built_in {
+    color: $color_6;
+}
+
+.hljs-keyword {
+    color: $color_7;
+}
+
+.hljs-type {
+    color: $color_7;
+}
+
+.hljs-builtin-name {
+    color: $color_7;
+}
+
+.hljs-meta-keyword {
+    color: $color_7;
+}
+
+.hljs-template-tag {
+    color: $color_7;
+}
+
+.hljs-template-variable {
+    color: $color_7;
+}
+
+.hljs-string {
+    color: $color_8;
+}
+
+.hljs-undefined {
+    color: $color_8;
+}
+
+.hljs-regexp {
+    color: $color_8;
+}
+
+.hljs-symbol {
+    color: $color_3;
+}
+
+.hljs-bullet {
+    color: $color_4;
+}
+
+.hljs-section {
+    color: $color_3;
+    font-weight: bold;
+}
+
+.hljs-quote {
+    color: $color_6;
+}
+
+.hljs-name {
+    color: $color_6;
+}
+
+.hljs-selector-tag {
+    color: $color_6;
+}
+
+.hljs-selector-pseudo {
+    color: $color_6;
+}
+
+.hljs-emphasis {
+    color: $color_4;
+    font-style: italic;
+}
+
+.hljs-strong {
+    color: $color_4;
+    font-weight: bold;
+}
+
+.hljs-deletion {
+    color: $color_9;
+    background-color: $background-color_1;
+}
+
+.hljs-addition {
+    color: $color_6;
+    background-color: $background-color_2;
+}
+
+.hljs-link {
+    color: $color_8;
+    font-style: underline;
+}
+
+.hljs-ln-numbers {
+    user-select: none;
+    text-align: center;
+    color: inherit;
+    border-right: 1px solid #ccc;
+    vertical-align: top;
+    padding-right: 5px !important;
+}
+
+.hljs-ln-code {
+    padding-left: 10px !important;
+}

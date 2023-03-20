@@ -5,19 +5,23 @@ import { DOCUMENT } from '@angular/common'
 import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EmbeddedViewRef, EventEmitter, HostBinding, HostListener, Inject, OnInit, Optional, ViewChild } from '@angular/core'
 import { DialogConfig } from '../../class/dialog-config.class'
 
+/** @internal */
 export type DialogContainerState = 'void' | 'enter' | 'exit'
 
+/** @internal */
 const zoomFadeIn = {
     opacity: 0,
     transform: 'translateX({{ x }}) translateY({{ y }}) scale({{scale}})'
 }
 
+/** @internal */
 const zoomFadeInFrom = {
     opacity: 0,
     transform: 'translateX({{ x }}) translateY({{ y }}) scale({{scale}})',
     transformOrigin: '{{ ox }} {{ oy }}'
 }
 
+/** @internal */
 @Component({
     selector: 'nxt-dialog-container',
     templateUrl: './dialog-container.component.html',
@@ -61,16 +65,16 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
     @ViewChild(CdkPortalOutlet, { static: true })
     portalOutlet?: CdkPortalOutlet
 
-    /** The class that traps and manages focus within the dialog. */
+    /** The class that traps and manages focus within the dialog */
     private focusTrap?: ConfigurableFocusTrap
 
-    /** ID of the element that should be considered as the dialog's label. */
-    public ariaLabelledBy?: string
+    /** ID of the element that should be considered as the dialog's label */
+    ariaLabelledBy?: string
 
-    /** Emits when an animation state changes. */
-    public readonly animationStateChanged = new EventEmitter<AnimationEvent>()
+    /** Emits when an animation state changes */
+    readonly animationStateChanged = new EventEmitter<AnimationEvent>()
 
-    public isAnimating = false
+    isAnimating = false
 
     private _config?: DialogConfig
     get config() {
@@ -92,36 +96,43 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
     // This would help us to refocus back to element when the dialog was closed.
     private elementFocusedBeforeDialogWasOpened?: HTMLElement
 
+    /** @internal */
     @HostBinding('class.nxt-dialog-container')
     get dialogContainerClass(): boolean {
         return true
     }
 
+    /** @internal */
     @HostBinding('attr.tabindex')
     get dialogContainerTabIndex(): number {
         return -1
     }
 
+    /** @internal */
     @HostBinding('attr.id')
     get dialogContainerId() {
         return this._config?.id
     }
 
+    /** @internal */
     @HostBinding('attr.role')
     get dialogContainerRole() {
         return this._config?.role
     }
 
+    /** @internal */
     @HostBinding('attr.aria-labelledby')
     get dialogContainerAriaLabelledby() {
         return this.ariaLabelledBy
     }
 
+    /** @internal */
     @HostBinding('attr.aria-describedby')
     get dialogContainerAriaDescribedby() {
         return this._config?.ariaDescribedBy
     }
 
+    /** @internal */
     @HostBinding('@slideModal')
     get dialogContainerAnimation() {
         return { value: this.state, params: this.params }
@@ -138,12 +149,12 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
         super()
     }
 
-    public ngOnInit() { }
+    ngOnInit() { }
 
     /**
      * Attach a ComponentPortal as content to this dialog container.
      */
-    public attachComponentPortal<T>(
+    attachComponentPortal<T>(
         portal: ComponentPortal<T>
     ): ComponentRef<T> {
         if (this.portalOutlet?.hasAttached()) {
@@ -156,13 +167,13 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
         return this.portalOutlet!.attachComponentPortal(portal)
     }
 
-    public attachTemplatePortal<C>(
+    attachTemplatePortal<C>(
         _portal: TemplatePortal<C>
     ): EmbeddedViewRef<C> {
         throw new Error('Method not implemented.')
     }
 
-    public setConfig(config: DialogConfig): void {
+    setConfig(config: DialogConfig): void {
         this._config = config
 
         if (config.event) {
@@ -171,13 +182,13 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
     }
 
     @HostListener('@slideModal.start', ['$event'])
-    public onAnimationStart(event: AnimationEvent): void {
+    onAnimationStart(event: AnimationEvent): void {
         this.isAnimating = true
         this.animationStateChanged.emit(event)
     }
 
     @HostListener('@slideModal.done', ['$event'])
-    public onAnimationDone(event: AnimationEvent): void {
+    onAnimationDone(event: AnimationEvent): void {
         if (event.toState === 'enter') {
             this.trapFocus()
         } else if (event.toState === 'exit') {
@@ -188,7 +199,7 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
         this.isAnimating = false
     }
 
-    public startExitAnimation() {
+    startExitAnimation() {
         this.state = 'exit'
         this.changeDetector.markForCheck()
     }

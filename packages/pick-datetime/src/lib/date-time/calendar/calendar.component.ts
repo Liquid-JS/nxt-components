@@ -16,9 +16,9 @@ import { DateTimeIntl } from '../date-time-picker-intl.service'
 export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterViewChecked, OnDestroy {
     /**
      * Date filter for the month and year view
-     * */
+     */
     @Input()
-    dateFilter?: DateFilter<T>
+    dateTimeFilter?: DateFilter<T>
 
     /**
      * Set the first day of week
@@ -26,7 +26,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     @Input()
     firstDayOfWeek = 0
 
-    /** The minimum selectable date. */
+    /** The minimum selectable date */
     private _minDate?: T
     @Input()
     get min() {
@@ -46,7 +46,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
             : undefined
     }
 
-    /** The maximum selectable date. */
+    /** The maximum selectable date */
     private _maxDate?: T
     @Input()
     get max() {
@@ -82,7 +82,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     @Input()
     selectMode?: SelectMode
 
-    /** The currently selected moment. */
+    /** The currently selected moment */
     private _selected?: T
     @Input()
     get selected() {
@@ -108,38 +108,42 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     }
 
     /**
-     * The view that the calendar should start in.
+     * The view that the calendar should start in
      */
     @Input()
     startView: 'month' | 'year' | 'multi-years' = 'month'
 
     /**
-     * Whether to hide dates in other months at the start or end of the current month.
-     * */
+     * Whether to hide dates in other months at the start or end of the current month
+     */
     @Input()
     hideOtherMonths: boolean = false
 
-    /** Emits when the currently picker moment changes. */
+    /** Emits when the currently picker moment changes */
     @Output()
     readonly pickerMomentChange = new EventEmitter<T>()
 
-    /** Emits when the currently selected date changes. */
+    /** Emits when the currently selected date changes */
     @Output()
     readonly selectedChange = new EventEmitter<T | undefined>()
 
-    /** Emits when any date is selected. */
+    /** Emits when any date is selected */
     @Output()
     readonly userSelection = new EventEmitter<void>()
 
     /**
-     * Emits the selected year. This doesn't imply a change on the selected date
-     * */
+     * Emits the selected year
+     *
+     * This doesn't imply a change on the selected date.
+     */
     @Output()
     readonly yearSelected = new EventEmitter<T>()
 
     /**
-     * Emits the selected month. This doesn't imply a change on the selected date
-     * */
+     * Emits the selected month
+     *
+     * This doesn't imply a change on the selected date.
+     */
     @Output()
     readonly monthSelected = new EventEmitter<T>()
 
@@ -209,9 +213,9 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     /**
      * Date filter for the month and year view
      */
-    public dateFilterForViews = (date?: T) => (
+    dateTimeFilterForViews = (date?: T) => (
         !!date &&
-        (!this.dateFilter || this.dateFilter(date, 'date')) &&
+        (!this.dateTimeFilter || this.dateTimeFilter(date, 'date')) &&
         (!this.min ||
             this.dateTimeAdapter.compare(date, this.min) >= 0) &&
         (!this.max ||
@@ -220,7 +224,9 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
 
     /**
      * Bind class 'nxt-dt-calendar' to host
-     * */
+     *
+     * @internal
+     */
     @HostBinding('class.nxt-dt-calendar')
     get calendarClass(): boolean {
         return true
@@ -249,20 +255,20 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
         })
     }
 
-    public ngOnInit() { }
+    ngOnInit() { }
 
-    public ngAfterContentInit(): void {
+    ngAfterContentInit(): void {
         this._currentView = this.startView
     }
 
-    public ngAfterViewChecked() {
+    ngAfterViewChecked() {
         if (this.moveFocusOnNextTick) {
             this.moveFocusOnNextTick = false
             this.focusActiveCell()
         }
     }
 
-    public ngOnDestroy(): void {
+    ngOnDestroy(): void {
         this.intlChangesSub?.unsubscribe()
         this.intlChangesSub = undefined
     }
@@ -270,15 +276,15 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     /**
      * Toggle between month view and year view
      */
-    public toggleViews(): void {
+    toggleViews(): void {
         this.currentView =
             this._currentView == 'month' ? 'multi-years' : 'month'
     }
 
     /**
      * Handles user clicks on the previous button.
-     * */
-    public previousClicked(): void {
+     */
+    previousClicked(): void {
         this.pickerMoment = this.isMonthView
             ? this.dateTimeAdapter.addCalendarMonths(this.pickerMoment, -1)
             : this.dateTimeAdapter.addCalendarYears(this.pickerMoment, -1)
@@ -288,8 +294,8 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
 
     /**
      * Handles user clicks on the next button.
-     * */
-    public nextClicked(): void {
+     */
+    nextClicked(): void {
         this.pickerMoment = this.isMonthView
             ? this.dateTimeAdapter.addCalendarMonths(this.pickerMoment, 1)
             : this.dateTimeAdapter.addCalendarYears(this.pickerMoment, 1)
@@ -297,8 +303,8 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
         this.pickerMomentChange.emit(this.pickerMoment)
     }
 
-    public dateSelected(date?: T): void {
-        if (!this.dateFilterForViews(date)) {
+    dateSelected(date?: T): void {
+        if (!this.dateTimeFilterForViews(date)) {
             return
         }
 
@@ -313,7 +319,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     /**
      * Change the pickerMoment value and switch to a specific view
      */
-    public goToDateInView(
+    goToDateInView(
         date: T,
         view: 'month' | 'year' | 'multi-years'
     ): void {
@@ -325,7 +331,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     /**
      * Change the pickerMoment value
      */
-    public handlePickerMomentChange(date: T): void {
+    handlePickerMomentChange(date: T): void {
         this.pickerMoment = this.dateTimeAdapter.clampDate(
             date,
             this.min,
@@ -335,14 +341,14 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
         return
     }
 
-    public userSelected(): void {
+    userSelected(): void {
         this.userSelection.emit()
     }
 
     /**
      * Whether the previous period button is enabled.
      */
-    public prevButtonEnabled(): boolean {
+    prevButtonEnabled(): boolean {
         return (
             !this.min || !this.isSameView(this.pickerMoment, this.min)
         )
@@ -351,7 +357,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     /**
      * Whether the next period button is enabled.
      */
-    public nextButtonEnabled(): boolean {
+    nextButtonEnabled(): boolean {
         return (
             !this.max || !this.isSameView(this.pickerMoment, this.max)
         )
@@ -359,8 +365,8 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
 
     /**
      * Focus to the host element
-     * */
-    public focusActiveCell() {
+     */
+    focusActiveCell() {
         this.ngZone.runOutsideAngular(() => {
             this.ngZone.onStable
                 .asObservable()
@@ -373,11 +379,11 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
         })
     }
 
-    public selectYearInMultiYearView(normalizedYear: T): void {
+    selectYearInMultiYearView(normalizedYear: T): void {
         this.yearSelected.emit(normalizedYear)
     }
 
-    public selectMonthInYearView(normalizedMonth: T): void {
+    selectMonthInYearView(normalizedMonth: T): void {
         this.monthSelected.emit(normalizedMonth)
     }
 

@@ -1,0 +1,15 @@
+<ul class="list-group"
+    [nxtSortablejs]="citiesControls">
+    <li class="list-group-item"
+        *ngFor="let city of citiesControls.controls">
+        <input class="form-control"
+            [formControl]="city">
+    </li>
+</ul>
+<br>
+
+<h3 class="h4">FormArray value</h3>
+
+<app-code-block [code]="citiesControls.value | json"
+    [languages]="['json']"
+    [copy]="false"></app-code-block>

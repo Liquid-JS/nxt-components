@@ -1,12 +1,12 @@
-import { coerceBooleanProperty } from '@angular/cdk/coercion'
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Inject, Input, OnInit, Output, ViewChild } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Inject, Input, OnInit, Output, Provider, ViewChild } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
-import { DateTimeDirective, PickerMode, PickerType, SelectMode } from '../../class/date-time.class'
+import { DateFilter, DateTimeDirective, PickerMode, PickerType, SelectMode } from '../../class/date-time.class'
 import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
 
-export const NXT_DATETIME_VALUE_ACCESSOR: any = {
+/** @internal */
+export const NXT_DATETIME_VALUE_ACCESSOR: Provider = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => DateTimeInlineComponent),
     multi: true
@@ -23,15 +23,16 @@ export const NXT_DATETIME_VALUE_ACCESSOR: any = {
 export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements OnInit, ControlValueAccessor {
 
     @ViewChild(DateTimeContainerComponent, { static: true })
-    container?: DateTimeContainerComponent<T>
+    private container?: DateTimeContainerComponent<T>
 
+    private _pickerType: PickerType = 'both'
     /**
      * Set the type of the dateTime picker
-     *      'both' -- show both calendar and timer
-     *      'calendar' -- show only calendar
-     *      'timer' -- show only timer
+     *
+     * -    `'both'` - show both calendar and timer
+     * -    `'calendar'` - show only calendar
+     * -    `'timer'` - show only timer
      */
-    private _pickerType: PickerType = 'both'
     @Input()
     get pickerType(): PickerType {
         return this._pickerType
@@ -44,16 +45,25 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
     }
 
     private _disabled = false
+    /** Whether the date time picker should be disabled */
     @Input()
     override get disabled(): boolean {
         return !!this._disabled
     }
 
     override set disabled(value: boolean) {
-        this._disabled = coerceBooleanProperty(value)
+        this._disabled = !!value
     }
 
     private _selectMode: SelectMode = 'single'
+    /**
+     * The picker select mode
+     *
+     * -    `'single'` - select a single date
+     * -    `'range'` - select a range [from, to]
+     * -    `'rangeFrom'` - an open range with a fixed start date
+     * -    `'rangeTo'` - an open range with a fixed end date
+     */
     @Input()
     get selectMode() {
         return this._selectMode
@@ -72,8 +82,12 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
         this._selectMode = mode
     }
 
-    /** The date to open the calendar to initially. */
     private _startAt?: T
+    /**
+     * The date to show when picker opens
+     *
+     * Defaults to selected date (if available) or current date.
+     */
     @Input()
     get startAt() {
         if (this._startAt) {
@@ -100,40 +114,39 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
         )
     }
 
-    private _dateTimeFilter?: (date: T | undefined) => boolean
+    private _dateTimeFilter?: DateFilter<T>
+    /** A function to filter available date & time */
     @Input()
     get dateTimeFilter() {
         return this._dateTimeFilter
     }
 
-    set dateTimeFilter(filter: ((date: T | undefined) => boolean) | undefined) {
+    set dateTimeFilter(filter: DateFilter<T> | undefined) {
         this._dateTimeFilter = filter
     }
 
-    /** The minimum valid date. */
     private _min?: T
-
-    get min() {
-        return this._min
-    }
-
+    /** The minimum valid date */
     @Input()
     set min(value: T | undefined) {
         this._min = this.getValidDate(this.dateTimeAdapter.deserialize(value))
         this.changeDetector.markForCheck()
     }
 
-    /** The maximum valid date. */
-    private _max?: T
-
-    get max() {
-        return this._max
+    get min() {
+        return this._min
     }
 
+    private _max?: T
+    /** The maximum valid date */
     @Input()
     set max(value: T | undefined) {
         this._max = this.getValidDate(this.dateTimeAdapter.deserialize(value))
         this.changeDetector.markForCheck()
+    }
+
+    get max() {
+        return this._max
     }
 
     private _value?: T
@@ -172,15 +185,17 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
 
     /**
      * Emits selected year in multi-year view
+     *
      * This doesn't imply a change on the selected date.
-     * */
+     */
     @Output()
     readonly yearSelected = new EventEmitter<T>()
 
     /**
      * Emits selected month in year view
+     *
      * This doesn't imply a change on the selected date.
-     * */
+     */
     @Output()
     readonly monthSelected = new EventEmitter<T>()
 
@@ -204,7 +219,7 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
         this.changeDetector.markForCheck()
     }
 
-    get opened(): boolean {
+    get isOpen(): boolean {
         return true
     }
 
@@ -224,6 +239,7 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
         )
     }
 
+    /** @internal */
     @HostBinding('class.nxt-dt-inline')
     get inlineClass(): boolean {
         return true
@@ -241,12 +257,12 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
         super(dateTimeAdapter, dateTimeFormats)
     }
 
-    public ngOnInit() {
+    ngOnInit() {
         if (this.container)
             this.container.picker = this
     }
 
-    public writeValue(value: any): void {
+    writeValue(value: any): void {
         value = value ?? undefined
         if (this.isInSingleMode) {
             this.value = value
@@ -261,19 +277,19 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
         }
     }
 
-    public registerOnChange(fn: any): void {
+    registerOnChange(fn: any): void {
         this.onModelChange = fn
     }
 
-    public registerOnTouched(fn: any): void {
+    registerOnTouched(fn: any): void {
         this.onModelTouched = fn
     }
 
-    public setDisabledState(isDisabled: boolean): void {
+    setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled
     }
 
-    public select(date: T[] | T): void {
+    select(date: T[] | T): void {
         if (this.disabled) {
             return
         }
@@ -289,15 +305,15 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
 
     /**
      * Emits the selected year in multi-year view
-     * */
-    public selectYear(normalizedYear: T): void {
+     */
+    selectYear(normalizedYear: T): void {
         this.yearSelected.emit(normalizedYear)
     }
 
     /**
      * Emits selected month in year view
-     * */
-    public selectMonth(normalizedMonth: T): void {
+     */
+    selectMonth(normalizedMonth: T): void {
         this.monthSelected.emit(normalizedMonth)
     }
 }

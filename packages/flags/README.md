@@ -4,37 +4,37 @@
 [![npm](https://img.shields.io/npm/dm/nxt-flags.svg)](https://www.npmjs.com/package/nxt-flags)
 [![scope](https://img.shields.io/npm/v/nxt-flags.svg)](https://www.npmjs.com/package/nxt-flags)
 
-Angular component to show country flags.
+Angular component to show flags based on country ISO code.
 
-[Demo](https://liquid-js.github.io/nxt-components/flags)
+## Quick links
 
-## Install
+-   [Demo](https://liquid-js.github.io/nxt-components/demo/flags)
+-   [Getting started](https://liquid-js.github.io/nxt-components/demo/flags/getting-started)
+-   [API docs](https://liquid-js.github.io/nxt-components/docs/nxt-flags)
 
-Install the package with NPM:
+### Installing
 
-```bash
-$ npm install nxt-flags
+```sh
+npm install --save nxt-flags
 ```
 
-Import the module to app.module.ts:
+### Import flags module
 
-```js
-import { FlagsModule } from 'nxt-flags';
+```ts
+import { FlagsModule } from 'nxt-flags'
 
 @NgModule({
     ...
     imports: [
-        ...,
-        FlagsModule,
         ...
-    ],
-    ...
+        FlagsModule
+    ]
 })
 ```
 
-Add this lines to `angular.json`:
+### Add flags SVGs to Angular compilation
 
-```js
+```json
 {
     ...
     "assets": [
@@ -44,22 +44,14 @@ Add this lines to `angular.json`:
             "input": "./node_modules/nxt-flags/assets/flags",
             "output": "./assets/flags"
         }
-    ].
-    ...
+    ]
 }
 ```
 
-## Usage
+### Include it in HTML template
 
-Use the tag `nxt-flag` with attribute `country="xx"` (where `xx` is the [ISO 3166-1-alpha-2 code](http://www.iso.org/iso/country_names_and_code_elements) of a country):
+Use the tag `nxt-flag` with attribute `country="xx"` (where xx is the [ISO 3166-1-alpha-2 code](http://www.iso.org/iso/country_names_and_code_elements) of a country):
 
 ```html
 <nxt-flag country="br"></nxt-flag>
 ```
-
-## Optional attributes
-
-| attribute | options                                                         | default  | description          |
-| --------- | --------------------------------------------------------------- | -------- | -------------------- |
-| size      | `'xxs'`, `'xs'`, `'s'`, `'m'`, `'l'`, `'xl'`, `'xxl'`, <number> | `48`     | sets the flag width  |
-| format    | `'none'`, `'round'`, `'square'`                                 | `'none'` | sets the flag format |

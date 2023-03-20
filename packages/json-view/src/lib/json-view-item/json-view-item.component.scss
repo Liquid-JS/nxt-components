@@ -21,26 +21,26 @@
     }
 
     .key {
-        color: #92278f;
+        color: var(--nxt-json-view-color-key, #92278f);
     }
 
     .value {
-        color: #000000;
+        color: var(--nxt-json-view-color-value, #000000);
 
         .string {
-            color: #3ab54a;
+            color: var(--nxt-json-view-color-string, #3ab54a);
         }
 
         .number {
-            color: #25aae2;
+            color: var(--nxt-json-view-color-number, #25aae2);
         }
 
         .boolean {
-            color: #aa0d91;
+            color: var(--nxt-json-view-color-boolean, #aa0d91);
         }
 
         .null {
-            color: #f1592a;
+            color: var(--nxt-json-view-color-null, #f1592a);
         }
     }
 

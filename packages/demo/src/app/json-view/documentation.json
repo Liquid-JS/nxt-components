@@ -1,0 +1,158 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "LevelLabels",
+            "id": "interface-LevelLabels-5b4a265617bc7cb727510602e82a1ec16c08725540b2ebe9ba67fa533594e80490594437becc9f495aac065a3e2ec704744949974e087938e9356e013f5c369c",
+            "file": "src/lib/utils/interfaces.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "properties": [],
+            "indexSignatures": [
+                {
+                    "id": "index-declaration-5b4a265617bc7cb727510602e82a1ec16c08725540b2ebe9ba67fa533594e80490594437becc9f495aac065a3e2ec704744949974e087938e9356e013f5c369c",
+                    "args": [
+                        {
+                            "name": "level",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "literal type",
+                    "line": 1,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "kind": 175,
+            "methods": []
+        }
+    ],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "JsonViewComponent",
+            "id": "component-JsonViewComponent-98cf3d6f63994cc304ae0b94d01f5ece87007558999a465227c8e57e674c6bf62b2714aa56b0ec9664dd5e3e1c369bad3253dfa82477b18bf8aa2d5819416d45",
+            "file": "src/lib/json-view/json-view.component.ts",
+            "encapsulation": [
+                "ViewEncapsulation.Emulated"
+            ],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "nxt-json-view",
+            "styleUrls": [
+                "./json-view.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./json-view.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "data",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nJSON data, any valid JSON object",
+                    "description": "<p>JSON data, any valid JSON object</p>\n",
+                    "line": 12,
+                    "type": "any",
+                    "decorators": []
+                },
+                {
+                    "name": "levelLabels",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nCustom labels for elements within the hierarcy",
+                    "description": "<p>Custom labels for elements within the hierarcy</p>\n",
+                    "line": 16,
+                    "type": "LevelLabels",
+                    "decorators": []
+                },
+                {
+                    "name": "levelOpen",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nInitial number of levels to be expanded",
+                    "description": "<p>Initial number of levels to be expanded</p>\n",
+                    "line": 14,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\n",
+                    "styleUrl": "./json-view.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"nxt-json-view\">\n    <nxt-json-view-item [data]=\"data\"\n        [level]=\"0\"\n        [levelOpen]=\"levelOpen\"\n        [levelLabels]=\"levelLabels\"\n        class=\"json-view\"></nxt-json-view-item>\n</div>\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "JsonViewModule",
+            "id": "module-JsonViewModule-031f9b70474597d9d270400565dac363601f6e709132447aab1ff2b4978792f393a1f0e815fdb893c148cea3b156c6ed1884b3bfe0a94e68533cfd72092f3f04",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/lib/json-view.module.ts",
+            "methods": [],
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "JsonViewComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "JsonViewComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": []
+}

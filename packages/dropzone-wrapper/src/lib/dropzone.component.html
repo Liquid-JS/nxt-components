@@ -1,8 +1,7 @@
 <div class="dz-wrapper"
     [class.dropzone]="useDropzoneClass"
     [nxtDropzone]="config"
-    [disabled]="disabled"
-    (init)="DZ_INIT.emit($event)">
+    [disabled]="disabled">
     <div class="dz-message"
         [class.disabled]="disabled"
         [class.dz-placeholder]="placeholder">

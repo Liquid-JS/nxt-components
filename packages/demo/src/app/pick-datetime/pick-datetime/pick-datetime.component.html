@@ -1,0 +1,51 @@
+<app-content-wrap>
+    <h1>Angular date & time picker</h1>
+    <p>
+        <a href="https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Liquid-JS/nxt-components.svg"
+                alt="GitHub license"></a>&nbsp;
+        <a href="https://www.npmjs.com/package/nxt-pick-datetime"><img src="https://img.shields.io/npm/dm/nxt-pick-datetime.svg"
+                alt="npm"></a>&nbsp;
+        <a href="https://www.npmjs.com/package/nxt-pick-datetime"><img src="https://img.shields.io/npm/v/nxt-pick-datetime.svg"
+                alt="scope"></a>
+    </p>
+    <p>Simple responsive Angular date and time picker.</p>
+
+    <ul>
+        <li><a [routerLink]="'./getting-started'"><strong>Getting started</strong></a></li>
+        <li><a [routerLink]="'./accessibility'"><strong>Accessibility</strong></a></li>
+        <li><a [routerLink]="'./validation'"><strong>Validation</strong></a></li>
+        <li><a [routerLink]="'./custom-adapter'"><strong>Custom date adapter</strong></a></li>
+        <li><a href="https://liquid-js.github.io/nxt-components/docs/nxt-pick-datetime"><strong>API docs</strong></a></li>
+    </ul>
+    <br>
+
+    <h2>Demo <div class="btn-group"
+            dropdown>
+            <button id="button-basic"
+                dropdownToggle
+                type="button"
+                class="btn btn-primary dropdown-toggle"
+                aria-controls="dropdown-basic">
+                Go to <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic"
+                *dropdownMenu
+                class="dropdown-menu"
+                role="menu"
+                aria-labelledby="button-basic">
+                <li *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+                    role="menuitem"><a class="dropdown-item"
+                        routerLink="."
+                        fragment="example-{{ i }}">{{ example.name }}</a></li>
+            </ul>
+        </div>
+    </h2>
+
+    <hr class="no-padding">
+
+    <app-example *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+        [injector]="injector"
+        [config]="example"
+        id="example-{{ i }}"></app-example>
+
+</app-content-wrap>

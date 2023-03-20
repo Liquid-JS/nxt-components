@@ -1,4 +1,3 @@
-import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes'
 import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
@@ -6,7 +5,10 @@ import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-fo
 import { DateFilter, SelectMode } from '../../class/date-time.class'
 import { CalendarCell, CalendarBodyComponent } from '../calendar-body/calendar-body.component'
 
+/** @internal */
 const MONTHS_PER_YEAR = 12
+
+/** @internal */
 const MONTHS_PER_ROW = 3
 
 @Component({
@@ -19,7 +21,7 @@ const MONTHS_PER_ROW = 3
 export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy {
     /**
      * The select mode of the picker;
-     * */
+     */
     private _selectMode: SelectMode = 'single'
     @Input()
     get selectMode(): SelectMode {
@@ -34,7 +36,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
         }
     }
 
-    /** The currently selected date. */
+    /** The currently selected date */
     private _selected?: T
     @Input()
     get selected() {
@@ -85,21 +87,21 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
 
     /**
      * A function used to filter which dates are selectable
-     * */
-    private _dateFilter?: DateFilter<T>
+     */
+    private _dateTimeFilter?: DateFilter<T>
     @Input()
-    get dateFilter() {
-        return this._dateFilter
+    get dateTimeFilter() {
+        return this._dateTimeFilter
     }
 
-    set dateFilter(filter: DateFilter<T> | undefined) {
-        this._dateFilter = filter
+    set dateTimeFilter(filter: DateFilter<T> | undefined) {
+        this._dateTimeFilter = filter
         if (this.initiated) {
             this.generateMonthList()
         }
     }
 
-    /** The minimum selectable date. */
+    /** The minimum selectable date */
     private _minDate?: T
     @Input()
     get min() {
@@ -114,7 +116,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
         }
     }
 
-    /** The maximum selectable date. */
+    /** The maximum selectable date */
     private _maxDate?: T
     @Input()
     get max() {
@@ -159,28 +161,30 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
 
     private initiated = false
 
-    public todayMonth?: number
+    todayMonth?: number
 
     /**
      * An array to hold all selectedDates' month value
      * the value is the month number in current year
-     * */
-    public selectedMonths?: Array<number | undefined>
+     */
+    selectedMonths?: Array<number | undefined>
 
     /**
      * Callback to invoke when a new month is selected
-     * */
+     */
     @Output()
     // eslint-disable-next-line @angular-eslint/no-output-native
     readonly change = new EventEmitter<T>()
 
     /**
-     * Emits the selected year. This doesn't imply a change on the selected date
-     * */
+     * Emits the selected year
+     *
+     * This doesn't imply a change on the selected date.
+     */
     @Output()
     readonly monthSelected = new EventEmitter<T>()
 
-    /** Emits when any date is activated. */
+    /** Emits when any date is activated */
     @Output()
     readonly pickerMomentChange = new EventEmitter<T>()
 
@@ -190,8 +194,9 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
 
     /** The body of calendar table */
     @ViewChild(CalendarBodyComponent, { static: true })
-    calendarBodyElm?: CalendarBodyComponent
+    private calendarBodyElm?: CalendarBodyComponent
 
+    /** @internal */
     @HostBinding('class.nxt-dt-calendar-view')
     get calendarView(): boolean {
         return true
@@ -206,19 +211,19 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
         this.monthNames = this.dateTimeAdapter.getMonthNames('short')
     }
 
-    public ngOnInit() {
+    ngOnInit() {
         this.localeSub = this.dateTimeAdapter.localeChanges.subscribe(() => {
             this.generateMonthList()
             this.cdRef.markForCheck()
         })
     }
 
-    public ngAfterContentInit(): void {
+    ngAfterContentInit(): void {
         this.generateMonthList()
         this.initiated = true
     }
 
-    public ngOnDestroy(): void {
+    ngOnDestroy(): void {
         this.localeSub?.unsubscribe()
         this.localeSub = undefined
     }
@@ -226,7 +231,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
     /**
      * Handle a calendarCell selected
      */
-    public selectCalendarCell(cell: CalendarCell): void {
+    selectCalendarCell(cell: CalendarCell): void {
         this.selectMonth(cell.value)
     }
 
@@ -263,11 +268,11 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
     /**
      * Handle keydown event on calendar body
      */
-    public handleCalendarKeydown(event: KeyboardEvent): void {
+    handleCalendarKeydown(event: KeyboardEvent): void {
         let moment
-        switch (event.keyCode) {
+        switch (event.code.toLowerCase()) {
             // minus 1 month
-            case LEFT_ARROW:
+            case 'arrowleft':
                 moment = this.dateTimeAdapter.addCalendarMonths(
                     this.pickerMoment,
                     -1
@@ -276,7 +281,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // add 1 month
-            case RIGHT_ARROW:
+            case 'arrowright':
                 moment = this.dateTimeAdapter.addCalendarMonths(
                     this.pickerMoment,
                     1
@@ -285,7 +290,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // minus 3 months
-            case UP_ARROW:
+            case 'arrowup':
                 moment = this.dateTimeAdapter.addCalendarMonths(
                     this.pickerMoment,
                     -3
@@ -294,7 +299,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // add 3 months
-            case DOWN_ARROW:
+            case 'arrowdown':
                 moment = this.dateTimeAdapter.addCalendarMonths(
                     this.pickerMoment,
                     3
@@ -303,7 +308,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // move to first month of current year
-            case HOME:
+            case 'home':
                 moment = this.dateTimeAdapter.addCalendarMonths(
                     this.pickerMoment,
                     -this.dateTimeAdapter.getMonth(this.pickerMoment)
@@ -312,7 +317,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // move to last month of current year
-            case END:
+            case 'end':
                 moment = this.dateTimeAdapter.addCalendarMonths(
                     this.pickerMoment,
                     11 - this.dateTimeAdapter.getMonth(this.pickerMoment)
@@ -321,7 +326,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // minus 1 year (or 10 year)
-            case PAGE_UP:
+            case 'pageup':
                 moment = this.dateTimeAdapter.addCalendarYears(
                     this.pickerMoment,
                     event.altKey ? -10 : -1
@@ -330,7 +335,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // add 1 year (or 10 year)
-            case PAGE_DOWN:
+            case 'pagedown':
                 moment = this.dateTimeAdapter.addCalendarYears(
                     this.pickerMoment,
                     event.altKey ? 10 : 1
@@ -339,7 +344,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
                 break
 
             // Select current month
-            case ENTER:
+            case 'enter':
                 this.selectMonth(
                     this.dateTimeAdapter.getMonth(this.pickerMoment)
                 )
@@ -355,7 +360,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
 
     /**
      * Generate the calendar month list
-     * */
+     */
     private generateMonthList(): void {
         if (!this.pickerMoment) {
             return
@@ -425,7 +430,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
         ) {
             if (
                 !!date &&
-                (!this.dateFilter || this.dateFilter(date, 'month')) &&
+                (!this.dateTimeFilter || this.dateTimeFilter(date, 'month')) &&
                 (!this.min ||
                     this.dateTimeAdapter.compare(date, this.min) >= 0) &&
                 (!this.max ||
@@ -467,7 +472,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
      * Set the selectedMonths value
      * In single mode, it has only one value which represent the month the selected date in
      * In range mode, it would has two values, one for the month the fromValue in and the other for the month the toValue in
-     * */
+     */
     private setSelectedMonths(): void {
         this.selectedMonths = []
         if (this.isInSingleMode && this.selected) {
