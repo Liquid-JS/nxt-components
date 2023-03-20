@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[9942],{9942:l=>{l.exports='<ul class="list-group"\n    [nxtSortablejs]="scrollableItems"\n    [config]="scrollableOptions">\n    <li class="list-group-item"\n        *ngFor="let item of scrollableItems">\n        Element {{ item }}\n    </li>\n</ul>\n'}}]);
