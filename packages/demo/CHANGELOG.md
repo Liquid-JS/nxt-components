@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-alpha.1](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.0...v16.0.0-alpha.1) (2023-03-20)
+
+
+### Bug Fixes
+
+* docs link ([ff441bd](https://github.com/Liquid-JS/nxt-components/commit/ff441bd6939654f8bbab655da891be08629cc36d))
+
+
+
+
+
 # [16.0.0-alpha.0](https://github.com/Liquid-JS/nxt-components/compare/v15.0.1...v16.0.0-alpha.0) (2023-03-20)
 
 
