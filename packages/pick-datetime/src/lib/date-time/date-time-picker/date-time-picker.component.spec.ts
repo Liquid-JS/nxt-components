@@ -2532,7 +2532,7 @@ class DateTimePickerWithISOStrings {
 @Component({
     template: `
     <input [(ngModel)]="selected" [nxtDateTime]="dt">
-    <nxt-date-time (afterPickerOpen)="isOpenSpy()" (close)="closedSpy()" #dt></nxt-date-time>
+    <nxt-date-time (open)="isOpenSpy()" (close)="closedSpy()" #dt></nxt-date-time>
   `
 })
 class DateTimePickerWithEvents {
