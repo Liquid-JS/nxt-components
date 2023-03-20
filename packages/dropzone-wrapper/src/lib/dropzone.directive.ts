@@ -39,7 +39,7 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
     @Input('nxtDropzone') config?: DropzoneConfig
 
     private configDiff = this.differs.find(this.config || {}).create()
-    private paramDiff = this.differs.find(this._params).create()
+    private paramDiff = this.differs.find(this._params || {}).create()
 
     @Output('init') readonly DZ_INIT = this.component?.DZ_INIT
         ?? new EventEmitter<Dropzone>()
@@ -168,7 +168,7 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
                 newParams.assign(this.config)
             else if (this.config)
                 newParams = new _DropzoneConfig(this.config)
-            const d = this.paramDiff.diff(newParams as any)
+            const d = this.paramDiff.diff(newParams || {} as any)
             if (d) {
                 this._params = newParams
                 let hasChanges = false
@@ -176,7 +176,7 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
                     if (!internalChanges.has(r.key as any) && r.currentValue !== r.previousValue)
                         hasChanges = true
                 })
-                if (hasChanges && this.instance) {
+                if (hasChanges) {
                     this.destroyInstance()
                     this.initInstance()
                 }
