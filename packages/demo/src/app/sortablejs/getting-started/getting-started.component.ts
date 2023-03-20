@@ -10,7 +10,7 @@ import docs from '../documentation.json'
 })
 export class GettingStartedComponent implements OnInit {
 
-    readonly installScript = 'npm install --save nxt-sortablejs'
+    readonly installScript = 'npm install --save nxt-sortablejs sortablejs'
 
     readonly importGlobal = `import { SortablejsModule } from 'nxt-sortablejs'
 
