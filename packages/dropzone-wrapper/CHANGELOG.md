@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-alpha.2](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.1...v16.0.0-alpha.2) (2023-03-20)
+
+
+### Bug Fixes
+
+* **nxt-dropzone-wrapper:** don't create instance without config ([c629ab9](https://github.com/Liquid-JS/nxt-components/commit/c629ab9f5527f94ea90199fc5f4194c00486e66b))
+
+
+
+
+
 # [16.0.0-alpha.1](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.0...v16.0.0-alpha.1) (2023-03-20)
 
 
