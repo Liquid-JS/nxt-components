@@ -15,8 +15,8 @@ const dark = new Rgba(34, 34, 34, 1, false)
  * @internal
  */
 export function opaqueSliderLight(background: Rgba) {
-    const cWhite = calculateContrast(light, new Rgba(background.r, background.g, background.b, 1))
-    const cBlack = calculateContrast(dark, new Rgba(background.r, background.g, background.b, 1))
+    const cWhite = calculateContrast(light, new Rgba(background.r, background.g, background.b, 1, background.normalized))
+    const cBlack = calculateContrast(dark, new Rgba(background.r, background.g, background.b, 1, background.normalized))
 
     return cWhite > cBlack
 }

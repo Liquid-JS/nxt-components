@@ -734,7 +734,7 @@
     "directives": [
         {
             "name": "ColorPickerDirective",
-            "id": "directive-ColorPickerDirective-3b253274494ad7215ac923a55a7532fd56ab9b44d0f1acc7afaedc602c770d0ee1f4b2807f8a854b5aebfa1657bd4daab4d29da4dff8ee411d4f572a1540d3ae",
+            "id": "directive-ColorPickerDirective-e664763c7b3f20b31ca532f37918d206f06711291fe6da41f8815e02c73457d1e318f4f8b5f9b14bfe954aa36724139528193a0656e86dbb6d2f2d74118d89b8",
             "file": "src/lib/color-picker.directive.ts",
             "type": "directive",
             "description": "",
@@ -749,7 +749,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nAlpha channel mode",
                     "description": "<p>Alpha channel mode</p>\n",
-                    "line": 91,
+                    "line": 95,
                     "type": "AlphaChannel",
                     "decorators": []
                 },
@@ -760,7 +760,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow a Cancel / Reset button which resets the color",
                     "description": "<p>Show a Cancel / Reset button which resets the color</p>\n",
-                    "line": 127,
+                    "line": 131,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -771,7 +771,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nClose the color picker dialog when user clicks outside",
                     "description": "<p>Close the color picker dialog when user clicks outside</p>\n",
-                    "line": 121,
+                    "line": 125,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -782,7 +782,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nEnables CMYK input format and color change event",
                     "description": "<p>Enables CMYK input format and color change event</p>\n",
-                    "line": 86,
+                    "line": 90,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -793,7 +793,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDialog positioning mode",
                     "description": "<p>Dialog positioning mode</p>\n",
-                    "line": 113,
+                    "line": 117,
                     "type": "DialogDisplay",
                     "decorators": []
                 },
@@ -804,7 +804,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDisables opening of the color picker dialog via toggle",
                     "description": "<p>Disables opening of the color picker dialog via toggle</p>\n",
-                    "line": 80,
+                    "line": 84,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -815,7 +815,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDisables / hides the color input field from the dialog",
                     "description": "<p>Disables / hides the color input field from the dialog</p>\n",
-                    "line": 110,
+                    "line": 114,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -825,7 +825,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUsed when the color is not well-formed or is undefined",
                     "description": "<p>Used when the color is not well-formed or is undefined</p>\n",
-                    "line": 93,
+                    "line": 97,
                     "type": "string",
                     "decorators": []
                 },
@@ -836,7 +836,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUse this option to force color picker dialog height",
                     "description": "<p>Use this option to force color picker dialog height</p>\n",
-                    "line": 75,
+                    "line": 79,
                     "type": "string",
                     "decorators": []
                 },
@@ -846,7 +846,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nArray of HTML elements that will be ignored when clicked",
                     "description": "<p>Array of HTML elements that will be ignored when clicked</p>\n",
-                    "line": 116,
+                    "line": 120,
                     "type": "any[]",
                     "decorators": []
                 },
@@ -856,7 +856,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUse this option to set the max colors allowed in presets",
                     "description": "<p>Use this option to set the max colors allowed in presets</p>\n",
-                    "line": 133,
+                    "line": 137,
                     "type": "number",
                     "decorators": []
                 },
@@ -867,7 +867,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDialog color mode",
                     "description": "<p>Dialog color mode</p>\n",
-                    "line": 83,
+                    "line": 87,
                     "type": "ColorMode",
                     "decorators": []
                 },
@@ -877,7 +877,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nThe color to show in the color picker dialog",
                     "description": "<p>The color to show in the color picker dialog</p>\n",
-                    "line": 70,
+                    "line": 74,
                     "type": "string",
                     "decorators": []
                 },
@@ -888,7 +888,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow an OK / Apply button which saves the color",
                     "description": "<p>Show an OK / Apply button which saves the color</p>\n",
-                    "line": 124,
+                    "line": 128,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -899,7 +899,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nOutput color format",
                     "description": "<p>Output color format</p>\n",
-                    "line": 89,
+                    "line": 93,
                     "type": "OutputFormat",
                     "decorators": []
                 },
@@ -910,7 +910,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDialog position",
                     "description": "<p>Dialog position</p>\n",
-                    "line": 96,
+                    "line": 100,
                     "type": "DialogPosition",
                     "decorators": []
                 },
@@ -921,7 +921,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDialog offset percentage relative to the directive element",
                     "description": "<p>Dialog offset percentage relative to the directive element</p>\n",
-                    "line": 98,
+                    "line": 102,
                     "type": "number",
                     "decorators": []
                 },
@@ -931,7 +931,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nArray of preset colors to show in the color picker dialog",
                     "description": "<p>Array of preset colors to show in the color picker dialog</p>\n",
-                    "line": 107,
+                    "line": 111,
                     "type": "string[]",
                     "decorators": []
                 },
@@ -942,7 +942,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow buttons to add / remove preset colors",
                     "description": "<p>Show buttons to add / remove preset colors</p>\n",
-                    "line": 130,
+                    "line": 134,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -953,7 +953,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nShow label for preset colors\n\nIf string is given, it overrides the default label.\n",
                     "description": "<p>Show label for preset colors</p>\n<p>If string is given, it overrides the default label.</p>\n",
-                    "line": 105,
+                    "line": 109,
                     "type": "boolean | string",
                     "decorators": []
                 },
@@ -964,7 +964,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSave currently selected color when user clicks outside",
                     "description": "<p>Save currently selected color when user clicks outside</p>\n",
-                    "line": 119,
+                    "line": 123,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -975,7 +975,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSets the default open / close state of the color picker",
                     "description": "<p>Sets the default open / close state of the color picker</p>\n",
-                    "line": 78,
+                    "line": 82,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -986,7 +986,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCreate dialog component in the root view container\n\nNote: The root component needs to have public viewContainerRef.\n",
                     "description": "<p>Create dialog component in the root view container</p>\n<p>Note: The root component needs to have public viewContainerRef.</p>\n",
-                    "line": 140,
+                    "line": 144,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -997,7 +997,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUse this option to set color picker dialog width",
                     "description": "<p>Use this option to set color picker dialog width</p>\n",
-                    "line": 73,
+                    "line": 77,
                     "type": "string",
                     "decorators": []
                 }
@@ -1010,7 +1010,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCurrent color value, emit when dialog is closed",
                     "description": "<p>Current color value, emit when dialog is closed</p>\n",
-                    "line": 145,
+                    "line": 149,
                     "type": "EventEmitter"
                 },
                 {
@@ -1020,7 +1020,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nOutputs the color as CMYK string if CMYK is enabled",
                     "description": "<p>Outputs the color as CMYK string if CMYK is enabled</p>\n",
-                    "line": 168,
+                    "line": 172,
                     "type": "EventEmitter"
                 },
                 {
@@ -1030,7 +1030,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nColor select canceled, emit when Cancel button is pressed",
                     "description": "<p>Color select canceled, emit when Cancel button is pressed</p>\n",
-                    "line": 161,
+                    "line": 165,
                     "type": "EventEmitter"
                 },
                 {
@@ -1040,7 +1040,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSelected color value, emit when OK button pressed or user clicks outside (if saveClickOutside is true)",
                     "description": "<p>Selected color value, emit when OK button pressed or user clicks outside (if saveClickOutside is true)</p>\n",
-                    "line": 163,
+                    "line": 167,
                     "type": "EventEmitter"
                 },
                 {
@@ -1050,7 +1050,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nInput name and its value, emit when user changes color through inputs",
                     "description": "<p>Input name and its value, emit when user changes color through inputs</p>\n",
-                    "line": 148,
+                    "line": 152,
                     "type": "EventEmitter"
                 },
                 {
@@ -1060,7 +1060,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nChanged color value, emit when color changes",
                     "description": "<p>Changed color value, emit when color changes</p>\n",
-                    "line": 165,
+                    "line": 169,
                     "type": "EventEmitter"
                 },
                 {
@@ -1070,7 +1070,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCurrent color value, emit when dialog is isOpen",
                     "description": "<p>Current color value, emit when dialog is isOpen</p>\n",
-                    "line": 143,
+                    "line": 147,
                     "type": "EventEmitter"
                 },
                 {
@@ -1080,7 +1080,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nPreset colors, emit when preset color is added / removed",
                     "description": "<p>Preset colors, emit when preset color is added / removed</p>\n",
-                    "line": 171,
+                    "line": 175,
                     "type": "EventEmitter"
                 },
                 {
@@ -1090,7 +1090,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSlider name and its value, emit when user changes color through slider",
                     "description": "<p>Slider name and its value, emit when user changes color through slider</p>\n",
-                    "line": 156,
+                    "line": 160,
                     "type": "EventEmitter"
                 },
                 {
@@ -1100,7 +1100,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSlider name and current color, emit when slider dragging ends",
                     "description": "<p>Slider name and current color, emit when slider dragging ends</p>\n",
-                    "line": 158,
+                    "line": 162,
                     "type": "EventEmitter"
                 },
                 {
@@ -1110,7 +1110,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSlider name and current color, emit when slider dragging starts",
                     "description": "<p>Slider name and current color, emit when slider dragging starts</p>\n",
-                    "line": 154,
+                    "line": 158,
                     "type": "EventEmitter"
                 },
                 {
@@ -1120,7 +1120,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nStatus of the dialog, emit when dialog is isOpen / closed",
                     "description": "<p>Status of the dialog, emit when dialog is isOpen / closed</p>\n",
-                    "line": 151,
+                    "line": 155,
                     "type": "EventEmitter"
                 }
             ],
@@ -1136,7 +1136,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 270,
+                    "line": 274,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1146,9 +1146,100 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 257,
+                    "line": 261,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "textColorMode",
+                    "args": [
+                        {
+                            "name": "bg",
+                            "type": "string | Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "new Rgba(1, 1, 1, 1, true)"
+                        },
+                        {
+                            "name": "fg",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "this.dialog?.rgbaText"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "\"light\" | \"dark\"",
+                    "typeParameters": [],
+                    "line": 287,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nGet text color mode to ensure good contrast with selected color\n\n",
+                    "description": "<p>Get text color mode to ensure good contrast with selected color</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 10373,
+                                "end": 10375,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "bg"
+                            },
+                            "type": "string | Rgba",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "new Rgba(1, 1, 1, 1, true)",
+                            "tagName": {
+                                "pos": 10367,
+                                "end": 10372,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>Solid background color; this is used when selected color has transparency</p>\n"
+                        },
+                        {
+                            "name": {
+                                "pos": 10467,
+                                "end": 10469,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "fg"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "this.dialog?.rgbaText",
+                            "tagName": {
+                                "pos": 10461,
+                                "end": 10466,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>Foreground color, defaults to current picker value</p>\n"
+                        },
+                        {
+                            "tagName": {
+                                "pos": 10532,
+                                "end": 10539,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "returns"
+                            },
+                            "comment": ""
+                        }
+                    ]
                 }
             ],
             "implements": [

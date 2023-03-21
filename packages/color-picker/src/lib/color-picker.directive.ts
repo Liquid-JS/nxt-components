@@ -1,12 +1,16 @@
 import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
 import { ApplicationRef, ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Injector, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewContainerRef } from '@angular/core'
+import { compositeColors, hsvaToRgba, stringToHsva } from '../util/color'
+import { opaqueSliderLight } from '../util/contrast'
+import { Hsva, Rgba } from '../util/formats'
 import { composedPath, DirectiveCallbacks } from '../util/helpers'
 import { AlphaChannel, AlphaChannelEnum, ColorMode, DialogDisplay, DialogDisplayEnum, DialogPosition, DialogPositionEnum, InputChangeEvent, OutputFormat, OutputFormatEnum, SliderChangeEvent } from '../util/types'
 import { ColorPickerComponent } from './color-picker/color-picker.component'
 
 @Directive({
-    selector: '[nxtColor]'
+    selector: '[nxtColor]',
+    exportAs: 'nxtColorPicker'
 })
 export class ColorPickerDirective implements OnChanges, OnDestroy {
 
@@ -271,6 +275,24 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         if (this.dialog && this.dialogDisplay == DialogDisplayEnum.popup) {
             this.dialog.closeDialog()
         }
+    }
+
+    /**
+     * Get text color mode to ensure good contrast with selected color
+     *
+     * @param bg    Solid background color; this is used when selected color has transparency
+     * @param fg    Foreground color, defaults to current picker value
+     * @returns
+     */
+    textColorMode(
+        bg: string | Rgba = new Rgba(1, 1, 1, 1, true),
+        fg = this.dialog?.rgbaText
+    ) {
+        if (typeof bg == 'string')
+            bg = hsvaToRgba(stringToHsva(bg) ?? new Hsva(1, 1, 1, 1, true))
+        const color = compositeColors(fg || bg, new Rgba(bg.r, bg.g, bg.b, 1, bg.normalized))
+        const useLightColor = opaqueSliderLight(color)
+        return useLightColor ? 'light' : 'dark'
     }
 
     private dispose() {

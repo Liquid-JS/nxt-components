@@ -1,6 +1,8 @@
 <input class="form-control"
     [value]="color"
     [style.background]="color"
+    [style.color]="picker.textColorMode('#fff') == 'light' ? '#f8f9fa': '#212529'"
+    #picker="nxtColorPicker"
     [okButton]="true"
     [saveClickOutside]="false"
     [(nxtColor)]="color" />

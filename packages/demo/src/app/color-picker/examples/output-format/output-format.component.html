@@ -1,11 +1,15 @@
 <input class="form-control"
     [value]="color1"
     [style.background]="color1"
+    [style.color]="picker1.textColorMode('#fff') == 'light' ? '#f8f9fa': '#212529'"
+    #picker1="nxtColorPicker"
     outputFormat="rgba"
     [(nxtColor)]="color1" />
 <br>
 <input class="form-control"
     [value]="color2"
     [style.background]="color2"
+    [style.color]="picker2.textColorMode('#fff') == 'light' ? '#f8f9fa': '#212529'"
+    #picker2="nxtColorPicker"
     outputFormat="hsla"
     [(nxtColor)]="color2" />

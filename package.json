@@ -23,8 +23,10 @@
         "lint:sass": "yarn workspaces foreach run lint:sass",
         "lint:sass:fix": "yarn workspaces foreach run lint:sass:fix",
         "docs": "yarn workspaces foreach run docs && yarn workspaces foreach run docs:json",
-        "pages": "rimraf docs && yarn docs && yarn build:demo --base-href /nxt-components/demo/ && yarn scripts:add404 && ngh --dir docs",
-        "scripts:add404": "node --loader ts-node/esm scripts/add-404.ts"
+        "pages": "rimraf docs && yarn docs && yarn build:demo --base-href /nxt-components/demo/ && yarn scripts:add404",
+        "pages:publish": "yarn pages && ngh --dir docs",
+        "scripts:add404": "node --loader ts-node/esm scripts/add-404.ts",
+        "release": "lerna version"
     },
     "dependencies": {
         "@angular/animations": "^15.2.3",

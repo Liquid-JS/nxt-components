@@ -1,6 +1,8 @@
 <input class="form-control"
     [value]="color1"
     [style.background]="color1"
+    [style.color]="picker1.textColorMode('#fff') == 'light' ? '#f8f9fa': '#212529'"
+    #picker1="nxtColorPicker"
     alphaChannel="always"
     outputFormat="rgba"
     [(nxtColor)]="color1" />
@@ -8,6 +10,8 @@
 <input class="form-control"
     [value]="color2"
     [style.background]="color2"
+    [style.color]="picker2.textColorMode('#fff') == 'light' ? '#f8f9fa': '#212529'"
+    #picker2="nxtColorPicker"
     alphaChannel="disabled"
     outputFormat="rgba"
     [(nxtColor)]="color2" />
@@ -15,6 +19,8 @@
 <input class="form-control"
     [value]="color3"
     [style.background]="rgbaText"
+    [style.color]="picker3.textColorMode('#fff') == 'light' ? '#f8f9fa': '#212529'"
+    #picker3="nxtColorPicker"
     alphaChannel="always"
     outputFormat="hex"
     [nxtColor]="color3"
@@ -23,6 +29,8 @@
 <input class="form-control"
     [value]="color4"
     [style.background]="color4"
+    [style.color]="picker4.textColorMode('#fff') == 'light' ? '#f8f9fa': '#212529'"
+    #picker4="nxtColorPicker"
     alphaChannel="forced"
     outputFormat="hex"
     [(nxtColor)]="color4" />
