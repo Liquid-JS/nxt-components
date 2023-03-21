@@ -16,3 +16,10 @@
 }
 
 @import "./scss/highlight";
+
+app-inputs-table,
+app-outputs-table {
+    & + & {
+        margin-top: 2rem;
+    }
+}

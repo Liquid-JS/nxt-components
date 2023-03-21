@@ -1,0 +1,6 @@
+app-inputs-table,
+app-outputs-table {
+    & + br + h3 {
+        margin-top: 1rem;
+    }
+}

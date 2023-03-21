@@ -27,8 +27,10 @@
     <ng-container *ngFor="let item of inps; index as i">
         <br *ngIf="i > 0">
         <h3 class="h5">{{ item.selector }}</h3>
-        <app-inputs-table [inputs]="item.inputs"></app-inputs-table>
-        <app-outputs-table [outputs]="item.outputs"></app-outputs-table>
+        <app-inputs-table [inputs]="item.inputs"
+            *ngIf="item.inputs.length"></app-inputs-table>
+        <app-outputs-table [outputs]="item.outputs"
+            *ngIf="item.outputs.length"></app-outputs-table>
     </ng-container>
 
 </app-content-wrap>
