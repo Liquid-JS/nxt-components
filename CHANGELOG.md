@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-alpha.5](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.4...v16.0.0-alpha.5) (2023-03-21)
+
+
+* feat(nxt-color-picker)!: use auto positioning by default ([d84bb6a](https://github.com/Liquid-JS/nxt-components/commit/d84bb6a092e7cd2d622939b83007a05543ee2340))
+
+
+### BREAKING CHANGES
+
+* picker position still defaults to right, but might change if there isn't
+enough space. To get the old behaviour, set `position="right"`
+
+
+
+
+
 # [16.0.0-alpha.4](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.3...v16.0.0-alpha.4) (2023-03-21)
 
 
