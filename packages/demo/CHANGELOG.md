@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-alpha.4](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.3...v16.0.0-alpha.4) (2023-03-21)
+
+
+### Features
+
+* **nxt-color-picker:** add a function to determine good contrast mode dependign on the picker value ([4f9ec71](https://github.com/Liquid-JS/nxt-components/commit/4f9ec71057b83ab015b10b6ca30e26d75b60867f))
+
+
+
+
+
 # [16.0.0-alpha.1](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.0...v16.0.0-alpha.1) (2023-03-20)
 
 
