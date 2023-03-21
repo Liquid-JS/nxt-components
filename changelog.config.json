@@ -16,10 +16,7 @@
             "title": "Refactors",
             "semver": "patch"
         },
-        "docs": {
-            "title": "Documentation",
-            "semver": "patch"
-        },
+        "docs": false,
         "build": {
             "title": "Build",
             "semver": "patch"
@@ -28,9 +25,7 @@
             "title": "Types",
             "semver": "patch"
         },
-        "chore": {
-            "title": "Chore"
-        },
+        "chore": false,
         "examples": {
             "title": "Examples"
         },
@@ -40,8 +35,6 @@
         "style": {
             "title": "Styles"
         },
-        "ci": {
-            "title": "CI"
-        }
+        "ci": false
     }
 }
