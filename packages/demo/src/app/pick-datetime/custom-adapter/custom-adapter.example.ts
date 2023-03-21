@@ -30,4 +30,4 @@ export class CustomDateTimeAdapter extends DateTimeAdapter<CustomDateModel> {
         }
     ]
 })
-export class CustomDateTimeModel { }
+export class CustomDateTimeModule { }
