@@ -20,7 +20,7 @@ const hidden = style({
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     animations: [
-        trigger('expandCollapse', [
+        trigger('expandCollapseNav', [
             transition('open => close', [
                 visible,
                 animate('0.3s ease-in-out', hidden)
@@ -28,7 +28,9 @@ const hidden = style({
             transition('close => open', [
                 hidden,
                 animate('0.3s ease-in-out', visible)
-            ]),
+            ])
+        ]),
+        trigger('expandCollapse', [
             transition('* => void', [
                 visible,
                 animate('0.3s ease-in-out', hidden)
@@ -151,7 +153,9 @@ export class AppComponent {
     ]
 
     toggle(forced = !this.navbarCollapsed) {
-        this.navbarCollapsed = forced
-        this.animationDone = !this.navbarCollapsed  // true if new state is open, false if new state is collapsed
+        if (forced != this.navbarCollapsed) {
+            this.navbarCollapsed = forced
+            this.animationDone = !this.navbarCollapsed  // true if new state is open, false if new state is collapsed
+        }
     }
 }

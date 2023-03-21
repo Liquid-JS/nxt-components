@@ -1,3 +1,12 @@
 td ::ng-deep p:last-child {
     margin: 0;
 }
+
+:host {
+    display: flex;
+    overflow-x: auto;
+}
+
+table {
+    margin: 0;
+}
