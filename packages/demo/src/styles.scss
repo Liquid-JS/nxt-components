@@ -10,7 +10,9 @@
 }
 
 .cdk-overlay-container {
-    z-index: 10011 !important;
+    &:not(.color-picker-container) {
+        z-index: 10011 !important;
+    }
 }
 
 @import "./scss/highlight";

@@ -1,3 +1,4 @@
+import { OverlayContainer } from '@angular/cdk/overlay'
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
@@ -54,6 +55,10 @@ import { GettingStartedComponent } from './getting-started/getting-started.compo
         CodeBlockComponent,
         InputsTableComponent,
         OutputsTableComponent
-    ]
+    ],
+    providers: [{
+        provide: OverlayContainer,
+        useClass: AppColorPickerComponent
+    }]
 })
 export class AppColorPickerModule { }

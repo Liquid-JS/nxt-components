@@ -1,3 +1,6 @@
+import { OverlayContainer } from '@angular/cdk/overlay'
+import { Platform } from '@angular/cdk/platform'
+import { DOCUMENT } from '@angular/common'
 import { Component, Injector, OnInit } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 import { ExampleConfig } from '../../example/example.component'
@@ -17,7 +20,7 @@ const extMap: {
     templateUrl: './color-picker.component.html',
     styleUrls: ['./color-picker.component.scss']
 })
-export class AppColorPickerComponent implements OnInit {
+export class AppColorPickerComponent extends OverlayContainer implements OnInit {
 
     readonly examples = Promise.all(new Array<{
         path: string
@@ -118,7 +121,9 @@ export class AppColorPickerComponent implements OnInit {
     constructor(
         private readonly title: Title,
         readonly injector: Injector
-    ) { }
+    ) {
+        super(injector.get(DOCUMENT), injector.get(Platform))
+    }
 
     ngOnInit(): void {
         this.title.setTitle('nxt-color-picker')
@@ -126,5 +131,11 @@ export class AppColorPickerComponent implements OnInit {
 
     exampleTrackBy(_i: number, val: ExampleConfig) {
         return val.component
+    }
+
+    override getContainerElement(): HTMLElement {
+        const el = super.getContainerElement()
+        el.classList.add('color-picker-container')
+        return el
     }
 }
