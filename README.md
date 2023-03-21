@@ -8,3 +8,7 @@ A collection of various Angular components
 -   **[nxt-json-view](packages/json-view)**
 -   **[nxt-pick-datetime](packages/pick-datetime)**
 -   **[nxt-sortablejs](packages/sortablejs)**
+
+## Development
+
+This project uses [Yarn 2+](https://yarnpkg.com/) and [Angular CLI](https://angular.io/cli) for development. To get started, simply run `yarn install` in the project root directory.
