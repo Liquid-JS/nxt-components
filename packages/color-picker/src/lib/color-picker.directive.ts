@@ -97,7 +97,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Input() fallbackColor?: string
 
     /** Dialog position */
-    @Input() position: DialogPosition = DialogPositionEnum.right
+    @Input() position: DialogPosition = DialogPositionEnum.auto
     /** Dialog offset percentage relative to the directive element */
     @Input() positionOffset: number = 0
 
@@ -353,6 +353,17 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
         const bb = this.elRef.nativeElement.getBoundingClientRect()
 
+        if (position == DialogPositionEnum.auto || position == DialogPositionEnum.right) {
+            pos.push({
+                originX: 'end',
+                originY: 'top',
+                overlayX: 'start',
+                overlayY: 'top',
+                panelClass: 'color-picker__arrow--right',
+                offsetX: bb.width * offset
+            })
+        }
+
         if (position == DialogPositionEnum.auto || position == DialogPositionEnum.bottom) {
             pos.push({
                 originX: 'start',
@@ -383,17 +394,6 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
                 overlayY: 'top',
                 panelClass: 'color-picker__arrow--left',
                 offsetX: -bb.width * offset
-            })
-        }
-
-        if (position == DialogPositionEnum.auto || position == DialogPositionEnum.right) {
-            pos.push({
-                originX: 'end',
-                originY: 'top',
-                overlayX: 'start',
-                overlayY: 'top',
-                panelClass: 'color-picker__arrow--right',
-                offsetX: bb.width * offset
             })
         }
 
