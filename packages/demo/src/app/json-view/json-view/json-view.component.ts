@@ -1,16 +1,6 @@
 import { Component, Injector, OnInit } from '@angular/core'
 import { Title } from '@angular/platform-browser'
-import { ExampleConfig } from '../../example/example.component'
-
-const extMap: {
-    html: keyof ExampleConfig
-    scss: keyof ExampleConfig
-    ts: keyof ExampleConfig
-} = {
-    html: 'template',
-    scss: 'style',
-    ts: 'source'
-}
+import { ExampleConfig, LoaderConfig, resolveTempaltes } from '../../example/example.component'
 
 @Component({
     selector: 'app-json-view',
@@ -19,12 +9,7 @@ const extMap: {
 })
 export class AppJsonViewComponent implements OnInit {
 
-    readonly examples = Promise.all(new Array<{
-        path: string
-        name: string
-        description?: string
-        include: Array<keyof typeof extMap>
-    }>(
+    readonly examples = Promise.all(new Array<LoaderConfig>(
         {
             path: 'basic-example',
             name: 'Basic usage',
@@ -50,17 +35,7 @@ export class AppJsonViewComponent implements OnInit {
             import(`../examples/${p.path}/${p.path}.component`),
             ...p.include.map(ext => import(`../examples/${p.path}/${p.path}.component.${ext}?raw`))
         ])
-            .then(([cmp, ...tpl]) => Object.assign(
-                {
-                    component: Object.values(cmp).find(c => typeof c === 'function' && /^\s*class\s+/.test(c.toString())),
-                    name: p.name,
-                    description: p.description,
-                    path: `json-view/examples/${p.path}`
-                } as ExampleConfig,
-                ...p.include.map((ext, i) => ({
-                    [extMap[ext]]: tpl[i].default.trim()
-                }))
-            ) as ExampleConfig)
+            .then(resolveTempaltes(p, 'json-view/examples'))
         )
     )
 
