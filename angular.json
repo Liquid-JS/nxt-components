@@ -49,6 +49,7 @@
                         "inlineStyleLanguage": "scss",
                         "assets": [
                             "packages/demo/src/favicon.ico",
+                            "packages/demo/src/favicon.png",
                             "packages/demo/src/assets",
                             {
                                 "glob": "**/*",

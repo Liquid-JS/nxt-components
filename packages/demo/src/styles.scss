@@ -1,4 +1,7 @@
-@import "bootstrap/dist/css/bootstrap.css";
+$primary: #00a645;
+$min-contrast-ratio: 3;
+
+@import "bootstrap/scss/bootstrap";
 @import "@angular/cdk/overlay-prebuilt.css";
 
 .navbar {

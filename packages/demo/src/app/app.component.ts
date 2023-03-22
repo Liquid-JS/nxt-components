@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations'
 import { Component } from '@angular/core'
+import logo from '../assets/nxt-logo.png'
 
 const visible = style({
     overflow: 'hidden',
@@ -48,6 +49,8 @@ const hidden = style({
 export class AppComponent {
     navbarCollapsed = true
     animationDone = true
+
+    readonly logo = logo
 
     readonly menuItems = [
         {
