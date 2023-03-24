@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-alpha.7](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.6...v16.0.0-alpha.7) (2023-03-24)
+
+
+### Features
+
+* **nxt-color-picker:** accept an array of positioning strategies ([a6e56f7](https://github.com/Liquid-JS/nxt-components/commit/a6e56f71274e6b12b5c460e7275b5995a588bb82))
+
+
+
+
+
 # [16.0.0-alpha.6](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.5...v16.0.0-alpha.6) (2023-03-24)
 
 
