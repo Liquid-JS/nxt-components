@@ -97,7 +97,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Input() fallbackColor?: string
 
     /** Dialog position */
-    @Input() position: DialogPosition = DialogPositionEnum.auto
+    @Input() position: DialogPosition | DialogPosition[] = DialogPositionEnum.auto
     /** Dialog offset percentage relative to the directive element */
     @Input() positionOffset: number = 0
 
@@ -349,51 +349,65 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
     private getPositions(offset = 0) {
         const pos: ConnectedPosition[] = []
-        const position = this.position || DialogPositionEnum.auto
+        const positions = Array.isArray(this.position)
+            ? this.position
+            : [this.position || DialogPositionEnum.auto]
 
         const bb = this.elRef.nativeElement.getBoundingClientRect()
-
-        if (position == DialogPositionEnum.auto || position == DialogPositionEnum.right) {
-            pos.push({
+        const positionCfg = {
+            [DialogPositionEnum.right]: {
                 originX: 'end',
                 originY: 'top',
                 overlayX: 'start',
                 overlayY: 'top',
                 panelClass: 'color-picker__arrow--right',
                 offsetX: bb.width * offset
-            })
-        }
-
-        if (position == DialogPositionEnum.auto || position == DialogPositionEnum.bottom) {
-            pos.push({
-                originX: 'start',
-                originY: 'bottom',
-                overlayX: 'start',
-                overlayY: 'top',
-                panelClass: 'color-picker__arrow--bottom',
-                offsetY: bb.height * offset
-            })
-        }
-
-        if (position == DialogPositionEnum.auto || position == DialogPositionEnum.top) {
-            pos.push({
-                originX: 'start',
-                originY: 'top',
-                overlayX: 'start',
-                overlayY: 'bottom',
-                panelClass: 'color-picker__arrow--top',
-                offsetY: -bb.height * offset
-            })
-        }
-
-        if (position == DialogPositionEnum.auto || position == DialogPositionEnum.left) {
-            pos.push({
+            } as ConnectedPosition,
+            [DialogPositionEnum.left]: {
                 originX: 'start',
                 originY: 'top',
                 overlayX: 'end',
                 overlayY: 'top',
                 panelClass: 'color-picker__arrow--left',
                 offsetX: -bb.width * offset
+            } as ConnectedPosition,
+            [DialogPositionEnum.top]: {
+                originX: 'start',
+                originY: 'top',
+                overlayX: 'start',
+                overlayY: 'bottom',
+                panelClass: 'color-picker__arrow--top',
+                offsetY: -bb.height * offset
+            } as ConnectedPosition,
+            [DialogPositionEnum.bottom]: {
+                originX: 'start',
+                originY: 'bottom',
+                overlayX: 'start',
+                overlayY: 'top',
+                panelClass: 'color-picker__arrow--bottom',
+                offsetY: bb.height * offset
+            } as ConnectedPosition
+        }
+        const usedPositions = new Set<DialogPosition>()
+        positions.forEach(p => {
+            // Add positions in order as specified
+            if (!usedPositions.has(p) && p in positionCfg) {
+                usedPositions.add(p)
+                pos.push(positionCfg[p as keyof typeof positionCfg])
+            }
+        })
+        if (positions.find(p => p == DialogPositionEnum.auto)) {
+            // If using auto positioning, append the remaining positioning strategies
+            [
+                DialogPositionEnum.right,
+                DialogPositionEnum.top,
+                DialogPositionEnum.bottom,
+                DialogPositionEnum.left
+            ].forEach(p => {
+                if (!usedPositions.has(p) && p in positionCfg) {
+                    usedPositions.add(p)
+                    pos.push(positionCfg[p as keyof typeof positionCfg])
+                }
             })
         }
 

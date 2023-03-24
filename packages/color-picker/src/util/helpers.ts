@@ -112,7 +112,7 @@ export interface DialogConfig {
     saveClickOutside: boolean
     closeClickOutside: boolean
     useRootViewContainer: boolean
-    position: DialogPosition
+    position: DialogPosition | DialogPosition[]
     presetLabel: boolean | string
     presetColors?: string[]
     maxPresetColors?: number
