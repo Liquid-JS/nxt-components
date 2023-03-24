@@ -40,7 +40,7 @@ export class FlagComponent {
         if (typeof val == 'string' && val.toLowerCase() in FlagSize) {
             this._size = FlagSize[val.toLowerCase() as (FlagSizeAlias)]
         } else {
-            this._size = Number.isInteger(val) && val > 0
+            this._size = Number.isInteger(val) && Number(val) > 0
                 ? Number(val)
                 : 48
         }
