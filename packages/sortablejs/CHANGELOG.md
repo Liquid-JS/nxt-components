@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-alpha.6](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.5...v16.0.0-alpha.6) (2023-03-24)
+
+**Note:** Version bump only for package nxt-sortablejs
+
+
+
+
+
 # [16.0.0-alpha.1](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.0...v16.0.0-alpha.1) (2023-03-20)
 
 
