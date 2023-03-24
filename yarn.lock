@@ -289,7 +289,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/cdk@npm:^16.0.0-next.2":
+"@angular/cdk@npm:^16.0.0-next.3":
   version: 16.0.0-next.3
   resolution: "@angular/cdk@npm:16.0.0-next.3"
   dependencies:
@@ -7096,7 +7096,7 @@ __metadata:
   resolution: "demo@workspace:packages/demo"
   dependencies:
     "@angular/animations": ^16.0.0-next.4
-    "@angular/cdk": ^16.0.0-next.2
+    "@angular/cdk": ^16.0.0-next.3
     "@angular/common": ^16.0.0-next.4
     "@angular/compiler": ^16.0.0-next.4
     "@angular/core": ^16.0.0-next.4
@@ -13343,7 +13343,7 @@ __metadata:
   dependencies:
     tslib: ^2.5.0
   peerDependencies:
-    "@angular/cdk": ^16.0.0-next.2
+    "@angular/cdk": ^16.0.0-next.3
     "@angular/common": ^16.0.0-next.4
     "@angular/core": ^16.0.0-next.4
     "@angular/localize": ^16.0.0-next.4
@@ -13365,7 +13365,7 @@ __metadata:
     "@angular-eslint/schematics": ^15.2.2-alpha.0
     "@angular-eslint/template-parser": ^15.2.2-alpha.0
     "@angular/animations": ^16.0.0-next.4
-    "@angular/cdk": ^16.0.0-next.2
+    "@angular/cdk": ^16.0.0-next.3
     "@angular/cli": ^16.0.0-next.5
     "@angular/common": ^16.0.0-next.4
     "@angular/compiler": ^16.0.0-next.4
@@ -13466,7 +13466,7 @@ __metadata:
     tslib: ^2.5.0
   peerDependencies:
     "@angular/animations": ^16.0.0-next.4
-    "@angular/cdk": ^16.0.0-next.2
+    "@angular/cdk": ^16.0.0-next.3
     "@angular/common": ^16.0.0-next.4
     "@angular/core": ^16.0.0-next.4
     "@angular/forms": ^16.0.0-next.4
