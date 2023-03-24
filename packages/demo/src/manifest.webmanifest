@@ -1,7 +1,7 @@
 {
     "name": "demo",
     "short_name": "demo",
-    "theme_color": "#1976d2",
+    "theme_color": "#00a645",
     "background_color": "#fafafa",
     "display": "standalone",
     "scope": "./",

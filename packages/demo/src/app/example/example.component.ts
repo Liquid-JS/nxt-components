@@ -19,6 +19,37 @@ export interface SourceDef {
     code: string
 }
 
+const extMap: {
+    html: keyof ExampleConfig
+    scss: keyof ExampleConfig
+    ts: keyof ExampleConfig
+} = {
+    html: 'template',
+    scss: 'style',
+    ts: 'source'
+}
+
+export interface LoaderConfig {
+    path: string
+    name: string
+    description?: string
+    include: Array<keyof typeof extMap>
+}
+
+export function resolveTempaltes(cfg: LoaderConfig, prefix: string) {
+    return ([cmp, ...tpl]: [any, ...Array<{ default: string }>]) => Object.assign(
+        {
+            component: Object.values(cmp).find(c => typeof c === 'function' && /^\s*class\s+/.test(c.toString())),
+            name: cfg.name,
+            description: cfg.description,
+            path: `${prefix}/${cfg.path}`
+        } as ExampleConfig,
+        ...cfg.include.map((ext, i) => ({
+            [extMap[ext]]: tpl[i].default.trim()
+        }))
+    ) as ExampleConfig
+}
+
 @Component({
     selector: 'app-example',
     standalone: true,

@@ -1,5 +1,7 @@
 # nxt-components
 
+<img align="right" src="resources/nxt-logo.png" width="96">
+
 A collection of various Angular components
 
 -   **[nxt-color-picker](packages/color-picker)**

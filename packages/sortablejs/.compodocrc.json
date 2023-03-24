@@ -1,6 +1,7 @@
 {
     "$schema": "../../node_modules/@compodoc/compodoc/src/config/schema.json",
     "tsconfig": "./tsconfig.lib.json",
+    "customFavicon": "../../resources/nxt-logo.png",
     "exportFormat": "html",
     "minimal": false,
     "silent": true,
