@@ -322,7 +322,6 @@ export class DialogService {
  * @param config Config to be modified.
  * @param defaultOptions Default config setting
  * @returns The new configuration object.
- *
  * @internal
  */
 function applyConfigDefaults(
