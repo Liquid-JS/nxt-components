@@ -13768,6 +13768,7 @@ __metadata:
     rimraf: ^5.0.0
     rxjs: ^7.8.1
     sortablejs: ^1.15.0
+    ssri: ^10.0.4
     stylelint: <15.0.0
     stylelint-config-standard-scss: <7.0.0
     ts-node: ^10.9.1
@@ -16638,7 +16639,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ssri@npm:^10.0.0, ssri@npm:^10.0.1":
+"ssri@npm:^10.0.0, ssri@npm:^10.0.1, ssri@npm:^10.0.4":
   version: 10.0.4
   resolution: "ssri@npm:10.0.4"
   dependencies:
