@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-alpha.8](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.7...v16.0.0-alpha.8) (2023-05-04)
+
+
+### Features
+
+* angular 16 preview ([927fe3f](https://github.com/Liquid-JS/nxt-components/commit/927fe3f94dec9c369b6e693cfc282f245fbfbe72))
+* update angular to 16 ([b4a4915](https://github.com/Liquid-JS/nxt-components/commit/b4a49156721e698a32896ef480883cc1e2567c75))
+
+
+
+
+
 # [16.0.0-alpha.7](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.6...v16.0.0-alpha.7) (2023-03-24)
 
 
