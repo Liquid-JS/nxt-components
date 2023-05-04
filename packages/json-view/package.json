@@ -20,8 +20,8 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/json-view"
     },
     "peerDependencies": {
-        "@angular/common": "^16.0.0-next.4",
-        "@angular/core": "^16.0.0-next.4"
+        "@angular/common": "^16.0.0",
+        "@angular/core": "^16.0.0"
     },
     "dependencies": {
         "tslib": "^2.5.0"

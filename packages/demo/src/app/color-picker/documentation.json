@@ -734,7 +734,7 @@
     "directives": [
         {
             "name": "ColorPickerDirective",
-            "id": "directive-ColorPickerDirective-74cac37d431822c7114ce0e05cd3510008a30754338517017add2b9644451cc3436ebabec6fad023f3aec4a029fff10d0711735b26612cb4261db66ae98d2135",
+            "id": "directive-ColorPickerDirective-c7d19d60a7d3ac968eff858cd99323de606610a4208fedc23e91d57df87c7f4ac0872defe7f288433db936f804b49a7e4ac03f6543fbebd09b395dd71f37eecb",
             "file": "src/lib/color-picker.directive.ts",
             "type": "directive",
             "description": "",
@@ -911,7 +911,7 @@
                     "rawdescription": "\nDialog position",
                     "description": "<p>Dialog position</p>\n",
                     "line": 100,
-                    "type": "DialogPosition",
+                    "type": "DialogPosition | DialogPosition[]",
                     "decorators": []
                 },
                 {
@@ -1179,8 +1179,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 10372,
-                                "end": 10374,
+                                "pos": 10391,
+                                "end": 10393,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -1192,8 +1192,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "new Rgba(1, 1, 1, 1, true)",
                             "tagName": {
-                                "pos": 10366,
-                                "end": 10371,
+                                "pos": 10385,
+                                "end": 10390,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -1204,8 +1204,8 @@
                         },
                         {
                             "name": {
-                                "pos": 10466,
-                                "end": 10468,
+                                "pos": 10485,
+                                "end": 10487,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -1217,8 +1217,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "this.dialog?.rgbaText",
                             "tagName": {
-                                "pos": 10460,
-                                "end": 10465,
+                                "pos": 10479,
+                                "end": 10484,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -1229,8 +1229,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 10531,
-                                "end": 10538,
+                                "pos": 10550,
+                                "end": 10557,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,

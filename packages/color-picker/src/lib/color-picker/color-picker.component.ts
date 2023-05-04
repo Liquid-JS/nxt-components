@@ -3,7 +3,7 @@ import { cmykToRgb, denormalizeCMYK, denormalizeHSLA, denormalizeRGBA, formatCmy
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Cmyk, Hsla, Hsva, Rgba } from '../../util/formats'
 import { ColorModeInternal, composedPath, CursorEvent, DialogConfig, DirectiveCallbacks, parseColorMode, sizeToString, SliderPosition, TextEvent } from '../../util/helpers'
-import { AlphaChannel, AlphaChannelEnum, AlphaEnabledFormats, ColorFormat, ColorFormatEnum, DialogDisplay, DialogDisplayEnum, DialogPosition, DialogPositionEnum, OutputFormat, OutputFormatEnum } from '../../util/types'
+import { AlphaChannel, AlphaChannelEnum, AlphaEnabledFormats, ColorFormat, ColorFormatEnum, DialogDisplay, DialogDisplayEnum, OutputFormat, OutputFormatEnum } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
 
 /**
@@ -75,8 +75,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
     saveClickOutside = false
     closeClickOutside = false
-
-    position: DialogPosition = DialogPositionEnum.right
 
     okButton = false
 
@@ -222,8 +220,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
         this.width = sizeToString(config.width)
         this.height = sizeToString(config.height)
-
-        this.position = config.position
 
         this.okButton = config.okButton
 
