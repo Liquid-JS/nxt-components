@@ -1,6 +1,6 @@
 # Breaking changes
 
-## v16 (unreleased)
+## v16
 
 -   **nxt-color-picker:** rename `addColorButton` => `presetColorsEditable`, improve typing
 -   **nxt-dropzone-wrapper:** improve typing for options and events, use types from `dropzone.js`
