@@ -14,7 +14,7 @@ import { WaitLoad } from '../../utils/wait-load.class'
 export class AppColorPickerWrapComponent extends OverlayContainer {
 
     constructor(
-        private readonly injector: Injector
+        injector: Injector
     ) {
         super(injector.get(DOCUMENT), injector.get(Platform))
     }

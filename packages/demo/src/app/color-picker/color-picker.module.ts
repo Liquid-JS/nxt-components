@@ -59,7 +59,7 @@ import { GettingStartedComponent } from './getting-started/getting-started.compo
     ],
     providers: [{
         provide: OverlayContainer,
-        useClass: AppColorPickerComponent
+        useClass: AppColorPickerWrapComponent
     }]
 })
 export class AppColorPickerModule { }
