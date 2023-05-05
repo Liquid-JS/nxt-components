@@ -66,3 +66,11 @@ docker/packages
 !.yarn/versions
 
 docs
+
+scully.log
+scullyStats.json
+.scully
+/scully/**/*.js
+/scully/**/*.js.map
+/scully/**/*.d.ts
+scully.*.js

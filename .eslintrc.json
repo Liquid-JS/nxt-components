@@ -318,7 +318,9 @@
             "files": [
                 "*.spec.ts",
                 "test.ts",
-                "*.conf.js"
+                "*.conf.js",
+                "scully.*",
+                "scully/**"
             ],
             "rules": {
                 "import/no-extraneous-dependencies": [
