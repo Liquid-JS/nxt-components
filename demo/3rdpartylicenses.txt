@@ -47,6 +47,8 @@ MIT
 @angular/service-worker
 MIT
 
+@scullyio/ng-lib
+
 clipboard-polyfill
 MIT
 
