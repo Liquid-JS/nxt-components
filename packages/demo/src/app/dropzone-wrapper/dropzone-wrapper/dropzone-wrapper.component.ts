@@ -1,13 +1,15 @@
 import { Component, Injector, OnInit } from '@angular/core'
 import { Title } from '@angular/platform-browser'
+import { IdleMonitorService } from '@scullyio/ng-lib'
 import { ExampleConfig, LoaderConfig, resolveTempaltes } from '../../example/example.component'
+import { WaitLoad } from '../../utils/wait-load.class'
 
 @Component({
     selector: 'app-dropzone-wrapper',
     templateUrl: './dropzone-wrapper.component.html',
     styleUrls: ['./dropzone-wrapper.component.scss']
 })
-export class AppDropzoneWrapperComponent implements OnInit {
+export class AppDropzoneWrapperComponent extends WaitLoad implements OnInit {
 
     readonly examples = Promise.all(new Array<LoaderConfig>(
         {
@@ -27,11 +29,17 @@ export class AppDropzoneWrapperComponent implements OnInit {
 
     constructor(
         private readonly title: Title,
-        readonly injector: Injector
-    ) { }
+        readonly injector: Injector,
+        private readonly ims: IdleMonitorService
+    ) {
+        super()
+    }
 
     ngOnInit(): void {
         this.title.setTitle('nxt-dropzone-wrapper')
+        this.addTask(() => this.ims.fireManualMyAppReadyEvent())
+        this.examples.then(() => this.doneLoading())
+            .catch(console.error)
     }
 
     exampleTrackBy(_i: number, val: ExampleConfig) {

@@ -9,7 +9,7 @@ import { ExampleComponent } from '../example/example.component'
 import { InputsTableComponent } from '../inputs-table/inputs-table.component'
 import { OutputsTableComponent } from '../outputs-table/outputs-table.component'
 import { AppColorPickerRoutingModule } from './color-picker-routing.module'
-import { AppColorPickerComponent } from './color-picker/color-picker.component'
+import { AppColorPickerComponent, AppColorPickerWrapComponent } from './color-picker/color-picker.component'
 import { AlphaChannelComponent } from './examples/alpha-channel/alpha-channel.component'
 import { AsComponentComponent } from './examples/as-component/as-component.component'
 import { BaicExampeComponent } from './examples/basic-example/basic-example.component'
@@ -34,6 +34,7 @@ import { GettingStartedComponent } from './getting-started/getting-started.compo
         ShowColorComponent,
         OutputFormatComponent,
         DialogPositionComponent,
+        AppColorPickerWrapComponent,
         DialogOffsetComponent,
         CancelButtonComponent,
         OkButtonComponent,

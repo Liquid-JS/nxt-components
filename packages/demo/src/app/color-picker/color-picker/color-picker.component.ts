@@ -3,14 +3,35 @@ import { Platform } from '@angular/cdk/platform'
 import { DOCUMENT } from '@angular/common'
 import { Component, Injector, OnInit } from '@angular/core'
 import { Title } from '@angular/platform-browser'
+import { IdleMonitorService } from '@scullyio/ng-lib'
 import { ExampleConfig, LoaderConfig, resolveTempaltes } from '../../example/example.component'
+import { WaitLoad } from '../../utils/wait-load.class'
+
+@Component({
+    selector: 'app-color-picker-wrap',
+    template: '<app-color-picker></app-color-picker>'
+})
+export class AppColorPickerWrapComponent extends OverlayContainer {
+
+    constructor(
+        private readonly injector: Injector
+    ) {
+        super(injector.get(DOCUMENT), injector.get(Platform))
+    }
+
+    override getContainerElement(): HTMLElement {
+        const el = super.getContainerElement()
+        el.classList.add('color-picker-container')
+        return el
+    }
+}
 
 @Component({
     selector: 'app-color-picker',
     templateUrl: './color-picker.component.html',
     styleUrls: ['./color-picker.component.scss']
 })
-export class AppColorPickerComponent extends OverlayContainer implements OnInit {
+export class AppColorPickerComponent extends WaitLoad implements OnInit {
 
     readonly examples = Promise.all(new Array<LoaderConfig>(
         {
@@ -95,22 +116,20 @@ export class AppColorPickerComponent extends OverlayContainer implements OnInit 
 
     constructor(
         private readonly title: Title,
-        readonly injector: Injector
+        readonly injector: Injector,
+        private readonly ims: IdleMonitorService
     ) {
-        super(injector.get(DOCUMENT), injector.get(Platform))
+        super()
     }
 
     ngOnInit(): void {
         this.title.setTitle('nxt-color-picker')
+        this.addTask(() => this.ims.fireManualMyAppReadyEvent())
+        this.examples.then(() => this.doneLoading())
+            .catch(console.error)
     }
 
     exampleTrackBy(_i: number, val: ExampleConfig) {
         return val.component
-    }
-
-    override getContainerElement(): HTMLElement {
-        const el = super.getContainerElement()
-        el.classList.add('color-picker-container')
-        return el
     }
 }

@@ -1,6 +1,8 @@
 import { Component, Injector, OnInit, ViewEncapsulation } from '@angular/core'
 import { Title } from '@angular/platform-browser'
+import { IdleMonitorService } from '@scullyio/ng-lib'
 import { ExampleConfig, LoaderConfig, resolveTempaltes } from '../../example/example.component'
+import { WaitLoad } from '../../utils/wait-load.class'
 
 @Component({
     selector: 'app-validation',
@@ -8,7 +10,7 @@ import { ExampleConfig, LoaderConfig, resolveTempaltes } from '../../example/exa
     styleUrls: ['./validation.component.scss'],
     encapsulation: ViewEncapsulation.Emulated
 })
-export class ValidationComponent implements OnInit {
+export class ValidationComponent extends WaitLoad implements OnInit {
 
     readonly examples = Promise.all(new Array<LoaderConfig>(
         {
@@ -43,11 +45,17 @@ export class ValidationComponent implements OnInit {
 
     constructor(
         private readonly title: Title,
-        readonly injector: Injector
-    ) { }
+        readonly injector: Injector,
+        private readonly ims: IdleMonitorService
+    ) {
+        super()
+    }
 
     ngOnInit(): void {
         this.title.setTitle('Validation | nxt-pick-datetime')
+        this.addTask(() => this.ims.fireManualMyAppReadyEvent())
+        this.examples.then(() => this.doneLoading())
+            .catch(console.error)
     }
 
     exampleTrackBy(_i: number, val: ExampleConfig) {

@@ -1,13 +1,15 @@
 import { Component, Injector, OnInit } from '@angular/core'
 import { Title } from '@angular/platform-browser'
+import { IdleMonitorService } from '@scullyio/ng-lib'
 import { ExampleConfig, LoaderConfig, resolveTempaltes } from '../../example/example.component'
+import { WaitLoad } from '../../utils/wait-load.class'
 
 @Component({
     selector: 'app-sortablejs',
     templateUrl: './sortablejs.component.html',
     styleUrls: ['./sortablejs.component.scss']
 })
-export class AppSortablejsComponent implements OnInit {
+export class AppSortablejsComponent extends WaitLoad implements OnInit {
 
     readonly examples = Promise.all(new Array<LoaderConfig>(
         {
@@ -68,11 +70,17 @@ export class AppSortablejsComponent implements OnInit {
 
     constructor(
         private readonly title: Title,
-        readonly injector: Injector
-    ) { }
+        readonly injector: Injector,
+        private readonly ims: IdleMonitorService
+    ) {
+        super()
+    }
 
     ngOnInit(): void {
         this.title.setTitle('nxt-sortablejs')
+        this.addTask(() => this.ims.fireManualMyAppReadyEvent())
+        this.examples.then(() => this.doneLoading())
+            .catch(console.error)
     }
 
     exampleTrackBy(_i: number, val: ExampleConfig) {

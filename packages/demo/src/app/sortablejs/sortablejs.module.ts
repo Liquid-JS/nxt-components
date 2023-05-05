@@ -8,7 +8,6 @@ import { ContentWrapComponent } from '../content-wrap/content-wrap.component'
 import { ExampleComponent } from '../example/example.component'
 import { InputsTableComponent } from '../inputs-table/inputs-table.component'
 import { OutputsTableComponent } from '../outputs-table/outputs-table.component'
-import { DemosComponent } from './demos/demos.component'
 import { BasicExampleComponent } from './examples/basic-example/basic-example.component'
 import { ComplexExampleComponent } from './examples/complex-example/complex-example.component'
 import { DisabledOptionsComponent } from './examples/disabled-options/disabled-options.component'
@@ -24,7 +23,6 @@ import { AppSortablejsComponent } from './sortablejs/sortablejs.component'
 @NgModule({
     declarations: [
         AppSortablejsComponent,
-        DemosComponent,
         BasicExampleComponent,
         FormArrayComponent,
         DisabledOptionsComponent,

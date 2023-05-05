@@ -1,6 +1,8 @@
 import { Component, Injector, OnInit, ViewEncapsulation } from '@angular/core'
 import { Title } from '@angular/platform-browser'
+import { IdleMonitorService } from '@scullyio/ng-lib'
 import { ExampleConfig } from '../../example/example.component'
+import { WaitLoad } from '../../utils/wait-load.class'
 
 @Component({
     selector: 'app-custom-adapter',
@@ -8,7 +10,7 @@ import { ExampleConfig } from '../../example/example.component'
     styleUrls: ['./custom-adapter.component.scss'],
     encapsulation: ViewEncapsulation.Emulated
 })
-export class CustomAdapterComponent implements OnInit {
+export class CustomAdapterComponent extends WaitLoad implements OnInit {
 
     readonly exampleImpl = import('./custom-adapter.example.ts?raw')
         .then(res => ({
@@ -19,10 +21,16 @@ export class CustomAdapterComponent implements OnInit {
 
     constructor(
         private readonly title: Title,
-        readonly injector: Injector
-    ) { }
+        readonly injector: Injector,
+        private readonly ims: IdleMonitorService
+    ) {
+        super()
+    }
 
     ngOnInit(): void {
         this.title.setTitle('Writing a custom date adapter | nxt-pick-datetime')
+        this.addTask(() => this.ims.fireManualMyAppReadyEvent())
+        this.exampleImpl.then(() => this.doneLoading())
+            .catch(console.error)
     }
 }
