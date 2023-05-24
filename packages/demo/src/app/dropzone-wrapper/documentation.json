@@ -3,7 +3,7 @@
     "interfaces": [
         {
             "name": "DropzoneConfig",
-            "id": "interface-DropzoneConfig-e188ab4e0870bc45b65ab28e40ce598dbebd27a5e8990edeaf22db7a87cfc17fd548ec43d76ea28b9ce138cffdcc35a350038a6581b62fcbad16bab7649078cc",
+            "id": "interface-DropzoneConfig-5677b5abe64a4893112953690828658311a6edac72c883099c5104d0a3c50e0f416dc5d13740934edbac8a842ad4c6704392a6c0774f8041f6cfb3edbfcd1d6a",
             "file": "src/lib/dropzone.interfaces.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -41,7 +41,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 165,
+            "kind": 168,
             "methods": []
         }
     ],
@@ -52,13 +52,16 @@
     "directives": [
         {
             "name": "DropzoneDirective",
-            "id": "directive-DropzoneDirective-607fb126040d046ec106e968bf36f810672cd66d61f80bb710cd4cf080b1247f134167abe5c218b2ae73d7ee451137bbf5a06ba0f4221a832dc82216fc334937",
+            "id": "directive-DropzoneDirective-6c03e9e5ad0eb75adc71103d7681987673ebc7c784bf705ba12e91ff15e07f40e487883ae4b1ee8082935d5ac97b5a4e56e94b882685c66d03d233baea1c9426",
             "file": "src/lib/dropzone.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
             "selector": "[nxtDropzone]",
             "providers": [],
+            "exportAs": "nxtDropzone",
+            "hostDirectives": [],
+            "standalone": false,
             "inputsClass": [
                 {
                     "name": "disabled",
@@ -84,210 +87,210 @@
             "outputsClass": [
                 {
                     "name": "addedFile",
-                    "defaultValue": "this.component?.DZ_ADDEDFILE\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
+                    "defaultValue": "this.component?.DZ_ADDEDFILE\r\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 65
                 },
                 {
                     "name": "addedFiles",
-                    "defaultValue": "this.component?.DZ_ADDEDFILES\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
+                    "defaultValue": "this.component?.DZ_ADDEDFILES\r\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 67
                 },
                 {
                     "name": "canceled",
-                    "defaultValue": "this.component?.DZ_CANCELED\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
+                    "defaultValue": "this.component?.DZ_CANCELED\r\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 100
                 },
                 {
                     "name": "canceledMultiple",
-                    "defaultValue": "this.component?.DZ_CANCELEDMULTIPLE\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
+                    "defaultValue": "this.component?.DZ_CANCELEDMULTIPLE\r\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 102
                 },
                 {
                     "name": "complete",
-                    "defaultValue": "this.component?.DZ_COMPLETE\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
+                    "defaultValue": "this.component?.DZ_COMPLETE\r\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 105
                 },
                 {
                     "name": "completeMultiple",
-                    "defaultValue": "this.component?.DZ_COMPLETEMULTIPLE\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
+                    "defaultValue": "this.component?.DZ_COMPLETEMULTIPLE\r\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 107
                 },
                 {
                     "name": "dragEnd",
-                    "defaultValue": "this.component?.DZ_DRAGEND\n        ?? new EventEmitter<DragEvent>()",
+                    "defaultValue": "this.component?.DZ_DRAGEND\r\n        ?? new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 51
                 },
                 {
                     "name": "dragEnter",
-                    "defaultValue": "this.component?.DZ_DRAGENTER\n        ?? new EventEmitter<DragEvent>()",
+                    "defaultValue": "this.component?.DZ_DRAGENTER\r\n        ?? new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 53
                 },
                 {
                     "name": "dragLeave",
-                    "defaultValue": "this.component?.DZ_DRAGLEAVE\n        ?? new EventEmitter<DragEvent>()",
+                    "defaultValue": "this.component?.DZ_DRAGLEAVE\r\n        ?? new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 57
                 },
                 {
                     "name": "dragOver",
-                    "defaultValue": "this.component?.DZ_DRAGOVER\n        ?? new EventEmitter<DragEvent>()",
+                    "defaultValue": "this.component?.DZ_DRAGOVER\r\n        ?? new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 55
                 },
                 {
                     "name": "dragStart",
-                    "defaultValue": "this.component?.DZ_DRAGSTART\n        ?? new EventEmitter<DragEvent>()",
+                    "defaultValue": "this.component?.DZ_DRAGSTART\r\n        ?? new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 49
                 },
                 {
                     "name": "drop",
-                    "defaultValue": "this.component?.DZ_DROP\n        ?? new EventEmitter<DragEvent>()",
+                    "defaultValue": "this.component?.DZ_DROP\r\n        ?? new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 47
                 },
                 {
                     "name": "error",
-                    "defaultValue": "this.component?.DZ_ERROR\n        ?? new EventEmitter<[Dropzone.DropzoneFile, string | Error]>()",
+                    "defaultValue": "this.component?.DZ_ERROR\r\n        ?? new EventEmitter<[Dropzone.DropzoneFile, string | Error]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 74
                 },
                 {
                     "name": "errorMultiple",
-                    "defaultValue": "this.component?.DZ_ERRORMULTIPLE\n        ?? new EventEmitter<[Dropzone.DropzoneFile[], string | Error]>()",
+                    "defaultValue": "this.component?.DZ_ERRORMULTIPLE\r\n        ?? new EventEmitter<[Dropzone.DropzoneFile[], string | Error]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 76
                 },
                 {
                     "name": "init",
-                    "defaultValue": "this.component?.DZ_INIT\n        ?? new EventEmitter<Dropzone>()",
+                    "defaultValue": "this.component?.DZ_INIT\r\n        ?? new EventEmitter<Dropzone>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 44
                 },
                 {
                     "name": "maxFilesExceeded",
-                    "defaultValue": "this.component?.DZ_MAXFILESEXCEEDED\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
+                    "defaultValue": "this.component?.DZ_MAXFILESEXCEEDED\r\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 110
                 },
                 {
                     "name": "maxFilesReached",
-                    "defaultValue": "this.component?.DZ_MAXFILESREACHED\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
+                    "defaultValue": "this.component?.DZ_MAXFILESREACHED\r\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 112
                 },
                 {
                     "name": "paste",
-                    "defaultValue": "this.component?.DZ_PASTE\n        ?? new EventEmitter<DragEvent>()",
+                    "defaultValue": "this.component?.DZ_PASTE\r\n        ?? new EventEmitter<DragEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 59
                 },
                 {
                     "name": "processing",
-                    "defaultValue": "this.component?.DZ_PROCESSING\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
+                    "defaultValue": "this.component?.DZ_PROCESSING\r\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 79
                 },
                 {
                     "name": "processingMultiple",
-                    "defaultValue": "this.component?.DZ_PROCESSINGMULTIPLE\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
+                    "defaultValue": "this.component?.DZ_PROCESSINGMULTIPLE\r\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 81
                 },
                 {
                     "name": "queueComplete",
-                    "defaultValue": "this.component?.DZ_QUEUECOMPLETE\n        ?? new EventEmitter<void>()",
+                    "defaultValue": "this.component?.DZ_QUEUECOMPLETE\r\n        ?? new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 115
                 },
                 {
                     "name": "removedFile",
-                    "defaultValue": "this.component?.DZ_REMOVEDFILE\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
+                    "defaultValue": "this.component?.DZ_REMOVEDFILE\r\n        ?? new EventEmitter<Dropzone.DropzoneFile>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 69
                 },
                 {
                     "name": "reset",
-                    "defaultValue": "this.component?.DZ_RESET\n        ?? new EventEmitter<void>()",
+                    "defaultValue": "this.component?.DZ_RESET\r\n        ?? new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 62
                 },
                 {
                     "name": "sending",
-                    "defaultValue": "this.component?.DZ_SENDING\n        ?? new EventEmitter<[Dropzone.DropzoneFile, XMLHttpRequest, FormData]>()",
+                    "defaultValue": "this.component?.DZ_SENDING\r\n        ?? new EventEmitter<[Dropzone.DropzoneFile, XMLHttpRequest, FormData]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 89
                 },
                 {
                     "name": "sendingMultiple",
-                    "defaultValue": "this.component?.DZ_SENDINGMULTIPLE\n        ?? new EventEmitter<[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]>()",
+                    "defaultValue": "this.component?.DZ_SENDINGMULTIPLE\r\n        ?? new EventEmitter<[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 91
                 },
                 {
                     "name": "success",
-                    "defaultValue": "this.component?.DZ_SUCCESS\n        // eslint-disable-next-line @typescript-eslint/ban-types\n        ?? new EventEmitter<[Dropzone.DropzoneFile, Object | string]>()",
+                    "defaultValue": "this.component?.DZ_SUCCESS\r\n        // eslint-disable-next-line @typescript-eslint/ban-types\r\n        ?? new EventEmitter<[Dropzone.DropzoneFile, Object | string]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 94
                 },
                 {
                     "name": "successMultiple",
-                    "defaultValue": "this.component?.DZ_SUCCESSMULTIPLE\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
+                    "defaultValue": "this.component?.DZ_SUCCESSMULTIPLE\r\n        ?? new EventEmitter<Dropzone.DropzoneFile[]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 97
                 },
                 {
                     "name": "thumbnail",
-                    "defaultValue": "this.component?.DZ_THUMBNAIL\n        ?? new EventEmitter<[Dropzone.DropzoneFile, string]>()",
+                    "defaultValue": "this.component?.DZ_THUMBNAIL\r\n        ?? new EventEmitter<[Dropzone.DropzoneFile, string]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 71
                 },
                 {
                     "name": "totalUploadProgress",
-                    "defaultValue": "this.component?.DZ_TOTALUPLOADPROGRESS\n        ?? new EventEmitter<[number, number, number]>()",
+                    "defaultValue": "this.component?.DZ_TOTALUPLOADPROGRESS\r\n        ?? new EventEmitter<[number, number, number]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 86
                 },
                 {
                     "name": "uploadProgress",
-                    "defaultValue": "this.component?.DZ_UPLOADPROGRESS\n        ?? new EventEmitter<[Dropzone.DropzoneFile, number, number]>()",
+                    "defaultValue": "this.component?.DZ_UPLOADPROGRESS\r\n        ?? new EventEmitter<[Dropzone.DropzoneFile, number, number]>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 84
@@ -464,7 +467,7 @@
     "components": [
         {
             "name": "DropzoneComponent",
-            "id": "component-DropzoneComponent-20ab85cc58b49680013830719a741ab777a466aac490e4495aa8764566ba3a83d4e632a497f47965660a3d672f2f19c57b62cfdef8c1dea4f78bf3ee2409f04f",
+            "id": "component-DropzoneComponent-17a5f50bc9d5d59bc111ebc55d61f5e9640c5e0eda4589df975ccd44dbbb353bc0d5e94d3b0f7c13bc73d0acd48cf924ba87f459ca308b456ab4b22c48982e60",
             "file": "src/lib/dropzone.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -488,6 +491,7 @@
                 "./dropzone.component.html"
             ],
             "viewProviders": [],
+            "hostDirectives": [],
             "inputsClass": [
                 {
                     "name": "config",
@@ -800,6 +804,9 @@
                             "name": "ViewChild",
                             "stringifiedArguments": "DropzoneDirective"
                         }
+                    ],
+                    "modifierKind": [
+                        167
                     ]
                 }
             ],
@@ -808,13 +815,15 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
+            "standalone": false,
+            "imports": [],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "$color_1: #666;\n$background-color_1: #eee;\n$background-color_2: rgba(255, 255, 255, 0.5);\n$background-color_3: #666;\n$border-color_1: rgba(170, 170, 170, 0);\n$border-color_2: #aaa;\n\nnxt-dropzone {\n    display: flex;\n    width: 100%;\n    height: auto;\n\n    & > .dropzone.dz-wrapper {\n        overflow: auto;\n        width: 100%;\n        min-height: 0;\n        max-height: 100%;\n        padding: 0;\n        border: none;\n        color: $color_1;\n        background: transparent;\n        border-radius: 0;\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        grid-template-rows: 1fr 1fr;\n        gap: 16px;\n\n        .dz-message {\n            overflow: auto;\n            min-height: 60px;\n            max-height: 100%;\n            border: 2px dashed #aaa;\n            background-color: $background-color_1;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            margin: 0;\n            border-radius: 5px;\n            grid-column: span 2;\n            grid-row: span 2;\n\n            .dz-text {\n                padding: 8px 16px;\n                text-align: center;\n            }\n\n            .dz-image {\n                width: 100%;\n                height: 100%;\n                background-size: contain;\n                background-repeat: no-repeat;\n                background-position: 50% 50%;\n            }\n        }\n\n        .dz-message.disabled {\n            cursor: not-allowed;\n\n            .dz-text {\n                opacity: 0.5;\n            }\n        }\n\n        .dz-message.dz-placeholder {\n            position: relative;\n            border-color: $border-color_1;\n            transition: border-color 250ms ease-in-out;\n\n            .dz-text {\n                position: absolute;\n                z-index: 1;\n                opacity: 0;\n                font-weight: bold;\n                background-color: $background-color_2;\n                transition: filter 250ms ease-in-out, opacity 250ms ease-in-out;\n            }\n\n            &:hover {\n                &:not(.disabled) {\n                    border-color: $border-color_2;\n\n                    .dz-text {\n                        opacity: 1;\n                    }\n\n                    .dz-image {\n                        filter: blur(8px);\n                    }\n                }\n            }\n        }\n\n        .dz-preview {\n            margin: 0;\n\n            .dz-details {\n                padding: 24px;\n            }\n\n            .dz-progress {\n                width: 80%;\n                border: 1px solid #aaa;\n                border-radius: 5px;\n                overflow: hidden;\n\n                .dz-upload {\n                    background-color: $background-color_3;\n                }\n            }\n\n            .dz-filename {\n                span {\n                    display: block;\n                    overflow: hidden;\n                    width: 100%;\n                    max-width: 100%;\n                    text-overflow: ellipsis;\n\n                    &:hover {\n                        overflow: visible;\n                        white-space: normal;\n                        word-wrap: break-word;\n                    }\n                }\n            }\n\n            .dz-image {\n                border-radius: 5px;\n                overflow: hidden;\n                min-width: 120px;\n                min-height: 120px;\n                width: auto;\n                height: auto;\n            }\n        }\n    }\n\n    & > .dropzone.dz-wrapper.dz-single {\n        .dz-message {\n            width: 100%;\n            height: 100%;\n        }\n\n        .dz-preview {\n            width: 100%;\n            height: 100%;\n            grid-column: span 2;\n            grid-row: span 2;\n\n            .dz-image {\n                width: 100%;\n                height: 100%;\n\n                img {\n                    display: block;\n                    width: 100%;\n                    height: auto;\n                    margin: 0;\n                }\n            }\n        }\n\n        .dz-error-message {\n            top: 50%;\n            left: 50%;\n            transform: translateX(-50%) translateY(100%);\n        }\n    }\n\n    & > .dropzone.dz-wrapper.dz-single.dz-started {\n        .dz-message {\n            display: none;\n        }\n    }\n\n    & > .dropzone.dz-wrapper.dz-multiple.dz-started {\n        .dz-message {\n            display: flex;\n        }\n    }\n}\n",
+                    "data": "$color_1: #666;\r\n$background-color_1: #eee;\r\n$background-color_2: rgba(255, 255, 255, 0.5);\r\n$background-color_3: #666;\r\n$border-color_1: rgba(170, 170, 170, 0);\r\n$border-color_2: #aaa;\r\n\r\nnxt-dropzone {\r\n    display: flex;\r\n    width: 100%;\r\n    height: auto;\r\n\r\n    & > .dropzone.dz-wrapper {\r\n        overflow: auto;\r\n        width: 100%;\r\n        min-height: 0;\r\n        max-height: 100%;\r\n        padding: 0;\r\n        border: none;\r\n        color: $color_1;\r\n        background: transparent;\r\n        border-radius: 0;\r\n        display: grid;\r\n        grid-template-columns: 1fr 1fr;\r\n        grid-template-rows: 1fr 1fr;\r\n        gap: 16px;\r\n\r\n        .dz-message {\r\n            overflow: auto;\r\n            min-height: 60px;\r\n            max-height: 100%;\r\n            border: 2px dashed #aaa;\r\n            background-color: $background-color_1;\r\n            display: flex;\r\n            align-items: center;\r\n            justify-content: center;\r\n            margin: 0;\r\n            border-radius: 5px;\r\n            grid-column: span 2;\r\n            grid-row: span 2;\r\n\r\n            .dz-text {\r\n                padding: 8px 16px;\r\n                text-align: center;\r\n            }\r\n\r\n            .dz-image {\r\n                width: 100%;\r\n                height: 100%;\r\n                background-size: contain;\r\n                background-repeat: no-repeat;\r\n                background-position: 50% 50%;\r\n            }\r\n        }\r\n\r\n        .dz-message.disabled {\r\n            cursor: not-allowed;\r\n\r\n            .dz-text {\r\n                opacity: 0.5;\r\n            }\r\n        }\r\n\r\n        .dz-message.dz-placeholder {\r\n            position: relative;\r\n            border-color: $border-color_1;\r\n            transition: border-color 250ms ease-in-out;\r\n\r\n            .dz-text {\r\n                position: absolute;\r\n                z-index: 1;\r\n                opacity: 0;\r\n                font-weight: bold;\r\n                background-color: $background-color_2;\r\n                transition: filter 250ms ease-in-out, opacity 250ms ease-in-out;\r\n            }\r\n\r\n            &:hover {\r\n                &:not(.disabled) {\r\n                    border-color: $border-color_2;\r\n\r\n                    .dz-text {\r\n                        opacity: 1;\r\n                    }\r\n\r\n                    .dz-image {\r\n                        filter: blur(8px);\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        .dz-preview {\r\n            margin: 0;\r\n\r\n            .dz-details {\r\n                padding: 24px;\r\n            }\r\n\r\n            .dz-progress {\r\n                width: 80%;\r\n                border: 1px solid #aaa;\r\n                border-radius: 5px;\r\n                overflow: hidden;\r\n\r\n                .dz-upload {\r\n                    background-color: $background-color_3;\r\n                }\r\n            }\r\n\r\n            .dz-filename {\r\n                span {\r\n                    display: block;\r\n                    overflow: hidden;\r\n                    width: 100%;\r\n                    max-width: 100%;\r\n                    text-overflow: ellipsis;\r\n\r\n                    &:hover {\r\n                        overflow: visible;\r\n                        white-space: normal;\r\n                        word-wrap: break-word;\r\n                    }\r\n                }\r\n            }\r\n\r\n            .dz-image {\r\n                border-radius: 5px;\r\n                overflow: hidden;\r\n                min-width: 120px;\r\n                min-height: 120px;\r\n                width: auto;\r\n                height: auto;\r\n            }\r\n        }\r\n    }\r\n\r\n    & > .dropzone.dz-wrapper.dz-single {\r\n        .dz-message {\r\n            width: 100%;\r\n            height: 100%;\r\n        }\r\n\r\n        .dz-preview {\r\n            width: 100%;\r\n            height: 100%;\r\n            grid-column: span 2;\r\n            grid-row: span 2;\r\n\r\n            .dz-image {\r\n                width: 100%;\r\n                height: 100%;\r\n\r\n                img {\r\n                    display: block;\r\n                    width: 100%;\r\n                    height: auto;\r\n                    margin: 0;\r\n                }\r\n            }\r\n        }\r\n\r\n        .dz-error-message {\r\n            top: 50%;\r\n            left: 50%;\r\n            transform: translateX(-50%) translateY(100%);\r\n        }\r\n    }\r\n\r\n    & > .dropzone.dz-wrapper.dz-single.dz-started {\r\n        .dz-message {\r\n            display: none;\r\n        }\r\n    }\r\n\r\n    & > .dropzone.dz-wrapper.dz-multiple.dz-started {\r\n        .dz-message {\r\n            display: flex;\r\n        }\r\n    }\r\n}\r\n",
                     "styleUrl": "./dropzone.component.scss"
                 },
                 {
@@ -835,13 +844,13 @@
                 "OnInit",
                 "DropzoneListeners"
             ],
-            "templateData": "<div class=\"dz-wrapper\"\n    [class.dropzone]=\"useDropzoneClass\"\n    [nxtDropzone]=\"config\"\n    [disabled]=\"disabled\">\n    <div class=\"dz-message\"\n        [class.disabled]=\"disabled\"\n        [class.dz-placeholder]=\"placeholder\">\n        <div class=\"dz-text\"\n            [innerHTML]=\"config?.dictDefaultMessage || message\"></div>\n\n        <div *ngIf=\"placeholder\"\n            class=\"dz-image\"\n            [style.background-image]=\"getPlaceholder()\"></div>\n    </div>\n\n    <ng-content></ng-content>\n</div>\n"
+            "templateData": "<div class=\"dz-wrapper\"\r\n    [class.dropzone]=\"useDropzoneClass\"\r\n    [nxtDropzone]=\"config\"\r\n    [disabled]=\"disabled\">\r\n    <div class=\"dz-message\"\r\n        [class.disabled]=\"disabled\"\r\n        [class.dz-placeholder]=\"placeholder\">\r\n        <div class=\"dz-text\"\r\n            [innerHTML]=\"config?.dictDefaultMessage || message\"></div>\r\n\r\n        <div *ngIf=\"placeholder\"\r\n            class=\"dz-image\"\r\n            [style.background-image]=\"getPlaceholder()\"></div>\r\n    </div>\r\n\r\n    <ng-content></ng-content>\r\n</div>\r\n"
         }
     ],
     "modules": [
         {
             "name": "DropzoneModule",
-            "id": "module-DropzoneModule-85a41982ca319e7d1f159ae4cfeadb455755bd4a253f5d3904aa0c6b5f2b994814a790872373715d585ecea80a97d2d68b7653dcc55d69881961a25aaed8633c",
+            "id": "module-DropzoneModule-ad11fcc140bd10d68b2a63d8af4d8695342e986d0f98975d80b9ac2fbb6b5758e1f6d074d156c0b810807d95e2e00f110df1256def476b4b3b0b2fc4381cd86f",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
