@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="./" class="navbar-brand">nxt-color-picker documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -31,19 +31,19 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 id="angular-color-picker">Angular color picker</h1>
+<h1>Angular color picker</h1>
 <p><a href="https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Liquid-JS/nxt-components.svg" alt="GitHub license" class="img-responsive"></a>
 <a href="https://www.npmjs.com/package/nxt-color-picker"><img src="https://img.shields.io/npm/dm/nxt-color-picker.svg" alt="npm" class="img-responsive"></a>
 <a href="https://www.npmjs.com/package/nxt-color-picker"><img src="https://img.shields.io/npm/v/nxt-color-picker.svg" alt="scope" class="img-responsive"></a></p>
 <p>A color picker widget for Angular with no dependencies.</p>
-<h2 id="quick-links">Quick links</h2>
+<h2>Quick links</h2>
 <ul>
 <li><a href="https://liquid-js.github.io/nxt-components/demo/color-picker">Demo</a></li>
 <li><a href="https://liquid-js.github.io/nxt-components/demo/color-picker/getting-started">Getting started</a></li>
 <li><a href="https://liquid-js.github.io/nxt-components/nxt-color-picker">API docs</a></li>
 </ul>
-<h3 id="installing">Installing</h3>
-<div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-color-picker</code></pre></div><h3 id="import-color-picker-module">Import color picker module</h3>
+<h3>Installing</h3>
+<div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-color-picker</code></pre></div><h3>Import color picker module</h3>
 <div><pre class="line-numbers"><code class="language-ts">import { ColorPickerModule } from &#39;nxt-color-picker&#39;
 
 &#64;NgModule({
@@ -52,7 +52,7 @@
         ...
         ColorPickerModule
     ]
-})</code></pre></div><h3 id="include-it-in-html-template">Include it in HTML template</h3>
+})</code></pre></div><h3>Include it in HTML template</h3>
 <div><pre class="line-numbers"><code class="language-html">&lt;input [(nxtColor)]=&quot;color&quot; 
     [style.background]=&quot;color&quot;/&gt;</code></pre></div>
 

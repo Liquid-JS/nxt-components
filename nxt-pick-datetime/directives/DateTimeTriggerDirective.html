@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">nxt-pick-datetime documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -38,18 +38,21 @@
 
 
 <ol class="breadcrumb">
-  <li>Directives</li>
-  <li >DateTimeTriggerDirective</li>
+  <li class="breadcrumb-item">Directives</li>
+  <li class="breadcrumb-item" >DateTimeTriggerDirective</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -64,14 +67,14 @@
                 <h3>Implements</h3>
             </p>
             <p class="comment">
-                            <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-                            <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
-                            <code><a href="https://angular.io/api/core/AfterContentInit" target="_blank" >AfterContentInit</a></code>
-                            <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                        <code>OnInit</code>
+                        <code>OnChanges</code>
+                        <code>AfterContentInit</code>
+                        <code>OnDestroy</code>
             </p>
 
 
-        <section>
+        <section data-compodoc="block-metadata">
             <h3>Metadata</h3>
             <table class="table table-sm table-hover metadata">
                 <tbody>
@@ -81,11 +84,14 @@
                         <td class="col-md-9"><code>[nxtDateTimeTrigger]</code></td>
                     </tr>
 
+
+
+
                 </tbody>
             </table>
         </section>
 
-            <section>
+            <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -99,6 +105,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#handleClickOnHost" >handleClickOnHost</a>
                             </li>
                             <li>
@@ -170,13 +177,13 @@
     </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(changeDetector: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+<code>constructor(changeDetector: ChangeDetectorRef)</code>
                     </td>
                 </tr>
 
@@ -197,7 +204,7 @@
                                                         <td>changeDetector</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                                    <code>ChangeDetectorRef</code>
                                                         </td>
                                                   
                                                     <td>
@@ -214,7 +221,7 @@
         </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -251,7 +258,7 @@
 </section>
 
 
-            <section>
+            <section data-compodoc="block-host-listener">
     <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -277,7 +284,7 @@
         </tbody>
     </table>
 </section>
-            <section>
+            <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -288,6 +295,7 @@
                 <td class="col-md-4">
                     <a name="handleClickOnHost"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>handleClickOnHost</b></span>
                         <a href="#handleClickOnHost"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -295,7 +303,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>handleClickOnHost(event: <a href="https://angular.io/api/router/Event" target="_blank">Event</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleClickOnHost(event: Event)</code>
                 </td>
             </tr>
 
@@ -327,7 +336,7 @@
                                 <tr>
                                     <td>event</td>
                                     <td>
-                                                <code><a href="https://angular.io/api/router/Event" target="_blank" >Event</a></code>
+                                            <code>Event</code>
                                     </td>
 
                                     <td>
@@ -396,7 +405,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+<code>ngOnChanges(changes: SimpleChanges)</code>
                 </td>
             </tr>
 
@@ -421,7 +430,7 @@
                                 <tr>
                                     <td>changes</td>
                                     <td>
-                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                            <code>SimpleChanges</code>
                                     </td>
 
                                     <td>
@@ -510,7 +519,7 @@
     </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-accessors">
     <h3 id="accessors">
         Accessors
     </h3>

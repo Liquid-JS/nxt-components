@@ -47,8 +47,8 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                 </li>
                     <li class="chapter modules">
                         <a data-type="chapter-link" href="modules.html">
-                            <div class="menu-toggler linked" data-toggle="collapse" ${ isNormalMode ?
-                                'data-target="#modules-links"' : 'data-target="#xs-modules-links"' }>
+                            <div class="menu-toggler linked" data-bs-toggle="collapse" ${ isNormalMode ?
+                                'data-bs-target="#modules-links"' : 'data-bs-target="#xs-modules-links"' }>
                                 <span class="icon ion-ios-archive"></span>
                                 <span class="link-name">Modules</span>
                                 <span class="icon ion-ios-arrow-down"></span>
@@ -58,14 +58,14 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <li class="link">
                                 <a href="modules/DateTimeModule.html" data-type="entity-link" >DateTimeModule</a>
                                     <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-DateTimeModule-eccc820a7317859eb92fae5eaeb4cebc4b74de96bb21b14a033a7af4c8426b0ef09a2607d540ade6d033c31dda2a4d2f3368778a4b78869d2581f506519340a7"' : 'data-target="#xs-components-links-module-DateTimeModule-eccc820a7317859eb92fae5eaeb4cebc4b74de96bb21b14a033a7af4c8426b0ef09a2607d540ade6d033c31dda2a4d2f3368778a4b78869d2581f506519340a7"' }>
+                                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
+                                            'data-bs-target="#components-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' : 'data-bs-target="#xs-components-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-DateTimeModule-eccc820a7317859eb92fae5eaeb4cebc4b74de96bb21b14a033a7af4c8426b0ef09a2607d540ade6d033c31dda2a4d2f3368778a4b78869d2581f506519340a7"' :
-                                            'id="xs-components-links-module-DateTimeModule-eccc820a7317859eb92fae5eaeb4cebc4b74de96bb21b14a033a7af4c8426b0ef09a2607d540ade6d033c31dda2a4d2f3368778a4b78869d2581f506519340a7"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' :
+                                            'id="xs-components-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' }>
                                             <li class="link">
                                                 <a href="components/CalendarComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CalendarComponent</a>
                                             </li>
@@ -90,14 +90,14 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                         </ul>
                                     </li>
                                 <li class="chapter inner">
-                                    <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#directives-links-module-DateTimeModule-eccc820a7317859eb92fae5eaeb4cebc4b74de96bb21b14a033a7af4c8426b0ef09a2607d540ade6d033c31dda2a4d2f3368778a4b78869d2581f506519340a7"' : 'data-target="#xs-directives-links-module-DateTimeModule-eccc820a7317859eb92fae5eaeb4cebc4b74de96bb21b14a033a7af4c8426b0ef09a2607d540ade6d033c31dda2a4d2f3368778a4b78869d2581f506519340a7"' }>
+                                    <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
+                                        'data-bs-target="#directives-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' : 'data-bs-target="#xs-directives-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-DateTimeModule-eccc820a7317859eb92fae5eaeb4cebc4b74de96bb21b14a033a7af4c8426b0ef09a2607d540ade6d033c31dda2a4d2f3368778a4b78869d2581f506519340a7"' :
-                                        'id="xs-directives-links-module-DateTimeModule-eccc820a7317859eb92fae5eaeb4cebc4b74de96bb21b14a033a7af4c8426b0ef09a2607d540ade6d033c31dda2a4d2f3368778a4b78869d2581f506519340a7"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' :
+                                        'id="xs-directives-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' }>
                                         <li class="link">
                                             <a href="directives/DateTimeInputDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >DateTimeInputDirective</a>
                                         </li>
@@ -107,14 +107,14 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </ul>
                                 </li>
                                 <li class="chapter inner">
-                                    <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-DateTimeModule-eccc820a7317859eb92fae5eaeb4cebc4b74de96bb21b14a033a7af4c8426b0ef09a2607d540ade6d033c31dda2a4d2f3368778a4b78869d2581f506519340a7"' : 'data-target="#xs-injectables-links-module-DateTimeModule-eccc820a7317859eb92fae5eaeb4cebc4b74de96bb21b14a033a7af4c8426b0ef09a2607d540ade6d033c31dda2a4d2f3368778a4b78869d2581f506519340a7"' }>
+                                    <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
+                                        'data-bs-target="#injectables-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' : 'data-bs-target="#xs-injectables-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-DateTimeModule-eccc820a7317859eb92fae5eaeb4cebc4b74de96bb21b14a033a7af4c8426b0ef09a2607d540ade6d033c31dda2a4d2f3368778a4b78869d2581f506519340a7"' :
-                                        'id="xs-injectables-links-module-DateTimeModule-eccc820a7317859eb92fae5eaeb4cebc4b74de96bb21b14a033a7af4c8426b0ef09a2607d540ade6d033c31dda2a4d2f3368778a4b78869d2581f506519340a7"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' :
+                                        'id="xs-injectables-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' }>
                                         <li class="link">
                                             <a href="injectables/DateTimeIntl.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >DateTimeIntl</a>
                                         </li>
@@ -130,8 +130,8 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                 </ul>
                 </li>
                         <li class="chapter">
-                            <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#directives-links"' :
-                                'data-target="#xs-directives-links"' }>
+                            <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#directives-links"' :
+                                'data-bs-target="#xs-directives-links"' }>
                                 <span class="icon ion-md-code-working"></span>
                                 <span>Directives</span>
                                 <span class="icon ion-ios-arrow-down"></span>
@@ -143,8 +143,8 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </ul>
                         </li>
                     <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#classes-links"' :
-                            'data-target="#xs-classes-links"' }>
+                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#classes-links"' :
+                            'data-bs-target="#xs-classes-links"' }>
                             <span class="icon ion-ios-paper"></span>
                             <span>Classes</span>
                             <span class="icon ion-ios-arrow-down"></span>
@@ -165,8 +165,8 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </ul>
                     </li>
                         <li class="chapter">
-                            <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#injectables-links"' :
-                                'data-target="#xs-injectables-links"' }>
+                            <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#injectables-links"' :
+                                'data-bs-target="#xs-injectables-links"' }>
                                 <span class="icon ion-md-arrow-round-down"></span>
                                 <span>Injectables</span>
                                 <span class="icon ion-ios-arrow-down"></span>
@@ -184,8 +184,8 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </ul>
                         </li>
                     <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#interfaces-links"' :
-                            'data-target="#xs-interfaces-links"' }>
+                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#interfaces-links"' :
+                            'data-bs-target="#xs-interfaces-links"' }>
                             <span class="icon ion-md-information-circle-outline"></span>
                             <span>Interfaces</span>
                             <span class="icon ion-ios-arrow-down"></span>
@@ -206,8 +206,8 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </ul>
                     </li>
                     <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#miscellaneous-links"'
-                            : 'data-target="#xs-miscellaneous-links"' }>
+                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#miscellaneous-links"'
+                            : 'data-bs-target="#xs-miscellaneous-links"' }>
                             <span class="icon ion-ios-cube"></span>
                             <span>Miscellaneous</span>
                             <span class="icon ion-ios-arrow-down"></span>

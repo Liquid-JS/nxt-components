@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="./" class="navbar-brand">nxt-sortablejs documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -31,19 +31,19 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 id="angular-sortablejs-directive">Angular Sortablejs directive</h1>
+<h1>Angular Sortablejs directive</h1>
 <p><a href="https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Liquid-JS/nxt-components.svg" alt="GitHub license" class="img-responsive"></a>
 <a href="https://www.npmjs.com/package/nxt-sortablejs"><img src="https://img.shields.io/npm/dm/nxt-sortablejs.svg" alt="npm" class="img-responsive"></a>
 <a href="https://www.npmjs.com/package/nxt-sortablejs"><img src="https://img.shields.io/npm/v/nxt-sortablejs.svg" alt="scope" class="img-responsive"></a></p>
 <p>This package provides Angular binding for <a href="https://github.com/SortableJS/Sortable">Storablejs</a> which works with standard arrays as well as Angular <code>FormArray</code> objects.</p>
-<h2 id="quick-links">Quick links</h2>
+<h2>Quick links</h2>
 <ul>
 <li><a href="https://liquid-js.github.io/nxt-components/demo/sortablejs">Demo</a></li>
 <li><a href="https://liquid-js.github.io/nxt-components/demo/sortablejs/getting-started">Getting started</a></li>
 <li><a href="https://liquid-js.github.io/nxt-components/nxt-sortablejs">API docs</a></li>
 </ul>
-<h3 id="installing">Installing</h3>
-<div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-sortablejs sortablejs</code></pre></div><h3 id="import-sortablejs-module">Import Sortablejs module</h3>
+<h3>Installing</h3>
+<div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-sortablejs sortablejs</code></pre></div><h3>Import Sortablejs module</h3>
 <div><pre class="line-numbers"><code class="language-ts">import { SortablejsModule } from &#39;nxt-sortablejs&#39;
 
 &#64;NgModule({
@@ -63,7 +63,7 @@
             animation: 150
         })
     ]
-})</code></pre></div><h3 id="use-it-in-a-template">Use it in a template</h3>
+})</code></pre></div><h3>Use it in a template</h3>
 <div><pre class="line-numbers"><code class="language-html">&lt;ul [nxtSortablejs]=&quot;items&quot;&gt;
     &lt;li *ngFor=&quot;let item of items&quot;&gt;{{ item }}&lt;/li&gt;
 &lt;/ul&gt;</code></pre></div>

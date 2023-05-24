@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="./" class="navbar-brand">nxt-dropzone-wrapper documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -31,20 +31,20 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 id="angular-dropzone-wrapper">Angular Dropzone wrapper</h1>
+<h1>Angular Dropzone wrapper</h1>
 <p><a href="https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Liquid-JS/nxt-components.svg" alt="GitHub license" class="img-responsive"></a>
 <a href="https://www.npmjs.com/package/nxt-dropzone-wrapper"><img src="https://img.shields.io/npm/dm/nxt-dropzone-wrapper.svg" alt="npm" class="img-responsive"></a>
 <a href="https://www.npmjs.com/package/nxt-dropzone-wrapper"><img src="https://img.shields.io/npm/v/nxt-dropzone-wrapper.svg" alt="scope" class="img-responsive"></a></p>
 <p>This is an Angular wrapper library for the <a href="http://www.dropzonejs.com/">Dropzone</a>. For full documentation on Dropzone configuration options see <a href="https://docs.dropzone.dev/configuration/basics/configuration-options">Dropzone documentation</a>.</p>
-<h2 id="quick-links">Quick links</h2>
+<h2>Quick links</h2>
 <ul>
 <li><a href="https://liquid-js.github.io/nxt-components/demo/dropzone-wrapper">Demo</a></li>
 <li><a href="https://liquid-js.github.io/nxt-components/demo/dropzone-wrapper/getting-started">Getting started</a></li>
 <li><a href="https://liquid-js.github.io/nxt-components/nxt-dropzone-wrapper">API docs</a></li>
 <li><a href="https://docs.dropzone.dev/configuration/basics/configuration-options">Dropzone documentation</a></li>
 </ul>
-<h3 id="installing">Installing</h3>
-<div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-dropzone-wrapper dropzone</code></pre></div><h3 id="import-and-configure-dropzone-wrapper-module">Import and configure dropzone wrapper module</h3>
+<h3>Installing</h3>
+<div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-dropzone-wrapper dropzone</code></pre></div><h3>Import and configure dropzone wrapper module</h3>
 <div><pre class="line-numbers"><code class="language-ts">import { DropzoneConfig, DropzoneModule, NXT_DROPZONE_CONFIG } from &#39;nxt-dropzone-wrapper&#39;
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
@@ -66,13 +66,13 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
             useValue: DEFAULT_DROPZONE_CONFIG
         }
     ]
-})</code></pre></div><h3 id="include-it-in-html-template">Include it in HTML template</h3>
+})</code></pre></div><h3>Include it in HTML template</h3>
 <p>This library provides two ways to create a Dropzone element, component for simple use cases and directive for more custom use cases.</p>
-<h4 id="use-dropzone-component">Use dropzone component</h4>
+<h4>Use dropzone component</h4>
 <div><pre class="line-numbers"><code class="language-html">&lt;nxt-dropzone [config]=&quot;config&quot;
     message=&quot;Click or drag images here to upload&quot;
     (error)=&quot;onUploadError($event)&quot;
-    (success)=&quot;onUploadSuccess($event)&quot;&gt;&lt;/nxt-dropzone&gt;</code></pre></div><h4 id="use-dropzone-directive">Use dropzone directive</h4>
+    (success)=&quot;onUploadSuccess($event)&quot;&gt;&lt;/nxt-dropzone&gt;</code></pre></div><h4>Use dropzone directive</h4>
 <p>When using only the directive you need to provide your own theming or import the default theme (<code>dropzone/dist/dropzone.css</code>).</p>
 <div><pre class="line-numbers"><code class="language-html">&lt;div class=&quot;dropzone&quot;
     [nxtDropzone]=&quot;config&quot;

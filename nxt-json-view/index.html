@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="./" class="navbar-brand">nxt-json-view documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -31,19 +31,19 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 id="angular-json-viewer">Angular JSON viewer</h1>
+<h1>Angular JSON viewer</h1>
 <p><a href="https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Liquid-JS/nxt-components.svg" alt="GitHub license" class="img-responsive"></a>
 <a href="https://www.npmjs.com/package/nxt-json-view"><img src="https://img.shields.io/npm/dm/nxt-json-view.svg" alt="npm" class="img-responsive"></a>
 <a href="https://www.npmjs.com/package/nxt-json-view"><img src="https://img.shields.io/npm/v/nxt-json-view.svg" alt="scope" class="img-responsive"></a></p>
 <p>An interactive JSON view component for Angular.</p>
-<h2 id="quick-links">Quick links</h2>
+<h2>Quick links</h2>
 <ul>
 <li><a href="https://liquid-js.github.io/nxt-components/demo/json-view">Demo</a></li>
 <li><a href="https://liquid-js.github.io/nxt-components/demo/json-view/getting-started">Getting started</a></li>
 <li><a href="https://liquid-js.github.io/nxt-components/nxt-json-view">API docs</a></li>
 </ul>
-<h3 id="installing">Installing</h3>
-<div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-json-view</code></pre></div><h3 id="import-json-view-module">Import JSON view module</h3>
+<h3>Installing</h3>
+<div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-json-view</code></pre></div><h3>Import JSON view module</h3>
 <div><pre class="line-numbers"><code class="language-ts">import { JsonViewModule } from &#39;nxt-json-view&#39;
 
 &#64;NgModule({
@@ -52,7 +52,7 @@
         ...
         JsonViewModule
     ]
-})</code></pre></div><h3 id="prepare-json-data">Prepare JSON data</h3>
+})</code></pre></div><h3>Prepare JSON data</h3>
 <div><pre class="line-numbers"><code class="language-ts">data = {
     &quot;name&quot;: &quot;nxt-json-view&quot;,
     &quot;url&quot;: &quot;https://github.com/Liquid-JS/nxt-components/tree/master/packages/json-view&quot;,
@@ -75,7 +75,7 @@
     ],
     &quot;date&quot;: new Date(),
     &quot;null&quot;: null
-}</code></pre></div><h3 id="use-it-in-a-template">Use it in a template</h3>
+}</code></pre></div><h3>Use it in a template</h3>
 <div><pre class="line-numbers"><code class="language-html">&lt;nxt-json-view [data]=&quot;data&quot;&gt;&lt;/nxt-json-view&gt;</code></pre></div>
 
 
