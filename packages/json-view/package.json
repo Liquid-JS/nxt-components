@@ -6,6 +6,18 @@
     "license": "MIT",
     "repository": "https://github.com/Liquid-JS/nxt-components.git",
     "homepage": "https://github.com/Liquid-JS/nxt-components/tree/master/packages/json-view",
+    "keywords": [
+        "nxt-json-view",
+        "ng-json-view",
+        "angular-json-view",
+        "json view",
+        "json viewer",
+        "angular",
+        "json",
+        "view",
+        "viewer",
+        "tree"
+    ],
     "scripts": {
         "watch": "ng build json-view --configuration \"development\" --watch",
         "build": "ng build json-view --configuration \"production\"",
@@ -20,8 +32,8 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/json-view"
     },
     "peerDependencies": {
-        "@angular/common": "^16.0.0",
-        "@angular/core": "^16.0.0"
+        "@angular/common": "^16.1.0",
+        "@angular/core": "^16.1.0"
     },
     "dependencies": {
         "tslib": "^2.5.0"

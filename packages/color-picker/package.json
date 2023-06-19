@@ -6,6 +6,16 @@
     "license": "MIT",
     "repository": "https://github.com/Liquid-JS/nxt-components.git",
     "homepage": "https://github.com/Liquid-JS/nxt-components/tree/master/packages/color-picker",
+    "keywords": [
+        "nxt-color-picker",
+        "ng-color-picker",
+        "angular-color-picker",
+        "color picker",
+        "colorpicker",
+        "angular",
+        "color",
+        "picker"
+    ],
     "scripts": {
         "watch": "ng build color-picker --configuration \"development\" --watch",
         "build": "ng build color-picker --configuration \"production\"",
@@ -20,10 +30,10 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/color-picker"
     },
     "peerDependencies": {
-        "@angular/cdk": "^16.0.0",
-        "@angular/common": "^16.0.0",
-        "@angular/core": "^16.0.0",
-        "@angular/localize": "^16.0.0"
+        "@angular/cdk": "^16.1.0",
+        "@angular/common": "^16.1.0",
+        "@angular/core": "^16.1.0",
+        "@angular/localize": "^16.1.0"
     },
     "dependencies": {
         "tslib": "^2.5.0"

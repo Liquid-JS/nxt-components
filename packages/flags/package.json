@@ -6,6 +6,17 @@
     "license": "MIT",
     "repository": "https://github.com/Liquid-JS/nxt-components.git",
     "homepage": "https://github.com/Liquid-JS/nxt-components/tree/master/packages/flags",
+    "keywords": [
+        "nxt-flags",
+        "ng-flags",
+        "angular-flags",
+        "flags",
+        "angular",
+        "country",
+        "countries",
+        "ISO 3166-1-alpha-2",
+        "ISO 3166-1"
+    ],
     "scripts": {
         "watch": "ng build flags --configuration \"development\" --watch",
         "build": "ng build flags --configuration \"production\"",
@@ -20,8 +31,8 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/flags"
     },
     "peerDependencies": {
-        "@angular/common": "^16.0.0",
-        "@angular/core": "^16.0.0"
+        "@angular/common": "^16.1.0",
+        "@angular/core": "^16.1.0"
     },
     "dependencies": {
         "tslib": "^2.5.0"

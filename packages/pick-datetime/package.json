@@ -6,6 +6,18 @@
     "license": "MIT",
     "repository": "https://github.com/Liquid-JS/nxt-components.git",
     "homepage": "https://github.com/Liquid-JS/nxt-components/tree/master/packages/pick-datetime",
+    "keywords": [
+        "nxt-pick-datetime",
+        "ng-pick-datetime",
+        "angular-pick-datetime",
+        "pick datetime",
+        "pick date time",
+        "angular",
+        "datetime",
+        "date",
+        "time",
+        "picker"
+    ],
     "scripts": {
         "watch": "ng build pick-datetime --configuration \"development\" --watch",
         "build": "ng build pick-datetime --configuration \"production\"",
@@ -20,12 +32,12 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/pick-datetime"
     },
     "peerDependencies": {
-        "@angular/animations": "^16.0.0",
-        "@angular/cdk": "^16.0.0",
-        "@angular/common": "^16.0.0",
-        "@angular/core": "^16.0.0",
-        "@angular/forms": "^16.0.0",
-        "@angular/localize": "^16.0.0",
+        "@angular/animations": "^16.1.0",
+        "@angular/cdk": "^16.1.0",
+        "@angular/common": "^16.1.0",
+        "@angular/core": "^16.1.0",
+        "@angular/forms": "^16.1.0",
+        "@angular/localize": "^16.1.0",
         "moment": "^2.29.4",
         "rxjs": "^7.8.1"
     },
