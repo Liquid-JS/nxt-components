@@ -122,7 +122,10 @@ export class MetaDirective implements OnInit, OnDestroy, OnInit {
             if (!path.match(/^[\/\\]/))
                 path = '/' + path
 
-            path = 'https://liquid-js.github.io/nxt-components/demo' + path
+            if (!path.startsWith('/nxt-components/demo'))
+                path = '/nxt-components/demo' + path
+
+            path = 'https://liquid-js.github.io' + path
         }
         if (!path.endsWith('/'))
             path += '/'
