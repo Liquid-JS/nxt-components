@@ -1,12 +1,12 @@
 {
-    "packages": [
-        "packages/*"
-    ],
-    "version": "16.0.0",
-    "npmClient": "yarn",
-    "command": {
-        "publish": {
-            "conventionalCommits": true
-        }
+  "packages": [
+    "packages/*"
+  ],
+  "version": "16.1.0",
+  "npmClient": "yarn",
+  "command": {
+    "publish": {
+      "conventionalCommits": true
     }
+  }
 }
