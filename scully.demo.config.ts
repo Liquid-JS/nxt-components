@@ -22,6 +22,7 @@ setPluginConfig(SitemapPlugin, {
         '0.1',
         '0.0'
     ],
+    trailingSlash: true,
     ignoredRoutes: ['/404']
 })
 

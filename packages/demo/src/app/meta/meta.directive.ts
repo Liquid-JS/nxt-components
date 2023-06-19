@@ -124,6 +124,8 @@ export class MetaDirective implements OnInit, OnDestroy, OnInit {
 
             path = 'https://liquid-js.github.io/nxt-components/demo' + path
         }
+        if (!path.endsWith('/'))
+            path += '/'
 
         try {
             const u = new URL(path)
