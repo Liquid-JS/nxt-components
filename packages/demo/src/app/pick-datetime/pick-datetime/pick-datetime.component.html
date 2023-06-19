@@ -1,3 +1,7 @@
+<app-meta *ngIf="!loading"
+    title="nxt-pick-datetime"
+    (done)="ims.fireManualMyAppReadyEvent()"
+    description="Simple responsive Angular date and time picker."></app-meta>
 <app-content-wrap>
     <h1>Angular date & time picker</h1>
     <p>

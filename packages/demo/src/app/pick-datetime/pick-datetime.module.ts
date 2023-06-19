@@ -8,6 +8,7 @@ import { CodeBlockComponent } from '../code-block/code-block.component'
 import { ContentWrapComponent } from '../content-wrap/content-wrap.component'
 import { ExampleComponent } from '../example/example.component'
 import { InputsTableComponent } from '../inputs-table/inputs-table.component'
+import { MetaModule } from '../meta/meta.module'
 import { OutputsTableComponent } from '../outputs-table/outputs-table.component'
 import { AccessibilityComponent } from './accessibility/accessibility.component'
 import { CustomAdapterComponent } from './custom-adapter/custom-adapter.component'
@@ -57,7 +58,8 @@ import { ValidationComponent } from './validation/validation.component'
         BsDropdownModule,
         CodeBlockComponent,
         InputsTableComponent,
-        OutputsTableComponent
+        OutputsTableComponent,
+        MetaModule
     ],
     providers: [],
     bootstrap: [AppPickDatetimeComponent]

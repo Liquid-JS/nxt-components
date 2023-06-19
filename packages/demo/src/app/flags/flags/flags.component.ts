@@ -1,5 +1,4 @@
 import { Component, Injector, OnInit } from '@angular/core'
-import { Title } from '@angular/platform-browser'
 import { IdleMonitorService } from '@scullyio/ng-lib'
 import { registerLocale } from 'i18n-iso-countries'
 import locl from 'i18n-iso-countries/langs/en.json'
@@ -31,16 +30,13 @@ export class AppFlagsComponent extends WaitLoad implements OnInit {
     )
 
     constructor(
-        private readonly title: Title,
         readonly injector: Injector,
-        private readonly ims: IdleMonitorService
+        readonly ims: IdleMonitorService
     ) {
         super()
     }
 
     ngOnInit(): void {
-        this.title.setTitle('nxt-flags')
-        this.addTask(() => this.ims.fireManualMyAppReadyEvent())
         this.examples.then(() => this.doneLoading())
             .catch(console.error)
     }

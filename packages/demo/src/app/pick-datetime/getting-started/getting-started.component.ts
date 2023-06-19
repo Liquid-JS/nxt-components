@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core'
-import { Title } from '@angular/platform-browser'
+import { Component, ViewEncapsulation } from '@angular/core'
 import docs from '../documentation.json'
 
 @Component({
@@ -8,7 +7,7 @@ import docs from '../documentation.json'
     styleUrls: ['./getting-started.component.scss'],
     encapsulation: ViewEncapsulation.Emulated
 })
-export class GettingStartedComponent implements OnInit {
+export class GettingStartedComponent {
 
     readonly installScript = 'npm install --save nxt-pick-datetime'
 
@@ -87,12 +86,4 @@ import { NativeDateTimeModule } from 'nxt-pick-datetime/native-adapter'
             outputs
         }
     })
-
-    constructor(
-        private readonly title: Title
-    ) { }
-
-    ngOnInit(): void {
-        this.title.setTitle('Getting started | nxt-pick-datetime')
-    }
 }

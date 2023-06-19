@@ -1,3 +1,7 @@
+<app-meta *ngIf="!loading"
+    title="nxt-color-picker"
+    (done)="ims.fireManualMyAppReadyEvent()"
+    description="A color picker widget for Angular with no dependencies."></app-meta>
 <app-content-wrap>
     <h1>Angular color picker</h1>
     <p>

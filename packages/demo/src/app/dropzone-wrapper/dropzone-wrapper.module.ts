@@ -7,6 +7,7 @@ import { ContentWrapComponent } from '../content-wrap/content-wrap.component'
 import { ExampleComponent } from '../example/example.component'
 import { InputsTableComponent } from '../inputs-table/inputs-table.component'
 import { OutputsTableComponent } from '../outputs-table/outputs-table.component'
+import { MetaModule } from '../meta/meta.module'
 import { AppDropzoneWrapperRoutingModule } from './dropzone-wrapper-routing.module'
 import { AppDropzoneWrapperComponent } from './dropzone-wrapper/dropzone-wrapper.component'
 import { SandboxComponent } from './examples/sandbox/sandbox.component'
@@ -34,7 +35,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
         ExampleComponent,
         CodeBlockComponent,
         InputsTableComponent,
-        OutputsTableComponent
+        OutputsTableComponent,
+        MetaModule
     ],
     exports: [],
     providers: [

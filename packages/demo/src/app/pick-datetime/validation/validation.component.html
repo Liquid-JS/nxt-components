@@ -1,3 +1,7 @@
+<app-meta *ngIf="!loading"
+    title="Validation | nxt-pick-datetime"
+    (done)="ims.fireManualMyAppReadyEvent()"
+    description="Angular date and time picker provides validation when used in combination with ngModel."></app-meta>
 <app-content-wrap>
     <h1>Validation</h1>
     <p>When used with <code>[ngModel]</code> or <code>[formControl]</code>, date & time picker provides control validation.</p>

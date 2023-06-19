@@ -7,6 +7,7 @@ import { CodeBlockComponent } from '../code-block/code-block.component'
 import { ContentWrapComponent } from '../content-wrap/content-wrap.component'
 import { ExampleComponent } from '../example/example.component'
 import { InputsTableComponent } from '../inputs-table/inputs-table.component'
+import { MetaModule } from '../meta/meta.module'
 import { OutputsTableComponent } from '../outputs-table/outputs-table.component'
 import { AppColorPickerRoutingModule } from './color-picker-routing.module'
 import { AppColorPickerComponent, AppColorPickerWrapComponent } from './color-picker/color-picker.component'
@@ -55,7 +56,8 @@ import { GettingStartedComponent } from './getting-started/getting-started.compo
         BsDropdownModule,
         CodeBlockComponent,
         InputsTableComponent,
-        OutputsTableComponent
+        OutputsTableComponent,
+        MetaModule
     ],
     providers: [{
         provide: OverlayContainer,

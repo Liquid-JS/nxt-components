@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core'
-import { Title } from '@angular/platform-browser'
+import { Component, ViewEncapsulation } from '@angular/core'
 import docs from '../documentation.json'
 
 @Component({
@@ -8,7 +7,7 @@ import docs from '../documentation.json'
     styleUrls: ['./getting-started.component.scss'],
     encapsulation: ViewEncapsulation.Emulated
 })
-export class GettingStartedComponent implements OnInit {
+export class GettingStartedComponent {
 
     readonly installScript = 'npm install --save nxt-dropzone-wrapper dropzone'
 
@@ -56,12 +55,4 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
     readonly componentInputs = this.componentDocs?.inputsClass.sort((a, b) => a.line - b.line) ?? []
 
     readonly componentOutputs = this.componentDocs?.outputsClass.sort((a, b) => a.line - b.line) ?? []
-
-    constructor(
-        private readonly title: Title
-    ) { }
-
-    ngOnInit(): void {
-        this.title.setTitle('Getting started | nxt-dropzone-wrapper')
-    }
 }

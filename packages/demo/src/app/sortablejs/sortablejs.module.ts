@@ -7,6 +7,7 @@ import { CodeBlockComponent } from '../code-block/code-block.component'
 import { ContentWrapComponent } from '../content-wrap/content-wrap.component'
 import { ExampleComponent } from '../example/example.component'
 import { InputsTableComponent } from '../inputs-table/inputs-table.component'
+import { MetaModule } from '../meta/meta.module'
 import { OutputsTableComponent } from '../outputs-table/outputs-table.component'
 import { BasicExampleComponent } from './examples/basic-example/basic-example.component'
 import { ComplexExampleComponent } from './examples/complex-example/complex-example.component'
@@ -46,7 +47,8 @@ import { AppSortablejsComponent } from './sortablejs/sortablejs.component'
         InputsTableComponent,
         OutputsTableComponent,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MetaModule
     ],
     bootstrap: [AppSortablejsComponent]
 })

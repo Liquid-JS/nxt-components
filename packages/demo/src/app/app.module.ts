@@ -2,13 +2,14 @@ import { isDevMode, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ServiceWorkerModule } from '@angular/service-worker'
+import { ScullyLibModule } from '@scullyio/ng-lib'
 import { TooltipModule } from 'ngx-bootstrap/tooltip'
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs'
-import { ScullyLibModule } from '@scullyio/ng-lib'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { ContentWrapComponent } from './content-wrap/content-wrap.component'
 import { HomeComponent } from './home/home.component'
+import { MetaModule } from './meta/meta.module'
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { HomeComponent } from './home/home.component'
         }),
         ContentWrapComponent,
         TooltipModule.forRoot(),
-        ScullyLibModule
+        ScullyLibModule,
+        MetaModule
     ],
     providers: [
         {

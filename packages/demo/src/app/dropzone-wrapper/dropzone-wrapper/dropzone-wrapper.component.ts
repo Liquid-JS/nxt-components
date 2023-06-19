@@ -1,5 +1,4 @@
 import { Component, Injector, OnInit } from '@angular/core'
-import { Title } from '@angular/platform-browser'
 import { IdleMonitorService } from '@scullyio/ng-lib'
 import { ExampleConfig, LoaderConfig, resolveTempaltes } from '../../example/example.component'
 import { WaitLoad } from '../../utils/wait-load.class'
@@ -28,16 +27,13 @@ export class AppDropzoneWrapperComponent extends WaitLoad implements OnInit {
     )
 
     constructor(
-        private readonly title: Title,
         readonly injector: Injector,
-        private readonly ims: IdleMonitorService
+        readonly ims: IdleMonitorService
     ) {
         super()
     }
 
     ngOnInit(): void {
-        this.title.setTitle('nxt-dropzone-wrapper')
-        this.addTask(() => this.ims.fireManualMyAppReadyEvent())
         this.examples.then(() => this.doneLoading())
             .catch(console.error)
     }
