@@ -36,8 +36,7 @@ import { MetaModule } from './meta/meta.module'
             provide: HIGHLIGHT_OPTIONS,
             useValue: {
                 coreLibraryLoader: () => import('highlight.js/lib/core'),
-                // @ts-ignore
-                lineNumbersLoader: () => import('highlightjs-line-numbers.js'),
+                lineNumbersLoader: () => import('ngx-highlightjs/line-numbers'),
                 languages: {
                     typescript: () => import('highlight.js/lib/languages/typescript'),
                     scss: () => import('highlight.js/lib/languages/scss'),

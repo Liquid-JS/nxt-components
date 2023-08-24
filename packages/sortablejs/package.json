@@ -29,8 +29,8 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/sortablejs"
     },
     "peerDependencies": {
-        "@angular/common": "^16.1.0",
-        "@angular/core": "^16.1.0",
+        "@angular/common": "^16.2.0",
+        "@angular/core": "^16.2.0",
         "sortablejs": ">=1.15.0"
     },
     "dependencies": {
