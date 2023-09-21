@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[7294],{7294:o=>{o.exports='<input class="form-control"\r\n    [style.background]="color"\r\n    [(nxtColor)]="color"\r\n    mode="grayscale" />\r\n'}}]);

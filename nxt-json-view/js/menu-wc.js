@@ -59,13 +59,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/JsonViewModule.html" data-type="entity-link" >JsonViewModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-JsonViewModule-c03a761cc397242e8a0e67387ad8e0d27a6cfc84ff82ea2c944674b27cc3f4d6524be2f3830c946090944e93fda74050156cdc379301cc410864970d9f95bc72"' : 'data-bs-target="#xs-components-links-module-JsonViewModule-c03a761cc397242e8a0e67387ad8e0d27a6cfc84ff82ea2c944674b27cc3f4d6524be2f3830c946090944e93fda74050156cdc379301cc410864970d9f95bc72"' }>
+                                            'data-bs-target="#components-links-module-JsonViewModule-031f9b70474597d9d270400565dac363601f6e709132447aab1ff2b4978792f393a1f0e815fdb893c148cea3b156c6ed1884b3bfe0a94e68533cfd72092f3f04"' : 'data-bs-target="#xs-components-links-module-JsonViewModule-031f9b70474597d9d270400565dac363601f6e709132447aab1ff2b4978792f393a1f0e815fdb893c148cea3b156c6ed1884b3bfe0a94e68533cfd72092f3f04"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-JsonViewModule-c03a761cc397242e8a0e67387ad8e0d27a6cfc84ff82ea2c944674b27cc3f4d6524be2f3830c946090944e93fda74050156cdc379301cc410864970d9f95bc72"' :
-                                            'id="xs-components-links-module-JsonViewModule-c03a761cc397242e8a0e67387ad8e0d27a6cfc84ff82ea2c944674b27cc3f4d6524be2f3830c946090944e93fda74050156cdc379301cc410864970d9f95bc72"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-JsonViewModule-031f9b70474597d9d270400565dac363601f6e709132447aab1ff2b4978792f393a1f0e815fdb893c148cea3b156c6ed1884b3bfe0a94e68533cfd72092f3f04"' :
+                                            'id="xs-components-links-module-JsonViewModule-031f9b70474597d9d270400565dac363601f6e709132447aab1ff2b4978792f393a1f0e815fdb893c148cea3b156c6ed1884b3bfe0a94e68533cfd72092f3f04"' }>
                                             <li class="link">
                                                 <a href="components/JsonViewComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >JsonViewComponent</a>
                                             </li>
