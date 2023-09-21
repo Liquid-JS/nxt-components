@@ -3,7 +3,7 @@
     "interfaces": [
         {
             "name": "LevelLabels",
-            "id": "interface-LevelLabels-5b4a265617bc7cb727510602e82a1ec16c08725540b2ebe9ba67fa533594e80490594437becc9f495aac065a3e2ec704744949974e087938e9356e013f5c369c",
+            "id": "interface-LevelLabels-b3bf53d2b0a9e1ab8e0207c39f8d242961d91431b8822f4821f4b37a58f8dae6dde7878085d361cf4f67915f11c2858eba6f7ac8d9a0615ee59b47790fd5d8ca",
             "file": "src/lib/utils/interfaces.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -11,7 +11,7 @@
             "properties": [],
             "indexSignatures": [
                 {
-                    "id": "index-declaration-5b4a265617bc7cb727510602e82a1ec16c08725540b2ebe9ba67fa533594e80490594437becc9f495aac065a3e2ec704744949974e087938e9356e013f5c369c",
+                    "id": "index-declaration-b3bf53d2b0a9e1ab8e0207c39f8d242961d91431b8822f4821f4b37a58f8dae6dde7878085d361cf4f67915f11c2858eba6f7ac8d9a0615ee59b47790fd5d8ca",
                     "args": [
                         {
                             "name": "level",
@@ -38,7 +38,7 @@
     "components": [
         {
             "name": "JsonViewComponent",
-            "id": "component-JsonViewComponent-3e9e6bafbff69fcfa2a527744cc66bde9d01d85ee3c1bd0e57a3d2256ad1bc9b712d72b4089af038c1a5a1c5daae67ba46e481419ee7d19220175b9f518d5d7b",
+            "id": "component-JsonViewComponent-98cf3d6f63994cc304ae0b94d01f5ece87007558999a465227c8e57e674c6bf62b2714aa56b0ec9664dd5e3e1c369bad3253dfa82477b18bf8aa2d5819416d45",
             "file": "src/lib/json-view/json-view.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.Emulated"
@@ -104,18 +104,18 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "\r\n",
+                    "data": "\n",
                     "styleUrl": "./json-view.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<div class=\"nxt-json-view\">\r\n    <nxt-json-view-item [data]=\"data\"\r\n        [level]=\"0\"\r\n        [levelOpen]=\"levelOpen\"\r\n        [levelLabels]=\"levelLabels\"\r\n        class=\"json-view\"></nxt-json-view-item>\r\n</div>\r\n"
+            "templateData": "<div class=\"nxt-json-view\">\n    <nxt-json-view-item [data]=\"data\"\n        [level]=\"0\"\n        [levelOpen]=\"levelOpen\"\n        [levelLabels]=\"levelLabels\"\n        class=\"json-view\"></nxt-json-view-item>\n</div>\n"
         }
     ],
     "modules": [
         {
             "name": "JsonViewModule",
-            "id": "module-JsonViewModule-c03a761cc397242e8a0e67387ad8e0d27a6cfc84ff82ea2c944674b27cc3f4d6524be2f3830c946090944e93fda74050156cdc379301cc410864970d9f95bc72",
+            "id": "module-JsonViewModule-031f9b70474597d9d270400565dac363601f6e709132447aab1ff2b4978792f393a1f0e815fdb893c148cea3b156c6ed1884b3bfe0a94e68533cfd72092f3f04",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,

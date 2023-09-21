@@ -55,7 +55,7 @@ export class AppSortablejsComponent extends WaitLoad implements OnInit {
         {
             path: 'complex-example',
             name: 'Complex example',
-            description: 'The first list is a clone factory, and the second list can be its target.',
+            description: 'Each list can have different options and restrictions.',
             include: ['html', 'ts']
         }
     )

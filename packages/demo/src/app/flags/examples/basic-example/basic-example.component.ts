@@ -21,7 +21,7 @@ export class BasicExampleComponent {
         code: c.toLowerCase(),
         name: getName(c.toUpperCase(), 'en')
     }))
-        .filter(({ name }) => !!name)
+        .filter((v): v is typeof v & { name: string } => !!v.name)
         .sort((a, b) => normalizeCompare(a.name, b.name))
 }
 
