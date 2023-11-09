@@ -44,8 +44,8 @@
 <li><a href="https://docs.dropzone.dev/configuration/basics/configuration-options">Dropzone documentation</a></li>
 </ul>
 <h3>Installing</h3>
-<div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-dropzone-wrapper dropzone</code></pre></div><h3>Import and configure dropzone wrapper module</h3>
-<div><pre class="line-numbers"><code class="language-ts">import { DropzoneConfig, DropzoneModule, NXT_DROPZONE_CONFIG } from &#39;nxt-dropzone-wrapper&#39;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-dropzone-wrapper dropzone</code></pre></div><h3>Import and configure dropzone wrapper module</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { DropzoneConfig, DropzoneModule, NXT_DROPZONE_CONFIG } from &#39;nxt-dropzone-wrapper&#39;
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
     // Change this to your upload POST address:
@@ -69,12 +69,12 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
 })</code></pre></div><h3>Include it in HTML template</h3>
 <p>This library provides two ways to create a Dropzone element, component for simple use cases and directive for more custom use cases.</p>
 <h4>Use dropzone component</h4>
-<div><pre class="line-numbers"><code class="language-html">&lt;nxt-dropzone [config]=&quot;config&quot;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;nxt-dropzone [config]=&quot;config&quot;
     message=&quot;Click or drag images here to upload&quot;
     (error)=&quot;onUploadError($event)&quot;
     (success)=&quot;onUploadSuccess($event)&quot;&gt;&lt;/nxt-dropzone&gt;</code></pre></div><h4>Use dropzone directive</h4>
 <p>When using only the directive you need to provide your own theming or import the default theme (<code>dropzone/dist/dropzone.css</code>).</p>
-<div><pre class="line-numbers"><code class="language-html">&lt;div class=&quot;dropzone&quot;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;div class=&quot;dropzone&quot;
     [nxtDropzone]=&quot;config&quot;
     (error)=&quot;onUploadError($event)&quot;
     (success)=&quot;onUploadSuccess($event)&quot;&gt;&lt;/div&gt;</code></pre></div>

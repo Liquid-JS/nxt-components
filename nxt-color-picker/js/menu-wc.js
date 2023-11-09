@@ -59,13 +59,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/ColorPickerModule.html" data-type="entity-link" >ColorPickerModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                        'data-bs-target="#directives-links-module-ColorPickerModule-a21816942879839161b717073377abe36be6ba3e0f8f62c302cc78c4aeb843dbe8333696e179ddf41c24f793ce53fc36a017c06e389c2c8d6e9d19c1a8eb62ce"' : 'data-bs-target="#xs-directives-links-module-ColorPickerModule-a21816942879839161b717073377abe36be6ba3e0f8f62c302cc78c4aeb843dbe8333696e179ddf41c24f793ce53fc36a017c06e389c2c8d6e9d19c1a8eb62ce"' }>
+                                        'data-bs-target="#directives-links-module-ColorPickerModule-874d3bc618c79e22cc5bd9dc4bbf67958a34b95700c4af4cd2c3ad0a347a29635adce40771ac3a4f5b6ca0b32563366df2e41de2d072e7b48d9b0a420da2b427"' : 'data-bs-target="#xs-directives-links-module-ColorPickerModule-874d3bc618c79e22cc5bd9dc4bbf67958a34b95700c4af4cd2c3ad0a347a29635adce40771ac3a4f5b6ca0b32563366df2e41de2d072e7b48d9b0a420da2b427"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-ColorPickerModule-a21816942879839161b717073377abe36be6ba3e0f8f62c302cc78c4aeb843dbe8333696e179ddf41c24f793ce53fc36a017c06e389c2c8d6e9d19c1a8eb62ce"' :
-                                        'id="xs-directives-links-module-ColorPickerModule-a21816942879839161b717073377abe36be6ba3e0f8f62c302cc78c4aeb843dbe8333696e179ddf41c24f793ce53fc36a017c06e389c2c8d6e9d19c1a8eb62ce"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-ColorPickerModule-874d3bc618c79e22cc5bd9dc4bbf67958a34b95700c4af4cd2c3ad0a347a29635adce40771ac3a4f5b6ca0b32563366df2e41de2d072e7b48d9b0a420da2b427"' :
+                                        'id="xs-directives-links-module-ColorPickerModule-874d3bc618c79e22cc5bd9dc4bbf67958a34b95700c4af4cd2c3ad0a347a29635adce40771ac3a4f5b6ca0b32563366df2e41de2d072e7b48d9b0a420da2b427"' }>
                                         <li class="link">
                                             <a href="directives/ColorPickerDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ColorPickerDirective</a>
                                         </li>
