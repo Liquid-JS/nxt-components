@@ -4,7 +4,6 @@ import { Component, FactoryProvider, Type, ValueProvider, ViewChild } from '@ang
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing'
 import { FormsModule, ReactiveFormsModule, UntypedFormControl } from '@angular/forms'
 import { By } from '@angular/platform-browser'
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { createKeyboardEvent, dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, TestDateTimeModule } from '../../../test-helpers'
 import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
@@ -35,11 +34,7 @@ describe('DateTimeComponent', () => {
             declarations: [component, ...entryComponents]
         })
 
-        TestBed.overrideModule(BrowserDynamicTestingModule, {
-            set: {
-                entryComponents: [entryComponents]
-            }
-        }).compileComponents().catch(console.error)
+        TestBed.compileComponents().catch(console.error)
 
         return TestBed.createComponent(component)
     }

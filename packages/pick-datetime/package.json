@@ -32,17 +32,17 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/pick-datetime"
     },
     "peerDependencies": {
-        "@angular/animations": "^16.2.0",
-        "@angular/cdk": "^16.2.0",
-        "@angular/common": "^16.2.0",
-        "@angular/core": "^16.2.0",
-        "@angular/forms": "^16.2.0",
-        "@angular/localize": "^16.2.0",
+        "@angular/animations": "^17.0.1",
+        "@angular/cdk": "^17.0.0",
+        "@angular/common": "^17.0.1",
+        "@angular/core": "^17.0.1",
+        "@angular/forms": "^17.0.1",
+        "@angular/localize": "^17.0.1",
         "moment": "^2.29.4",
         "rxjs": "^7.8.1"
     },
     "dependencies": {
-        "tslib": "^2.5.0"
+        "tslib": "^2.6.2"
     },
     "exports": {
         "./assets/picker.scss": {

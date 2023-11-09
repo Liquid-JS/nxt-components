@@ -31,11 +31,11 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/flags"
     },
     "peerDependencies": {
-        "@angular/common": "^16.2.0",
-        "@angular/core": "^16.2.0"
+        "@angular/common": "^17.0.1",
+        "@angular/core": "^17.0.1"
     },
     "dependencies": {
-        "tslib": "^2.5.0"
+        "tslib": "^2.6.2"
     },
     "exports": {
         "./assets/flags/": "./assets/flags/"

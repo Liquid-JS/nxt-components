@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { JsonViewItemComponent } from '../json-view-item/json-view-item.component'
 import { JsonViewComponent } from './json-view.component'
 
 describe('JsonViewComponent', () => {
@@ -7,7 +8,7 @@ describe('JsonViewComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [JsonViewComponent]
+            declarations: [JsonViewComponent, JsonViewItemComponent]
         })
             .compileComponents()
     })

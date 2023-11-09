@@ -3,7 +3,7 @@
     "interfaces": [
         {
             "name": "DateTimeFormats",
-            "id": "interface-DateTimeFormats-3dff21ebb7a767a5a789a0da8c95d9e57332e562b661e144bd54c66756753280d3a40a162c6eacadad9ecefccfcf0c61a8a81866eb1782bef712e619684a7fe0",
+            "id": "interface-DateTimeFormats-6c90bae76745def59658cb3d35926c39ac0dcc870fd892a58d8338effc8cd2e41f5abc61837394dd14d84b065ecddb853ec85abb0ab481d26e513b51ddd94089",
             "file": "src/lib/class/date-time-format.class.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -74,12 +74,13 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 168,
-            "methods": []
+            "kind": 171,
+            "methods": [],
+            "extends": []
         },
         {
             "name": "DateTimeInputEvent",
-            "id": "interface-DateTimeInputEvent-7ea4f7ddb2dcf53c48f9288ff2555b1b83b45294d64753e0ba3184d43b38e5a5b1e99badbb46b41fe378f43fb42371812e2fd280c77727da9f7f36fc333db32c",
+            "id": "interface-DateTimeInputEvent-b741e1b0597ce0dd297a2aed448aabc368ac9f87ab90fcd652a6244311bf79d9c6c3ae39b7bfd1cfc8962abeba159e77af76c80bf5bc2d4c0222cacb9269e5c7",
             "file": "src/lib/date-time/date-time-picker-input.directive.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -114,12 +115,13 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 168,
-            "methods": []
+            "kind": 171,
+            "methods": [],
+            "extends": []
         },
         {
             "name": "DialogPosition",
-            "id": "interface-DialogPosition-e525256148a5312864cb4484567bb28bad83ad7b187829da5866f3ddad7b6412ebfa05ef4b41b6b35e6ccdfee603d0bbf26d0222340127b246c41c963d499680",
+            "id": "interface-DialogPosition-4a5cc972ea4fd58137b36490bb46f10f72adf28448f3dd7ba895c5dab9c9b64c5bcaeb80d912415b6cab3d110f67b1e38866a98d7017a5db0e095e76a617528f",
             "file": "src/lib/class/dialog-config.class.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -167,14 +169,15 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 168,
+            "kind": 171,
             "description": "<p>Possible overrides for a dialog&#39;s position</p>\n",
             "rawdescription": "\nPossible overrides for a dialog's position",
-            "methods": []
+            "methods": [],
+            "extends": []
         },
         {
             "name": "MomentDateTimeAdapterOptions",
-            "id": "interface-MomentDateTimeAdapterOptions-5693aad2acedcee2339fbee46efb3276fd6222a9af36bee9be9b072be63c84147f82020e34bfdedf2c30e3c0a98d08947ecf008c9eac3e0042ccbf5a3c4050ed",
+            "id": "interface-MomentDateTimeAdapterOptions-e3f62a848294742aad816d29469100f4fe1e8cebc810485ca4c383b8892e6ad10459a08c67e871262f0bc61891166ada2495fdec9b17add272a68c661c8bf251",
             "file": "moment-adapter/src/date-time-adapter.class.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -192,16 +195,17 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 168,
+            "kind": 171,
             "description": "<p>Configurable options for {@see MomentDateAdapter}</p>\n",
             "rawdescription": "\nConfigurable options for {@see MomentDateAdapter}",
-            "methods": []
+            "methods": [],
+            "extends": []
         }
     ],
     "injectables": [
         {
             "name": "DateTimeIntl",
-            "id": "injectable-DateTimeIntl-b1e4ecfd22cf52d103190163dbcee3230a0f2fc7dcde911c06c6d56f9e567835de353e1bbaacc4cdff18e50fe13e07c54a427b77650b2a77e3df578678e24e39",
+            "id": "injectable-DateTimeIntl-8b0bec7d84f2fe09348369566984ae269fb5c54b627371ffc71efa765b2ee407e42ee96604bffc7fc7e56dba9a8a3d379aca5ca010bb896a2ad00a7a0032f8eb",
             "file": "src/lib/date-time/date-time-picker-intl.service.ts",
             "properties": [
                 {
@@ -226,7 +230,7 @@
                     "line": 17,
                     "rawdescription": "\n\nStream that emits whenever the labels here are changed. Use this to notify\ncomponents if the labels have changed after initialization.\n",
                     "modifierKind": [
-                        146
+                        148
                     ]
                 },
                 {
@@ -444,11 +448,12 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
+            "extends": [],
             "type": "injectable"
         },
         {
             "name": "MomentDateTimeAdapter",
-            "id": "injectable-MomentDateTimeAdapter-5693aad2acedcee2339fbee46efb3276fd6222a9af36bee9be9b072be63c84147f82020e34bfdedf2c30e3c0a98d08947ecf008c9eac3e0042ccbf5a3c4050ed",
+            "id": "injectable-MomentDateTimeAdapter-e3f62a848294742aad816d29469100f4fe1e8cebc810485ca4c383b8892e6ad10459a08c67e871262f0bc61891166ada2495fdec9b17add272a68c661c8bf251",
             "file": "moment-adapter/src/date-time-adapter.class.ts",
             "properties": [
                 {
@@ -462,7 +467,7 @@
                     "line": 8,
                     "rawdescription": "\nA stream that emits when the locale changes",
                     "modifierKind": [
-                        122
+                        124
                     ],
                     "inheritance": {
                         "file": "DateTimeAdapter"
@@ -478,7 +483,7 @@
                     "line": 5,
                     "rawdescription": "\nThe locale to use for all dates",
                     "modifierKind": [
-                        122
+                        124
                     ],
                     "inheritance": {
                         "file": "DateTimeAdapter"
@@ -495,8 +500,8 @@
                     "line": 14,
                     "rawdescription": "\ntotal milliseconds in a day",
                     "modifierKind": [
-                        122,
-                        146
+                        124,
+                        148
                     ],
                     "inheritance": {
                         "file": "DateTimeAdapter"
@@ -513,8 +518,8 @@
                     "line": 17,
                     "rawdescription": "\ntotal milliseconds in a minute",
                     "modifierKind": [
-                        122,
-                        146
+                        124,
+                        148
                     ],
                     "inheritance": {
                         "file": "DateTimeAdapter"
@@ -880,7 +885,7 @@
                     "rawdescription": "\n\nReturns the given value if given a valid Moment or undefined. Deserializes valid ISO 8601 strings\n(https://www.ietf.org/rfc/rfc3339.txt) and valid Date objects into valid Moments and empty\nstring into undefined. Returns an invalid date for all other values.\n",
                     "description": "<p>Returns the given value if given a valid Moment or undefined. Deserializes valid ISO 8601 strings\n(<a href=\"https://www.ietf.org/rfc/rfc3339.txt\">https://www.ietf.org/rfc/rfc3339.txt</a>) and valid Date objects into valid Moments and empty\nstring into undefined. Returns an invalid date for all other values.</p>\n",
                     "modifierKind": [
-                        161
+                        164
                     ],
                     "jsdoctags": [
                         {
@@ -1663,7 +1668,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
-                        161
+                        164
                     ],
                     "jsdoctags": [
                         {
@@ -2024,12 +2029,14 @@
                     }
                 ]
             },
-            "extends": "DateTimeAdapter",
+            "extends": [
+                "DateTimeAdapter"
+            ],
             "type": "injectable"
         },
         {
             "name": "NativeDateTimeAdapter",
-            "id": "injectable-NativeDateTimeAdapter-4d2971308d984c918f91acc51616788e1aab86484d213a95d02f2a9d7fbad20807836296103ebed6c5f02c93f16d3aca350579df07b45bb6b52a3ea64adfd2cd",
+            "id": "injectable-NativeDateTimeAdapter-18a64e0f7bcadd1a83a07ea86234e3f6e2a363ab95fb183863f9925dd127b2b850369e1ce16c03fe9ae2e7508e68370b1499bad74c867a1b29a464f206fff484",
             "file": "native-adapter/src/date-time-adapter.class.ts",
             "properties": [
                 {
@@ -2053,7 +2060,7 @@
                     "line": 8,
                     "rawdescription": "\nA stream that emits when the locale changes",
                     "modifierKind": [
-                        122
+                        124
                     ],
                     "inheritance": {
                         "file": "DateTimeAdapter"
@@ -2069,7 +2076,7 @@
                     "line": 5,
                     "rawdescription": "\nThe locale to use for all dates",
                     "modifierKind": [
-                        122
+                        124
                     ],
                     "inheritance": {
                         "file": "DateTimeAdapter"
@@ -2086,8 +2093,8 @@
                     "line": 14,
                     "rawdescription": "\ntotal milliseconds in a day",
                     "modifierKind": [
-                        122,
-                        146
+                        124,
+                        148
                     ],
                     "inheritance": {
                         "file": "DateTimeAdapter"
@@ -2104,8 +2111,8 @@
                     "line": 17,
                     "rawdescription": "\ntotal milliseconds in a minute",
                     "modifierKind": [
-                        122,
-                        146
+                        124,
+                        148
                     ],
                     "inheritance": {
                         "file": "DateTimeAdapter"
@@ -2413,7 +2420,7 @@
                     "rawdescription": "\n\nReturns the given value if given a valid Date or undefined. Deserializes valid ISO 8601 strings\n(https://www.ietf.org/rfc/rfc3339.txt) into valid Dates and empty string into undefined. Returns an\ninvalid date for all other values.\n",
                     "description": "<p>Returns the given value if given a valid Date or undefined. Deserializes valid ISO 8601 strings\n(<a href=\"https://www.ietf.org/rfc/rfc3339.txt\">https://www.ietf.org/rfc/rfc3339.txt</a>) into valid Dates and empty string into undefined. Returns an\ninvalid date for all other values.</p>\n",
                     "modifierKind": [
-                        161
+                        164
                     ],
                     "jsdoctags": [
                         {
@@ -3554,7 +3561,9 @@
                     }
                 ]
             },
-            "extends": "DateTimeAdapter",
+            "extends": [
+                "DateTimeAdapter"
+            ],
             "type": "injectable"
         }
     ],
@@ -3563,7 +3572,7 @@
     "classes": [
         {
             "name": "CalendarCell",
-            "id": "class-CalendarCell-e550094acd5c8ca33476a11ae661fe10334ee20e67cc03718fcdccb48cb2e10637cf6e1f601abc704e1fe1d330d74eb1d5b7f7a547b9d9542f53ca19d525e232",
+            "id": "class-CalendarCell-3478be890a856be60a8e8e2aeb304ea6e09923278e5c9d207b287edb4d45eef5627aa8a50b7481a23424e9c0174bbe4432344e25db45d8591f2b3fe16bb6f669",
             "file": "src/lib/date-time/calendar-body/calendar-body.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -3683,7 +3692,7 @@
                     "description": "",
                     "line": 9,
                     "modifierKind": [
-                        123
+                        125
                     ]
                 },
                 {
@@ -3696,7 +3705,7 @@
                     "description": "",
                     "line": 12,
                     "modifierKind": [
-                        123
+                        125
                     ]
                 },
                 {
@@ -3708,7 +3717,7 @@
                     "description": "",
                     "line": 8,
                     "modifierKind": [
-                        123
+                        125
                     ]
                 },
                 {
@@ -3720,7 +3729,7 @@
                     "description": "",
                     "line": 10,
                     "modifierKind": [
-                        123
+                        125
                     ]
                 },
                 {
@@ -3733,7 +3742,7 @@
                     "description": "",
                     "line": 11,
                     "modifierKind": [
-                        123
+                        125
                     ]
                 },
                 {
@@ -3745,12 +3754,13 @@
                     "description": "",
                     "line": 7,
                     "modifierKind": [
-                        123
+                        125
                     ]
                 }
             ],
             "methods": [],
             "indexSignatures": [],
+            "extends": [],
             "inputsClass": [],
             "outputsClass": [],
             "hostBindings": [],
@@ -3758,7 +3768,7 @@
         },
         {
             "name": "DateTimeAdapter",
-            "id": "class-DateTimeAdapter-82cfb7b3ddfbca8dd89be1f401f55433da4e775bab51639147e99380acdf9cf4666d1cb1a5245344d1460d50ef39ed9d3405f2c715e02a223988979c722fe8bc",
+            "id": "class-DateTimeAdapter-7622ca721878cc22ee5e4711b0b6f4bc482f75f918ff26ddf4660c2c0035db5939a07bfe8951de85e5b0edc4e2869dbcc4d91c9935196767a75ea9fcc999d83e",
             "file": "src/lib/class/date-time-adapter.class.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -3775,7 +3785,7 @@
                     "line": 8,
                     "rawdescription": "\nA stream that emits when the locale changes",
                     "modifierKind": [
-                        122
+                        124
                     ]
                 },
                 {
@@ -3788,7 +3798,7 @@
                     "line": 5,
                     "rawdescription": "\nThe locale to use for all dates",
                     "modifierKind": [
-                        122
+                        124
                     ]
                 },
                 {
@@ -3802,8 +3812,8 @@
                     "line": 14,
                     "rawdescription": "\ntotal milliseconds in a day",
                     "modifierKind": [
-                        122,
-                        146
+                        124,
+                        148
                     ]
                 },
                 {
@@ -3817,8 +3827,8 @@
                     "line": 17,
                     "rawdescription": "\ntotal milliseconds in a minute",
                     "modifierKind": [
-                        122,
-                        146
+                        124,
+                        148
                     ]
                 }
             ],
@@ -3848,7 +3858,7 @@
                     "rawdescription": "\n\nAdd the specified number of days to the given date\n",
                     "description": "<p>Add the specified number of days to the given date</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -3896,7 +3906,7 @@
                     "rawdescription": "\n\nAdd the specified number of months to the given date\n",
                     "description": "<p>Add the specified number of months to the given date</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -3944,7 +3954,7 @@
                     "rawdescription": "\n\nAdd the specified number of years to the given date\n",
                     "description": "<p>Add the specified number of years to the given date</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4051,7 +4061,7 @@
                     "rawdescription": "\n\nClone the given date\n",
                     "description": "<p>Clone the given date</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4195,7 +4205,7 @@
                     "rawdescription": "\n\nCreates a date with the given year, month, date, hour, minute and second. Does not allow over/under-flow of the\nmonth and date.\n",
                     "description": "<p>Creates a date with the given year, month, date, hour, minute and second. Does not allow over/under-flow of the\nmonth and date.</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4274,7 +4284,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4390,7 +4400,7 @@
                     "rawdescription": "\n\nGet the number of calendar days between the given dates.\nIf dateLeft is before dateRight, it would return positive value\nIf dateLeft is after dateRight, it would return negative value\n",
                     "description": "<p>Get the number of calendar days between the given dates.\nIf dateLeft is before dateRight, it would return positive value\nIf dateLeft is after dateRight, it would return negative value</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4440,7 +4450,7 @@
                     "rawdescription": "\n\nFormats a date as a string according to the given format.\n",
                     "description": "<p>Formats a date as a string according to the given format.</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4483,7 +4493,7 @@
                     "rawdescription": "\n\nGet the day num of the given date\n",
                     "description": "<p>Get the day num of the given date</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4510,7 +4520,7 @@
                     "rawdescription": "\n\nGets a list of names for the dates of the month.\n",
                     "description": "<p>Gets a list of names for the dates of the month.</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ]
                 },
                 {
@@ -4533,7 +4543,7 @@
                     "rawdescription": "\n\nGet the day of the week of the given date\n0 -- Sunday\n6 -- Saturday\n",
                     "description": "<p>Get the day of the week of the given date\n0 -- Sunday\n6 -- Saturday</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4567,7 +4577,7 @@
                     "rawdescription": "\n\nGet a list of week names\n",
                     "description": "<p>Get a list of week names</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4601,7 +4611,7 @@
                     "rawdescription": "\n\nGet the hours of the given date\n",
                     "description": "<p>Get the hours of the given date</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4636,7 +4646,7 @@
                     "rawdescription": "\n\nGet the minutes of the given date\n",
                     "description": "<p>Get the minutes of the given date</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4671,7 +4681,7 @@
                     "rawdescription": "\n\nGet the month of the given date\n0 -- January\n11 -- December\n",
                     "description": "<p>Get the month of the given date\n0 -- January\n11 -- December</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4705,7 +4715,7 @@
                     "rawdescription": "\n\nGet a list of month names\n",
                     "description": "<p>Get a list of month names</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4739,7 +4749,7 @@
                     "rawdescription": "\n\nGets the number of days in the month of the given date.\n",
                     "description": "<p>Gets the number of days in the month of the given date.</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4774,7 +4784,7 @@
                     "rawdescription": "\n\nGet the seconds of the given date\n",
                     "description": "<p>Get the seconds of the given date</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4809,7 +4819,7 @@
                     "rawdescription": "\n\nGet the milliseconds timestamp of the given date\n",
                     "description": "<p>Get the milliseconds timestamp of the given date</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4844,7 +4854,7 @@
                     "rawdescription": "\n\nGet the year of the given date\n",
                     "description": "<p>Get the year of the given date</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4879,7 +4889,7 @@
                     "rawdescription": "\n\nGets the name for the year of the given date.\n",
                     "description": "<p>Gets the name for the year of the given date.</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4906,7 +4916,7 @@
                     "rawdescription": "\n\nGets date instance that is not valid.\n",
                     "description": "<p>Gets date instance that is not valid.</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ]
                 },
                 {
@@ -4928,7 +4938,7 @@
                     "rawdescription": "\n\nChecks whether the given object is considered a date instance by this DateTimeAdapter.\n",
                     "description": "<p>Checks whether the given object is considered a date instance by this DateTimeAdapter.</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -4969,7 +4979,7 @@
                     "rawdescription": "\n\nCheck if the give dates are equal\n",
                     "description": "<p>Check if the give dates are equal</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -5021,7 +5031,7 @@
                     "rawdescription": "\n\nCheck if the give dates are the same day\n",
                     "description": "<p>Check if the give dates are the same day</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -5066,7 +5076,7 @@
                     "rawdescription": "\n\nChecks whether the given date is valid.\n",
                     "description": "<p>Checks whether the given date is valid.</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -5093,7 +5103,7 @@
                     "rawdescription": "\n\nGet a new moment\n",
                     "description": "<p>Get a new moment</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ]
                 },
                 {
@@ -5121,7 +5131,7 @@
                     "rawdescription": "\n\nParse a user-provided value to a Date Object\n",
                     "description": "<p>Parse a user-provided value to a Date Object</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -5169,7 +5179,7 @@
                     "rawdescription": "\n\nSet the hours to the given date.\n",
                     "description": "<p>Set the hours to the given date.</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -5247,7 +5257,7 @@
                     "rawdescription": "\n\nSet the minutes to the given date.\n",
                     "description": "<p>Set the minutes to the given date.</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -5295,7 +5305,7 @@
                     "rawdescription": "\n\nSet the seconds to the given date.\n",
                     "description": "<p>Set the seconds to the given date.</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -5337,7 +5347,7 @@
                     "rawdescription": "\n\nReturn a Date object as a string, using the ISO standard\n",
                     "description": "<p>Return a Date object as a string, using the ISO standard</p>\n",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -5353,6 +5363,7 @@
                 }
             ],
             "indexSignatures": [],
+            "extends": [],
             "accessors": {
                 "localeChanges": {
                     "name": "localeChanges",
@@ -5371,7 +5382,7 @@
         },
         {
             "name": "DialogConfig",
-            "id": "class-DialogConfig-e525256148a5312864cb4484567bb28bad83ad7b187829da5866f3ddad7b6412ebfa05ef4b41b6b35e6ccdfee603d0bbf26d0222340127b246c41c963d499680",
+            "id": "class-DialogConfig-4a5cc972ea4fd58137b36490bb46f10f72adf28448f3dd7ba895c5dab9c9b64c5bcaeb80d912415b6cab3d110f67b1e38866a98d7017a5db0e095e76a617528f",
             "file": "src/lib/class/dialog-config.class.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -5608,6 +5619,7 @@
             ],
             "methods": [],
             "indexSignatures": [],
+            "extends": [],
             "inputsClass": [],
             "outputsClass": [],
             "hostBindings": [],
@@ -5615,7 +5627,7 @@
         },
         {
             "name": "DialogRef",
-            "id": "class-DialogRef-7166764745feb15fc65555014b43daed3aff46e9b8ecff042057f08c9b3ec931a89857397f5debc4c6c5619855ad180d9c2755e8bf4d7d34a9735a213cdcc58b",
+            "id": "class-DialogRef-009425b800da35207ecae3c8043c8ff01f3e58b5a3890a650009936c248d391091eb385e3677698881da5af9a3042c205e669734ffa477017e4aa7d93d060963",
             "file": "src/lib/class/dialog-ref.class.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -5835,12 +5847,12 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3398,
-                                "end": 3406,
-                                "flags": 8421376,
+                                "pos": 3504,
+                                "end": 3512,
+                                "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
-                                "kind": 79,
+                                "kind": 80,
                                 "escapedText": "position"
                             },
                             "type": "DialogPosition",
@@ -5848,12 +5860,12 @@
                             "deprecationMessage": "",
                             "optional": true,
                             "tagName": {
-                                "pos": 3392,
-                                "end": 3397,
-                                "flags": 8421376,
+                                "pos": 3498,
+                                "end": 3503,
+                                "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
-                                "kind": 79,
+                                "kind": 80,
                                 "escapedText": "param"
                             },
                             "comment": "<p>New dialog position.</p>\n"
@@ -5889,12 +5901,12 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4226,
-                                "end": 4231,
-                                "flags": 8421376,
+                                "pos": 4363,
+                                "end": 4368,
+                                "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
-                                "kind": 79,
+                                "kind": 80,
                                 "escapedText": "width"
                             },
                             "type": "string",
@@ -5902,24 +5914,24 @@
                             "deprecationMessage": "",
                             "defaultValue": "'auto'",
                             "tagName": {
-                                "pos": 4220,
-                                "end": 4225,
-                                "flags": 8421376,
+                                "pos": 4357,
+                                "end": 4362,
+                                "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
-                                "kind": 79,
+                                "kind": 80,
                                 "escapedText": "param"
                             },
                             "comment": "<p>New width of the dialog.</p>\n"
                         },
                         {
                             "name": {
-                                "pos": 4271,
-                                "end": 4277,
-                                "flags": 8421376,
+                                "pos": 4409,
+                                "end": 4415,
+                                "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
-                                "kind": 79,
+                                "kind": 80,
                                 "escapedText": "height"
                             },
                             "type": "string",
@@ -5927,12 +5939,12 @@
                             "deprecationMessage": "",
                             "defaultValue": "'auto'",
                             "tagName": {
-                                "pos": 4265,
-                                "end": 4270,
-                                "flags": 8421376,
+                                "pos": 4403,
+                                "end": 4408,
+                                "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
-                                "kind": 79,
+                                "kind": 80,
                                 "escapedText": "param"
                             },
                             "comment": "<p>New height of the dialog.</p>\n"
@@ -5941,6 +5953,7 @@
                 }
             ],
             "indexSignatures": [],
+            "extends": [],
             "inputsClass": [],
             "outputsClass": [],
             "hostBindings": [],
@@ -5950,7 +5963,7 @@
     "directives": [
         {
             "name": "DateTimeDirective",
-            "id": "directive-DateTimeDirective-d8dab1f83409f0c33892005c3c6b927835a4b1c444e6169056456d785fd75a4ddacad671ec5eb012ca9b8a6c2cc5b3fa9b3bdfd8ea02b562c29a99f3639fdc7e",
+            "id": "directive-DateTimeDirective-0e42441cb6672965b475ee857b40b1c89778903745395d43ddbcb6f172b137c6cd548c1c2e1606d17e0330d368031fea338768dbf82190ed64810401860fbfe4",
             "file": "src/lib/class/date-time.class.ts",
             "type": "directive",
             "description": "",
@@ -6075,7 +6088,7 @@
                     "description": "",
                     "line": 64,
                     "modifierKind": [
-                        146
+                        148
                     ]
                 },
                 {
@@ -6087,7 +6100,7 @@
                     "description": "",
                     "line": 94,
                     "modifierKind": [
-                        126
+                        128
                     ]
                 },
                 {
@@ -6099,7 +6112,7 @@
                     "description": "",
                     "line": 92,
                     "modifierKind": [
-                        126
+                        128
                     ]
                 }
             ],
@@ -6121,7 +6134,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
-                        122
+                        124
                     ],
                     "jsdoctags": [
                         {
@@ -6152,7 +6165,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -6183,7 +6196,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -6214,7 +6227,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "jsdoctags": [
                         {
@@ -6229,6 +6242,7 @@
                     ]
                 }
             ],
+            "extends": [],
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -6401,7 +6415,7 @@
         },
         {
             "name": "DateTimeInputDirective",
-            "id": "directive-DateTimeInputDirective-7ea4f7ddb2dcf53c48f9288ff2555b1b83b45294d64753e0ba3184d43b38e5a5b1e99badbb46b41fe378f43fb42371812e2fd280c77727da9f7f36fc333db32c",
+            "id": "directive-DateTimeInputDirective-b741e1b0597ce0dd297a2aed448aabc368ac9f87ab90fcd652a6244311bf79d9c6c3ae39b7bfd1cfc8962abeba159e77af76c80bf5bc2d4c0222cacb9269e5c7",
             "file": "src/lib/date-time/date-time-picker-input.directive.ts",
             "type": "directive",
             "description": "",
@@ -6616,7 +6630,7 @@
                     "line": 354,
                     "rawdescription": "\nEmits when the disabled state has changed",
                     "modifierKind": [
-                        146
+                        148
                     ]
                 },
                 {
@@ -6640,7 +6654,7 @@
                     "line": 351,
                     "rawdescription": "\nEmits when the value changes (either due to user input or programmatic change)",
                     "modifierKind": [
-                        146
+                        148
                     ]
                 }
             ],
@@ -6680,7 +6694,7 @@
                         }
                     ],
                     "modifierKind": [
-                        167
+                        170
                     ],
                     "jsdoctags": [
                         {
@@ -6717,7 +6731,7 @@
                         }
                     ],
                     "modifierKind": [
-                        167
+                        170
                     ],
                     "jsdoctags": [
                         {
@@ -6754,7 +6768,7 @@
                         }
                     ],
                     "modifierKind": [
-                        167
+                        170
                     ],
                     "jsdoctags": [
                         {
@@ -6793,7 +6807,7 @@
                         }
                     ],
                     "modifierKind": [
-                        167
+                        170
                     ],
                     "jsdoctags": [
                         {
@@ -7008,6 +7022,7 @@
                     ]
                 }
             ],
+            "extends": [],
             "implements": [
                 "OnInit",
                 "AfterContentInit",
@@ -7412,7 +7427,7 @@
         },
         {
             "name": "DateTimeTriggerDirective",
-            "id": "directive-DateTimeTriggerDirective-2aa90cfc1d04ce35b7a6782ae26d5ce822753171d35adf9b52275451fe37a841e522649e61aa54fd101d1a81f166c964dbe65d0b9f7b592f85554910a63a8e27",
+            "id": "directive-DateTimeTriggerDirective-d59cfe568513b5bb875272a59ba01cba425115f5d7bebd45c4e60c4466c915249de281abeb080b118452d3080d99b4bc4ef7a6b04c5fb455f55af207ce5b2f3c",
             "file": "src/lib/date-time/date-time-picker-trigger.directive.ts",
             "type": "directive",
             "description": "",
@@ -7487,7 +7502,7 @@
                         }
                     ],
                     "modifierKind": [
-                        167
+                        170
                     ],
                     "jsdoctags": [
                         {
@@ -7560,6 +7575,7 @@
                     "deprecationMessage": ""
                 }
             ],
+            "extends": [],
             "implements": [
                 "OnInit",
                 "OnChanges",
@@ -7635,7 +7651,7 @@
     "components": [
         {
             "name": "CalendarComponent",
-            "id": "component-CalendarComponent-eb9a7a89f5bac8f05e35d9e417849796f3cc0196b33bdda31b2881e5a0b588a733b12642ba15803b3a3c8b92070f98c75369ec942be88208bb98b75c8f828652",
+            "id": "component-CalendarComponent-c06392a998b8f1cee3a4996c4f9e12b6d8ce598a1c76320ddd4c471fbf6dd90f96cbc667432e6ea841113a95a4a482476b46a321f17135127bee200e7cf4bbd2",
             "file": "src/lib/date-time/calendar/calendar.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -8106,13 +8122,6 @@
             "rawdescription": "\n",
             "type": "component",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./calendar.component.scss"
-                }
-            ],
-            "stylesData": "",
             "preserveWhitespaces": false,
             "constructorObj": {
                 "name": "constructor",
@@ -8215,6 +8224,7 @@
                     }
                 ]
             },
+            "extends": [],
             "implements": [
                 "OnInit",
                 "AfterContentInit",
@@ -8510,12 +8520,11 @@
                         "line": 209
                     }
                 }
-            },
-            "templateData": "<div class=\"nxt-dt-calendar-control\">\n    <!-- focus when keyboard tab (http://kizu.ru/en/blog/keyboard-only-focus/#x) -->\n    <button class=\"nxt-dt-control nxt-dt-control-button nxt-dt-control-arrow-button\"\n        type=\"button\"\n        tabindex=\"0\"\n        [style.visibility]=\"showControlArrows? 'visible': 'hidden'\"\n        [disabled]=\"!prevButtonEnabled()\"\n        [attr.aria-label]=\"prevButtonLabel\"\n        (click)=\"previousClicked()\">\n        <span class=\"nxt-dt-control-content nxt-dt-control-button-content\"\n            tabindex=\"-1\">\n            <!-- <editor-fold desc=\"SVG Arrow Left\"> -->\n            <svg xmlns=\"http://www.w3.org/2000/svg\"\n                xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n                version=\"1.1\"\n                x=\"0px\"\n                y=\"0px\"\n                viewBox=\"0 0 250.738 250.738\"\n                style=\"enable-background:new 0 0 250.738 250.738;\"\n                xml:space=\"preserve\"\n                width=\"100%\"\n                height=\"100%\">\n                <path style=\"fill-rule: evenodd; clip-rule: evenodd;\"\n                    d=\"M96.633,125.369l95.053-94.533c7.101-7.055,7.101-18.492,0-25.546   c-7.1-7.054-18.613-7.054-25.714,0L58.989,111.689c-3.784,3.759-5.487,8.759-5.238,13.68c-0.249,4.922,1.454,9.921,5.238,13.681   l106.983,106.398c7.101,7.055,18.613,7.055,25.714,0c7.101-7.054,7.101-18.491,0-25.544L96.633,125.369z\" />\n            </svg>\n            <!-- </editor-fold> -->\n        </span>\n    </button>\n    <div class=\"nxt-dt-calendar-control-content\">\n        <button class=\"nxt-dt-control nxt-dt-control-button nxt-dt-control-period-button\"\n            type=\"button\"\n            tabindex=\"0\"\n            [attr.aria-label]=\"periodButtonLabel\"\n            (click)=\"toggleViews()\">\n            <span class=\"nxt-dt-control-content nxt-dt-control-button-content\"\n                tabindex=\"-1\">\n                {{periodButtonText}}\n\n                <span class=\"nxt-dt-control-button-arrow\"\n                    [style.transform]=\"'rotate(' + (isMonthView? 0 : 180) +'deg)'\">\n                    <!-- <editor-fold desc=\"SVG Arrow\"> -->\n                    <svg version=\"1.1\"\n                        xmlns=\"http://www.w3.org/2000/svg\"\n                        xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n                        x=\"0px\"\n                        y=\"0px\"\n                        width=\"50%\"\n                        height=\"50%\"\n                        viewBox=\"0 0 292.362 292.362\"\n                        style=\"enable-background:new 0 0 292.362 292.362;\"\n                        xml:space=\"preserve\">\n                        <g>\n                            <path d=\"M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424\n                                C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428\n                                s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279,290.548,72.998,286.935,69.377z\" />\n                        </g>\n                    </svg>\n                    <!-- </editor-fold> -->\n                </span>\n            </span>\n        </button>\n    </div>\n    <button class=\"nxt-dt-control nxt-dt-control-button nxt-dt-control-arrow-button\"\n        type=\"button\"\n        tabindex=\"0\"\n        [style.visibility]=\"showControlArrows? 'visible': 'hidden'\"\n        [disabled]=\"!nextButtonEnabled()\"\n        [attr.aria-label]=\"nextButtonLabel\"\n        (click)=\"nextClicked()\">\n        <span class=\"nxt-dt-control-content nxt-dt-control-button-content\"\n            tabindex=\"-1\">\n            <!-- <editor-fold desc=\"SVG Arrow Right\"> -->\n            <svg version=\"1.1\"\n                xmlns=\"http://www.w3.org/2000/svg\"\n                xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n                x=\"0px\"\n                y=\"0px\"\n                viewBox=\"0 0 250.738 250.738\"\n                style=\"enable-background:new 0 0 250.738 250.738;\"\n                xml:space=\"preserve\">\n                <path style=\"fill-rule:evenodd;clip-rule:evenodd;\"\n                    d=\"M191.75,111.689L84.766,5.291c-7.1-7.055-18.613-7.055-25.713,0\n                    c-7.101,7.054-7.101,18.49,0,25.544l95.053,94.534l-95.053,94.533c-7.101,7.054-7.101,18.491,0,25.545\n                    c7.1,7.054,18.613,7.054,25.713,0L191.75,139.05c3.784-3.759,5.487-8.759,5.238-13.681\n                    C197.237,120.447,195.534,115.448,191.75,111.689z\" />\n            </svg>\n            <!-- </editor-fold> -->\n        </span>\n    </button>\n</div>\n<div class=\"nxt-dt-calendar-main\"\n    cdkMonitorSubtreeFocus\n    [ngSwitch]=\"currentView\"\n    tabindex=\"-1\">\n    <nxt-date-time-month-view *ngSwitchCase=\"'month'\"\n        [pickerMoment]=\"pickerMoment\"\n        [firstDayOfWeek]=\"firstDayOfWeek\"\n        [selected]=\"selected\"\n        [selecteds]=\"selecteds\"\n        [selectMode]=\"selectMode ?? 'single'\"\n        [min]=\"min\"\n        [max]=\"max\"\n        [dateTimeFilter]=\"dateTimeFilter\"\n        [hideOtherMonths]=\"hideOtherMonths\"\n        (pickerMomentChange)=\"handlePickerMomentChange($event)\"\n        (selectedChange)=\"dateSelected($event)\"\n        (userSelection)=\"userSelected()\"></nxt-date-time-month-view>\n\n    <nxt-date-time-year-view *ngSwitchCase=\"'year'\"\n        [pickerMoment]=\"pickerMoment\"\n        [selected]=\"selected\"\n        [selecteds]=\"selecteds\"\n        [selectMode]=\"selectMode ?? 'single'\"\n        [min]=\"min\"\n        [max]=\"max\"\n        [dateTimeFilter]=\"dateTimeFilter\"\n        (keyboardEnter)=\"focusActiveCell()\"\n        (pickerMomentChange)=\"handlePickerMomentChange($event)\"\n        (monthSelected)=\"selectMonthInYearView($event)\"\n        (change)=\"goToDateInView($event, 'month')\"></nxt-date-time-year-view>\n\n    <nxt-date-time-multi-year-view *ngSwitchCase=\"'multi-years'\"\n        [pickerMoment]=\"pickerMoment\"\n        [selected]=\"selected\"\n        [selecteds]=\"selecteds\"\n        [selectMode]=\"selectMode ?? 'single'\"\n        [min]=\"min\"\n        [max]=\"max\"\n        [dateTimeFilter]=\"dateTimeFilter\"\n        (keyboardEnter)=\"focusActiveCell()\"\n        (pickerMomentChange)=\"handlePickerMomentChange($event)\"\n        (yearSelected)=\"selectYearInMultiYearView($event)\"\n        (change)=\"goToDateInView($event, 'year')\"></nxt-date-time-multi-year-view>\n</div>\n"
+            }
         },
         {
             "name": "DateTimeComponent",
-            "id": "component-DateTimeComponent-1257fda1e69f17a0c2b438a740d0e7b8bbd75a914caf055616607dce8305336d7c92b9762bbe508eff5d95fd8417aaf5bea5d4c8d9230499586586570b272c9a",
+            "id": "component-DateTimeComponent-a3e217fc2c01d5b2c800dc83dffd1e981314c0374262cbdefe9e33a58c3b2a6a04f6bebb8ed4b2f4644c7c4ebcb5b9ad9e8f00401461d6bcd03a02d191af554f",
             "file": "src/lib/date-time/date-time-picker/date-time-picker.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -8791,7 +8800,7 @@
                     "line": 207,
                     "rawdescription": "\n\nEmit when the selected value has been confirmed\n",
                     "modifierKind": [
-                        146
+                        148
                     ]
                 },
                 {
@@ -8805,7 +8814,7 @@
                     "line": 212,
                     "rawdescription": "\n\nEmits when the date time picker is disabled\n",
                     "modifierKind": [
-                        146
+                        148
                     ]
                 },
                 {
@@ -8832,7 +8841,7 @@
                     "description": "",
                     "line": 64,
                     "modifierKind": [
-                        146
+                        148
                     ],
                     "inheritance": {
                         "file": "DateTimeDirective"
@@ -8847,7 +8856,7 @@
                     "description": "",
                     "line": 94,
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "inheritance": {
                         "file": "DateTimeDirective"
@@ -8862,7 +8871,7 @@
                     "description": "",
                     "line": 92,
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "inheritance": {
                         "file": "DateTimeDirective"
@@ -9088,7 +9097,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
-                        122
+                        124
                     ],
                     "jsdoctags": [
                         {
@@ -9116,13 +9125,6 @@
             "rawdescription": "\n",
             "type": "component",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./date-time-picker.component.scss"
-                }
-            ],
-            "stylesData": "",
             "preserveWhitespaces": false,
             "constructorObj": {
                 "name": "constructor",
@@ -9274,7 +9276,9 @@
                     }
                 ]
             },
-            "extends": "DateTimeDirective",
+            "extends": [
+                "DateTimeDirective"
+            ],
             "implements": [
                 "OnInit",
                 "OnDestroy"
@@ -9609,12 +9613,11 @@
                         "line": 275
                     }
                 }
-            },
-            "templateData": "\n"
+            }
         },
         {
             "name": "DateTimeInlineComponent",
-            "id": "component-DateTimeInlineComponent-8a4cc0dd31a0c2e8c42729f426bd2fa8d768789edaeabbccf65431bdca8c49837eb32042890850211e8dd9b6463f5ee17fbf379845d6193567dfe240cc0ece7f",
+            "id": "component-DateTimeInlineComponent-682f36ce1d0cbd390b074de550213dd513d910933b87eea68cdb444d2c1d835b137611a4c9b54f8b53820ab56a871ecbeb5fe945183e2a4ad3e181c8a14fc6b8",
             "file": "src/lib/date-time/date-time-inline/date-time-inline.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -9883,7 +9886,7 @@
                     "description": "",
                     "line": 64,
                     "modifierKind": [
-                        146
+                        148
                     ],
                     "inheritance": {
                         "file": "DateTimeDirective"
@@ -9898,7 +9901,7 @@
                     "description": "",
                     "line": 94,
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "inheritance": {
                         "file": "DateTimeDirective"
@@ -9913,7 +9916,7 @@
                     "description": "",
                     "line": 92,
                     "modifierKind": [
-                        126
+                        128
                     ],
                     "inheritance": {
                         "file": "DateTimeDirective"
@@ -10157,7 +10160,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
-                        122
+                        124
                     ],
                     "jsdoctags": [
                         {
@@ -10185,13 +10188,6 @@
             "rawdescription": "\n",
             "type": "component",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./date-time-inline.component.scss"
-                }
-            ],
-            "stylesData": "",
             "preserveWhitespaces": false,
             "constructorObj": {
                 "name": "constructor",
@@ -10249,7 +10245,9 @@
                     }
                 ]
             },
-            "extends": "DateTimeDirective",
+            "extends": [
+                "DateTimeDirective"
+            ],
             "implements": [
                 "OnInit",
                 "ControlValueAccessor"
@@ -10701,12 +10699,11 @@
                         "line": 234
                     }
                 }
-            },
-            "templateData": "<nxt-date-time-container></nxt-date-time-container>\n"
+            }
         },
         {
             "name": "MonthViewComponent",
-            "id": "component-MonthViewComponent-9bcd231702c28bdd4718414a9d30cd6bf51e4d1fde70a7c15457a2e17461d8f64cbc95fc090c5a28680e2d7e349fa8e1fb0cf56c82e8ced3b055b5573d6ba3ed",
+            "id": "component-MonthViewComponent-b06a1b8ccb338e8031d32c627dc902fc2d8f787c36c03a6ede0d45ed1571fce30ea1d4d1a9fb6a8605d6fc6a10d95e64435ca24d058c079b2b3c47fc2d3338ff",
             "file": "src/lib/date-time/calendar-month-view/calendar-month-view.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -11016,13 +11013,6 @@
             "rawdescription": "\n",
             "type": "component",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "\n",
-                    "styleUrl": "./calendar-month-view.component.scss"
-                }
-            ],
-            "stylesData": "",
             "preserveWhitespaces": false,
             "constructorObj": {
                 "name": "constructor",
@@ -11080,6 +11070,7 @@
                     }
                 ]
             },
+            "extends": [],
             "implements": [
                 "OnInit",
                 "AfterContentInit",
@@ -11419,12 +11410,11 @@
                         "line": 199
                     }
                 }
-            },
-            "templateData": "<table class=\"nxt-dt-calendar-table nxt-dt-calendar-month-table\"\n    [class.nxt-dt-calendar-only-current-month]=\"hideOtherMonths\">\n    <thead class=\"nxt-dt-calendar-header\">\n        <tr class=\"nxt-dt-weekdays\">\n            <th *ngFor=\"let weekday of weekdays\"\n                [attr.aria-label]=\"weekday.long\"\n                class=\"nxt-dt-weekday\"\n                scope=\"col\">\n                <span>{{weekday.short}}</span>\n            </th>\n        </tr>\n        <tr>\n            <th class=\"nxt-dt-calendar-table-divider\"\n                aria-hidden=\"true\"\n                colspan=\"7\"></th>\n        </tr>\n    </thead>\n    <tbody nxtDateTimeCalendarBody\n        role=\"grid\"\n        [rows]=\"days\"\n        [todayValue]=\"todayDate ?? undefined\"\n        [selectedValues]=\"selectedDates\"\n        [selectMode]=\"selectMode\"\n        [activeCell]=\"activeCell ?? 0\"\n        (keydown)=\"handleCalendarKeydown($event)\"\n        (select)=\"selectCalendarCell($event)\">\n    </tbody>\n</table>\n"
+            }
         },
         {
             "name": "MultiYearViewComponent",
-            "id": "component-MultiYearViewComponent-8811ed9a2596ec5a5eceebc70bc65a2c3e2478630fe9cff114dc843b0a8e7ce45e00da091c0466724b11ba6ad789dc5b5fda6a147b7e6c29cc967b43c540a90a",
+            "id": "component-MultiYearViewComponent-7dd8e06b7ef41946b9e77ac534f857fabedd9d3fdbacfc4403b1a67cc997a89801920785c57563872aa83c27c41c040a1b70b29878903f3553dd3da08a61b492",
             "file": "src/lib/date-time/calendar-multi-year-view/calendar-multi-year-view.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -11727,13 +11717,6 @@
             "rawdescription": "\n",
             "type": "component",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./calendar-multi-year-view.component.scss"
-                }
-            ],
-            "stylesData": "",
             "preserveWhitespaces": false,
             "constructorObj": {
                 "name": "constructor",
@@ -11791,6 +11774,7 @@
                     }
                 ]
             },
+            "extends": [],
             "implements": [
                 "OnInit",
                 "AfterContentInit"
@@ -12129,12 +12113,11 @@
                         "line": 178
                     }
                 }
-            },
-            "templateData": "<button class=\"nxt-dt-control-button nxt-dt-control-arrow-button\"\n    [disabled]=\"!previousEnabled()\"\n    [attr.aria-label]=\"prevButtonLabel\"\n    type=\"button\"\n    tabindex=\"0\"\n    (click)=\"prevYearList($event)\">\n    <span class=\"nxt-dt-control-button-content\"\n        tabindex=\"-1\">\n        <!-- <editor-fold desc=\"SVG Arrow Left\"> -->\n        <svg xmlns=\"http://www.w3.org/2000/svg\"\n            xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n            version=\"1.1\"\n            x=\"0px\"\n            y=\"0px\"\n            viewBox=\"0 0 250.738 250.738\"\n            style=\"enable-background:new 0 0 250.738 250.738;\"\n            xml:space=\"preserve\"\n            width=\"100%\"\n            height=\"100%\">\n            <path style=\"fill-rule: evenodd; clip-rule: evenodd;\"\n                d=\"M96.633,125.369l95.053-94.533c7.101-7.055,7.101-18.492,0-25.546   c-7.1-7.054-18.613-7.054-25.714,0L58.989,111.689c-3.784,3.759-5.487,8.759-5.238,13.68c-0.249,4.922,1.454,9.921,5.238,13.681   l106.983,106.398c7.101,7.055,18.613,7.055,25.714,0c7.101-7.054,7.101-18.491,0-25.544L96.633,125.369z\" />\n        </svg>\n        <!-- </editor-fold> -->\n    </span>\n</button>\n<table class=\"nxt-dt-calendar-table nxt-dt-calendar-multi-year-table\">\n    <thead class=\"nxt-dt-calendar-header\">\n        <tr>\n            <th colspan=\"3\">{{tableHeader}}</th>\n        </tr>\n    </thead>\n    <tbody nxtDateTimeCalendarBody\n        role=\"grid\"\n        [rows]=\"years\"\n        [numCols]=\"3\"\n        [cellRatio]=\"3 / 7\"\n        [activeCell]=\"activeCell ?? 0\"\n        [todayValue]=\"todayYear\"\n        [selectedValues]=\"selectedYears\"\n        [selectMode]=\"selectMode\"\n        (keydown)=\"handleCalendarKeydown($event)\"\n        (select)=\"selectCalendarCell($event)\"></tbody>\n</table>\n<button class=\"nxt-dt-control-button nxt-dt-control-arrow-button\"\n    [disabled]=\"!nextEnabled()\"\n    [attr.aria-label]=\"nextButtonLabel\"\n    type=\"button\"\n    tabindex=\"0\"\n    (click)=\"nextYearList($event)\">\n    <span class=\"nxt-dt-control-button-content\"\n        tabindex=\"-1\">\n        <!-- <editor-fold desc=\"SVG Arrow Right\"> -->\n        <svg version=\"1.1\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n            x=\"0px\"\n            y=\"0px\"\n            viewBox=\"0 0 250.738 250.738\"\n            style=\"enable-background:new 0 0 250.738 250.738;\"\n            xml:space=\"preserve\">\n            <path style=\"fill-rule:evenodd;clip-rule:evenodd;\"\n                d=\"M191.75,111.689L84.766,5.291c-7.1-7.055-18.613-7.055-25.713,0\n                c-7.101,7.054-7.101,18.49,0,25.544l95.053,94.534l-95.053,94.533c-7.101,7.054-7.101,18.491,0,25.545\n                c7.1,7.054,18.613,7.054,25.713,0L191.75,139.05c3.784-3.759,5.487-8.759,5.238-13.681\n                C197.237,120.447,195.534,115.448,191.75,111.689z\" />\n        </svg>\n        <!-- </editor-fold> -->\n    </span>\n</button>\n"
+            }
         },
         {
             "name": "TimerComponent",
-            "id": "component-TimerComponent-c798e1bde0dfc9b6a3fd1bd4bd75d9e546b52b315643a150a8811b20c40e293fe849994231c5ea7113075994b43bfc3a371a5a4f6542938fb857e8fcda9f6c1d",
+            "id": "component-TimerComponent-1a3b1872252b09f4d11ab1175f0635ae7c1836e2510af9902c117aabe1ac33648b95ece082fbc565ebfb5e5e22b28295516bdf57fd61568d5c8b289af1393ad0",
             "file": "src/lib/date-time/timer/timer.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -12492,13 +12475,6 @@
             "rawdescription": "\n",
             "type": "component",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./timer.component.scss"
-                }
-            ],
-            "stylesData": "",
             "preserveWhitespaces": false,
             "constructorObj": {
                 "name": "constructor",
@@ -12586,6 +12562,7 @@
                     }
                 ]
             },
+            "extends": [],
             "implements": [
                 "OnInit"
             ],
@@ -12799,12 +12776,11 @@
                         "line": 145
                     }
                 }
-            },
-            "templateData": "<nxt-date-time-timer-box [upBtnAriaLabel]=\"upHourButtonLabel\"\n    [downBtnAriaLabel]=\"downHourButtonLabel\"\n    [upBtnDisabled]=\"!upHourEnabled()\"\n    [downBtnDisabled]=\"!downHourEnabled()\"\n    [boxValue]=\"hourBoxValue\"\n    [value]=\"hourValue\"\n    [min]=\"0\"\n    [max]=\"23\"\n    [step]=\"stepHour\"\n    inputLabel=\"Hour\"\n    (inputChange)=\"setHourValueViaInput($event)\"\n    (valueChange)=\"setHourValue($event)\"></nxt-date-time-timer-box>\n<nxt-date-time-timer-box [showDivider]=\"true\"\n    [upBtnAriaLabel]=\"upMinuteButtonLabel\"\n    [downBtnAriaLabel]=\"downMinuteButtonLabel\"\n    [upBtnDisabled]=\"!upMinuteEnabled()\"\n    [downBtnDisabled]=\"!downMinuteEnabled()\"\n    [value]=\"minuteValue\"\n    [min]=\"0\"\n    [max]=\"59\"\n    [step]=\"stepMinute\"\n    inputLabel=\"Minute\"\n    (inputChange)=\"setMinuteValue($event)\"\n    (valueChange)=\"setMinuteValue($event)\"></nxt-date-time-timer-box>\n<nxt-date-time-timer-box *ngIf=\"showSecondsTimer\"\n    [showDivider]=\"true\"\n    [upBtnAriaLabel]=\"upSecondButtonLabel\"\n    [downBtnAriaLabel]=\"downSecondButtonLabel\"\n    [upBtnDisabled]=\"!upSecondEnabled()\"\n    [downBtnDisabled]=\"!downSecondEnabled()\"\n    [value]=\"secondValue\"\n    [min]=\"0\"\n    [max]=\"59\"\n    [step]=\"stepSecond\"\n    inputLabel=\"Second\"\n    (inputChange)=\"setSecondValue($event)\"\n    (valueChange)=\"setSecondValue($event)\"></nxt-date-time-timer-box>\n\n<div *ngIf=\"hour12Timer\"\n    class=\"nxt-dt-timer-hour12\">\n    <button class=\"nxt-dt-control-button nxt-dt-timer-hour12-box\"\n        type=\"button\"\n        tabindex=\"0\"\n        (click)=\"setMeridiem($event)\">\n        <span class=\"nxt-dt-control-button-content\"\n            tabindex=\"-1\">\n            {{hour12ButtonLabel}}\n        </span>\n    </button>\n</div>\n"
+            }
         },
         {
             "name": "YearViewComponent",
-            "id": "component-YearViewComponent-4ccd09325353d839e51a2ba8e8a911f78d7dc49d8e80bdff563397e9b7bd9a5588cd739f1d6a6df0f27a698e76638c50611df4829d3f79bee92da9b34f7775c3",
+            "id": "component-YearViewComponent-e90f3dfe106370083f2ec9af51ca24979a6d9aa4cbf45478a2edbb95e050cddc0a93d858c4e2d00b96e6f7b32e5110c73ba7748ea5fe60a07e54dc2c6f0ffa2c",
             "file": "src/lib/date-time/calendar-year-view/calendar-year-view.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -13045,13 +13021,6 @@
             "rawdescription": "\n",
             "type": "component",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "",
-                    "styleUrl": "./calendar-year-view.component.scss"
-                }
-            ],
-            "stylesData": "",
             "preserveWhitespaces": false,
             "constructorObj": {
                 "name": "constructor",
@@ -13109,6 +13078,7 @@
                     }
                 ]
             },
+            "extends": [],
             "implements": [
                 "OnInit",
                 "AfterContentInit",
@@ -13403,14 +13373,13 @@
                         "line": 152
                     }
                 }
-            },
-            "templateData": "<table class=\"nxt-dt-calendar-table nxt-dt-calendar-year-table\">\n    <thead class=\"nxt-dt-calendar-header\">\n        <tr>\n            <th class=\"nxt-dt-calendar-table-divider\"\n                aria-hidden=\"true\"\n                colspan=\"3\"></th>\n        </tr>\n    </thead>\n    <tbody nxtDateTimeCalendarBody\n        role=\"grid\"\n        [rows]=\"months\"\n        [numCols]=\"3\"\n        [cellRatio]=\"3 / 7\"\n        [activeCell]=\"activeCell ?? 0\"\n        [todayValue]=\"todayMonth??undefined\"\n        [selectedValues]=\"selectedMonths\"\n        [selectMode]=\"selectMode\"\n        (keydown)=\"handleCalendarKeydown($event)\"\n        (select)=\"selectCalendarCell($event)\">\n    </tbody>\n</table>\n"
+            }
         }
     ],
     "modules": [
         {
             "name": "DateTimeModule",
-            "id": "module-DateTimeModule-eccc820a7317859eb92fae5eaeb4cebc4b74de96bb21b14a033a7af4c8426b0ef09a2607d540ade6d033c31dda2a4d2f3368778a4b78869d2581f506519340a7",
+            "id": "module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
@@ -13505,7 +13474,7 @@
         },
         {
             "name": "MomentDateTimeModule",
-            "id": "module-MomentDateTimeModule-6481e51ac424935bb6ab22b395164a748dcc824734465d0ca56bbf35170f7bd5345bb747bd7773e5be03de8ac7e5708d449ea2855eca29ded61c19b1f04712c3",
+            "id": "module-MomentDateTimeModule-6642bd8cc35edd22566349dc306225ff60f496663ef8e9f71cba04fe292a2b0e50bafb95a4363f810d398088fa58f1547bb5c6aa5e43c7244a7d5c8925fe95ac",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
@@ -13540,7 +13509,7 @@
         },
         {
             "name": "NativeDateTimeModule",
-            "id": "module-NativeDateTimeModule-47c3489dea77a8f6284c038af6263c7d3b7e2062bc3c031902ae7c954bbcefa2bac3662e657da3f90ccca48cfc3ac6d33965a73a8a707ad8542e760cff81012e",
+            "id": "module-NativeDateTimeModule-db5cadf1634e51ccea71989507f0be4fb54b5a2dfd62bcf93598f87b820f1fe86cb3f170664601e4e5e1bd615fb4f90bd0e92477d8681fc88b7869b805b1e372",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
@@ -13596,7 +13565,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new InjectionToken<MomentDateTimeAdapterOptions>(\n    'NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {\n    providedIn: 'root',\n    factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY\n})",
+                "defaultValue": "new InjectionToken<MomentDateTimeAdapterOptions>(\r\n    'NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {\r\n    providedIn: 'root',\r\n    factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY\r\n})",
                 "rawdescription": "InjectionToken for moment date adapter to configure options",
                 "description": "<p>InjectionToken for moment date adapter to configure options</p>\n"
             }
@@ -13612,7 +13581,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 181
+                "kind": 184
             },
             {
                 "name": "PickerMode",
@@ -13623,7 +13592,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 189
+                "kind": 192
             },
             {
                 "name": "PickerType",
@@ -13634,7 +13603,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 189
+                "kind": 192
             },
             {
                 "name": "RenderItem",
@@ -13645,7 +13614,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 189
+                "kind": 192
             },
             {
                 "name": "SelectMode",
@@ -13656,7 +13625,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 189
+                "kind": 192
             },
             {
                 "name": "ViewType",
@@ -13667,7 +13636,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 189
+                "kind": 192
             }
         ],
         "enumerations": [],
@@ -13695,7 +13664,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new InjectionToken<MomentDateTimeAdapterOptions>(\n    'NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {\n    providedIn: 'root',\n    factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY\n})",
+                    "defaultValue": "new InjectionToken<MomentDateTimeAdapterOptions>(\r\n    'NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {\r\n    providedIn: 'root',\r\n    factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY\r\n})",
                     "rawdescription": "InjectionToken for moment date adapter to configure options",
                     "description": "<p>InjectionToken for moment date adapter to configure options</p>\n"
                 }
@@ -13714,7 +13683,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 181
+                    "kind": 184
                 },
                 {
                     "name": "PickerMode",
@@ -13725,7 +13694,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 189
+                    "kind": 192
                 },
                 {
                     "name": "PickerType",
@@ -13736,7 +13705,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 189
+                    "kind": 192
                 },
                 {
                     "name": "RenderItem",
@@ -13747,7 +13716,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 189
+                    "kind": 192
                 },
                 {
                     "name": "SelectMode",
@@ -13758,7 +13727,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 189
+                    "kind": 192
                 },
                 {
                     "name": "ViewType",
@@ -13769,7 +13738,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 189
+                    "kind": 192
                 }
             ]
         }
