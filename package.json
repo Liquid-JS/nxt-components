@@ -113,7 +113,7 @@
         "webpack-image-resize-loader": "^5.0.0",
         "xmlbuilder": "^15.1.1"
     },
-    "packageManager": "yarn@3.6.3",
+    "packageManager": "yarn@4.0.1",
     "resolutions": {
         "@angular-devkit/architect": "^0.1602.3",
         "@angular-devkit/build-angular": "^16.2.3",

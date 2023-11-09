@@ -3,5 +3,11 @@
     "upgrade": true,
     "interactive": true,
     "workspaces": true,
-    "root": true
+    "root": true,
+    "reject": [
+        "@types/node",
+        "stylelint",
+        "stylelint-config-standard-scss",
+        "typescript"
+    ]
 }
