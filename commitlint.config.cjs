@@ -3,9 +3,9 @@ module.exports = {
         '@commitlint/config-conventional'
     ],
     plugins: [
-        'workspace-scopes'
+        '@liquid-js/commitlint-plugin-workspace-scopes'
     ],
     rules: {
-        'scope-enum': [2, 'always', []]
+        'scope-enum': [2, 'always', {}]
     }
 }

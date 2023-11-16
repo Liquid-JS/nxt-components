@@ -30,10 +30,10 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/color-picker"
     },
     "peerDependencies": {
-        "@angular/cdk": "^17.0.0",
-        "@angular/common": "^17.0.1",
-        "@angular/core": "^17.0.1",
-        "@angular/localize": "^17.0.1"
+        "@angular/cdk": "^17.0.1",
+        "@angular/common": "^17.0.3",
+        "@angular/core": "^17.0.3",
+        "@angular/localize": "^17.0.3"
     },
     "dependencies": {
         "tslib": "^2.6.2"
