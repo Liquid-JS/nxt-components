@@ -471,7 +471,7 @@
     "components": [
         {
             "name": "DropzoneComponent",
-            "id": "component-DropzoneComponent-20ab85cc58b49680013830719a741ab777a466aac490e4495aa8764566ba3a83d4e632a497f47965660a3d672f2f19c57b62cfdef8c1dea4f78bf3ee2409f04f",
+            "id": "component-DropzoneComponent-50a2d6e9a794737f11ad1ad729af5a07348f7bb9b4720fbd45ac3f059302c09c38ec66876acf80ec89e589a93e7f1231c706c4ba99b041093ead8db56f6e0d27",
             "file": "src/lib/dropzone.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -481,7 +481,7 @@
             "outputs": [],
             "providers": [
                 {
-                    "name": "{\n    provide: NXT_DROPZONE_LISTENERS, useValue: forwardRef(() => DropzoneComponent)\n}",
+                    "name": "{\n    provide: NXT_DROPZONE_LISTENERS, useExisting: DropzoneComponent\n}",
                     "type": "component"
                 }
             ],
