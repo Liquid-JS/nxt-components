@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/no-output-rename */
-import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core'
 import { DropzoneDirective } from './dropzone.directive'
 import { DropzoneConfig, DropzoneListeners, NXT_DROPZONE_LISTENERS } from './dropzone.interfaces'
 
@@ -13,7 +13,7 @@ import { DropzoneConfig, DropzoneListeners, NXT_DROPZONE_LISTENERS } from './dro
     encapsulation: ViewEncapsulation.None,
     providers: [{
         provide: NXT_DROPZONE_LISTENERS,
-        useValue: forwardRef(() => DropzoneComponent)
+        useExisting: DropzoneComponent
     }]
 })
 export class DropzoneComponent implements OnInit, DropzoneListeners {

@@ -5,7 +5,7 @@
     "editor.formatOnSave": true,
     "editor.wordWrap": "on",
     "editor.codeActionsOnSave": {
-        "source.fixAll": true
+        "source.fixAll": "explicit"
     },
     "files.autoSave": "off",
     "html.format.wrapAttributes": "force",
