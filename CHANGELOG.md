@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.0.1](https://github.com/Liquid-JS/nxt-components/compare/v17.0.0...v17.0.1) (2023-12-13)
+
+
+### Bug Fixes
+
+* **nxt-dropzone-wrapper:** component event binding ([f901932](https://github.com/Liquid-JS/nxt-components/commit/f901932cf4c122a19ba12ed8cc3a8765f95533a4))
+
+
+
+
+
 # [17.0.0](https://github.com/Liquid-JS/nxt-components/compare/v16.2.0...v17.0.0) (2023-11-09)
 
 

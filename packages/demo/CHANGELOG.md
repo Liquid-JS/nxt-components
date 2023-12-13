@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.0.1](https://github.com/Liquid-JS/nxt-components/compare/v17.0.0...v17.0.1) (2023-12-13)
+
+**Note:** Version bump only for package demo
+
+
+
+
+
 # [17.0.0](https://github.com/Liquid-JS/nxt-components/compare/v16.2.0...v17.0.0) (2023-11-09)
 
 
