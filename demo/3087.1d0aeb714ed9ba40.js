@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[3087],{3087:o=>{o.exports='<input class="form-control"\n    [value]="color"\n    [style.background]="color"\n    [style.color]="picker.textColorMode(\'#fff\') == \'light\' ? \'#f8f9fa\': \'#212529\'"\n    #picker="nxtColorPicker"\n    [cancelButton]="true"\n    [(nxtColor)]="color" />\n'}}]);

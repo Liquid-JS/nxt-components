@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[6059],{6059:e=>{e.exports="button {\n  display: flex;\n  align-items: center;\n}\nbutton svg {\n  fill: currentcolor;\n  width: 1rem;\n  height: 1rem;\n}"}}]);

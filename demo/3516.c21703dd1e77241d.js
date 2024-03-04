@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[3516],{3516:n=>{n.exports=":host {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 32px;\n  justify-content: space-around;\n}\n\n.color-box {\n  width: 100px;\n  height: 24px;\n  cursor: pointer;\n}\n.color-box + .color-box {\n  margin-top: 16px;\n}"}}]);
