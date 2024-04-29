@@ -207,6 +207,8 @@
                     }
                 ]
             },
+            "inputsClass": [],
+            "outputsClass": [],
             "properties": [
                 {
                     "name": "a",
@@ -272,8 +274,6 @@
             "methods": [],
             "indexSignatures": [],
             "extends": [],
-            "inputsClass": [],
-            "outputsClass": [],
             "hostBindings": [],
             "hostListeners": []
         },
@@ -372,6 +372,8 @@
                     }
                 ]
             },
+            "inputsClass": [],
+            "outputsClass": [],
             "properties": [
                 {
                     "name": "a",
@@ -425,8 +427,6 @@
             "methods": [],
             "indexSignatures": [],
             "extends": [],
-            "inputsClass": [],
-            "outputsClass": [],
             "hostBindings": [],
             "hostListeners": []
         },
@@ -525,6 +525,8 @@
                     }
                 ]
             },
+            "inputsClass": [],
+            "outputsClass": [],
             "properties": [
                 {
                     "name": "a",
@@ -578,8 +580,6 @@
             "methods": [],
             "indexSignatures": [],
             "extends": [],
-            "inputsClass": [],
-            "outputsClass": [],
             "hostBindings": [],
             "hostListeners": []
         },
@@ -678,6 +678,8 @@
                     }
                 ]
             },
+            "inputsClass": [],
+            "outputsClass": [],
             "properties": [
                 {
                     "name": "a",
@@ -731,8 +733,6 @@
             "methods": [],
             "indexSignatures": [],
             "extends": [],
-            "inputsClass": [],
-            "outputsClass": [],
             "hostBindings": [],
             "hostListeners": []
         }

@@ -3682,6 +3682,8 @@
                     }
                 ]
             },
+            "inputsClass": [],
+            "outputsClass": [],
             "properties": [
                 {
                     "name": "ariaLabel",
@@ -3761,8 +3763,6 @@
             "methods": [],
             "indexSignatures": [],
             "extends": [],
-            "inputsClass": [],
-            "outputsClass": [],
             "hostBindings": [],
             "hostListeners": []
         },
@@ -3773,6 +3773,8 @@
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
+            "inputsClass": [],
+            "outputsClass": [],
             "properties": [
                 {
                     "name": "_localeChanges",
@@ -5375,8 +5377,6 @@
                     }
                 }
             },
-            "inputsClass": [],
-            "outputsClass": [],
             "hostBindings": [],
             "hostListeners": []
         },
@@ -5395,6 +5395,8 @@
                 "args": [],
                 "line": 116
             },
+            "inputsClass": [],
+            "outputsClass": [],
             "properties": [
                 {
                     "name": "ariaDescribedBy",
@@ -5620,8 +5622,6 @@
             "methods": [],
             "indexSignatures": [],
             "extends": [],
-            "inputsClass": [],
-            "outputsClass": [],
             "hostBindings": [],
             "hostListeners": []
         },
@@ -5707,6 +5707,8 @@
                     }
                 ]
             },
+            "inputsClass": [],
+            "outputsClass": [],
             "properties": [
                 {
                     "name": "componentInstance",
@@ -5954,8 +5956,6 @@
             ],
             "indexSignatures": [],
             "extends": [],
-            "inputsClass": [],
-            "outputsClass": [],
             "hostBindings": [],
             "hostListeners": []
         }
