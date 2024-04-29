@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[6251],{6251:e=>{e.exports="textarea {\n  font-family: var(--bs-font-monospace);\n}"}}]);

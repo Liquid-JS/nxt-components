@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[7550],{7550:n=>{n.exports=".demo-dz-column {\n  display: flex;\n  flex-direction: column;\n}\n.demo-dz-column.col {\n  flex: 300px 2 1;\n}\n.demo-dz-column .dropzone-container {\n  flex: auto 1 1;\n}\n\n.row {\n  gap: var(--bs-gutter-x);\n  margin: 0;\n}\n\n.col {\n  flex: 250px 1 1;\n  padding: 0;\n}"}}]);

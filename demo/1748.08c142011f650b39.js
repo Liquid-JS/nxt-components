@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[1748],{1748:e=>{e.exports=".col {\n  flex: 200px 1 1;\n}"}}]);

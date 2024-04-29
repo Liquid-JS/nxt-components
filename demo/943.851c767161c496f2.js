@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[943],{3324:e=>{e.exports='<input class="form-control"\n    [(ngModel)]="date"\n    placeholder="Time"\n    [nxtDateTimeTrigger]="picker"\n    [nxtDateTime]="picker">\n<nxt-date-time #picker\n    pickerType="timer"></nxt-date-time>\n'}}]);
