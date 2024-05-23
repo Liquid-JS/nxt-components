@@ -3,7 +3,7 @@
     "interfaces": [
         {
             "name": "InputChangeEvent",
-            "id": "interface-InputChangeEvent-97fdf6385dabb714574ca4f268bd7574f8941d5bf9304b7aba5453b132ff8b99878d066e74c9f204a63c75fc634e480082887750f99d3e105b3b2736e5af6201",
+            "id": "interface-InputChangeEvent-bbc7d3fcbaa56148786317c7607129444caf9da15d343fcbe35fe53a9ad9a2317dbd13068836693362d47ff6eee15acc585d9db9d252495120014558ac870ff2",
             "file": "src/util/types.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -53,7 +53,7 @@
         },
         {
             "name": "SliderChangeEvent",
-            "id": "interface-SliderChangeEvent-97fdf6385dabb714574ca4f268bd7574f8941d5bf9304b7aba5453b132ff8b99878d066e74c9f204a63c75fc634e480082887750f99d3e105b3b2736e5af6201",
+            "id": "interface-SliderChangeEvent-bbc7d3fcbaa56148786317c7607129444caf9da15d343fcbe35fe53a9ad9a2317dbd13068836693362d47ff6eee15acc585d9db9d252495120014558ac870ff2",
             "file": "src/util/types.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -99,7 +99,7 @@
     "classes": [
         {
             "name": "Cmyk",
-            "id": "class-Cmyk-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
+            "id": "class-Cmyk-ad5ce9a19337403135fc341d01ac2c77b4f3e7e7f4583698c4ce5b5cfc4d11deaaeb658033e7530d6d79475db6d46edd46fee76582309ca95703b176bcd510a2",
             "file": "src/util/formats.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -279,7 +279,7 @@
         },
         {
             "name": "Hsla",
-            "id": "class-Hsla-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
+            "id": "class-Hsla-ad5ce9a19337403135fc341d01ac2c77b4f3e7e7f4583698c4ce5b5cfc4d11deaaeb658033e7530d6d79475db6d46edd46fee76582309ca95703b176bcd510a2",
             "file": "src/util/formats.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -432,7 +432,7 @@
         },
         {
             "name": "Hsva",
-            "id": "class-Hsva-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
+            "id": "class-Hsva-ad5ce9a19337403135fc341d01ac2c77b4f3e7e7f4583698c4ce5b5cfc4d11deaaeb658033e7530d6d79475db6d46edd46fee76582309ca95703b176bcd510a2",
             "file": "src/util/formats.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -585,7 +585,7 @@
         },
         {
             "name": "Rgba",
-            "id": "class-Rgba-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
+            "id": "class-Rgba-ad5ce9a19337403135fc341d01ac2c77b4f3e7e7f4583698c4ce5b5cfc4d11deaaeb658033e7530d6d79475db6d46edd46fee76582309ca95703b176bcd510a2",
             "file": "src/util/formats.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -740,7 +740,7 @@
     "directives": [
         {
             "name": "ColorPickerDirective",
-            "id": "directive-ColorPickerDirective-c7d19d60a7d3ac968eff858cd99323de606610a4208fedc23e91d57df87c7f4ac0872defe7f288433db936f804b49a7e4ac03f6543fbebd09b395dd71f37eecb",
+            "id": "directive-ColorPickerDirective-e8c92858e36abc8b06e430b694d52a942e23946d62b8ac02005d8a5ef96e475d11d420b347062936d71f109c59736828cbd67aded301466ee5bc8d312d9aaf87",
             "file": "src/lib/color-picker.directive.ts",
             "type": "directive",
             "description": "",
@@ -1188,8 +1188,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 10391,
-                                "end": 10393,
+                                "pos": 10673,
+                                "end": 10675,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -1201,8 +1201,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "new Rgba(1, 1, 1, 1, true)",
                             "tagName": {
-                                "pos": 10385,
-                                "end": 10390,
+                                "pos": 10667,
+                                "end": 10672,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -1213,8 +1213,8 @@
                         },
                         {
                             "name": {
-                                "pos": 10485,
-                                "end": 10487,
+                                "pos": 10768,
+                                "end": 10770,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -1226,8 +1226,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "this.dialog?.rgbaText",
                             "tagName": {
-                                "pos": 10479,
-                                "end": 10484,
+                                "pos": 10762,
+                                "end": 10767,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -1238,8 +1238,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 10550,
-                                "end": 10557,
+                                "pos": 10834,
+                                "end": 10841,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -1262,7 +1262,7 @@
     "modules": [
         {
             "name": "ColorPickerModule",
-            "id": "module-ColorPickerModule-a21816942879839161b717073377abe36be6ba3e0f8f62c302cc78c4aeb843dbe8333696e179ddf41c24f793ce53fc36a017c06e389c2c8d6e9d19c1a8eb62ce",
+            "id": "module-ColorPickerModule-874d3bc618c79e22cc5bd9dc4bbf67958a34b95700c4af4cd2c3ad0a347a29635adce40771ac3a4f5b6ca0b32563366df2e41de2d072e7b48d9b0a420da2b427",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
