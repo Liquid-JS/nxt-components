@@ -59,13 +59,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/FlagsModule.html" data-type="entity-link" >FlagsModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-FlagsModule-e2bc24deedce17b74df823185d8859c1ce3e0c57c094b3168ea637352825468e482f4af4f3f1a8dafcd05fecb64522d759e5dc8fdb4c126a37092bc7eaa7dac5"' : 'data-bs-target="#xs-components-links-module-FlagsModule-e2bc24deedce17b74df823185d8859c1ce3e0c57c094b3168ea637352825468e482f4af4f3f1a8dafcd05fecb64522d759e5dc8fdb4c126a37092bc7eaa7dac5"' }>
+                                            'data-bs-target="#components-links-module-FlagsModule-62d0fe63283904f6567336e07a637e4207c396335e088c2286c95a741ba6a0ef08245e1e77fa1547c8fb6bbd3f6e964ca4e8deb34ff251e733833ac76c317e74"' : 'data-bs-target="#xs-components-links-module-FlagsModule-62d0fe63283904f6567336e07a637e4207c396335e088c2286c95a741ba6a0ef08245e1e77fa1547c8fb6bbd3f6e964ca4e8deb34ff251e733833ac76c317e74"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FlagsModule-e2bc24deedce17b74df823185d8859c1ce3e0c57c094b3168ea637352825468e482f4af4f3f1a8dafcd05fecb64522d759e5dc8fdb4c126a37092bc7eaa7dac5"' :
-                                            'id="xs-components-links-module-FlagsModule-e2bc24deedce17b74df823185d8859c1ce3e0c57c094b3168ea637352825468e482f4af4f3f1a8dafcd05fecb64522d759e5dc8fdb4c126a37092bc7eaa7dac5"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FlagsModule-62d0fe63283904f6567336e07a637e4207c396335e088c2286c95a741ba6a0ef08245e1e77fa1547c8fb6bbd3f6e964ca4e8deb34ff251e733833ac76c317e74"' :
+                                            'id="xs-components-links-module-FlagsModule-62d0fe63283904f6567336e07a637e4207c396335e088c2286c95a741ba6a0ef08245e1e77fa1547c8fb6bbd3f6e964ca4e8deb34ff251e733833ac76c317e74"' }>
                                             <li class="link">
                                                 <a href="components/FlagComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >FlagComponent</a>
                                             </li>

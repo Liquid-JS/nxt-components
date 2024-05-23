@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[7574],{7574:o=>{o.exports='<input class="form-control"\n    [style.background]="color"\n    alphaChannel="always"\n    outputFormat="rgba"\n    [(presetColors)]="preset"\n    [presetColorsEditable]="true"\n    [maxPresetColors]="6"\n    [(nxtColor)]="color" />\n'}}]);
