@@ -1,7 +1,6 @@
 <ng-container *ngIf="code">
-    <pre><code [highlight]="code"
-    [languages]="languages ?? []"
-    [lineNumbers]="false"></code></pre>
+    <pre><code [highlightAuto]="code"
+    [languages]="languages ?? []"></code></pre>
 
     <button *ngIf="copy"
         type="button"

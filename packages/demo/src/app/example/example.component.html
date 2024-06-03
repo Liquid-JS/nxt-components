@@ -34,17 +34,17 @@
             <tab *ngFor="let source of sources; trackBy tabTrackBy"
                 [heading]="source.tab"
                 class="example-tab-content">
-                <pre><code [highlight]="source.code"
+                <pre><code [highlightAuto]="source.code"
                 [languages]="[source.language]"
-                [lineNumbers]="true"></code></pre>
+                lineNumbers></code></pre>
             </tab>
         </tabset>
         <ng-template #single>
             <div *ngIf="sources?.[0] as source"
                 class="example-tab-content example-tab-content--single">
-                <pre><code [highlight]="source.code"
+                <pre><code [highlightAuto]="source.code"
                 [languages]="[source.language]"
-                [lineNumbers]="true"></code></pre>
+                lineNumbers></code></pre>
             </div>
         </ng-template>
     </div>
