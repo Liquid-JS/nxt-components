@@ -42,7 +42,7 @@
         "rxjs": "^7.8.1"
     },
     "dependencies": {
-        "tslib": "^2.6.2"
+        "tslib": "^2.6.3"
     },
     "exports": {
         "./assets/picker.scss": {

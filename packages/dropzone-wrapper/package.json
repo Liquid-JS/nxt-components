@@ -34,7 +34,7 @@
         "dropzone": "^6.0.0-beta.2"
     },
     "dependencies": {
-        "tslib": "^2.6.2"
+        "tslib": "^2.6.3"
     },
     "devDependencies": {
         "@types/dropzone": "^5.7.8"
