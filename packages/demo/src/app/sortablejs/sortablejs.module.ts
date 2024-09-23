@@ -11,6 +11,7 @@ import { MetaModule } from '../meta/meta.module'
 import { OutputsTableComponent } from '../outputs-table/outputs-table.component'
 import { BasicExampleComponent } from './examples/basic-example/basic-example.component'
 import { ComplexExampleComponent } from './examples/complex-example/complex-example.component'
+import { UnionExampleComponent } from './examples/union-example/union-example.component'
 import { DisabledOptionsComponent } from './examples/disabled-options/disabled-options.component'
 import { EventsComponent } from './examples/events/events.component'
 import { FormArrayComponent } from './examples/form-array/form-array.component'
@@ -32,6 +33,7 @@ import { AppSortablejsComponent } from './sortablejs/sortablejs.component'
         TransferListsComponent,
         ItemCloneComponent,
         ComplexExampleComponent,
+        UnionExampleComponent,
         GettingStartedComponent
     ],
     imports: [

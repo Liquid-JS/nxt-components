@@ -20,7 +20,7 @@ import { GLOBALS } from './globals'
 import { SortablejsBindings } from './sortablejs-bindings'
 import { SortablejsService } from './sortablejs.service'
 
-export type SortableData<T> = T extends AbstractControl ? (FormArray<T> | T[]) : T[]
+export type SortableData<T> = [T] extends [AbstractControl] ? (FormArray<T> | T[]) : T[]
 export type CloneFunction<T> = (item: T) => T
 
 /** @internal */

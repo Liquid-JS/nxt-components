@@ -57,6 +57,12 @@ export class AppSortablejsComponent extends WaitLoad implements OnInit {
             name: 'Complex example',
             description: 'Each list can have different options and restrictions.',
             include: ['html', 'ts']
+        },
+        {
+            path: 'union-example',
+            name: 'Union example',
+            description: 'The list items can be of different types (the element type can be a union type).',
+            include: ['html', 'ts']
         }
     )
         .map(p => Promise.all([

@@ -1,0 +1,20 @@
+<h3 class="h4">Button group</h3>
+
+<div class="btn-group"
+    [nxtSortablejs]="elems">
+    <button type="button"
+        class="btn btn-secondary"
+        *ngFor="let elem of elems">
+        <ng-container *ngIf="!isArray(elem)">{{ elem }}</ng-container>
+        <ul *ngIf="isArray(elem)"
+            class="list-unstyled m-0">
+            <li *ngFor="let num of elem">{{num}}</li>
+        </ul>
+    </button>
+</div>
+
+<h3 class="h4">The actual model</h3>
+
+<app-code-block [code]="elems | json"
+    [languages]="['json']"
+    [copy]="false"></app-code-block>
