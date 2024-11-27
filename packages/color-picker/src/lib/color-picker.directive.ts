@@ -10,7 +10,8 @@ import { ColorPickerComponent } from './color-picker/color-picker.component'
 
 @Directive({
     selector: '[nxtColor]',
-    exportAs: 'nxtColorPicker'
+    exportAs: 'nxtColorPicker',
+    standalone: false
 })
 export class ColorPickerDirective implements OnChanges, OnDestroy {
 

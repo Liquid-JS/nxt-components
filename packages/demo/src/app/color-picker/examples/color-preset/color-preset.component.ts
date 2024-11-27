@@ -1,10 +1,14 @@
 import { Component, ViewEncapsulation } from '@angular/core'
+import { ColorPickerModule } from 'nxt-color-picker'
 
 @Component({
     selector: 'app-color-preset',
     templateUrl: './color-preset.component.html',
     styleUrls: ['./color-preset.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    imports: [
+        ColorPickerModule
+    ]
 })
 export class ColorPresetComponent {
     color = '#f2ff00'

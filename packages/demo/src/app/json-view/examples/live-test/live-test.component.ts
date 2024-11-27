@@ -1,10 +1,18 @@
+import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
+import { FormsModule } from '@angular/forms'
+import { JsonViewModule } from 'nxt-json-view'
 
 @Component({
     selector: 'app-live-test',
     templateUrl: './live-test.component.html',
     styleUrls: ['./live-test.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    imports: [
+        JsonViewModule,
+        FormsModule,
+        CommonModule
+    ]
 })
 export class LiveTestComponent {
     data = {}

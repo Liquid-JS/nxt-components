@@ -136,7 +136,7 @@ export interface DropzoneListeners {
     readonly DZ_SENDING: EventEmitter<[Dropzone.DropzoneFile, XMLHttpRequest, FormData]>
     readonly DZ_SENDINGMULTIPLE: EventEmitter<[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]>
 
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    // eslint-disable-next-line @typescript-eslint/no-restricted-types
     readonly DZ_SUCCESS: EventEmitter<[Dropzone.DropzoneFile, Object | string]>
     readonly DZ_SUCCESSMULTIPLE: EventEmitter<Dropzone.DropzoneFile[]>
 

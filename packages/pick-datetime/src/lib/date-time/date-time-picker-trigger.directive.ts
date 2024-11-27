@@ -3,7 +3,8 @@ import { merge, Observable, of as observableOf, Subscription } from 'rxjs'
 import { DateTimeComponent } from './date-time-picker/date-time-picker.component'
 
 @Directive({
-    selector: '[nxtDateTimeTrigger]'
+    selector: '[nxtDateTimeTrigger]',
+    standalone: false
 })
 export class DateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterContentInit, OnDestroy {
 

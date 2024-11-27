@@ -11,7 +11,8 @@ import { DateTimeIntl } from '../date-time-picker-intl.service'
     templateUrl: './calendar.component.html',
     styleUrls: ['./calendar.component.scss'],
     preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterViewChecked, OnDestroy {
     /**

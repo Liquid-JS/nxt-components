@@ -21,7 +21,8 @@ export class CalendarCell {
     templateUrl: './calendar-body.component.html',
     styleUrls: ['./calendar-body.component.scss'],
     preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CalendarBodyComponent implements OnInit {
     /**

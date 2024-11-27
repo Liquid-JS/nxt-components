@@ -16,7 +16,8 @@ const WEEKS_PER_VIEW = 6
     templateUrl: './calendar-month-view.component.html',
     styleUrls: ['./calendar-month-view.component.scss'],
     preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestroy {
     /**

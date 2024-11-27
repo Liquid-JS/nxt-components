@@ -1,10 +1,16 @@
 import { Component, ViewEncapsulation } from '@angular/core'
+import { FormsModule } from '@angular/forms'
+import { DateTimeModule } from 'nxt-pick-datetime'
 
 @Component({
     selector: 'app-filter-restriction',
     templateUrl: './filter-restriction.component.html',
     styleUrls: ['./filter-restriction.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    imports: [
+        DateTimeModule,
+        FormsModule
+    ]
 })
 export class FilterRestrictionComponent {
     date?: Date

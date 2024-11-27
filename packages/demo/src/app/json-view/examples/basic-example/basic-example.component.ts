@@ -1,10 +1,14 @@
 import { Component, ViewEncapsulation } from '@angular/core'
+import { JsonViewModule } from 'nxt-json-view'
 
 @Component({
     selector: 'app-basic-example',
     templateUrl: './basic-example.component.html',
     styleUrls: ['./basic-example.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    imports: [
+        JsonViewModule
+    ]
 })
 export class BasicExampleComponent {
     data = {

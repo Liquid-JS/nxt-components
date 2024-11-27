@@ -39,7 +39,7 @@
     "components": [
         {
             "name": "JsonViewComponent",
-            "id": "component-JsonViewComponent-3e9e6bafbff69fcfa2a527744cc66bde9d01d85ee3c1bd0e57a3d2256ad1bc9b712d72b4089af038c1a5a1c5daae67ba46e481419ee7d19220175b9f518d5d7b",
+            "id": "component-JsonViewComponent-eafe988ebc33bfa13c61732e2bb6dc37720d1f5a59bbf2035762f3f382448becfd7dd0676005aedbda4047126076445194c951c7117298e7a5ae87378a91a7f0",
             "file": "src/lib/json-view/json-view.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.Emulated"
@@ -65,7 +65,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nJSON data, any valid JSON object",
                     "description": "<p>JSON data, any valid JSON object</p>\n",
-                    "line": 12,
+                    "line": 13,
                     "type": "any",
                     "decorators": []
                 },
@@ -75,7 +75,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCustom labels for elements within the hierarcy",
                     "description": "<p>Custom labels for elements within the hierarcy</p>\n",
-                    "line": 16,
+                    "line": 17,
                     "type": "LevelLabels",
                     "decorators": []
                 },
@@ -85,7 +85,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nInitial number of levels to be expanded",
                     "description": "<p>Initial number of levels to be expanded</p>\n",
-                    "line": 14,
+                    "line": 15,
                     "type": "number",
                     "decorators": []
                 }

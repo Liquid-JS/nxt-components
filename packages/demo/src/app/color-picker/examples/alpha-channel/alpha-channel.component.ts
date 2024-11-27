@@ -1,11 +1,14 @@
 import { Component, ViewEncapsulation } from '@angular/core'
-import { formatOutput, stringToHsva } from 'nxt-color-picker'
+import { ColorPickerModule, formatOutput, stringToHsva } from 'nxt-color-picker'
 
 @Component({
     selector: 'app-alpha-channel',
     templateUrl: './alpha-channel.component.html',
     styleUrls: ['./alpha-channel.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    imports: [
+        ColorPickerModule
+    ]
 })
 export class AlphaChannelComponent {
     color1 = 'rgb(0,255,255)'

@@ -39,7 +39,8 @@ const getIndexesFromEvent = (event: SortableEvent) => {
 }
 
 @Directive({
-    selector: '[nxtSortablejs]'
+    selector: '[nxtSortablejs]',
+    standalone: false
 })
 export class SortablejsDirective<T> implements OnInit, OnChanges, OnDestroy {
 
@@ -114,8 +115,10 @@ export class SortablejsDirective<T> implements OnInit, OnChanges, OnDestroy {
         const container = this.sortablejsContainer ? this.element.nativeElement.querySelector(this.sortablejsContainer) : this.element.nativeElement
 
         setTimeout(() => {
-            this.sortableInstance = Sortable.create(container, this.options)
-            this.init.emit(this.sortableInstance)
+            if (typeof window != 'undefined') {
+                this.sortableInstance = Sortable.create(container, this.options)
+                this.init.emit(this.sortableInstance)
+            }
         }, 0)
     }
 

@@ -9,7 +9,7 @@
     "components": [
         {
             "name": "FlagComponent",
-            "id": "component-FlagComponent-b100a4974ea9e81e0199c91e13ac65676d2785315a087bc3ab3e02382bdda16dfe0a82352afa8a502947a1dd5893d009937ea225abdb0dacff267e8ec12c15eb",
+            "id": "component-FlagComponent-0b72f619a0d07ec6f4e50169df8ac836233d763560a22fe14e7b92fd7c9109a80f912779296e36aab6144dc1874effdebba4ee5321b53949223d3072246f70c0",
             "file": "src/lib/flag/flag.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.Emulated"
@@ -35,7 +35,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nISO 3166-1-alpha-2 country code",
                     "description": "<p>ISO 3166-1-alpha-2 country code</p>\n",
-                    "line": 18,
+                    "line": 19,
                     "type": "FlagDatabaseKey",
                     "decorators": []
                 },
@@ -45,7 +45,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nFlag format",
                     "description": "<p>Flag format</p>\n",
-                    "line": 31,
+                    "line": 32,
                     "type": "FlagFormat",
                     "decorators": []
                 },
@@ -55,7 +55,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nFlag width, either value in pixels or FlagSizeAlias",
                     "description": "<p>Flag width, either value in pixels or FlagSizeAlias</p>\n",
-                    "line": 39,
+                    "line": 40,
                     "type": "number | FlagSizeAlias",
                     "decorators": []
                 }
@@ -79,7 +79,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 81
+                "line": 82
             },
             "extends": [],
             "accessors": {
@@ -99,7 +99,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 18,
+                        "line": 19,
                         "rawdescription": "\nISO 3166-1-alpha-2 country code",
                         "description": "<p>ISO 3166-1-alpha-2 country code</p>\n",
                         "jsdoctags": [
@@ -131,7 +131,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 31,
+                        "line": 32,
                         "rawdescription": "\nFlag format",
                         "description": "<p>Flag format</p>\n",
                         "jsdoctags": [
@@ -163,7 +163,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 39,
+                        "line": 40,
                         "rawdescription": "\nFlag width, either value in pixels or FlagSizeAlias",
                         "description": "<p>Flag width, either value in pixels or FlagSizeAlias</p>\n",
                         "jsdoctags": [

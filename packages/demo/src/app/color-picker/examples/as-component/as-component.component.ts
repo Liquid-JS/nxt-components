@@ -1,10 +1,16 @@
+import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
+import { ColorPickerModule } from 'nxt-color-picker'
 
 @Component({
     selector: 'app-as-component',
     templateUrl: './as-component.component.html',
     styleUrls: ['./as-component.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    imports: [
+        ColorPickerModule,
+        CommonModule
+    ]
 })
 export class AsComponentComponent {
     colors = [

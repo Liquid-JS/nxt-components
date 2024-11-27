@@ -42,7 +42,8 @@ export const NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER = {
     templateUrl: './date-time-picker.component.html',
     styleUrls: ['./date-time-picker.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit, OnDestroy {
     /** Custom class for the picker backdrop */

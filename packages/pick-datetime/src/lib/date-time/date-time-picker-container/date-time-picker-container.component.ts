@@ -18,7 +18,8 @@ import { dateTimePickerAnimations } from './date-time-picker-container.animation
     animations: [
         dateTimePickerAnimations.transformPicker,
         dateTimePickerAnimations.fadeInPicker
-    ]
+    ],
+    standalone: false
 })
 export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, AfterViewInit {
 

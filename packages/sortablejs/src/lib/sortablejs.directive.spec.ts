@@ -4,12 +4,13 @@ import { SortablejsModule } from './sortablejs.module'
 
 describe('SortablejsDirective', () => {
     @Component({
-        template: `
+    template: `
         <div [nxtSortablejs]="items">
             <div *ngFor="let item of items">{{item}}</div>
         </div>
-    `
-    })
+    `,
+    standalone: false
+})
     // eslint-disable-next-line @angular-eslint/component-class-suffix
     class TestComponent1 {
         items = [1, 2, 3, 4, 5]

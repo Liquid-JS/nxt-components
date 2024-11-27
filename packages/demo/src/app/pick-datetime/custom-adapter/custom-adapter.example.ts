@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Injectable, NgModule } from '@angular/core'
 import { CustomDateModel } from 'custom-date-library'
 import { DateTimeAdapter, DateTimeFormats, NXT_DATE_TIME_FORMATS } from 'nxt-pick-datetime'

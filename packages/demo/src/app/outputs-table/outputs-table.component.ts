@@ -4,7 +4,6 @@ import { Component, Input, ViewEncapsulation } from '@angular/core'
 
 @Component({
     selector: 'app-outputs-table',
-    standalone: true,
     imports: [
         CommonModule,
         CdkTableModule

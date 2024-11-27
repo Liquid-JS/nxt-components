@@ -7,7 +7,8 @@ import { isArray, isBoolean, isNumber, isObject, isString, isUndefined } from '.
     selector: 'nxt-json-view-item',
     templateUrl: './json-view-item.component.html',
     styleUrls: ['./json-view-item.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    standalone: false
 })
 export class JsonViewItemComponent implements OnInit {
     private _data?: any

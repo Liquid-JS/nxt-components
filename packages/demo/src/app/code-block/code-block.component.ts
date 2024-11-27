@@ -6,7 +6,6 @@ import { ClipboardDirective } from './clipboard.directive'
 
 @Component({
     selector: 'app-code-block',
-    standalone: true,
     imports: [
         CommonModule,
         ClipboardDirective,

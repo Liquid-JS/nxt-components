@@ -1,4 +1,6 @@
-import { readFile, writeFile } from 'fs/promises'
+import { cp, readFile, writeFile } from 'fs/promises'
+
+await cp('dist/demo/browser', 'docs/demo', { recursive: true })
 
 readFile('docs/demo/index.html', 'utf8')
     .then(async content => {

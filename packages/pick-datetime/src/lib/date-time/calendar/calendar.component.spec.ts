@@ -447,7 +447,8 @@ describe('CalendarComponent', () => {
                 [pickerMoment]="pickerMoment"
                 (monthSelected)="selectedMonth=$event"
                 (yearSelected)="selectedYear=$event"></nxt-date-time-calendar>
-    `
+    `,
+    standalone: false
 })
 class StandardCalendar {
     selectMode = 'single'
@@ -463,7 +464,8 @@ class StandardCalendar {
                                 [pickerMoment]="pickerMoment"
                                 [min]="minDate"
                                 [max]="maxDate"></nxt-date-time-calendar>
-    `
+    `,
+    standalone: false
 })
 class CalendarWithMinMax {
     selectMode = 'single'
@@ -479,7 +481,8 @@ class CalendarWithMinMax {
                                 [selectMode]="selectMode"
                                 [pickerMoment]="pickerMoment"
                                 [dateTimeFilter]="dateTimeFilter"></nxt-date-time-calendar>
-    `
+    `,
+    standalone: false
 })
 class CalendarWithDateFilter {
     selectMode = 'single'

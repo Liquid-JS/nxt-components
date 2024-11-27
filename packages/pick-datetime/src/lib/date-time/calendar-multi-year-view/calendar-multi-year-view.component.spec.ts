@@ -274,7 +274,8 @@ describe('MultiYearViewComponent', () => {
                 [selected]="selected"
                 [(pickerMoment)]="pickerMoment"
                 (change)="handleChange($event)"></nxt-date-time-multi-year-view>
-    `
+    `,
+    standalone: false
 })
 class StandardMultiYearViewComponent {
     selected = new Date(2020, 0, 10)
@@ -290,7 +291,8 @@ class StandardMultiYearViewComponent {
         <nxt-date-time-multi-year-view
                 [(pickerMoment)]="pickerMoment"
                 [dateTimeFilter]="dateTimeFilter"></nxt-date-time-multi-year-view>
-    `
+    `,
+    standalone: false
 })
 class MultiYearViewWithDateFilterComponent {
     pickerMoment = new Date(2018, 0, 1)

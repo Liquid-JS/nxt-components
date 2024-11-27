@@ -5,7 +5,8 @@ import { LevelLabels } from '../utils/interfaces'
     selector: 'nxt-json-view',
     templateUrl: './json-view.component.html',
     styleUrls: ['./json-view.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    standalone: false
 })
 export class JsonViewComponent {
     /** JSON data, any valid JSON object */

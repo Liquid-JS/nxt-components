@@ -1,8 +1,10 @@
+import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
+import { FormsModule } from '@angular/forms'
 import { remove as removeDiacritics } from 'diacritics'
 import { getName, registerLocale } from 'i18n-iso-countries'
 import locl from 'i18n-iso-countries/langs/en.json'
-import { FlagDatabaseKey } from 'nxt-flags'
+import { FlagDatabaseKey, FlagsModule } from 'nxt-flags'
 
 registerLocale(locl)
 
@@ -10,7 +12,12 @@ registerLocale(locl)
     selector: 'app-basic-example',
     templateUrl: './basic-example.component.html',
     styleUrls: ['./basic-example.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    imports: [
+        CommonModule,
+        FormsModule,
+        FlagsModule
+    ]
 })
 export class BasicExampleComponent {
 

@@ -1,1 +1,1 @@
-export { NativeDateTimeModule } from './native-adapter.module'
+export { NativeDateTimeModule, provideNativeDateTimeAdapter } from './native-adapter.module'

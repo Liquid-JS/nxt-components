@@ -5,7 +5,8 @@ import { CursorEvent } from '../util/helpers'
  * @internal
  */
 @Directive({
-    selector: '[nxtSlider]'
+    selector: '[nxtSlider]',
+    standalone: false
 })
 export class SliderDirective {
 

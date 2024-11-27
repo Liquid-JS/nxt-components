@@ -1,10 +1,10 @@
-import { LOCALE_ID, NgModule } from '@angular/core'
+import { LOCALE_ID, NgModule, Provider } from '@angular/core'
 import { DateTimeAdapter, NXT_DATE_TIME_FORMATS } from 'nxt-pick-datetime'
 import { MomentDateTimeAdapter, NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS } from './date-time-adapter.class'
 import { NXT_MOMENT_DATE_TIME_FORMATS } from './date-time-format.class'
 
-@NgModule({
-    providers: [
+export function provideMomentDateTimeAdapter(): Provider[] {
+    return [
         {
             provide: DateTimeAdapter,
             useClass: MomentDateTimeAdapter,
@@ -14,6 +14,12 @@ import { NXT_MOMENT_DATE_TIME_FORMATS } from './date-time-format.class'
             provide: NXT_DATE_TIME_FORMATS,
             useValue: NXT_MOMENT_DATE_TIME_FORMATS
         }
+    ]
+}
+
+@NgModule({
+    providers: [
+        provideMomentDateTimeAdapter()
     ]
 })
 export class MomentDateTimeModule { }

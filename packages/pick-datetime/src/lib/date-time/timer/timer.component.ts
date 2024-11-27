@@ -8,7 +8,8 @@ import { DateTimeIntl } from '../date-time-picker-intl.service'
     templateUrl: './timer.component.html',
     styleUrls: ['./timer.component.scss'],
     preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TimerComponent<T> implements OnInit {
     /** The current picker moment */

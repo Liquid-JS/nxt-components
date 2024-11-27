@@ -1,10 +1,14 @@
 import { Component, ViewEncapsulation } from '@angular/core'
+import { JsonViewModule } from 'nxt-json-view'
 
 @Component({
     selector: 'app-expansion-parameters',
     templateUrl: './expansion-parameters.component.html',
     styleUrls: ['./expansion-parameters.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    imports: [
+        JsonViewModule
+    ]
 })
 export class ExpansionParametersComponent {
     data = {

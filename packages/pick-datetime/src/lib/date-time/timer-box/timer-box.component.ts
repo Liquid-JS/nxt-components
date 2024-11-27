@@ -9,7 +9,8 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
     templateUrl: './timer-box.component.html',
     styleUrls: ['./timer-box.component.scss'],
     preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 
 export class TimerBoxComponent implements OnInit, OnDestroy {

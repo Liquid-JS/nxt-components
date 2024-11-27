@@ -32,7 +32,8 @@ export interface DateTimeInputEvent<T> {
     providers: [
         NXT_DATETIME_VALUE_ACCESSOR,
         NXT_DATETIME_VALIDATORS
-    ]
+    ],
+    standalone: false
 })
 export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDestroy, ControlValueAccessor, Validator {
     /**

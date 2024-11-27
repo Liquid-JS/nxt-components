@@ -18,7 +18,8 @@ export const NXT_DATETIME_VALUE_ACCESSOR: Provider = {
     styleUrls: ['./date-time-inline.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     preserveWhitespaces: false,
-    providers: [NXT_DATETIME_VALUE_ACCESSOR]
+    providers: [NXT_DATETIME_VALUE_ACCESSOR],
+    standalone: false
 })
 export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements OnInit, ControlValueAccessor {
 

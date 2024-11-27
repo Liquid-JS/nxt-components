@@ -2308,7 +2308,8 @@ describe('DateTimeComponent', () => {
                        [disabled]="disabled"
                        [pickerType]="pickerType"
                        [pickerMode]="pickerMode" #dt></nxt-date-time>
-    `
+    `,
+    standalone: false
 })
 class StandardDateTimePicker {
     date: Date | null = new Date(2020, 0, 1)
@@ -2327,7 +2328,8 @@ class StandardDateTimePicker {
         <input [nxtDateTime]="dt" [selectMode]="selectMode" [values]="dates">
         <nxt-date-time [startAt]="startAt"
                        [pickerType]="pickerType" #dt></nxt-date-time>
-    `
+    `,
+    standalone: false
 })
 class RangeDateTimePicker {
     dates?: Array<Date | undefined> = [new Date(2020, 0, 1), new Date(2020, 1, 1)]
@@ -2345,14 +2347,16 @@ class RangeDateTimePicker {
         <input [nxtDateTime]="dt">
         <input [nxtDateTime]="dt">
         <nxt-date-time #dt></nxt-date-time>
-    `
+    `,
+    standalone: false
 })
 class MultiInputDateTimePicker { }
 
 @Component({
     template: `
         <nxt-date-time #dt></nxt-date-time>
-    `
+    `,
+    standalone: false
 })
 class NoInputDateTimePicker {
     @ViewChild('dt', { static: true })
@@ -2363,7 +2367,8 @@ class NoInputDateTimePicker {
     template: `
         <input [nxtDateTime]="dt" [value]="date">
         <nxt-date-time #dt [startAt]="startDate"></nxt-date-time>
-    `
+    `,
+    standalone: false
 })
 class DateTimePickerWithStartAt {
     date = new Date(2020, 0, 1)
@@ -2378,7 +2383,8 @@ class DateTimePickerWithStartAt {
         <nxt-date-time #dt [startView]="startView"
                        (monthSelected)="onMonthSelection()"
                        (yearSelected)="onYearSelection()"></nxt-date-time>
-    `
+    `,
+    standalone: false
 })
 class DateTimePickerWithStartView {
     date = new Date(2020, 0, 1)
@@ -2395,7 +2401,8 @@ class DateTimePickerWithStartView {
     template: `
         <input [(ngModel)]="moment" [selectMode]="selectMode" [nxtDateTime]="dt">
         <nxt-date-time #dt></nxt-date-time>
-    `
+    `,
+    standalone: false
 })
 class DateTimePickerWithNgModel {
     moment?: Array<Date | undefined> | Date
@@ -2412,7 +2419,8 @@ class DateTimePickerWithNgModel {
                [nxtDateTime]="dt"
                [nxtDateTimeTrigger]="dt">
         <nxt-date-time #dt></nxt-date-time>
-    `
+    `,
+    standalone: false
 })
 class DateTimePickerWithFormControl {
     formControl = new UntypedFormControl()
@@ -2429,7 +2437,8 @@ class DateTimePickerWithFormControl {
         <input [nxtDateTime]="dt">
         <button [nxtDateTimeTrigger]="dt">Icon</button>
         <nxt-date-time #dt></nxt-date-time>
-    `
+    `,
+    standalone: false
 })
 class DateTimePickerWithTrigger {
     @ViewChild('dt', { static: true })
@@ -2444,7 +2453,8 @@ class DateTimePickerWithTrigger {
                [nxtDateTime]="dt"
                [nxtDateTimeTrigger]="dt">
         <nxt-date-time [showSecondsTimer]="true" #dt></nxt-date-time>
-    `
+    `,
+    standalone: false
 })
 class DateTimePickerWithMinAndMaxValidation {
     @ViewChild('dt', { static: true })
@@ -2466,7 +2476,8 @@ class DateTimePickerWithMinAndMaxValidation {
                [nxtDateTime]="dt"
                [nxtDateTimeTrigger]="dt">
         <nxt-date-time [showSecondsTimer]="true" #dt></nxt-date-time>
-    `
+    `,
+    standalone: false
 })
 class DateTimePickerWithFilterValidation {
     @ViewChild('dt', { static: true })
@@ -2488,7 +2499,8 @@ class DateTimePickerWithFilterValidation {
                (dateTimeChange)="handleDateTimeChange()"
                (dateTimeInput)="handleDateTimeInput()">
         <nxt-date-time [showSecondsTimer]="true" #dt></nxt-date-time>
-    `
+    `,
+    standalone: false
 })
 class DateTimePickerWithChangeAndInputEvents {
     @ViewChild('dt', { static: true })
@@ -2511,7 +2523,8 @@ class DateTimePickerWithChangeAndInputEvents {
     template: `
     <input [nxtDateTime]="dt" [(ngModel)]="value" [min]="min" [max]="max">
     <nxt-date-time #dt [startAt]="startAt"></nxt-date-time>
-  `
+  `,
+    standalone: false
 })
 class DateTimePickerWithISOStrings {
     value = new Date(2017, 5, 1).toISOString()
@@ -2528,7 +2541,8 @@ class DateTimePickerWithISOStrings {
     template: `
     <input [(ngModel)]="selected" [nxtDateTime]="dt">
     <nxt-date-time (open)="isOpenSpy()" (close)="closedSpy()" #dt></nxt-date-time>
-  `
+  `,
+    standalone: false
 })
 class DateTimePickerWithEvents {
     selected: Date | null = null

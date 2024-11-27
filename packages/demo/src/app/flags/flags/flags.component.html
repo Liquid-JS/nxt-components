@@ -1,6 +1,6 @@
 <app-meta *ngIf="!loading"
     title="nxt-flags"
-    (done)="ims.fireManualMyAppReadyEvent()"
+    (done)="doneCb()"
     description="Angular component to show flags based on country ISO code."></app-meta>
 <app-content-wrap>
     <h1>Angular country flags</h1>

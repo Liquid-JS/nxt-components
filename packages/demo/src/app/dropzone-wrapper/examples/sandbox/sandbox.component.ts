@@ -1,13 +1,20 @@
+import { CommonModule } from '@angular/common'
 import { Component, ViewChild, ViewEncapsulation } from '@angular/core'
+import { FormsModule } from '@angular/forms'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Dropzone from 'dropzone'
-import { DropzoneComponent, DropzoneConfig, DropzoneDirective } from 'nxt-dropzone-wrapper'
+import { DropzoneComponent, DropzoneConfig, DropzoneDirective, DropzoneModule } from 'nxt-dropzone-wrapper'
 
 @Component({
     selector: 'app-sandbox',
     templateUrl: './sandbox.component.html',
     styleUrls: ['./sandbox.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    imports: [
+        CommonModule,
+        FormsModule,
+        DropzoneModule
+    ]
 })
 export class SandboxComponent {
 

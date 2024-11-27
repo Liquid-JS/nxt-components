@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core'
 
 /** @internal */
 @Pipe({
-    name: 'numberFixedLen'
+    name: 'numberFixedLen',
+    standalone: false
 })
 export class NumberFixedLenPipe implements PipeTransform {
     transform(num: number | undefined, len: number | undefined) {

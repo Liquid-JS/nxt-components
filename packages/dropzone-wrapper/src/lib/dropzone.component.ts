@@ -14,7 +14,8 @@ import { DropzoneConfig, DropzoneListeners, NXT_DROPZONE_LISTENERS } from './dro
     providers: [{
         provide: NXT_DROPZONE_LISTENERS,
         useExisting: DropzoneComponent
-    }]
+    }],
+    standalone: false
 })
 export class DropzoneComponent implements OnInit, DropzoneListeners {
 
@@ -61,7 +62,7 @@ export class DropzoneComponent implements OnInit, DropzoneListeners {
     @Output('sending') readonly DZ_SENDING = new EventEmitter<[Dropzone.DropzoneFile, XMLHttpRequest, FormData]>()
     @Output('sendingMultiple') readonly DZ_SENDINGMULTIPLE = new EventEmitter<[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]>()
 
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    // eslint-disable-next-line @typescript-eslint/no-restricted-types
     @Output('success') readonly DZ_SUCCESS = new EventEmitter<[Dropzone.DropzoneFile, Object | string]>()
     @Output('successMultiple') readonly DZ_SUCCESSMULTIPLE = new EventEmitter<Dropzone.DropzoneFile[]>()
 

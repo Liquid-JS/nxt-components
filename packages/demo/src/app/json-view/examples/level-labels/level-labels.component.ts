@@ -1,10 +1,14 @@
 import { Component, ViewEncapsulation } from '@angular/core'
+import { JsonViewModule } from 'nxt-json-view'
 
 @Component({
     selector: 'app-level-labels',
     templateUrl: './level-labels.component.html',
     styleUrls: ['./level-labels.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    imports: [
+        JsonViewModule
+    ]
 })
 export class LevelLabelsComponent {
     data = {

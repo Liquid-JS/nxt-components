@@ -1,10 +1,18 @@
+import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
+import { FormsModule } from '@angular/forms'
+import { DateTimeModule } from 'nxt-pick-datetime'
 
 @Component({
     selector: 'app-validate-min-max',
     templateUrl: './min-max.component.html',
     styleUrls: ['./min-max.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    imports: [
+        DateTimeModule,
+        FormsModule,
+        CommonModule
+    ]
 })
 export class ValidateMinMaxComponent {
     value = new Date()

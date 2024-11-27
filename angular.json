@@ -36,16 +36,17 @@
             "prefix": "app",
             "architect": {
                 "build": {
-                    "builder": "@angular-builders/custom-webpack:browser",
+                    "builder": "@angular-devkit/build-angular:application",
                     "options": {
-                        "outputPath": "dist/demo",
-                        "index": "packages/demo/src/index.html",
-                        "main": "packages/demo/src/main.ts",
-                        "polyfills": "packages/demo/src/polyfills.ts",
-                        "tsConfig": "packages/demo/tsconfig.app.json",
-                        "customWebpackConfig": {
-                            "path": "./angular-webpack.config.cjs"
+                        "outputPath": {
+                            "base": "dist/demo"
                         },
+                        "index": "packages/demo/src/index.html",
+                        "polyfills": [
+                            "zone.js",
+                            "@angular/localize/init"
+                        ],
+                        "tsConfig": "packages/demo/tsconfig.app.json",
                         "inlineStyleLanguage": "scss",
                         "assets": [
                             "packages/demo/src/favicon.ico",
@@ -62,9 +63,16 @@
                             "packages/demo/src/styles.scss",
                             "dist/pick-datetime/assets/picker.scss"
                         ],
+                        "loader": {
+                            ".html": "text",
+                            ".scss": "text",
+                            ".png": "file"
+                        },
                         "scripts": [],
-                        "serviceWorker": true,
-                        "ngswConfigPath": "packages/demo/ngsw-config.json"
+                        "serviceWorker": "packages/demo/ngsw-config.json",
+                        "browser": "packages/demo/src/main.ts",
+                        "server": "packages/demo/src/main.server.ts",
+                        "prerender": true
                     },
                     "configurations": {
                         "production": {
@@ -80,18 +88,10 @@
                                     "maximumError": "1mb"
                                 }
                             ],
-                            "fileReplacements": [
-                                {
-                                    "replace": "packages/demo/src/environments/environment.ts",
-                                    "with": "packages/demo/src/environments/environment.prod.ts"
-                                }
-                            ],
                             "outputHashing": "all"
                         },
                         "development": {
-                            "buildOptimizer": false,
                             "optimization": false,
-                            "vendorChunk": true,
                             "extractLicenses": false,
                             "sourceMap": true,
                             "namedChunks": true
@@ -100,21 +100,21 @@
                     "defaultConfiguration": "production"
                 },
                 "serve": {
-                    "builder": "@angular-builders/custom-webpack:dev-server",
+                    "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "demo:build:production"
+                            "buildTarget": "demo:build:production"
                         },
                         "development": {
-                            "browserTarget": "demo:build:development"
+                            "buildTarget": "demo:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
                 },
                 "extract-i18n": {
-                    "builder": "@angular-builders/custom-webpack:extract-i18n",
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "demo:build"
+                        "buildTarget": "demo:build"
                     }
                 },
                 "lint": {

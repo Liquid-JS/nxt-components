@@ -6,7 +6,8 @@ import { DropzoneConfig, DropzoneEvent, DropzoneEvents, DropzoneListeners, inter
 
 @Directive({
     selector: '[nxtDropzone]',
-    exportAs: 'nxtDropzone'
+    exportAs: 'nxtDropzone',
+    standalone: false
 })
 export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneListeners {
 
@@ -92,7 +93,7 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
         ?? new EventEmitter<[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]>()
 
     @Output('success') readonly DZ_SUCCESS = this.component?.DZ_SUCCESS
-        // eslint-disable-next-line @typescript-eslint/ban-types
+        // eslint-disable-next-line @typescript-eslint/no-restricted-types
         ?? new EventEmitter<[Dropzone.DropzoneFile, Object | string]>()
     @Output('successMultiple') readonly DZ_SUCCESSMULTIPLE = this.component?.DZ_SUCCESSMULTIPLE
         ?? new EventEmitter<Dropzone.DropzoneFile[]>()
@@ -136,7 +137,7 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
         private readonly elementRef: ElementRef<HTMLElement>,
         private readonly differs: KeyValueDiffers,
         @Inject(PLATFORM_ID)
-        // eslint-disable-next-line @typescript-eslint/ban-types
+        // eslint-disable-next-line @typescript-eslint/no-restricted-types
         private readonly platformId: Object,
         @Optional()
         @Inject(NXT_DROPZONE_CONFIG)

@@ -18,6 +18,7 @@ export interface SourceDef {
     tab: string
     language: string
     code: string
+    key: string
 }
 
 const extMap: {
@@ -45,15 +46,20 @@ export function resolveTempaltes(cfg: LoaderConfig, prefix: string) {
             description: cfg.description,
             path: `${prefix}/${cfg.path}`
         } as ExampleConfig,
-        ...cfg.include.map((ext, i) => ({
-            [extMap[ext]]: tpl[i].default.trim()
-        }))
+        ...cfg.include.map((ext, i) => {
+            try {
+                return ({
+                    [extMap[ext]]: tpl[i].default.trim()
+                })
+            } catch (_e) {
+                return {}
+            }
+        })
     ) as ExampleConfig
 }
 
 @Component({
     selector: 'app-example',
-    standalone: true,
     imports: [
         CommonModule,
         TabsModule,
@@ -77,22 +83,36 @@ export class ExampleComponent {
             sources.push({
                 tab: 'HTML',
                 language: 'xml',
-                code: val.template
+                code: val.template,
+                key: 'template'
             })
-        if (val?.style)
+        if (val?.style) {
+            const i = sources.length
             sources.push({
-                tab: 'CSS',
+                tab: 'SCSS',
                 language: 'scss',
-                code: val.style
-                    .replace(/^(\s+)/gim, '$1$1')
-                    .replace(/^\}\n/gim, '}\n\n')
-                    .replace(/\n\n\n+/gim, '\n\n')
+                code: val.style,
+                key: 'style'
             })
+
+            import('sass')
+                .then(({ compileStringAsync }) => compileStringAsync(val.style!))
+                .then(({ css }) => {
+                    sources[i].tab = 'CSS'
+                    sources[i].language = 'scss'
+                    sources[i].code = css
+                        .replace(/^(\s+)/gim, '$1$1')
+                        .replace(/^\}\n/gim, '}\n\n')
+                        .replace(/\n\n\n+/gim, '\n\n')
+                })
+                .catch(console.error)
+        }
         if (val?.source)
             sources.push({
                 tab: 'TS',
                 language: 'typescript',
-                code: val.source.replace(/.scss'/gim, '.css\'')
+                code: val.source.replace(/.scss'/gim, '.css\''),
+                key: 'source'
             })
         this.sources = sources.length ? sources : undefined
     }
@@ -103,7 +123,7 @@ export class ExampleComponent {
     @Input() injector?: Injector
 
     tabTrackBy(_i: number, val: SourceDef) {
-        return val.tab
+        return val.key
     }
 
 }

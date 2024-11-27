@@ -1,12 +1,24 @@
-import { Component, Injector, OnInit } from '@angular/core'
-import { IdleMonitorService } from '@scullyio/ng-lib'
-import { ExampleConfig, LoaderConfig, resolveTempaltes } from '../../example/example.component'
+import { CommonModule } from '@angular/common'
+import { Component, Injector, OnInit, PendingTasks } from '@angular/core'
+import { RouterModule } from '@angular/router'
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
+import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
+import { ExampleComponent, ExampleConfig, LoaderConfig, resolveTempaltes } from '../../example/example.component'
+import { MetaDirective } from '../../meta/meta.directive'
 import { WaitLoad } from '../../utils/wait-load.class'
 
 @Component({
     selector: 'app-sortablejs',
     templateUrl: './sortablejs.component.html',
-    styleUrls: ['./sortablejs.component.scss']
+    styleUrls: ['./sortablejs.component.scss'],
+    imports: [
+        CommonModule,
+        MetaDirective,
+        ContentWrapComponent,
+        RouterModule,
+        ExampleComponent,
+        BsDropdownModule
+    ]
 })
 export class AppSortablejsComponent extends WaitLoad implements OnInit {
 
@@ -60,16 +72,21 @@ export class AppSortablejsComponent extends WaitLoad implements OnInit {
         }
     )
         .map(p => Promise.all([
-            import(`../examples/${p.path}/${p.path}.component`),
-            ...p.include.map(ext => import(`../examples/${p.path}/${p.path}.component.${ext}?raw`))
+            import(`../examples/${p.path}/${p.path}.component.ts`),
+            ...p.include.map(ext => ext == 'ts'
+                // @ts-expect-error TypeScript cannot provide types based on attributes yet
+                ? import(`../examples/${p.path}/${p.path}.component.ts`, { with: { loader: 'text' } })
+                : import(`../examples/${p.path}/${p.path}.component.${ext}`))
         ])
             .then(resolveTempaltes(p, 'sortablejs/examples'))
         )
     )
 
+    readonly doneCb = this.ims.add()
+
     constructor(
         readonly injector: Injector,
-        readonly ims: IdleMonitorService
+        readonly ims: PendingTasks
     ) {
         super()
     }

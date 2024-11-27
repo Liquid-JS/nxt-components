@@ -8,7 +8,7 @@
     "directives": [
         {
             "name": "SortablejsDirective",
-            "id": "directive-SortablejsDirective-83630559d0ea55bf51b6bdcb678d2d894412faa23debe8592ef57be97983405ec125d411aa7e28d4833b9bcb2a872ae32f3e1fb4d8b9053c8404b638afea736f",
+            "id": "directive-SortablejsDirective-ce311b6e8b5dc0dbc571a69004e750e0243ea54293fa662015b01daa3a936e03ceb8cf9ce01d3b7e006f8f865c3a4823e41c861a9091044915dc58ee50d1c7d5",
             "file": "src/lib/sortablejs.directive.ts",
             "type": "directive",
             "description": "",
@@ -24,7 +24,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nA function invoked when cloning items from template dataset into target dataset",
                     "description": "<p>A function invoked when cloning items from template dataset into target dataset</p>\n",
-                    "line": 65,
+                    "line": 66,
                     "type": "CloneFunction<T>",
                     "decorators": []
                 },
@@ -34,7 +34,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSortablejs configuration",
                     "description": "<p>Sortablejs configuration</p>\n",
-                    "line": 61,
+                    "line": 62,
                     "type": "Options",
                     "decorators": []
                 },
@@ -44,7 +44,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nInput data, can be Array or FormArray",
                     "description": "<p>Input data, can be Array or FormArray</p>\n",
-                    "line": 48,
+                    "line": 49,
                     "type": "SortableData<T>",
                     "decorators": []
                 },
@@ -54,7 +54,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCSS selector for the sortable container\n\nMostly required when used with custom components which wrap items in multiple containers. In that case,\nthis should be the selector for the direct HTML parent of sortable items.\n",
                     "description": "<p>CSS selector for the sortable container</p>\n<p>Mostly required when used with custom components which wrap items in multiple containers. In that case,\nthis should be the selector for the direct HTML parent of sortable items.</p>\n",
-                    "line": 57,
+                    "line": 58,
                     "type": "string",
                     "decorators": []
                 }
@@ -67,7 +67,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nInitialised a new Sortablejs instance",
                     "description": "<p>Initialised a new Sortablejs instance</p>\n",
-                    "line": 68,
+                    "line": 69,
                     "type": "EventEmitter"
                 }
             ],
@@ -120,7 +120,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 70,
+                "line": 71,
                 "jsdoctags": [
                     {
                         "name": "globalConfig",

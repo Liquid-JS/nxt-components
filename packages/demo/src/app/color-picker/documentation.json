@@ -14,6 +14,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 53
@@ -23,6 +24,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 50
@@ -32,6 +34,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "boolean",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 51
@@ -41,6 +44,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number | string",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 52
@@ -64,6 +68,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 59
@@ -73,6 +78,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 57
@@ -82,6 +88,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number | string",
+                    "indexKey": "",
                     "optional": true,
                     "description": "",
                     "line": 58
@@ -215,6 +222,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 7,
@@ -227,6 +235,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 3,
@@ -239,6 +248,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 6,
@@ -251,6 +261,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 4,
@@ -263,6 +274,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 5,
@@ -380,6 +392,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 18,
@@ -392,6 +405,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 15,
@@ -404,6 +418,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 17,
@@ -416,6 +431,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 16,
@@ -533,6 +549,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 29,
@@ -545,6 +562,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 26,
@@ -557,6 +575,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 27,
@@ -569,6 +588,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 28,
@@ -686,6 +706,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 40,
@@ -698,6 +719,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 39,
@@ -710,6 +732,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 38,
@@ -722,6 +745,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
+                    "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 37,
@@ -740,7 +764,7 @@
     "directives": [
         {
             "name": "ColorPickerDirective",
-            "id": "directive-ColorPickerDirective-e8c92858e36abc8b06e430b694d52a942e23946d62b8ac02005d8a5ef96e475d11d420b347062936d71f109c59736828cbd67aded301466ee5bc8d312d9aaf87",
+            "id": "directive-ColorPickerDirective-84dad3b85447ac06f6275ecb6835c92132cc4a241b3dc2ab5a8a0c7001ceacdb7ce9f595199f1823d2522d4c8e849ab1a4d231bd9c8ec854ffe00687a5eeb809",
             "file": "src/lib/color-picker.directive.ts",
             "type": "directive",
             "description": "",
@@ -758,7 +782,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nAlpha channel mode",
                     "description": "<p>Alpha channel mode</p>\n",
-                    "line": 95,
+                    "line": 96,
                     "type": "AlphaChannel",
                     "decorators": []
                 },
@@ -769,7 +793,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow a Cancel / Reset button which resets the color",
                     "description": "<p>Show a Cancel / Reset button which resets the color</p>\n",
-                    "line": 131,
+                    "line": 132,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -780,7 +804,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nClose the color picker dialog when user clicks outside",
                     "description": "<p>Close the color picker dialog when user clicks outside</p>\n",
-                    "line": 125,
+                    "line": 126,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -791,7 +815,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nEnables CMYK input format and color change event",
                     "description": "<p>Enables CMYK input format and color change event</p>\n",
-                    "line": 90,
+                    "line": 91,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -802,7 +826,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDialog positioning mode",
                     "description": "<p>Dialog positioning mode</p>\n",
-                    "line": 117,
+                    "line": 118,
                     "type": "DialogDisplay",
                     "decorators": []
                 },
@@ -813,7 +837,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDisables opening of the color picker dialog via toggle",
                     "description": "<p>Disables opening of the color picker dialog via toggle</p>\n",
-                    "line": 84,
+                    "line": 85,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -824,7 +848,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDisables / hides the color input field from the dialog",
                     "description": "<p>Disables / hides the color input field from the dialog</p>\n",
-                    "line": 114,
+                    "line": 115,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -834,7 +858,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUsed when the color is not well-formed or is undefined",
                     "description": "<p>Used when the color is not well-formed or is undefined</p>\n",
-                    "line": 97,
+                    "line": 98,
                     "type": "string",
                     "decorators": []
                 },
@@ -845,7 +869,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUse this option to force color picker dialog height",
                     "description": "<p>Use this option to force color picker dialog height</p>\n",
-                    "line": 79,
+                    "line": 80,
                     "type": "string",
                     "decorators": []
                 },
@@ -855,7 +879,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nArray of HTML elements that will be ignored when clicked",
                     "description": "<p>Array of HTML elements that will be ignored when clicked</p>\n",
-                    "line": 120,
+                    "line": 121,
                     "type": "any[]",
                     "decorators": []
                 },
@@ -865,7 +889,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUse this option to set the max colors allowed in presets",
                     "description": "<p>Use this option to set the max colors allowed in presets</p>\n",
-                    "line": 137,
+                    "line": 138,
                     "type": "number",
                     "decorators": []
                 },
@@ -876,7 +900,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDialog color mode",
                     "description": "<p>Dialog color mode</p>\n",
-                    "line": 87,
+                    "line": 88,
                     "type": "ColorMode",
                     "decorators": []
                 },
@@ -886,7 +910,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nThe color to show in the color picker dialog",
                     "description": "<p>The color to show in the color picker dialog</p>\n",
-                    "line": 74,
+                    "line": 75,
                     "type": "string",
                     "decorators": []
                 },
@@ -897,7 +921,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow an OK / Apply button which saves the color",
                     "description": "<p>Show an OK / Apply button which saves the color</p>\n",
-                    "line": 128,
+                    "line": 129,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -908,7 +932,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nOutput color format",
                     "description": "<p>Output color format</p>\n",
-                    "line": 93,
+                    "line": 94,
                     "type": "OutputFormat",
                     "decorators": []
                 },
@@ -919,7 +943,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDialog position",
                     "description": "<p>Dialog position</p>\n",
-                    "line": 100,
+                    "line": 101,
                     "type": "DialogPosition | DialogPosition[]",
                     "decorators": []
                 },
@@ -930,7 +954,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nDialog offset percentage relative to the directive element",
                     "description": "<p>Dialog offset percentage relative to the directive element</p>\n",
-                    "line": 102,
+                    "line": 103,
                     "type": "number",
                     "decorators": []
                 },
@@ -940,7 +964,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nArray of preset colors to show in the color picker dialog",
                     "description": "<p>Array of preset colors to show in the color picker dialog</p>\n",
-                    "line": 111,
+                    "line": 112,
                     "type": "string[]",
                     "decorators": []
                 },
@@ -951,7 +975,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nShow buttons to add / remove preset colors",
                     "description": "<p>Show buttons to add / remove preset colors</p>\n",
-                    "line": 134,
+                    "line": 135,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -962,7 +986,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nShow label for preset colors\n\nIf string is given, it overrides the default label.\n",
                     "description": "<p>Show label for preset colors</p>\n<p>If string is given, it overrides the default label.</p>\n",
-                    "line": 109,
+                    "line": 110,
                     "type": "boolean | string",
                     "decorators": []
                 },
@@ -973,7 +997,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSave currently selected color when user clicks outside",
                     "description": "<p>Save currently selected color when user clicks outside</p>\n",
-                    "line": 123,
+                    "line": 124,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -984,7 +1008,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSets the default open / close state of the color picker",
                     "description": "<p>Sets the default open / close state of the color picker</p>\n",
-                    "line": 82,
+                    "line": 83,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -995,7 +1019,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCreate dialog component in the root view container\n\nNote: The root component needs to have public viewContainerRef.\n",
                     "description": "<p>Create dialog component in the root view container</p>\n<p>Note: The root component needs to have public viewContainerRef.</p>\n",
-                    "line": 144,
+                    "line": 145,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1006,7 +1030,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nUse this option to set color picker dialog width",
                     "description": "<p>Use this option to set color picker dialog width</p>\n",
-                    "line": 77,
+                    "line": 78,
                     "type": "string",
                     "decorators": []
                 }
@@ -1019,7 +1043,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCurrent color value, emit when dialog is closed",
                     "description": "<p>Current color value, emit when dialog is closed</p>\n",
-                    "line": 149,
+                    "line": 150,
                     "type": "EventEmitter"
                 },
                 {
@@ -1029,7 +1053,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nOutputs the color as CMYK string if CMYK is enabled",
                     "description": "<p>Outputs the color as CMYK string if CMYK is enabled</p>\n",
-                    "line": 172,
+                    "line": 173,
                     "type": "EventEmitter"
                 },
                 {
@@ -1039,7 +1063,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nColor select canceled, emit when Cancel button is pressed",
                     "description": "<p>Color select canceled, emit when Cancel button is pressed</p>\n",
-                    "line": 165,
+                    "line": 166,
                     "type": "EventEmitter"
                 },
                 {
@@ -1049,7 +1073,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSelected color value, emit when OK button pressed or user clicks outside (if saveClickOutside is true)",
                     "description": "<p>Selected color value, emit when OK button pressed or user clicks outside (if saveClickOutside is true)</p>\n",
-                    "line": 167,
+                    "line": 168,
                     "type": "EventEmitter"
                 },
                 {
@@ -1059,7 +1083,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nInput name and its value, emit when user changes color through inputs",
                     "description": "<p>Input name and its value, emit when user changes color through inputs</p>\n",
-                    "line": 152,
+                    "line": 153,
                     "type": "EventEmitter"
                 },
                 {
@@ -1069,7 +1093,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nChanged color value, emit when color changes",
                     "description": "<p>Changed color value, emit when color changes</p>\n",
-                    "line": 169,
+                    "line": 170,
                     "type": "EventEmitter"
                 },
                 {
@@ -1079,7 +1103,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCurrent color value, emit when dialog is isOpen",
                     "description": "<p>Current color value, emit when dialog is isOpen</p>\n",
-                    "line": 147,
+                    "line": 148,
                     "type": "EventEmitter"
                 },
                 {
@@ -1089,7 +1113,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nPreset colors, emit when preset color is added / removed",
                     "description": "<p>Preset colors, emit when preset color is added / removed</p>\n",
-                    "line": 175,
+                    "line": 176,
                     "type": "EventEmitter"
                 },
                 {
@@ -1099,7 +1123,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSlider name and its value, emit when user changes color through slider",
                     "description": "<p>Slider name and its value, emit when user changes color through slider</p>\n",
-                    "line": 160,
+                    "line": 161,
                     "type": "EventEmitter"
                 },
                 {
@@ -1109,7 +1133,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSlider name and current color, emit when slider dragging ends",
                     "description": "<p>Slider name and current color, emit when slider dragging ends</p>\n",
-                    "line": 162,
+                    "line": 163,
                     "type": "EventEmitter"
                 },
                 {
@@ -1119,7 +1143,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nSlider name and current color, emit when slider dragging starts",
                     "description": "<p>Slider name and current color, emit when slider dragging starts</p>\n",
-                    "line": 158,
+                    "line": 159,
                     "type": "EventEmitter"
                 },
                 {
@@ -1129,7 +1153,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nStatus of the dialog, emit when dialog is isOpen / closed",
                     "description": "<p>Status of the dialog, emit when dialog is isOpen / closed</p>\n",
-                    "line": 155,
+                    "line": 156,
                     "type": "EventEmitter"
                 }
             ],
@@ -1145,7 +1169,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 274,
+                    "line": 275,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1155,7 +1179,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 261,
+                    "line": 262,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1180,7 +1204,7 @@
                     "optional": false,
                     "returnType": "\"light\" | \"dark\"",
                     "typeParameters": [],
-                    "line": 287,
+                    "line": 288,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nGet text color mode to ensure good contrast with selected color\n\n",
@@ -1188,12 +1212,12 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 10673,
-                                "end": 10675,
-                                "flags": 16842752,
-                                "modifierFlagsCache": 0,
-                                "transformFlags": 0,
+                                "pos": 10693,
+                                "end": 10695,
                                 "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
                                 "escapedText": "bg"
                             },
                             "type": "string | Rgba",
@@ -1201,24 +1225,24 @@
                             "deprecationMessage": "",
                             "defaultValue": "new Rgba(1, 1, 1, 1, true)",
                             "tagName": {
-                                "pos": 10667,
-                                "end": 10672,
-                                "flags": 16842752,
-                                "modifierFlagsCache": 0,
-                                "transformFlags": 0,
+                                "pos": 10687,
+                                "end": 10692,
                                 "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
                                 "escapedText": "param"
                             },
                             "comment": "<p>Solid background color; this is used when selected color has transparency</p>\n"
                         },
                         {
                             "name": {
-                                "pos": 10768,
-                                "end": 10770,
-                                "flags": 16842752,
-                                "modifierFlagsCache": 0,
-                                "transformFlags": 0,
+                                "pos": 10788,
+                                "end": 10790,
                                 "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
                                 "escapedText": "fg"
                             },
                             "type": "",
@@ -1226,24 +1250,24 @@
                             "deprecationMessage": "",
                             "defaultValue": "this.dialog?.rgbaText",
                             "tagName": {
-                                "pos": 10762,
-                                "end": 10767,
-                                "flags": 16842752,
-                                "modifierFlagsCache": 0,
-                                "transformFlags": 0,
+                                "pos": 10782,
+                                "end": 10787,
                                 "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
                                 "escapedText": "param"
                             },
                             "comment": "<p>Foreground color, defaults to current picker value</p>\n"
                         },
                         {
                             "tagName": {
-                                "pos": 10834,
-                                "end": 10841,
-                                "flags": 16842752,
-                                "modifierFlagsCache": 0,
-                                "transformFlags": 0,
+                                "pos": 10854,
+                                "end": 10861,
                                 "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
                                 "escapedText": "returns"
                             },
                             "comment": ""

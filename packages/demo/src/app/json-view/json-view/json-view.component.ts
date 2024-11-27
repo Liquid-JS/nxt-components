@@ -1,13 +1,25 @@
-import { Component, Injector, OnInit } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { Component, Injector, OnInit, PendingTasks } from '@angular/core'
 import { Title } from '@angular/platform-browser'
-import { IdleMonitorService } from '@scullyio/ng-lib'
-import { ExampleConfig, LoaderConfig, resolveTempaltes } from '../../example/example.component'
+import { RouterModule } from '@angular/router'
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
+import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
+import { ExampleComponent, ExampleConfig, LoaderConfig, resolveTempaltes } from '../../example/example.component'
+import { MetaDirective } from '../../meta/meta.directive'
 import { WaitLoad } from '../../utils/wait-load.class'
 
 @Component({
     selector: 'app-json-view',
     templateUrl: './json-view.component.html',
-    styleUrls: ['./json-view.component.scss']
+    styleUrls: ['./json-view.component.scss'],
+    imports: [
+        ContentWrapComponent,
+        MetaDirective,
+        RouterModule,
+        ExampleComponent,
+        CommonModule,
+        BsDropdownModule
+    ]
 })
 export class AppJsonViewComponent extends WaitLoad implements OnInit {
 
@@ -34,24 +46,27 @@ export class AppJsonViewComponent extends WaitLoad implements OnInit {
         }
     )
         .map(p => Promise.all([
-            import(`../examples/${p.path}/${p.path}.component`),
-            ...p.include.map(ext => import(`../examples/${p.path}/${p.path}.component.${ext}?raw`))
+            import(`../examples/${p.path}/${p.path}.component.ts`),
+            ...p.include.map(ext => ext == 'ts'
+                // @ts-expect-error TypeScript cannot provide types based on attributes yet
+                ? import(`../examples/${p.path}/${p.path}.component.ts`, { with: { loader: 'text' } })
+                : import(`../examples/${p.path}/${p.path}.component.${ext}`))
         ])
             .then(resolveTempaltes(p, 'json-view/examples'))
         )
     )
 
+    readonly doneCb = this.ims.add()
+
     constructor(
         private readonly title: Title,
         readonly injector: Injector,
-        private readonly ims: IdleMonitorService
+        private readonly ims: PendingTasks
     ) {
         super()
     }
 
     ngOnInit(): void {
-        this.title.setTitle('nxt-json-view')
-        this.addTask(() => this.ims.fireManualMyAppReadyEvent())
         this.examples.then(() => this.doneLoading())
             .catch(console.error)
     }

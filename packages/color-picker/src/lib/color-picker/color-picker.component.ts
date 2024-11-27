@@ -13,7 +13,8 @@ import { ColorPickerService } from '../color-picker.service'
     selector: 'nxt-color-picker',
     templateUrl: './color-picker.component.html',
     styleUrls: ['./color-picker.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    standalone: false
 })
 export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked {
 

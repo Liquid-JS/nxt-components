@@ -3,7 +3,6 @@ import { Component } from '@angular/core'
 
 @Component({
     selector: 'app-content-wrap',
-    standalone: true,
     imports: [CommonModule],
     template: '<ng-content></ng-content>',
     styles: [`

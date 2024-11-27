@@ -276,7 +276,8 @@ describe('MonthViewComponent', () => {
         <nxt-date-time-month-view
                 [(selected)]="selected"
                 [(pickerMoment)]="pickerMoment"></nxt-date-time-month-view>
-    `
+    `,
+    standalone: false
 })
 class StandardMonthViewComponent {
     selected = new Date(2018, 0, 10)
@@ -288,7 +289,8 @@ class StandardMonthViewComponent {
         <nxt-date-time-month-view
                 [(pickerMoment)]="pickerMoment"
                 [dateTimeFilter]="dateTimeFilter"></nxt-date-time-month-view>
-    `
+    `,
+    standalone: false
 })
 class MonthViewWithDateFilterComponent {
     pickerMoment = new Date(2018, 0, 1)

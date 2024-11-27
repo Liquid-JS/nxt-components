@@ -319,7 +319,8 @@ describe('TimerComponent', () => {
                 [min]="minDateTime"
                 [max]="maxDateTime"
                 (selectedChange)="handleSelectedChange($event)"></nxt-date-time-timer>
-    `
+    `,
+    standalone: false
 })
 class StandardTimer {
     stepHour = 1

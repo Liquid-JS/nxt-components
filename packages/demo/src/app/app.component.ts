@@ -1,5 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations'
-import { Component } from '@angular/core'
+import { CommonModule, ViewportScroller } from '@angular/common'
+import { Component, ElementRef, ViewChild } from '@angular/core'
+import { RouterModule } from '@angular/router'
 import logo from '../assets/nxt-logo.png'
 
 const visible = style({
@@ -44,6 +46,10 @@ const hidden = style({
         trigger('blockInitialRenderAnimation', [
             transition(':enter', [])
         ])
+    ],
+    imports: [
+        CommonModule,
+        RouterModule
     ]
 })
 export class AppComponent {
@@ -154,6 +160,14 @@ export class AppComponent {
             ]
         }
     ]
+
+    @ViewChild('headerEl') set header(val: ElementRef<HTMLElement>) {
+        this.scroller.setOffset(() => [0, (val.nativeElement?.clientHeight || 1) - 1])
+    }
+
+    constructor(
+        private readonly scroller: ViewportScroller
+    ) { }
 
     toggle(forced = !this.navbarCollapsed) {
         if (forced != this.navbarCollapsed) {

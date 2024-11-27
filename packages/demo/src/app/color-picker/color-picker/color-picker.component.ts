@@ -1,34 +1,26 @@
 import { OverlayContainer } from '@angular/cdk/overlay'
 import { Platform } from '@angular/cdk/platform'
-import { DOCUMENT } from '@angular/common'
-import { Component, Injector, OnInit } from '@angular/core'
-import { IdleMonitorService } from '@scullyio/ng-lib'
-import { ExampleConfig, LoaderConfig, resolveTempaltes } from '../../example/example.component'
+import { CommonModule, DOCUMENT } from '@angular/common'
+import { Component, Injector, OnInit, PendingTasks } from '@angular/core'
+import { RouterModule } from '@angular/router'
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
+import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
+import { ExampleComponent, ExampleConfig, LoaderConfig, resolveTempaltes } from '../../example/example.component'
+import { MetaDirective } from '../../meta/meta.directive'
 import { WaitLoad } from '../../utils/wait-load.class'
-
-@Component({
-    selector: 'app-color-picker-wrap',
-    template: '<app-color-picker></app-color-picker>'
-})
-export class AppColorPickerWrapComponent extends OverlayContainer {
-
-    constructor(
-        injector: Injector
-    ) {
-        super(injector.get(DOCUMENT), injector.get(Platform))
-    }
-
-    override getContainerElement(): HTMLElement {
-        const el = super.getContainerElement()
-        el.classList.add('color-picker-container')
-        return el
-    }
-}
 
 @Component({
     selector: 'app-color-picker',
     templateUrl: './color-picker.component.html',
-    styleUrls: ['./color-picker.component.scss']
+    styleUrls: ['./color-picker.component.scss'],
+    imports: [
+        CommonModule,
+        MetaDirective,
+        ContentWrapComponent,
+        RouterModule,
+        ExampleComponent,
+        BsDropdownModule
+    ]
 })
 export class AppColorPickerComponent extends WaitLoad implements OnInit {
 
@@ -106,16 +98,21 @@ export class AppColorPickerComponent extends WaitLoad implements OnInit {
         }
     )
         .map(p => Promise.all([
-            import(`../examples/${p.path}/${p.path}.component`),
-            ...p.include.map(ext => import(`../examples/${p.path}/${p.path}.component.${ext}?raw`))
+            import(`../examples/${p.path}/${p.path}.component.ts`),
+            ...p.include.map(ext => ext == 'ts'
+                // @ts-expect-error TypeScript cannot provide types based on attributes yet
+                ? import(`../examples/${p.path}/${p.path}.component.ts`, { with: { loader: 'text' } })
+                : import(`../examples/${p.path}/${p.path}.component.${ext}`))
         ])
             .then(resolveTempaltes(p, 'color-picker/examples'))
         )
     )
 
+    readonly doneCb = this.ims.add()
+
     constructor(
         readonly injector: Injector,
-        readonly ims: IdleMonitorService
+        readonly ims: PendingTasks
     ) {
         super()
     }
@@ -127,5 +124,27 @@ export class AppColorPickerComponent extends WaitLoad implements OnInit {
 
     exampleTrackBy(_i: number, val: ExampleConfig) {
         return val.component
+    }
+}
+
+@Component({
+    selector: 'app-color-picker-wrap',
+    template: '<app-color-picker></app-color-picker>',
+    imports: [
+        AppColorPickerComponent
+    ]
+})
+export class AppColorPickerWrapComponent extends OverlayContainer {
+
+    constructor(
+        injector: Injector
+    ) {
+        super(injector.get(DOCUMENT), injector.get(Platform))
+    }
+
+    override getContainerElement(): HTMLElement {
+        const el = super.getContainerElement()
+        el.classList.add('color-picker-container')
+        return el
     }
 }

@@ -1,11 +1,19 @@
+import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
+import { SortablejsModule } from 'nxt-sortablejs'
 import { Options } from 'sortablejs'
+import { CodeBlockComponent } from '../../../code-block/code-block.component'
 
 @Component({
     selector: 'app-events',
     templateUrl: './events.component.html',
     styleUrls: ['./events.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    imports: [
+        SortablejsModule,
+        CodeBlockComponent,
+        CommonModule
+    ]
 })
 export class EventsComponent {
     eventItems = [

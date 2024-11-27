@@ -11,7 +11,8 @@
         "@angular-eslint",
         "eslint-plugin-import",
         "eslint-plugin-jsdoc",
-        "eslint-plugin-prefer-arrow"
+        "eslint-plugin-prefer-arrow",
+        "@stylistic"
     ],
     "overrides": [
         {
@@ -65,7 +66,7 @@
                 "@angular-eslint/use-lifecycle-interface": "error",
                 "@angular-eslint/use-pipe-transform-interface": "error",
                 "@typescript-eslint/adjacent-overload-signatures": "error",
-                "@typescript-eslint/ban-types": [
+                "@typescript-eslint/no-restricted-types": [
                     "error",
                     {
                         "types": {
@@ -160,7 +161,7 @@
                 "new-parens": "error",
                 "no-trailing-spaces": "error",
                 "quotes": "off",
-                "@typescript-eslint/type-annotation-spacing": "error",
+                "@stylistic/type-annotation-spacing": "error",
                 "deprecation/deprecation": "warn",
                 "@typescript-eslint/member-ordering": [
                     "error",
@@ -198,17 +199,13 @@
                     "error",
                     "never"
                 ],
-                "@typescript-eslint/consistent-type-assertions": [
-                    "off"
-                ],
+                "@typescript-eslint/consistent-type-assertions": "off",
                 "no-redeclare": "off",
-                "@typescript-eslint/no-redeclare": [
-                    "error"
-                ],
+                "@typescript-eslint/no-redeclare": "error",
                 "@typescript-eslint/naming-convention": [
                     "off"
                 ],
-                "@typescript-eslint/member-delimiter-style": [
+                "@stylistic/member-delimiter-style": [
                     "error",
                     {
                         "multiline": {
@@ -255,14 +252,14 @@
                 ],
                 "@typescript-eslint/no-empty-interface": "off",
                 "@typescript-eslint/no-inferrable-types": "off",
-                "@typescript-eslint/quotes": [
+                "@stylistic/quotes": [
                     "error",
                     "single",
                     {
                         "avoidEscape": true
                     }
                 ],
-                "@typescript-eslint/semi": [
+                "@stylistic/semi": [
                     "error",
                     "never"
                 ],
@@ -305,11 +302,13 @@
                 "unused-imports/no-unused-vars": [
                     "error",
                     {
+                        "args": "after-used",
+                        "argsIgnorePattern": "^_",
+                        "caughtErrors": "all",
+                        "caughtErrorsIgnorePattern": "^_",
                         "ignoreRestSiblings": true,
                         "vars": "all",
-                        "varsIgnorePattern": "^_",
-                        "args": "after-used",
-                        "argsIgnorePattern": "^_"
+                        "varsIgnorePattern": "^_"
                     }
                 ]
             }
@@ -318,9 +317,7 @@
             "files": [
                 "*.spec.ts",
                 "test.ts",
-                "*.conf.js",
-                "scully.*",
-                "scully/**"
+                "*.conf.js"
             ],
             "rules": {
                 "import/no-extraneous-dependencies": [

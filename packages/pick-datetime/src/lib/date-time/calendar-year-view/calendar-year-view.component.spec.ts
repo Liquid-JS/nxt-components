@@ -325,7 +325,8 @@ describe('YearViewComponent', () => {
                 [selected]="selected"
                 [(pickerMoment)]="pickerMoment"
                 (change)="handleChange($event)"></nxt-date-time-year-view>
-    `
+    `,
+    standalone: false
 })
 class StandardYearViewComponent {
     selected = new Date(2018, 0, 10)
@@ -341,7 +342,8 @@ class StandardYearViewComponent {
         <nxt-date-time-year-view
                 [(pickerMoment)]="pickerMoment"
                 [dateTimeFilter]="dateTimeFilter"></nxt-date-time-year-view>
-    `
+    `,
+    standalone: false
 })
 class YearViewWithDateFilterComponent {
     pickerMoment = new Date(2018, 0, 1)
