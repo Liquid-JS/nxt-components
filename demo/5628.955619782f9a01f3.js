@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[5628],{5628:e=>{e.exports='<nxt-json-view [data]="data"></nxt-json-view>\r\n'}}]);

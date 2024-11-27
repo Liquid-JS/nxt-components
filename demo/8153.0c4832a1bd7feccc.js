@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[8153],{8153:e=>{e.exports=":host::part(color-picker-button) {\n  color: red;\n}"}}]);
