@@ -1,0 +1,12 @@
+<div class="btn-group-vertical"
+    [nxtSortablejs]="elems">
+    <button type="button"
+        class="btn btn-secondary"
+        *ngFor="let elem of elems">Element {{ isArray(elem) ? (elem | json) : elem }}</button>
+</div>
+
+<h3 class="h4">The actual model</h3>
+
+<app-code-block [code]="elems | json"
+    [languages]="['json']"
+    [copy]="false"></app-code-block>
