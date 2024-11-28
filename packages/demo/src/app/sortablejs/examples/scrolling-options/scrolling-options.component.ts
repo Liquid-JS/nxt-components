@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component, ViewEncapsulation } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation } from '@angular/core'
 import { SortablejsModule } from 'nxt-sortablejs'
 import { Options } from 'sortablejs'
 
@@ -11,7 +11,9 @@ import { Options } from 'sortablejs'
     imports: [
         SortablejsModule,
         CommonModule
-    ]
+    ],
+    // Prevent lag when working with large number of items
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScrollingOptionsComponent {
     scrollableItems = Array.from({ length: 30 })
@@ -20,7 +22,15 @@ export class ScrollingOptionsComponent {
     scrollableOptions: Options = {
         scroll: true,
         scrollSensitivity: 100,
-        // @ts-ignore Most browsers handle scrolling well, this forces custom scrolling which uses `scrollSensitivity`
-        forceAutoScrollFallback: true
+        // Most browsers handle scrolling well, this forces custom scrolling which uses `scrollSensitivity`
+        forceAutoScrollFallback: true,
+        onUpdate: () => {
+            // Detect changes only when neccesary
+            this.cdRef.detectChanges()
+        }
     }
+
+    constructor(
+        private readonly cdRef: ChangeDetectorRef
+    ) { }
 }
