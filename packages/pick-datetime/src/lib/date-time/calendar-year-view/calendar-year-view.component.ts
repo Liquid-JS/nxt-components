@@ -174,7 +174,7 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
      * Callback to invoke when a new month is selected
      */
     @Output()
-    // eslint-disable-next-line @angular-eslint/no-output-native
+
     readonly change = new EventEmitter<T>()
 
     /**

@@ -5,7 +5,6 @@ import { Unsubscribable } from './unsubscribable.class'
  * Wait for component to load
  */
 @Directive()
-// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export class WaitLoad extends Unsubscribable implements AfterViewChecked {
 
     private _loading = true

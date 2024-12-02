@@ -7,5 +7,7 @@
     <div *ngFor="let color of colors; index as i"
         class="color-box"
         [style.background]="color"
-        (click)="selectedColor = i"></div>
+        (click)="selectedColor = i"
+        (keydown.enter)="selectedColor = i"
+        tabindex="0"></div>
 </div>

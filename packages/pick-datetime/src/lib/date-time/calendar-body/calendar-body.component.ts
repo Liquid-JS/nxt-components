@@ -71,7 +71,7 @@ export class CalendarBodyComponent implements OnInit {
      * Emit when a calendar cell is selected
      */
     @Output()
-    // eslint-disable-next-line @angular-eslint/no-output-native
+
     readonly select = new EventEmitter<CalendarCell>()
 
     /** @internal */

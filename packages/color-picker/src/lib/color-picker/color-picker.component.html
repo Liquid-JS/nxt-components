@@ -1,3 +1,4 @@
+<!-- eslint-disable-next-line @angular-eslint/template/interactive-supports-focus, @angular-eslint/template/click-events-have-key-events -->
 <div class="color-picker"
     (click)="$event.stopPropagation()"
     [ngStyle]="{
@@ -325,9 +326,13 @@
         <div *ngIf="mode == colorModeInternal.color"
             class="color-picker__input-type">
             <span class="color-picker__input-type-arrow"
-                (click)="onFormatToggle(1)"></span>
+                (click)="onFormatToggle(1)"
+                tabindex="0"
+                (keydown.enter)="onFormatToggle(1)"></span>
             <span class="color-picker__input-type-arrow"
-                (click)="onFormatToggle(-1)"></span>
+                (click)="onFormatToggle(-1)"
+                tabindex="0"
+                (keydown.enter)="onFormatToggle(-1)"></span>
         </div>
     </div>
     <ng-container *ngIf="presetColors?.length">
@@ -345,7 +350,9 @@
                     <div *ngIf="stringToRgba(color) as rgba"
                         class="color-picker__preset-item"
                         [title]="color"
-                        (click)="setColorFromString(color)">
+                        (click)="setColorFromString(color)"
+                        tabindex="0"
+                        (keydown.enter)="setColorFromString(color)">
                         <div class="color-picker__preset-item-fill"
                             [ngStyle]="{ 
                         backgroundColor: rgba || ''
@@ -354,7 +361,9 @@
                                 title="Remove Color"
                                 i18n-title="@@nxt-color-picker.button.remove-color"
                                 class="color-picker__remove-selected"
-                                (click)="onRemovePresetColor(color)"><svg xmlns="http://www.w3.org/2000/svg"
+                                (click)="onRemovePresetColor(color)"
+                                tabindex="0"
+                                (keydown.enter)="onRemovePresetColor(color)"><svg xmlns="http://www.w3.org/2000/svg"
                                     width="24"
                                     height="24"
                                     viewBox="0 0 24 24">

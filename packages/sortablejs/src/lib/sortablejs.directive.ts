@@ -13,7 +13,7 @@ import {
     Renderer2,
     SimpleChange
 } from '@angular/core'
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import { type AbstractControl, type FormArray } from '@angular/forms'
 import Sortable, { Options, SortableEvent } from 'sortablejs'
 import { GLOBALS } from './globals'

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { type FormArray } from '@angular/forms'
 import { SortableData } from './sortablejs.directive'
 

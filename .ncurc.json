@@ -8,7 +8,6 @@
         "@types/node",
         "stylelint",
         "stylelint-config-standard-scss",
-        "typescript",
-        "eslint"
+        "typescript"
     ]
 }

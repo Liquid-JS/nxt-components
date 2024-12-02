@@ -183,7 +183,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     /**
      * Callback to invoke when a new month is selected
      */
-    // eslint-disable-next-line @angular-eslint/no-output-native
+
     @Output()
     readonly change = new EventEmitter<T>()
 

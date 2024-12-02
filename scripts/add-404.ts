@@ -2,7 +2,7 @@ import { cp, readFile, writeFile } from 'fs/promises'
 
 await cp('dist/demo/browser', 'docs/demo', { recursive: true })
 
-readFile('docs/demo/index.html', 'utf8')
+readFile('docs/demo/index.csr.html', 'utf8')
     .then(async content => {
         content = content.replace('</head>', `<script type="text/javascript">
     if(!window.location.pathname.startsWith('/nxt-components/demo'))

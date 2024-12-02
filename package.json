@@ -5,6 +5,7 @@
     "repository": "https://github.com/Liquid-JS/nxt-components.git",
     "author": "HitkoDev <development@hitko.si>",
     "license": "MIT",
+    "type": "module",
     "workspaces": {
         "packages": [
             "packages/*"
@@ -50,11 +51,6 @@
         "@angular-devkit/build-angular": "^19.0.2",
         "@angular-devkit/core": "^19.0.2",
         "@angular-devkit/schematics": "^19.0.2",
-        "@angular-eslint/builder": "^19.0.0",
-        "@angular-eslint/eslint-plugin": "^19.0.0",
-        "@angular-eslint/eslint-plugin-template": "^19.0.0",
-        "@angular-eslint/schematics": "^19.0.0",
-        "@angular-eslint/template-parser": "^19.0.0",
         "@angular/cli": "^19.0.2",
         "@angular/compiler-cli": "^19.0.1",
         "@commitlint/cli": "^19.6.0",
@@ -66,19 +62,15 @@
         "@liquid-js/commitlint-plugin-workspace-scopes": "^2.0.0",
         "@stylistic/eslint-plugin": "^2.11.0",
         "@types/jasmine": "^5.1.5",
-        "@types/node": "<21.0.0",
+        "@types/node": "<23.0.0",
         "@types/semver": "^7.5.8",
-        "@typescript-eslint/eslint-plugin": "^8.16.0",
-        "@typescript-eslint/parser": "^8.16.0",
-        "@typescript-eslint/types": "^8.16.0",
-        "@typescript-eslint/utils": "^8.16.0",
+        "angular-eslint": "19.0.0",
         "conventional-changelog-cli": "^5.0.0",
         "cross-env": "^7.0.3",
-        "eslint": "<9.0.0",
-        "eslint-plugin-deprecation": "^3.0.0",
+        "eslint": "^9.16.0",
         "eslint-plugin-import": "^2.31.0",
         "eslint-plugin-jsdoc": "^50.6.0",
-        "eslint-plugin-prefer-arrow": "^1.2.3",
+        "eslint-plugin-prefer-arrow-functions": "^3.4.1",
         "eslint-plugin-unused-imports": "^4.1.4",
         "globby": "^14.0.2",
         "husky": "^9.1.7",
@@ -99,7 +91,8 @@
         "stylelint-config-standard-scss": "<7.0.0",
         "ts-node": "^10.9.2",
         "typedoc": "^0.27.2",
-        "typescript": ">=5.5 <5.7"
+        "typescript": ">=5.5 <5.7",
+        "typescript-eslint": "^8.16.0"
     },
     "packageManager": "yarn@4.5.3",
     "resolutions": {

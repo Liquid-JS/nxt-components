@@ -1,5 +1,7 @@
 <div class="json-view">
-    <a (click)="toggle()">
+    <a (click)="toggle()"
+        tabindex="0"
+        (keydown.space)="toggle()">
         <span class="toggler"
             [ngClass]="{'collapse': isOpen, 'expand': !isOpen}"
             [style.visibility]="hasChildren?'visible':'hidden'"></span>

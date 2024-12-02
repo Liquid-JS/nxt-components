@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { Component, ViewChild, ViewEncapsulation } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-// eslint-disable-next-line import/no-extraneous-dependencies
+// eslint-disable-next-line @import/no-extraneous-dependencies
 import Dropzone from 'dropzone'
 import { DropzoneComponent, DropzoneConfig, DropzoneDirective, DropzoneModule } from 'nxt-dropzone-wrapper'
 

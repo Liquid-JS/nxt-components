@@ -4,7 +4,7 @@
     "cli": {
         "packageManager": "yarn",
         "schematicCollections": [
-            "@angular-eslint/schematics"
+            "angular-eslint"
         ],
         "analytics": false
     },
@@ -122,12 +122,12 @@
                     "options": {
                         "lintFilePatterns": [
                             "packages/demo/**/*.ts",
+                            "packages/demo/**/*.js",
+                            "packages/demo/**/*.cjs",
                             "packages/demo/**/*.html"
-                        ]
+                        ],
+                        "eslintConfig": "packages/demo/eslint.config.js"
                     }
-                },
-                "deploy": {
-                    "builder": "angular-cli-ghpages:deploy"
                 }
             }
         },
@@ -156,8 +156,7 @@
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
                         "main": "packages/dropzone-wrapper/src/test.ts",
-                        "tsConfig": "packages/dropzone-wrapper/tsconfig.spec.json",
-                        "karmaConfig": "packages/dropzone-wrapper/karma.conf.js"
+                        "tsConfig": "packages/dropzone-wrapper/tsconfig.spec.json"
                     }
                 },
                 "lint": {
@@ -165,8 +164,11 @@
                     "options": {
                         "lintFilePatterns": [
                             "packages/dropzone-wrapper/**/*.ts",
+                            "packages/dropzone-wrapper/**/*.js",
+                            "packages/dropzone-wrapper/**/*.cjs",
                             "packages/dropzone-wrapper/**/*.html"
-                        ]
+                        ],
+                        "eslintConfig": "packages/dropzone-wrapper/eslint.config.js"
                     }
                 }
             }
@@ -196,8 +198,7 @@
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
                         "main": "packages/flags/src/test.ts",
-                        "tsConfig": "packages/flags/tsconfig.spec.json",
-                        "karmaConfig": "packages/flags/karma.conf.js"
+                        "tsConfig": "packages/flags/tsconfig.spec.json"
                     }
                 },
                 "lint": {
@@ -205,8 +206,11 @@
                     "options": {
                         "lintFilePatterns": [
                             "packages/flags/**/*.ts",
+                            "packages/flags/**/*.js",
+                            "packages/flags/**/*.cjs",
                             "packages/flags/**/*.html"
-                        ]
+                        ],
+                        "eslintConfig": "packages/flags/eslint.config.js"
                     }
                 }
             }
@@ -236,8 +240,7 @@
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
                         "main": "packages/json-view/src/test.ts",
-                        "tsConfig": "packages/json-view/tsconfig.spec.json",
-                        "karmaConfig": "packages/json-view/karma.conf.js"
+                        "tsConfig": "packages/json-view/tsconfig.spec.json"
                     }
                 },
                 "lint": {
@@ -245,8 +248,11 @@
                     "options": {
                         "lintFilePatterns": [
                             "packages/json-view/**/*.ts",
+                            "packages/json-view/**/*.js",
+                            "packages/json-view/**/*.cjs",
                             "packages/json-view/**/*.html"
-                        ]
+                        ],
+                        "eslintConfig": "packages/json-view/eslint.config.js"
                     }
                 }
             }
@@ -276,8 +282,7 @@
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
                         "main": "packages/pick-datetime/src/test.ts",
-                        "tsConfig": "packages/pick-datetime/tsconfig.spec.json",
-                        "karmaConfig": "packages/pick-datetime/karma.conf.js"
+                        "tsConfig": "packages/pick-datetime/tsconfig.spec.json"
                     }
                 },
                 "lint": {
@@ -285,8 +290,11 @@
                     "options": {
                         "lintFilePatterns": [
                             "packages/pick-datetime/**/*.ts",
+                            "packages/pick-datetime/**/*.js",
+                            "packages/pick-datetime/**/*.cjs",
                             "packages/pick-datetime/**/*.html"
-                        ]
+                        ],
+                        "eslintConfig": "packages/pick-datetime/eslint.config.js"
                     }
                 }
             }
@@ -316,8 +324,7 @@
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
                         "main": "packages/sortablejs/src/test.ts",
-                        "tsConfig": "packages/sortablejs/tsconfig.spec.json",
-                        "karmaConfig": "packages/sortablejs/karma.conf.js"
+                        "tsConfig": "packages/sortablejs/tsconfig.spec.json"
                     }
                 },
                 "lint": {
@@ -325,8 +332,11 @@
                     "options": {
                         "lintFilePatterns": [
                             "packages/sortablejs/**/*.ts",
+                            "packages/sortablejs/**/*.js",
+                            "packages/sortablejs/**/*.cjs",
                             "packages/sortablejs/**/*.html"
-                        ]
+                        ],
+                        "eslintConfig": "packages/sortablejs/eslint.config.js"
                     }
                 }
             }
@@ -356,8 +366,7 @@
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
                         "main": "packages/color-picker/src/test.ts",
-                        "tsConfig": "packages/color-picker/tsconfig.spec.json",
-                        "karmaConfig": "packages/color-picker/karma.conf.js"
+                        "tsConfig": "packages/color-picker/tsconfig.spec.json"
                     }
                 },
                 "lint": {
@@ -365,8 +374,11 @@
                     "options": {
                         "lintFilePatterns": [
                             "packages/color-picker/**/*.ts",
+                            "packages/color-picker/**/*.js",
+                            "packages/color-picker/**/*.cjs",
                             "packages/color-picker/**/*.html"
-                        ]
+                        ],
+                        "eslintConfig": "packages/color-picker/eslint.config.js"
                     }
                 }
             }
