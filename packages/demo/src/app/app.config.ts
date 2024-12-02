@@ -19,7 +19,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
 export const appConfig: ApplicationConfig = {
     providers: [
         provideRouter(routes, withInMemoryScrolling({
-            anchorScrolling: 'enabled'
+            anchorScrolling: 'enabled',
+            scrollPositionRestoration: 'enabled'
         })),
         provideAnimations(),
         provideClientHydration(),
