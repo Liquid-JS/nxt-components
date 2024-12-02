@@ -1,7 +1,7 @@
 import"./chunk-FBFWB55K.js";var n=`import { CommonModule } from '@angular/common'\r
 import { Component, ViewChild, ViewEncapsulation } from '@angular/core'\r
 import { FormsModule } from '@angular/forms'\r
-// eslint-disable-next-line import/no-extraneous-dependencies\r
+// eslint-disable-next-line @import/no-extraneous-dependencies\r
 import Dropzone from 'dropzone'\r
 import { DropzoneComponent, DropzoneConfig, DropzoneDirective, DropzoneModule } from 'nxt-dropzone-wrapper'\r
 \r
