@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.0.0](https://github.com/Liquid-JS/nxt-components/compare/v18.0.0...v19.0.0) (2024-12-02)
+
+### Bug Fixes
+
+* **sortablejs:** Make union types work ([e306333](https://github.com/Liquid-JS/nxt-components/commit/e3063338a710c99907abc77f1eed938721d062e1))
+
 # [18.0.0](https://github.com/Liquid-JS/nxt-components/compare/v17.0.1...v18.0.0) (2024-06-03)
 
 **Note:** Version bump only for package demo
