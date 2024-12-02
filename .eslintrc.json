@@ -12,6 +12,8 @@
         "eslint-plugin-import",
         "eslint-plugin-jsdoc",
         "eslint-plugin-prefer-arrow",
+        "deprecation",
+        "unused-imports",
         "@stylistic"
     ],
     "overrides": [
@@ -20,10 +22,6 @@
                 "*.ts",
                 "*.js",
                 "*.cjs"
-            ],
-            "plugins": [
-                "deprecation",
-                "unused-imports"
             ],
             "parserOptions": {
                 "project": [

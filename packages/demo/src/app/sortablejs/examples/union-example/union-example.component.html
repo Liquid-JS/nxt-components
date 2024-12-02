@@ -5,6 +5,8 @@
         *ngFor="let elem of elems">Element {{ isArray(elem) ? (elem | json) : elem }}</button>
 </div>
 
+<br><br>
+
 <h3 class="h4">The actual model</h3>
 
 <app-code-block [code]="elems | json"
