@@ -6,6 +6,6 @@ module.exports = {
         '@liquid-js/commitlint-plugin-workspace-scopes'
     ],
     rules: {
-        'scope-enum': [2, 'always', {}]
+        'scope-enum': [2, 'always', { stripPrefix: ['nxt-'] }]
     }
 }

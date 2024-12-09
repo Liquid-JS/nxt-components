@@ -23,21 +23,6 @@ import { SortablejsService } from './sortablejs.service'
 export type SortableData<T> = [T] extends [AbstractControl] ? (FormArray<T> | T[]) : T[]
 export type CloneFunction<T> = (item: T) => T
 
-/** @internal */
-const getIndexesFromEvent = (event: SortableEvent) => {
-    if (event.hasOwnProperty('newDraggableIndex') && event.hasOwnProperty('oldDraggableIndex')) {
-        return {
-            new: event.newDraggableIndex,
-            old: event.oldDraggableIndex
-        }
-    } else {
-        return {
-            new: event.newIndex,
-            old: event.oldIndex
-        }
-    }
-}
-
 @Directive({
     selector: '[nxtSortablejs]',
     standalone: false
@@ -201,9 +186,8 @@ export class SortablejsDirective<T> implements OnInit, OnChanges, OnDestroy {
             },
             onUpdate: (event: SortableEvent) => {
                 const bindings = this.getBindings()
-                const indexes = getIndexesFromEvent(event)
 
-                bindings.injectIntoEvery(indexes.new!, bindings.extractFromEvery(indexes.old!))
+                bindings.injectIntoEvery(event.newIndex!, bindings.extractFromEvery(event.oldIndex!))
                 this.proxyEvent('onUpdate', event)
             }
         }
