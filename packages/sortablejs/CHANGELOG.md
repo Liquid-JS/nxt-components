@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.0.1](https://github.com/Liquid-JS/nxt-components/compare/v19.0.0...v19.0.1) (2024-12-09)
+
+### Bug Fixes
+
+* **sortablejs:** model updates with disabled elements ([578dd7f](https://github.com/Liquid-JS/nxt-components/commit/578dd7f0b0643f095e76ac0d156f36bb9f339b83))
+
 # [19.0.0](https://github.com/Liquid-JS/nxt-components/compare/v18.0.0...v19.0.0) (2024-12-02)
 
 ### Bug Fixes
