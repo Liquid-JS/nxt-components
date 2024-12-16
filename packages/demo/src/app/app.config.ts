@@ -1,13 +1,34 @@
 import { ApplicationConfig, isDevMode } from '@angular/core'
 import { provideClientHydration } from '@angular/platform-browser'
 import { provideAnimations } from '@angular/platform-browser/animations'
-import { provideRouter, withInMemoryScrolling } from '@angular/router'
+import { provideRouter, UrlSerializer, withInMemoryScrolling } from '@angular/router'
 import { provideServiceWorker } from '@angular/service-worker'
 import { TooltipModule } from 'ngx-bootstrap/tooltip'
 import { provideHighlightOptions } from 'ngx-highlightjs'
 import { DropzoneConfig, NXT_DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
 import { provideNativeDateTimeAdapter } from 'packages/pick-datetime/native-adapter/src/native-adapter.module'
 import { routes } from './app.routes'
+
+import { DefaultUrlSerializer, UrlTree } from '@angular/router'
+
+export class TrailingSlashUrlSerializer extends DefaultUrlSerializer {
+    override serialize(tree: UrlTree): string {
+        return this._withTrailingSlash(super.serialize(tree));
+    }
+
+    private _withTrailingSlash(url: string): string {
+        const splitOn = url.indexOf('?') > -1 ? '?' : '#';
+        const pathArr = url.split(splitOn);
+
+        if (!pathArr[0].endsWith('/')) {
+            let fileName: string = url.substring(url.lastIndexOf('/') + 1);
+            if (fileName.indexOf('.') === -1) {
+                pathArr[0] += '/';
+            }
+        }
+        return pathArr.join(splitOn);
+    }
+}
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
     // Change this to your upload POST address:
@@ -22,6 +43,10 @@ export const appConfig: ApplicationConfig = {
             anchorScrolling: 'enabled',
             scrollPositionRestoration: 'enabled'
         })),
+        {
+            provide: UrlSerializer,
+            useClass: TrailingSlashUrlSerializer
+        },
         provideAnimations(),
         provideClientHydration(),
         provideServiceWorker('ngsw-worker.js', {

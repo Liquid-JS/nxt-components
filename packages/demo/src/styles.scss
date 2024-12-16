@@ -1,7 +1,10 @@
-$primary: #00a645;
-$min-contrast-ratio: 3;
+@use "bootstrap/scss/bootstrap" with (
+    $primary: #00a645,
+    $min-contrast-ratio: 3
+);
 
-@import "bootstrap/scss/bootstrap";
+@use "./scss/highlight";
+
 @import "@angular/cdk/overlay-prebuilt.css";
 
 .navbar {
@@ -17,8 +20,6 @@ $min-contrast-ratio: 3;
         z-index: 10011 !important;
     }
 }
-
-@import "./scss/highlight";
 
 app-inputs-table,
 app-outputs-table {
