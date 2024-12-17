@@ -2,7 +2,7 @@
     "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
     "schematics": {
         "ng-add": {
-            "description": "Add my library to the project.",
+            "description": "Add builder configuration to the project",
             "factory": "./ng-add.cjs#ngAdd",
             "schema": "./schematics/ng-add/schema.json"
         }

@@ -1,18 +1,21 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
+    "title": "nxt-sitemap ng add schematic",
     "properties": {
         "project": {
             "type": "string",
             "description": "The project for which the sitemap config should be added"
         },
         "srcDirectory": {
-            "type": "string"
+            "type": "string",
+            "description": "Directory where prerendered contents are located, e.g. `dist/browser`"
         },
         "baseUrl": {
             "type": "string",
             "format": "uri",
-            "x-prompt": "What is the base url of your site?"
+            "description": "Base URL where the page will be deployed, e.g. https://example.com/ or https://example.com/subdir/",
+            "x-prompt": "What is the base URL of your site?"
         }
     },
     "required": [

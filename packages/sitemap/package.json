@@ -1,6 +1,6 @@
 {
     "name": "nxt-sitemap",
-    "description": "Angular component for interactive json view.",
+    "description": "Angular builder for generating sitemap from prerendered routes.",
     "bugs": "https://github.com/Liquid-JS/nxt-components/issues",
     "version": "19.0.0",
     "license": "MIT",
@@ -11,23 +11,19 @@
         "nxt-sitemap",
         "ng-sitemap",
         "angular-sitemap",
-        "json view",
-        "json viewer",
-        "angular",
-        "json",
-        "view",
-        "viewer",
-        "tree"
+        "angular universal",
+        "angular SSR",
+        "prerendering",
+        "sitemap",
+        "generator"
     ],
     "builders": "./builders.json",
     "schematics": "./collection.json",
     "scripts": {
         "watch": "yarn build --watch",
         "build": "rollup -c rollup.config.ts --configPlugin \"@rollup/plugin-typescript={tsconfig:'tsconfig.spec.json'}\"",
-        "lint": "eslint .",
+        "lint": "npx eslint .",
         "lint:fix": "yarn lint --fix",
-        "test": "ng test sitemap --no-watch",
-        "test:watch": "ng test sitemap",
         "docs": "npx compodoc -c .compodocrc.json",
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/sitemap"
     },

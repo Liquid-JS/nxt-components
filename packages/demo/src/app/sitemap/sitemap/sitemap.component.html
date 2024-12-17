@@ -1,0 +1,47 @@
+<app-meta title="nxt-sitemap"
+    description="Angular builder for generating sitemap from prerendered routes."></app-meta>
+<app-content-wrap>
+    <h1>Angular Sitemap builder</h1>
+    <p>
+        <a href="https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Liquid-JS/nxt-components.svg"
+                alt="GitHub license"></a>&nbsp;
+        <a href="https://www.npmjs.com/package/nxt-sitemap"><img src="https://img.shields.io/npm/dm/nxt-sitemap.svg"
+                alt="npm"></a>&nbsp;
+        <a href="https://www.npmjs.com/package/nxt-sitemap"><img src="https://img.shields.io/npm/v/nxt-sitemap.svg"
+                alt="scope"></a>
+    </p>
+    <p>This package provides an Angular CLI builder to generate a sitemap from prerendered pages when using <code>&#64;angular/ssr</code>.</p>
+
+    <ul>
+        <li><a href="https://liquid-js.github.io/nxt-components/nxt-sitemap"><strong>API docs</strong></a></li>
+    </ul>
+    <br>
+
+    <h2>Getting started</h2>
+
+    <hr class="no-padding">
+    <br>
+
+    <h3 class="h4">Installing</h3>
+    <app-code-block [code]="installScript"
+        [languages]="['shell']"></app-code-block>
+
+    <br>
+
+    <h3 class="h4">Configuring the builder</h3>
+    <app-code-block [code]="importLocal"
+        [languages]="['json']"></app-code-block>
+    <br>
+
+    <h3 class="h4">Generating the sitemap</h3>
+    <app-code-block [code]="importGlobal"
+        [languages]="['shell']"></app-code-block>
+    <br>
+
+    <h3 class="h4">Prerendered URLs in Angular</h3>
+
+    <p>As described in <a href="https://github.com/angular/angular/issues/16051">#16051</a>, Angular router, by default, removes trailing slashes from URLs; however, when serving prerendered pages most web servers add trailing slash which causes unneccessary redirects and degraded SEO performance. To avoid this, consider including the following code in your app configuration (based on <a href="https://github.com/angular/angular/issues/16051#issuecomment-575346573">#16051 (comment)</a>):</p>
+    <app-code-block [code]="includeHTML"
+        [languages]="['typescript']"></app-code-block>
+
+</app-content-wrap>

@@ -5,6 +5,7 @@ import { flagsRoutes } from './flags/flags.routes'
 import { jsonViewRoutes } from './json-view/json-view.routes'
 import { pickDatetimeRoutes } from './pick-datetime/pick-datetime.routes'
 import { sortablejsRoutes } from './sortablejs/sortablejs.routes'
+import { sitemapRoutes } from './sitemap/sitemap.routes'
 
 export const routes: Routes = [
     {
@@ -31,6 +32,10 @@ export const routes: Routes = [
     {
         path: 'pick-datetime',
         children: pickDatetimeRoutes
+    },
+    {
+        path: 'sitemap',
+        children: sitemapRoutes
     },
     {
         path: 'sortablejs',

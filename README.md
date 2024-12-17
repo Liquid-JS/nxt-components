@@ -9,6 +9,7 @@ A collection of various Angular components
 -   **[nxt-flags](packages/flags)**
 -   **[nxt-json-view](packages/json-view)**
 -   **[nxt-pick-datetime](packages/pick-datetime)**
+-   **[nxt-sitemap](packages/sitemap)**
 -   **[nxt-sortablejs](packages/sortablejs)**
 
 ## Development

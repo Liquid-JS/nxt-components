@@ -40,7 +40,7 @@ const tsc = typescript({
     declaration: true,
     declarationDir: outdir,
     inlineSources: true,
-    tsconfig: './tsconfig.lib.prod.json',
+    tsconfig: './tsconfig.lib.json',
     outDir: outdir,
     rootDir: './src'
 })
