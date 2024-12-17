@@ -76,6 +76,7 @@ async function sitemapBuilder(options: Schema, context: BuilderContext): Promise
                 lastmod
             })
         })
+        sitemap.end()
 
         await promise
     } catch (err) {
