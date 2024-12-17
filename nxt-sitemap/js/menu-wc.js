@@ -49,10 +49,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
-                                <a href="interfaces/Schema.html" data-type="entity-link" >Schema</a>
+                                <a href="interfaces/NgAddSchematicOptions.html" data-type="entity-link" >NgAddSchematicOptions</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/Schema-1.html" data-type="entity-link" >Schema</a>
+                                <a href="interfaces/SitemapBuilderOptions.html" data-type="entity-link" >SitemapBuilderOptions</a>
                             </li>
                         </ul>
                     </li>

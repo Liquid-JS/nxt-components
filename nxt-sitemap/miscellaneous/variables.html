@@ -112,28 +112,7 @@
                 <td class="col-md-4">
                     <ul class="index-list">
                         <li>
-                            <a href="#builders" title="rollup.config.ts" ><b>builders</b>&nbsp;&nbsp;&nbsp;(rollup.config.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#entries" title="rollup.config.ts" ><b>entries</b>&nbsp;&nbsp;&nbsp;(rollup.config.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#exports" title="rollup.config.ts" ><b>exports</b>&nbsp;&nbsp;&nbsp;(rollup.config.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#external" title="rollup.config.ts" ><b>external</b>&nbsp;&nbsp;&nbsp;(rollup.config.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#outdir" title="rollup.config.ts" ><b>outdir</b>&nbsp;&nbsp;&nbsp;(rollup.config.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#pkg" title="rollup.config.ts" ><b>pkg</b>&nbsp;&nbsp;&nbsp;(rollup.config.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#schematics" title="rollup.config.ts" ><b>schematics</b>&nbsp;&nbsp;&nbsp;(rollup.config.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#tsc" title="rollup.config.ts" ><b>tsc</b>&nbsp;&nbsp;&nbsp;(rollup.config.ts)</a>
+                            <a href="#sitemapBuilder" title="src/builders/sitemap/builder.ts" ><b>sitemapBuilder</b>&nbsp;&nbsp;&nbsp;(src/.../builder.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -142,206 +121,92 @@
     </table>
 </section>
 
-    <h3>rollup.config.ts</h3>
+    <h3>src/builders/sitemap/builder.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="builders"></a>
+                    <a name="sitemapBuilder"></a>
                     <span class="name">
-                        <span ><b>builders</b></span>
-                        <a href="#builders"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>sitemapBuilder</b></span>
+                        <a href="#sitemapBuilder"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>await readdir(&#x27;./src/builders&#x27;, { withFileTypes: true })</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="entries"></a>
-                    <span class="name">
-                        <span ><b>entries</b></span>
-                        <a href="#entries"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>[]</code>
+                        <i>Type : </i>    <code>Builder&lt;&gt;</code>
 
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>[
-    ...builders.filter(e &#x3D;&gt; e.isDirectory()).map(e &#x3D;&gt; [e, false] as const),
-    ...schematics.filter(e &#x3D;&gt; e.isDirectory()).map(e &#x3D;&gt; [e, true] as const)
-]</code>
-                    </td>
-                </tr>
+                        <i>Default value : </i><code>createBuilder(async (options: SitemapBuilderOptions, context: BuilderContext): Promise&lt;BuilderOutput&gt; &#x3D;&gt; {
+    const srcDirectory &#x3D; withTrailingSlash(options.srcDirectory)
+    const baseUrl &#x3D; new URL(withTrailingSlash(options.baseUrl))
+    const path &#x3D; baseUrl.pathname
+    const lastmod &#x3D; options.lastMod &#x3D;&#x3D; &#x27;today&#x27;
+        ? new Date()
+        : options.lastMod
+            ? new Date(options.lastMod)
+            : undefined
 
+    const changefreq &#x3D; options.changeFreq
+    const priority &#x3D; options.priority ?? 0.5
 
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="exports"></a>
-                    <span class="name">
-                        <span ><b>exports</b></span>
-                        <a href="#exports"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>literal type</code>
+    const targetFile &#x3D; normalize(join(srcDirectory, &#x27;sitemap.xml&#x27;))
 
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>{
-    &#x27;.&#x27;: {
-        types: &#x27;./index.d.ts&#x27;,
-        default: &#x27;./index.mjs&#x27;
-    },
-    &#x27;./package.json&#x27;: {
-        default: &#x27;./package.json&#x27;
+    context.reportStatus(&#x60;Generating sitemap in ${targetFile}.&#x60;)
+
+    try {
+        const files &#x3D; await findFiles(srcDirectory, &#x27;index.html&#x27;)
+
+        if (!files.length) {
+            throw new Error(&#x60;No matching files found in ${srcDirectory}.&#x60;)
+        }
+
+        const sitemap &#x3D; new SitemapStream({ hostname: options.baseUrl })
+        const target &#x3D; createWriteStream(targetFile)
+        const promise &#x3D; streamToPromise(sitemap.pipe(target))
+
+        files.forEach(file &#x3D;&gt; {
+            let pathname &#x3D; path + file
+            if (!options.trailingSlash &amp;&amp; pathname.endsWith(&#x27;/&#x27;))
+                pathname &#x3D; pathname.substring(0, pathname.length - 1)
+            if (options.trailingSlash)
+                pathname &#x3D; withTrailingSlash(pathname)
+
+            sitemap.write({
+                url: pathname,
+                changefreq,
+                priority,
+                lastmod
+            })
+        })
+        sitemap.end()
+
+        await promise
+    } catch (err) {
+        context.logger.error(&#x27;Failed to generate sitemap.&#x27;)
+        return {
+            success: false,
+            error: (err as Error).message
+        }
     }
-}</code>
-                    </td>
-                </tr>
 
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="external"></a>
-                    <span class="name">
-                        <span ><b>external</b></span>
-                        <a href="#external"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>[]</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>[
-    ...builtins(),
-    ...Object.keys(pkg.dependencies || {}),
-    ...Object.keys(pkg.peerDependencies || {}),
-    &#x27;fs/promises&#x27;
-]</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="outdir"></a>
-                    <span class="name">
-                        <span ><b>outdir</b></span>
-                        <a href="#outdir"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>normalize(&#x27;../../dist/sitemap/&#x27;)</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="pkg"></a>
-                    <span class="name">
-                        <span ><b>pkg</b></span>
-                        <a href="#pkg"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>JSON.parse(await readFile(&#x27;./package.json&#x27;, &#x27;utf8&#x27;))</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="schematics"></a>
-                    <span class="name">
-                        <span ><b>schematics</b></span>
-                        <a href="#schematics"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>await readdir(&#x27;./src/schematics&#x27;, { withFileTypes: true })</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="tsc"></a>
-                    <span class="name">
-                        <span ><b>tsc</b></span>
-                        <a href="#tsc"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>typescript({
-    declaration: true,
-    declarationDir: outdir,
-    inlineSources: true,
-    tsconfig: &#x27;./tsconfig.lib.json&#x27;,
-    outDir: outdir,
-    rootDir: &#x27;./src&#x27;
+    context.reportStatus(&#x27;Done.&#x27;)
+    return { success: true }
 })</code>
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Angular builder for generating sitemap from prerendered routes</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
