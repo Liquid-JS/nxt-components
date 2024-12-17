@@ -33,6 +33,11 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <span class="icon ion-ios-paper"></span>README
                             </a>
                         </li>
+                        <li class="link">
+                            <a href="changelog.html"  data-type="chapter-link">
+                                <span class="icon ion-ios-paper"></span>CHANGELOG
+                            </a>
+                        </li>
                                 <li class="link">
                                     <a href="properties.html" data-type="chapter-link">
                                         <span class="icon ion-ios-apps"></span>Properties
