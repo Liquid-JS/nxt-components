@@ -79,7 +79,7 @@ export class AppSortablejsComponent extends WaitLoad implements OnInit {
         {
             path: 'table',
             name: 'Table items',
-            description: 'Sorting rows inside a table',
+            description: 'Table rows are nested inside tbody, and require the container selector to be set accordingly.',
             include: ['html', 'ts']
         }
     )
