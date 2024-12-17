@@ -244,7 +244,7 @@ export default config(
         }
     },
     {
-        files: ['**/*.spec.ts', '**/test.ts', '**/*.conf.js', '**/*.conf.cjs', '**/*.config.js', '**/*.config.cjs', '**/scripts/**/*.ts'],
+        files: ['**/*.spec.ts', '**/test.ts', '**/*.conf.js', '**/*.conf.cjs', '**/*.config.js', '**/*.config.ts', '**/*.config.cjs', '**/scripts/**/*.ts'],
 
         rules: {
             '@import/no-extraneous-dependencies': ['off', {

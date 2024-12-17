@@ -12,9 +12,9 @@
         ]
     },
     "scripts": {
-        "postinstall": "husky install",
+        "postinstall": "husky",
         "build": "yarn workspaces foreach -viptA --exclude demo run build",
-        "build:demo": "yarn workspace demo build --base-href /nxt-components/demo/ --deploy-url /nxt-components/demo/",
+        "build:demo": "yarn workspace demo build --base-href /nxt-components/demo/ --deploy-url /nxt-components/demo/ && ng run demo:sitemap",
         "serve": "yarn workspace demo serve",
         "watch": "yarn workspaces foreach -vipA -j unlimited --exclude demo run watch",
         "test": "yarn workspaces foreach -vipA -j unlimited run test",
@@ -24,10 +24,10 @@
         "lint:sass": "yarn workspaces foreach -vipA -j unlimited run lint:sass",
         "lint:sass:fix": "yarn workspaces foreach -vipA -j unlimited run lint:sass:fix",
         "docs": "yarn workspaces foreach -vipA -j unlimited run docs && yarn workspaces foreach -vipA -j unlimited run docs:json",
-        "pages": "rimraf docs && yarn docs && yarn build:demo && yarn scripts:add404 && ngx-sitemap ./docs/demo https://liquid-js.github.io/nxt-components/demo",
+        "pages": "rimraf docs && yarn docs && yarn build:demo && yarn scripts:add404",
         "pages:publish": "yarn pages && ngh --dir docs",
-        "scripts:add404": "node --loader ts-node/esm scripts/add-404.ts",
-        "scripts:min-version": "node --loader ts-node/esm scripts/min-version.ts"
+        "scripts:add404": "node --import ts-node-maintained/register/esm scripts/add-404.ts",
+        "scripts:min-version": "node --import ts-node-maintained/register/esm scripts/min-version.ts"
     },
     "dependencies": {
         "@angular/animations": "^19.0.4",
@@ -82,17 +82,16 @@
         "karma-jasmine": "^5.1.0",
         "karma-jasmine-html-reporter": "^2.1.0",
         "ng-packagr": "^19.0.1",
-        "ngx-sitemap": "^1.0.0",
         "npm-check-updates": "^17.1.11",
         "postcss": "^8.4.49",
         "rimraf": "^6.0.1",
         "semver": "^7.6.3",
         "stylelint": "<15.0.0",
         "stylelint-config-standard-scss": "<7.0.0",
-        "ts-node": "^10.9.2",
+        "ts-node-maintained": "^10.9.4",
         "typedoc": "^0.27.5",
         "typescript": ">=5.5 <5.7",
-        "typescript-eslint": "^8.18.0"
+        "typescript-eslint": "^8.18.1"
     },
     "packageManager": "yarn@4.5.3",
     "resolutions": {

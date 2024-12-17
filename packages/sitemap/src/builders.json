@@ -1,0 +1,9 @@
+{
+    "builders": {
+        "sitemap": {
+            "implementation": "./sitemap.mjs",
+            "schema": "./builders/sitemap/schema.json",
+            "description": "Copies a file."
+        }
+    }
+}

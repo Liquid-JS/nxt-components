@@ -18,6 +18,7 @@
         "importHelpers": true,
         "target": "es2022",
         "module": "es2022",
+        "skipLibCheck": true,
         "lib": [
             "es2022",
             "dom"
@@ -43,6 +44,9 @@
             ],
             "nxt-pick-datetime/native-adapter": [
                 "dist/pick-datetime/native-adapter"
+            ],
+            "nxt-sitemap": [
+                "./dist/sitemap"
             ],
             "nxt-sortablejs": [
                 "dist/sortablejs"

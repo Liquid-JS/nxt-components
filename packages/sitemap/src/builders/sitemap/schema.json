@@ -1,0 +1,64 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "srcDirectory": {
+            "type": "string"
+        },
+        "baseUrl": {
+            "type": "string",
+            "format": "uri"
+        },
+        "lastMod": {
+            "type": "string",
+            "anyOf": [
+                {
+                    "format": "date-time"
+                },
+                {
+                    "format": "date"
+                },
+                {
+                    "enum": [
+                        "today"
+                    ]
+                }
+            ]
+        },
+        "changeFreq": {
+            "type": "string",
+            "enum": [
+                "always",
+                "hourly",
+                "daily",
+                "weekly",
+                "monthly",
+                "yearly",
+                "never"
+            ]
+        },
+        "priority": {
+            "type": "number",
+            "enum": [
+                0.0,
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5,
+                0.6,
+                0.7,
+                0.8,
+                0.9,
+                1.0
+            ],
+            "default": 0.5
+        }
+    },
+    "additionalProperties": false,
+    "additionalItems": false,
+    "required": [
+        "srcDirectory",
+        "baseUrl"
+    ]
+}

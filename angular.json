@@ -128,6 +128,13 @@
                         ],
                         "eslintConfig": "packages/demo/eslint.config.js"
                     }
+                },
+                "sitemap": {
+                    "builder": "./dist/sitemap:sitemap",
+                    "options": {
+                        "srcDirectory": "./dist/demo/browser",
+                        "baseUrl": "https://liquid-js.github.io/nxt-components/demo"
+                    }
                 }
             }
         },

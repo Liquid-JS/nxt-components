@@ -52,7 +52,9 @@ export function resolveTempaltes(cfg: LoaderConfig, prefix: string) {
                     [extMap[ext]]: tpl[i].default.trim()
                 })
             } catch (_e) {
-                return {}
+                return {
+                    [extMap[ext]]: ' '
+                }
             }
         })
     ) as ExampleConfig

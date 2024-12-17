@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "project": {
+            "type": "string",
+            "description": "The project for which the sitemap config should be added"
+        },
+        "srcDirectory": {
+            "type": "string"
+        },
+        "baseUrl": {
+            "type": "string",
+            "format": "uri",
+            "x-prompt": "What is the base url of your site?"
+        }
+    },
+    "required": [
+        "baseUrl"
+    ],
+    "additionalProperties": false
+}
