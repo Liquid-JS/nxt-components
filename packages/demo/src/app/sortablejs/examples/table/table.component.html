@@ -1,0 +1,25 @@
+<table cdk-table
+    [dataSource]="cities"
+    [nxtSortablejs]="cities"
+    [sortablejsContainer]="'tbody'"
+    class="table">
+
+    <tr cdk-header-row
+        *cdkHeaderRowDef="['city', 'description']"></tr>
+    <tr cdk-row
+        *cdkRowDef="let row; columns: ['city', 'description']"></tr>
+
+    <ng-container cdkColumnDef="city">
+        <th cdk-header-cell
+            *cdkHeaderCellDef>City</th>
+        <td cdk-cell
+            *cdkCellDef="let element">{{ element }}</td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="description">
+        <th cdk-header-cell
+            *cdkHeaderCellDef>Description</th>
+        <td cdk-cell
+            *cdkCellDef="let element">{{ element }} description</td>
+    </ng-container>
+</table>
