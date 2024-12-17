@@ -16,7 +16,9 @@ export default config(
         ]
     },
     {
-        files: ['**/*.ts'],
+        files: [
+            '**/*.ts'
+        ],
         rules: {
             '@angular-eslint/directive-selector': [
                 'error',
@@ -37,7 +39,9 @@ export default config(
         }
     },
     {
-        files: ['**/*.html'],
+        files: [
+            '**/*.html'
+        ],
         rules: {}
     }
 )
