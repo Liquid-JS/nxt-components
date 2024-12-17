@@ -57,7 +57,7 @@ export function ngAdd(options: NgAddSchematicOptions) {
             name: 'sitemap',
             builder: 'nxt-sitemap:sitemap',
             options: {
-                srcDirectory: options.srcDirectory,
+                srcDirectory: options.srcDirectory.replace(/\\/g, '/'),
                 baseUrl: options.baseUrl
             }
         })
