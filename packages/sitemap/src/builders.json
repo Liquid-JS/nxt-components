@@ -3,7 +3,7 @@
         "sitemap": {
             "implementation": "./sitemap.mjs",
             "schema": "./builders/sitemap/schema.json",
-            "description": "Copies a file."
+            "description": "Generate sitemap from prerendered routes"
         }
     }
 }

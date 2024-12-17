@@ -2,10 +2,15 @@ import { createWriteStream } from 'fs'
 import { readdir } from 'fs/promises'
 import { join, normalize } from 'path'
 import { Stream } from 'stream'
-import { SitemapStream } from 'sitemap'
 import { BuilderContext, BuilderOutput, createBuilder } from '@angular-devkit/architect'
-import { Schema } from './schema'
+import { Builder } from '@angular-devkit/architect/src/internal'
+import { JsonObject } from '@angular-devkit/core'
+import { SitemapStream } from 'sitemap'
+import { SitemapBuilderOptions } from './schema'
 
+/**
+ * @internal
+ */
 async function findFiles(dir: string, fileName: string, prefix = ''): Promise<string[]> {
     const results = new Array<string>()
     const entries = await readdir(dir, { withFileTypes: true })
@@ -23,6 +28,9 @@ async function findFiles(dir: string, fileName: string, prefix = ''): Promise<st
     return results
 }
 
+/**
+ * @internal
+ */
 function withTrailingSlash(text: string) {
     if (!text.endsWith('/')) {
         return text + '/'
@@ -30,6 +38,9 @@ function withTrailingSlash(text: string) {
     return text
 }
 
+/**
+ * @internal
+ */
 function streamToPromise(stream: Stream) {
     return new Promise<void>((resolve, reject) => {
         stream
@@ -40,7 +51,10 @@ function streamToPromise(stream: Stream) {
     })
 }
 
-async function sitemapBuilder(options: Schema, context: BuilderContext): Promise<BuilderOutput> {
+/**
+ * Angular builder for generating sitemap from prerendered routes
+ */
+const sitemapBuilder: Builder<SitemapBuilderOptions & JsonObject> = createBuilder(async (options: SitemapBuilderOptions, context: BuilderContext): Promise<BuilderOutput> => {
     const srcDirectory = withTrailingSlash(options.srcDirectory)
     const baseUrl = new URL(withTrailingSlash(options.baseUrl))
     const path = baseUrl.pathname
@@ -69,8 +83,14 @@ async function sitemapBuilder(options: Schema, context: BuilderContext): Promise
         const promise = streamToPromise(sitemap.pipe(target))
 
         files.forEach(file => {
+            let pathname = path + file
+            if (!options.trailingSlash && pathname.endsWith('/'))
+                pathname = pathname.substring(0, pathname.length - 1)
+            if (options.trailingSlash)
+                pathname = withTrailingSlash(pathname)
+
             sitemap.write({
-                url: path + withTrailingSlash(file),
+                url: pathname,
                 changefreq,
                 priority,
                 lastmod
@@ -89,6 +109,6 @@ async function sitemapBuilder(options: Schema, context: BuilderContext): Promise
 
     context.reportStatus('Done.')
     return { success: true }
-}
+})
 
-export default createBuilder(sitemapBuilder)
+export default sitemapBuilder

@@ -2,9 +2,9 @@ import { join, normalize } from 'path'
 import { workspaces } from '@angular-devkit/core'
 import { SchematicContext, SchematicsException, Tree } from '@angular-devkit/schematics'
 import { createHost } from '../utils'
-import { Schema } from './schema'
+import { NgAddSchematicOptions } from './schema'
 
-export function ngAdd(options: Schema) {
+export function ngAdd(options: NgAddSchematicOptions) {
     return async (tree: Tree, _context: SchematicContext) => {
         const host = createHost(tree)
         const { workspace } = await workspaces.readWorkspace('/', host)
@@ -43,7 +43,7 @@ export function ngAdd(options: Schema) {
             }
             options.srcDirectory = ''
             if (typeof outputPath == 'string') {
-                options.srcDirectory = outputPath
+                options.srcDirectory = join(outputPath, 'browser')
             } else if (typeof outputPath == 'object' && !Array.isArray(outputPath)) {
                 options.srcDirectory = ''
                 if (outputPath['base'] as any) {

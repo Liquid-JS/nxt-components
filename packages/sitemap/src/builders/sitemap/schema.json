@@ -1,13 +1,17 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
+    "title": "Sitemap builder options",
+    "description": "Generate sitemap from prerendered routes",
     "properties": {
         "srcDirectory": {
-            "type": "string"
+            "type": "string",
+            "description": "Directory where prerendered contents are located, e.g. `dist/browser`"
         },
         "baseUrl": {
             "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "description": "Base URL where the page will be deployed, e.g. https://example.com/ or https://example.com/subdir/"
         },
         "lastMod": {
             "type": "string",
@@ -23,7 +27,8 @@
                         "today"
                     ]
                 }
-            ]
+            ],
+            "description": "Either ISO date, datetime, or a string 'today'; last modified date of the pages"
         },
         "changeFreq": {
             "type": "string",
@@ -35,7 +40,8 @@
                 "monthly",
                 "yearly",
                 "never"
-            ]
+            ],
+            "description": "Change frequency, how often the content is expected to change"
         },
         "priority": {
             "type": "number",
@@ -52,7 +58,13 @@
                 0.9,
                 1.0
             ],
-            "default": 0.5
+            "default": 0.5,
+            "description": "Url priority"
+        },
+        "trailingSlash": {
+            "type": "boolean",
+            "default": true,
+            "description": "Include trailing slash in the URLs; disabling this option will likely cause redirects when serving prerendered pages"
         }
     },
     "additionalProperties": false,

@@ -146,6 +146,16 @@ export class AppComponent {
             ]
         },
         {
+            label: 'nxt-sitemap',
+            link: '/sitemap',
+            children: [
+                {
+                    label: 'API docs',
+                    url: 'https://liquid-js.github.io/nxt-components/nxt-sitemap'
+                }
+            ]
+        },
+        {
             label: 'nxt-sortablejs',
             link: '/sortablejs',
             children: [
