@@ -12,54 +12,29 @@ import { config, parser } from 'typescript-eslint'
 
 export default config(
     {
-        ignores: [
-            '**/node_modules',
-            '**/dist',
-            '**/docs',
-            '**/.angular',
-            '**/.yarn',
-            'packages/**/*'
-        ]
+        ignores: ['dist', 'node_modules', 'coverage', 'docs', '.yarn', '.husky', 'tmp', '.angular', 'packages/**/*']
     },
     {
+        files: ['**/*.ts', '**/*.js', '**/*.cjs'],
         plugins: {
-            '@typescript-eslint': typescriptEslintPlugin,
             '@angular-eslint': angularEslintPlugin,
+            '@typescript-eslint': typescriptEslintPlugin,
             '@import': importPlugin,
             '@jsdoc': jsdocPlugin,
-            '@prefer-arrow-functions': preferArrowPlugin,
+            '@prefer-arrow-functions': preferArrowPlugin['default'],
             '@unused-imports': unusedImportsPlugin,
             '@stylistic': stylisticPlugin
-        }
-    },
-    {
-        files: [
-            '**/*.ts',
-            '**/*.js',
-            '**/*.cjs'
-        ],
+        },
         languageOptions: {
             parser,
             parserOptions: {
+                project: 'tsconfig.json',
                 projectService: {
-                    allowDefaultProject: [
-                        '*.js',
-                        '*.cjs',
-                        'packages/*/*.js',
-                        'packages/*/*.cjs'
-                    ],
-                    maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING: 100
+                    allowDefaultProject: ['.*', '*.js', '*.cjs', 'packages/*/*.js', 'packages/*/*.cjs']
                 },
                 tsconfigRootDir: import.meta.dirname
             }
-        }
-    },
-    {
-        files: [
-            '**/*.ts',
-            '**/*.js',
-            '**/*.cjs'
-        ],
+        },
         processor: angular.processInlineTemplates,
         rules: {
             '@angular-eslint/component-class-suffix': 'error',
@@ -120,13 +95,11 @@ export default config(
                 }
             ],
             '@stylistic/arrow-parens': 'off',
-            '@stylistic/brace-style': [
-                'error',
-                '1tbs'
-            ],
+            '@stylistic/brace-style': ['error', '1tbs'],
             '@stylistic/comma-dangle': 'error',
             '@stylistic/eol-last': 'error',
             '@stylistic/id-blacklist': 'off',
+            '@stylistic/indent': ['error', 4],
             '@stylistic/linebreak-style': 'off',
             '@stylistic/max-len': 'off',
             '@stylistic/member-delimiter-style': [
@@ -151,10 +124,7 @@ export default config(
                 }
             ],
             '@stylistic/no-trailing-spaces': 'error',
-            '@stylistic/quote-props': [
-                'error',
-                'consistent-as-needed'
-            ],
+            '@stylistic/quote-props': ['error', 'consistent-as-needed'],
             '@stylistic/quotes': [
                 'error',
                 'single',
@@ -162,10 +132,7 @@ export default config(
                     avoidEscape: true
                 }
             ],
-            '@stylistic/semi': [
-                'error',
-                'never'
-            ],
+            '@stylistic/semi': ['error', 'never'],
             '@stylistic/space-before-function-paren': [
                 'error',
                 {
@@ -174,10 +141,7 @@ export default config(
                     named: 'never'
                 }
             ],
-            '@stylistic/space-in-parens': [
-                'error',
-                'never'
-            ],
+            '@stylistic/space-in-parens': ['error', 'never'],
             '@stylistic/type-annotation-spacing': 'error',
             '@typescript-eslint/adjacent-overload-signatures': 'error',
             '@typescript-eslint/array-type': [
@@ -195,11 +159,7 @@ export default config(
             '@typescript-eslint/member-ordering': [
                 'error',
                 {
-                    default: [
-                        'public-static-field',
-                        'static-field',
-                        'instance-field'
-                    ]
+                    default: ['public-static-field', 'static-field', 'instance-field']
                 }
             ],
             '@typescript-eslint/naming-convention': 'off',
@@ -275,23 +235,16 @@ export default config(
                     varsIgnorePattern: '^_'
                 }
             ],
-            'arrow-body-style': [
-                'error',
-                'as-needed'
-            ],
+            'arrow-body-style': ['error', 'as-needed'],
             'complexity': 'off',
             'constructor-super': 'error',
             'curly': 'off',
             'eqeqeq': 'off',
-            'guard-for-in': 'error',
             'id-match': 'off',
             'max-classes-per-file': 'off',
             'no-bitwise': 'off',
             'no-caller': 'error',
-            'no-cond-assign': [
-                'error',
-                'except-parens'
-            ],
+            'no-cond-assign': ['error', 'except-parens'],
             'no-console': 'off',
             'no-debugger': 'error',
             'no-duplicate-case': 'error',
@@ -338,10 +291,7 @@ export default config(
             'no-unused-vars': 'off',
             'no-var': 'error',
             'object-shorthand': 'error',
-            'one-var': [
-                'error',
-                'never'
-            ],
+            'one-var': ['error', 'never'],
             'prefer-const': [
                 'error',
                 {
@@ -350,10 +300,7 @@ export default config(
                 }
             ],
             'prefer-object-spread': 'error',
-            'radix': [
-                'error',
-                'always'
-            ],
+            'radix': ['error', 'always'],
             'sort-keys': 'off',
             'use-isnan': [
                 'error',
@@ -366,23 +313,19 @@ export default config(
         }
     },
     {
-        files: [
-            '**/*.spec.ts',
-            '**/test.ts',
-            '**/*.conf.js',
-            '**/*.conf.cjs',
-            '**/*.config.js',
-            '**/*.config.ts',
-            '**/*.config.cjs',
-            '**/scripts/**/*.ts'
-        ],
+        files: ['**/*.spec.ts', '**/*.spec.js', '**/*.config.js', '**/*.config.ts', '**/*.config.cjs', 'test/*.cjs', '**/test.ts', '**/test.js', 'scripts/*.ts'],
         rules: {
             '@import/no-extraneous-dependencies': [
                 'off',
                 {
-                    devDependencies: false
+                    devDependencies: true
                 }
-            ],
+            ]
+        }
+    },
+    {
+        files: ['**/*.cjs'],
+        rules: {
             '@typescript-eslint/no-require-imports': 'off'
         }
     },
