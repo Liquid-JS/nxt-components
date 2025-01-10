@@ -1899,20 +1899,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/ensure@npm:^18.4.0":
-  version: 18.6.1
-  resolution: "@commitlint/ensure@npm:18.6.1"
-  dependencies:
-    "@commitlint/types": "npm:^18.6.1"
-    lodash.camelcase: "npm:^4.3.0"
-    lodash.kebabcase: "npm:^4.1.1"
-    lodash.snakecase: "npm:^4.1.1"
-    lodash.startcase: "npm:^4.4.0"
-    lodash.upperfirst: "npm:^4.3.1"
-  checksum: 10/0a5c284dcc72bd3faf592fcd380a637446e33d12d38e4d289c98cb8896e3ec43b65ff2ac76ab5a947373895846d0c16df60b4bebd6eca67c1f704c230fde844d
-  languageName: node
-  linkType: hard
-
 "@commitlint/ensure@npm:^19.5.0":
   version: 19.5.0
   resolution: "@commitlint/ensure@npm:19.5.0"
@@ -1981,13 +1967,6 @@ __metadata:
     lodash.merge: "npm:^4.6.2"
     lodash.uniq: "npm:^4.5.0"
   checksum: 10/f340060751016de8e06f67137373f9ec51aff85ceb7ac8d5eec1bfb3693df38f7ad2c231fd1dd61acf58affb2f514761c12281328aacceaacef455d25d58c2ce
-  languageName: node
-  linkType: hard
-
-"@commitlint/message@npm:^18.4.0":
-  version: 18.6.1
-  resolution: "@commitlint/message@npm:18.6.1"
-  checksum: 10/e9a0b7f17b02844aade8721dcb8d6cd6b12cbca37b7edb56cc22d2d729049028751e76ea84fb673a0bcfb90e963458fe32cbfeca1580f624e3525b89468a78c3
   languageName: node
   linkType: hard
 
@@ -2061,15 +2040,6 @@ __metadata:
   dependencies:
     find-up: "npm:^7.0.0"
   checksum: 10/f6b5a3746c458e12c7a9e93f7c856ba90fba6e61db614ea1201e6b6e92cb8161dd13e88d8c9b408709ea0c19bc949cffcd1dd356cb6f51fc2ede8df48c1fd410
-  languageName: node
-  linkType: hard
-
-"@commitlint/types@npm:^18.6.1":
-  version: 18.6.1
-  resolution: "@commitlint/types@npm:18.6.1"
-  dependencies:
-    chalk: "npm:^4.1.0"
-  checksum: 10/fb37bdefd25e05e353eb568b26a7dd5aff488f1e3fbfc42080bde49ae6834ffde996acac4b7767df650b38e03692889b636b8290465823cd27276662d3b471cf
   languageName: node
   linkType: hard
 
@@ -3370,14 +3340,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@liquid-js/commitlint-plugin-workspace-scopes@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@liquid-js/commitlint-plugin-workspace-scopes@npm:2.0.0"
+"@liquid-js/commitlint-plugin-workspace-scopes@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@liquid-js/commitlint-plugin-workspace-scopes@npm:2.1.0"
   dependencies:
-    "@commitlint/ensure": "npm:^18.4.0"
-    "@commitlint/message": "npm:^18.4.0"
-    "@manypkg/get-packages": "npm:^2.2.0"
-  checksum: 10/26c0cb9ecede4849529e399186bbf4a07e6f06e2870143cfdad5ebbb3a6e3cd1e9bd9590ef7aa69ceaef759f525f246e426b32ce1c2347dd0562e3b6d06fbcee
+    "@commitlint/ensure": "npm:^19.5.0"
+    "@commitlint/message": "npm:^19.5.0"
+    "@manypkg/get-packages": "npm:^2.2.2"
+  checksum: 10/7fc158853615bc328c4681a92c5a817dcb9d39f1ce7c663aa558e7c6d7c6eca8a0469fbfa8ec98be0dcdea3f3230ffa4c9215239f635e7760ac5ccd9d99ad19f
   languageName: node
   linkType: hard
 
@@ -3443,7 +3413,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@manypkg/get-packages@npm:^2.2.0":
+"@manypkg/get-packages@npm:^2.2.2":
   version: 2.2.2
   resolution: "@manypkg/get-packages@npm:2.2.2"
   dependencies:
@@ -12765,7 +12735,7 @@ __metadata:
     "@lerna-lite/cli": "npm:^3.11.0"
     "@lerna-lite/version": "npm:^3.11.0"
     "@liquid-js/angular-cli-ghpages": "npm:^2.0.4"
-    "@liquid-js/commitlint-plugin-workspace-scopes": "npm:^2.0.0"
+    "@liquid-js/commitlint-plugin-workspace-scopes": "npm:^2.1.0"
     "@stylistic/eslint-plugin": "npm:^2.12.1"
     "@types/jasmine": "npm:^5.1.5"
     "@types/node": "npm:<23.0.0"
