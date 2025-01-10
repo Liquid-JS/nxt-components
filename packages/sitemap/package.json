@@ -2,7 +2,7 @@
     "name": "nxt-sitemap",
     "description": "Angular builder for generating sitemap from prerendered routes.",
     "bugs": "https://github.com/Liquid-JS/nxt-components/issues",
-    "version": "19.0.3",
+    "version": "19.0.4",
     "license": "MIT",
     "type": "module",
     "repository": "https://github.com/Liquid-JS/nxt-components.git",

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.0.4](https://github.com/Liquid-JS/nxt-components/compare/v19.0.3...v19.0.4) (2025-01-10)
+
+**Note:** Version bump only for package nxt-sortablejs
+
 ## [19.0.2](https://github.com/Liquid-JS/nxt-components/compare/v19.0.1...v19.0.2) (2024-12-17)
 
 ### Bug Fixes

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.0.4](https://github.com/Liquid-JS/nxt-components/compare/v19.0.3...v19.0.4) (2025-01-10)
+
+**Note:** Version bump only for package nxt-components
+
 ## [19.0.3](https://github.com/Liquid-JS/nxt-components/compare/v19.0.2...v19.0.3) (2024-12-17)
 
 ### Bug Fixes
@@ -14,6 +18,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * **sitemap:** builder end ([a60edb1](https://github.com/Liquid-JS/nxt-components/commit/a60edb123442072566ae448c93328f7db1949b2a))
+
 * **sortablejs:** wait for view init ([96f8be0](https://github.com/Liquid-JS/nxt-components/commit/96f8be0928608a24cd84c10a6b535389d760004c))
 
 ### Features
