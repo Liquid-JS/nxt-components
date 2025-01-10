@@ -764,7 +764,7 @@
     "directives": [
         {
             "name": "ColorPickerDirective",
-            "id": "directive-ColorPickerDirective-200c6e0a22012628ae4e9faa16b15500e080e57155f72adfeb40b9c9ede4fa9f54bc12acf50fb8f951df07bd19deddc7048aba2a7339968d729fc17920213112",
+            "id": "directive-ColorPickerDirective-84dad3b85447ac06f6275ecb6835c92132cc4a241b3dc2ab5a8a0c7001ceacdb7ce9f595199f1823d2522d4c8e849ab1a4d231bd9c8ec854ffe00687a5eeb809",
             "file": "src/lib/color-picker.directive.ts",
             "type": "directive",
             "description": "",
@@ -1212,8 +1212,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 10697,
-                                "end": 10699,
+                                "pos": 10693,
+                                "end": 10695,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1225,8 +1225,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "new Rgba(1, 1, 1, 1, true)",
                             "tagName": {
-                                "pos": 10691,
-                                "end": 10696,
+                                "pos": 10687,
+                                "end": 10692,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1237,8 +1237,8 @@
                         },
                         {
                             "name": {
-                                "pos": 10792,
-                                "end": 10794,
+                                "pos": 10788,
+                                "end": 10790,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1250,8 +1250,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "this.dialog?.rgbaText",
                             "tagName": {
-                                "pos": 10786,
-                                "end": 10791,
+                                "pos": 10782,
+                                "end": 10787,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1262,8 +1262,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 10858,
-                                "end": 10865,
+                                "pos": 10854,
+                                "end": 10861,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,

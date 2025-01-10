@@ -11,5 +11,17 @@ export default config(
             'node_modules',
             'tmp'
         ]
+    },
+    {
+        files: [
+            '**/*.ts'
+        ],
+        rules: {}
+    },
+    {
+        files: [
+            '**/*.html'
+        ],
+        rules: {}
     }
 )

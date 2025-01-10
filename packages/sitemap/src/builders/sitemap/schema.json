@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "title": "schema",
+    "title": "Sitemap builder options",
     "description": "Generate sitemap from prerendered routes",
     "properties": {
         "srcDirectory": {
@@ -60,6 +60,11 @@
             ],
             "default": 0.5,
             "description": "Url priority"
+        },
+        "trailingSlash": {
+            "type": "boolean",
+            "default": true,
+            "description": "Include trailing slash in the URLs; disabling this option will likely cause redirects when serving prerendered pages"
         }
     },
     "additionalProperties": false,

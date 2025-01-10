@@ -46,7 +46,7 @@
                 "dist/pick-datetime/native-adapter"
             ],
             "nxt-sitemap": [
-                "./dist/sitemap"
+                "dist/sitemap"
             ],
             "nxt-sortablejs": [
                 "dist/sortablejs"

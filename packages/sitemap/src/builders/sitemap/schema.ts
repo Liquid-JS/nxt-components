@@ -5,9 +5,21 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface Schema {
+/**
+ * Generate sitemap from prerendered routes
+ */
+export interface SitemapBuilderOptions {
+  /**
+   * Directory where prerendered contents are located, e.g. `dist/browser`
+   */
   srcDirectory: string;
+  /**
+   * Base URL where the page will be deployed, e.g. https://example.com/ or https://example.com/subdir/
+   */
   baseUrl: string;
+  /**
+   * Either ISO date, datetime, or a string 'today'; last modified date of the pages
+   */
   lastMod?: (
     | {
         [k: string]: unknown;
@@ -15,6 +27,16 @@ export interface Schema {
     | "today"
   ) &
     string;
+  /**
+   * Change frequency, how often the content is expected to change
+   */
   changeFreq?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
+  /**
+   * Url priority
+   */
   priority?: 0 | 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.8 | 0.9 | 1;
+  /**
+   * Include trailing slash in the URLs; disabling this option will likely cause redirects when serving prerendered pages
+   */
+  trailingSlash?: boolean;
 }

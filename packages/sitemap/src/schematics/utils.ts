@@ -1,6 +1,9 @@
 import { virtualFs, workspaces } from '@angular-devkit/core'
 import { SchematicsException, Tree } from '@angular-devkit/schematics'
 
+/**
+ * @internal
+ */
 export function createHost(tree: Tree): workspaces.WorkspaceHost {
     return {
         readFile: async (path: string): Promise<string> => {

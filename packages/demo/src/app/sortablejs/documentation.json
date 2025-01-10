@@ -8,7 +8,7 @@
     "directives": [
         {
             "name": "SortablejsDirective",
-            "id": "directive-SortablejsDirective-23e442ae2ab2b869f508123ed786983b008c573072cf9e65d173860c00ec5f70a96b5a6815f6b133e6ed7ba87bdbc64876d07edfb51ff5a0bae70e36019d9537",
+            "id": "directive-SortablejsDirective-908dbdf231f50b9a61ed7d02a1ab674782949fc3f5dacb95dd91e2d20b6fc63f7930a81b82f91cffaf8ed0be088e7c26b76312d821bb85e78c0cb4c545b67efd",
             "file": "src/lib/sortablejs.directive.ts",
             "type": "directive",
             "description": "",
@@ -79,9 +79,9 @@
             "methodsClass": [],
             "extends": [],
             "implements": [
-                "OnInit",
                 "OnChanges",
-                "OnDestroy"
+                "OnDestroy",
+                "AfterViewInit"
             ],
             "constructorObj": {
                 "name": "constructor",

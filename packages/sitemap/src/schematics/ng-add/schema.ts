@@ -5,11 +5,17 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface Schema {
+export interface NgAddSchematicOptions {
   /**
    * The project for which the sitemap config should be added
    */
   project?: string;
+  /**
+   * Directory where prerendered contents are located, e.g. `dist/browser`
+   */
   srcDirectory?: string;
+  /**
+   * Base URL where the page will be deployed, e.g. https://example.com/ or https://example.com/subdir/
+   */
   baseUrl: string;
 }

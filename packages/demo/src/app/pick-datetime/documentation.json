@@ -87,7 +87,7 @@
         },
         {
             "name": "DateTimeInputEvent",
-            "id": "interface-DateTimeInputEvent-12c7d22c16548022f6bcfffc534b568c887f80a7d3e41e660e00fd11110724c9ff7eef2f3a646c8b35eef1e581fbd28540e6fa4b2b88b11cb0371599fc9e042a",
+            "id": "interface-DateTimeInputEvent-e598405e89409bcc02bf8b63eed3a47e5f13c57339f463b77ab632dd4f287f995a1a81090c4a1f0e34a455d8dc46093b9fa480ec7588fc01dd132f16f67dc1e6",
             "file": "src/lib/date-time/date-time-picker-input.directive.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -191,7 +191,7 @@
         },
         {
             "name": "MomentDateTimeAdapterOptions",
-            "id": "interface-MomentDateTimeAdapterOptions-e3f62a848294742aad816d29469100f4fe1e8cebc810485ca4c383b8892e6ad10459a08c67e871262f0bc61891166ada2495fdec9b17add272a68c661c8bf251",
+            "id": "interface-MomentDateTimeAdapterOptions-0da93b659e9ef12339010d313f0a246cc1a1daea9e0861851e8f3c3b3ad3a3c0d4f458e003e450ab0e6651ee6201a6c8d1df04b6279a1d8483add9de8233c296",
             "file": "moment-adapter/src/date-time-adapter.class.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -489,7 +489,7 @@
         },
         {
             "name": "MomentDateTimeAdapter",
-            "id": "injectable-MomentDateTimeAdapter-e3f62a848294742aad816d29469100f4fe1e8cebc810485ca4c383b8892e6ad10459a08c67e871262f0bc61891166ada2495fdec9b17add272a68c661c8bf251",
+            "id": "injectable-MomentDateTimeAdapter-0da93b659e9ef12339010d313f0a246cc1a1daea9e0861851e8f3c3b3ad3a3c0d4f458e003e450ab0e6651ee6201a6c8d1df04b6279a1d8483add9de8233c296",
             "file": "moment-adapter/src/date-time-adapter.class.ts",
             "properties": [
                 {
@@ -6497,7 +6497,7 @@
         },
         {
             "name": "DateTimeInputDirective",
-            "id": "directive-DateTimeInputDirective-12c7d22c16548022f6bcfffc534b568c887f80a7d3e41e660e00fd11110724c9ff7eef2f3a646c8b35eef1e581fbd28540e6fa4b2b88b11cb0371599fc9e042a",
+            "id": "directive-DateTimeInputDirective-e598405e89409bcc02bf8b63eed3a47e5f13c57339f463b77ab632dd4f287f995a1a81090c4a1f0e34a455d8dc46093b9fa480ec7588fc01dd132f16f67dc1e6",
             "file": "src/lib/date-time/date-time-picker-input.directive.ts",
             "type": "directive",
             "description": "",
@@ -7512,7 +7512,7 @@
         },
         {
             "name": "DateTimeTriggerDirective",
-            "id": "directive-DateTimeTriggerDirective-7730a278e0f64c1626bfa72ae64eecaffc44ca4b647c1fd7cf2e7b6a895d95d4316d19d579d80866ef71afb2f5dc7c7fedfaa7350c25ba956dc03acd76edfc23",
+            "id": "directive-DateTimeTriggerDirective-1bd3250ba44b2cf820c85fcabe8b8a03b9b36567cebbb55cd67fe97ebc086724e2052ace126479e6f21690c065a4dc273361067015b0f3a1e48011c3e1b93cbd",
             "file": "src/lib/date-time/date-time-picker-trigger.directive.ts",
             "type": "directive",
             "description": "",
@@ -7736,7 +7736,7 @@
     "components": [
         {
             "name": "CalendarComponent",
-            "id": "component-CalendarComponent-264a43929fd0a7420476773a82d9a4cc56471a4bfc7ae5e336fe844a845c2c30f89f778198b80ceebb61a44037ee307556931ea61dc793b2bd553e3686061db6",
+            "id": "component-CalendarComponent-5aead989a12c4cf4433b6d909dfdd972962da9a84c6508ee89f68f44f995208b8ebd6ef6acd63a16fb10b953253d71ffd1ea57f3acfd22857a41341e85cdb6ad",
             "file": "src/lib/date-time/calendar/calendar.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -8610,7 +8610,7 @@
         },
         {
             "name": "DateTimeComponent",
-            "id": "component-DateTimeComponent-425c1817dbd313969ea8a9bf7f8443eb21be3e22582e45f621649fe9572a15fe614c51dc9193b0405e0da6fc6ed630e850566eb7f59d39ec41a8b521f778e30f",
+            "id": "component-DateTimeComponent-251e1188d96eafa97f78c189a642b65d11dce0a982ca340905c963cd37aaceda89b80d47bf0ab6aadb67574a2fb0853f0f45e079924b720286b0223b395c8e2c",
             "file": "src/lib/date-time/date-time-picker/date-time-picker.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -9709,7 +9709,7 @@
         },
         {
             "name": "DateTimeInlineComponent",
-            "id": "component-DateTimeInlineComponent-3e4a2b2b4d9b6a887620dd2c839f9c48a7d9bfba6ddeb993307b6607d985742c6abc70094f43525b2d58985524d13797455d4b8f10138767fd2c1657d003c0bf",
+            "id": "component-DateTimeInlineComponent-8620e1381865878c8f5cfa129c3a15a4f3be41d7c22da836f02dc5111320f806755403d9815a82b827f43b7c9bc2f4b415b4b11aa58bfca15cfec6793dee92d6",
             "file": "src/lib/date-time/date-time-inline/date-time-inline.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -10799,7 +10799,7 @@
         },
         {
             "name": "MonthViewComponent",
-            "id": "component-MonthViewComponent-adc50fd4730f3f2ac4c1863d0d949a530ff5cccd2bdf3e2a2dd640e390b8dfc8f4badfee40997841fb9a1e617acdb3f9186f3543843aaa5662c9059d43594718",
+            "id": "component-MonthViewComponent-f9798f7016395f2c943476b251119e72770fcddfa77044a1e00406d48a470eaf9eef5f194f67fc15728edbb845f9990bee8ac4bc5e13ac606a76d23f8e6b2d80",
             "file": "src/lib/date-time/calendar-month-view/calendar-month-view.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -12216,7 +12216,7 @@
         },
         {
             "name": "TimerComponent",
-            "id": "component-TimerComponent-f8cd57c88e5e2c4ff18e2de780f975794f353f1bde8f3a5b94d74c0fa607a391543b48d6950a7c55170528571670632a98730bbe980617da8330abbe74b4f2d5",
+            "id": "component-TimerComponent-627c8fd19ec1a70769b18614b821ed805aa355ec076df49ca4199738c53b4002645d37310a847ae22ca99a96caf76455ba3fa719e4e8caadb75509b05da43950",
             "file": "src/lib/date-time/timer/timer.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -13666,7 +13666,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new InjectionToken<MomentDateTimeAdapterOptions>(\r\n    'NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {\r\n    providedIn: 'root',\r\n    factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY\r\n})",
+                "defaultValue": "new InjectionToken<MomentDateTimeAdapterOptions>(\r\n    'NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {\r\n        providedIn: 'root',\r\n        factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY\r\n    })",
                 "rawdescription": "InjectionToken for moment date adapter to configure options",
                 "description": "<p>InjectionToken for moment date adapter to configure options</p>\n"
             }
@@ -13788,7 +13788,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new InjectionToken<MomentDateTimeAdapterOptions>(\r\n    'NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {\r\n    providedIn: 'root',\r\n    factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY\r\n})",
+                    "defaultValue": "new InjectionToken<MomentDateTimeAdapterOptions>(\r\n    'NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {\r\n        providedIn: 'root',\r\n        factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY\r\n    })",
                     "rawdescription": "InjectionToken for moment date adapter to configure options",
                     "description": "<p>InjectionToken for moment date adapter to configure options</p>\n"
                 }

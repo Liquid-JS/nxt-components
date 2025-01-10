@@ -1,4 +1,5 @@
 import {
+    AfterViewInit,
     Directive,
     ElementRef,
     EventEmitter,
@@ -7,7 +8,6 @@ import {
     NgZone,
     OnChanges,
     OnDestroy,
-    OnInit,
     Optional,
     Output,
     Renderer2,
@@ -27,7 +27,7 @@ export type CloneFunction<T> = (item: T) => T
     selector: '[nxtSortablejs]',
     standalone: false
 })
-export class SortablejsDirective<T> implements OnInit, OnChanges, OnDestroy {
+export class SortablejsDirective<T> implements OnChanges, OnDestroy, AfterViewInit {
 
     /** Input data, can be Array or FormArray */
     @Input('nxtSortablejs')
@@ -66,7 +66,7 @@ export class SortablejsDirective<T> implements OnInit, OnChanges, OnDestroy {
     ) { }
 
     /** @internal */
-    ngOnInit() {
+    ngAfterViewInit() {
         if (Sortable?.create!) { // Sortable does not exist in angular universal (SSR)
             this.create()
         }
