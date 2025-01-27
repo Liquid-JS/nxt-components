@@ -1,0 +1,37 @@
+{
+  "name": "ngx-highlightjs",
+  "version": "14.0.0",
+  "description": "Instant code highlighting, auto-detect language, super easy to use.",
+  "homepage": "https://ngx-highlight.netlify.app",
+  "author": {
+    "name": "Murhaf Sousli",
+    "url": "http://github.com/murhafsousli"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MurhafSousli/ngx-highlightjs"
+  },
+  "bugs": {
+    "url": "http://github.com/murhafsousli/ngx-highlightjs/issues"
+  },
+  "keywords": [
+    "angular",
+    "highlight",
+    "highlightjs",
+    "prism",
+    "syntax",
+    "code",
+    "gist"
+  ],
+  "peerDependencies": {
+    "@angular/common": ">=19.0.0",
+    "@angular/core": ">=19.0.0",
+    "@angular/cdk": ">=19.0.0",
+    "rxjs": ">=7.0.0"
+  },
+  "dependencies": {
+    "highlight.js": "^11.11.1",
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
