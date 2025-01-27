@@ -9,8 +9,7 @@ export async function afterTimeout(timeout: number): Promise<void> {
 // Fake Highlight Loader
 export const highlightLoaderStub = {
   ready: new Promise<HLJSApi>((resolve) => {
-    document.defaultView['hljs'] = hljs;
-    activateLineNumbers();
-    resolve(document.defaultView['hljs']);
+    activateLineNumbers(hljs, document);
+    resolve(hljs);
   })
 };

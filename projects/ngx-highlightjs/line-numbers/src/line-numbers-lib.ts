@@ -1,7 +1,6 @@
-export function activateLineNumbers() {
-  const w: any = window;
-  const d: Document = document;
+import { type HLJSApi } from "highlight.js";
 
+export function activateLineNumbers(hljs: HLJSApi, document: Document) {
   const TABLE_NAME: string = 'hljs-ln',
     LINE_NAME: string = 'hljs-ln-line',
     CODE_BLOCK_NAME: string = 'hljs-ln-code',
@@ -10,15 +9,11 @@ export function activateLineNumbers() {
     DATA_ATTR_NAME: string = 'data-line-number',
     BREAK_LINE_REGEXP: RegExp = /\r\n|\r|\n/g;
 
-  if (w.hljs) {
-    w.hljs.initLineNumbersOnLoad = initLineNumbersOnLoad;
-    w.hljs.lineNumbersBlock = lineNumbersBlock;
-    w.hljs.lineNumbersValue = lineNumbersValue;
+  (hljs as any).initLineNumbersOnLoad = initLineNumbersOnLoad;
+  (hljs as any).lineNumbersBlock = lineNumbersBlock;
+  (hljs as any).lineNumbersValue = lineNumbersValue;
 
-    addStyles();
-  } else {
-    w.console.error('highlight.js not detected!');
-  }
+  addStyles();
 
   function isHljsLnCodeDescendant(domElt): boolean {
     let curElt = domElt;
@@ -128,7 +123,7 @@ export function activateLineNumbers() {
   });
 
   function addStyles() {
-    const css: HTMLStyleElement = d.createElement('style');
+    const css: HTMLStyleElement = document.createElement('style');
     css.type = 'text/css';
     css.innerHTML = format(
       '.{0}{border-collapse:collapse}' +
@@ -139,14 +134,14 @@ export function activateLineNumbers() {
         NUMBER_LINE_NAME,
         DATA_ATTR_NAME
       ]);
-    d.getElementsByTagName('head')[0].appendChild(css);
+    document.getElementsByTagName('head')[0].appendChild(css);
   }
 
   function initLineNumbersOnLoad(options) {
-    if (d.readyState === 'interactive' || d.readyState === 'complete') {
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
       documentReady(options);
     } else {
-      w.addEventListener('DOMContentLoaded', function () {
+      document.addEventListener('DOMContentLoaded', function () {
         documentReady(options);
       });
     }
@@ -154,7 +149,7 @@ export function activateLineNumbers() {
 
   function documentReady(options): void {
     try {
-      const blocks: NodeListOf<Element> = d.querySelectorAll('code.hljs,code.nohighlight');
+      const blocks: NodeListOf<Element> = document.querySelectorAll('code.hljs,code.nohighlight');
 
       for (const i in blocks) {
         if (blocks.hasOwnProperty(i)) {
@@ -164,7 +159,7 @@ export function activateLineNumbers() {
         }
       }
     } catch (e) {
-      w.console.error('LineNumbers error: ', e);
+      console.error('LineNumbers error: ', e);
     }
   }
 
@@ -177,9 +172,7 @@ export function activateLineNumbers() {
       return;
     }
 
-    async(function () {
-      element.innerHTML = lineNumbersInternal(element, options);
-    });
+    element.innerHTML = lineNumbersInternal(element, options);
   }
 
   function lineNumbersValue(value, options) {
@@ -335,10 +328,6 @@ export function activateLineNumbers() {
   ///
   /// HELPERS
   ///
-
-  function async(func) {
-    w.setTimeout(func, 0);
-  }
 
   /**
    * {@link https://wcoder.github.io/notes/string-format-for-string-formating-in-javascript}

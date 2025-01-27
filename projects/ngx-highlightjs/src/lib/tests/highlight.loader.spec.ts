@@ -10,19 +10,6 @@ const coreLibraryLoader = () => import('highlight.js/lib/core');
 const typescript = () => import('highlight.js/lib/languages/typescript');
 
 describe('HighlightService', () => {
-
-  beforeEach(() => {
-    // Clean up hljs
-    document.defaultView['hljs'] = null;
-  });
-
-  it('should work when library is loaded externally', async () => {
-    document.defaultView['hljs'] = hljs;
-    const loader: HighlightLoader = TestBed.inject(HighlightLoader);
-    const lib: HLJSApi = await loader.ready;
-    expect(lib).toBe(hljs);
-  });
-
   it('should load the library when fullLibrary is provided', async () => {
     TestBed.overrideProvider(HIGHLIGHT_OPTIONS, {
       useValue: {
@@ -137,7 +124,6 @@ describe('HighlightService', () => {
 
 
   it('should create style element when loading a theme', () => {
-    document.defaultView['hljs'] = hljs;
     const loader: HighlightLoader = TestBed.inject(HighlightLoader);
 
     const path: string = 'https://path-to-theme.css/';
@@ -158,7 +144,6 @@ describe('HighlightService', () => {
   });
 
   it('should update existing style element when setting a theme', () => {
-    document.defaultView['hljs'] = hljs;
     const loader: HighlightLoader = TestBed.inject(HighlightLoader);
 
     loader.setTheme('https://initial-theme-path.css/');
@@ -170,7 +155,6 @@ describe('HighlightService', () => {
   });
 
   it('should load a new style element when setting a theme if no existing element', () => {
-    document.defaultView['hljs'] = hljs;
     const loader: HighlightLoader = TestBed.inject(HighlightLoader);
 
     const path: string = 'https://path-to-theme.css/';
@@ -190,7 +174,6 @@ describe('HighlightService', () => {
       } as HighlightJSOptions
     });
 
-    document.defaultView['hljs'] = hljs;
     const loader: HighlightLoader = TestBed.inject(HighlightLoader);
 
     expect(loader['_themeLinkElement']).toBeTruthy();

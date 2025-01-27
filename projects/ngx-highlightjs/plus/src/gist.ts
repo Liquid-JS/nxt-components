@@ -1,4 +1,4 @@
-import { Directive, Pipe, Input, Output, PipeTransform, EventEmitter, inject } from '@angular/core';
+import { Directive, Pipe, Input, Output, PipeTransform, EventEmitter, inject, PendingTasks } from '@angular/core';
 import { CodeLoader } from './code-loader';
 import { Gist } from './gist.model';
 
@@ -9,10 +9,16 @@ export class GistDirective {
 
   private _loader: CodeLoader = inject(CodeLoader);
 
+  private _pendingTasks: PendingTasks = inject(PendingTasks);
+
   @Input()
   set gist(value: string) {
     if (value) {
-      this._loader.getCodeFromGist(value).subscribe((gist: Gist) => this.gistLoad.emit(gist));
+      const done = this._pendingTasks.add()
+      this._loader.getCodeFromGist(value).subscribe((gist: Gist) => {
+        done()
+        this.gistLoad.emit(gist)
+      });
     }
   }
 

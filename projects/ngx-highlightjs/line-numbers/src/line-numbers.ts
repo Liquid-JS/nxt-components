@@ -3,10 +3,10 @@ import {
   inject,
   numberAttribute,
   booleanAttribute,
-  afterRenderEffect,
   input,
   ElementRef,
-  InputSignalWithTransform
+  InputSignalWithTransform,
+  effect
 } from '@angular/core';
 import { HIGHLIGHT_OPTIONS, HighlightJS, HighlightBase, LineNumbersOptions } from 'ngx-highlightjs';
 
@@ -20,9 +20,6 @@ export class HighlightLineNumbers {
   private readonly _highlight: HighlightBase = inject(HighlightBase);
   private readonly _nativeElement: HTMLElement = inject(ElementRef<HTMLElement>).nativeElement;
 
-  // Temp observer to observe when line numbers has been added to code element
-  private _lineNumbersObs: MutationObserver;
-
   readonly startFrom: InputSignalWithTransform<number, unknown> = input<number, unknown>(this.options?.startFrom, {
     transform: numberAttribute
   });
@@ -32,40 +29,24 @@ export class HighlightLineNumbers {
   });
 
   constructor() {
-    afterRenderEffect({
-      write: () => {
-        if (this._highlight.highlightResult()) {
-          this.addLineNumbers();
-        }
+    effect(() => {
+      if (this._highlight.highlightResult()) {
+        this.addLineNumbers();
       }
     });
   }
 
-  private addLineNumbers(): void {
-    // Clean up line numbers observer
-    this.destroyLineNumbersObserver();
-    requestAnimationFrame(async () => {
-      // Add line numbers
-      await this._hljs.lineNumbersBlock(this._nativeElement, {
-        startFrom: this.startFrom(),
-        singleLine: this.singleLine()
-      });
-      // If lines count is 1, the line numbers library will not add numbers
-      // Observe changes to add 'hljs-line-numbers' class only when line numbers is added to the code element
-      this._lineNumbersObs = new MutationObserver(() => {
-        if (this._nativeElement.firstElementChild?.tagName.toUpperCase() === 'TABLE') {
-          this._nativeElement.classList.add('hljs-line-numbers');
-        }
-        this.destroyLineNumbersObserver();
-      });
-      this._lineNumbersObs.observe(this._nativeElement, { childList: true });
+  private async addLineNumbers(): Promise<void> {
+    // Add line numbers
+    await this._hljs.lineNumbersBlock(this._nativeElement, {
+      startFrom: this.startFrom(),
+      singleLine: this.singleLine()
     });
-  }
-
-  private destroyLineNumbersObserver(): void {
-    if (this._lineNumbersObs) {
-      this._lineNumbersObs.disconnect();
-      this._lineNumbersObs = null;
+    // If lines count is 1, the line numbers library will not add numbers
+    if (this._nativeElement.firstElementChild?.tagName.toUpperCase() === 'TABLE') {
+      this._nativeElement.classList.add('hljs-line-numbers');
+    } else {
+      this._nativeElement.classList.remove('hljs-line-numbers');
     }
   }
 }
