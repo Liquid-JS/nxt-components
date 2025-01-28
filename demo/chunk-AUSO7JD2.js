@@ -1,5 +1,9 @@
 import"./chunk-FBFWB55K.js";var i=`@use "./helpers";\r
 \r
+.col {\r
+    flex: 300px 1 1;\r
+}\r
+\r
 .highlighted-result {\r
     display: flex;\r
 \r
