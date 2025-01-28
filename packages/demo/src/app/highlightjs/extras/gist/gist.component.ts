@@ -1,7 +1,7 @@
 import { KeyValuePipe, NgClass } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { HighlightAutoDirective } from 'nxt-highlightjs'
+import { HighlightDirective } from 'nxt-highlightjs'
 import { Gist, GistDirective, GistFilePipe } from 'nxt-highlightjs/extras'
 
 @Component({
@@ -9,7 +9,7 @@ import { Gist, GistDirective, GistFilePipe } from 'nxt-highlightjs/extras'
     imports: [
         GistDirective,
         GistFilePipe,
-        HighlightAutoDirective,
+        HighlightDirective,
         KeyValuePipe,
         FormsModule,
         NgClass
@@ -34,6 +34,10 @@ export class GistComponent {
 
         this.selectedFile = Object.keys(gist.files)[0]
         this.loading = false
+    }
+
+    extName(file?: string) {
+        return file?.split('.').reverse()[0]
     }
 
 }

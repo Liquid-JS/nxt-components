@@ -27,8 +27,8 @@
 <pre [ngClass]="{ 'empty': !gist }"><code [nxtGist]="gistId"
     (gistLoad)="setGist($event)"
     (gistError)="error = $event; loading = false"
-    [nxtHighlightAuto]="(gist | gistFile: selectedFile)?.content"
-    [languages]="['ts', 'html', 'css']"></code></pre>
+    [nxtHighlight]="(gist | gistFile: selectedFile)?.content"
+    [language]="extName(selectedFile) ?? ''"></code></pre>
 
 @if (gist) {
 <a [href]="gist.html_url">Open on github</a>

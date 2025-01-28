@@ -13,6 +13,6 @@ export class CodeFromUrlPipe implements PipeTransform {
     private readonly loader = inject(CodeLoader)
 
     transform(url: string): Observable<string> {
-        return this.loader.getCodeFromUrl(isUrl(url) ? url : `${this.location.getPathname()}/${url}`)
+        return this.loader.getCodeFromUrl(isUrl(url) ? url : this.location.formatPathname(url))
     }
 }

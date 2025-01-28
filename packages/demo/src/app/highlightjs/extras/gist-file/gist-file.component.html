@@ -15,4 +15,5 @@
 <pre [ngClass]="{ 'empty': !gist }"><code [nxtGist]="gistId"
     (gistLoad)="gist = $event; loading = false"
     (gistError)="error = $event; loading = false"
-    [nxtHighlightAuto]="(gist | gistFile: 'sample.component.ts')?.content"></code></pre>
+    [nxtHighlight]="(gist | gistFile: 'sample.component.ts')?.content"
+    language="ts"></code></pre>

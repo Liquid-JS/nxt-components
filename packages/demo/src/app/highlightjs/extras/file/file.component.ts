@@ -1,6 +1,6 @@
 import { AsyncPipe } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
-import { HighlightAutoDirective } from 'nxt-highlightjs'
+import { HighlightDirective } from 'nxt-highlightjs'
 import { CodeFromUrlPipe, GistOptions, NXT_GIST_OPTIONS } from 'nxt-highlightjs/extras'
 import filePath from './file.txt'
 
@@ -8,7 +8,7 @@ import filePath from './file.txt'
     selector: 'app-file',
     imports: [
         CodeFromUrlPipe,
-        HighlightAutoDirective,
+        HighlightDirective,
         AsyncPipe
     ],
     providers: [{

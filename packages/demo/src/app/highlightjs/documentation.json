@@ -2,7 +2,7 @@
     "pipes": [
         {
             "name": "CodeFromUrlPipe",
-            "id": "pipe-CodeFromUrlPipe-80133067eb11bb0bd27a74cc7fbdf61f914420884d0542410ba191543532ef149ecd139f513c3405b9e6c3127f0d5c02444bad35fa0a493c6e998c37effa2fae",
+            "id": "pipe-CodeFromUrlPipe-1942ec1709007bfcd4e250ba767a7ddc7496e42ffa56cd39ab97b9122798c5ea658b46f6eedae23a4b961ef4e808b07829a89820f7f73d1f94d93e9673873b48",
             "file": "extras/src/code-from-url.ts",
             "type": "pipe",
             "deprecated": false,
@@ -153,14 +153,14 @@
         },
         {
             "name": "CodeFileLocation",
-            "id": "interface-CodeFileLocation-4ecfdfac842e25d07cf7477d5c0487dfa4fa306200fb2a6cc3330343200822fdc303c397a0317b26e8a41e4de9181b8462abf881df05f94a5a1093565e5b21f8",
+            "id": "interface-CodeFileLocation-f7fdd2687c1b6101de34338bac2b6eedc782a8dd53446e12fecc3521966263a42a5c4937cb17582dd5595e8d66105a3ef981337fd552b497a86b015d0bdc66f9",
             "file": "extras/src/code-file-location.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
             "properties": [
                 {
-                    "name": "getPathname",
+                    "name": "formatPathname",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "function",
