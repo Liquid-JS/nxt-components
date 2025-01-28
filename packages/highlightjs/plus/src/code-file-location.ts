@@ -1,26 +1,26 @@
-import { inject, InjectionToken } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT } from '@angular/common'
+import { inject, InjectionToken } from '@angular/core'
 
 /**
  * Injection token used to provide the current location to `codeFromUrl` pipe.
  * Used to handle server-side rendering and to stub out during unit tests.
  */
-export const HIGHLIGHT_FILE_LOCATION: InjectionToken<any> = new InjectionToken<CodeFileLocation>('HIGHLIGHT_FILE_LOCATION', {
-  providedIn: 'root',
-  factory: CODE_FILE_LOCATION_FACTORY,
-});
+export const NXT_HIGHLIGHT_FILE_LOCATION = new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {
+    providedIn: 'root',
+    factory: CODE_FILE_LOCATION_FACTORY
+})
 
 export interface CodeFileLocation {
-  getPathname: () => string;
+    getPathname: () => string
 }
 
-export function CODE_FILE_LOCATION_FACTORY(): CodeFileLocation {
-  const _location: Location = inject(DOCUMENT)?.location;
+export function CODE_FILE_LOCATION_FACTORY() {
+    const _location = inject(DOCUMENT)?.location
 
-  return {
-    // Note that this needs to be a function, rather than a property, because Angular
-    // will only resolve it once, but we want the current path on each call.
-    // getPathname: () => (_location ? _location.pathname + _location.search : ''),
-    getPathname: () => (_location ? _location.origin : '')
-  };
+    return {
+        // Note that this needs to be a function, rather than a property, because Angular
+        // will only resolve it once, but we want the current path on each call.
+        // getPathname: () => (_location ? _location.pathname + _location.search : ''),
+        getPathname: () => (_location ? _location.origin : '')
+    }
 }

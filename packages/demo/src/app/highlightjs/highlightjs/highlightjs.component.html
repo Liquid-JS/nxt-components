@@ -1,0 +1,27 @@
+<app-meta *ngIf="!loading"
+    title="nxt-highlightjs"
+    (done)="doneCb()"
+    description="Angular code highlighting directives with optional line numbers and support for SSR."></app-meta>
+<app-content-wrap>
+    <h1>Angular Highlight.js directives</h1>
+    <p>
+        <a href="https://github.com/Liquid-JS/nxt-components/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Liquid-JS/nxt-components.svg"
+                alt="GitHub license"></a>&nbsp;
+        <a href="https://www.npmjs.com/package/nxt-highlightjs"><img src="https://img.shields.io/npm/dm/nxt-highlightjs.svg"
+                alt="npm"></a>&nbsp;
+        <a href="https://www.npmjs.com/package/nxt-highlightjs"><img src="https://img.shields.io/npm/v/nxt-highlightjs.svg"
+                alt="scope"></a>
+    </p>
+    <p>Angular code highlighting directives with optional line numbers and support for SSR.</p>
+
+    <ul>
+        <li><a [routerLink]="'./getting-started'"><strong>Getting started</strong></a></li>
+        <li><a href="https://liquid-js.github.io/nxt-components/nxt-highlightjs"><strong>API docs</strong></a></li>
+    </ul>
+
+    <app-example *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+        [injector]="injector"
+        [config]="example"
+        [asTab]="true"
+        id="example-{{ i }}"></app-example>
+</app-content-wrap>

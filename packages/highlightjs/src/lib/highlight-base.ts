@@ -1,75 +1,61 @@
 import {
-  Directive,
-  inject,
-  ElementRef,
-  InputSignal,
-  WritableSignal,
-  SecurityContext,
-  OutputEmitterRef,
-  effect
-} from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import type { AutoHighlightResult, HighlightResult } from 'highlight.js';
-import { HighlightJS } from './highlight.service';
-import { trustedHTMLFromStringBypass } from './trusted-types';
+    Directive,
+    ElementRef,
+    InputSignal,
+    OutputEmitterRef,
+    SecurityContext,
+    WritableSignal,
+    effect,
+    inject
+} from '@angular/core'
+import { DomSanitizer } from '@angular/platform-browser'
+import type { AutoHighlightResult, HighlightResult } from 'highlight.js'
+import { HighlightJS } from './highlight.service'
+import { trustedHTMLFromStringBypass } from './trusted-types'
 
 @Directive()
 export abstract class HighlightBase {
 
-  protected _hljs: HighlightJS = inject(HighlightJS);
+    protected _hljs: HighlightJS = inject(HighlightJS)
 
-  private readonly _nativeElement: HTMLElement = inject(ElementRef<HTMLElement>).nativeElement;
-  private _sanitizer: DomSanitizer = inject(DomSanitizer);
+    private readonly _nativeElement: HTMLElement = inject(ElementRef<HTMLElement>).nativeElement
+    private _sanitizer: DomSanitizer = inject(DomSanitizer)
 
-  // Code to highlight
-  abstract code: InputSignal<string>;
+    // Code to highlight
+    abstract code: InputSignal<string | undefined>
 
-  // Highlighted result
-  abstract highlightResult: WritableSignal<HighlightResult | AutoHighlightResult>;
+    // Highlighted result
+    abstract highlightResult: WritableSignal<HighlightResult | AutoHighlightResult | undefined>
 
-  // Stream that emits when code string is highlighted
-  abstract highlighted: OutputEmitterRef<HighlightResult | AutoHighlightResult>;
+    // Stream that emits when code string is highlighted
+    abstract highlighted: OutputEmitterRef<HighlightResult | AutoHighlightResult | undefined>
 
+    constructor() {
+        effect(() => {
+            const code = this.code()
+            if (code) {
+                const res = this.highlightElement(code)
+                if (res) {
+                    this.setInnerHTML(res?.value ?? null)
+                    this.highlightResult.set(res)
+                    // Forward highlight response to the highlighted output
+                    this.highlighted.emit(res)
+                }
+            } else {
+                this.setTextContent('')
+            }
+        })
+    }
 
-  constructor() {
-    let codeInitial = true
-    effect(() => {
-      const code: string = this.code();
-      // Set code text before highlighting
-      if (codeInitial) {
-        // Effects run once to create dependency tree, avoid setting initial undefined content
-        codeInitial = false
-      } else {
-        this.setTextContent(code || '');
-      }
-      if (code) {
-        this.highlightElement(code);
-      }
-    });
+    protected abstract highlightElement(code: string): HighlightResult | AutoHighlightResult | undefined
 
-    let resultInitial = true
-    effect(() => {
-      const res: AutoHighlightResult = this.highlightResult();
-      if (resultInitial) {
-        // Effects run once to create dependency tree, avoid setting initial undefined content
-        resultInitial = false
-      } else {
-        this.setInnerHTML(res?.value);
-        // Forward highlight response to the highlighted output
-        this.highlighted.emit(res);
-      }
-    });
-  }
+    private setTextContent(content: string): void {
+        this._nativeElement.textContent = content
+    }
 
-  protected abstract highlightElement(code: string): Promise<void>;
-
-  private setTextContent(content: string): void {
-    this._nativeElement.textContent = content
-  }
-
-  private setInnerHTML(content: string | null): void {
-    this._nativeElement.innerHTML = trustedHTMLFromStringBypass(
-      this._sanitizer.sanitize(SecurityContext.HTML, content) || ''
-    )
-  }
+    private setInnerHTML(content: string | null): void {
+        this._nativeElement.innerHTML = trustedHTMLFromStringBypass(
+            this._sanitizer.sanitize(SecurityContext.HTML, content) || ''
+        ) as any
+    }
 }

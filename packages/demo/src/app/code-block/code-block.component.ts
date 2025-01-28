@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { Component, Input, ViewEncapsulation } from '@angular/core'
 import { TooltipDirective, TooltipModule } from 'ngx-bootstrap/tooltip'
-import { HighlightModule } from 'ngx-highlightjs'
+import { HighlightModule } from 'nxt-highlightjs'
 import { ClipboardDirective } from './clipboard.directive'
 
 @Component({

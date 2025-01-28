@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { Highlight } from './highlight';
-import { HighlightAuto } from './highlight-auto';
+import { NgModule } from '@angular/core'
+import { HighlightDirective } from './highlight'
+import { HighlightAutoDirective } from './highlight-auto'
 
 @NgModule({
-  imports: [Highlight, HighlightAuto],
-  exports: [Highlight, HighlightAuto]
+    imports: [HighlightDirective, HighlightAutoDirective],
+    exports: [HighlightDirective, HighlightAutoDirective]
 })
 export class HighlightModule {
 }

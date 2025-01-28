@@ -1,23 +1,21 @@
-import { inject, PendingTasks, Pipe, PipeTransform } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import { CodeLoader } from './code-loader';
-import { HIGHLIGHT_FILE_LOCATION, CodeFileLocation } from './code-file-location';
-import { isUrl } from './gist.model';
+import { inject, PendingTasks, Pipe, PipeTransform } from '@angular/core'
+import { Observable, tap } from 'rxjs'
+import { NXT_HIGHLIGHT_FILE_LOCATION } from './code-file-location'
+import { CodeLoader } from './code-loader'
+import { isUrl } from './gist.model'
 
 @Pipe({
-  name: 'codeFromUrl'
+    name: 'codeFromUrl'
 })
 export class CodeFromUrlPipe implements PipeTransform {
 
-  private _location: CodeFileLocation = inject(HIGHLIGHT_FILE_LOCATION);
+    private _location = inject(NXT_HIGHLIGHT_FILE_LOCATION)
+    private _loader = inject(CodeLoader)
+    private _pendingTasks = inject(PendingTasks)
 
-  private _loader: CodeLoader = inject(CodeLoader);
-
-  private _pendingTasks: PendingTasks = inject(PendingTasks);
-
-  transform(url: string): Observable<string> {
-    const done = this._pendingTasks.add()
-    return this._loader.getCodeFromUrl(isUrl(url) ? url : `${this._location.getPathname()}/${url}`)
-      .pipe(tap(done));
-  }
+    transform(url: string): Observable<string> {
+        const done = this._pendingTasks.add()
+        return this._loader.getCodeFromUrl(isUrl(url) ? url : `${this._location.getPathname()}/${url}`)
+            .pipe(tap(done))
+    }
 }

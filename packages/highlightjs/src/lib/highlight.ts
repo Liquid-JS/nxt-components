@@ -1,49 +1,46 @@
 import {
-  Directive,
-  signal,
-  output,
-  booleanAttribute,
-  input,
-  InputSignal,
-  WritableSignal,
-  OutputEmitterRef,
-  InputSignalWithTransform
-} from '@angular/core';
-import type { HighlightResult } from 'highlight.js';
-import { HighlightBase } from './highlight-base';
+    booleanAttribute,
+    Directive,
+    input,
+    InputSignal,
+    output,
+    signal
+} from '@angular/core'
+import type { HighlightResult } from 'highlight.js'
+import { HighlightBase } from './highlight-base'
 
 @Directive({
-  selector: '[highlight]',
-  providers: [{ provide: HighlightBase, useExisting: Highlight }],
-  host: {
-    '[class.hljs]': 'true'
-  }
+    selector: '[nxtHighlight]',
+    providers: [{ provide: HighlightBase, useExisting: HighlightDirective }],
+    host: {
+        '[class.hljs]': 'true'
+    }
 })
-export class Highlight extends HighlightBase {
+export class HighlightDirective extends HighlightBase {
 
-  // Code to highlight
-  code: InputSignal<string> = input(null, { alias: 'highlight' });
+    // Code to highlight
+    code = input<string>(undefined, { alias: 'nxtHighlight' })
 
-  // Highlighted result
-  highlightResult: WritableSignal<HighlightResult> = signal(null);
+    // Highlighted result
+    highlightResult = signal<HighlightResult | undefined>(undefined)
 
-  // The language name highlight only one language.
-  readonly language: InputSignal<string> = input.required<string>();
+    // The language name highlight only one language.
+    readonly language: InputSignal<string> = input.required<string>()
 
-  // An optional flag, when set to true it forces highlighting to finish even in case of detecting
-  // illegal syntax for the language instead of throwing an exception.
-  readonly ignoreIllegals: InputSignalWithTransform<boolean, unknown> = input<boolean, unknown>(undefined, {
-    transform: booleanAttribute
-  });
+    // An optional flag, when set to true it forces highlighting to finish even in case of detecting
+    // illegal syntax for the language instead of throwing an exception.
+    readonly ignoreIllegals = input<boolean, unknown>(undefined, {
+        transform: booleanAttribute
+    })
 
-  // Stream that emits when code string is highlighted
-  highlighted: OutputEmitterRef<HighlightResult> = output<HighlightResult>();
+    // Stream that emits when code string is highlighted
+    highlighted = output<HighlightResult>()
 
-  async highlightElement(code: string): Promise<void> {
-    const res: HighlightResult = await this._hljs.highlight(code, {
-      language: this.language(),
-      ignoreIllegals: this.ignoreIllegals()
-    });
-    this.highlightResult.set(res);
-  }
+    highlightElement(code: string) {
+        const hljs = this._hljs.hljs()
+        return hljs?.highlight(code, {
+            language: this.language(),
+            ignoreIllegals: this.ignoreIllegals()
+        })
+    }
 }

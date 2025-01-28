@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col">
+
+        <select [(ngModel)]="theme"
+            class="form-select">
+            <option *ngFor="let i of themes"
+                [value]="i">{{ i }}</option>
+        </select>
+
+        <br>
+
+        <select [(ngModel)]="language"
+            class="form-select">
+            <option *ngFor="let i of languages"
+                [value]="i[1]">{{ i[0] }}</option>
+        </select>
+
+        <br>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="is-directive"
+                name="is-directive"
+                [(ngModel)]="lineNumbers">
+            <label class="form-check-label"
+                for="is-directive">Show line numbers</label>
+        </div>
+
+        <br>
+
+        <textarea class="form-control"
+            rows="15"
+            placeholder="Paste code here"
+            [(ngModel)]="code"></textarea>
+
+    </div>
+    <div class="col highlighted-result">
+
+        @if(lineNumbers){
+        <pre [className]="theme"><code [nxtHighlightAuto]="code" [languages]="[language]" lineNumbers ></code></pre>
+        } @else {
+        <pre [className]="theme"><code [nxtHighlightAuto]="code" [languages]="[language]"  ></code></pre>
+        }
+
+    </div>
+</div>

@@ -1,161 +1,96 @@
-import { Injectable, PendingTasks, inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import {
-  Observable,
-  BehaviorSubject,
-  EMPTY,
-  tap,
-  map,
-  from,
-  filter,
-  forkJoin,
-  switchMap,
-  throwError,
-  catchError,
-  firstValueFrom
-} from 'rxjs';
-import { HIGHLIGHT_OPTIONS, HighlightJSOptions } from './highlight.model';
-import type { HLJSApi, LanguageFn } from 'highlight.js';
-import { LoaderErrors } from './loader-errors';
+import { DOCUMENT } from '@angular/common'
+import { Injectable, PendingTasks, inject } from '@angular/core'
+import type { HLJSApi } from 'highlight.js'
+import { NXT_HIGHLIGHT_OPTIONS } from './highlight.model'
+import { LoaderErrors } from './loader-errors'
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class HighlightLoader {
 
-  private document: Document = inject(DOCUMENT);
-  private options: HighlightJSOptions = inject(HIGHLIGHT_OPTIONS, { optional: true });
-  private pendingTasks = inject(PendingTasks)
+    private document: Document = inject(DOCUMENT)
+    private options = inject(NXT_HIGHLIGHT_OPTIONS, { optional: true })
+    private pendingTasks = inject(PendingTasks)
 
-  // Stream that emits when hljs library is loaded and ready to use
-  private readonly _ready: BehaviorSubject<HLJSApi> = new BehaviorSubject<HLJSApi>(null);
+    readonly ready: Promise<HLJSApi> = this.pendingTasks.run(() => this._loadLibrary()
+        .then(async hljs => {
+            if (this.options?.lineNumbersLoader) {
+                const plugin = await this.options.lineNumbersLoader();
+                (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)
+            }
 
-  readonly ready: Promise<HLJSApi> = this.pendingTasks.run(() => firstValueFrom(this._ready.asObservable().pipe(
-    filter((hljs: HLJSApi) => !!hljs),
-  )));
+            if (this.options?.highlightOptions)
+                hljs.configure(this.options.highlightOptions)
 
-  private _themeLinkElement: HTMLLinkElement;
+            return hljs
+        })
+    )
 
-  constructor() {
-    // Load hljs library
-    this._loadLibrary().pipe(
-      switchMap((hljs: HLJSApi) => {
-        if (this.options?.lineNumbersLoader) {
-          // Load line numbers library
-          return this.loadLineNumbers().pipe(
-            tap((plugin: { activateLineNumbers: (hljs: HLJSApi, document: Document) => void }) => {
-              plugin.activateLineNumbers(hljs, this.document);
-              this._ready.next(hljs);
-            })
-          );
-        } else {
-          this._ready.next(hljs);
-          return EMPTY;
+    private _themeLinkElement?: HTMLLinkElement
+
+    constructor() {
+        if (this.options?.themePath) {
+            this.loadTheme(this.options.themePath)
         }
-      }),
-      catchError((e: Error) => {
-        console.error('[HLJS] ', e);
-        this._ready.error(e);
-        return EMPTY;
-      })
-    ).subscribe();
-    // Load highlighting theme
-    if (this.options?.themePath) {
-      this.loadTheme(this.options.themePath);
     }
-  }
 
-  /**
-   * Lazy-Load highlight.js library
-   */
-  private _loadLibrary(): Observable<HLJSApi> {
-    if (this.options) {
-      if (this.options.fullLibraryLoader && this.options.coreLibraryLoader) {
-        return throwError(() => LoaderErrors.FULL_WITH_CORE_LIBRARY_IMPORTS);
-      }
-      if (this.options.fullLibraryLoader && this.options.languages) {
-        return throwError(() => LoaderErrors.FULL_WITH_LANGUAGE_IMPORTS);
-      }
-      if (this.options.coreLibraryLoader && !this.options.languages) {
-        return throwError(() => LoaderErrors.CORE_WITHOUT_LANGUAGE_IMPORTS);
-      }
-      if (!this.options.coreLibraryLoader && this.options.languages) {
-        return throwError(() => LoaderErrors.LANGUAGE_WITHOUT_CORE_IMPORTS);
-      }
-      if (this.options.fullLibraryLoader) {
-        return this.loadFullLibrary();
-      }
-      if (this.options.coreLibraryLoader && this.options.languages && Object.keys(this.options.languages).length) {
-        return this.loadCoreLibrary().pipe(switchMap((hljs: HLJSApi) => this._loadLanguages(hljs)));
-      }
+    /**
+     * Lazy-Load highlight.js library
+     */
+    private async _loadLibrary(): Promise<HLJSApi> {
+        if (this.options) {
+            if (this.options.fullLibraryLoader && this.options.coreLibraryLoader) {
+                throw new Error(LoaderErrors.FULL_WITH_CORE_LIBRARY_IMPORTS)
+            }
+            if (this.options.fullLibraryLoader && this.options.languages) {
+                throw new Error(LoaderErrors.FULL_WITH_LANGUAGE_IMPORTS)
+            }
+            if (this.options.coreLibraryLoader && !this.options.languages) {
+                throw new Error(LoaderErrors.CORE_WITHOUT_LANGUAGE_IMPORTS)
+            }
+            if (!this.options.coreLibraryLoader && this.options.languages) {
+                throw new Error(LoaderErrors.LANGUAGE_WITHOUT_CORE_IMPORTS)
+            }
+            if (this.options.fullLibraryLoader) {
+                return this.options.fullLibraryLoader()
+            }
+            if (this.options.coreLibraryLoader && this.options.languages && Object.keys(this.options.languages).length) {
+                return this.options.coreLibraryLoader().then(hljs => this._loadLanguages(hljs))
+            }
+        }
+        throw new Error(LoaderErrors.NO_FULL_AND_NO_CORE_IMPORTS)
     }
-    return throwError(() => LoaderErrors.NO_FULL_AND_NO_CORE_IMPORTS);
-  }
 
-  /**
-   * Lazy-load highlight.js languages
-   */
-  private _loadLanguages(hljs: HLJSApi): Observable<HLJSApi> {
-    const languages: Observable<unknown>[] = Object.entries(this.options.languages).map(([langName, langLoader]: [string, () => Promise<unknown>]) =>
-      importModule(langLoader()).pipe(
-        tap((langFunc: LanguageFn) => hljs.registerLanguage(langName, langFunc))
-      )
-    );
-    return forkJoin(languages).pipe(map(() => hljs));
-  }
-
-
-  /**
-   * Import highlight.js core library
-   */
-  private loadCoreLibrary(): Observable<HLJSApi> {
-    return importModule<HLJSApi>(this.options.coreLibraryLoader());
-  }
-
-  /**
-   * Import highlight.js library with all languages
-   */
-  private loadFullLibrary(): Observable<HLJSApi> {
-    return importModule<HLJSApi>(this.options.fullLibraryLoader());
-  }
-
-  /**
-   * Import line numbers library
-   */
-  private loadLineNumbers(): Observable<unknown> {
-    return from(this.options.lineNumbersLoader!());
-  }
-
-  /**
-   * Reload theme styles
-   */
-  setTheme(path: string): void {
-    if (this._themeLinkElement) {
-      this._themeLinkElement.href = path;
-    } else {
-      this.loadTheme(path);
+    /**
+     * Lazy-load highlight.js languages
+     */
+    private async _loadLanguages(hljs: HLJSApi) {
+        await Promise.all(Object.entries(this.options?.languages || {})
+            .map(([langName, langLoader]) => langLoader().then(langFunc => hljs.registerLanguage(langName, langFunc))))
+        return hljs
     }
-  }
 
-  /**
-   * Load theme
-   */
-  private loadTheme(path: string): void {
-    this._themeLinkElement = this.document.createElement('link');
-    this._themeLinkElement.href = path;
-    this._themeLinkElement.type = 'text/css';
-    this._themeLinkElement.rel = 'stylesheet';
-    this._themeLinkElement.media = 'screen,print';
-    this.document.head.appendChild(this._themeLinkElement);
-  }
+    /**
+     * Reload theme styles
+     */
+    setTheme(path: string): void {
+        if (this._themeLinkElement) {
+            this._themeLinkElement.href = path
+        } else {
+            this.loadTheme(path)
+        }
+    }
+
+    /**
+     * Load theme
+     */
+    private loadTheme(path: string): void {
+        this._themeLinkElement = this.document.createElement('link')
+        this._themeLinkElement.href = path
+        this._themeLinkElement.type = 'text/css'
+        this._themeLinkElement.rel = 'stylesheet'
+        this._themeLinkElement.media = 'screen,print'
+        this.document.head.appendChild(this._themeLinkElement)
+    }
 }
-
-/**
- * Map loader response to module object
- */
-const importModule = <T>(moduleLoader: Promise<unknown>): Observable<T> => {
-  return from(moduleLoader).pipe(
-    filter((module: { default: T }) => !!module?.default),
-    map((module: { default: T }) => module.default)
-  );
-};

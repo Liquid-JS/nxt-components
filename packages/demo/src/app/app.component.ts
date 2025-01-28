@@ -106,6 +106,20 @@ export class AppComponent {
             ]
         },
         {
+            label: 'nxt-highlightjs',
+            link: '/highlightjs',
+            children: [
+                {
+                    label: 'Getting started',
+                    link: 'getting-started'
+                },
+                {
+                    label: 'API docs',
+                    url: 'https://liquid-js.github.io/nxt-components/nxt-highlightjs'
+                }
+            ]
+        },
+        {
             label: 'nxt-json-view',
             link: '/json-view',
             children: [

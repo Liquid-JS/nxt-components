@@ -1,180 +1,149 @@
-import { TestBed } from '@angular/core/testing';
-import { HIGHLIGHT_OPTIONS, HighlightJS, HighlightLoader, HighlightJSOptions } from 'ngx-highlightjs';
-import hljs from 'highlight.js';
-import { highlightLoaderStub } from './common-tests';
+import { TestBed } from '@angular/core/testing'
+import hljs from 'highlight.js'
+import md from 'highlight.js/lib/languages/markdown'
+import { highlightLoaderStub } from '../test-helpers'
+import { HighlightLoader } from './highlight.loader'
+import { HighlightJS } from './highlight.service'
 
-import md from 'highlight.js/lib/languages/markdown';
+describe('Highlight Service', () => {
 
+    const testJsCode: string = 'console.log(&quot;test&quot;)'
 
-describe('HighlightService', () => {
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            providers: [
+                { provide: HighlightLoader, useValue: highlightLoaderStub }
+            ]
+        }).compileComponents()
+    })
 
-  const testJsCode: string = 'console.log(&quot;test&quot;)';
+    it('should be created', () => {
+        const service: HighlightJS = TestBed.inject(HighlightJS)
+        expect(service).toBeTruthy()
+    })
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      providers: [
-        { provide: HighlightLoader, useValue: highlightLoaderStub }
-      ]
-    }).compileComponents();
-  });
+    it('should call hljs [highlight] function', async () => {
+        const service: HighlightJS = TestBed.inject(HighlightJS)
+        const highlightSpy: jasmine.Spy = spyOn(hljs, 'highlight')
 
-  it('should be created', () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    expect(service).toBeTruthy();
-  });
+        await service.highlight(testJsCode, {
+            language: 'ts',
+            ignoreIllegals: false
+        })
 
-  it('should override the default config of highlight.js', async () => {
-    TestBed.overrideProvider(HIGHLIGHT_OPTIONS, {
-      useValue: {
-        highlightOptions: {
-          languages: ['ts', 'html']
-        }
-      } as HighlightJSOptions
-    });
-    const configureSpy: jasmine.Spy = spyOn(hljs,'configure');
-    const loader: HighlightLoader = TestBed.inject(HighlightLoader);
-    TestBed.inject(HighlightJS);
-    await loader.ready;
-    expect(configureSpy).toHaveBeenCalledWith({
-      languages: ['ts', 'html']
-    });
-  });
+        expect(highlightSpy).toHaveBeenCalledWith(testJsCode, {
+            language: 'ts',
+            ignoreIllegals: false
+        })
+    })
 
-  it('should call hljs [highlight] function', async () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    const highlightSpy: jasmine.Spy = spyOn(hljs, 'highlight');
+    it('should set the library reference signal when library is loaded', async () => {
+        const service: HighlightJS = TestBed.inject(HighlightJS)
+        await service['loader'].ready
+        expect(service.hljs()).toEqual(hljs)
+    })
 
-    await service.highlight(testJsCode, {
-      language: 'ts',
-      ignoreIllegals: false
-    });
+    it('should call hljs [highlightAuto] function', async () => {
+        const service: HighlightJS = TestBed.inject(HighlightJS)
+        const highlightAutoSpy: jasmine.Spy = spyOn(hljs, 'highlightAuto')
 
-    expect(highlightSpy).toHaveBeenCalledWith(testJsCode, {
-      language: 'ts',
-      ignoreIllegals: false
-    });
-  });
+        await service.highlightAuto(testJsCode, ['ts', 'html'])
 
+        expect(highlightAutoSpy).toHaveBeenCalledWith(testJsCode, ['ts', 'html'])
+    })
 
-  it('should set the library reference signal when library is loaded', async () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    await service['loader'].ready;
-    expect(service.hljs()).toEqual(hljs);
-  });
+    it('should call hljs [highlightElement] function', async () => {
+        const service: HighlightJS = TestBed.inject(HighlightJS)
+        const element: HTMLElement = document.createElement('div')
+        element.innerHTML = testJsCode
 
-  it('should call hljs [highlightAuto] function', async () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    const highlightAutoSpy: jasmine.Spy = spyOn(hljs, 'highlightAuto');
+        const highlightElementSpy: jasmine.Spy = spyOn(hljs, 'highlightElement')
 
-    await service.highlightAuto(testJsCode, ['ts', 'html']);
+        await service.highlightElement(element)
 
-    expect(highlightAutoSpy).toHaveBeenCalledWith(testJsCode, ['ts', 'html']);
-  });
+        expect(highlightElementSpy).toHaveBeenCalledWith(element)
+    })
 
-  it('should call hljs [highlightElement] function', async () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    const element: HTMLElement = document.createElement('div');
-    element.innerHTML = testJsCode;
+    it('should call hljs [highlightAll] function', async () => {
+        const service: HighlightJS = TestBed.inject(HighlightJS)
+        const highlightAllSpy: jasmine.Spy = spyOn(hljs, 'highlightAll')
 
-    const highlightElementSpy: jasmine.Spy = spyOn(hljs, 'highlightElement');
+        await service.highlightAll()
 
-    await service.highlightElement(element);
+        expect(highlightAllSpy).toHaveBeenCalled()
+    })
 
-    expect(highlightElementSpy).toHaveBeenCalledWith(element);
-  });
+    it('should call hljs [registerLanguage] function', async () => {
+        const service: HighlightJS = TestBed.inject(HighlightJS)
+        const registerLanguageSpy: jasmine.Spy = spyOn(hljs, 'registerLanguage')
 
+        await service.registerLanguage('markdown', md)
 
-  it('should call hljs [highlightAll] function', async () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    const highlightAllSpy: jasmine.Spy = spyOn(hljs, 'highlightAll');
+        expect(registerLanguageSpy).toHaveBeenCalledWith('markdown', md)
+    })
 
-    await service.highlightAll();
+    it('should call hljs [debugMode] function', async () => {
+        const service: HighlightJS = TestBed.inject(HighlightJS)
+        const debugModeSpy: jasmine.Spy = spyOn(hljs, 'debugMode')
 
-    expect(highlightAllSpy).toHaveBeenCalled();
-  });
+        await service.debugMode()
 
-  it('should call hljs [highlightAll] function', async () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    const configureSpy: jasmine.Spy = spyOn(hljs, 'configure');
+        expect(debugModeSpy).toHaveBeenCalled()
+    })
 
-    await service.configure({ languages: ['ts', 'html'] });
+    it('should call hljs [safeMode] function', async () => {
+        const service: HighlightJS = TestBed.inject(HighlightJS)
+        const safeModeSpy: jasmine.Spy = spyOn(hljs, 'safeMode')
 
-    expect(configureSpy).toHaveBeenCalledWith({ languages: ['ts', 'html'] });
-  });
+        await service.safeMode()
 
-  it('should call hljs [registerLanguage] function', async () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    const registerLanguageSpy: jasmine.Spy = spyOn(hljs, 'registerLanguage');
+        expect(safeModeSpy).toHaveBeenCalled()
+    })
 
-    await service.registerLanguage('markdown', md);
+    it('should call hljs [getLanguage] function', async () => {
+        const service: HighlightJS = TestBed.inject(HighlightJS)
+        const getLanguageSpy: jasmine.Spy = spyOn(hljs, 'getLanguage')
 
-    expect(registerLanguageSpy).toHaveBeenCalledWith('markdown', md);
-  });
+        await service.getLanguage('html')
 
+        expect(getLanguageSpy).toHaveBeenCalledWith('html')
+    })
 
-  it('should call hljs [debugMode] function', async () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    const debugModeSpy: jasmine.Spy = spyOn(hljs, 'debugMode');
+    it('should call hljs [listLanguages] function', async () => {
+        const service: HighlightJS = TestBed.inject(HighlightJS)
+        const listLanguagesSpy: jasmine.Spy = spyOn(hljs, 'listLanguages')
 
-    await service.debugMode();
+        await service.listLanguages()
 
-    expect(debugModeSpy).toHaveBeenCalled();
-  });
+        expect(listLanguagesSpy).toHaveBeenCalled()
+    })
 
-  it('should call hljs [safeMode] function', async () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    const safeModeSpy: jasmine.Spy = spyOn(hljs, 'safeMode');
+    it('should call hljs [unregisterLanguage] function', async () => {
+        const service: HighlightJS = TestBed.inject(HighlightJS)
+        const unregisterLanguageSpy: jasmine.Spy = spyOn(hljs, 'unregisterLanguage')
 
-    await service.safeMode();
+        await service.unregisterLanguage('markdown')
 
-    expect(safeModeSpy).toHaveBeenCalled();
-  });
+        expect(unregisterLanguageSpy).toHaveBeenCalledWith('markdown')
+    })
 
-  it('should call hljs [getLanguage] function', async () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    const getLanguageSpy: jasmine.Spy = spyOn(hljs, 'getLanguage');
+    it('should call hljs [registerAliases] function', async () => {
+        const service: HighlightJS = TestBed.inject(HighlightJS)
+        const registerAliasesSpy: jasmine.Spy = spyOn(hljs, 'registerAliases')
 
-    await service.getLanguage('html');
+        await service.registerAliases('md', { languageName: 'markdown' })
 
-    expect(getLanguageSpy).toHaveBeenCalledWith('html');
-  });
+        expect(registerAliasesSpy).toHaveBeenCalledWith('md', { languageName: 'markdown' })
+    })
 
-  it('should call hljs [listLanguages] function', async () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    const listLanguagesSpy: jasmine.Spy = spyOn(hljs, 'listLanguages');
+    it('should call hljs [lineNumbersBlock] function', async () => {
+        const service: HighlightJS = TestBed.inject(HighlightJS)
+        const element: HTMLElement = document.createElement('div')
+        element.innerHTML = testJsCode
+        const registerAliasesSpy: jasmine.Spy = spyOn(hljs as any, 'lineNumbersBlock')
 
-    await service.listLanguages();
+        await service.lineNumbersBlock(element, { singleLine: true })
 
-    expect(listLanguagesSpy).toHaveBeenCalled();
-  });
-
-  it('should call hljs [unregisterLanguage] function', async () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    const unregisterLanguageSpy: jasmine.Spy = spyOn(hljs, 'unregisterLanguage');
-
-    await service.unregisterLanguage('markdown');
-
-    expect(unregisterLanguageSpy).toHaveBeenCalledWith('markdown');
-  });
-
-  it('should call hljs [registerAliases] function', async () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    const registerAliasesSpy: jasmine.Spy = spyOn(hljs, 'registerAliases');
-
-    await service.registerAliases('md', { languageName: 'markdown' });
-
-    expect(registerAliasesSpy).toHaveBeenCalledWith('md', { languageName: 'markdown' });
-  });
-
-
-  it('should call hljs [lineNumbersBlock] function', async () => {
-    const service: HighlightJS = TestBed.inject(HighlightJS);
-    const element: HTMLElement = document.createElement('div');
-    element.innerHTML = testJsCode;
-    const registerAliasesSpy: jasmine.Spy = spyOn(hljs as any, 'lineNumbersBlock');
-
-    await service.lineNumbersBlock(element, { singleLine: true });
-
-    expect(registerAliasesSpy).toHaveBeenCalledWith(element, { singleLine: true });
-  });
-});
+        expect(registerAliasesSpy).toHaveBeenCalledWith(element, { singleLine: true })
+    })
+})

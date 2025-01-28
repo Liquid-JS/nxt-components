@@ -1,20 +1,15 @@
 {
     "name": "nxt-highlightjs",
-    "version": "14.0.0",
-    "description": "Instant code highlighting, auto-detect language, super easy to use.",
-    "homepage": "https://ngx-highlight.netlify.app",
-    "author": {
-        "name": "Murhaf Sousli",
-        "url": "http://github.com/murhafsousli"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/MurhafSousli/ngx-highlightjs"
-    },
-    "bugs": {
-        "url": "http://github.com/murhafsousli/ngx-highlightjs/issues"
-    },
+    "description": "Angular code highlighting directives with optional line numbers and support for SSR",
+    "bugs": "https://github.com/Liquid-JS/nxt-components/issues",
+    "version": "19.0.4",
+    "license": "MIT",
+    "type": "module",
+    "repository": "https://github.com/Liquid-JS/nxt-components.git",
+    "homepage": "https://github.com/Liquid-JS/nxt-components/tree/master/packages/highlightjs",
     "keywords": [
+        "nxt-highlightjs",
+        "ng-highlightjs",
         "angular",
         "highlight",
         "highlightjs",
@@ -23,15 +18,31 @@
         "code",
         "gist"
     ],
+    "scripts": {
+        "watch": "ng build highlightjs --configuration \"development\" --watch",
+        "build": "ng build highlightjs --configuration \"production\"",
+        "lint": "ng lint highlightjs",
+        "lint:fix": "yarn lint --fix",
+        "lint:html": "js-beautify --type html -r -f ./src/**/*.html --config ./js-beautify.json",
+        "lint:sass": "stylelint \"src/**/*.scss\" \"assets/**/*.scss\"",
+        "lint:sass:fix": "yarn lint:sass --fix",
+        "test": "ng test highlightjs --no-watch",
+        "test:watch": "ng test highlightjs",
+        "docs": "npx compodoc -c .compodocrc.json",
+        "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/highlightjs"
+    },
     "peerDependencies": {
-        "@angular/common": ">=19.0.0",
-        "@angular/core": ">=19.0.0",
-        "@angular/cdk": ">=19.0.0",
-        "rxjs": ">=7.0.0"
+        "@angular/cdk": "^19.0.0",
+        "@angular/common": "^19.0.0",
+        "@angular/core": "^19.0.0",
+        "@angular/platform-browser": "^19.0.0",
+        "highlight.js": ">=11.11.0",
+        "rxjs": "^7.8.1"
     },
     "dependencies": {
-        "highlight.js": "^11.11.1",
-        "tslib": "^2.3.0"
+        "tslib": "^2.8.1"
     },
-    "sideEffects": false
+    "devDependencies": {
+        "@types/trusted-types": "^2.0.7"
+    }
 }

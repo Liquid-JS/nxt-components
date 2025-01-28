@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common'
 import { Component, Injector, Input, Type, ViewEncapsulation } from '@angular/core'
 import { TabsModule } from 'ngx-bootstrap/tabs'
-import { HighlightModule } from 'ngx-highlightjs'
-import { HighlightLineNumbers } from 'ngx-highlightjs/line-numbers'
+import { HighlightModule } from 'nxt-highlightjs'
+import { HighlightLineNumbersDirective } from 'nxt-highlightjs/line-numbers'
 
 export interface ExampleConfig {
     component?: Type<any>
@@ -66,7 +66,7 @@ export function resolveTempaltes(cfg: LoaderConfig, prefix: string) {
         CommonModule,
         TabsModule,
         HighlightModule,
-        HighlightLineNumbers
+        HighlightLineNumbersDirective
     ],
     templateUrl: './example.component.html',
     styleUrls: ['./example.component.scss'],

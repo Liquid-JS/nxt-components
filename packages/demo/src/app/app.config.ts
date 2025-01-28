@@ -4,7 +4,7 @@ import { provideAnimations } from '@angular/platform-browser/animations'
 import { DefaultUrlSerializer, provideRouter, UrlSerializer, UrlTree, withInMemoryScrolling } from '@angular/router'
 import { provideServiceWorker } from '@angular/service-worker'
 import { TooltipModule } from 'ngx-bootstrap/tooltip'
-import { provideHighlightOptions } from 'ngx-highlightjs'
+import { provideHighlightOptions } from 'nxt-highlightjs'
 import { DropzoneConfig, NXT_DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
 import { provideNativeDateTimeAdapter } from 'packages/pick-datetime/native-adapter/src/native-adapter.module'
 import { routes } from './app.routes'
@@ -52,15 +52,15 @@ export const appConfig: ApplicationConfig = {
             registrationStrategy: 'registerWhenStable:30000'
         }),
         provideHighlightOptions({
-            coreLibraryLoader: () => import('highlight.js/lib/core'),
-            lineNumbersLoader: () => import('ngx-highlightjs/line-numbers'),
+            coreLibraryLoader: () => import('highlight.js/lib/core').then(r => r.default),
+            lineNumbersLoader: () => import('nxt-highlightjs/line-numbers'),
             languages: {
-                typescript: () => import('highlight.js/lib/languages/typescript'),
-                scss: () => import('highlight.js/lib/languages/scss'),
-                xml: () => import('highlight.js/lib/languages/xml'),
-                bash: () => import('highlight.js/lib/languages/bash'),
-                shell: () => import('highlight.js/lib/languages/shell'),
-                json: () => import('highlight.js/lib/languages/json')
+                typescript: () => import('highlight.js/lib/languages/typescript').then(r => r.default),
+                scss: () => import('highlight.js/lib/languages/scss').then(r => r.default),
+                xml: () => import('highlight.js/lib/languages/xml').then(r => r.default),
+                bash: () => import('highlight.js/lib/languages/bash').then(r => r.default),
+                shell: () => import('highlight.js/lib/languages/shell').then(r => r.default),
+                json: () => import('highlight.js/lib/languages/json').then(r => r.default)
             }
         }),
         {
@@ -71,3 +71,4 @@ export const appConfig: ApplicationConfig = {
         provideNativeDateTimeAdapter()
     ]
 }
+

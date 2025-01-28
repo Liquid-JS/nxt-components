@@ -66,7 +66,8 @@
                         "loader": {
                             ".html": "text",
                             ".scss": "text",
-                            ".png": "file"
+                            ".png": "file",
+                            ".css": "file"
                         },
                         "scripts": [],
                         "serviceWorker": "packages/demo/ngsw-config.json",
@@ -94,7 +95,8 @@
                             "optimization": false,
                             "extractLicenses": false,
                             "sourceMap": true,
-                            "namedChunks": true
+                            "namedChunks": true,
+                            "outputHashing": "media"
                         }
                     },
                     "defaultConfiguration": "production"
@@ -218,6 +220,48 @@
                             "packages/flags/**/*.html"
                         ],
                         "eslintConfig": "packages/flags/eslint.config.js"
+                    }
+                }
+            }
+        },
+        "highlightjs": {
+            "projectType": "library",
+            "root": "packages/highlightjs",
+            "sourceRoot": "packages/highlightjs/src",
+            "prefix": "nxt",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "options": {
+                        "project": "packages/highlightjs/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "packages/highlightjs/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "packages/highlightjs/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "packages/highlightjs/src/test.ts",
+                        "tsConfig": "packages/highlightjs/tsconfig.spec.json"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "packages/highlightjs/**/*.ts",
+                            "packages/highlightjs/**/*.js",
+                            "packages/highlightjs/**/*.cjs",
+                            "packages/highlightjs/**/*.html"
+                        ],
+                        "eslintConfig": "packages/highlightjs/eslint.config.js"
                     }
                 }
             }
