@@ -7,6 +7,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip'
 import { provideHighlightOptions } from 'nxt-highlightjs'
 import { DropzoneConfig, NXT_DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
 import { provideNativeDateTimeAdapter } from 'packages/pick-datetime/native-adapter/src/native-adapter.module'
+import { provideHttpClient, withFetch } from '@angular/common/http'
+import { APP_BASE_HREF, DOCUMENT } from '@angular/common'
 import { routes } from './app.routes'
 
 export class TrailingSlashUrlSerializer extends DefaultUrlSerializer {
@@ -37,6 +39,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
 
 export const appConfig: ApplicationConfig = {
     providers: [
+        provideHttpClient(withFetch()),
         provideRouter(routes, withInMemoryScrolling({
             anchorScrolling: 'enabled',
             scrollPositionRestoration: 'enabled'
@@ -68,7 +71,12 @@ export const appConfig: ApplicationConfig = {
             useValue: DEFAULT_DROPZONE_CONFIG
         },
         ...TooltipModule.forRoot().providers || [],
-        provideNativeDateTimeAdapter()
+        provideNativeDateTimeAdapter(),
+        {
+            provide: APP_BASE_HREF,
+            useFactory: (document: Document) => document.querySelector('base')?.href,
+            deps: [DOCUMENT]
+        }
     ]
 }
 

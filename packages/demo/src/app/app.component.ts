@@ -114,6 +114,10 @@ export class AppComponent {
                     link: 'getting-started'
                 },
                 {
+                    label: 'Extras',
+                    link: 'extras'
+                },
+                {
                     label: 'API docs',
                     url: 'https://liquid-js.github.io/nxt-components/nxt-highlightjs'
                 }

@@ -36,11 +36,11 @@
             "nxt-highlightjs": [
                 "dist/highlightjs"
             ],
+            "nxt-highlightjs/extras": [
+                "dist/highlightjs/extras"
+            ],
             "nxt-highlightjs/line-numbers": [
                 "dist/highlightjs/line-numbers"
-            ],
-            "nxt-highlightjs/plus": [
-                "dist/highlightjs/plus"
             ],
             "nxt-json-view": [
                 "dist/json-view"

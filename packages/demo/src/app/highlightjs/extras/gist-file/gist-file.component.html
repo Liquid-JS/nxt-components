@@ -1,0 +1,18 @@
+@if (loading) {
+<div class="d-flex justify-content-center">
+    <div class="spinner-border"
+        role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+} @else if (error) {
+<div class="alert alert-danger"
+    role="alert">
+    <span class="gist-loading-error">{{ error.message }}</span>
+</div>
+}
+
+<pre [ngClass]="{ 'empty': !gist }"><code [nxtGist]="gistId"
+    (gistLoad)="gist = $event; loading = false"
+    (gistError)="error = $event; loading = false"
+    [nxtHighlightAuto]="(gist | gistFile: 'sample.component.ts')?.content"></code></pre>

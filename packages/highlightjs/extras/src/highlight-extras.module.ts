@@ -14,5 +14,4 @@ import { GistDirective, GistFilePipe } from './gist'
         CodeFromUrlPipe
     ]
 })
-export class HighlightPlusModule {
-}
+export class HighlightExstrasModule { }

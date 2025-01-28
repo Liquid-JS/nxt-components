@@ -22,3 +22,8 @@ declare module '*.mp4' {
     const path: string
     export default path
 }
+
+declare module '*.txt' {
+    const path: string
+    export default path
+}

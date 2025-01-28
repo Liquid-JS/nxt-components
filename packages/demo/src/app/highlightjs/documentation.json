@@ -2,8 +2,8 @@
     "pipes": [
         {
             "name": "CodeFromUrlPipe",
-            "id": "pipe-CodeFromUrlPipe-ffc89b162905e5cc8e324e95ca27f8d477824ffa81d04e1dd650d7c231d73b18e0caf501340af8f1c8c316178e9c68d6cfd00c9a9e063369b28ce633f8d46094",
-            "file": "plus/src/code-from-url.ts",
+            "id": "pipe-CodeFromUrlPipe-80133067eb11bb0bd27a74cc7fbdf61f914420884d0542410ba191543532ef149ecd139f513c3405b9e6c3127f0d5c02444bad35fa0a493c6e998c37effa2fae",
+            "file": "extras/src/code-from-url.ts",
             "type": "pipe",
             "deprecated": false,
             "deprecationMessage": "",
@@ -24,7 +24,7 @@
                     "optional": false,
                     "returnType": "Observable<string>",
                     "typeParameters": [],
-                    "line": 16,
+                    "line": 15,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -45,8 +45,8 @@
         },
         {
             "name": "GistFilePipe",
-            "id": "pipe-GistFilePipe-b81eca7ae4f5e4346a5c3c9ff803aa9ebf5aaef96e65866824a4200d38b4057d4fa7f371158cc66be0cf163f3faca051a211e1d1c916213dcd626e5ce43ad002",
-            "file": "plus/src/gist.ts",
+            "id": "pipe-GistFilePipe-ab2375ec36e74b0a28f4b648abefa3a91a6c1538ab85bc31c43c97ecacef66c85cf19ab7b5761dcb28b6e77a69fb1c9069414fa297e56c86c82c03e343df13af",
+            "file": "extras/src/gist.ts",
             "type": "pipe",
             "deprecated": false,
             "deprecationMessage": "",
@@ -59,38 +59,42 @@
                     "args": [
                         {
                             "name": "gist",
-                            "type": "Gist",
+                            "type": "Gist | null",
                             "deprecated": false,
-                            "deprecationMessage": ""
+                            "deprecationMessage": "",
+                            "optional": true
                         },
                         {
                             "name": "fileName",
-                            "type": "string",
+                            "type": "string | null",
                             "deprecated": false,
-                            "deprecationMessage": ""
+                            "deprecationMessage": "",
+                            "optional": true
                         }
                     ],
                     "optional": false,
-                    "returnType": "string | null",
+                    "returnType": "GistFile | undefined",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "gist",
-                            "type": "Gist",
+                            "type": "Gist | null",
                             "deprecated": false,
                             "deprecationMessage": "",
+                            "optional": true,
                             "tagName": {
                                 "text": "param"
                             }
                         },
                         {
                             "name": "fileName",
-                            "type": "string",
+                            "type": "string | null",
                             "deprecated": false,
                             "deprecationMessage": "",
+                            "optional": true,
                             "tagName": {
                                 "text": "param"
                             }
@@ -105,8 +109,8 @@
     "interfaces": [
         {
             "name": "ChangeStatus",
-            "id": "interface-ChangeStatus-d46a2dbe6750b31e7969befd2dfa034dcb01e171559fa1ed5346ae693912e9c18597a208982c65dab0e7841c49d6843303f99db5268a18aa9d76ba016142869d",
-            "file": "plus/src/gist.model.ts",
+            "id": "interface-ChangeStatus-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -149,8 +153,8 @@
         },
         {
             "name": "CodeFileLocation",
-            "id": "interface-CodeFileLocation-a065270d2065fb50dc927078de8007680253d1d40982f0c21f76ad41893fe27a1e83a5f4d30a8546a28578d3e3b4bcc4d73e44415ca6d60d87eaee864e72754a",
-            "file": "plus/src/code-file-location.ts",
+            "id": "interface-CodeFileLocation-4ecfdfac842e25d07cf7477d5c0487dfa4fa306200fb2a6cc3330343200822fdc303c397a0317b26e8a41e4de9181b8462abf881df05f94a5a1093565e5b21f8",
+            "file": "extras/src/code-file-location.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -173,15 +177,15 @@
         },
         {
             "name": "Files",
-            "id": "interface-Files-d46a2dbe6750b31e7969befd2dfa034dcb01e171559fa1ed5346ae693912e9c18597a208982c65dab0e7841c49d6843303f99db5268a18aa9d76ba016142869d",
-            "file": "plus/src/gist.model.ts",
+            "id": "interface-Files-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
             "properties": [],
             "indexSignatures": [
                 {
-                    "id": "index-declaration-d46a2dbe6750b31e7969befd2dfa034dcb01e171559fa1ed5346ae693912e9c18597a208982c65dab0e7841c49d6843303f99db5268a18aa9d76ba016142869d",
+                    "id": "index-declaration-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
                     "args": [
                         {
                             "name": "fileName",
@@ -190,8 +194,8 @@
                             "deprecationMessage": ""
                         }
                     ],
-                    "returnType": "literal type",
-                    "line": 80,
+                    "returnType": "GistFile",
+                    "line": 90,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -202,8 +206,8 @@
         },
         {
             "name": "Gist",
-            "id": "interface-Gist-d46a2dbe6750b31e7969befd2dfa034dcb01e171559fa1ed5346ae693912e9c18597a208982c65dab0e7841c49d6843303f99db5268a18aa9d76ba016142869d",
-            "file": "plus/src/gist.model.ts",
+            "id": "interface-Gist-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -216,7 +220,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 106
+                    "line": 108
                 },
                 {
                     "name": "comments_url",
@@ -226,7 +230,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 108
+                    "line": 110
                 },
                 {
                     "name": "commits_url",
@@ -236,7 +240,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 95
+                    "line": 97
                 },
                 {
                     "name": "created_at",
@@ -246,7 +250,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 103
+                    "line": 105
                 },
                 {
                     "name": "description",
@@ -256,7 +260,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 105
+                    "line": 107
                 },
                 {
                     "name": "files",
@@ -266,7 +270,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 101
+                    "line": 103
                 },
                 {
                     "name": "forks",
@@ -276,7 +280,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 110
+                    "line": 112
                 },
                 {
                     "name": "forks_url",
@@ -286,7 +290,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 94
+                    "line": 96
                 },
                 {
                     "name": "git_pull_url",
@@ -296,7 +300,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 98
+                    "line": 100
                 },
                 {
                     "name": "git_push_url",
@@ -306,7 +310,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 99
+                    "line": 101
                 },
                 {
                     "name": "history",
@@ -316,7 +320,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 111
+                    "line": 113
                 },
                 {
                     "name": "html_url",
@@ -326,7 +330,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 100
+                    "line": 102
                 },
                 {
                     "name": "id",
@@ -336,7 +340,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 96
+                    "line": 98
                 },
                 {
                     "name": "node_id",
@@ -346,7 +350,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 97
+                    "line": 99
                 },
                 {
                     "name": "owner",
@@ -356,7 +360,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 109
+                    "line": 111
                 },
                 {
                     "name": "public",
@@ -366,7 +370,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 102
+                    "line": 104
                 },
                 {
                     "name": "truncated",
@@ -376,7 +380,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 112
+                    "line": 114
                 },
                 {
                     "name": "updated_at",
@@ -386,7 +390,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 104
+                    "line": 106
                 },
                 {
                     "name": "url",
@@ -396,7 +400,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 93
+                    "line": 95
                 },
                 {
                     "name": "user",
@@ -406,7 +410,91 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 107
+                    "line": 109
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "GistFile",
+            "id": "interface-GistFile-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "file": "extras/src/gist.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "properties": [
+                {
+                    "name": "content",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 87
+                },
+                {
+                    "name": "filename",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 81
+                },
+                {
+                    "name": "language",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 83
+                },
+                {
+                    "name": "raw_url",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 84
+                },
+                {
+                    "name": "size",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 85
+                },
+                {
+                    "name": "truncated",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 86
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 82
                 }
             ],
             "indexSignatures": [],
@@ -416,8 +504,8 @@
         },
         {
             "name": "GistOptions",
-            "id": "interface-GistOptions-d46a2dbe6750b31e7969befd2dfa034dcb01e171559fa1ed5346ae693912e9c18597a208982c65dab0e7841c49d6843303f99db5268a18aa9d76ba016142869d",
-            "file": "plus/src/gist.model.ts",
+            "id": "interface-GistOptions-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -534,8 +622,8 @@
         },
         {
             "name": "History",
-            "id": "interface-History-d46a2dbe6750b31e7969befd2dfa034dcb01e171559fa1ed5346ae693912e9c18597a208982c65dab0e7841c49d6843303f99db5268a18aa9d76ba016142869d",
-            "file": "plus/src/gist.model.ts",
+            "id": "interface-History-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -598,7 +686,7 @@
         },
         {
             "name": "LineNumbersOptions",
-            "id": "interface-LineNumbersOptions-567b5a54ffe8067773a02bb7eaa2eee6ba280059a674e612713354c6a2071b94802414aab3ad169e73108838004fe73acca6cb1ecadb8115e3b1b516767d25b5",
+            "id": "interface-LineNumbersOptions-c554b1e68ea85a2fc7dd45a880ef0e28fd42074b2dd428408dc5d033dfeadcdb9d6acd4a46c7398598e021894e23c5b0b031b8251894add40372a014ad7e0c39",
             "file": "line-numbers/src/line-numbers-lib.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -671,8 +759,8 @@
         },
         {
             "name": "Owner",
-            "id": "interface-Owner-d46a2dbe6750b31e7969befd2dfa034dcb01e171559fa1ed5346ae693912e9c18597a208982c65dab0e7841c49d6843303f99db5268a18aa9d76ba016142869d",
-            "file": "plus/src/gist.model.ts",
+            "id": "interface-Owner-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -865,8 +953,8 @@
         },
         {
             "name": "User",
-            "id": "interface-User-d46a2dbe6750b31e7969befd2dfa034dcb01e171559fa1ed5346ae693912e9c18597a208982c65dab0e7841c49d6843303f99db5268a18aa9d76ba016142869d",
-            "file": "plus/src/gist.model.ts",
+            "id": "interface-User-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -1061,8 +1149,8 @@
     "injectables": [
         {
             "name": "CodeLoader",
-            "id": "injectable-CodeLoader-192fc682107a22262f9844147e4439482a6ba1d8623795da00386adf24e2a3668cf3c516cc2722ce7cc5d20733da91a2a76b3aa719b3a600131225cc26ea1478",
-            "file": "plus/src/code-loader.ts",
+            "id": "injectable-CodeLoader-e6a3e79e728a61bab9182ea67bea46aacf2077714b58bc62d374c24c5a36d608489bd388829e7baab130b26eeedb244cb19938f88952433cd6b9c36528a5e1e2",
+            "file": "extras/src/code-loader.ts",
             "properties": [],
             "methods": [
                 {
@@ -1086,8 +1174,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 498,
-                                "end": 500,
+                                "pos": 486,
+                                "end": 488,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1098,8 +1186,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 492,
-                                "end": 497,
+                                "pos": 480,
+                                "end": 485,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1131,8 +1219,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 979,
-                                "end": 982,
+                                "pos": 978,
+                                "end": 981,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1143,8 +1231,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 973,
-                                "end": 978,
+                                "pos": 972,
+                                "end": 977,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1687,8 +1775,8 @@
     "directives": [
         {
             "name": "GistDirective",
-            "id": "directive-GistDirective-b81eca7ae4f5e4346a5c3c9ff803aa9ebf5aaef96e65866824a4200d38b4057d4fa7f371158cc66be0cf163f3faca051a211e1d1c916213dcd626e5ce43ad002",
-            "file": "plus/src/gist.ts",
+            "id": "directive-GistDirective-ab2375ec36e74b0a28f4b648abefa3a91a6c1538ab85bc31c43c97ecacef66c85cf19ab7b5761dcb28b6e77a69fb1c9069414fa297e56c86c82c03e343df13af",
+            "file": "extras/src/gist.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
@@ -1701,18 +1789,26 @@
                     "name": "nxtGist",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 17,
                     "type": "string",
                     "decorators": []
                 }
             ],
             "outputsClass": [
                 {
+                    "name": "gistError",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "EventEmitter<any>"
+                },
+                {
                     "name": "gistLoad",
                     "defaultValue": "new EventEmitter<Gist>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 38,
                     "type": "EventEmitter<Gist>"
                 }
             ],
@@ -1721,8 +1817,22 @@
             "hostBindings": [],
             "hostListeners": [],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "extends": [],
+            "implements": [
+                "OnDestroy"
+            ],
             "accessors": {
                 "gist": {
                     "name": "gist",
@@ -1740,7 +1850,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 14,
+                        "line": 17,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -1758,7 +1868,7 @@
         },
         {
             "name": "HighlightAutoDirective",
-            "id": "directive-HighlightAutoDirective-f7d3ae7ef45d8468d18e5d439b6b87b4bd119f0335212964615c7d3574d111c653ed8c8be87d6987328f3bbd9d52282739ed874bf8e34b4d12c4f5d19f65658b",
+            "id": "directive-HighlightAutoDirective-1ee4c4dbf7dcf6332e36ecf4f0bd825bf0c168e952f935c52d97ec1a92bb496ed76436dde7b0a1a819132d4de473112b130426d53fb1445ae98fcf55921947d9",
             "file": "src/lib/highlight-auto.ts",
             "type": "directive",
             "description": "",
@@ -1778,7 +1888,7 @@
                     "defaultValue": "undefined, { alias: 'nxtHighlightAuto' }",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
+                    "type": "string | null",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Code to highlight</p>\n",
@@ -1823,7 +1933,7 @@
             "propertiesClass": [
                 {
                     "name": "code",
-                    "defaultValue": "input<string>(undefined, { alias: 'nxtHighlightAuto' })",
+                    "defaultValue": "input<string | null>(undefined, { alias: 'nxtHighlightAuto' })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -1942,7 +2052,7 @@
         },
         {
             "name": "HighlightBase",
-            "id": "directive-HighlightBase-2915359aeacf19163c64be9672f83a265486fc740cff77157a3d3d2b9d0ee2332a3dce734a4daccf9f90824552cd795b5d0e9c09ae2bf14f772e4beca9642d14",
+            "id": "directive-HighlightBase-cbeef606a4734b180d10adf6c691f7eac716b9fea1cc068e94ee6acd71624c35b20230d33bfca3e24d4eb205087ee6b90297711d66994b9e533b44628ecb0632",
             "file": "src/lib/highlight-base.ts",
             "type": "directive",
             "description": "",
@@ -1961,7 +2071,7 @@
                     "name": "code",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "InputSignal<string | undefined>",
+                    "type": "InputSignal<string | null | undefined>",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Code to highlight</p>\n",
@@ -2061,7 +2171,7 @@
         },
         {
             "name": "HighlightDirective",
-            "id": "directive-HighlightDirective-15bf865e4b52cf5a494d25b8fbd87ca59c073ea677256e1197ec5c1c87465e7686d432fe2d11f445772e10537b87ade1456403a13cea8184a3e5b953e6476ba7",
+            "id": "directive-HighlightDirective-cc41a52e9aa3f2155989a8a8e510820b08d9b20d3a2cbfb92de98f9cf260cb5c12a3c78dafcb53d123c3c1077c05233fa301227bf1f7b0bb32be86a8fff1ac98",
             "file": "src/lib/highlight.ts",
             "type": "directive",
             "description": "",
@@ -2081,7 +2191,7 @@
                     "defaultValue": "undefined, { alias: 'nxtHighlight' }",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
+                    "type": "string | null",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Code to highlight</p>\n",
@@ -2142,7 +2252,7 @@
             "propertiesClass": [
                 {
                     "name": "code",
-                    "defaultValue": "input<string>(undefined, { alias: 'nxtHighlight' })",
+                    "defaultValue": "input<string | null>(undefined, { alias: 'nxtHighlight' })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -2362,6 +2472,61 @@
     "components": [],
     "modules": [
         {
+            "name": "HighlightExstrasModule",
+            "id": "module-HighlightExstrasModule-47ae74de8a277e943e512e7863cabe9ccba24aebe3abeb8e99e6a67a7a1048e07e22e00e7dcc01f9eabd72a93fec8bf9478bfcf6158c91f2d22b3853e06ffdf9",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "extras/src/highlight-extras.module.ts",
+            "methods": [],
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "CodeFromUrlPipe"
+                        },
+                        {
+                            "name": "GistDirective"
+                        },
+                        {
+                            "name": "GistFilePipe"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "CodeFromUrlPipe"
+                        },
+                        {
+                            "name": "GistDirective"
+                        },
+                        {
+                            "name": "GistFilePipe"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "HighlightModule",
             "id": "module-HighlightModule-ad0231b61efd04e2396b315cb1ed215a33927b763bdbd3a41158c809a23a54eb029dbc577de7271cbf54c6070c382d6fe5595ff68dd0b1bdaa200a8b43fa54e1",
             "description": "",
@@ -2409,61 +2574,6 @@
                     "elements": []
                 }
             ]
-        },
-        {
-            "name": "HighlightPlusModule",
-            "id": "module-HighlightPlusModule-8d77b9cf08b85c4d857ba6aa6e37327ea9e07066eacc2c4ae8443b7cfb9ec70fde9f31e39f03fac475c492ea9b39fbfe02a934e827cafd6952a257a322704d7b",
-            "description": "",
-            "deprecationMessage": "",
-            "deprecated": false,
-            "file": "plus/src/highlight-plus.module.ts",
-            "methods": [],
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": []
-                },
-                {
-                    "type": "imports",
-                    "elements": [
-                        {
-                            "name": "CodeFromUrlPipe"
-                        },
-                        {
-                            "name": "GistDirective"
-                        },
-                        {
-                            "name": "GistFilePipe"
-                        }
-                    ]
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "CodeFromUrlPipe"
-                        },
-                        {
-                            "name": "GistDirective"
-                        },
-                        {
-                            "name": "GistFilePipe"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
         }
     ],
     "miscellaneous": {
@@ -2472,7 +2582,7 @@
                 "name": "NXT_GIST_OPTIONS",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "plus/src/gist.model.ts",
+                "file": "extras/src/gist.model.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -2482,7 +2592,7 @@
                 "name": "NXT_HIGHLIGHT_FILE_LOCATION",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "plus/src/code-file-location.ts",
+                "file": "extras/src/code-file-location.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -2543,7 +2653,7 @@
             },
             {
                 "name": "CODE_FILE_LOCATION_FACTORY",
-                "file": "plus/src/code-file-location.ts",
+                "file": "extras/src/code-file-location.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
@@ -2563,7 +2673,7 @@
             },
             {
                 "name": "isUrl",
-                "file": "plus/src/gist.model.ts",
+                "file": "extras/src/gist.model.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
@@ -2592,7 +2702,7 @@
             },
             {
                 "name": "provideGistOptions",
-                "file": "plus/src/gist.model.ts",
+                "file": "extras/src/gist.model.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
@@ -2721,24 +2831,24 @@
             }
         ],
         "groupedVariables": {
-            "plus/src/gist.model.ts": [
+            "extras/src/gist.model.ts": [
                 {
                     "name": "NXT_GIST_OPTIONS",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "plus/src/gist.model.ts",
+                    "file": "extras/src/gist.model.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "new InjectionToken<GistOptions>('NXT_GIST_OPTIONS')"
                 }
             ],
-            "plus/src/code-file-location.ts": [
+            "extras/src/code-file-location.ts": [
                 {
                     "name": "NXT_HIGHLIGHT_FILE_LOCATION",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "plus/src/code-file-location.ts",
+                    "file": "extras/src/code-file-location.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -2804,10 +2914,10 @@
                     ]
                 }
             ],
-            "plus/src/code-file-location.ts": [
+            "extras/src/code-file-location.ts": [
                 {
                     "name": "CODE_FILE_LOCATION_FACTORY",
-                    "file": "plus/src/code-file-location.ts",
+                    "file": "extras/src/code-file-location.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,
@@ -2856,10 +2966,10 @@
                     ]
                 }
             ],
-            "plus/src/gist.model.ts": [
+            "extras/src/gist.model.ts": [
                 {
                     "name": "isUrl",
-                    "file": "plus/src/gist.model.ts",
+                    "file": "extras/src/gist.model.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,
@@ -2888,7 +2998,7 @@
                 },
                 {
                     "name": "provideGistOptions",
-                    "file": "plus/src/gist.model.ts",
+                    "file": "extras/src/gist.model.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,

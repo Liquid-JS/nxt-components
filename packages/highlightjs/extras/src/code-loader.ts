@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
-import { catchError, EMPTY, Observable, shareReplay } from 'rxjs'
+import { EMPTY, Observable, shareReplay } from 'rxjs'
 import { Gist, isUrl, NXT_GIST_OPTIONS } from './gist.model'
 
 @Injectable({
@@ -17,7 +17,7 @@ export class CodeLoader {
      * @param id Gist ID
      */
     getCodeFromGist(id: string): Observable<Gist> {
-        let params!: HttpParams
+        let params: HttpParams | undefined
         if (this.options?.clientId && this.options?.clientSecret) {
             params = new HttpParams().set('client_id', this.options.clientId).set('client_secret', this.options.clientSecret)
         }
@@ -38,11 +38,7 @@ export class CodeLoader {
         if (isUrl(url)) {
             return this.http.get(url, options).pipe(
                 // Catch response
-                shareReplay(1),
-                catchError((err: Error) => {
-                    console.error('[NgxHighlight]: Unable to fetch the URL!', err.message)
-                    return EMPTY
-                })
+                shareReplay(1)
             )
         }
         return EMPTY

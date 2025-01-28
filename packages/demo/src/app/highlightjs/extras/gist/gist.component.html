@@ -1,0 +1,35 @@
+@if (loading) {
+<div class="d-flex justify-content-center">
+    <div class="spinner-border"
+        role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+} @else if (error) {
+<div class="alert alert-danger"
+    role="alert">
+    <span class="gist-loading-error">{{ error.message }}</span>
+</div>
+} @else {
+<label for="gist"
+    class="form-label">File</label>
+<select [(ngModel)]="selectedFile"
+    class="form-select"
+    name="gist">
+    @for (file of gist?.files | keyvalue; track file.key) {
+    <option [value]="file.key">{{ file.value.filename }}</option>
+    }
+</select>
+
+<br>
+}
+
+<pre [ngClass]="{ 'empty': !gist }"><code [nxtGist]="gistId"
+    (gistLoad)="setGist($event)"
+    (gistError)="error = $event; loading = false"
+    [nxtHighlightAuto]="(gist | gistFile: selectedFile)?.content"
+    [languages]="['ts', 'html', 'css']"></code></pre>
+
+@if (gist) {
+<a [href]="gist.html_url">Open on github</a>
+}

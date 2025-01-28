@@ -24,7 +24,7 @@ export abstract class HighlightBase {
     /**
      * Code to highlight
      */
-    abstract code: InputSignal<string | undefined>
+    abstract code: InputSignal<string | null | undefined>
 
     /**
      * Highlighted result
@@ -42,7 +42,7 @@ export abstract class HighlightBase {
             if (code) {
                 const res = this.highlightElement(code)
                 if (res) {
-                    this.setInnerHTML(res?.value ?? null)
+                    this.setInnerHTML(res?.value ?? undefined)
                     this.highlightResult.set(res)
                     // Forward highlight response to the highlighted output
                     this.highlighted.emit(res)
@@ -59,9 +59,9 @@ export abstract class HighlightBase {
         this.nativeElement.textContent = content
     }
 
-    private setInnerHTML(content: string | null): void {
+    private setInnerHTML(content: string | undefined): void {
         this.nativeElement.innerHTML = trustedHTMLFromStringBypass(
-            this.sanitizer.sanitize(SecurityContext.HTML, content) || ''
+            this.sanitizer.sanitize(SecurityContext.HTML, content || null) || ''
         ) as any
     }
 }

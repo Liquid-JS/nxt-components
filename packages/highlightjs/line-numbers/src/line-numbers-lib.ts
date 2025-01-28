@@ -25,7 +25,7 @@ export function activateLineNumbers(document: Document) {
         return false
     }
 
-    function getHljsLnTable(hljsLnDomElt?: HTMLElement | null) {
+    function getHljsLnTable(hljsLnDomElt?: HTMLElement) {
         let curElt = hljsLnDomElt
         while (curElt && curElt.nodeName !== 'TABLE') {
             curElt = curElt.parentNode as HTMLElement
@@ -281,7 +281,7 @@ export function activateLineNumbers(document: Document) {
      * @param args
      */
     function format(formatString: string, args: any[]) {
-        return formatString.replace(/\{(\d+)\}/g, (m, n) => args[n] !== undefined ? args[n] : m)
+        return formatString.replace(/\{(\d+)\}/g, (m, n) => args[n] !== null && args[n] !== undefined ? args[n] : m)
     }
 
     /**

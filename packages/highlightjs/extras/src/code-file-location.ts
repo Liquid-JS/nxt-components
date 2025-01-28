@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common'
+import { APP_BASE_HREF, DOCUMENT } from '@angular/common'
 import { inject, InjectionToken } from '@angular/core'
 
 /**
@@ -16,11 +16,12 @@ export interface CodeFileLocation {
 
 export function CODE_FILE_LOCATION_FACTORY() {
     const location = inject(DOCUMENT)?.location
+    const base = inject(APP_BASE_HREF, { optional: true })
 
     return {
         // Note that this needs to be a function, rather than a property, because Angular
         // will only resolve it once, but we want the current path on each call.
         // getPathname: () => (location ? location.pathname + location.search : ''),
-        getPathname: () => (location ? location.origin : '')
+        getPathname: () => (base ?? (location ? location.origin : ''))
     }
 }

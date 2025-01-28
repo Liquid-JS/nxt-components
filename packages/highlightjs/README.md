@@ -10,6 +10,7 @@ Angular code highlighting directives with optional line numbers and support for 
 
 -   [Demo](https://liquid-js.github.io/nxt-components/demo/highlightjs)
 -   [Getting started](https://liquid-js.github.io/nxt-components/demo/highlightjs/getting-started)
+-   [Extras](https://liquid-js.github.io/nxt-components/demo/highlightjs/extras)
 -   [API docs](https://liquid-js.github.io/nxt-components/nxt-highlightjs)
 
 ### Installing

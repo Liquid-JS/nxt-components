@@ -88,7 +88,7 @@ describe('HighlightAuto Directive', () => {
         await afterTimeout(200)
         expect(directiveElement.nativeElement.innerHTML).toBe('')
 
-        // Change code 4th time but with nullish value
+        // Change code 4th time but with undefinedish value
         component.code = undefined
         fixture.detectChanges()
 

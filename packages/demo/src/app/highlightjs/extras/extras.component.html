@@ -1,0 +1,44 @@
+<app-meta *ngIf="!loading"
+    title="Extras | nxt-highlightjs"
+    (done)="doneCb()"
+    description="Angular Highlight.js provides a number of utils, making it easy to display source code form files or gists."></app-meta>
+<app-content-wrap>
+    <h1>Extras</h1>
+    <p>The extras module provides multiple utilities to load and display contents of source files and gists.</p>
+
+    <p>The extras relie on <code>HttpClient</code> to fetch contents, ensure that it is included with the providers.</p>
+
+    <app-code-block [code]="loadHttp"
+        [languages]="['typescript']"></app-code-block>
+    <br>
+
+    <h2>Examples <div class="btn-group"
+            dropdown>
+            <button id="button-basic"
+                dropdownToggle
+                type="button"
+                class="btn btn-primary dropdown-toggle"
+                aria-controls="dropdown-basic">
+                Go to <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic"
+                *dropdownMenu
+                class="dropdown-menu"
+                role="menu"
+                aria-labelledby="button-basic">
+                <li *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+                    role="menuitem"><a class="dropdown-item"
+                        routerLink="."
+                        fragment="example-{{ i }}">{{ example.name }}</a></li>
+            </ul>
+        </div>
+    </h2>
+
+    <hr class="no-padding">
+
+    <app-example *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
+        [injector]="injector"
+        [config]="example"
+        id="example-{{ i }}"></app-example>
+
+</app-content-wrap>
