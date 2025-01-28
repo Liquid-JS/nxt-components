@@ -42,12 +42,12 @@
             [(ngModel)]="code"></textarea>
 
     </div>
-    <div class="col highlighted-result">
+    <div class="col highlighted-result $-{{ theme }}">
 
         @if(lineNumbers){
-        <pre [className]="'$-' + theme"><code [nxtHighlightAuto]="code" [languages]="[language]" lineNumbers ></code></pre>
+        <pre><code [nxtHighlightAuto]="code" [languages]="[language]" lineNumbers ></code></pre>
         } @else {
-        <pre [className]="'$-' + theme"><code [nxtHighlightAuto]="code" [languages]="[language]"  ></code></pre>
+        <pre><code [nxtHighlightAuto]="code" [languages]="[language]"  ></code></pre>
         }
 
     </div>
