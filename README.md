@@ -7,6 +7,7 @@ A collection of various Angular components
 -   **[nxt-color-picker](packages/color-picker)**
 -   **[nxt-dropzone-wrapper](packages/dropzone-wrapper)**
 -   **[nxt-flags](packages/flags)**
+-   **[nxt-highlightjs](packages/highlightjs)**
 -   **[nxt-json-view](packages/json-view)**
 -   **[nxt-pick-datetime](packages/pick-datetime)**
 -   **[nxt-sitemap](packages/sitemap)**
