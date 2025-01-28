@@ -42,12 +42,12 @@ import"./chunk-FBFWB55K.js";var a=`<div class="row">\r
             [(ngModel)]="code"></textarea>\r
 \r
     </div>\r
-    <div class="col highlighted-result">\r
+    <div class="col highlighted-result $-{{ theme }}">\r
 \r
         @if(lineNumbers){\r
-        <pre [className]="'$-' + theme"><code [nxtHighlightAuto]="code" [languages]="[language]" lineNumbers ></code></pre>\r
+        <pre><code [nxtHighlightAuto]="code" [languages]="[language]" lineNumbers ></code></pre>\r
         } @else {\r
-        <pre [className]="'$-' + theme"><code [nxtHighlightAuto]="code" [languages]="[language]"  ></code></pre>\r
+        <pre><code [nxtHighlightAuto]="code" [languages]="[language]"  ></code></pre>\r
         }\r
 \r
     </div>\r

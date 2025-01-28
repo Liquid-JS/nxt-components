@@ -1,4 +1,4 @@
-import"./chunk-FBFWB55K.js";var h=`@use "./helpers";\r
+import"./chunk-FBFWB55K.js";var i=`@use "./helpers";\r
 \r
 .highlighted-result {\r
     display: flex;\r
@@ -8,10 +8,11 @@ import"./chunk-FBFWB55K.js";var h=`@use "./helpers";\r
         display: flex;\r
         width: 0;\r
         flex: 100% 1 1;\r
+        border-radius: 0.5rem;\r
 \r
         code {\r
             flex: auto 1 1;\r
         }\r
     }\r
 }\r
-`;export{h as default};
+`;export{i as default};
