@@ -29,8 +29,4 @@ import"./chunk-FBFWB55K.js";var s=`@if (loading) {\r
     (gistError)="error = $event; loading = false"\r
     [nxtHighlight]="(gist | gistFile: selectedFile)?.content"\r
     [language]="extName(selectedFile) ?? ''"></code></pre>\r
-\r
-@if (gist) {\r
-<a [href]="gist.html_url">Open on github</a>\r
-}\r
 `;export{s as default};
