@@ -17,21 +17,30 @@ import { HighlightBase } from './highlight-base'
 })
 export class HighlightAutoDirective extends HighlightBase {
 
-    // Code to highlight
+    /**
+     * Code to highlight
+     */
     code = input<string>(undefined, { alias: 'nxtHighlightAuto' })
 
-    // Highlighted result
+    /**
+     * Highlighted result
+     */
     highlightResult = signal<AutoHighlightResult | undefined>(undefined)
 
-    // An optional array of language names and aliases restricting detection to only those languages.
-    // The subset can also be set with configure, but the local parameter overrides the option if set.
+    /**
+     * An optional array of language names and aliases restricting detection to only those languages
+     *
+     * The subset can also be set with configure, but the local parameter overrides the option if set.
+     */
     readonly languages = input<string[]>()
 
-    // Stream that emits when code string is highlighted
+    /**
+     * Stream that emits when code string is highlighted
+     */
     highlighted: OutputEmitterRef<AutoHighlightResult> = output<AutoHighlightResult>()
 
     protected highlightElement(code: string) {
-        const hljs = this._hljs.hljs()
+        const hljs = this.hljs.hljs()
         return hljs?.highlightAuto(code, this.languages())
     }
 }

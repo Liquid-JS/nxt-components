@@ -9,11 +9,11 @@ import { LoaderErrors } from './loader-errors'
 })
 export class HighlightLoader {
 
-    private document: Document = inject(DOCUMENT)
-    private options = inject(NXT_HIGHLIGHT_OPTIONS, { optional: true })
-    private pendingTasks = inject(PendingTasks)
+    private readonly document: Document = inject(DOCUMENT)
+    private readonly options = inject(NXT_HIGHLIGHT_OPTIONS, { optional: true })
+    private readonly pendingTasks = inject(PendingTasks)
 
-    readonly ready: Promise<HLJSApi> = this.pendingTasks.run(() => this._loadLibrary()
+    readonly ready: Promise<HLJSApi> = this.pendingTasks.run(() => this.loadLibrary()
         .then(async hljs => {
             if (this.options?.lineNumbersLoader) {
                 const plugin = await this.options.lineNumbersLoader();
@@ -27,7 +27,7 @@ export class HighlightLoader {
         })
     )
 
-    private _themeLinkElement?: HTMLLinkElement
+    private themeLinkElement?: HTMLLinkElement
 
     constructor() {
         if (this.options?.themePath) {
@@ -38,7 +38,7 @@ export class HighlightLoader {
     /**
      * Lazy-Load highlight.js library
      */
-    private async _loadLibrary(): Promise<HLJSApi> {
+    private async loadLibrary(): Promise<HLJSApi> {
         if (this.options) {
             if (this.options.fullLibraryLoader && this.options.coreLibraryLoader) {
                 throw new Error(LoaderErrors.FULL_WITH_CORE_LIBRARY_IMPORTS)
@@ -56,7 +56,7 @@ export class HighlightLoader {
                 return this.options.fullLibraryLoader()
             }
             if (this.options.coreLibraryLoader && this.options.languages && Object.keys(this.options.languages).length) {
-                return this.options.coreLibraryLoader().then(hljs => this._loadLanguages(hljs))
+                return this.options.coreLibraryLoader().then(hljs => this.loadLanguages(hljs))
             }
         }
         throw new Error(LoaderErrors.NO_FULL_AND_NO_CORE_IMPORTS)
@@ -65,7 +65,7 @@ export class HighlightLoader {
     /**
      * Lazy-load highlight.js languages
      */
-    private async _loadLanguages(hljs: HLJSApi) {
+    private async loadLanguages(hljs: HLJSApi) {
         await Promise.all(Object.entries(this.options?.languages || {})
             .map(([langName, langLoader]) => langLoader().then(langFunc => hljs.registerLanguage(langName, langFunc))))
         return hljs
@@ -75,8 +75,8 @@ export class HighlightLoader {
      * Reload theme styles
      */
     setTheme(path: string): void {
-        if (this._themeLinkElement) {
-            this._themeLinkElement.href = path
+        if (this.themeLinkElement) {
+            this.themeLinkElement.href = path
         } else {
             this.loadTheme(path)
         }
@@ -86,11 +86,11 @@ export class HighlightLoader {
      * Load theme
      */
     private loadTheme(path: string): void {
-        this._themeLinkElement = this.document.createElement('link')
-        this._themeLinkElement.href = path
-        this._themeLinkElement.type = 'text/css'
-        this._themeLinkElement.rel = 'stylesheet'
-        this._themeLinkElement.media = 'screen,print'
-        this.document.head.appendChild(this._themeLinkElement)
+        this.themeLinkElement = this.document.createElement('link')
+        this.themeLinkElement.href = path
+        this.themeLinkElement.type = 'text/css'
+        this.themeLinkElement.rel = 'stylesheet'
+        this.themeLinkElement.media = 'screen,print'
+        this.document.head.appendChild(this.themeLinkElement)
     }
 }

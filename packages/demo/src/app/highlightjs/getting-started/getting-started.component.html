@@ -1,0 +1,38 @@
+<app-meta title="Getting started | nxt-highlightjs"
+    description="Getting started with Angular highlightjs"></app-meta>
+<app-content-wrap>
+    <h1>Getting started with nxt-highlightjs</h1>
+
+    <h2 class="h4">Installing</h2>
+    <app-code-block [code]="installScript"
+        [languages]="['shell']"></app-code-block>
+
+    <br>
+
+    <h2 class="h4">Load and configure Highlight.js</h2>
+    <app-code-block [code]="loadFull"
+        [languages]="['typescript']"></app-code-block>
+    <br>
+
+    <p>Above code loads the entire Highlight.js library. To improve performance you might want to load only the core library and neccesary languages.</p>
+
+    <app-code-block [code]="loadConfig"
+        [languages]="['typescript']"></app-code-block>
+    <br>
+
+    <h2 class="h4">Include it in HTML template</h2>
+    <app-code-block [code]="includeHTML"
+        [languages]="['html']"></app-code-block>
+    <br>
+
+    <h2 class="h3">Configuration options</h2>
+    <ng-container *ngFor="let item of inps; index as i">
+        <br *ngIf="i > 0">
+        <h3 class="h5">{{ item.selector }}</h3>
+        <app-inputs-table [inputs]="item.inputs"
+            *ngIf="item.inputs.length"></app-inputs-table>
+        <app-outputs-table [outputs]="item.outputs"
+            *ngIf="item.outputs.length"></app-outputs-table>
+    </ng-container>
+
+</app-content-wrap>

@@ -18,7 +18,7 @@
         <th cdk-header-cell
             *cdkHeaderCellDef>Type</th>
         <td cdk-cell
-            *cdkCellDef="let output">{{ formatOutputType(output.defaultValue) }}</td>
+            *cdkCellDef="let output">{{ formatOutputType(output.defaultValue || output.type) }}</td>
     </ng-container>
 
     <ng-container cdkColumnDef="description">

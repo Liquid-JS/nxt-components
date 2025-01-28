@@ -134,12 +134,12 @@ describe('Highlight Loader', () => {
         (loader as any).loadTheme(path)
 
         expect(createElementSpy).toHaveBeenCalledWith('link')
-        expect(loader['_themeLinkElement']).toBeTruthy()
-        expect(loader['_themeLinkElement']?.href).toBe(path)
-        expect(loader['_themeLinkElement']?.type).toBe('text/css')
-        expect(loader['_themeLinkElement']?.rel).toBe('stylesheet')
-        expect(loader['_themeLinkElement']?.media).toBe('screen,print')
-        expect(appendChildSpy).toHaveBeenCalledWith(loader['_themeLinkElement'])
+        expect(loader['themeLinkElement']).toBeTruthy()
+        expect(loader['themeLinkElement']?.href).toBe(path)
+        expect(loader['themeLinkElement']?.type).toBe('text/css')
+        expect(loader['themeLinkElement']?.rel).toBe('stylesheet')
+        expect(loader['themeLinkElement']?.media).toBe('screen,print')
+        expect(appendChildSpy).toHaveBeenCalledWith(loader['themeLinkElement'])
     })
 
     it('should update existing style element when setting a theme', () => {
@@ -150,7 +150,7 @@ describe('Highlight Loader', () => {
         const diffPath: string = 'https://different-theme-path.css/'
 
         loader.setTheme(diffPath)
-        expect(loader['_themeLinkElement']?.href).toBe(diffPath)
+        expect(loader['themeLinkElement']?.href).toBe(diffPath)
     })
 
     it('should load a new style element when setting a theme if no existing element', () => {
@@ -174,11 +174,11 @@ describe('Highlight Loader', () => {
 
         const loader: HighlightLoader = TestBed.inject(HighlightLoader)
 
-        expect(loader['_themeLinkElement']).toBeTruthy()
-        expect(loader['_themeLinkElement']?.href).toBe(themePath)
-        expect(loader['_themeLinkElement']?.type).toBe('text/css')
-        expect(loader['_themeLinkElement']?.rel).toBe('stylesheet')
-        expect(loader['_themeLinkElement']?.media).toBe('screen,print')
+        expect(loader['themeLinkElement']).toBeTruthy()
+        expect(loader['themeLinkElement']?.href).toBe(themePath)
+        expect(loader['themeLinkElement']?.type).toBe('text/css')
+        expect(loader['themeLinkElement']?.rel).toBe('stylesheet')
+        expect(loader['themeLinkElement']?.media).toBe('screen,print')
     })
 
     it('should override the default config of highlight.js', async () => {

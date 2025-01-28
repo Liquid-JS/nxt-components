@@ -40,18 +40,9 @@ export class BasicExampleComponent {
     readonly languages = languages
 
     theme = 'androidstudio'
-    language = 'xml'
-    lineNumbers = true
+    language = 'typescript'
+    lineNumbers = false
 
-    code = `<div class="row">
-    <div class="col">
-
-        <select [(ngModel)]="theme"
-            class="form-select">
-            <option *ngFor="let i of themes"
-                [value]="i">{{ i }}</option>
-        </select>
-    </div>
-</div>`
+    code = ''
 
 }

@@ -1,18 +1,24 @@
 <div class="row">
     <div class="col">
 
-        <select [(ngModel)]="theme"
-            class="form-select">
-            <option *ngFor="let i of themes"
-                [value]="i">{{ i }}</option>
+        <label class="form-label"
+            for="language">Language</label>
+        <select [(ngModel)]="language"
+            class="form-select"
+            name="language">
+            <option *ngFor="let i of languages"
+                [value]="i[1]">{{ i[0] }}</option>
         </select>
 
         <br>
 
-        <select [(ngModel)]="language"
-            class="form-select">
-            <option *ngFor="let i of languages"
-                [value]="i[1]">{{ i[0] }}</option>
+        <label class="form-label"
+            for="theme">Theme</label>
+        <select [(ngModel)]="theme"
+            class="form-select"
+            name="theme">
+            <option *ngFor="let i of themes"
+                [value]="i">{{ i }}</option>
         </select>
 
         <br>
@@ -39,9 +45,9 @@
     <div class="col highlighted-result">
 
         @if(lineNumbers){
-        <pre [className]="theme"><code [nxtHighlightAuto]="code" [languages]="[language]" lineNumbers ></code></pre>
+        <pre [className]="'$-' + theme"><code [nxtHighlightAuto]="code" [languages]="[language]" lineNumbers ></code></pre>
         } @else {
-        <pre [className]="theme"><code [nxtHighlightAuto]="code" [languages]="[language]"  ></code></pre>
+        <pre [className]="'$-' + theme"><code [nxtHighlightAuto]="code" [languages]="[language]"  ></code></pre>
         }
 
     </div>

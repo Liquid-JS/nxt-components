@@ -484,7 +484,7 @@
             "outputs": [],
             "providers": [
                 {
-                    "name": "{\n    provide: NXT_DROPZONE_LISTENERS, useExisting: DropzoneComponent\n}",
+                    "name": "DropzoneComponent",
                     "type": "component"
                 }
             ],

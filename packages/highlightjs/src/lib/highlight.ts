@@ -18,26 +18,36 @@ import { HighlightBase } from './highlight-base'
 })
 export class HighlightDirective extends HighlightBase {
 
-    // Code to highlight
+    /**
+     * Code to highlight
+     */
     code = input<string>(undefined, { alias: 'nxtHighlight' })
 
-    // Highlighted result
+    /**
+     * Highlighted result
+     */
     highlightResult = signal<HighlightResult | undefined>(undefined)
 
-    // The language name highlight only one language.
+    /**
+     * The language name highlight only one language
+     */
     readonly language: InputSignal<string> = input.required<string>()
 
-    // An optional flag, when set to true it forces highlighting to finish even in case of detecting
-    // illegal syntax for the language instead of throwing an exception.
+    /**
+     * An optional flag, when set to true it forces highlighting to finish even in case of detecting
+     * illegal syntax for the language instead of throwing an exception
+     */
     readonly ignoreIllegals = input<boolean, unknown>(undefined, {
         transform: booleanAttribute
     })
 
-    // Stream that emits when code string is highlighted
+    /**
+     * Stream that emits when code string is highlighted
+     */
     highlighted = output<HighlightResult>()
 
     highlightElement(code: string) {
-        const hljs = this._hljs.hljs()
+        const hljs = this.hljs.hljs()
         return hljs?.highlight(code, {
             language: this.language(),
             ignoreIllegals: this.ignoreIllegals()

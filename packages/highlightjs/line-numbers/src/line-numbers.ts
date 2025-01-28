@@ -15,9 +15,9 @@ import { HighlightBase, HighlightJS, NXT_HIGHLIGHT_OPTIONS } from 'nxt-highlight
 export class HighlightLineNumbersDirective {
 
     private readonly options = inject(NXT_HIGHLIGHT_OPTIONS)?.lineNumbersOptions
-    private readonly _hljs = inject(HighlightJS)
-    private readonly _highlight = inject(HighlightBase)
-    private readonly _nativeElement = inject(ElementRef<HTMLElement>).nativeElement
+    private readonly hljs = inject(HighlightJS)
+    private readonly highlight = inject(HighlightBase)
+    private readonly nativeElement = inject(ElementRef<HTMLElement>).nativeElement
 
     readonly startFrom = input(this.options?.startFrom, {
         transform: numberAttribute
@@ -29,19 +29,19 @@ export class HighlightLineNumbersDirective {
 
     constructor() {
         effect(() => {
-            const hljs = this._hljs.hljs()
-            if (this._highlight.highlightResult()) {
+            const hljs = this.hljs.hljs()
+            if (this.highlight.highlightResult()) {
                 if ((hljs as any).lineNumbersBlock) {
-                    (hljs as any).lineNumbersBlock(this._nativeElement, {
+                    (hljs as any).lineNumbersBlock(this.nativeElement, {
                         startFrom: this.startFrom(),
                         singleLine: this.singleLine()
                     })
                 }
                 // If lines count is 1, the line numbers library will not add numbers
-                if (this._nativeElement.firstElementChild?.tagName.toUpperCase() === 'TABLE') {
-                    this._nativeElement.classList.add('hljs-line-numbers')
+                if (this.nativeElement.firstElementChild?.tagName.toUpperCase() === 'TABLE') {
+                    this.nativeElement.classList.add('hljs-line-numbers')
                 } else {
-                    this._nativeElement.classList.remove('hljs-line-numbers')
+                    this.nativeElement.classList.remove('hljs-line-numbers')
                 }
             }
         })

@@ -16,18 +16,24 @@ import { trustedHTMLFromStringBypass } from './trusted-types'
 @Directive()
 export abstract class HighlightBase {
 
-    protected _hljs: HighlightJS = inject(HighlightJS)
+    protected readonly hljs: HighlightJS = inject(HighlightJS)
 
-    private readonly _nativeElement: HTMLElement = inject(ElementRef<HTMLElement>).nativeElement
-    private _sanitizer: DomSanitizer = inject(DomSanitizer)
+    private readonly nativeElement: HTMLElement = inject(ElementRef<HTMLElement>).nativeElement
+    private readonly sanitizer: DomSanitizer = inject(DomSanitizer)
 
-    // Code to highlight
+    /**
+     * Code to highlight
+     */
     abstract code: InputSignal<string | undefined>
 
-    // Highlighted result
+    /**
+     * Highlighted result
+     */
     abstract highlightResult: WritableSignal<HighlightResult | AutoHighlightResult | undefined>
 
-    // Stream that emits when code string is highlighted
+    /**
+     * Stream that emits when code string is highlighted
+     */
     abstract highlighted: OutputEmitterRef<HighlightResult | AutoHighlightResult | undefined>
 
     constructor() {
@@ -50,12 +56,12 @@ export abstract class HighlightBase {
     protected abstract highlightElement(code: string): HighlightResult | AutoHighlightResult | undefined
 
     private setTextContent(content: string): void {
-        this._nativeElement.textContent = content
+        this.nativeElement.textContent = content
     }
 
     private setInnerHTML(content: string | null): void {
-        this._nativeElement.innerHTML = trustedHTMLFromStringBypass(
-            this._sanitizer.sanitize(SecurityContext.HTML, content) || ''
+        this.nativeElement.innerHTML = trustedHTMLFromStringBypass(
+            this.sanitizer.sanitize(SecurityContext.HTML, content) || ''
         ) as any
     }
 }

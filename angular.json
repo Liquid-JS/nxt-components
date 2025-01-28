@@ -66,8 +66,7 @@
                         "loader": {
                             ".html": "text",
                             ".scss": "text",
-                            ".png": "file",
-                            ".css": "file"
+                            ".png": "file"
                         },
                         "scripts": [],
                         "serviceWorker": "packages/demo/ngsw-config.json",

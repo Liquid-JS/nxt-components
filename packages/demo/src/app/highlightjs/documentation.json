@@ -2,7 +2,7 @@
     "pipes": [
         {
             "name": "CodeFromUrlPipe",
-            "id": "pipe-CodeFromUrlPipe-c2313844915f9f7bea1627c6079fc20ef2b95fa76d23716ef093b3834d0c849765258f7a346d25b04e488187eef81bb40f28e382ba5178408bbbe7428c9d24f1",
+            "id": "pipe-CodeFromUrlPipe-ffc89b162905e5cc8e324e95ca27f8d477824ffa81d04e1dd650d7c231d73b18e0caf501340af8f1c8c316178e9c68d6cfd00c9a9e063369b28ce633f8d46094",
             "file": "plus/src/code-from-url.ts",
             "type": "pipe",
             "deprecated": false,
@@ -45,7 +45,7 @@
         },
         {
             "name": "GistFilePipe",
-            "id": "pipe-GistFilePipe-682cb65538596510ecf72ac420606839bfc6c1d09310367a2984d2eba5adb2495d1cdf3d62d8909dc41391a91aa3a02531f3d8a58f156d1f3de066bcde5ea31c",
+            "id": "pipe-GistFilePipe-b81eca7ae4f5e4346a5c3c9ff803aa9ebf5aaef96e65866824a4200d38b4057d4fa7f371158cc66be0cf163f3faca051a211e1d1c916213dcd626e5ce43ad002",
             "file": "plus/src/gist.ts",
             "type": "pipe",
             "deprecated": false,
@@ -73,7 +73,7 @@
                     "optional": false,
                     "returnType": "string | null",
                     "typeParameters": [],
-                    "line": 32,
+                    "line": 31,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -598,7 +598,7 @@
         },
         {
             "name": "LineNumbersOptions",
-            "id": "interface-LineNumbersOptions-8d5e908d7dfe6ec4ca8a74cc9a21a7b93dc2005033a5ebb3952159bdad4325215e7752ee4e38db9491fa87023bab7686a5d7914cf47bfbd43ab4ee517ee797ce",
+            "id": "interface-LineNumbersOptions-567b5a54ffe8067773a02bb7eaa2eee6ba280059a674e612713354c6a2071b94802414aab3ad169e73108838004fe73acca6cb1ecadb8115e3b1b516767d25b5",
             "file": "line-numbers/src/line-numbers-lib.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -1061,7 +1061,7 @@
     "injectables": [
         {
             "name": "CodeLoader",
-            "id": "injectable-CodeLoader-a50f19b830166313a1889f9b4adee2bef9b99aaf810f6159f0e737264927e9bb4c5c4b1ccf0d273b060377f763a00a3d962d4a556332068bd7f1c7f486cc3397",
+            "id": "injectable-CodeLoader-192fc682107a22262f9844147e4439482a6ba1d8623795da00386adf24e2a3668cf3c516cc2722ce7cc5d20733da91a2a76b3aa719b3a600131225cc26ea1478",
             "file": "plus/src/code-loader.ts",
             "properties": [],
             "methods": [
@@ -1086,8 +1086,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 482,
-                                "end": 484,
+                                "pos": 498,
+                                "end": 500,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1098,8 +1098,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 476,
-                                "end": 481,
+                                "pos": 492,
+                                "end": 497,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1131,8 +1131,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 967,
-                                "end": 970,
+                                "pos": 979,
+                                "end": 982,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1143,8 +1143,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 961,
-                                "end": 966,
+                                "pos": 973,
+                                "end": 978,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1615,12 +1615,12 @@
         },
         {
             "name": "HighlightLoader",
-            "id": "injectable-HighlightLoader-4e412b39d520f9b023e3141df44ddcd2ed944b42124ae37752b2882c4b3680221f9b5135347abfdb088b354f6b11076e8a3bd1c5d0aa5cdcd207d040eb387525",
+            "id": "injectable-HighlightLoader-554c888cd353725356907e3e2f6f28361a06c90fc6a9bf0f9d4e6cff9e6361939647b714cfaf0e5f008cd790d99becbf46c4eb8f856e5bf2944f749bad854da1",
             "file": "src/lib/highlight.loader.ts",
             "properties": [
                 {
                     "name": "ready",
-                    "defaultValue": "this.pendingTasks.run(() => this._loadLibrary()\r\n        .then(async hljs => {\r\n            if (this.options?.lineNumbersLoader) {\r\n                const plugin = await this.options.lineNumbersLoader();\r\n                (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)\r\n            }\r\n\r\n            if (this.options?.highlightOptions)\r\n                hljs.configure(this.options.highlightOptions)\r\n\r\n            return hljs\r\n        })\r\n    )",
+                    "defaultValue": "this.pendingTasks.run(() => this.loadLibrary()\r\n        .then(async hljs => {\r\n            if (this.options?.lineNumbersLoader) {\r\n                const plugin = await this.options.lineNumbersLoader();\r\n                (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)\r\n            }\r\n\r\n            if (this.options?.highlightOptions)\r\n                hljs.configure(this.options.highlightOptions)\r\n\r\n            return hljs\r\n        })\r\n    )",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Promise<HLJSApi>",
@@ -1687,7 +1687,7 @@
     "directives": [
         {
             "name": "GistDirective",
-            "id": "directive-GistDirective-682cb65538596510ecf72ac420606839bfc6c1d09310367a2984d2eba5adb2495d1cdf3d62d8909dc41391a91aa3a02531f3d8a58f156d1f3de066bcde5ea31c",
+            "id": "directive-GistDirective-b81eca7ae4f5e4346a5c3c9ff803aa9ebf5aaef96e65866824a4200d38b4057d4fa7f371158cc66be0cf163f3faca051a211e1d1c916213dcd626e5ce43ad002",
             "file": "plus/src/gist.ts",
             "type": "directive",
             "description": "",
@@ -1701,7 +1701,7 @@
                     "name": "nxtGist",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": []
                 }
@@ -1712,7 +1712,7 @@
                     "defaultValue": "new EventEmitter<Gist>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 25,
+                    "line": 24,
                     "type": "EventEmitter<Gist>"
                 }
             ],
@@ -1740,7 +1740,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 15,
+                        "line": 14,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -1758,7 +1758,7 @@
         },
         {
             "name": "HighlightAutoDirective",
-            "id": "directive-HighlightAutoDirective-07c661759e8bb7f06cb3701efa85c57e711da6cd12d87c0b10501dd05a4c6d733cbbc6f7e3d0729b59ba20fe750c6bcd9150b389667dec9d2aa5a2ae32b6f3e1",
+            "id": "directive-HighlightAutoDirective-f7d3ae7ef45d8468d18e5d439b6b87b4bd119f0335212964615c7d3574d111c653ed8c8be87d6987328f3bbd9d52282739ed874bf8e34b4d12c4f5d19f65658b",
             "file": "src/lib/highlight-auto.ts",
             "type": "directive",
             "description": "",
@@ -1766,14 +1766,56 @@
             "selector": "[nxtHighlightAuto]",
             "providers": [
                 {
-                    "name": "{ provide: HighlightBase, useExisting: HighlightAutoDirective }",
+                    "name": "HighlightAutoDirective",
                     "type": "directive"
                 }
             ],
             "hostDirectives": [],
             "standalone": false,
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "code",
+                    "defaultValue": "undefined, { alias: 'nxtHighlightAuto' }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Code to highlight</p>\n",
+                    "line": 23,
+                    "rawdescription": "\n\nCode to highlight\n",
+                    "required": false
+                },
+                {
+                    "name": "languages",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>An optional array of language names and aliases restricting detection to only those languages</p>\n<p>The subset can also be set with configure, but the local parameter overrides the option if set.</p>\n",
+                    "line": 35,
+                    "rawdescription": "\n\nAn optional array of language names and aliases restricting detection to only those languages\n\nThe subset can also be set with configure, but the local parameter overrides the option if set.\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "highlighted",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "AutoHighlightResult",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Stream that emits when code string is highlighted</p>\n",
+                    "line": 40,
+                    "rawdescription": "\n\nStream that emits when code string is highlighted\n",
+                    "required": false
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -1787,8 +1829,9 @@
                     "type": "",
                     "indexKey": "",
                     "optional": false,
-                    "description": "",
-                    "line": 21,
+                    "description": "<p>Code to highlight</p>\n",
+                    "line": 23,
+                    "rawdescription": "\n\nCode to highlight\n",
                     "inheritance": {
                         "file": "HighlightBase"
                     }
@@ -1801,8 +1844,9 @@
                     "type": "OutputEmitterRef<AutoHighlightResult>",
                     "indexKey": "",
                     "optional": false,
-                    "description": "",
-                    "line": 31,
+                    "description": "<p>Stream that emits when code string is highlighted</p>\n",
+                    "line": 40,
+                    "rawdescription": "\n\nStream that emits when code string is highlighted\n",
                     "inheritance": {
                         "file": "HighlightBase"
                     }
@@ -1815,8 +1859,9 @@
                     "type": "",
                     "indexKey": "",
                     "optional": false,
-                    "description": "",
-                    "line": 24,
+                    "description": "<p>Highlighted result</p>\n",
+                    "line": 28,
+                    "rawdescription": "\n\nHighlighted result\n",
                     "inheritance": {
                         "file": "HighlightBase"
                     }
@@ -1829,14 +1874,15 @@
                     "type": "",
                     "indexKey": "",
                     "optional": false,
-                    "description": "",
-                    "line": 28,
+                    "description": "<p>An optional array of language names and aliases restricting detection to only those languages</p>\n<p>The subset can also be set with configure, but the local parameter overrides the option if set.</p>\n",
+                    "line": 35,
+                    "rawdescription": "\n\nAn optional array of language names and aliases restricting detection to only those languages\n\nThe subset can also be set with configure, but the local parameter overrides the option if set.\n",
                     "modifierKind": [
                         148
                     ]
                 },
                 {
-                    "name": "_hljs",
+                    "name": "hljs",
                     "defaultValue": "inject(HighlightJS)",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1846,7 +1892,8 @@
                     "description": "",
                     "line": 19,
                     "modifierKind": [
-                        124
+                        124,
+                        148
                     ],
                     "inheritance": {
                         "file": "HighlightBase"
@@ -1867,7 +1914,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1895,7 +1942,7 @@
         },
         {
             "name": "HighlightBase",
-            "id": "directive-HighlightBase-330f6b5ef3019a73d753869dc8b0e6bc84e1c76c253c4042d21fe196c12ffc811108349322ac7f3ea24876ee2b23cb4913a484ac8e07b2c0a38b7dd2aa59bc9f",
+            "id": "directive-HighlightBase-2915359aeacf19163c64be9672f83a265486fc740cff77157a3d3d2b9d0ee2332a3dce734a4daccf9f90824552cd795b5d0e9c09ae2bf14f772e4beca9642d14",
             "file": "src/lib/highlight-base.ts",
             "type": "directive",
             "description": "",
@@ -1911,28 +1958,15 @@
             "hostListeners": [],
             "propertiesClass": [
                 {
-                    "name": "_hljs",
-                    "defaultValue": "inject(HighlightJS)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "HighlightJS",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 19,
-                    "modifierKind": [
-                        124
-                    ]
-                },
-                {
                     "name": "code",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "InputSignal<string | undefined>",
                     "indexKey": "",
                     "optional": false,
-                    "description": "",
-                    "line": 25,
+                    "description": "<p>Code to highlight</p>\n",
+                    "line": 27,
+                    "rawdescription": "\n\nCode to highlight\n",
                     "modifierKind": [
                         128
                     ]
@@ -1944,8 +1978,9 @@
                     "type": "OutputEmitterRef<HighlightResult | AutoHighlightResult | undefined>",
                     "indexKey": "",
                     "optional": false,
-                    "description": "",
-                    "line": 31,
+                    "description": "<p>Stream that emits when code string is highlighted</p>\n",
+                    "line": 37,
+                    "rawdescription": "\n\nStream that emits when code string is highlighted\n",
                     "modifierKind": [
                         128
                     ]
@@ -1957,10 +1992,26 @@
                     "type": "WritableSignal<HighlightResult | AutoHighlightResult | undefined>",
                     "indexKey": "",
                     "optional": false,
-                    "description": "",
-                    "line": 28,
+                    "description": "<p>Highlighted result</p>\n",
+                    "line": 32,
+                    "rawdescription": "\n\nHighlighted result\n",
                     "modifierKind": [
                         128
+                    ]
+                },
+                {
+                    "name": "hljs",
+                    "defaultValue": "inject(HighlightJS)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "HighlightJS",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        124,
+                        148
                     ]
                 }
             ],
@@ -1978,7 +2029,7 @@
                     "optional": false,
                     "returnType": "HighlightResult | AutoHighlightResult | undefined",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2005,12 +2056,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 31
+                "line": 37
             }
         },
         {
             "name": "HighlightDirective",
-            "id": "directive-HighlightDirective-334d115670990b0ca798a6b43f838fcf90aa12d4b5750b371042389e7b943edd61386b0c4cd23a8fd7a483b998c8e4e9c10f5fa38fb92d955e250c0123501015",
+            "id": "directive-HighlightDirective-15bf865e4b52cf5a494d25b8fbd87ca59c073ea677256e1197ec5c1c87465e7686d432fe2d11f445772e10537b87ade1456403a13cea8184a3e5b953e6476ba7",
             "file": "src/lib/highlight.ts",
             "type": "directive",
             "description": "",
@@ -2018,7 +2069,7 @@
             "selector": "[nxtHighlight]",
             "providers": [
                 {
-                    "name": "{ provide: HighlightBase, useExisting: HighlightDirective }",
+                    "name": "HighlightDirective",
                     "type": "directive"
                 }
             ],
@@ -2026,21 +2077,64 @@
             "standalone": false,
             "inputsClass": [
                 {
+                    "name": "code",
+                    "defaultValue": "undefined, { alias: 'nxtHighlight' }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Code to highlight</p>\n",
+                    "line": 24,
+                    "rawdescription": "\n\nCode to highlight\n",
+                    "required": false
+                },
+                {
+                    "name": "ignoreIllegals",
+                    "defaultValue": "undefined, {\r        transform: booleanAttribute\r    }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean, unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>An optional flag, when set to true it forces highlighting to finish even in case of detecting\nillegal syntax for the language instead of throwing an exception</p>\n",
+                    "line": 40,
+                    "rawdescription": "\n\nAn optional flag, when set to true it forces highlighting to finish even in case of detecting\nillegal syntax for the language instead of throwing an exception\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
                     "name": "language",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "InputSignal<string>",
+                    "type": "string",
                     "indexKey": "",
                     "optional": false,
-                    "description": "",
-                    "line": 28,
+                    "description": "<p>The language name highlight only one language</p>\n",
+                    "line": 34,
+                    "rawdescription": "\n\nThe language name highlight only one language\n",
                     "modifierKind": [
                         148
                     ],
                     "required": true
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "highlighted",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "HighlightResult",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Stream that emits when code string is highlighted</p>\n",
+                    "line": 47,
+                    "rawdescription": "\n\nStream that emits when code string is highlighted\n",
+                    "required": false
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -2054,8 +2148,9 @@
                     "type": "",
                     "indexKey": "",
                     "optional": false,
-                    "description": "",
-                    "line": 22,
+                    "description": "<p>Code to highlight</p>\n",
+                    "line": 24,
+                    "rawdescription": "\n\nCode to highlight\n",
                     "inheritance": {
                         "file": "HighlightBase"
                     }
@@ -2068,8 +2163,9 @@
                     "type": "",
                     "indexKey": "",
                     "optional": false,
-                    "description": "",
-                    "line": 37,
+                    "description": "<p>Stream that emits when code string is highlighted</p>\n",
+                    "line": 47,
+                    "rawdescription": "\n\nStream that emits when code string is highlighted\n",
                     "inheritance": {
                         "file": "HighlightBase"
                     }
@@ -2082,8 +2178,9 @@
                     "type": "",
                     "indexKey": "",
                     "optional": false,
-                    "description": "",
-                    "line": 25,
+                    "description": "<p>Highlighted result</p>\n",
+                    "line": 29,
+                    "rawdescription": "\n\nHighlighted result\n",
                     "inheritance": {
                         "file": "HighlightBase"
                     }
@@ -2096,28 +2193,30 @@
                     "type": "",
                     "indexKey": "",
                     "optional": false,
-                    "description": "",
-                    "line": 32,
+                    "description": "<p>An optional flag, when set to true it forces highlighting to finish even in case of detecting\nillegal syntax for the language instead of throwing an exception</p>\n",
+                    "line": 40,
+                    "rawdescription": "\n\nAn optional flag, when set to true it forces highlighting to finish even in case of detecting\nillegal syntax for the language instead of throwing an exception\n",
                     "modifierKind": [
                         148
                     ]
                 },
                 {
                     "name": "language",
+                    "defaultValue": "input.required<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "InputSignal<string>",
                     "indexKey": "",
                     "optional": false,
-                    "description": "",
-                    "line": 28,
+                    "description": "<p>The language name highlight only one language</p>\n",
+                    "line": 34,
+                    "rawdescription": "\n\nThe language name highlight only one language\n",
                     "modifierKind": [
                         148
-                    ],
-                    "required": true
+                    ]
                 },
                 {
-                    "name": "_hljs",
+                    "name": "hljs",
                     "defaultValue": "inject(HighlightJS)",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -2127,7 +2226,8 @@
                     "description": "",
                     "line": 19,
                     "modifierKind": [
-                        124
+                        124,
+                        148
                     ],
                     "inheritance": {
                         "file": "HighlightBase"
@@ -2148,7 +2248,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 39,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2173,7 +2273,7 @@
         },
         {
             "name": "HighlightLineNumbersDirective",
-            "id": "directive-HighlightLineNumbersDirective-2cfad58fdecc12afab0358c110cf735c6b0262985caf7bb79a0b218b307e31eba1d78fd8b91da33949750c8812a2c9432fa422a418e4600b8bd211dd80986ad7",
+            "id": "directive-HighlightLineNumbersDirective-4707ff84cbfa5e8a822c88ff97b9261628dcfcccd23066065992339e332463f214f3a6a43d8f53014dd332394807a187fb298772b2001e7087c20daa964e2120",
             "file": "line-numbers/src/line-numbers.ts",
             "type": "directive",
             "description": "",
@@ -2182,7 +2282,36 @@
             "providers": [],
             "hostDirectives": [],
             "standalone": false,
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "singleLine",
+                    "defaultValue": "this.options?.singleLine, {\r        transform: booleanAttribute\r    }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "startFrom",
+                    "defaultValue": "this.options?.startFrom, {\r        transform: numberAttribute\r    }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                }
+            ],
             "outputsClass": [],
             "deprecated": false,
             "deprecationMessage": "",

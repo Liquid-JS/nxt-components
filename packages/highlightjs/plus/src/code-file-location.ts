@@ -15,12 +15,12 @@ export interface CodeFileLocation {
 }
 
 export function CODE_FILE_LOCATION_FACTORY() {
-    const _location = inject(DOCUMENT)?.location
+    const location = inject(DOCUMENT)?.location
 
     return {
         // Note that this needs to be a function, rather than a property, because Angular
         // will only resolve it once, but we want the current path on each call.
-        // getPathname: () => (_location ? _location.pathname + _location.search : ''),
-        getPathname: () => (_location ? _location.origin : '')
+        // getPathname: () => (location ? location.pathname + location.search : ''),
+        getPathname: () => (location ? location.origin : '')
     }
 }

@@ -1,15 +1,15 @@
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
 import { catchError, EMPTY, Observable, shareReplay } from 'rxjs'
-import { Gist, NXT_GIST_OPTIONS, isUrl } from './gist.model'
+import { Gist, isUrl, NXT_GIST_OPTIONS } from './gist.model'
 
 @Injectable({
     providedIn: 'root'
 })
 export class CodeLoader {
 
-    private _http = inject(HttpClient)
-    private _options = inject(NXT_GIST_OPTIONS, { optional: true })
+    private readonly http = inject(HttpClient)
+    private readonly options = inject(NXT_GIST_OPTIONS, { optional: true })
 
     /**
      * Get plus code
@@ -18,8 +18,8 @@ export class CodeLoader {
      */
     getCodeFromGist(id: string): Observable<Gist> {
         let params!: HttpParams
-        if (this._options?.clientId && this._options?.clientSecret) {
-            params = new HttpParams().set('client_id', this._options.clientId).set('client_secret', this._options.clientSecret)
+        if (this.options?.clientId && this.options?.clientSecret) {
+            params = new HttpParams().set('client_id', this.options.clientId).set('client_secret', this.options.clientSecret)
         }
         return this.fetchFile(`https://api.github.com/gists/${id}`, { params, responseType: 'json' })
     }
@@ -36,7 +36,7 @@ export class CodeLoader {
     private fetchFile(url: string, options: any): Observable<any> {
         // Check if URL is valid
         if (isUrl(url)) {
-            return this._http.get(url, options).pipe(
+            return this.http.get(url, options).pipe(
                 // Catch response
                 shareReplay(1),
                 catchError((err: Error) => {

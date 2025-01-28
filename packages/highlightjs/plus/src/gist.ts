@@ -7,15 +7,14 @@ import { Gist } from './gist.model'
 })
 export class GistDirective {
 
-    private _loader: CodeLoader = inject(CodeLoader)
-
-    private _pendingTasks: PendingTasks = inject(PendingTasks)
+    private readonly loader: CodeLoader = inject(CodeLoader)
+    private readonly pendingTasks: PendingTasks = inject(PendingTasks)
 
     @Input('nxtGist')
     set gist(value: string) {
         if (value) {
-            const done = this._pendingTasks.add()
-            this._loader.getCodeFromGist(value).subscribe((gist: Gist) => {
+            const done = this.pendingTasks.add()
+            this.loader.getCodeFromGist(value).subscribe((gist: Gist) => {
                 done()
                 this.gistLoad.emit(gist)
             })

@@ -1,4 +1,4 @@
-export interface LineNumbersOptions {
+interface LineNumbersOptions {
     startFrom?: number
     singleLine?: boolean
 }

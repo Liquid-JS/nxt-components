@@ -17,6 +17,6 @@ export class OutputsTableComponent {
     @Input() outputs?: any[]
 
     formatOutputType(out: string) {
-        return out.match(/<(.*)>/)?.[1]
+        return out.match(/<(.*)>/)?.[1] || out
     }
 }
