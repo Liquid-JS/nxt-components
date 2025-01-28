@@ -1,5 +1,9 @@
 @use "./helpers";
 
+.col {
+    flex: 300px 1 1;
+}
+
 .highlighted-result {
     display: flex;
 
