@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
-import { HighlightDirective } from './highlight'
-import { HighlightAutoDirective } from './highlight-auto'
+import { HighlightAutoDirective } from './highlight-auto.directive'
+import { HighlightDirective } from './highlight.directive'
 
 @NgModule({
     imports: [HighlightDirective, HighlightAutoDirective],

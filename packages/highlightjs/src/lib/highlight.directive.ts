@@ -7,7 +7,7 @@ import {
     signal
 } from '@angular/core'
 import type { HighlightResult } from 'highlight.js'
-import { HighlightBase } from './highlight-base'
+import { HighlightBase } from './highlight-base.directive'
 
 @Directive({
     selector: '[nxtHighlight]',

@@ -2,7 +2,6 @@
     $primary: #00a645,
     $min-contrast-ratio: 3
 );
-
 @use "./scss/highlight";
 
 @import "@angular/cdk/overlay-prebuilt.css";
@@ -19,6 +18,10 @@
     &:not(.color-picker-container) {
         z-index: 10011 !important;
     }
+}
+
+.row {
+    gap: 1rem 0;
 }
 
 app-inputs-table,

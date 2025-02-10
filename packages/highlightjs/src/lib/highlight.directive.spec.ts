@@ -3,21 +3,22 @@ import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/
 import { By } from '@angular/platform-browser'
 import hljs from 'highlight.js'
 import { afterTimeout, highlightLoaderStub } from '../test-helpers'
-import { HighlightAutoDirective } from './highlight-auto'
+import { HighlightDirective } from './highlight.directive'
 import { HighlightLoader } from './highlight.loader'
 
 @Component({
-    template: '<code [nxtHighlightAuto]="code"></code>',
-    imports: [HighlightAutoDirective]
+    template: '<code [nxtHighlight]="code" [language]="language"></code>',
+    imports: [HighlightDirective]
 })
 class TestHighlightComponent {
     code?: string
+    language?: string
 }
 
-describe('HighlightAuto Directive', () => {
+describe('Highlight Directive', () => {
     let component: TestHighlightComponent
     let directiveElement: DebugElement
-    let directiveInstance: HighlightAutoDirective
+    let directiveInstance: HighlightDirective
     let fixture: ComponentFixture<TestHighlightComponent>
 
     const testJsCode: string = 'console.log(&quot;test&quot;)'
@@ -25,7 +26,7 @@ describe('HighlightAuto Directive', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [HighlightAutoDirective, TestHighlightComponent],
+            imports: [HighlightDirective, TestHighlightComponent],
             providers: [
                 { provide: HighlightLoader, useValue: highlightLoaderStub },
                 { provide: ComponentFixtureAutoDetect, useValue: true }
@@ -35,24 +36,11 @@ describe('HighlightAuto Directive', () => {
         fixture = TestBed.createComponent(TestHighlightComponent)
         await fixture.whenStable()
         component = fixture.componentInstance
-        directiveElement = fixture.debugElement.query(By.directive(HighlightAutoDirective))
-        directiveInstance = directiveElement.injector.get<HighlightAutoDirective>(HighlightAutoDirective)
+        directiveElement = fixture.debugElement.query(By.directive(HighlightDirective))
+        directiveInstance = directiveElement.injector.get(HighlightDirective)
     })
 
-    it('[Content-Security-Policy (CSP)] highlight element when trustedTypes is not supported by the browser', async () => {
-        const trustedTypesBackup = (window as any)['trustedTypes']
-        delete (window as any)['trustedTypes']
-        component.code = testJsCode
-        fixture.detectChanges()
-
-        const highlightedCode: string = hljs.highlightAuto(testJsCode).value
-
-        await afterTimeout(100)
-        expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode);
-        (window as any)['trustedTypes'] = trustedTypesBackup
-    })
-
-    it('should create highlightAuto directive add hljs class', () => {
+    it('should create highlight directive add hljs class', () => {
         expect(directiveInstance).toBeTruthy()
         expect(directiveElement.nativeElement.classList.contains('hljs')).toBeTruthy()
     })
@@ -63,20 +51,28 @@ describe('HighlightAuto Directive', () => {
         expect(directiveElement.nativeElement.innerHTML).toBe('')
     })
 
-    it('should highlight given text and highlight another text when change', async () => {
+    it('should highlight code reactively', async () => {
+        component.language = 'ts'
         component.code = testJsCode
         fixture.detectChanges()
 
-        let highlightedCode: string = hljs.highlightAuto(testJsCode).value
+        let highlightedCode: string = hljs.highlight(testJsCode, {
+            language: component.language,
+            ignoreIllegals: false
+        }).value
 
         await afterTimeout(200)
         expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode)
 
         // Change code 2nd time with another value
+        component.language = 'html'
         component.code = testHtmlCode
         fixture.detectChanges()
 
-        highlightedCode = hljs.highlightAuto(testHtmlCode).value
+        highlightedCode = hljs.highlight(testHtmlCode, {
+            language: component.language,
+            ignoreIllegals: false
+        }).value
 
         await afterTimeout(200)
         expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode)

@@ -538,7 +538,7 @@
         },
         {
             "name": "HighlightJSOptions",
-            "id": "interface-HighlightJSOptions-cd5d567a3ebdaf998bd3bc71f5d8224c95aabe6daf555d7b1e9da83808474d310a8a78004ba6dc6356bc832878d636eb39a7e7dcdab6053ffd332e7cb9472dc2",
+            "id": "interface-HighlightJSOptions-508c33c0e92298d21a7ef5a92f8988fe866400922df708cc5e16caa7c47bb87788efbbd046dedc5f91cfaa91dba7a8aadaac1acdbddf3e840983dc2258e6d623",
             "file": "src/lib/highlight.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -686,7 +686,7 @@
         },
         {
             "name": "LineNumbersOptions",
-            "id": "interface-LineNumbersOptions-c554b1e68ea85a2fc7dd45a880ef0e28fd42074b2dd428408dc5d033dfeadcdb9d6acd4a46c7398598e021894e23c5b0b031b8251894add40372a014ad7e0c39",
+            "id": "interface-LineNumbersOptions-f9bca46650922c6c697d850727576550b1bef626d2c141bf40f6bd335a241afe4d3d3ebd2e7b123c27170e622ef1e0070d3294f46bc1ed792556b25afc2d0b54",
             "file": "line-numbers/src/line-numbers-lib.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -720,7 +720,7 @@
         },
         {
             "name": "LineNumbersOptions",
-            "id": "interface-LineNumbersOptions-cd5d567a3ebdaf998bd3bc71f5d8224c95aabe6daf555d7b1e9da83808474d310a8a78004ba6dc6356bc832878d636eb39a7e7dcdab6053ffd332e7cb9472dc2-1",
+            "id": "interface-LineNumbersOptions-508c33c0e92298d21a7ef5a92f8988fe866400922df708cc5e16caa7c47bb87788efbbd046dedc5f91cfaa91dba7a8aadaac1acdbddf3e840983dc2258e6d623-1",
             "file": "src/lib/highlight.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -1703,19 +1703,19 @@
         },
         {
             "name": "HighlightLoader",
-            "id": "injectable-HighlightLoader-554c888cd353725356907e3e2f6f28361a06c90fc6a9bf0f9d4e6cff9e6361939647b714cfaf0e5f008cd790d99becbf46c4eb8f856e5bf2944f749bad854da1",
+            "id": "injectable-HighlightLoader-d4e9ff61cf55f481bbefc329b9eb5e9bc19eda444ae6e3f3e876d0e22e749f9c73bea68a0ffc85a2ecebbf29cee3c752185b2790e6997a0eabf66f9c42618c55",
             "file": "src/lib/highlight.loader.ts",
             "properties": [
                 {
                     "name": "ready",
-                    "defaultValue": "this.pendingTasks.run(() => this.loadLibrary()\r\n        .then(async hljs => {\r\n            if (this.options?.lineNumbersLoader) {\r\n                const plugin = await this.options.lineNumbersLoader();\r\n                (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)\r\n            }\r\n\r\n            if (this.options?.highlightOptions)\r\n                hljs.configure(this.options.highlightOptions)\r\n\r\n            return hljs\r\n        })\r\n    )",
+                    "defaultValue": "this.pendingTasks.run(() => this.loadLibrary()\r\n        .then(async hljs => {\r\n            if (this.options?.lineNumbersLoader) {\r\n                const plugin = await this.options.lineNumbersLoader();\r\n                (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)\r\n            }\r\n\r\n            hljs.configure({\r\n                __emitter: TokenTreeEmitter\r\n            })\r\n\r\n            if (this.options?.highlightOptions)\r\n                hljs.configure(this.options.highlightOptions)\r\n\r\n            return hljs\r\n        })\r\n    )",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Promise<HLJSApi>",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 17,
                     "modifierKind": [
                         148
                     ]
@@ -1735,7 +1735,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 77,
+                    "line": 82,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReload theme styles\n",
@@ -1763,7 +1763,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 30
+                "line": 35
             },
             "extends": [],
             "type": "injectable"
@@ -1771,7 +1771,1196 @@
     ],
     "guards": [],
     "interceptors": [],
-    "classes": [],
+    "classes": [
+        {
+            "name": "HTMLRenderer",
+            "id": "class-HTMLRenderer-923f4fa6a4f7becb52c78535a4068ad3a7325539350b41e0d34d46b510db738d0aaf755d604324197b9b788fdf8e1320bdb8a8a575c8ef1b74ea8dedda344596",
+            "file": "src/lib/output.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "<p>Creates a new HTMLRenderer</p>\n",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "parseTree",
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "options",
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 227,
+                "rawdescription": "\n\nCreates a new HTMLRenderer\n\n",
+                "jsdoctags": [
+                    {
+                        "name": {
+                            "pos": 5311,
+                            "end": 5320,
+                            "kind": 80,
+                            "id": 0,
+                            "flags": 16842752,
+                            "transformFlags": 0,
+                            "escapedText": "parseTree"
+                        },
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "pos": 5305,
+                            "end": 5310,
+                            "kind": 80,
+                            "id": 0,
+                            "flags": 16842752,
+                            "transformFlags": 0,
+                            "escapedText": "param"
+                        },
+                        "comment": "<ul>\n<li>the parse tree (must support <code>walk</code> API)</li>\n</ul>\n"
+                    },
+                    {
+                        "name": {
+                            "pos": 5379,
+                            "end": 5386,
+                            "kind": 80,
+                            "id": 0,
+                            "flags": 16842752,
+                            "transformFlags": 0,
+                            "escapedText": "options"
+                        },
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "pos": 5373,
+                            "end": 5378,
+                            "kind": 80,
+                            "id": 0,
+                            "flags": 16842752,
+                            "transformFlags": 0,
+                            "escapedText": "param"
+                        },
+                        "comment": ""
+                    }
+                ]
+            },
+            "inputsClass": [],
+            "outputsClass": [],
+            "properties": [],
+            "methods": [
+                {
+                    "name": "addText",
+                    "args": [
+                        {
+                            "name": "text",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 245,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nAdds texts to the output stream\n",
+                    "description": "<p>Adds texts to the output stream</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 5649,
+                                "end": 5653,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "text"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 5643,
+                                "end": 5648,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "closeNode",
+                    "args": [
+                        {
+                            "name": "node",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 267,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nAdds a node close to the output stream (if needed)\n",
+                    "description": "<p>Adds a node close to the output stream (if needed)</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 6317,
+                                "end": 6321,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "node"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 6311,
+                                "end": 6316,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "openNode",
+                    "args": [
+                        {
+                            "name": "node",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 255,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nAdds a node open to the output stream (if needed)\n",
+                    "description": "<p>Adds a node open to the output stream (if needed)</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 6011,
+                                "end": 6015,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "node"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 6005,
+                                "end": 6010,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "span",
+                    "args": [
+                        {
+                            "name": "className",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 287,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nBuilds a span element\n",
+                    "description": "<p>Builds a span element</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 6659,
+                                "end": 6668,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "className"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 6653,
+                                "end": 6658,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "value",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 277,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nreturns the accumulated buffer\n",
+                    "description": "<p>returns the accumulated buffer</p>\n"
+                }
+            ],
+            "indexSignatures": [],
+            "extends": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "TokenTree",
+            "id": "class-TokenTree-923f4fa6a4f7becb52c78535a4068ad3a7325539350b41e0d34d46b510db738d0aaf755d604324197b9b788fdf8e1320bdb8a8a575c8ef1b74ea8dedda344596",
+            "file": "src/lib/output.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 22
+            },
+            "inputsClass": [],
+            "outputsClass": [],
+            "properties": [],
+            "methods": [
+                {
+                    "name": "_collapse",
+                    "args": [
+                        {
+                            "name": "node",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 95,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\n",
+                    "description": "",
+                    "modifierKind": [
+                        126
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 2249,
+                                "end": 2253,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "node"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 2243,
+                                "end": 2248,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "_walk",
+                    "args": [
+                        {
+                            "name": "builder",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "node",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 81,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\n",
+                    "description": "",
+                    "modifierKind": [
+                        126
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1849,
+                                "end": 1856,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "builder"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1843,
+                                "end": 1848,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        },
+                        {
+                            "name": {
+                                "pos": 1872,
+                                "end": 1876,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "node"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1866,
+                                "end": 1871,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "add",
+                    "args": [
+                        {
+                            "name": "node",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 976,
+                                "end": 980,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "node"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 970,
+                                "end": 975,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "closeAllNodes",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "closeNode",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 50,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "openNode",
+                    "args": [
+                        {
+                            "name": "scope",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1064,
+                                "end": 1069,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "scope"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1058,
+                                "end": 1063,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "toJSON",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 62,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "walk",
+                    "args": [
+                        {
+                            "name": "builder",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 70,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1606,
+                                "end": 1613,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "builder"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1600,
+                                "end": 1605,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "extends": [],
+            "accessors": {
+                "top": {
+                    "name": "top",
+                    "getSignature": {
+                        "name": "top",
+                        "type": "",
+                        "returnType": "",
+                        "line": 29
+                    }
+                },
+                "root": {
+                    "name": "root",
+                    "getSignature": {
+                        "name": "root",
+                        "type": "",
+                        "returnType": "",
+                        "line": 33
+                    }
+                }
+            },
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "TokenTreeEmitter",
+            "id": "class-TokenTreeEmitter-923f4fa6a4f7becb52c78535a4068ad3a7325539350b41e0d34d46b510db738d0aaf755d604324197b9b788fdf8e1320bdb8a8a575c8ef1b74ea8dedda344596",
+            "file": "src/lib/output.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "options",
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 129,
+                "rawdescription": "\n\n",
+                "jsdoctags": [
+                    {
+                        "name": {
+                            "pos": 3162,
+                            "end": 3169,
+                            "kind": 80,
+                            "id": 0,
+                            "flags": 16842752,
+                            "transformFlags": 0,
+                            "escapedText": "options"
+                        },
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "pos": 3156,
+                            "end": 3161,
+                            "kind": 80,
+                            "id": 0,
+                            "flags": 16842752,
+                            "transformFlags": 0,
+                            "escapedText": "param"
+                        },
+                        "comment": ""
+                    }
+                ]
+            },
+            "inputsClass": [],
+            "outputsClass": [],
+            "properties": [],
+            "methods": [
+                {
+                    "name": "__addSublanguage",
+                    "args": [
+                        {
+                            "name": "emitter",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "name",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 162,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 3584,
+                                "end": 3591,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "emitter"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 3578,
+                                "end": 3583,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        },
+                        {
+                            "name": {
+                                "pos": 3607,
+                                "end": 3611,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "name"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 3601,
+                                "end": 3606,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "addText",
+                    "args": [
+                        {
+                            "name": "text",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 141,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 3289,
+                                "end": 3293,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "text"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 3283,
+                                "end": 3288,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "endScope",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 154,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "finalize",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 175,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "startScope",
+                    "args": [
+                        {
+                            "name": "scope",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 150,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 3434,
+                                "end": 3439,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "scope"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 3428,
+                                "end": 3433,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "toHTML",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 170,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "_collapse",
+                    "args": [
+                        {
+                            "name": "node",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 95,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\n",
+                    "description": "",
+                    "modifierKind": [
+                        126
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 2249,
+                                "end": 2253,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "node"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 2243,
+                                "end": 2248,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "TokenTree"
+                    }
+                },
+                {
+                    "name": "_walk",
+                    "args": [
+                        {
+                            "name": "builder",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "node",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 81,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\n",
+                    "description": "",
+                    "modifierKind": [
+                        126
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1849,
+                                "end": 1856,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "builder"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1843,
+                                "end": 1848,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        },
+                        {
+                            "name": {
+                                "pos": 1872,
+                                "end": 1876,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "node"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1866,
+                                "end": 1871,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "TokenTree"
+                    }
+                },
+                {
+                    "name": "add",
+                    "args": [
+                        {
+                            "name": "node",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 976,
+                                "end": 980,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "node"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 970,
+                                "end": 975,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "TokenTree"
+                    }
+                },
+                {
+                    "name": "closeAllNodes",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "TokenTree"
+                    }
+                },
+                {
+                    "name": "closeNode",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 50,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "TokenTree"
+                    }
+                },
+                {
+                    "name": "openNode",
+                    "args": [
+                        {
+                            "name": "scope",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1064,
+                                "end": 1069,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "scope"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1058,
+                                "end": 1063,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "TokenTree"
+                    }
+                },
+                {
+                    "name": "toJSON",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 62,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "TokenTree"
+                    }
+                },
+                {
+                    "name": "walk",
+                    "args": [
+                        {
+                            "name": "builder",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 70,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1606,
+                                "end": 1613,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "builder"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1600,
+                                "end": 1605,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "TokenTree"
+                    }
+                }
+            ],
+            "indexSignatures": [],
+            "extends": [
+                "TokenTree"
+            ],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
     "directives": [
         {
             "name": "GistDirective",
@@ -1868,8 +3057,8 @@
         },
         {
             "name": "HighlightAutoDirective",
-            "id": "directive-HighlightAutoDirective-1ee4c4dbf7dcf6332e36ecf4f0bd825bf0c168e952f935c52d97ec1a92bb496ed76436dde7b0a1a819132d4de473112b130426d53fb1445ae98fcf55921947d9",
-            "file": "src/lib/highlight-auto.ts",
+            "id": "directive-HighlightAutoDirective-f0e2a68b860434a812aa5dee8f8720a1767f246dabcfe0e80dcae09ca6149170f73022b9ba09a3489238bb3381822a5591be629e32f9fd4e22f656085da3713d",
+            "file": "src/lib/highlight-auto.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
@@ -2053,7 +3242,7 @@
         {
             "name": "HighlightBase",
             "id": "directive-HighlightBase-cbeef606a4734b180d10adf6c691f7eac716b9fea1cc068e94ee6acd71624c35b20230d33bfca3e24d4eb205087ee6b90297711d66994b9e533b44628ecb0632",
-            "file": "src/lib/highlight-base.ts",
+            "file": "src/lib/highlight-base.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
@@ -2171,8 +3360,8 @@
         },
         {
             "name": "HighlightDirective",
-            "id": "directive-HighlightDirective-cc41a52e9aa3f2155989a8a8e510820b08d9b20d3a2cbfb92de98f9cf260cb5c12a3c78dafcb53d123c3c1077c05233fa301227bf1f7b0bb32be86a8fff1ac98",
-            "file": "src/lib/highlight.ts",
+            "id": "directive-HighlightDirective-2c1775dd473da3c8ca014c72a3ce12c3e2c552913722e11d9e335778f015c341ba859f5aac4aca650383e54d0467076c20b33c5037a2431a36fed34d7ca8462e",
+            "file": "src/lib/highlight.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
@@ -2383,8 +3572,8 @@
         },
         {
             "name": "HighlightLineNumbersDirective",
-            "id": "directive-HighlightLineNumbersDirective-4707ff84cbfa5e8a822c88ff97b9261628dcfcccd23066065992339e332463f214f3a6a43d8f53014dd332394807a187fb298772b2001e7087c20daa964e2120",
-            "file": "line-numbers/src/line-numbers.ts",
+            "id": "directive-HighlightLineNumbersDirective-7778af037f593e9aba86bc08c466b8a2dbd20abe19b3d0695b93a9fdb8fbece37ebe0c3996d1d5381b27f63f4abf2ef53e6d646d69b882d02cb82c3c27bf468a",
+            "file": "line-numbers/src/line-numbers.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
@@ -2528,7 +3717,7 @@
         },
         {
             "name": "HighlightModule",
-            "id": "module-HighlightModule-ad0231b61efd04e2396b315cb1ed215a33927b763bdbd3a41158c809a23a54eb029dbc577de7271cbf54c6070c382d6fe5595ff68dd0b1bdaa200a8b43fa54e1",
+            "id": "module-HighlightModule-b0db0bb10933b06000a1a141a2111fada0580247164c82491d5c524cbadf344d903e52ab0f68ea16cdaeb8b04106fc240acf08cea3bfb042d0e8600c23167fae",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
@@ -2579,6 +3768,40 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "BREAK_LINE_REGEXP",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/lib/output.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "/\\r\\n|\\r|\\n/g"
+            },
+            {
+                "name": "emitsWrappingTags",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/lib/output.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(node) =>\r\n    // rarely we can have a sublanguage where language is undefined\r\n    // TODO: track down why\r\n    !!node.scope",
+                "rawdescription": "Determines if a node needs to be wrapped in <span>",
+                "description": "<p>Determines if a node needs to be wrapped in <span></p>\n"
+            },
+            {
+                "name": "newNode",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/lib/output.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(opts = {}) => {\r\n    /** @type DataNode */\r\n    const result = { children: [] }\r\n    Object.assign(result, opts)\r\n    return result\r\n}",
+                "rawdescription": "The contents of this file is from highlight.js, with a small modification to HTMLRenderer to make sure spans don't contain line breaks (important to improve performance of line numbers).",
+                "description": "<p>The contents of this file is from highlight.js, with a small modification to HTMLRenderer to make sure spans don&#39;t contain line breaks (important to improve performance of line numbers).</p>\n"
+            },
+            {
                 "name": "NXT_GIST_OPTIONS",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2620,6 +3843,26 @@
                 "type": "Pick | undefined",
                 "rawdescription": "Enable usage of the library together with \"trusted-types\" HTTP Content-Security-Policy (CSP)\r\n\r\nCan be added to angular.json -> serve -> options -> headers to try it out in DEV mode\r\n\"Content-Security-Policy\": \"trusted-types nxt-highlightjs; require-trusted-types-for 'script'\"\r\n\r\nRead more...\r\nAngular Security: https://angular.io/guide/security#enforcing-trusted-types\r\nTrusted Types: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/trusted-types",
                 "description": "<p>Enable usage of the library together with &quot;trusted-types&quot; HTTP Content-Security-Policy (CSP)</p>\n<p>Can be added to angular.json -&gt; serve -&gt; options -&gt; headers to try it out in DEV mode\n&quot;Content-Security-Policy&quot;: &quot;trusted-types nxt-highlightjs; require-trusted-types-for &#39;script&#39;&quot;</p>\n<p>Read more...\nAngular Security: <a href=\"https://angular.io/guide/security#enforcing-trusted-types\">https://angular.io/guide/security#enforcing-trusted-types</a>\nTrusted Types: <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/trusted-types\">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/trusted-types</a></p>\n"
+            },
+            {
+                "name": "scopeToCSSClass",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/lib/output.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(name, { prefix }) => {\r\n    // sub-language\r\n    if (name.startsWith('language:')) {\r\n        return name.replace('language:', 'language-')\r\n    }\r\n    // tiered scope: comment.line\r\n    if (name.includes('.')) {\r\n        const pieces = name.split('.')\r\n        return [\r\n            `${prefix}${pieces.shift()}`,\r\n            ...(pieces.map((x, i) => `${x}${'_'.repeat(i + 1)}`))\r\n        ].join(' ')\r\n    }\r\n    // simple scope\r\n    return `${prefix}${name}`\r\n}"
+            },
+            {
+                "name": "SPAN_CLOSE",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/lib/output.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'</span>'"
             }
         ],
         "functions": [
@@ -2660,6 +3903,61 @@
                 "deprecationMessage": "",
                 "description": "",
                 "args": []
+            },
+            {
+                "name": "escapeHTML",
+                "file": "src/lib/output.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "value",
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": {
+                            "pos": 6839,
+                            "end": 6844,
+                            "kind": 80,
+                            "id": 0,
+                            "flags": 16777216,
+                            "transformFlags": 0,
+                            "escapedText": "value"
+                        },
+                        "type": "",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "pos": 6833,
+                            "end": 6838,
+                            "kind": 80,
+                            "id": 0,
+                            "flags": 16777216,
+                            "transformFlags": 0,
+                            "escapedText": "param"
+                        },
+                        "comment": ""
+                    },
+                    {
+                        "tagName": {
+                            "pos": 6850,
+                            "end": 6857,
+                            "kind": 80,
+                            "id": 0,
+                            "flags": 16777216,
+                            "transformFlags": 0,
+                            "escapedText": "returns"
+                        },
+                        "comment": ""
+                    }
+                ]
             },
             {
                 "name": "getPolicy",
@@ -2831,6 +4129,62 @@
             }
         ],
         "groupedVariables": {
+            "src/lib/output.ts": [
+                {
+                    "name": "BREAK_LINE_REGEXP",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/lib/output.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "/\\r\\n|\\r|\\n/g"
+                },
+                {
+                    "name": "emitsWrappingTags",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/lib/output.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(node) =>\r\n    // rarely we can have a sublanguage where language is undefined\r\n    // TODO: track down why\r\n    !!node.scope",
+                    "rawdescription": "Determines if a node needs to be wrapped in <span>",
+                    "description": "<p>Determines if a node needs to be wrapped in <span></p>\n"
+                },
+                {
+                    "name": "newNode",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/lib/output.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(opts = {}) => {\r\n    /** @type DataNode */\r\n    const result = { children: [] }\r\n    Object.assign(result, opts)\r\n    return result\r\n}",
+                    "rawdescription": "The contents of this file is from highlight.js, with a small modification to HTMLRenderer to make sure spans don't contain line breaks (important to improve performance of line numbers).",
+                    "description": "<p>The contents of this file is from highlight.js, with a small modification to HTMLRenderer to make sure spans don&#39;t contain line breaks (important to improve performance of line numbers).</p>\n"
+                },
+                {
+                    "name": "scopeToCSSClass",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/lib/output.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(name, { prefix }) => {\r\n    // sub-language\r\n    if (name.startsWith('language:')) {\r\n        return name.replace('language:', 'language-')\r\n    }\r\n    // tiered scope: comment.line\r\n    if (name.includes('.')) {\r\n        const pieces = name.split('.')\r\n        return [\r\n            `${prefix}${pieces.shift()}`,\r\n            ...(pieces.map((x, i) => `${x}${'_'.repeat(i + 1)}`))\r\n        ].join(' ')\r\n    }\r\n    // simple scope\r\n    return `${prefix}${name}`\r\n}"
+                },
+                {
+                    "name": "SPAN_CLOSE",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/lib/output.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'</span>'"
+                }
+            ],
             "extras/src/gist.model.ts": [
                 {
                     "name": "NXT_GIST_OPTIONS",
@@ -2924,6 +4278,63 @@
                     "deprecationMessage": "",
                     "description": "",
                     "args": []
+                }
+            ],
+            "src/lib/output.ts": [
+                {
+                    "name": "escapeHTML",
+                    "file": "src/lib/output.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 6839,
+                                "end": 6844,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "value"
+                            },
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 6833,
+                                "end": 6838,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        },
+                        {
+                            "tagName": {
+                                "pos": 6850,
+                                "end": 6857,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "returns"
+                            },
+                            "comment": ""
+                        }
+                    ]
                 }
             ],
             "src/lib/trusted-types.ts": [

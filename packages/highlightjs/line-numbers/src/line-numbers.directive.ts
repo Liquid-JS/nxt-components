@@ -30,12 +30,14 @@ export class HighlightLineNumbersDirective {
     constructor() {
         effect(() => {
             const hljs = this.hljs.hljs()
-            if (this.highlight.highlightResult()) {
+            const result = this.highlight.highlightResult()
+            if (result?.value) {
                 if ((hljs as any).lineNumbersBlock) {
-                    (hljs as any).lineNumbersBlock(this.nativeElement, {
+                    const code = (hljs as any).lineNumbersBlock(result.value, {
                         startFrom: this.startFrom(),
                         singleLine: this.singleLine()
                     })
+                    this.nativeElement.innerHTML = code
                 }
                 // If lines count is 1, the line numbers library will not add numbers
                 if (this.nativeElement.firstElementChild?.tagName.toUpperCase() === 'TABLE') {

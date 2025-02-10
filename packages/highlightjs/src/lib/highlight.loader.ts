@@ -3,6 +3,7 @@ import { Injectable, PendingTasks, inject } from '@angular/core'
 import type { HLJSApi } from 'highlight.js'
 import { NXT_HIGHLIGHT_OPTIONS } from './highlight.model'
 import { LoaderErrors } from './loader-errors'
+import { TokenTreeEmitter } from './output'
 
 @Injectable({
     providedIn: 'root'
@@ -19,6 +20,10 @@ export class HighlightLoader {
                 const plugin = await this.options.lineNumbersLoader();
                 (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)
             }
+
+            hljs.configure({
+                __emitter: TokenTreeEmitter
+            })
 
             if (this.options?.highlightOptions)
                 hljs.configure(this.options.highlightOptions)

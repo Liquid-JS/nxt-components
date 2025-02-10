@@ -16,7 +16,7 @@ export interface HighlightJSOptions {
     languages?: Record<string, () => Promise<LanguageFn>>
     coreLibraryLoader?: () => Promise<HLJSApi>
     fullLibraryLoader?: () => Promise<HLJSApi>
-    lineNumbersLoader?: () => Promise<{ activateLineNumbers: (document: Document) => (element: HTMLElement, options?: LineNumbersOptions) => void }>
+    lineNumbersLoader?: () => Promise<{ activateLineNumbers: (document: Document) => (code: string, options?: LineNumbersOptions) => string }>
     themePath?: string
 }
 

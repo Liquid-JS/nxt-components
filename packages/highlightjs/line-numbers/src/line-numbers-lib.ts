@@ -137,19 +137,15 @@ export function activateLineNumbers(document: Document) {
         document.getElementsByTagName('head')[0].appendChild(css)
     }
 
-    function lineNumbersBlock(element: HTMLElement, options?: LineNumbersOptions) {
-        if (typeof element !== 'object') return
-
-        element.innerHTML = lineNumbersInternal(element, options)
+    function lineNumbersBlock(code: string, options?: LineNumbersOptions) {
+        return lineNumbersInternal(code, options)
     }
 
-    function lineNumbersInternal(element: HTMLElement, options?: LineNumbersOptions) {
+    function lineNumbersInternal(code: string, options?: LineNumbersOptions) {
 
-        const internalOptions = mapOptions(element, options)
+        const internalOptions = mapOptions(options)
 
-        duplicateMultilineNodes(element)
-
-        return addLineNumbersBlockFor(element.innerHTML, internalOptions)
+        return addLineNumbersBlockFor(code, internalOptions)
     }
 
     function addLineNumbersBlockFor(inputHtml: string, options?: LineNumbersOptions) {
@@ -195,11 +191,11 @@ export function activateLineNumbers(document: Document) {
      * @param options External API options.
      * @returns Internal API options.
      */
-    function mapOptions(element: HTMLElement, options?: LineNumbersOptions) {
+    function mapOptions(options?: LineNumbersOptions) {
         options = options || {}
         return {
             singleLine: getSingleLineOption(options),
-            startFrom: getStartFromOption(element, options)
+            startFrom: getStartFromOption(options)
         }
     }
 
@@ -211,7 +207,7 @@ export function activateLineNumbers(document: Document) {
         return defaultValue
     }
 
-    function getStartFromOption(element: HTMLElement, options?: LineNumbersOptions) {
+    function getStartFromOption(options?: LineNumbersOptions) {
         const defaultValue = 1
         let startFrom = defaultValue
 
@@ -219,55 +215,12 @@ export function activateLineNumbers(document: Document) {
             startFrom = options!.startFrom!
         }
 
-        // can be overridden because local option is priority
-        const value = getAttribute(element, 'data-ln-start-from')
-        if (value !== null) {
-            startFrom = toNumber(value, defaultValue)
-        }
-
         return startFrom
-    }
-
-    /**
-     * Recursive method for fix multi-line elements implementation in highlight.js
-     * Doing deep passage on child nodes.
-     *
-     * @param element
-     */
-    function duplicateMultilineNodes(element: HTMLElement) {
-        if (getLinesCount(element.textContent) > 0) {
-            element.childNodes.forEach(child => duplicateMultilineNodes(child as HTMLElement))
-            duplicateMultilineNode(element as HTMLElement)
-        }
-    }
-
-    /**
-     * Method for fix multi-line elements implementation in highlight.js
-     *
-     * @param element
-     */
-    function duplicateMultilineNode(element: HTMLElement) {
-        if (element?.tagName?.toUpperCase() !== 'SPAN') return
-
-        const className = element.className
-
-        const lines = getLines(element.innerHTML)
-
-        const result = lines.map(line => {
-            const lineText = line.length > 0 ? line : ' '
-            return format('<span class="{0}">{1}</span>', [className, lineText])
-        }).join('\n')
-
-        element.outerHTML = result
     }
 
     function getLines(text: string) {
         if (text.length === 0) return []
         return text.split(BREAK_LINE_REGEXP)
-    }
-
-    function getLinesCount(text?: string | null) {
-        return (text?.trim().match(BREAK_LINE_REGEXP) || []).length
     }
 
     ///
@@ -282,26 +235,6 @@ export function activateLineNumbers(document: Document) {
      */
     function format(formatString: string, args: any[]) {
         return formatString.replace(/\{(\d+)\}/g, (m, n) => args[n] !== null && args[n] !== undefined ? args[n] : m)
-    }
-
-    /**
-     * @param element Code block.
-     * @param attrName Attribute name.
-     * @returns Attribute value or empty.
-     */
-    function getAttribute(element: HTMLElement, attrName: string) {
-        return element.hasAttribute(attrName) ? element.getAttribute(attrName) : null
-    }
-
-    /**
-     * @param str Source string.
-     * @param fallback Fallback value.
-     * @returns Parsed number or fallback value.
-     */
-    function toNumber(str: string, fallback: number) {
-        if (!str) return fallback
-        const number = Number(str)
-        return isFinite(number) ? number : fallback
     }
 
     return lineNumbersBlock
