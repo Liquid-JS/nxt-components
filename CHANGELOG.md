@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.1.0](https://github.com/Liquid-JS/nxt-components/compare/v19.0.5...v19.1.0) (2025-02-10)
+
+### Features
+
+* **highlightjs:** improve line numbers rendering, avoid need for DOM access ([a613379](https://github.com/Liquid-JS/nxt-components/commit/a61337974d95f1b08c2fec0e2f43ca70c7f5f713))
+
 ## [19.0.5](https://github.com/Liquid-JS/nxt-components/compare/v14.0.0...v19.0.5) (2025-01-28)
 
 ### Bug Fixes
