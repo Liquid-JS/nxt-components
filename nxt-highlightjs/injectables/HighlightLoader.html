@@ -274,6 +274,10 @@
                 (hljs as any).lineNumbersBlock &#x3D; plugin.activateLineNumbers(this.document)
             }
 
+            hljs.configure({
+                __emitter: TokenTreeEmitter
+            })
+
             if (this.options?.highlightOptions)
                 hljs.configure(this.options.highlightOptions)
 

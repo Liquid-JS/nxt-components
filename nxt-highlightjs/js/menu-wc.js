@@ -93,13 +93,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/HighlightModule.html" data-type="entity-link" >HighlightModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                        'data-bs-target="#directives-links-module-HighlightModule-ad0231b61efd04e2396b315cb1ed215a33927b763bdbd3a41158c809a23a54eb029dbc577de7271cbf54c6070c382d6fe5595ff68dd0b1bdaa200a8b43fa54e1"' : 'data-bs-target="#xs-directives-links-module-HighlightModule-ad0231b61efd04e2396b315cb1ed215a33927b763bdbd3a41158c809a23a54eb029dbc577de7271cbf54c6070c382d6fe5595ff68dd0b1bdaa200a8b43fa54e1"' }>
+                                        'data-bs-target="#directives-links-module-HighlightModule-b0db0bb10933b06000a1a141a2111fada0580247164c82491d5c524cbadf344d903e52ab0f68ea16cdaeb8b04106fc240acf08cea3bfb042d0e8600c23167fae"' : 'data-bs-target="#xs-directives-links-module-HighlightModule-b0db0bb10933b06000a1a141a2111fada0580247164c82491d5c524cbadf344d903e52ab0f68ea16cdaeb8b04106fc240acf08cea3bfb042d0e8600c23167fae"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-HighlightModule-ad0231b61efd04e2396b315cb1ed215a33927b763bdbd3a41158c809a23a54eb029dbc577de7271cbf54c6070c382d6fe5595ff68dd0b1bdaa200a8b43fa54e1"' :
-                                        'id="xs-directives-links-module-HighlightModule-ad0231b61efd04e2396b315cb1ed215a33927b763bdbd3a41158c809a23a54eb029dbc577de7271cbf54c6070c382d6fe5595ff68dd0b1bdaa200a8b43fa54e1"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-HighlightModule-b0db0bb10933b06000a1a141a2111fada0580247164c82491d5c524cbadf344d903e52ab0f68ea16cdaeb8b04106fc240acf08cea3bfb042d0e8600c23167fae"' :
+                                        'id="xs-directives-links-module-HighlightModule-b0db0bb10933b06000a1a141a2111fada0580247164c82491d5c524cbadf344d903e52ab0f68ea16cdaeb8b04106fc240acf08cea3bfb042d0e8600c23167fae"' }>
                                         <li class="link">
                                             <a href="directives/HighlightAutoDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >HighlightAutoDirective</a>
                                         </li>
@@ -136,6 +136,25 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                             </ul>
                         </li>
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#classes-links"' :
+                            'data-bs-target="#xs-classes-links"' }>
+                            <span class="icon ion-ios-paper"></span>
+                            <span>Classes</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
+                            <li class="link">
+                                <a href="classes/HTMLRenderer.html" data-type="entity-link" >HTMLRenderer</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/TokenTree.html" data-type="entity-link" >TokenTree</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/TokenTreeEmitter.html" data-type="entity-link" >TokenTreeEmitter</a>
+                            </li>
+                        </ul>
+                    </li>
                         <li class="chapter">
                             <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#injectables-links"' :
                                 'data-bs-target="#xs-injectables-links"' }>
