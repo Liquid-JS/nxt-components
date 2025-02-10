@@ -45,9 +45,12 @@ import"./chunk-FBFWB55K.js";var a=`<div class="row">\r
     <div class="col highlighted-result $-{{ theme }}">\r
 \r
         @if(lineNumbers){\r
-        <pre><code [nxtHighlightAuto]="code" [languages]="[language]" lineNumbers ></code></pre>\r
+        <pre><code [nxtHighlightAuto]="code"\r
+            [languages]="[language]"\r
+            lineNumbers></code></pre>\r
         } @else {\r
-        <pre><code [nxtHighlightAuto]="code" [languages]="[language]"  ></code></pre>\r
+        <pre><code [nxtHighlightAuto]="code"\r
+            [languages]="[language]"></code></pre>\r
         }\r
 \r
     </div>\r
