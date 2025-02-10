@@ -35,16 +35,16 @@
                 [heading]="source.tab"
                 class="example-tab-content">
                 <pre><code [nxtHighlightAuto]="source.code"
-                [languages]="[source.language]"
-                lineNumbers></code></pre>
+                    [languages]="[source.language]"
+                    lineNumbers></code></pre>
             </tab>
         </tabset>
         <ng-template #single>
             <div *ngIf="sources?.[0] as source"
                 class="example-tab-content example-tab-content--single">
                 <pre><code [nxtHighlightAuto]="source.code"
-                [languages]="[source.language]"
-                lineNumbers></code></pre>
+                    [languages]="[source.language]"
+                    lineNumbers></code></pre>
             </div>
         </ng-template>
     </div>

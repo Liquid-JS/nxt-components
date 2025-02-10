@@ -45,9 +45,12 @@
     <div class="col highlighted-result $-{{ theme }}">
 
         @if(lineNumbers){
-        <pre><code [nxtHighlightAuto]="code" [languages]="[language]" lineNumbers ></code></pre>
+        <pre><code [nxtHighlightAuto]="code"
+            [languages]="[language]"
+            lineNumbers></code></pre>
         } @else {
-        <pre><code [nxtHighlightAuto]="code" [languages]="[language]"  ></code></pre>
+        <pre><code [nxtHighlightAuto]="code"
+            [languages]="[language]"></code></pre>
         }
 
     </div>
