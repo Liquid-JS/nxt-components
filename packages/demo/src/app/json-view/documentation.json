@@ -31,7 +31,142 @@
             "extends": []
         }
     ],
-    "injectables": [],
+    "injectables": [
+        {
+            "name": "ExpanderService",
+            "id": "injectable-ExpanderService-65acdfec985b778f6bb9647fbfcbaf3c86cb54bccc480bffc32d39cf500f8ec56e57322f928386da584adb56dbd94b92d48157c08abc94bbbbe2db101fc20cf9",
+            "file": "src/lib/expander/expander.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "addItem",
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "JsonViewItemComponent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "JsonViewItemComponent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "collapseTo",
+                    "args": [
+                        {
+                            "name": "level",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "level",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "expandTo",
+                    "args": [
+                        {
+                            "name": "level",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "level",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "removeItem",
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "JsonViewItemComponent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "JsonViewItemComponent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "extends": [],
+            "type": "injectable"
+        }
+    ],
     "guards": [],
     "interceptors": [],
     "classes": [],
@@ -39,7 +174,7 @@
     "components": [
         {
             "name": "JsonViewComponent",
-            "id": "component-JsonViewComponent-eafe988ebc33bfa13c61732e2bb6dc37720d1f5a59bbf2035762f3f382448becfd7dd0676005aedbda4047126076445194c951c7117298e7a5ae87378a91a7f0",
+            "id": "component-JsonViewComponent-43a4e5de5f43e9cf40f2a8c9c997b2d7f0ab8c0c8b2acc253f3709e593ff92052ea3c7c2becb5bbc7dbb7772881216104020c6e01e4aae4eac86db82f3a44b42",
             "file": "src/lib/json-view/json-view.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.Emulated"
@@ -47,7 +182,12 @@
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [],
+            "providers": [
+                {
+                    "name": "ExpanderService",
+                    "type": "injectable"
+                }
+            ],
             "selector": "nxt-json-view",
             "styleUrls": [
                 "./json-view.component.scss"
@@ -65,7 +205,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nJSON data, any valid JSON object",
                     "description": "<p>JSON data, any valid JSON object</p>\n",
-                    "line": 13,
+                    "line": 20,
                     "type": "any",
                     "decorators": []
                 },
@@ -75,7 +215,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCustom labels for elements within the hierarcy",
                     "description": "<p>Custom labels for elements within the hierarcy</p>\n",
-                    "line": 17,
+                    "line": 24,
                     "type": "LevelLabels",
                     "decorators": []
                 },
@@ -85,14 +225,75 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nInitial number of levels to be expanded",
                     "description": "<p>Initial number of levels to be expanded</p>\n",
-                    "line": 15,
+                    "line": 22,
                     "type": "number",
                     "decorators": []
                 }
             ],
             "outputsClass": [],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "collapseTo",
+                    "args": [
+                        {
+                            "name": "level",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nCollapse any open items above the given level",
+                    "description": "<p>Collapse any open items above the given level</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "level",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "expandTo",
+                    "args": [
+                        {
+                            "name": "level",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nExpand all items up to the given level",
+                    "description": "<p>Expand all items up to the given level</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "level",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],

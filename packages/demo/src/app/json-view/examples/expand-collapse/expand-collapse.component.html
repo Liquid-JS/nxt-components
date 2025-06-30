@@ -1,0 +1,17 @@
+<button type="button"
+    class="btn btn-secondary"
+    (click)="tree.expandTo(3)">
+    Expand to level 3
+</button>
+
+<button type="button"
+    class="btn btn-secondary"
+    (click)="tree.collapseTo(1)">
+    Collapse to level 1
+</button>
+
+<br><br>
+
+<nxt-json-view [data]="data"
+    [levelOpen]="2"
+    #tree></nxt-json-view>

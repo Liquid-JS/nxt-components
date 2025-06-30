@@ -35,6 +35,11 @@ export class AppJsonViewComponent extends WaitLoad implements OnInit {
             include: ['html']
         },
         {
+            path: 'expand-collapse',
+            name: 'Expand / collapse the view',
+            include: ['html']
+        },
+        {
             path: 'level-labels',
             name: 'With level labels',
             include: ['html', 'ts']

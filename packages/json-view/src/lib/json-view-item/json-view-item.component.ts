@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core'
+import { Component, inject, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core'
 import { LevelLabels } from '../utils/interfaces'
 import { isArray, isBoolean, isNumber, isObject, isString, isUndefined } from '../utils/utils'
+import { ExpanderService } from '../expander/expander.service'
 
 /** @internal */
 @Component({
@@ -10,7 +11,7 @@ import { isArray, isBoolean, isNumber, isObject, isString, isUndefined } from '.
     encapsulation: ViewEncapsulation.Emulated,
     standalone: false
 })
-export class JsonViewItemComponent implements OnInit {
+export class JsonViewItemComponent implements OnInit, OnDestroy {
     private _data?: any
     @Input()
     set data(data: any | undefined) {
@@ -38,9 +39,16 @@ export class JsonViewItemComponent implements OnInit {
     isInit: boolean = false
     _levelLabels: { [key: string]: string } = {}
 
+    private readonly expanderService = inject(ExpanderService)
+
     ngOnInit() {
         this.init()
         this.isInit = true
+        this.expanderService.addItem(this)
+    }
+
+    ngOnDestroy() {
+        this.expanderService.removeItem(this)
     }
 
     init() {
