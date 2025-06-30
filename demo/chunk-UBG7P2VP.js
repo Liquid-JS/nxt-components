@@ -1,0 +1,1 @@
+var e;function n(){if(e==null&&typeof window<"u")try{window.addEventListener("test",null,Object.defineProperty({},"passive",{get:()=>e=!0}))}finally{e=e||!1}return e}function s(t){return n()?t:!!t.capture}export{s as a};

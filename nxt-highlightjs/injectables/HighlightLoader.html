@@ -267,7 +267,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>this.pendingTasks.run(() &#x3D;&gt; this.loadLibrary()
+                        <i>Default value : </i><code>this.loadLibrary()
         .then(async hljs &#x3D;&gt; {
             if (this.options?.lineNumbersLoader) {
                 const plugin &#x3D; await this.options.lineNumbersLoader();
@@ -283,7 +283,7 @@
 
             return hljs
         })
-    )</code>
+        .finally(this._t)</code>
                     </td>
                 </tr>
 
