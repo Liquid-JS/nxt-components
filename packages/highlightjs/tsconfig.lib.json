@@ -8,7 +8,6 @@
         "types": []
     },
     "exclude": [
-        "src/test.ts",
         "src/test-helpers.ts",
         "**/*.spec.ts"
     ]

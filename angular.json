@@ -12,13 +12,31 @@
         "@schematics/angular:component": {
             "viewEncapsulation": "Emulated",
             "prefix": "app",
-            "style": "scss"
+            "style": "scss",
+            "type": "component"
         },
         "@schematics/angular:service": {
-            "flat": false
+            "flat": false,
+            "type": "service"
         },
         "@schematics/angular:directive": {
-            "prefix": "app"
+            "prefix": "app",
+            "type": "directive"
+        },
+        "@schematics/angular:guard": {
+            "typeSeparator": "."
+        },
+        "@schematics/angular:interceptor": {
+            "typeSeparator": "."
+        },
+        "@schematics/angular:module": {
+            "typeSeparator": "."
+        },
+        "@schematics/angular:pipe": {
+            "typeSeparator": "."
+        },
+        "@schematics/angular:resolver": {
+            "typeSeparator": "."
         }
     },
     "newProjectRoot": "packages",
@@ -36,7 +54,7 @@
             "prefix": "app",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:application",
+                    "builder": "@angular/build:application",
                     "options": {
                         "outputPath": {
                             "base": "dist/demo"
@@ -102,7 +120,7 @@
                     "defaultConfiguration": "production"
                 },
                 "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "builder": "@angular/build:dev-server",
                     "configurations": {
                         "production": {
                             "buildTarget": "demo:build:production"
@@ -114,7 +132,7 @@
                     "defaultConfiguration": "development"
                 },
                 "extract-i18n": {
-                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "builder": "@angular/build:extract-i18n",
                     "options": {
                         "buildTarget": "demo:build"
                     }
@@ -147,7 +165,7 @@
             "prefix": "nxt",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "builder": "@angular/build:ng-packagr",
                     "options": {
                         "project": "packages/dropzone-wrapper/ng-package.json"
                     },
@@ -162,10 +180,13 @@
                     "defaultConfiguration": "production"
                 },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
+                    "builder": "@angular/build:karma",
                     "options": {
-                        "main": "packages/dropzone-wrapper/src/test.ts",
-                        "tsConfig": "packages/dropzone-wrapper/tsconfig.spec.json"
+                        "tsConfig": "packages/dropzone-wrapper/tsconfig.spec.json",
+                        "polyfills": [
+                            "zone.js",
+                            "zone.js/testing"
+                        ]
                     }
                 },
                 "lint": {
@@ -189,7 +210,7 @@
             "prefix": "nxt",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "builder": "@angular/build:ng-packagr",
                     "options": {
                         "project": "packages/flags/ng-package.json"
                     },
@@ -204,10 +225,13 @@
                     "defaultConfiguration": "production"
                 },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
+                    "builder": "@angular/build:karma",
                     "options": {
-                        "main": "packages/flags/src/test.ts",
-                        "tsConfig": "packages/flags/tsconfig.spec.json"
+                        "tsConfig": "packages/flags/tsconfig.spec.json",
+                        "polyfills": [
+                            "zone.js",
+                            "zone.js/testing"
+                        ]
                     }
                 },
                 "lint": {
@@ -231,7 +255,7 @@
             "prefix": "nxt",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "builder": "@angular/build:ng-packagr",
                     "options": {
                         "project": "packages/highlightjs/ng-package.json"
                     },
@@ -246,10 +270,13 @@
                     "defaultConfiguration": "production"
                 },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
+                    "builder": "@angular/build:karma",
                     "options": {
-                        "main": "packages/highlightjs/src/test.ts",
-                        "tsConfig": "packages/highlightjs/tsconfig.spec.json"
+                        "tsConfig": "packages/highlightjs/tsconfig.spec.json",
+                        "polyfills": [
+                            "zone.js",
+                            "zone.js/testing"
+                        ]
                     }
                 },
                 "lint": {
@@ -273,7 +300,7 @@
             "prefix": "nxt",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "builder": "@angular/build:ng-packagr",
                     "options": {
                         "project": "packages/json-view/ng-package.json"
                     },
@@ -288,10 +315,13 @@
                     "defaultConfiguration": "production"
                 },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
+                    "builder": "@angular/build:karma",
                     "options": {
-                        "main": "packages/json-view/src/test.ts",
-                        "tsConfig": "packages/json-view/tsconfig.spec.json"
+                        "tsConfig": "packages/json-view/tsconfig.spec.json",
+                        "polyfills": [
+                            "zone.js",
+                            "zone.js/testing"
+                        ]
                     }
                 },
                 "lint": {
@@ -315,7 +345,7 @@
             "prefix": "nxt",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "builder": "@angular/build:ng-packagr",
                     "options": {
                         "project": "packages/pick-datetime/ng-package.json"
                     },
@@ -330,10 +360,14 @@
                     "defaultConfiguration": "production"
                 },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
+                    "builder": "@angular/build:karma",
                     "options": {
-                        "main": "packages/pick-datetime/src/test.ts",
-                        "tsConfig": "packages/pick-datetime/tsconfig.spec.json"
+                        "tsConfig": "packages/pick-datetime/tsconfig.spec.json",
+                        "polyfills": [
+                            "zone.js",
+                            "zone.js/testing",
+                            "@angular/localize/init"
+                        ]
                     }
                 },
                 "lint": {
@@ -357,7 +391,7 @@
             "prefix": "nxt",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "builder": "@angular/build:ng-packagr",
                     "options": {
                         "project": "packages/sortablejs/ng-package.json"
                     },
@@ -372,10 +406,13 @@
                     "defaultConfiguration": "production"
                 },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
+                    "builder": "@angular/build:karma",
                     "options": {
-                        "main": "packages/sortablejs/src/test.ts",
-                        "tsConfig": "packages/sortablejs/tsconfig.spec.json"
+                        "tsConfig": "packages/sortablejs/tsconfig.spec.json",
+                        "polyfills": [
+                            "zone.js",
+                            "zone.js/testing"
+                        ]
                     }
                 },
                 "lint": {
@@ -399,7 +436,7 @@
             "prefix": "nxt",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "builder": "@angular/build:ng-packagr",
                     "options": {
                         "project": "packages/color-picker/ng-package.json"
                     },
@@ -414,10 +451,14 @@
                     "defaultConfiguration": "production"
                 },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
+                    "builder": "@angular/build:karma",
                     "options": {
-                        "main": "packages/color-picker/src/test.ts",
-                        "tsConfig": "packages/color-picker/tsconfig.spec.json"
+                        "tsConfig": "packages/color-picker/tsconfig.spec.json",
+                        "polyfills": [
+                            "zone.js",
+                            "zone.js/testing",
+                            "@angular/localize/init"
+                        ]
                     }
                 },
                 "lint": {

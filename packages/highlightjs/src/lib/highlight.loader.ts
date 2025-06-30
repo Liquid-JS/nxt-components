@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common'
-import { Injectable, PendingTasks, inject } from '@angular/core'
+import { Injectable, PendingTasks, inject, DOCUMENT } from '@angular/core'
 import type { HLJSApi } from 'highlight.js'
 import { NXT_HIGHLIGHT_OPTIONS } from './highlight.model'
 import { LoaderErrors } from './loader-errors'
@@ -14,7 +13,8 @@ export class HighlightLoader {
     private readonly options = inject(NXT_HIGHLIGHT_OPTIONS, { optional: true })
     private readonly pendingTasks = inject(PendingTasks)
 
-    readonly ready: Promise<HLJSApi> = this.pendingTasks.run(() => this.loadLibrary()
+    private _t = this.pendingTasks.add()
+    readonly ready: Promise<HLJSApi> = this.loadLibrary()
         .then(async hljs => {
             if (this.options?.lineNumbersLoader) {
                 const plugin = await this.options.lineNumbersLoader();
@@ -30,7 +30,7 @@ export class HighlightLoader {
 
             return hljs
         })
-    )
+        .finally(this._t)
 
     private themeLinkElement?: HTMLLinkElement
 

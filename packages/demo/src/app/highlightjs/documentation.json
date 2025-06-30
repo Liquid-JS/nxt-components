@@ -153,7 +153,7 @@
         },
         {
             "name": "CodeFileLocation",
-            "id": "interface-CodeFileLocation-f7fdd2687c1b6101de34338bac2b6eedc782a8dd53446e12fecc3521966263a42a5c4937cb17582dd5595e8d66105a3ef981337fd552b497a86b015d0bdc66f9",
+            "id": "interface-CodeFileLocation-84cff7fa5b68fe8dbd142da4ba7277f01b619c88703148ce1e0af47c67e7678634fd891cf9fb361ea194cea730984ebf4ce3fc1229197df2e152a74597e768e8",
             "file": "extras/src/code-file-location.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -1703,12 +1703,12 @@
         },
         {
             "name": "HighlightLoader",
-            "id": "injectable-HighlightLoader-d4e9ff61cf55f481bbefc329b9eb5e9bc19eda444ae6e3f3e876d0e22e749f9c73bea68a0ffc85a2ecebbf29cee3c752185b2790e6997a0eabf66f9c42618c55",
+            "id": "injectable-HighlightLoader-82731b89d34c44539dd5bccb14bfdd208a539b06b638f703d9160749255feb7bc856afc57f06082cf1457dab23b4e19e2ff2d19f795c01831e1636a01c5512c7",
             "file": "src/lib/highlight.loader.ts",
             "properties": [
                 {
                     "name": "ready",
-                    "defaultValue": "this.pendingTasks.run(() => this.loadLibrary()\r\n        .then(async hljs => {\r\n            if (this.options?.lineNumbersLoader) {\r\n                const plugin = await this.options.lineNumbersLoader();\r\n                (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)\r\n            }\r\n\r\n            hljs.configure({\r\n                __emitter: TokenTreeEmitter\r\n            })\r\n\r\n            if (this.options?.highlightOptions)\r\n                hljs.configure(this.options.highlightOptions)\r\n\r\n            return hljs\r\n        })\r\n    )",
+                    "defaultValue": "this.loadLibrary()\r\n        .then(async hljs => {\r\n            if (this.options?.lineNumbersLoader) {\r\n                const plugin = await this.options.lineNumbersLoader();\r\n                (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)\r\n            }\r\n\r\n            hljs.configure({\r\n                __emitter: TokenTreeEmitter\r\n            })\r\n\r\n            if (this.options?.highlightOptions)\r\n                hljs.configure(this.options.highlightOptions)\r\n\r\n            return hljs\r\n        })\r\n        .finally(this._t)",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Promise<HLJSApi>",

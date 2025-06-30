@@ -30,8 +30,8 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/dropzone-wrapper"
     },
     "peerDependencies": {
-        "@angular/common": "^19.0.0",
-        "@angular/core": "^19.0.0",
+        "@angular/common": "^20.0.0",
+        "@angular/core": "^20.0.0",
         "dropzone": "^6.0.0-beta.2"
     },
     "dependencies": {

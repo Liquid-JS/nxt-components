@@ -87,7 +87,7 @@
         },
         {
             "name": "DateTimeInputEvent",
-            "id": "interface-DateTimeInputEvent-12c7d22c16548022f6bcfffc534b568c887f80a7d3e41e660e00fd11110724c9ff7eef2f3a646c8b35eef1e581fbd28540e6fa4b2b88b11cb0371599fc9e042a",
+            "id": "interface-DateTimeInputEvent-e598405e89409bcc02bf8b63eed3a47e5f13c57339f463b77ab632dd4f287f995a1a81090c4a1f0e34a455d8dc46093b9fa480ec7588fc01dd132f16f67dc1e6",
             "file": "src/lib/date-time/date-time-picker-input.directive.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -6497,7 +6497,7 @@
         },
         {
             "name": "DateTimeInputDirective",
-            "id": "directive-DateTimeInputDirective-12c7d22c16548022f6bcfffc534b568c887f80a7d3e41e660e00fd11110724c9ff7eef2f3a646c8b35eef1e581fbd28540e6fa4b2b88b11cb0371599fc9e042a",
+            "id": "directive-DateTimeInputDirective-e598405e89409bcc02bf8b63eed3a47e5f13c57339f463b77ab632dd4f287f995a1a81090c4a1f0e34a455d8dc46093b9fa480ec7588fc01dd132f16f67dc1e6",
             "file": "src/lib/date-time/date-time-picker-input.directive.ts",
             "type": "directive",
             "description": "",
@@ -7512,7 +7512,7 @@
         },
         {
             "name": "DateTimeTriggerDirective",
-            "id": "directive-DateTimeTriggerDirective-7730a278e0f64c1626bfa72ae64eecaffc44ca4b647c1fd7cf2e7b6a895d95d4316d19d579d80866ef71afb2f5dc7c7fedfaa7350c25ba956dc03acd76edfc23",
+            "id": "directive-DateTimeTriggerDirective-1bd3250ba44b2cf820c85fcabe8b8a03b9b36567cebbb55cd67fe97ebc086724e2052ace126479e6f21690c065a4dc273361067015b0f3a1e48011c3e1b93cbd",
             "file": "src/lib/date-time/date-time-picker-trigger.directive.ts",
             "type": "directive",
             "description": "",
@@ -7736,7 +7736,7 @@
     "components": [
         {
             "name": "CalendarComponent",
-            "id": "component-CalendarComponent-264a43929fd0a7420476773a82d9a4cc56471a4bfc7ae5e336fe844a845c2c30f89f778198b80ceebb61a44037ee307556931ea61dc793b2bd553e3686061db6",
+            "id": "component-CalendarComponent-5aead989a12c4cf4433b6d909dfdd972962da9a84c6508ee89f68f44f995208b8ebd6ef6acd63a16fb10b953253d71ffd1ea57f3acfd22857a41341e85cdb6ad",
             "file": "src/lib/date-time/calendar/calendar.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -8610,7 +8610,7 @@
         },
         {
             "name": "DateTimeComponent",
-            "id": "component-DateTimeComponent-425c1817dbd313969ea8a9bf7f8443eb21be3e22582e45f621649fe9572a15fe614c51dc9193b0405e0da6fc6ed630e850566eb7f59d39ec41a8b521f778e30f",
+            "id": "component-DateTimeComponent-546752d46901bb9cbad951f4f17a881404e8dc092b785b03215465c89742af52c73d81d0f280b90f5edc438ac71b6b3a8c179b5421614f43baa4c0fc34d5ea51",
             "file": "src/lib/date-time/date-time-picker/date-time-picker.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -8635,7 +8635,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCustom class for the picker backdrop",
                     "description": "<p>Custom class for the picker backdrop</p>\n",
-                    "line": 51,
+                    "line": 50,
                     "type": "string | string[]",
                     "decorators": []
                 },
@@ -8645,7 +8645,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nWhether the date time picker should be disabled",
                     "description": "<p>Whether the date time picker should be disabled</p>\n",
-                    "line": 137,
+                    "line": 136,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -8655,7 +8655,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nWhether the calendar is open",
                     "description": "<p>Whether the calendar is open</p>\n",
-                    "line": 152,
+                    "line": 151,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -8665,7 +8665,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCustom class for the picker overlay pane",
                     "description": "<p>Custom class for the picker overlay pane</p>\n",
-                    "line": 55,
+                    "line": 54,
                     "type": "string | string[]",
                     "decorators": []
                 },
@@ -8675,7 +8675,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe style the picker would open as\n\n-    `'popup'` - display picker attached to the trigger element\n-    `'dialog'` - display picker as a dialog\n",
                     "description": "<p>The style the picker would open as</p>\n<ul>\n<li><code>&#39;popup&#39;</code> - display picker attached to the trigger element</li>\n<li><code>&#39;dialog&#39;</code> - display picker as a dialog</li>\n</ul>\n",
-                    "line": 122,
+                    "line": 121,
                     "type": "PickerMode",
                     "decorators": []
                 },
@@ -8685,7 +8685,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the type of the dateTime picker\n\n-    `'both'` - show both calendar and timer\n-    `'calendar'` - show only calendar\n-    `'timer'` - show only timer\n",
                     "description": "<p>Set the type of the dateTime picker</p>\n<ul>\n<li><code>&#39;both&#39;</code> - show both calendar and timer</li>\n<li><code>&#39;calendar&#39;</code> - show only calendar</li>\n<li><code>&#39;timer&#39;</code> - show only timer</li>\n</ul>\n",
-                    "line": 101,
+                    "line": 100,
                     "type": "PickerType",
                     "decorators": []
                 },
@@ -8695,7 +8695,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe scroll strategy when the picker is open (see [CDK documentation](https://material.angular.io/cdk/overlay/overview#scroll-strategies))\n",
                     "description": "<p>The scroll strategy when the picker is open (see <a href=\"https://material.angular.io/cdk/overlay/overview#scroll-strategies\">CDK documentation</a>)</p>\n",
-                    "line": 167,
+                    "line": 166,
                     "type": "ScrollStrategy",
                     "decorators": []
                 },
@@ -8705,7 +8705,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe date to show when picker opens\n\nDefaults to selected date (if available) or current date.\n",
                     "description": "<p>The date to show when picker opens</p>\n<p>Defaults to selected date (if available) or current date.</p>\n",
-                    "line": 64,
+                    "line": 63,
                     "type": "T",
                     "decorators": []
                 },
@@ -8830,7 +8830,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCallback when the picker is closed\n",
                     "description": "<p>Callback when the picker is closed</p>\n",
-                    "line": 181,
+                    "line": 180,
                     "type": "EventEmitter"
                 },
                 {
@@ -8840,7 +8840,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits when picker open state changes\n",
                     "description": "<p>Emits when picker open state changes</p>\n",
-                    "line": 203,
+                    "line": 202,
                     "type": "EventEmitter"
                 },
                 {
@@ -8850,7 +8850,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits selected month in year view\n\nThis doesn't imply a change on the selected date.\n",
                     "description": "<p>Emits selected month in year view</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 197,
+                    "line": 196,
                     "type": "EventEmitter"
                 },
                 {
@@ -8860,7 +8860,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCallback when the picker is opened\n",
                     "description": "<p>Callback when the picker is opened</p>\n",
-                    "line": 174,
+                    "line": 173,
                     "type": "EventEmitter"
                 },
                 {
@@ -8870,7 +8870,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits selected year in multi-year view\n\nThis doesn't imply a change on the selected date.\n",
                     "description": "<p>Emits selected year in multi-year view</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 189,
+                    "line": 188,
                     "type": "EventEmitter"
                 }
             ],
@@ -8884,7 +8884,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emit when the selected value has been confirmed</p>\n",
-                    "line": 208,
+                    "line": 207,
                     "rawdescription": "\n\nEmit when the selected value has been confirmed\n",
                     "modifierKind": [
                         148
@@ -8899,7 +8899,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits when the date time picker is disabled</p>\n",
-                    "line": 213,
+                    "line": 212,
                     "rawdescription": "\n\nEmits when the date time picker is disabled\n",
                     "modifierKind": [
                         148
@@ -8977,7 +8977,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 436,
+                    "line": 435,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHide the picker\n",
@@ -8997,7 +8997,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 494,
+                    "line": 493,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nConfirm the selected value\n",
@@ -9021,7 +9021,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 300,
+                    "line": 299,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9031,7 +9031,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 298,
+                    "line": 297,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9041,7 +9041,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 328,
+                    "line": 327,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9058,7 +9058,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 311,
+                    "line": 310,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9086,7 +9086,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 389,
+                    "line": 388,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSelects the given date\n",
@@ -9119,7 +9119,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 429,
+                    "line": 428,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits selected month in year view\n",
@@ -9152,7 +9152,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 422,
+                    "line": 421,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits the selected year in multi-year view\n",
@@ -9281,7 +9281,7 @@
                         "optional": true
                     }
                 ],
-                "line": 278,
+                "line": 277,
                 "jsdoctags": [
                     {
                         "name": "overlay",
@@ -9392,7 +9392,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 86,
+                        "line": 85,
                         "jsdoctags": [
                             {
                                 "name": "date",
@@ -9409,7 +9409,7 @@
                         "name": "startAt",
                         "type": "",
                         "returnType": "",
-                        "line": 64,
+                        "line": 63,
                         "rawdescription": "\n\nThe date to show when picker opens\n\nDefaults to selected date (if available) or current date.\n",
                         "description": "<p>The date to show when picker opens</p>\n<p>Defaults to selected date (if available) or current date.</p>\n"
                     }
@@ -9430,7 +9430,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 105,
+                        "line": 104,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -9447,7 +9447,7 @@
                         "name": "pickerType",
                         "type": "",
                         "returnType": "PickerType",
-                        "line": 101,
+                        "line": 100,
                         "rawdescription": "\n\nSet the type of the dateTime picker\n\n-    `'both'` - show both calendar and timer\n-    `'calendar'` - show only calendar\n-    `'timer'` - show only timer\n",
                         "description": "<p>Set the type of the dateTime picker</p>\n<ul>\n<li><code>&#39;both&#39;</code> - show both calendar and timer</li>\n<li><code>&#39;calendar&#39;</code> - show only calendar</li>\n<li><code>&#39;timer&#39;</code> - show only timer</li>\n</ul>\n"
                     }
@@ -9468,7 +9468,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 126,
+                        "line": 125,
                         "jsdoctags": [
                             {
                                 "name": "mode",
@@ -9485,7 +9485,7 @@
                         "name": "pickerMode",
                         "type": "",
                         "returnType": "",
-                        "line": 122,
+                        "line": 121,
                         "rawdescription": "\n\nThe style the picker would open as\n\n-    `'popup'` - display picker attached to the trigger element\n-    `'dialog'` - display picker as a dialog\n",
                         "description": "<p>The style the picker would open as</p>\n<ul>\n<li><code>&#39;popup&#39;</code> - display picker attached to the trigger element</li>\n<li><code>&#39;dialog&#39;</code> - display picker as a dialog</li>\n</ul>\n"
                     }
@@ -9506,7 +9506,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 141,
+                        "line": 140,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -9523,7 +9523,7 @@
                         "name": "disabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 137,
+                        "line": 136,
                         "rawdescription": "\nWhether the date time picker should be disabled",
                         "description": "<p>Whether the date time picker should be disabled</p>\n"
                     }
@@ -9544,7 +9544,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 156,
+                        "line": 155,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -9561,7 +9561,7 @@
                         "name": "isOpen",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 152,
+                        "line": 151,
                         "rawdescription": "\nWhether the calendar is open",
                         "description": "<p>Whether the calendar is open</p>\n"
                     }
@@ -9572,7 +9572,7 @@
                         "name": "dtInput",
                         "type": "",
                         "returnType": "",
-                        "line": 230
+                        "line": 229
                     }
                 },
                 "selected": {
@@ -9591,7 +9591,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 239,
+                        "line": 238,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -9608,7 +9608,7 @@
                         "name": "selected",
                         "type": "",
                         "returnType": "",
-                        "line": 235
+                        "line": 234
                     }
                 },
                 "selecteds": {
@@ -9627,7 +9627,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 249,
+                        "line": 248,
                         "jsdoctags": [
                             {
                                 "name": "values",
@@ -9644,7 +9644,7 @@
                         "name": "selecteds",
                         "type": "",
                         "returnType": "",
-                        "line": 245
+                        "line": 244
                     }
                 },
                 "min": {
@@ -9653,7 +9653,7 @@
                         "name": "min",
                         "type": "",
                         "returnType": "",
-                        "line": 255,
+                        "line": 254,
                         "rawdescription": "\nThe minimum selectable date",
                         "description": "<p>The minimum selectable date</p>\n"
                     }
@@ -9664,7 +9664,7 @@
                         "name": "max",
                         "type": "",
                         "returnType": "",
-                        "line": 260,
+                        "line": 259,
                         "rawdescription": "\nThe maximum selectable date",
                         "description": "<p>The maximum selectable date</p>\n"
                     }
@@ -9675,7 +9675,7 @@
                         "name": "dateTimeFilter",
                         "type": "",
                         "returnType": "",
-                        "line": 264
+                        "line": 263
                     }
                 },
                 "selectMode": {
@@ -9684,7 +9684,7 @@
                         "name": "selectMode",
                         "type": "",
                         "returnType": "",
-                        "line": 268
+                        "line": 267
                     }
                 },
                 "isInSingleMode": {
@@ -9693,7 +9693,7 @@
                         "name": "isInSingleMode",
                         "type": "",
                         "returnType": "",
-                        "line": 272
+                        "line": 271
                     }
                 },
                 "isInRangeMode": {
@@ -9702,14 +9702,14 @@
                         "name": "isInRangeMode",
                         "type": "",
                         "returnType": "",
-                        "line": 276
+                        "line": 275
                     }
                 }
             }
         },
         {
             "name": "DateTimeInlineComponent",
-            "id": "component-DateTimeInlineComponent-3e4a2b2b4d9b6a887620dd2c839f9c48a7d9bfba6ddeb993307b6607d985742c6abc70094f43525b2d58985524d13797455d4b8f10138767fd2c1657d003c0bf",
+            "id": "component-DateTimeInlineComponent-8620e1381865878c8f5cfa129c3a15a4f3be41d7c22da836f02dc5111320f806755403d9815a82b827f43b7c9bc2f4b415b4b11aa58bfca15cfec6793dee92d6",
             "file": "src/lib/date-time/date-time-inline/date-time-inline.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -10799,7 +10799,7 @@
         },
         {
             "name": "MonthViewComponent",
-            "id": "component-MonthViewComponent-adc50fd4730f3f2ac4c1863d0d949a530ff5cccd2bdf3e2a2dd640e390b8dfc8f4badfee40997841fb9a1e617acdb3f9186f3543843aaa5662c9059d43594718",
+            "id": "component-MonthViewComponent-f9798f7016395f2c943476b251119e72770fcddfa77044a1e00406d48a470eaf9eef5f194f67fc15728edbb845f9990bee8ac4bc5e13ac606a76d23f8e6b2d80",
             "file": "src/lib/date-time/calendar-month-view/calendar-month-view.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -12216,7 +12216,7 @@
         },
         {
             "name": "TimerComponent",
-            "id": "component-TimerComponent-f8cd57c88e5e2c4ff18e2de780f975794f353f1bde8f3a5b94d74c0fa607a391543b48d6950a7c55170528571670632a98730bbe980617da8330abbe74b4f2d5",
+            "id": "component-TimerComponent-627c8fd19ec1a70769b18614b821ed805aa355ec076df49ca4199738c53b4002645d37310a847ae22ca99a96caf76455ba3fa719e4e8caadb75509b05da43950",
             "file": "src/lib/date-time/timer/timer.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],

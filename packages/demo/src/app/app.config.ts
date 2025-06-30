@@ -1,4 +1,4 @@
-import { ApplicationConfig, isDevMode } from '@angular/core'
+import { ApplicationConfig, isDevMode, DOCUMENT } from '@angular/core'
 import { provideClientHydration } from '@angular/platform-browser'
 import { provideAnimations } from '@angular/platform-browser/animations'
 import { DefaultUrlSerializer, provideRouter, UrlSerializer, UrlTree, withInMemoryScrolling } from '@angular/router'
@@ -8,7 +8,7 @@ import { provideHighlightOptions } from 'nxt-highlightjs'
 import { DropzoneConfig, NXT_DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
 import { provideNativeDateTimeAdapter } from 'packages/pick-datetime/native-adapter/src/native-adapter.module'
 import { provideHttpClient, withFetch } from '@angular/common/http'
-import { APP_BASE_HREF, DOCUMENT } from '@angular/common'
+import { APP_BASE_HREF } from '@angular/common'
 import { routes } from './app.routes'
 
 export class TrailingSlashUrlSerializer extends DefaultUrlSerializer {

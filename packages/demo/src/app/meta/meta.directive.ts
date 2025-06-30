@@ -1,5 +1,5 @@
-import { DOCUMENT, Location } from '@angular/common'
-import { Directive, EventEmitter, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core'
+import { Location } from '@angular/common'
+import { Directive, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, DOCUMENT } from '@angular/core'
 import { Meta, MetaDefinition, Title } from '@angular/platform-browser'
 import { Router } from '@angular/router'
 

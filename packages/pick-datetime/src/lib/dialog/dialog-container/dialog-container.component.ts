@@ -1,8 +1,7 @@
 import { animate, animateChild, AnimationEvent, keyframes, style, transition, trigger } from '@angular/animations'
 import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory } from '@angular/cdk/a11y'
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal'
-import { DOCUMENT } from '@angular/common'
-import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EmbeddedViewRef, EventEmitter, HostBinding, HostListener, Inject, OnInit, Optional, ViewChild } from '@angular/core'
+import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EmbeddedViewRef, EventEmitter, HostBinding, HostListener, Inject, OnInit, Optional, ViewChild, DOCUMENT } from '@angular/core'
 import { DialogConfig } from '../../class/dialog-config.class'
 
 /** @internal */
