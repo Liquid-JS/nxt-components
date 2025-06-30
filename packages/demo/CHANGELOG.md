@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.0.0](https://github.com/Liquid-JS/nxt-components/compare/v19.1.0...v20.0.0) (2025-06-30)
+
+* feat!: use angular 20 ([a1a270a](https://github.com/Liquid-JS/nxt-components/commit/a1a270a73d9a8c9d4ad92ef85faaadef720a705c))
+
+### Bug Fixes
+
+* **json-view:** keep nested items collapsed on toggle regardless of initial levelOpen ([e608a92](https://github.com/Liquid-JS/nxt-components/commit/e608a9284288df82ddd8cd58b547902fb26683b5))
+
+### Features
+
+* **json-view:** implement methods to expand / collapse view items ([9f93244](https://github.com/Liquid-JS/nxt-components/commit/9f9324416651d6d6a6c684c3dff6a085657768da))
+
+### BREAKING CHANGES
+
+* use angular 20
+
 # [19.1.0](https://github.com/Liquid-JS/nxt-components/compare/v19.0.5...v19.1.0) (2025-02-10)
 
 ### Features
@@ -52,6 +68,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * angular 16.1 ([50258cf](https://github.com/Liquid-JS/nxt-components/commit/50258cf958e40775b79299be6616a00128d997e7))
+
 * update angular to 16.2 ([92b46c4](https://github.com/Liquid-JS/nxt-components/commit/92b46c4d5af68b0a669ab3bae940755073015cab))
 
 ### BREAKING CHANGES
@@ -63,6 +80,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * angular 16 preview ([927fe3f](https://github.com/Liquid-JS/nxt-components/commit/927fe3f94dec9c369b6e693cfc282f245fbfbe72))
+
 * **nxt-color-picker:** accept an array of positioning strategies ([a6e56f7](https://github.com/Liquid-JS/nxt-components/commit/a6e56f71274e6b12b5c460e7275b5995a588bb82))
 
 # [16.0.0-alpha.5](https://github.com/Liquid-JS/nxt-components/compare/v16.0.0-alpha.4...v16.0.0-alpha.5) (2023-03-21)
@@ -88,7 +106,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **demo:** add service worker ([19d0e15](https://github.com/Liquid-JS/nxt-components/commit/19d0e15fbbc74ce49cb32832fb191b1fea94c8ad))
+
 * **demo:** demo page layout ([b7cd95a](https://github.com/Liquid-JS/nxt-components/commit/b7cd95a80fa2f50f8a4c97ae1a15969ad53e2411))
+
 * import code snippets ([1ab89d9](https://github.com/Liquid-JS/nxt-components/commit/1ab89d96b1e18e95bb81fdf1aaaafdab1311192e))
 
 # [15.0.0](https://github.com/Liquid-JS/nxt-components/compare/v8.0.0...v15.0.0) (2023-03-07)
@@ -98,21 +118,37 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * add demo ([1ce94f0](https://github.com/Liquid-JS/nxt-components/commit/1ce94f09ca626a4e7d1ab92a3b7fd2d7b913b175))
+
 * **demo:** cleanup ([f184316](https://github.com/Liquid-JS/nxt-components/commit/f1843160731c671d2ff1992d2211a637a3cb3fca))
+
 * **demo:** flags ([cd85139](https://github.com/Liquid-JS/nxt-components/commit/cd85139d8b475b03a20e70c79b27dbfd55673ff0))
+
 * **demo:** flags demo ([6233462](https://github.com/Liquid-JS/nxt-components/commit/623346276ddfe72b7726d45564ebc5573e8ba39c))
+
 * **demo:** home page ([1071c73](https://github.com/Liquid-JS/nxt-components/commit/1071c73a35b4383562df22df971d48ae3198e1f5))
+
 * **demo:** json view demo ([82a6ad8](https://github.com/Liquid-JS/nxt-components/commit/82a6ad8d43084e86025bb9ae483e062e2fb33bcd))
+
 * **demo:** navigation, styling ([66f38ae](https://github.com/Liquid-JS/nxt-components/commit/66f38ae29fd5ab699d8aa8ee13d40da25f4324be))
+
 * **demo:** organise sortablejs ([254aa82](https://github.com/Liquid-JS/nxt-components/commit/254aa82836210f5696a9d7297dcde60df5c4b570))
+
 * **demo:** pick datetime ([b732940](https://github.com/Liquid-JS/nxt-components/commit/b7329405c04c1d2081c2f1c172f77f9fe266d185))
+
 * **demo:** sortablejs ([054b08c](https://github.com/Liquid-JS/nxt-components/commit/054b08c40cf413cc6807a741186fb9d734685db6))
+
 * migrate ([f2e45f5](https://github.com/Liquid-JS/nxt-components/commit/f2e45f52617961f202a7c637b9996906d1a97911))
+
 * move ([925c8de](https://github.com/Liquid-JS/nxt-components/commit/925c8deacd8d1b94d27c4a7304b75560b6b96723))
+
 * move ([f8ed2e6](https://github.com/Liquid-JS/nxt-components/commit/f8ed2e640fa5224908c33e144646a307522c4bdc))
+
 * move ([ad497a0](https://github.com/Liquid-JS/nxt-components/commit/ad497a03d754390e4c1c1c8f2895388c89e0fead))
+
 * **nxt-dropzone-wrapper:** cleanup ([43871d2](https://github.com/Liquid-JS/nxt-components/commit/43871d22c51a4860b89169919c67e173bb9354c5))
+
 * **nxt-pick-datetime:** add explicit null ([40f632e](https://github.com/Liquid-JS/nxt-components/commit/40f632e6a772054db43eefef24bf62b9c976c2da))
+
 * **nxt-sortablejs:** import ([f060856](https://github.com/Liquid-JS/nxt-components/commit/f060856a64e86a763b64d22e2f1f7359f4337bdf))
 
 ### BREAKING CHANGES

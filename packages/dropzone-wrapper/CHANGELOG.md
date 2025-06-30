@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.0.0](https://github.com/Liquid-JS/nxt-components/compare/v19.1.0...v20.0.0) (2025-06-30)
+
+* feat!: use angular 20 ([a1a270a](https://github.com/Liquid-JS/nxt-components/commit/a1a270a73d9a8c9d4ad92ef85faaadef720a705c))
+
+### BREAKING CHANGES
+
+* use angular 20
+
 ## [19.0.4](https://github.com/Liquid-JS/nxt-components/compare/v19.0.3...v19.0.4) (2025-01-10)
 
 **Note:** Version bump only for package nxt-dropzone-wrapper
