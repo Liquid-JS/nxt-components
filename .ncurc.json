@@ -6,8 +6,6 @@
     "root": true,
     "reject": [
         "@types/node",
-        "stylelint",
-        "stylelint-config-standard-scss",
         "typescript"
     ]
 }

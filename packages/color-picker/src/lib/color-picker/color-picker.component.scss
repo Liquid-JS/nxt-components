@@ -11,7 +11,7 @@ $light: #dadada;
     position: relative;
     user-select: none;
     background-color: $backgroundColor;
-    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 10px 1px rgb(0, 0, 0, 0.14), 0 3px 14px 2px rgb(0, 0, 0, 0.12), 0 5px 5px -3px rgb(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
 
@@ -56,7 +56,7 @@ $light: #dadada;
         border: none;
         cursor: pointer;
         touch-action: manipulation;
-        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%), linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        background-image: linear-gradient(to bottom, rgb(0, 0, 0, 0) 0%, rgb(0, 0, 0, 1) 100%), linear-gradient(to right, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 0) 100%);
         background-size: 100% 100%;
     }
 
@@ -87,7 +87,7 @@ $light: #dadada;
         background-size: $baseSize;
         background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cmVjdCBmaWxsPSIjQ0NDQ0NDIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiLz48cmVjdCB4PSI1MCIgeT0iNTAiIGZpbGw9IiNDQ0NDQ0MiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIvPjxyZWN0IHk9IjUwIiBmaWxsPSIjRkZGRkZGIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiLz48cmVjdCB4PSI1MCIgZmlsbD0iI0ZGRkZGRiIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIi8+PC9zdmc+");
         background-repeat: repeat;
-        box-shadow: 0 0 math.div($baseSize, 2) math.div(-$baseSize, 8) rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 math.div($baseSize, 2) math.div(-$baseSize, 8) rgb(0, 0, 0, 0.5);
 
         div {
             width: 100%;
@@ -134,12 +134,12 @@ $light: #dadada;
 
         &.color-picker__slider--hue {
             background-size: 100% 100%;
-            background-image: linear-gradient(to right, rgba(255, 0, 0, 1) 0%, rgba(255, 255, 0, 1) math.div(100%, 6), rgba(0, 255, 0, 1) math.div(100%, 3), rgba(0, 255, 255, 1) 50%, rgba(0, 0, 255, 1) (50% + math.div(100%, 6)), rgba(255, 0, 255, 1) (50% + math.div(100%, 3)), rgba(255, 0, 0, 1) 100%);
+            background-image: linear-gradient(to right, rgb(255, 0, 0, 1) 0%, rgb(255, 255, 0, 1) math.div(100%, 6), rgb(0, 255, 0, 1) math.div(100%, 3), rgb(0, 255, 255, 1) 50%, rgb(0, 0, 255, 1) (50% + math.div(100%, 6)), rgb(255, 0, 255, 1) (50% + math.div(100%, 3)), rgb(255, 0, 0, 1) 100%);
         }
 
         &.color-picker__slider--value {
             background-size: 100% 100%;
-            background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            background-image: linear-gradient(to right, rgb(0, 0, 0, 1) 0%, rgb(255, 255, 255, 1) 100%);
         }
 
         &.color-picker__slider--alpha {
@@ -293,7 +293,7 @@ $light: #dadada;
         transition: color 0.2s linear;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 0 math.div($baseSize, 2) math.div(-$baseSize, 8) rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 math.div($baseSize, 2) math.div(-$baseSize, 8) rgb(0, 0, 0, 0.5);
         position: absolute;
         width: $baseSize * 0.75;
         height: $baseSize * 0.75;
@@ -339,7 +339,7 @@ $light: #dadada;
 
     .color-picker__arrow {
         border-width: ($baseSize * 0.75) ($baseSize * 0.375);
-        border-color: $borderColor rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+        border-color: $borderColor rgb(0, 0, 0, 0) rgb(0, 0, 0, 0) rgb(0, 0, 0, 0);
         left: $baseSize * 0.75;
         bottom: -$baseSize * 1.5;
     }
@@ -352,7 +352,7 @@ $light: #dadada;
 
     .color-picker__arrow {
         border-width: ($baseSize * 0.375) ($baseSize * 0.75);
-        border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $borderColor;
+        border-color: rgb(0, 0, 0, 0) rgb(0, 0, 0, 0) rgb(0, 0, 0, 0) $borderColor;
         top: $baseSize * 0.75;
         left: 230px;
     }
@@ -365,7 +365,7 @@ $light: #dadada;
 
     .color-picker__arrow {
         border-width: ($baseSize * 0.375) ($baseSize * 0.75);
-        border-color: rgba(0, 0, 0, 0) $borderColor rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+        border-color: rgb(0, 0, 0, 0) $borderColor rgb(0, 0, 0, 0) rgb(0, 0, 0, 0);
         top: $baseSize * 0.75;
         left: -$baseSize * 1.5;
     }
@@ -378,7 +378,7 @@ $light: #dadada;
 
     .color-picker__arrow {
         border-width: ($baseSize * 0.75) ($baseSize * 0.375);
-        border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $borderColor rgba(0, 0, 0, 0);
+        border-color: rgb(0, 0, 0, 0) rgb(0, 0, 0, 0) $borderColor rgb(0, 0, 0, 0);
         top: -$baseSize * 1.5;
         left: $baseSize * 0.75;
     }

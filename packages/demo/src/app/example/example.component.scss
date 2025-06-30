@@ -88,7 +88,7 @@
 
 :host + ::ng-deep app-example {
     .example-container {
-        border-top: 1px solid rgba(33, 37, 41, 0.25);
+        border-top: 1px solid rgb(33, 37, 41, 0.25);
         margin-top: 2rem;
     }
 }
