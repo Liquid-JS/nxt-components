@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core'
-import { ColorPickerModule } from 'nxt-color-picker'
+import { ColorPickerDirective } from 'nxt-color-picker'
 
 @Component({
     selector: 'app-dialog-position',
@@ -7,7 +7,7 @@ import { ColorPickerModule } from 'nxt-color-picker'
     styleUrls: ['./dialog-position.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        ColorPickerModule
+        ColorPickerDirective
     ]
 })
 export class DialogPositionComponent {

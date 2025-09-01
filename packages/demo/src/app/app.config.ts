@@ -3,9 +3,8 @@ import { provideClientHydration } from '@angular/platform-browser'
 import { provideAnimations } from '@angular/platform-browser/animations'
 import { DefaultUrlSerializer, provideRouter, UrlSerializer, UrlTree, withInMemoryScrolling } from '@angular/router'
 import { provideServiceWorker } from '@angular/service-worker'
-import { TooltipModule } from 'ngx-bootstrap/tooltip'
 import { provideHighlightOptions } from 'nxt-highlightjs'
-import { DropzoneConfig, NXT_DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
+import { provideDropzoneConfig } from 'nxt-dropzone-wrapper'
 import { provideNativeDateTimeAdapter } from 'packages/pick-datetime/native-adapter/src/native-adapter.module'
 import { provideHttpClient, withFetch } from '@angular/common/http'
 import { APP_BASE_HREF } from '@angular/common'
@@ -28,13 +27,6 @@ export class TrailingSlashUrlSerializer extends DefaultUrlSerializer {
         }
         return pathArr.join(splitOn)
     }
-}
-
-const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
-    // Change this to your upload POST address:
-    url: 'https://httpbin.org/post',
-    acceptedFiles: 'image/*',
-    createImageThumbnails: true
 }
 
 export const appConfig: ApplicationConfig = {
@@ -66,11 +58,12 @@ export const appConfig: ApplicationConfig = {
                 json: () => import('highlight.js/lib/languages/json').then(r => r.default)
             }
         }),
-        {
-            provide: NXT_DROPZONE_CONFIG,
-            useValue: DEFAULT_DROPZONE_CONFIG
-        },
-        ...TooltipModule.forRoot().providers || [],
+        provideDropzoneConfig({
+            // Change this to your upload POST address:
+            url: 'https://httpbin.org/post',
+            acceptedFiles: 'image/*',
+            createImageThumbnails: true
+        }),
         provideNativeDateTimeAdapter(),
         {
             provide: APP_BASE_HREF,

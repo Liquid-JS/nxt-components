@@ -3596,10 +3596,10 @@
     "modules": [
         {
             "name": "HighlightExstrasModule",
-            "id": "module-HighlightExstrasModule-47ae74de8a277e943e512e7863cabe9ccba24aebe3abeb8e99e6a67a7a1048e07e22e00e7dcc01f9eabd72a93fec8bf9478bfcf6158c91f2d22b3853e06ffdf9",
+            "id": "module-HighlightExstrasModule-d369acc2e884abc479ba99067400e20d045d34cfc5ab26bc500a83c2effde64631a6e8ac7e3c9150ee1f72675df227e62bed8bc13691714bf124f7592699f39a",
             "description": "",
-            "deprecationMessage": "",
-            "deprecated": false,
+            "deprecationMessage": "use standalone imports",
+            "deprecated": true,
             "file": "extras/src/highlight-extras.module.ts",
             "methods": [],
             "children": [
@@ -3651,10 +3651,10 @@
         },
         {
             "name": "HighlightModule",
-            "id": "module-HighlightModule-b0db0bb10933b06000a1a141a2111fada0580247164c82491d5c524cbadf344d903e52ab0f68ea16cdaeb8b04106fc240acf08cea3bfb042d0e8600c23167fae",
+            "id": "module-HighlightModule-e78036f58289b27611a7f82b04ac1e2dab2b9ac16f4990eaeb287a565d2f482b706859f2e08b2e02df27de46fe3c8699d1d9abd185428475b479ea9e46df88b5",
             "description": "",
-            "deprecationMessage": "",
-            "deprecated": false,
+            "deprecationMessage": "use standalone imports",
+            "deprecated": true,
             "file": "src/lib/highlight.module.ts",
             "methods": [],
             "children": [

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
-import { SortablejsModule } from './sortablejs.module'
+import { SortablejsDirective } from 'nxt-sortablejs'
 
 describe('SortablejsDirective', () => {
     @Component({
@@ -12,7 +12,7 @@ describe('SortablejsDirective', () => {
         </div>
         `,
         imports: [
-            SortablejsModule
+            SortablejsDirective
         ]
     })
     // eslint-disable-next-line @angular-eslint/component-class-suffix
@@ -21,12 +21,7 @@ describe('SortablejsDirective', () => {
     }
 
     beforeEach(async () => {
-        await TestBed.configureTestingModule({
-            imports: [
-                SortablejsModule,
-                TestComponent1
-            ]
-        }).compileComponents()
+        await TestBed.configureTestingModule({}).compileComponents()
     })
 
     it('should create', () => {

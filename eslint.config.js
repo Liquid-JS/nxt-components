@@ -170,25 +170,26 @@ export default config(
                         {
                             from: 'package',
                             name: [
-                                "animate",
-                                "animateChild",
-                                "AnimationTriggerMetadata",
-                                "keyframes",
-                                "group",
-                                "query",
-                                "state",
-                                "style",
-                                "transition",
-                                "trigger",
-                                "AnimationEvent"
+                                'animate',
+                                'animateChild',
+                                'AnimationTriggerMetadata',
+                                'keyframes',
+                                'group',
+                                'query',
+                                'state',
+                                'style',
+                                'transition',
+                                'trigger',
+                                'AnimationEvent'
                             ],
                             package: '@angular/animations'
                         },
                         {
                             from: 'package',
                             name: [
-                                "NoopAnimationsModule",
-                                "provideAnimations"
+                                'NoopAnimationsModule',
+                                'provideAnimations',
+                                'provideNoopAnimations'
                             ],
                             package: '@angular/platform-browser/animations'
                         }

@@ -1,6 +1,15 @@
-import { EventEmitter, InjectionToken } from '@angular/core'
+import { EventEmitter, InjectionToken, Provider } from '@angular/core'
 
 export const NXT_DROPZONE_CONFIG = new InjectionToken<DropzoneConfig>('NXT_DROPZONE_CONFIG')
+
+export function provideDropzoneConfig(config: DropzoneConfig): Provider[] {
+    return [
+        {
+            provide: NXT_DROPZONE_CONFIG,
+            useValue: config
+        }
+    ]
+}
 
 /** @internal */
 export type DropzoneEvent = 'init' | 'drop' | 'dragStart' | 'dragEnd' | 'dragEnter' | 'dragOver' | 'dragLeave' | 'paste' | 'reset' | 'addedFile' | 'addedFiles' | 'removedFile' | 'thumbnail' | 'error' | 'errorMultiple' | 'processing' | 'processingMultiple' | 'uploadProgress' | 'totalUploadProgress' | 'sending' | 'sendingMultiple' | 'success' | 'successMultiple' | 'canceled' | 'canceledMultiple' | 'complete' | 'completeMultiple' | 'maxFilesExceeded' | 'maxFilesReached' | 'queueComplete'

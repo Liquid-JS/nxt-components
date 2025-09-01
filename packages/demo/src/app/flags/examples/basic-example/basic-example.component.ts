@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms'
 import { remove as removeDiacritics } from 'diacritics'
 import { getName, registerLocale } from 'i18n-iso-countries'
 import locl from 'i18n-iso-countries/langs/en.json'
-import { FlagDatabaseKey, FlagsModule } from 'nxt-flags'
+import { FlagDatabaseKey, FlagComponent } from 'nxt-flags'
 
 registerLocale(locl)
 
@@ -14,7 +14,7 @@ registerLocale(locl)
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
         FormsModule,
-        FlagsModule
+        FlagComponent
     ]
 })
 export class BasicExampleComponent {

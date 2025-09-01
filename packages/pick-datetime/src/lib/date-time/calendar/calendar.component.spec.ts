@@ -7,7 +7,6 @@ import { MonthViewComponent } from '../calendar-month-view/calendar-month-view.c
 import { MultiYearViewComponent } from '../calendar-multi-year-view/calendar-multi-year-view.component'
 import { YearViewComponent } from '../calendar-year-view/calendar-year-view.component'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
-import { DateTimeModule } from '../date-time.module'
 import { CalendarComponent } from './calendar.component'
 
 describe('CalendarComponent', () => {
@@ -443,7 +442,7 @@ describe('CalendarComponent', () => {
                 (monthSelected)="selectedMonth=$event"
                 (yearSelected)="selectedYear=$event"></nxt-date-time-calendar>
     `,
-    imports: [DateTimeModule]
+    imports: [CalendarComponent]
 })
 class StandardCalendar {
     selectMode = 'single'
@@ -460,7 +459,7 @@ class StandardCalendar {
                                 [min]="minDate"
                                 [max]="maxDate"></nxt-date-time-calendar>
     `,
-    imports: [DateTimeModule]
+    imports: [CalendarComponent]
 })
 class CalendarWithMinMax {
     selectMode = 'single'
@@ -477,7 +476,7 @@ class CalendarWithMinMax {
                                 [pickerMoment]="pickerMoment"
                                 [dateTimeFilter]="dateTimeFilter"></nxt-date-time-calendar>
     `,
-    imports: [DateTimeModule]
+    imports: [CalendarComponent]
 })
 class CalendarWithDateFilter {
     selectMode = 'single'

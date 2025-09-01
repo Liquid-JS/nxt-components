@@ -9,7 +9,6 @@ import { createKeyboardEvent, dispatchFakeEvent, dispatchKeyboardEvent, dispatch
 import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
 import { DateTimeInputDirective } from '../date-time-picker-input.directive'
 import { DateTimeTriggerDirective } from '../date-time-picker-trigger.directive'
-import { DateTimeModule } from '../date-time.module'
 import { DateTimeComponent } from './date-time-picker.component'
 
 describe('DateTimeComponent', () => {
@@ -36,7 +35,7 @@ describe('DateTimeComponent', () => {
         container.ngOnDestroy()
     }))
 
-    describe('with TestDateTimeModule', () => {
+    describe('with TestDateTimeComponent', () => {
         describe('standard DateTimePicker', () => {
             let fixture: ComponentFixture<StandardDateTimePicker>
             let testComponent: StandardDateTimePicker
@@ -2277,9 +2276,8 @@ describe('DateTimeComponent', () => {
                        [pickerMode]="pickerMode" #dt></nxt-date-time>
     `,
     imports: [
-        FormsModule,
-        DateTimeModule,
-        ReactiveFormsModule
+        DateTimeComponent,
+        DateTimeInputDirective
     ]
 })
 class StandardDateTimePicker {
@@ -2301,9 +2299,8 @@ class StandardDateTimePicker {
                        [pickerType]="pickerType" #dt></nxt-date-time>
     `,
     imports: [
-        FormsModule,
-        DateTimeModule,
-        ReactiveFormsModule
+        DateTimeComponent,
+        DateTimeInputDirective
     ]
 })
 class RangeDateTimePicker {
@@ -2324,9 +2321,8 @@ class RangeDateTimePicker {
         <nxt-date-time #dt></nxt-date-time>
     `,
     imports: [
-        FormsModule,
-        DateTimeModule,
-        ReactiveFormsModule
+        DateTimeComponent,
+        DateTimeInputDirective
     ]
 })
 class MultiInputDateTimePicker { }
@@ -2336,9 +2332,7 @@ class MultiInputDateTimePicker { }
         <nxt-date-time #dt></nxt-date-time>
     `,
     imports: [
-        FormsModule,
-        DateTimeModule,
-        ReactiveFormsModule
+        DateTimeComponent
     ]
 })
 class NoInputDateTimePicker {
@@ -2352,9 +2346,8 @@ class NoInputDateTimePicker {
         <nxt-date-time #dt [startAt]="startDate"></nxt-date-time>
     `,
     imports: [
-        FormsModule,
-        DateTimeModule,
-        ReactiveFormsModule
+        DateTimeComponent,
+        DateTimeInputDirective
     ]
 })
 class DateTimePickerWithStartAt {
@@ -2372,9 +2365,8 @@ class DateTimePickerWithStartAt {
                        (yearSelected)="onYearSelection()"></nxt-date-time>
     `,
     imports: [
-        FormsModule,
-        DateTimeModule,
-        ReactiveFormsModule
+        DateTimeComponent,
+        DateTimeInputDirective
     ]
 })
 class DateTimePickerWithStartView {
@@ -2395,8 +2387,8 @@ class DateTimePickerWithStartView {
     `,
     imports: [
         FormsModule,
-        DateTimeModule,
-        ReactiveFormsModule
+        DateTimeComponent,
+        DateTimeInputDirective
     ]
 })
 class DateTimePickerWithNgModel {
@@ -2417,7 +2409,9 @@ class DateTimePickerWithNgModel {
     `,
     imports: [
         FormsModule,
-        DateTimeModule,
+        DateTimeComponent,
+        DateTimeInputDirective,
+        DateTimeTriggerDirective,
         ReactiveFormsModule
     ]
 })
@@ -2438,9 +2432,9 @@ class DateTimePickerWithFormControl {
         <nxt-date-time #dt></nxt-date-time>
     `,
     imports: [
-        FormsModule,
-        DateTimeModule,
-        ReactiveFormsModule
+        DateTimeComponent,
+        DateTimeInputDirective,
+        DateTimeTriggerDirective
     ]
 })
 class DateTimePickerWithTrigger {
@@ -2459,8 +2453,9 @@ class DateTimePickerWithTrigger {
     `,
     imports: [
         FormsModule,
-        DateTimeModule,
-        ReactiveFormsModule
+        DateTimeComponent,
+        DateTimeInputDirective,
+        DateTimeTriggerDirective
     ]
 })
 class DateTimePickerWithMinAndMaxValidation {
@@ -2486,8 +2481,9 @@ class DateTimePickerWithMinAndMaxValidation {
     `,
     imports: [
         FormsModule,
-        DateTimeModule,
-        ReactiveFormsModule
+        DateTimeComponent,
+        DateTimeInputDirective,
+        DateTimeTriggerDirective
     ]
 })
 class DateTimePickerWithFilterValidation {
@@ -2512,9 +2508,9 @@ class DateTimePickerWithFilterValidation {
         <nxt-date-time [showSecondsTimer]="true" #dt></nxt-date-time>
     `,
     imports: [
-        FormsModule,
-        DateTimeModule,
-        ReactiveFormsModule
+        DateTimeComponent,
+        DateTimeInputDirective,
+        DateTimeTriggerDirective
     ]
 })
 class DateTimePickerWithChangeAndInputEvents {
@@ -2541,8 +2537,8 @@ class DateTimePickerWithChangeAndInputEvents {
   `,
     imports: [
         FormsModule,
-        DateTimeModule,
-        ReactiveFormsModule
+        DateTimeComponent,
+        DateTimeInputDirective
     ]
 })
 class DateTimePickerWithISOStrings {
@@ -2563,8 +2559,8 @@ class DateTimePickerWithISOStrings {
   `,
     imports: [
         FormsModule,
-        DateTimeModule,
-        ReactiveFormsModule
+        DateTimeComponent,
+        DateTimeInputDirective
     ]
 })
 class DateTimePickerWithEvents {

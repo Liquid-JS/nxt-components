@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { DateFilter, DateTimeModule } from 'nxt-pick-datetime'
+import { DateFilter, DateTimeComponent, DateTimeInputDirective, DateTimeTriggerDirective } from 'nxt-pick-datetime'
 
 const lastSunday = new Date()
 lastSunday.setDate(lastSunday.getDate() - lastSunday.getDay())
@@ -12,7 +12,9 @@ lastSunday.setDate(lastSunday.getDate() - lastSunday.getDay())
     styleUrls: ['./filter.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        DateTimeModule,
+        DateTimeTriggerDirective,
+        DateTimeInputDirective,
+        DateTimeComponent,
         FormsModule,
         CommonModule
     ]

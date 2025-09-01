@@ -1,7 +1,7 @@
 import { CdkTableModule } from '@angular/cdk/table'
 
 import { Component, ViewEncapsulation } from '@angular/core'
-import { SortablejsModule } from 'nxt-sortablejs'
+import { SortablejsDirective } from 'nxt-sortablejs'
 
 @Component({
     selector: 'app-table',
@@ -9,7 +9,7 @@ import { SortablejsModule } from 'nxt-sortablejs'
     styleUrls: ['./table.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        SortablejsModule,
+        SortablejsDirective,
         CdkTableModule
     ]
 })

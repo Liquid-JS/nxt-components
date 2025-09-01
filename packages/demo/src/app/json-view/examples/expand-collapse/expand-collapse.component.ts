@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core'
-import { JsonViewModule } from 'nxt-json-view'
+import { JsonViewComponent } from 'nxt-json-view'
 
 class TreeNode<V> {
 
@@ -39,7 +39,7 @@ root.addChild(new TreeNode('child2'))
     styleUrl: './expand-collapse.component.scss',
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        JsonViewModule
+        JsonViewComponent
     ]
 })
 export class ExpandCollapseComponent {

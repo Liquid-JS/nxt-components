@@ -9,7 +9,7 @@
     "components": [
         {
             "name": "FlagComponent",
-            "id": "component-FlagComponent-0b72f619a0d07ec6f4e50169df8ac836233d763560a22fe14e7b92fd7c9109a80f912779296e36aab6144dc1874effdebba4ee5321b53949223d3072246f70c0",
+            "id": "component-FlagComponent-a2a2d90a607aa2f76b84ba0d267bd75764eb2c1f07e49a95ad36ff0b2e4786683582a4d8864bce20d76b81fbee7159487f920ed4ae977acf31ff54fe78d5a44d",
             "file": "src/lib/flag/flag.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.Emulated"
@@ -35,7 +35,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nISO 3166-1-alpha-2 country code",
                     "description": "<p>ISO 3166-1-alpha-2 country code</p>\n",
-                    "line": 19,
+                    "line": 18,
                     "type": "FlagDatabaseKey",
                     "decorators": []
                 },
@@ -45,7 +45,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nFlag format",
                     "description": "<p>Flag format</p>\n",
-                    "line": 32,
+                    "line": 31,
                     "type": "FlagFormat",
                     "decorators": []
                 },
@@ -55,7 +55,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nFlag width, either value in pixels or FlagSizeAlias",
                     "description": "<p>Flag width, either value in pixels or FlagSizeAlias</p>\n",
-                    "line": 40,
+                    "line": 39,
                     "type": "number | FlagSizeAlias",
                     "decorators": []
                 }
@@ -79,7 +79,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 82
+                "line": 81
             },
             "extends": [],
             "accessors": {
@@ -99,7 +99,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 19,
+                        "line": 18,
                         "rawdescription": "\nISO 3166-1-alpha-2 country code",
                         "description": "<p>ISO 3166-1-alpha-2 country code</p>\n",
                         "jsdoctags": [
@@ -131,7 +131,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 32,
+                        "line": 31,
                         "rawdescription": "\nFlag format",
                         "description": "<p>Flag format</p>\n",
                         "jsdoctags": [
@@ -163,7 +163,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 40,
+                        "line": 39,
                         "rawdescription": "\nFlag width, either value in pixels or FlagSizeAlias",
                         "description": "<p>Flag width, either value in pixels or FlagSizeAlias</p>\n",
                         "jsdoctags": [
@@ -185,10 +185,10 @@
     "modules": [
         {
             "name": "FlagsModule",
-            "id": "module-FlagsModule-62d0fe63283904f6567336e07a637e4207c396335e088c2286c95a741ba6a0ef08245e1e77fa1547c8fb6bbd3f6e964ca4e8deb34ff251e733833ac76c317e74",
+            "id": "module-FlagsModule-27104f9ecc0620a8e79c57466ebb58893745adc9694f8f9299a7a0dc6005a605bf75853d7a9244d427d5981b1ef94676b2061cbaeff5109d0ee6eba96befeae7",
             "description": "",
-            "deprecationMessage": "",
-            "deprecated": false,
+            "deprecationMessage": "use standalone imports",
+            "deprecated": true,
             "file": "src/lib/flags.module.ts",
             "methods": [],
             "children": [
@@ -198,15 +198,15 @@
                 },
                 {
                     "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
                     "elements": [
                         {
                             "name": "FlagComponent"
                         }
                     ]
-                },
-                {
-                    "type": "imports",
-                    "elements": []
                 },
                 {
                     "type": "exports",

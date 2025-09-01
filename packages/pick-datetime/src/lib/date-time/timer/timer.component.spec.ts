@@ -4,7 +4,6 @@ import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testi
 import { By } from '@angular/platform-browser'
 import { MockNgZone, provideTestDateTimeAdapter } from 'packages/pick-datetime/src/test-helpers'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
-import { DateTimeModule } from '../date-time.module'
 import { TimerComponent } from './timer.component'
 
 describe('TimerComponent', () => {
@@ -319,7 +318,7 @@ describe('TimerComponent', () => {
                 [max]="maxDateTime"
                 (selectedChange)="handleSelectedChange($event)"></nxt-date-time-timer>
     `,
-    imports: [DateTimeModule]
+    imports: [TimerComponent]
 })
 class StandardTimer {
     stepHour = 1

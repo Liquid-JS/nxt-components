@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core'
-import { JsonViewModule } from 'nxt-json-view'
+import { JsonViewComponent } from 'nxt-json-view'
 
 @Component({
     selector: 'app-basic-example',
@@ -7,7 +7,7 @@ import { JsonViewModule } from 'nxt-json-view'
     styleUrls: ['./basic-example.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        JsonViewModule
+        JsonViewComponent
     ]
 })
 export class BasicExampleComponent {

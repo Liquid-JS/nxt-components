@@ -23,25 +23,25 @@ export class GettingStartedComponent {
 
     readonly installScript = 'npm install --save nxt-sortablejs sortablejs'
 
-    readonly importGlobal = `import { SortablejsModule } from 'nxt-sortablejs'
+    readonly importGlobal = `import { SortablejsDirective } from 'nxt-sortablejs'
 
 @NgModule({
     ...
     imports: [
         ...
-        SortablejsModule.forRoot({
+        SortablejsDirective.forRoot({
             animation: 150
         })
     ]
 })`
 
-    readonly importLocal = `import { SortablejsModule } from 'nxt-sortablejs'
+    readonly importLocal = `import { SortablejsDirective } from 'nxt-sortablejs'
 
 @NgModule({
     ...
     imports: [
         ...
-        SortablejsModule
+        SortablejsDirective
     ]
 })`
 

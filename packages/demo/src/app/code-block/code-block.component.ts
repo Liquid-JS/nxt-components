@@ -1,13 +1,13 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core'
 import { TooltipDirective, TooltipModule } from 'ngx-bootstrap/tooltip'
-import { HighlightModule } from 'nxt-highlightjs'
+import { HighlightAutoDirective } from 'nxt-highlightjs'
 import { ClipboardDirective } from './clipboard.directive'
 
 @Component({
     selector: 'app-code-block',
     imports: [
         ClipboardDirective,
-        HighlightModule,
+        HighlightAutoDirective,
         TooltipModule
     ],
     templateUrl: './code-block.component.html',

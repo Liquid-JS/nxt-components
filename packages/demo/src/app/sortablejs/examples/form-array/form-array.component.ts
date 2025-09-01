@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { FormArray, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { SortablejsModule } from 'nxt-sortablejs'
+import { SortablejsDirective } from 'nxt-sortablejs'
 import { CodeBlockComponent } from '../../../code-block/code-block.component'
 
 @Component({
@@ -10,7 +10,7 @@ import { CodeBlockComponent } from '../../../code-block/code-block.component'
     styleUrls: ['./form-array.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        SortablejsModule,
+        SortablejsDirective,
         CommonModule,
         CodeBlockComponent,
         FormsModule,

@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { DateTimeModule } from 'nxt-pick-datetime'
+import { DateTimeComponent, DateTimeInputDirective, DateTimeTriggerDirective } from 'nxt-pick-datetime'
 
 @Component({
     selector: 'app-basic-example',
@@ -8,7 +8,9 @@ import { DateTimeModule } from 'nxt-pick-datetime'
     styleUrls: ['./basic-example.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        DateTimeModule,
+        DateTimeTriggerDirective,
+        DateTimeInputDirective,
+        DateTimeComponent,
         FormsModule
     ]
 })

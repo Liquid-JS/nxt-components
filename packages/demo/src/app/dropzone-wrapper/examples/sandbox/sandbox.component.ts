@@ -2,7 +2,7 @@ import { Component, ViewChild, ViewEncapsulation } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 // eslint-disable-next-line @import/no-extraneous-dependencies
 import Dropzone from 'dropzone'
-import { DropzoneComponent, DropzoneConfig, DropzoneDirective, DropzoneModule } from 'nxt-dropzone-wrapper'
+import { DropzoneComponent, DropzoneConfig, DropzoneDirective } from 'nxt-dropzone-wrapper'
 
 @Component({
     selector: 'app-sandbox',
@@ -11,7 +11,8 @@ import { DropzoneComponent, DropzoneConfig, DropzoneDirective, DropzoneModule } 
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
         FormsModule,
-        DropzoneModule
+        DropzoneComponent,
+        DropzoneDirective
     ]
 })
 export class SandboxComponent {

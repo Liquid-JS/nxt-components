@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { JsonViewModule } from 'nxt-json-view'
+import { JsonViewComponent } from 'nxt-json-view'
 
 @Component({
     selector: 'app-live-test',
@@ -8,7 +8,7 @@ import { JsonViewModule } from 'nxt-json-view'
     styleUrls: ['./live-test.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        JsonViewModule,
+        JsonViewComponent,
         FormsModule
     ]
 })

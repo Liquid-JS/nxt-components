@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
-import { SortablejsModule } from 'nxt-sortablejs'
+import { SortablejsDirective } from 'nxt-sortablejs'
 import { CodeBlockComponent } from '../../../code-block/code-block.component'
 
 @Component({
@@ -9,7 +9,7 @@ import { CodeBlockComponent } from '../../../code-block/code-block.component'
     styleUrls: ['./basic-example.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        SortablejsModule,
+        SortablejsDirective,
         CommonModule,
         CodeBlockComponent
     ]

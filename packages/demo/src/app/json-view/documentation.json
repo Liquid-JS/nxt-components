@@ -174,7 +174,7 @@
     "components": [
         {
             "name": "JsonViewComponent",
-            "id": "component-JsonViewComponent-3d4c50ecdb32724dd421ad99a55459f18bc168517311d9dd4f2217f0c87c48b338ebcfcc872944eea4f78776b6876cd420304519630b9bc81326c230b976b27b",
+            "id": "component-JsonViewComponent-0309d784ec5d891a374c6314f7b4338f00d4f10e43b72fe73f63dd1b7e48d2d63b86486ef94dadff0294f08b2780ac3a0be3585548db7c1c51ae2a802ba17ae3",
             "file": "src/lib/json-view/json-view.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.Emulated"
@@ -205,7 +205,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nJSON data, any valid JSON object",
                     "description": "<p>JSON data, any valid JSON object</p>\n",
-                    "line": 20,
+                    "line": 23,
                     "type": "any",
                     "decorators": []
                 },
@@ -215,7 +215,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nCustom labels for elements within the hierarcy",
                     "description": "<p>Custom labels for elements within the hierarcy</p>\n",
-                    "line": 24,
+                    "line": 27,
                     "type": "LevelLabels",
                     "decorators": []
                 },
@@ -225,7 +225,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nInitial number of levels to be expanded; to expand / collapse the view after initial render, use `expandTo` / `collapseTo`",
                     "description": "<p>Initial number of levels to be expanded; to expand / collapse the view after initial render, use <code>expandTo</code> / <code>collapseTo</code></p>\n",
-                    "line": 22,
+                    "line": 25,
                     "type": "number",
                     "decorators": []
                 }
@@ -246,7 +246,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 47,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nCollapse any open items above the given level",
@@ -276,7 +276,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 41,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nExpand all items up to the given level",
@@ -299,7 +299,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 29,
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -309,7 +309,12 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": false,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "JsonViewItemComponent",
+                    "type": "component"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
@@ -323,10 +328,10 @@
     "modules": [
         {
             "name": "JsonViewModule",
-            "id": "module-JsonViewModule-c03a761cc397242e8a0e67387ad8e0d27a6cfc84ff82ea2c944674b27cc3f4d6524be2f3830c946090944e93fda74050156cdc379301cc410864970d9f95bc72",
+            "id": "module-JsonViewModule-b2d29f6b5d522b069dfae164dcb7673534c6d23bd515465cbe52ed45d17105a37774415f1ce2ba3400060f7a74e4c13594cdb3075b8d1d7bafd2f9fea12bb093",
             "description": "",
-            "deprecationMessage": "",
-            "deprecated": false,
+            "deprecationMessage": "use standalone imports",
+            "deprecated": true,
             "file": "src/lib/json-view.module.ts",
             "methods": [],
             "children": [
@@ -336,15 +341,15 @@
                 },
                 {
                     "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
                     "elements": [
                         {
                             "name": "JsonViewComponent"
                         }
                     ]
-                },
-                {
-                    "type": "imports",
-                    "elements": []
                 },
                 {
                     "type": "exports",

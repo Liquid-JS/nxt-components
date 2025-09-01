@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core'
-import { Cmyk, ColorPickerModule, formatCmyk, stringToCmyk } from 'nxt-color-picker'
+import { Cmyk, ColorPickerDirective, formatCmyk, stringToCmyk } from 'nxt-color-picker'
 
 @Component({
     selector: 'app-change-event',
@@ -7,7 +7,7 @@ import { Cmyk, ColorPickerModule, formatCmyk, stringToCmyk } from 'nxt-color-pic
     styleUrls: ['./change-event.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        ColorPickerModule
+        ColorPickerDirective
     ]
 })
 export class ChangeEventComponent {

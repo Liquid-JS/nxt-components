@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { Injectable, NgModule } from '@angular/core'
+import { Injectable } from '@angular/core'
 import { CustomDateModel } from 'custom-date-library'
 import { DateTimeAdapter, DateTimeFormats, NXT_DATE_TIME_FORMATS } from 'nxt-pick-datetime'
 
@@ -20,8 +20,8 @@ export class CustomDateTimeAdapter extends DateTimeAdapter<CustomDateModel> {
     // Implement DateTimeAdapter here
 }
 
-@NgModule({
-    providers: [
+export function provideCustomDateTimeAdapter(): Provider[] {
+    return [
         {
             provide: DateTimeAdapter,
             useClass: CustomDateTimeAdapter
@@ -31,5 +31,4 @@ export class CustomDateTimeAdapter extends DateTimeAdapter<CustomDateModel> {
             useValue: CUSTOM_DATE_TIME_FORMATS
         }
     ]
-})
-export class CustomDateTimeModule { }
+}

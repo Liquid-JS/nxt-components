@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core'
-import { JsonViewModule } from 'nxt-json-view'
+import { JsonViewComponent } from 'nxt-json-view'
 
 @Component({
     selector: 'app-expansion-parameters',
@@ -7,7 +7,7 @@ import { JsonViewModule } from 'nxt-json-view'
     styleUrls: ['./expansion-parameters.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        JsonViewModule
+        JsonViewComponent
     ]
 })
 export class ExpansionParametersComponent {

@@ -1,7 +1,7 @@
 import { AsyncPipe } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { HighlightDirective } from 'nxt-highlightjs'
-import { CodeFromUrlPipe, GistOptions, NXT_GIST_OPTIONS } from 'nxt-highlightjs/extras'
+import { CodeFromUrlPipe } from 'nxt-highlightjs/extras'
 import filePath from './file.txt'
 
 @Component({
@@ -11,12 +11,6 @@ import filePath from './file.txt'
         HighlightDirective,
         AsyncPipe
     ],
-    providers: [{
-        provide: NXT_GIST_OPTIONS,
-        useValue: {
-
-        } as GistOptions
-    }],
     templateUrl: './file.component.html',
     styleUrl: './file.component.scss',
     encapsulation: ViewEncapsulation.Emulated
