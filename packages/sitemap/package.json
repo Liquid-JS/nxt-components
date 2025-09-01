@@ -41,7 +41,7 @@
         "builtins": "^5.1.0",
         "globby": "^14.1.0",
         "json-schema-to-typescript": "^15.0.4",
-        "rollup": "^4.44.1",
+        "rollup": "^4.50.0",
         "rollup-plugin-copy": "^3.5.0"
     }
 }

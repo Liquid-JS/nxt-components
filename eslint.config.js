@@ -163,7 +163,38 @@ export default config(
                 }
             ],
             '@typescript-eslint/naming-convention': 'off',
-            '@typescript-eslint/no-deprecated': 'error',
+            '@typescript-eslint/no-deprecated': [
+                'error',
+                {
+                    allow: [
+                        {
+                            from: 'package',
+                            name: [
+                                "animate",
+                                "animateChild",
+                                "AnimationTriggerMetadata",
+                                "keyframes",
+                                "group",
+                                "query",
+                                "state",
+                                "style",
+                                "transition",
+                                "trigger",
+                                "AnimationEvent"
+                            ],
+                            package: '@angular/animations'
+                        },
+                        {
+                            from: 'package',
+                            name: [
+                                "NoopAnimationsModule",
+                                "provideAnimations"
+                            ],
+                            package: '@angular/platform-browser/animations'
+                        }
+                    ]
+                }
+            ],
             '@typescript-eslint/no-empty-function': 'off',
             '@typescript-eslint/no-empty-object-type': 'off',
             '@typescript-eslint/no-explicit-any': 'off',

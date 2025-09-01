@@ -3121,36 +3121,6 @@
             "hostListeners": [],
             "propertiesClass": [
                 {
-                    "name": "code",
-                    "defaultValue": "input<string | null>(undefined, { alias: 'nxtHighlightAuto' })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "<p>Code to highlight</p>\n",
-                    "line": 23,
-                    "rawdescription": "\n\nCode to highlight\n",
-                    "inheritance": {
-                        "file": "HighlightBase"
-                    }
-                },
-                {
-                    "name": "highlighted",
-                    "defaultValue": "output<AutoHighlightResult>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "OutputEmitterRef<AutoHighlightResult>",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "<p>Stream that emits when code string is highlighted</p>\n",
-                    "line": 40,
-                    "rawdescription": "\n\nStream that emits when code string is highlighted\n",
-                    "inheritance": {
-                        "file": "HighlightBase"
-                    }
-                },
-                {
                     "name": "highlightResult",
                     "defaultValue": "signal<AutoHighlightResult | undefined>(undefined)",
                     "deprecated": false,
@@ -3166,19 +3136,38 @@
                     }
                 },
                 {
-                    "name": "languages",
-                    "defaultValue": "input<string[]>()",
+                    "name": "code",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "InputSignal<string | null | undefined>",
                     "indexKey": "",
                     "optional": false,
-                    "description": "<p>An optional array of language names and aliases restricting detection to only those languages</p>\n<p>The subset can also be set with configure, but the local parameter overrides the option if set.</p>\n",
-                    "line": 35,
-                    "rawdescription": "\n\nAn optional array of language names and aliases restricting detection to only those languages\n\nThe subset can also be set with configure, but the local parameter overrides the option if set.\n",
+                    "description": "<p>Code to highlight</p>\n",
+                    "line": 27,
+                    "rawdescription": "\n\nCode to highlight\n",
                     "modifierKind": [
-                        148
-                    ]
+                        128
+                    ],
+                    "inheritance": {
+                        "file": "HighlightBase"
+                    }
+                },
+                {
+                    "name": "highlighted",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "OutputEmitterRef<HighlightResult | AutoHighlightResult | undefined>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Stream that emits when code string is highlighted</p>\n",
+                    "line": 37,
+                    "rawdescription": "\n\nStream that emits when code string is highlighted\n",
+                    "modifierKind": [
+                        128
+                    ],
+                    "inheritance": {
+                        "file": "HighlightBase"
+                    }
                 },
                 {
                     "name": "hljs",
@@ -3440,36 +3429,6 @@
             "hostListeners": [],
             "propertiesClass": [
                 {
-                    "name": "code",
-                    "defaultValue": "input<string | null>(undefined, { alias: 'nxtHighlight' })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "<p>Code to highlight</p>\n",
-                    "line": 24,
-                    "rawdescription": "\n\nCode to highlight\n",
-                    "inheritance": {
-                        "file": "HighlightBase"
-                    }
-                },
-                {
-                    "name": "highlighted",
-                    "defaultValue": "output<HighlightResult>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "<p>Stream that emits when code string is highlighted</p>\n",
-                    "line": 47,
-                    "rawdescription": "\n\nStream that emits when code string is highlighted\n",
-                    "inheritance": {
-                        "file": "HighlightBase"
-                    }
-                },
-                {
                     "name": "highlightResult",
                     "defaultValue": "signal<HighlightResult | undefined>(undefined)",
                     "deprecated": false,
@@ -3485,34 +3444,38 @@
                     }
                 },
                 {
-                    "name": "ignoreIllegals",
-                    "defaultValue": "input<boolean, unknown>(undefined, {\r\n        transform: booleanAttribute\r\n    })",
+                    "name": "code",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "InputSignal<string | null | undefined>",
                     "indexKey": "",
                     "optional": false,
-                    "description": "<p>An optional flag, when set to true it forces highlighting to finish even in case of detecting\nillegal syntax for the language instead of throwing an exception</p>\n",
-                    "line": 40,
-                    "rawdescription": "\n\nAn optional flag, when set to true it forces highlighting to finish even in case of detecting\nillegal syntax for the language instead of throwing an exception\n",
+                    "description": "<p>Code to highlight</p>\n",
+                    "line": 27,
+                    "rawdescription": "\n\nCode to highlight\n",
                     "modifierKind": [
-                        148
-                    ]
+                        128
+                    ],
+                    "inheritance": {
+                        "file": "HighlightBase"
+                    }
                 },
                 {
-                    "name": "language",
-                    "defaultValue": "input.required<string>()",
+                    "name": "highlighted",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "InputSignal<string>",
+                    "type": "OutputEmitterRef<HighlightResult | AutoHighlightResult | undefined>",
                     "indexKey": "",
                     "optional": false,
-                    "description": "<p>The language name highlight only one language</p>\n",
-                    "line": 34,
-                    "rawdescription": "\n\nThe language name highlight only one language\n",
+                    "description": "<p>Stream that emits when code string is highlighted</p>\n",
+                    "line": 37,
+                    "rawdescription": "\n\nStream that emits when code string is highlighted\n",
                     "modifierKind": [
-                        148
-                    ]
+                        128
+                    ],
+                    "inheritance": {
+                        "file": "HighlightBase"
+                    }
                 },
                 {
                     "name": "hljs",
@@ -3616,36 +3579,7 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "propertiesClass": [
-                {
-                    "name": "singleLine",
-                    "defaultValue": "input(this.options?.singleLine, {\r\n        transform: booleanAttribute\r\n    })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 26,
-                    "modifierKind": [
-                        148
-                    ]
-                },
-                {
-                    "name": "startFrom",
-                    "defaultValue": "input(this.options?.startFrom, {\r\n        transform: numberAttribute\r\n    })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 22,
-                    "modifierKind": [
-                        148
-                    ]
-                }
-            ],
+            "propertiesClass": [],
             "methodsClass": [],
             "extends": [],
             "constructorObj": {
