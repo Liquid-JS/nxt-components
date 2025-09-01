@@ -3,9 +3,9 @@
     [ngModel]="jsonString"
     (ngModelChange)="load($event)"></textarea>
 <br>
-<nxt-json-view *ngIf="!invalidInput; else warning"
-    [data]="data"
+@if (!invalidInput) {
+<nxt-json-view [data]="data"
     [levelOpen]="1"></nxt-json-view>
-<ng-template #warning>
-    <p>Failed to parse input string; please enter valid JSON</p>
-</ng-template>
+} @else {
+<p>Failed to parse input string; please enter valid JSON</p>
+}

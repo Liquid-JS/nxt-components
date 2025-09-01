@@ -1,6 +1,7 @@
-<div *ngIf="showDivider"
-    class="nxt-dt-timer-divider"
+@if (showDivider) {
+<div class="nxt-dt-timer-divider"
     aria-hidden="true"></div>
+}
 <button class="nxt-dt-control-button nxt-dt-control-arrow-button"
     type="button"
     tabindex="-1"

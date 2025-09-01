@@ -1,11 +1,10 @@
 import { CdkTableModule } from '@angular/cdk/table'
-import { CommonModule } from '@angular/common'
+
 import { Component, Input, ViewEncapsulation } from '@angular/core'
 
 @Component({
     selector: 'app-outputs-table',
     imports: [
-        CommonModule,
         CdkTableModule
     ],
     templateUrl: './outputs-table.component.html',

@@ -1,8 +1,9 @@
 <div class="btn-group-vertical"
     [nxtSortablejs]="elems">
+    @for (elem of elems; track elem) {
     <button type="button"
-        class="btn btn-secondary"
-        *ngFor="let elem of elems">Element {{ isArray(elem) ? (elem | json) : elem }}</button>
+        class="btn btn-secondary">Element {{ isArray(elem) ? (elem | json) : elem }}</button>
+    }
 </div>
 
 <br><br>

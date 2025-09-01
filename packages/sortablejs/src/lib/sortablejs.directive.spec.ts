@@ -6,9 +6,11 @@ describe('SortablejsDirective', () => {
     @Component({
         template: `
         <div [nxtSortablejs]="items">
-            <div *ngFor="let item of items">{{item}}</div>
+          @for (item of items; track item) {
+            <div>{{item}}</div>
+          }
         </div>
-    `,
+        `,
         standalone: false
     })
     // eslint-disable-next-line @angular-eslint/component-class-suffix

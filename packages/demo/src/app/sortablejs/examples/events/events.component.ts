@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { SortablejsModule } from 'nxt-sortablejs'
 import { Options } from 'sortablejs'
@@ -11,8 +10,7 @@ import { CodeBlockComponent } from '../../../code-block/code-block.component'
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
         SortablejsModule,
-        CodeBlockComponent,
-        CommonModule
+        CodeBlockComponent
     ]
 })
 export class EventsComponent {

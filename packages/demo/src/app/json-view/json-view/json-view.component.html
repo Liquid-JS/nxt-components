@@ -1,7 +1,8 @@
-<app-meta *ngIf="!loading"
-    title="nxt-json-view"
+@if (!loading) {
+<app-meta title="nxt-json-view"
     (done)="doneCb()"
     description="An interactive JSON view component for Angular."></app-meta>
+}
 <app-content-wrap>
     <h1>Angular JSON viewer</h1>
     <p>
@@ -34,18 +35,20 @@
                 class="dropdown-menu"
                 role="menu"
                 aria-labelledby="button-basic">
-                <li *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
-                    role="menuitem"><a class="dropdown-item"
+                @for (example of examples | async; track example; let i = $index) {
+                <li role="menuitem"><a class="dropdown-item"
                         routerLink="."
                         fragment="example-{{ i }}">{{ example.name }}</a></li>
+                }
             </ul>
         </div>
     </h2>
 
     <hr class="no-padding">
 
-    <app-example *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
-        [injector]="injector"
+    @for (example of examples | async; track example; let i = $index) {
+    <app-example [injector]="injector"
         [config]="example"
         id="example-{{ i }}"></app-example>
+    }
 </app-content-wrap>

@@ -1,10 +1,11 @@
 <ul class="list-group"
     [nxtSortablejs]="citiesControls">
-    <li class="list-group-item"
-        *ngFor="let city of citiesControls.controls">
+    @for (city of citiesControls.controls; track city) {
+    <li class="list-group-item">
         <input class="form-control"
             [formControl]="city">
     </li>
+    }
 </ul>
 <br>
 

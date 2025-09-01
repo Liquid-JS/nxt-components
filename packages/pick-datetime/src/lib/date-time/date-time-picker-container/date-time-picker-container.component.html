@@ -2,8 +2,8 @@
     [@fadeInPicker]="picker?.pickerMode === 'inline'? '' : 'enter'"
     class="nxt-dt-container-inner">
 
-    <nxt-date-time-calendar *ngIf="pickerType === 'both' || pickerType === 'calendar'"
-        class="nxt-dt-container-row"
+    @if (pickerType === 'both' || pickerType === 'calendar') {
+    <nxt-date-time-calendar class="nxt-dt-container-row"
         [firstDayOfWeek]="picker?.firstDayOfWeek ?? 0"
         [(pickerMoment)]="pickerMoment"
         [selected]="picker?.selected"
@@ -17,9 +17,10 @@
         (yearSelected)="picker?.selectYear($event)"
         (monthSelected)="picker?.selectMonth($event)"
         (selectedChange)="dateSelected($event)"></nxt-date-time-calendar>
+    }
 
-    <nxt-date-time-timer *ngIf="pickerType === 'both' || pickerType === 'timer'"
-        class="nxt-dt-container-row"
+    @if (pickerType === 'both' || pickerType === 'timer') {
+    <nxt-date-time-timer class="nxt-dt-container-row"
         [pickerMoment]="pickerMoment"
         [min]="picker?.min"
         [max]="picker?.max"
@@ -29,9 +30,10 @@
         [stepMinute]="picker?.stepMinute ?? 1"
         [stepSecond]="picker?.stepSecond ?? 1"
         (selectedChange)="timeSelected($event)"></nxt-date-time-timer>
+    }
 
-    <div *ngIf="picker?.isInRangeMode"
-        role="radiogroup"
+    @if (picker?.isInRangeMode) {
+    <div role="radiogroup"
         class="nxt-dt-container-info nxt-dt-container-row">
         <div role="radio"
             [tabindex]="activeSelectedIndex === 0 ? 0 : -1"
@@ -62,9 +64,10 @@
             </span>
         </div>
     </div>
+    }
 
-    <div *ngIf="showControlButtons"
-        class="nxt-dt-container-buttons nxt-dt-container-row">
+    @if (showControlButtons) {
+    <div class="nxt-dt-container-buttons nxt-dt-container-row">
         <button class="nxt-dt-control nxt-dt-control-button nxt-dt-container-control-button"
             type="button"
             tabindex="0"
@@ -84,4 +87,5 @@
             </span>
         </button>
     </div>
+    }
 </div>

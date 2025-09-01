@@ -127,6 +127,11 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
+    @HostListener('click', ['$event'])
+    onClick(event: MouseEvent) {
+        event.stopPropagation()
+    }
+
     @HostListener('document:mousedown', ['$event'])
     @HostListener('document:focusin', ['$event'])
     onFocusChange(event: MouseEvent | FocusEvent) {

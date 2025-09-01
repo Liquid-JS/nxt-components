@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common'
 import { Component, ViewChild, ViewEncapsulation } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 // eslint-disable-next-line @import/no-extraneous-dependencies
@@ -11,7 +10,6 @@ import { DropzoneComponent, DropzoneConfig, DropzoneDirective, DropzoneModule } 
     styleUrls: ['./sandbox.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        CommonModule,
         FormsModule,
         DropzoneModule
     ]

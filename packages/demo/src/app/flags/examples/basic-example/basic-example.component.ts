@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { remove as removeDiacritics } from 'diacritics'
@@ -14,7 +13,6 @@ registerLocale(locl)
     styleUrls: ['./basic-example.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        CommonModule,
         FormsModule,
         FlagsModule
     ]

@@ -3,8 +3,9 @@
         <ul class="list-group sortable"
             [nxtSortablejs]="cloneList1"
             [config]="clone1Options">
-            <li class="list-group-item"
-                *ngFor="let item of cloneList1">Element {{ item }}</li>
+            @for (item of cloneList1; track item) {
+            <li class="list-group-item">Element {{ item }}</li>
+            }
         </ul>
     </div>
 
@@ -12,8 +13,9 @@
         <ul class="list-group sortable"
             [nxtSortablejs]="cloneList2"
             [config]="clone2Options">
-            <li class="list-group-item"
-                *ngFor="let item of cloneList2">Element {{ item }}</li>
+            @for (item of cloneList2; track item) {
+            <li class="list-group-item">Element {{ item }}</li>
+            }
         </ul>
     </div>
 </div>

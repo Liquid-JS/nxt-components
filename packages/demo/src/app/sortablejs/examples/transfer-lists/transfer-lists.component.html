@@ -3,8 +3,9 @@
         <ul class="list-group sortable"
             [nxtSortablejs]="normalList1"
             [config]="normalOptions">
-            <li class="list-group-item"
-                *ngFor="let item of normalList1">Element {{ item }}</li>
+            @for (item of normalList1; track item) {
+            <li class="list-group-item">Element {{ item }}</li>
+            }
         </ul>
     </div>
 
@@ -12,8 +13,9 @@
         <ul class="list-group sortable"
             [nxtSortablejs]="normalList2"
             [config]="normalOptions">
-            <li class="list-group-item"
-                *ngFor="let item of normalList2">Element {{ item }}</li>
+            @for (item of normalList2; track item) {
+            <li class="list-group-item">Element {{ item }}</li>
+            }
         </ul>
     </div>
 </div>

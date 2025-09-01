@@ -22,8 +22,8 @@
     inputLabel="Minute"
     (inputChange)="setMinuteValue($event)"
     (valueChange)="setMinuteValue($event)"></nxt-date-time-timer-box>
-<nxt-date-time-timer-box *ngIf="showSecondsTimer"
-    [showDivider]="true"
+@if (showSecondsTimer) {
+<nxt-date-time-timer-box [showDivider]="true"
     [upBtnAriaLabel]="upSecondButtonLabel"
     [downBtnAriaLabel]="downSecondButtonLabel"
     [upBtnDisabled]="!upSecondEnabled()"
@@ -35,9 +35,10 @@
     inputLabel="Second"
     (inputChange)="setSecondValue($event)"
     (valueChange)="setSecondValue($event)"></nxt-date-time-timer-box>
+}
 
-<div *ngIf="hour12Timer"
-    class="nxt-dt-timer-hour12">
+@if (hour12Timer) {
+<div class="nxt-dt-timer-hour12">
     <button class="nxt-dt-control-button nxt-dt-timer-hour12-box"
         type="button"
         tabindex="0"
@@ -48,3 +49,4 @@
         </span>
     </button>
 </div>
+}

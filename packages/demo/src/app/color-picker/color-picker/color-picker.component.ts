@@ -1,6 +1,6 @@
 import { OverlayContainer } from '@angular/cdk/overlay'
 import { Platform } from '@angular/cdk/platform'
-import { CommonModule } from '@angular/common'
+
 import { Component, Injector, OnInit, PendingTasks, DOCUMENT } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
@@ -14,7 +14,6 @@ import { WaitLoad } from '../../utils/wait-load.class'
     templateUrl: './color-picker.component.html',
     styleUrls: ['./color-picker.component.scss'],
     imports: [
-        CommonModule,
         MetaDirective,
         ContentWrapComponent,
         RouterModule,

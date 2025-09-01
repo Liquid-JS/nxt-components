@@ -8,9 +8,10 @@
         <div class="dz-text"
             [innerHTML]="config?.dictDefaultMessage || message"></div>
 
-        <div *ngIf="placeholder"
-            class="dz-image"
+        @if (placeholder) {
+        <div class="dz-image"
             [style.background-image]="getPlaceholder()"></div>
+        }
     </div>
 
     <ng-content></ng-content>

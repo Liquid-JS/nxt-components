@@ -1,9 +1,8 @@
-import { CommonModule } from '@angular/common'
 import { Component } from '@angular/core'
 
 @Component({
     selector: 'app-content-wrap',
-    imports: [CommonModule],
+    imports: [],
     template: '<ng-content></ng-content>',
     styleUrls: ['./content-wrap.component.scss'],
     host: {

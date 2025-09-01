@@ -1,26 +1,23 @@
-<table *ngIf="outputs?.length"
-    cdk-table
+@if (outputs?.length) {
+<table cdk-table
     [dataSource]="outputs!"
     class="table table-hover">
     <tr cdk-header-row
         *cdkHeaderRowDef="['name', 'type', 'description']"></tr>
     <tr cdk-row
         *cdkRowDef="let row; columns: ['name', 'type', 'description'];"></tr>
-
     <ng-container cdkColumnDef="name">
         <th cdk-header-cell
             *cdkHeaderCellDef>Output</th>
         <td cdk-cell
             *cdkCellDef="let output">({{ output.name }})</td>
     </ng-container>
-
     <ng-container cdkColumnDef="type">
         <th cdk-header-cell
             *cdkHeaderCellDef>Type</th>
         <td cdk-cell
             *cdkCellDef="let output">{{ formatOutputType(output.defaultValue || output.type) }}</td>
     </ng-container>
-
     <ng-container cdkColumnDef="description">
         <th cdk-header-cell
             *cdkHeaderCellDef>Description</th>
@@ -28,5 +25,5 @@
             *cdkCellDef="let output"
             [innerHTML]="output.description"></td>
     </ng-container>
-
 </table>
+}

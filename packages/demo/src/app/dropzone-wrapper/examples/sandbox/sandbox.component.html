@@ -70,22 +70,22 @@
     </div>
     <div class="col demo-dz-column">
         <h3 class="h5">Dropzone</h3>
-        <div *ngIf="type == 'directive'; else component"
-            class="dropzone dropzone-container"
+        @if (type == 'directive') {
+        <div class="dropzone dropzone-container"
             [nxtDropzone]="config"
             [disabled]="disabled"
             (init)="onUploadInit($event)"
             (error)="onUploadError($event)"
             (success)="onUploadSuccess($event)"></div>
+        } @else {
+        <nxt-dropzone class="dropzone-container"
+            [config]="config"
+            [disabled]="disabled"
+            message="Click or drag images here to upload"
+            (init)="onUploadInit($event)"
+            (error)="onUploadError($event)"
+            (success)="onUploadSuccess($event)"></nxt-dropzone>
+        }
 
-        <ng-template #component>
-            <nxt-dropzone class="dropzone-container"
-                [config]="config"
-                [disabled]="disabled"
-                message="Click or drag images here to upload"
-                (init)="onUploadInit($event)"
-                (error)="onUploadError($event)"
-                (success)="onUploadSuccess($event)"></nxt-dropzone>
-        </ng-template>
     </div>
 </div>

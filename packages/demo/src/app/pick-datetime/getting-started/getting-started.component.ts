@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { CodeBlockComponent } from '../../code-block/code-block.component'
 import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
@@ -15,7 +14,6 @@ import docs from '../documentation.json'
     imports: [
         MetaDirective,
         ContentWrapComponent,
-        CommonModule,
         CodeBlockComponent,
         InputsTableComponent,
         OutputsTableComponent

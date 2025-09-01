@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { HighlightAutoDirective, HighlightJS, HighlightJSOptions, HighlightLoader, NXT_HIGHLIGHT_OPTIONS } from 'nxt-highlightjs'
@@ -11,7 +10,6 @@ import { languages, themes } from './helpers'
     styleUrls: ['./basic-example.component.scss'],
     encapsulation: ViewEncapsulation.None,
     imports: [
-        CommonModule,
         FormsModule,
         HighlightAutoDirective,
         HighlightLineNumbersDirective

@@ -1,7 +1,7 @@
-<tr *ngFor="let row of rows; let rowIndex = index"
-    role="row">
-    <td *ngFor="let item of row; let colIndex = index"
-        class="nxt-dt-calendar-cell {{item.cellClass}}"
+@for (row of rows; track row; let rowIndex = $index) {
+<tr role="row">
+    @for (item of row; track item; let colIndex = $index) {
+    <td class="nxt-dt-calendar-cell {{item.cellClass}}"
         [tabindex]="isActiveCell(rowIndex, colIndex) ? 0 : -1"
         [class.nxt-dt-calendar-cell-active]="isActiveCell(rowIndex, colIndex)"
         [class.nxt-dt-calendar-cell-disabled]="!item.enabled"
@@ -25,4 +25,6 @@
             {{item.displayValue}}
         </span>
     </td>
+    }
 </tr>
+}

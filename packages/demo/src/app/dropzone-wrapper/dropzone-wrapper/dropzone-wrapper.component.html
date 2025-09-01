@@ -1,7 +1,8 @@
-<app-meta *ngIf="!loading"
-    title="nxt-dropzone-wrapper"
+@if (!loading) {
+<app-meta title="nxt-dropzone-wrapper"
     (done)="doneCb()"
     description="Angular wrapper library for Dropzone"></app-meta>
+}
 <app-content-wrap>
     <h1>Angular Dropzone wrapper</h1>
     <p>
@@ -20,9 +21,10 @@
         <li><a href="https://docs.dropzone.dev/configuration/basics/configuration-options"><strong>Dropzone documentation</strong></a></li>
     </ul>
 
-    <app-example *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
-        [injector]="injector"
+    @for (example of examples | async; track example; let i = $index) {
+    <app-example [injector]="injector"
         [config]="example"
         [asTab]="true"
         id="example-{{ i }}"></app-example>
+    }
 </app-content-wrap>

@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common'
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation } from '@angular/core'
 import { SortablejsModule } from 'nxt-sortablejs'
 import { Options } from 'sortablejs'
@@ -9,8 +8,7 @@ import { Options } from 'sortablejs'
     styleUrls: ['./scrolling-options.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        SortablejsModule,
-        CommonModule
+        SortablejsModule
     ],
     // Prevent lag when working with large number of items
     changeDetection: ChangeDetectionStrategy.OnPush

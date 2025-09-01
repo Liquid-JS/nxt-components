@@ -1,16 +1,15 @@
-<!-- eslint-disable-next-line @angular-eslint/template/interactive-supports-focus, @angular-eslint/template/click-events-have-key-events -->
+@if (show) {
 <div class="color-picker"
-    (click)="$event.stopPropagation()"
     [ngStyle]="{
         visibility: !show ? 'hidden' : 'visible',
         width: width || '',
         height: height || ''
-    }"
-    *ngIf="show">
-    <div *ngIf="dialogDisplay == 'popup'"
-        class="color-picker__arrow"></div>
-    <div *ngIf="mode == colorModeInternal.color"
-        class="color-picker__sv"
+    }">
+    @if (dialogDisplay == 'popup') {
+    <div class="color-picker__arrow"></div>
+    }
+    @if (mode == colorModeInternal.color) {
+    <div class="color-picker__sv"
         nxtSlider
         [rgX]="1"
         [rgY]="1"
@@ -27,13 +26,14 @@
                 left: (slider?.s || 0) * 100 + '%'
             }"></div>
     </div>
+    }
     <div class="color-picker__controls">
         <div class="color-picker__selected">
             <div class="color-picker__selected-color">
                 <div [ngStyle]="{ 
                     backgroundColor: selectedColor || ''
-                }"><button *ngIf="presetColorsEditable && !(maxPresetColors && (presetColors?.length || 0) >= maxPresetColors)"
-                        type="button"
+                }">@if (presetColorsEditable && !(maxPresetColors && (presetColors?.length || 0) >= maxPresetColors)) {
+                    <button type="button"
                         title="Add color to preset"
                         i18n-title="@@nxt-color-picker.button.add-color"
                         class="color-picker__add-selected"
@@ -45,12 +45,14 @@
                             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
                             <path d="M0 0h24v24H0z"
                                 fill="none" />
-                        </svg></button></div>
+                        </svg></button>
+                    }
+                </div>
             </div>
         </div>
         <div class="color-picker__hav">
-            <div *ngIf="mode == colorModeInternal.color"
-                class="color-picker__slider color-picker__slider--hue"
+            @if (mode == colorModeInternal.color) {
+            <div class="color-picker__slider color-picker__slider--hue"
                 nxtSlider
                 [rgX]="1"
                 (newValue)="onHueChange($event)"
@@ -62,8 +64,9 @@
                         left: (slider?.h || 0) * 100 + '%'
                     }"></div>
             </div>
-            <div *ngIf="mode == colorModeInternal.grayscale"
-                class="color-picker__slider color-picker__slider--value"
+            }
+            @if (mode == colorModeInternal.grayscale) {
+            <div class="color-picker__slider color-picker__slider--value"
                 nxtSlider
                 [rgX]="1"
                 (newValue)="onValueChange($event)"
@@ -75,8 +78,9 @@
                         left: (1 - (slider?.v || 0)) * 100 + '%'
                     }"></div>
             </div>
-            <div *ngIf="alphaChannel != 'disabled'"
-                class="color-picker__slider color-picker__slider--alpha"
+            }
+            @if (alphaChannel != 'disabled') {
+            <div class="color-picker__slider color-picker__slider--alpha"
                 nxtSlider
                 [rgX]="1"
                 (newValue)="onAlphaChange($event)"
@@ -93,238 +97,243 @@
                         }"></div>
                 </div>
             </div>
+            }
         </div>
     </div>
-    <div *ngIf="!disableInput && (mode == colorModeInternal.color || mode == colorModeInternal.grayscale)"
-        class="color-picker__inputs">
+    @if (!disableInput && (mode == colorModeInternal.color || mode == colorModeInternal.grayscale)) {
+    <div class="color-picker__inputs">
         <div class="color-picker__input-fields">
-            <ng-container *ngIf="mode == colorModeInternal.grayscale; else formatSwitch">
-                <div class="color-picker__input-field">
-                    <input type="number"
-                        pattern="[0-9]*"
-                        min="0"
-                        max="100"
-                        nxtText
-                        [rg]="100"
-                        [value]="hslaText?.l?.toFixed(0)"
-                        (keyup.enter)="onAccept($event)"
-                        (newValue)="onValueInput($event)" />
-                    <span class="color-picker__input-field-label">V</span>
-                </div>
-                <div *ngIf="alphaChannel != 'disabled'"
-                    class="color-picker__input-field">
-                    <input type="number"
-                        pattern="[0-9]+([\.,][0-9]{1,2})?"
-                        min="0"
-                        max="1"
-                        step="0.01"
-                        nxtText
-                        [rg]="1"
-                        [value]="formatAlpha(hslaText?.a)"
-                        (keyup.enter)="onAccept($event)"
-                        (newValue)="onAlphaInput($event)" />
-                    <span class="color-picker__input-field-label">A</span>
-                </div>
-            </ng-container>
-            <ng-template #formatSwitch>
-                <ng-container [ngSwitch]="format">
-                    <ng-container *ngSwitchCase="'hsla'">
-                        <div class="color-picker__input-field">
-                            <input type="number"
-                                pattern="[0-9]*"
-                                min="0"
-                                max="360"
-                                nxtText
-                                [rg]="360"
-                                [value]="hslaText?.h?.toFixed(0)"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onHueInput($event)" />
-                            <span class="color-picker__input-field-label">H</span>
-                        </div>
-                        <div class="color-picker__input-field">
-                            <input type="number"
-                                pattern="[0-9]*"
-                                min="0"
-                                max="100"
-                                nxtText
-                                [rg]="100"
-                                [value]="hslaText?.s?.toFixed(0)"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onSaturationInput($event)" />
-                            <span class="color-picker__input-field-label">S</span>
-                        </div>
-                        <div class="color-picker__input-field">
-                            <input type="number"
-                                pattern="[0-9]*"
-                                min="0"
-                                max="100"
-                                nxtText
-                                [rg]="100"
-                                [value]="hslaText?.l?.toFixed(0)"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onLightnessInput($event)" />
-                            <span class="color-picker__input-field-label">L</span>
-                        </div>
-                        <div *ngIf="alphaChannel != 'disabled'"
-                            class="color-picker__input-field">
-                            <input type="number"
-                                pattern="[0-9]+([\.,][0-9]{1,2})?"
-                                min="0"
-                                max="1"
-                                step="0.01"
-                                nxtText
-                                [rg]="1"
-                                [value]="formatAlpha(hslaText?.a)"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onAlphaInput($event)" />
-                            <span class="color-picker__input-field-label">A</span>
-                        </div>
-                    </ng-container>
-                    <ng-container *ngSwitchCase="'rgba'">
-                        <div class="color-picker__input-field">
-                            <input type="number"
-                                pattern="[0-9]*"
-                                min="0"
-                                max="255"
-                                nxtText
-                                [rg]="255"
-                                [value]="rgbaText?.r?.toFixed(0)"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onRedInput($event)" />
-                            <span class="color-picker__input-field-label">R</span>
-                        </div>
-                        <div class="color-picker__input-field">
-                            <input type="number"
-                                pattern="[0-9]*"
-                                min="0"
-                                max="255"
-                                nxtText
-                                [rg]="255"
-                                [value]="rgbaText?.g?.toFixed(0)"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onGreenInput($event)" />
-                            <span class="color-picker__input-field-label">G</span>
-                        </div>
-                        <div class="color-picker__input-field">
-                            <input type="number"
-                                pattern="[0-9]*"
-                                min="0"
-                                max="255"
-                                nxtText
-                                [rg]="255"
-                                [value]="rgbaText?.b?.toFixed(0)"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onBlueInput($event)" />
-                            <span class="color-picker__input-field-label">B</span>
-                        </div>
-                        <div *ngIf="alphaChannel != 'disabled'"
-                            class="color-picker__input-field">
-                            <input type="number"
-                                pattern="[0-9]+([\.,][0-9]{1,2})?"
-                                min="0"
-                                max="1"
-                                step="0.01"
-                                nxtText
-                                [rg]="1"
-                                [value]="formatAlpha(hslaText?.a)"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onAlphaInput($event)" />
-                            <span class="color-picker__input-field-label">A</span>
-                        </div>
-                    </ng-container>
-                    <ng-container *ngSwitchCase="'cmyk'">
-                        <div class="color-picker__input-field">
-                            <input type="number"
-                                pattern="[0-9]*"
-                                min="0"
-                                max="100"
-                                nxtText
-                                [rg]="100"
-                                [value]="cmykText?.c?.toFixed(0)"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onCyanInput($event)" />
-                            <span class="color-picker__input-field-label">C</span>
-                        </div>
-                        <div class="color-picker__input-field">
-                            <input type="number"
-                                pattern="[0-9]*"
-                                min="0"
-                                max="100"
-                                nxtText
-                                [rg]="100"
-                                [value]="cmykText?.m?.toFixed(0)"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onMagentaInput($event)" />
-                            <span class="color-picker__input-field-label">M</span>
-                        </div>
-                        <div class="color-picker__input-field">
-                            <input type="number"
-                                pattern="[0-9]*"
-                                min="0"
-                                max="100"
-                                nxtText
-                                [rg]="100"
-                                [value]="cmykText?.y?.toFixed(0)"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onYellowInput($event)" />
-                            <span class="color-picker__input-field-label">Y</span>
-                        </div>
-                        <div class="color-picker__input-field">
-                            <input type="number"
-                                pattern="[0-9]*"
-                                min="0"
-                                max="100"
-                                nxtText
-                                [rg]="100"
-                                [value]="cmykText?.k?.toFixed(0)"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onBlackInput($event)" />
-                            <span class="color-picker__input-field-label">K</span>
-                        </div>
-                        <div *ngIf="alphaChannel != 'disabled'"
-                            class="color-picker__input-field">
-                            <input type="number"
-                                pattern="[0-9]+([\.,][0-9]{1,2})?"
-                                min="0"
-                                max="1"
-                                step="0.01"
-                                nxtText
-                                [rg]="1"
-                                [value]="formatAlpha(cmykText?.a)"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onAlphaInput($event)" />
-                            <span class="color-picker__input-field-label">A</span>
-                        </div>
-                    </ng-container>
-                    <ng-container *ngSwitchDefault>
-                        <div class="color-picker__input-field">
-                            <input nxtText
-                                [value]="hexText"
-                                (blur)="onHexInput()"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onHexInput($event)" />
-                            <span class="color-picker__input-field-label">Hex</span>
-                        </div>
-                        <div *ngIf="alphaChannel == 'forced'"
-                            class="color-picker__input-field">
-                            <input type="number"
-                                pattern="[0-9]+([\.,][0-9]{1,2})?"
-                                min="0"
-                                max="1"
-                                step="0.01"
-                                nxtText
-                                [rg]="1"
-                                [value]="formatAlpha(hexAlpha)"
-                                (keyup.enter)="onAccept($event)"
-                                (newValue)="onAlphaInput($event)" />
-                            <span class="color-picker__input-field-label">A</span>
-                        </div>
-                    </ng-container>
-                </ng-container>
-            </ng-template>
+            @if (mode == colorModeInternal.grayscale) {
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]*"
+                    min="0"
+                    max="100"
+                    nxtText
+                    [rg]="100"
+                    [value]="hslaText?.l?.toFixed(0)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onValueInput($event)" />
+                <span class="color-picker__input-field-label">V</span>
+            </div>
+            @if (alphaChannel != 'disabled') {
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]+([\.,][0-9]{1,2})?"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    nxtText
+                    [rg]="1"
+                    [value]="formatAlpha(hslaText?.a)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onAlphaInput($event)" />
+                <span class="color-picker__input-field-label">A</span>
+            </div>
+            }
+            } @else {
+            @switch (format) {
+            @case ('hsla') {
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]*"
+                    min="0"
+                    max="360"
+                    nxtText
+                    [rg]="360"
+                    [value]="hslaText?.h?.toFixed(0)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onHueInput($event)" />
+                <span class="color-picker__input-field-label">H</span>
+            </div>
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]*"
+                    min="0"
+                    max="100"
+                    nxtText
+                    [rg]="100"
+                    [value]="hslaText?.s?.toFixed(0)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onSaturationInput($event)" />
+                <span class="color-picker__input-field-label">S</span>
+            </div>
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]*"
+                    min="0"
+                    max="100"
+                    nxtText
+                    [rg]="100"
+                    [value]="hslaText?.l?.toFixed(0)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onLightnessInput($event)" />
+                <span class="color-picker__input-field-label">L</span>
+            </div>
+            @if (alphaChannel != 'disabled') {
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]+([\.,][0-9]{1,2})?"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    nxtText
+                    [rg]="1"
+                    [value]="formatAlpha(hslaText?.a)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onAlphaInput($event)" />
+                <span class="color-picker__input-field-label">A</span>
+            </div>
+            }
+            }
+            @case ('rgba') {
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]*"
+                    min="0"
+                    max="255"
+                    nxtText
+                    [rg]="255"
+                    [value]="rgbaText?.r?.toFixed(0)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onRedInput($event)" />
+                <span class="color-picker__input-field-label">R</span>
+            </div>
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]*"
+                    min="0"
+                    max="255"
+                    nxtText
+                    [rg]="255"
+                    [value]="rgbaText?.g?.toFixed(0)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onGreenInput($event)" />
+                <span class="color-picker__input-field-label">G</span>
+            </div>
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]*"
+                    min="0"
+                    max="255"
+                    nxtText
+                    [rg]="255"
+                    [value]="rgbaText?.b?.toFixed(0)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onBlueInput($event)" />
+                <span class="color-picker__input-field-label">B</span>
+            </div>
+            @if (alphaChannel != 'disabled') {
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]+([\.,][0-9]{1,2})?"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    nxtText
+                    [rg]="1"
+                    [value]="formatAlpha(hslaText?.a)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onAlphaInput($event)" />
+                <span class="color-picker__input-field-label">A</span>
+            </div>
+            }
+            }
+            @case ('cmyk') {
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]*"
+                    min="0"
+                    max="100"
+                    nxtText
+                    [rg]="100"
+                    [value]="cmykText?.c?.toFixed(0)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onCyanInput($event)" />
+                <span class="color-picker__input-field-label">C</span>
+            </div>
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]*"
+                    min="0"
+                    max="100"
+                    nxtText
+                    [rg]="100"
+                    [value]="cmykText?.m?.toFixed(0)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onMagentaInput($event)" />
+                <span class="color-picker__input-field-label">M</span>
+            </div>
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]*"
+                    min="0"
+                    max="100"
+                    nxtText
+                    [rg]="100"
+                    [value]="cmykText?.y?.toFixed(0)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onYellowInput($event)" />
+                <span class="color-picker__input-field-label">Y</span>
+            </div>
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]*"
+                    min="0"
+                    max="100"
+                    nxtText
+                    [rg]="100"
+                    [value]="cmykText?.k?.toFixed(0)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onBlackInput($event)" />
+                <span class="color-picker__input-field-label">K</span>
+            </div>
+            @if (alphaChannel != 'disabled') {
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]+([\.,][0-9]{1,2})?"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    nxtText
+                    [rg]="1"
+                    [value]="formatAlpha(cmykText?.a)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onAlphaInput($event)" />
+                <span class="color-picker__input-field-label">A</span>
+            </div>
+            }
+            }
+            @default {
+            <div class="color-picker__input-field">
+                <input nxtText
+                    [value]="hexText"
+                    (blur)="onHexInput()"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onHexInput($event)" />
+                <span class="color-picker__input-field-label">Hex</span>
+            </div>
+            @if (alphaChannel == 'forced') {
+            <div class="color-picker__input-field">
+                <input type="number"
+                    pattern="[0-9]+([\.,][0-9]{1,2})?"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    nxtText
+                    [rg]="1"
+                    [value]="formatAlpha(hexAlpha)"
+                    (keyup.enter)="onAccept($event)"
+                    (newValue)="onAlphaInput($event)" />
+                <span class="color-picker__input-field-label">A</span>
+            </div>
+            }
+            }
+            }
+            }
         </div>
-        <div *ngIf="mode == colorModeInternal.color"
-            class="color-picker__input-type">
+        @if (mode == colorModeInternal.color) {
+        <div class="color-picker__input-type">
             <span class="color-picker__input-type-arrow"
                 (click)="onFormatToggle(1)"
                 tabindex="0"
@@ -334,59 +343,73 @@
                 tabindex="0"
                 (keydown.enter)="onFormatToggle(-1)"></span>
         </div>
+        }
     </div>
-    <ng-container *ngIf="presetColors?.length">
-        <div class="color-picker__separator"></div>
-        <div class="color-picker__preset">
-            <div *ngIf="presetLabel"
-                class="color-picker__preset-label">
-                <ng-container *ngIf="presetLabel === true; else stringLabel"
-                    i18n="@@nxt-color-picker.preset-colors">Preset colors</ng-container>
-                <ng-template #stringLabel>{{ presetLabel }}</ng-template>
-            </div>
-            <div *ngIf="presetColors?.length"
-                class="color-picker__preset-items">
-                <ng-container *ngFor="let color of presetColors">
-                    <div *ngIf="stringToRgba(color) as rgba"
-                        class="color-picker__preset-item"
-                        [title]="color"
-                        (click)="setColorFromString(color)"
-                        tabindex="0"
-                        (keydown.enter)="setColorFromString(color)">
-                        <div class="color-picker__preset-item-fill"
-                            [ngStyle]="{ 
-                        backgroundColor: rgba || ''
-                    }"><button *ngIf="presetColorsEditable"
-                                type="button"
-                                title="Remove Color"
-                                i18n-title="@@nxt-color-picker.button.remove-color"
-                                class="color-picker__remove-selected"
-                                (click)="onRemovePresetColor(color)"
-                                tabindex="0"
-                                (keydown.enter)="onRemovePresetColor(color)"><svg xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24">
-                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-                                    <path d="M0 0h24v24H0z"
-                                        fill="none" />
-                                </svg></button></div>
-                    </div>
-                </ng-container>
-                <div *ngFor="let i of fill(50)"
-                    class="color-picker__preset-item"></div>
-            </div>
+    }
+    @if (presetColors?.length) {
+    <div class="color-picker__separator"></div>
+    <div class="color-picker__preset">
+        @if (presetLabel) {
+        <div class="color-picker__preset-label">
+            @if (presetLabel === true) {
+            <ng-container i18n="@@nxt-color-picker.preset-colors">Preset colors</ng-container>
+            } @else {
+            {{ presetLabel }}
+            }
         </div>
-    </ng-container>
-    <div *ngIf="okButton || cancelButton"
-        class="color-picker__buttons">
-        <button *ngIf="cancelButton"
-            type="button"
+        }
+        @if (presetColors?.length) {
+        <div class="color-picker__preset-items">
+            @for (color of presetColors; track color) {
+            @if (stringToRgba(color); as rgba) {
+            <div class="color-picker__preset-item"
+                [title]="color"
+                (click)="setColorFromString(color)"
+                tabindex="0"
+                (keydown.enter)="setColorFromString(color)">
+                <div class="color-picker__preset-item-fill"
+                    [ngStyle]="{ 
+                        backgroundColor: rgba || ''
+                    }">@if (presetColorsEditable) {
+                    <button type="button"
+                        title="Remove Color"
+                        i18n-title="@@nxt-color-picker.button.remove-color"
+                        class="color-picker__remove-selected"
+                        (click)="onRemovePresetColor(color)"
+                        tabindex="0"
+                        (keydown.enter)="onRemovePresetColor(color)"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24">
+                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                            <path d="M0 0h24v24H0z"
+                                fill="none" />
+                        </svg></button>
+                    }
+                </div>
+            </div>
+            }
+            }
+            @for (i of fill(50); track i) {
+            <div class="color-picker__preset-item"></div>
+            }
+        </div>
+        }
+    </div>
+    }
+    @if (okButton || cancelButton) {
+    <div class="color-picker__buttons">
+        @if (cancelButton) {
+        <button type="button"
             (click)="onCancel($event)"
             i18n="@@nxt-color-picker.button.cancel">Cancel</button>
-        <button *ngIf="okButton"
-            type="button"
+        }
+        @if (okButton) {
+        <button type="button"
             (click)="onAccept($event)"
             i18n="@@nxt-color-picker.button.ok">OK</button>
+        }
     </div>
+    }
 </div>
+}

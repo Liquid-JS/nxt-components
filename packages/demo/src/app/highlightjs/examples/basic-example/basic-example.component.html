@@ -6,8 +6,9 @@
         <select [(ngModel)]="language"
             class="form-select"
             name="language">
-            <option *ngFor="let i of languages"
-                [value]="i[1]">{{ i[0] }}</option>
+            @for (i of languages; track i) {
+            <option [value]="i[1]">{{ i[0] }}</option>
+            }
         </select>
 
         <br>
@@ -17,8 +18,9 @@
         <select [(ngModel)]="theme"
             class="form-select"
             name="theme">
-            <option *ngFor="let i of themes"
-                [value]="i">{{ i }}</option>
+            @for (i of themes; track i) {
+            <option [value]="i">{{ i }}</option>
+            }
         </select>
 
         <br>
@@ -46,11 +48,11 @@
 
         @if(lineNumbers){
         <pre><code [nxtHighlightAuto]="code"
-            [languages]="[language]"
-            lineNumbers></code></pre>
+                [languages]="[language]"
+              lineNumbers></code></pre>
         } @else {
         <pre><code [nxtHighlightAuto]="code"
-            [languages]="[language]"></code></pre>
+              [languages]="[language]"></code></pre>
         }
 
     </div>

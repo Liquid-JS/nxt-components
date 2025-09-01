@@ -1,12 +1,13 @@
 <ul class="list-group"
     [nxtSortablejs]="draggableItems"
     [config]="draggableOptions">
+    @for (item of draggableItems; track item) {
     <li class="list-group-item"
-        *ngFor="let item of draggableItems"
         [class.draggable]="item.draggable"
         [class.disabled]="!item.draggable">
         Element {{ item.text }}
     </li>
+    }
 </ul>
 <br>
 

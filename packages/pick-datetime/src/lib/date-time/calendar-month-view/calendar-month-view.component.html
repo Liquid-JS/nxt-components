@@ -2,12 +2,13 @@
     [class.nxt-dt-calendar-only-current-month]="hideOtherMonths">
     <thead class="nxt-dt-calendar-header">
         <tr class="nxt-dt-weekdays">
-            <th *ngFor="let weekday of weekdays"
-                [attr.aria-label]="weekday.long"
+            @for (weekday of weekdays; track weekday) {
+            <th [attr.aria-label]="weekday.long"
                 class="nxt-dt-weekday"
                 scope="col">
                 <span>{{weekday.short}}</span>
             </th>
+            }
         </tr>
         <tr>
             <th class="nxt-dt-calendar-table-divider"

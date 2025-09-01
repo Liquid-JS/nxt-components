@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { CodeBlockComponent } from '../../code-block/code-block.component'
 import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
@@ -13,7 +12,6 @@ import docs from '../documentation.json'
     styleUrls: ['./getting-started.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        CommonModule,
         CodeBlockComponent,
         MetaDirective,
         ContentWrapComponent,

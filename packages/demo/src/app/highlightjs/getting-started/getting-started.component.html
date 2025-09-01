@@ -26,13 +26,17 @@
     <br>
 
     <h2 class="h3">Configuration options</h2>
-    <ng-container *ngFor="let item of inps; index as i">
-        <br *ngIf="i > 0">
-        <h3 class="h5">{{ item.selector }}</h3>
-        <app-inputs-table [inputs]="item.inputs"
-            *ngIf="item.inputs.length"></app-inputs-table>
-        <app-outputs-table [outputs]="item.outputs"
-            *ngIf="item.outputs.length"></app-outputs-table>
-    </ng-container>
+    @for (item of inps; track item; let i = $index) {
+    @if (i > 0) {
+    <br>
+    }
+    <h3 class="h5">{{ item.selector }}</h3>
+    @if (item.inputs.length) {
+    <app-inputs-table [inputs]="item.inputs"></app-inputs-table>
+    }
+    @if (item.outputs.length) {
+    <app-outputs-table [outputs]="item.outputs"></app-outputs-table>
+    }
+    }
 
 </app-content-wrap>

@@ -1,7 +1,8 @@
-<app-meta *ngIf="!loading"
-    title="Validation | nxt-pick-datetime"
+@if (!loading) {
+<app-meta title="Validation | nxt-pick-datetime"
     (done)="doneCb()"
     description="Angular date and time picker provides validation when used in combination with angular forms."></app-meta>
+}
 <app-content-wrap>
     <h1>Validation</h1>
     <p>When used with <code>[ngModel]</code> or <code>[formControl]</code>, date & time picker provides control validation.</p>
@@ -21,19 +22,21 @@
                 class="dropdown-menu"
                 role="menu"
                 aria-labelledby="button-basic">
-                <li *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
-                    role="menuitem"><a class="dropdown-item"
+                @for (example of examples | async; track example; let i = $index) {
+                <li role="menuitem"><a class="dropdown-item"
                         routerLink="."
                         fragment="example-{{ i }}">{{ example.name }}</a></li>
+                }
             </ul>
         </div>
     </h2>
 
     <hr class="no-padding">
 
-    <app-example *ngFor="let example of examples | async; trackBy exampleTrackBy; index as i"
-        [injector]="injector"
+    @for (example of examples | async; track example; let i = $index) {
+    <app-example [injector]="injector"
         [config]="example"
         id="example-{{ i }}"></app-example>
+    }
 
 </app-content-wrap>

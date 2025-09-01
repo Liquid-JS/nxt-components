@@ -6,10 +6,11 @@
 <ul class="list-group"
     [nxtSortablejs]="eventItems"
     [config]="eventOptions">
-    <li class="list-group-item"
-        *ngFor="let item of eventItems">
+    @for (item of eventItems; track item) {
+    <li class="list-group-item">
         Element {{ item }}
     </li>
+    }
 </ul>
 <br>
 

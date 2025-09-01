@@ -1,7 +1,8 @@
 <select [(ngModel)]="code"
     class="form-select">
-    <option *ngFor="let i of data"
-        [value]="i.code">{{ i.name }} (ISO code: {{ i.code }})</option>
+    @for (i of data; track i) {
+    <option [value]="i.code">{{ i.name }} (ISO code: {{ i.code }})</option>
+    }
 </select>
 
 <div>

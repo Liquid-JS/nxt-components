@@ -6,7 +6,8 @@
     [nxtDateTimeTrigger]="picker"
     [nxtDateTime]="picker">
 <nxt-date-time #picker></nxt-date-time>
-<div class="invalid-feedback"
-    *ngIf="dateTimeControl.errors?.['dateTimeParse'] as parseError">
+@if (dateTimeControl.errors?.['dateTimeParse']; as parseError) {
+<div class="invalid-feedback">
     Input is not a valid date string, received "{{ parseError.text }}".
 </div>
+}

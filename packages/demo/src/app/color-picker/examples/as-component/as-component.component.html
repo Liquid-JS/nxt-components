@@ -4,10 +4,11 @@
         [(nxtColor)]="colors[selectedColor]"></ng-container>
 </div>
 <div>
-    <div *ngFor="let color of colors; index as i"
-        class="color-box"
+    @for (color of colors; track color; let i = $index) {
+    <div class="color-box"
         [style.background]="color"
         (click)="selectedColor = i"
         (keydown.enter)="selectedColor = i"
         tabindex="0"></div>
+    }
 </div>

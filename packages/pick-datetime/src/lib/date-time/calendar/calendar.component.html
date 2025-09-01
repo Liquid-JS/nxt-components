@@ -90,10 +90,10 @@
 </div>
 <div class="nxt-dt-calendar-main"
     cdkMonitorSubtreeFocus
-    [ngSwitch]="currentView"
     tabindex="-1">
-    <nxt-date-time-month-view *ngSwitchCase="'month'"
-        [pickerMoment]="pickerMoment"
+    @switch (currentView) {
+    @case ('month') {
+    <nxt-date-time-month-view [pickerMoment]="pickerMoment"
         [firstDayOfWeek]="firstDayOfWeek"
         [selected]="selected"
         [selecteds]="selecteds"
@@ -105,9 +105,9 @@
         (pickerMomentChange)="handlePickerMomentChange($event)"
         (selectedChange)="dateSelected($event)"
         (userSelection)="userSelected()"></nxt-date-time-month-view>
-
-    <nxt-date-time-year-view *ngSwitchCase="'year'"
-        [pickerMoment]="pickerMoment"
+    }
+    @case ('year') {
+    <nxt-date-time-year-view [pickerMoment]="pickerMoment"
         [selected]="selected"
         [selecteds]="selecteds"
         [selectMode]="selectMode ?? 'single'"
@@ -118,9 +118,9 @@
         (pickerMomentChange)="handlePickerMomentChange($event)"
         (monthSelected)="selectMonthInYearView($event)"
         (change)="goToDateInView($event, 'month')"></nxt-date-time-year-view>
-
-    <nxt-date-time-multi-year-view *ngSwitchCase="'multi-years'"
-        [pickerMoment]="pickerMoment"
+    }
+    @case ('multi-years') {
+    <nxt-date-time-multi-year-view [pickerMoment]="pickerMoment"
         [selected]="selected"
         [selecteds]="selecteds"
         [selectMode]="selectMode ?? 'single'"
@@ -131,4 +131,6 @@
         (pickerMomentChange)="handlePickerMomentChange($event)"
         (yearSelected)="selectYearInMultiYearView($event)"
         (change)="goToDateInView($event, 'year')"></nxt-date-time-multi-year-view>
+    }
+    }
 </div>

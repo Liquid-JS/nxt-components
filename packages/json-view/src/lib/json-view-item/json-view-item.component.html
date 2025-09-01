@@ -5,27 +5,35 @@
         <span class="toggler"
             [ngClass]="{'collapse': isOpen, 'expand': !isOpen}"
             [style.visibility]="hasChildren?'visible':'hidden'"></span>
-        <span class="key"
-            *ngIf="key">
+        @if (key) {
+        <span class="key">
             <span>{{key}}</span>
             <span>: </span>
         </span>
+        }
         <span class="value">
-            <span *ngIf="isObject">
+            @if (isObject) {
+            <span>
                 {{ dataType }}
-                <span *ngIf="isArray">[ {{ $any(data)?.length }} ]</span>
+                @if (isArray) {
+                <span>[ {{ $any(data)?.length }} ]</span>
+                }
             </span>
-            <span *ngIf="!isObject && valueType"
-                [ngClass]="valueType">{{ value }}</span>
+            }
+            @if (!isObject && valueType) {
+            <span [ngClass]="valueType">{{ value }}</span>
+            }
         </span>
     </a>
-    <div class="children"
-        *ngIf="hasChildren && isOpen">
-        <nxt-json-view-item *ngFor="let _key of childrenKeys"
-            [data]="data[_key]"
+    @if (hasChildren && isOpen) {
+    <div class="children">
+        @for (_key of childrenKeys; track _key) {
+        <nxt-json-view-item [data]="data[_key]"
             [key]="_key"
             [level]="level+1"
             [levelOpen]="levelOpen"
             [levelLabels]="levelLabels"></nxt-json-view-item>
+        }
     </div>
+    }
 </div>

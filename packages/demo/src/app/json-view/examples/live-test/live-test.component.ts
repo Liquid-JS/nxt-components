@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { JsonViewModule } from 'nxt-json-view'
@@ -10,8 +9,7 @@ import { JsonViewModule } from 'nxt-json-view'
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
         JsonViewModule,
-        FormsModule,
-        CommonModule
+        FormsModule
     ]
 })
 export class LiveTestComponent {

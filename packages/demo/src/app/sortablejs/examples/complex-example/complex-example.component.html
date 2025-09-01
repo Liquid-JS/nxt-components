@@ -4,8 +4,9 @@
         <ul class="mt-2 list-group sortable"
             [nxtSortablejs]="list1"
             [config]="list1Options">
-            <li class="list-group-item"
-                *ngFor="let item of list1">Element {{ item }}</li>
+            @for (item of list1; track item) {
+            <li class="list-group-item">Element {{ item }}</li>
+            }
         </ul>
     </div>
 
@@ -14,8 +15,9 @@
         <ul class="mt-2 list-group sortable"
             [nxtSortablejs]="list2"
             [config]="list2Options">
-            <li class="list-group-item"
-                *ngFor="let item of list2">Element {{ item }}</li>
+            @for (item of list2; track item) {
+            <li class="list-group-item">Element {{ item }}</li>
+            }
         </ul>
     </div>
 
@@ -24,8 +26,9 @@
         <ul class="mt-2 list-group sortable"
             [nxtSortablejs]="list3"
             [config]="list3Options">
-            <li class="list-group-item"
-                *ngFor="let item of list3">Element {{ item }}</li>
+            @for (item of list3; track item) {
+            <li class="list-group-item">Element {{ item }}</li>
+            }
         </ul>
     </div>
 
@@ -34,8 +37,9 @@
         <ul class="mt-2 list-group sortable"
             [nxtSortablejs]="list4"
             [config]="list4Options">
-            <li class="list-group-item"
-                *ngFor="let item of list4">Element {{ item }}</li>
+            @for (item of list4; track item) {
+            <li class="list-group-item">Element {{ item }}</li>
+            }
         </ul>
     </div>
 </div>

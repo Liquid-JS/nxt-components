@@ -2,18 +2,20 @@
 
 <div class="btn-group-vertical"
     [nxtSortablejs]="cities">
+    @for (city of cities; track city) {
     <button type="button"
-        class="btn btn-secondary"
-        *ngFor="let city of cities">{{ city }}</button>
+        class="btn btn-secondary">{{ city }}</button>
+    }
 </div>
 
 <br><br>
 
 <div class="btn-group"
     [nxtSortablejs]="cities">
+    @for (city of cities; track city) {
     <button type="button"
-        class="btn btn-secondary"
-        *ngFor="let city of cities">{{ city }}</button>
+        class="btn btn-secondary">{{ city }}</button>
+    }
 </div>
 
 <br><br>
@@ -22,31 +24,34 @@
 
 <div class="row"
     [nxtSortablejs]="cities">
-    <div class="col mb-4"
-        *ngFor="let city of cities">
+    @for (city of cities; track city) {
+    <div class="col mb-4">
         <div class="card">
             <div class="card-header">{{ city }}</div>
             <div class="card-body">{{ city }} description</div>
         </div>
     </div>
+    }
 </div>
 
 <h3 class="h4">Navigation</h3>
 
 <ul class="nav nav-pills mb-3"
     [nxtSortablejs]="cities">
-    <li class="nav-item"
-        *ngFor="let city of cities">
+    @for (city of cities; track city) {
+    <li class="nav-item">
         <a class="nav-link active mr-1">{{ city }}</a>
     </li>
+    }
 </ul>
 
 <nav aria-label="breadcrumb"
     role="navigation">
     <ol class="breadcrumb"
         [nxtSortablejs]="cities">
-        <li class="breadcrumb-item active"
-            *ngFor="let city of cities">{{ city }}</li>
+        @for (city of cities; track city) {
+        <li class="breadcrumb-item active">{{ city }}</li>
+        }
     </ol>
 </nav>
 

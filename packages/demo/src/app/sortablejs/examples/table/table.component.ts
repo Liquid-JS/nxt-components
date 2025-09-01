@@ -1,5 +1,5 @@
 import { CdkTableModule } from '@angular/cdk/table'
-import { CommonModule } from '@angular/common'
+
 import { Component, ViewEncapsulation } from '@angular/core'
 import { SortablejsModule } from 'nxt-sortablejs'
 
@@ -10,7 +10,6 @@ import { SortablejsModule } from 'nxt-sortablejs'
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
         SortablejsModule,
-        CommonModule,
         CdkTableModule
     ]
 })

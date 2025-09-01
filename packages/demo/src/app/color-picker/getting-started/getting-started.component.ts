@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { CodeBlockComponent } from '../../code-block/code-block.component'
 import docs from '../documentation.json'
@@ -13,7 +12,6 @@ import { OutputsTableComponent } from '../../outputs-table/outputs-table.compone
     styleUrls: ['./getting-started.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
-        CommonModule,
         MetaDirective,
         ContentWrapComponent,
         CodeBlockComponent,

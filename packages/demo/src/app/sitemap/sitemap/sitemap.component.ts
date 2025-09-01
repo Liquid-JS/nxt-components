@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { CodeBlockComponent } from '../../code-block/code-block.component'
 import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
@@ -7,7 +6,6 @@ import { MetaDirective } from '../../meta/meta.directive'
 @Component({
     selector: 'app-sitemap',
     imports: [
-        CommonModule,
         CodeBlockComponent,
         MetaDirective,
         ContentWrapComponent
