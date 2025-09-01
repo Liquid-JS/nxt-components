@@ -17,7 +17,9 @@ const MONTHS_PER_ROW = 3
     styleUrls: ['./calendar-year-view.component.scss'],
     preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [
+        CalendarBodyComponent
+    ]
 })
 export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy {
     /**

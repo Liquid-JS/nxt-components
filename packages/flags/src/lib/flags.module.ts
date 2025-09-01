@@ -1,13 +1,10 @@
-import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FlagComponent } from './flag/flag.component'
 
+/** @deprecated use standalone imports */
 @NgModule({
-    declarations: [
-        FlagComponent
-    ],
     imports: [
-        CommonModule
+        FlagComponent
     ],
     exports: [
         FlagComponent

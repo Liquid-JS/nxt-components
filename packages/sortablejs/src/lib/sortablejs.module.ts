@@ -1,20 +1,23 @@
 import { ModuleWithProviders, NgModule } from '@angular/core'
 import { Options } from 'sortablejs'
-import { GLOBALS } from './globals'
+import { provideGlobalSortableOptions } from './globals'
 import { SortablejsDirective } from './sortablejs.directive'
 
+/** @deprecated use standalone imports */
 @NgModule({
-    declarations: [SortablejsDirective],
-    exports: [SortablejsDirective]
+    imports: [
+        SortablejsDirective
+    ],
+    exports: [
+        SortablejsDirective
+    ]
 })
 export class SortablejsModule {
-
+    /** @deprecated use provideGlobalSortableOptions */
     static forRoot(globalOptions: Options): ModuleWithProviders<SortablejsModule> {
         return {
             ngModule: SortablejsModule,
-            providers: [
-                { provide: GLOBALS, useValue: globalOptions }
-            ]
+            providers: provideGlobalSortableOptions(globalOptions)
         }
     }
 

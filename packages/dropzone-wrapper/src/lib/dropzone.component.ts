@@ -15,7 +15,9 @@ import { DropzoneConfig, DropzoneListeners, NXT_DROPZONE_LISTENERS } from './dro
         provide: NXT_DROPZONE_LISTENERS,
         useExisting: DropzoneComponent
     }],
-    standalone: false
+    imports: [
+        DropzoneDirective
+    ]
 })
 export class DropzoneComponent implements OnInit, DropzoneListeners {
 

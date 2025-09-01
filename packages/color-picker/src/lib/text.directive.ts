@@ -5,8 +5,7 @@ import { TextEvent } from '../util/helpers'
  * @internal
  */
 @Directive({
-    selector: '[nxtText]',
-    standalone: false
+    selector: '[nxtText]'
 })
 export class TextDirective {
 

@@ -1,7 +1,7 @@
 import { Component, DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { dispatchKeyboardEvent, dispatchMouseEvent, TestDateTimeModule } from '../../../test-helpers'
+import { dispatchKeyboardEvent, dispatchMouseEvent, provideTestDateTimeAdapter } from '../../../test-helpers'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 import { DateTimeModule } from '../date-time.module'
 import { YearViewComponent } from './calendar-year-view.component'
@@ -9,12 +9,10 @@ import { YearViewComponent } from './calendar-year-view.component'
 describe('YearViewComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [TestDateTimeModule, DateTimeModule],
-            declarations: [
-                StandardYearViewComponent,
-                YearViewWithDateFilterComponent
-            ],
-            providers: [DateTimeIntl]
+            providers: [
+                provideTestDateTimeAdapter(),
+                DateTimeIntl
+            ]
         }).compileComponents()
     })
 
@@ -326,7 +324,7 @@ describe('YearViewComponent', () => {
                 [(pickerMoment)]="pickerMoment"
                 (change)="handleChange($event)"></nxt-date-time-year-view>
     `,
-    standalone: false
+    imports: [DateTimeModule]
 })
 class StandardYearViewComponent {
     selected = new Date(2018, 0, 10)
@@ -343,7 +341,7 @@ class StandardYearViewComponent {
                 [(pickerMoment)]="pickerMoment"
                 [dateTimeFilter]="dateTimeFilter"></nxt-date-time-year-view>
     `,
-    standalone: false
+    imports: [DateTimeModule]
 })
 class YearViewWithDateFilterComponent {
     pickerMoment = new Date(2018, 0, 1)

@@ -1,8 +1,6 @@
 import { ApplicationRef, ElementRef, Injector } from '@angular/core'
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing'
 import { ColorPickerDirective } from '../color-picker.directive'
-import { SliderDirective } from '../slider.directive'
-import { TextDirective } from '../text.directive'
 import { ColorPickerComponent } from './color-picker.component'
 
 describe('ColorPickerComponent', () => {
@@ -14,13 +12,7 @@ describe('ColorPickerComponent', () => {
     let fixture: ComponentFixture<ColorPickerComponent>
 
     beforeEach(async () => {
-        await TestBed.configureTestingModule({
-            declarations: [
-                SliderDirective,
-                TextDirective,
-                ColorPickerComponent
-            ]
-        })
+        await TestBed.configureTestingModule({})
             .compileComponents()
     })
 

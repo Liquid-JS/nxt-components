@@ -1,11 +1,11 @@
 /* eslint-disable @angular-eslint/component-class-suffix */
 import { OverlayContainer } from '@angular/cdk/overlay'
-import { Component, FactoryProvider, Type, ValueProvider, ViewChild } from '@angular/core'
+import { Component, Provider, Type, ViewChild } from '@angular/core'
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing'
 import { FormsModule, ReactiveFormsModule, UntypedFormControl } from '@angular/forms'
 import { By } from '@angular/platform-browser'
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'
-import { createKeyboardEvent, dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, TestDateTimeModule } from '../../../test-helpers'
+import { provideNoopAnimations } from '@angular/platform-browser/animations'
+import { createKeyboardEvent, dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, provideTestDateTimeAdapter } from '../../../test-helpers'
 import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
 import { DateTimeInputDirective } from '../date-time-picker-input.directive'
 import { DateTimeTriggerDirective } from '../date-time-picker-trigger.directive'
@@ -18,20 +18,13 @@ describe('DateTimeComponent', () => {
     // Creates a test component fixture.
     const createComponent = (
         component: Type<any>,
-        imports: Array<Type<any>> = [],
-        providers: Array<FactoryProvider | ValueProvider> = [],
-        entryComponents: Array<Type<any>> = []
+        providers?: Provider[]
     ) => {
         TestBed.configureTestingModule({
-            imports: [
-                FormsModule,
-                DateTimeModule,
-                NoopAnimationsModule,
-                ReactiveFormsModule,
-                ...imports
-            ],
-            providers,
-            declarations: [component, ...entryComponents]
+            providers: [
+                provideNoopAnimations(),
+                ...providers || []
+            ]
         })
 
         TestBed.compileComponents().catch(console.error)
@@ -50,9 +43,7 @@ describe('DateTimeComponent', () => {
             let containerElement: HTMLElement
 
             beforeEach(fakeAsync(() => {
-                fixture = createComponent(StandardDateTimePicker, [
-                    TestDateTimeModule
-                ])
+                fixture = createComponent(StandardDateTimePicker, provideTestDateTimeAdapter())
                 fixture.detectChanges()
                 testComponent = fixture.componentInstance
             }))
@@ -620,9 +611,7 @@ describe('DateTimeComponent', () => {
             let containerElement: HTMLElement
 
             beforeEach(fakeAsync(() => {
-                fixture = createComponent(RangeDateTimePicker, [
-                    TestDateTimeModule
-                ])
+                fixture = createComponent(RangeDateTimePicker, provideTestDateTimeAdapter())
                 fixture.detectChanges()
                 testComponent = fixture.componentInstance
             }))
@@ -911,9 +900,7 @@ describe('DateTimeComponent', () => {
 
         describe('DateTimePicker with too many inputs', () => {
             it('should throw when multiple inputs registered', fakeAsync(() => {
-                const fixture = createComponent(MultiInputDateTimePicker, [
-                    TestDateTimeModule
-                ])
+                const fixture = createComponent(MultiInputDateTimePicker, provideTestDateTimeAdapter())
                 expect(() => fixture.detectChanges()).toThrow()
             }))
         })
@@ -923,9 +910,7 @@ describe('DateTimeComponent', () => {
             let testComponent: NoInputDateTimePicker
 
             beforeEach(fakeAsync(() => {
-                fixture = createComponent(NoInputDateTimePicker, [
-                    TestDateTimeModule
-                ])
+                fixture = createComponent(NoInputDateTimePicker, provideTestDateTimeAdapter())
                 fixture.detectChanges()
 
                 testComponent = fixture.componentInstance
@@ -952,9 +937,7 @@ describe('DateTimeComponent', () => {
             let testComponent: DateTimePickerWithStartAt
 
             beforeEach(fakeAsync(() => {
-                fixture = createComponent(DateTimePickerWithStartAt, [
-                    TestDateTimeModule
-                ])
+                fixture = createComponent(DateTimePickerWithStartAt, provideTestDateTimeAdapter())
                 fixture.detectChanges()
 
                 testComponent = fixture.componentInstance
@@ -979,9 +962,7 @@ describe('DateTimeComponent', () => {
             let containerElement
 
             beforeEach(async () => {
-                fixture = createComponent(DateTimePickerWithStartView, [
-                    TestDateTimeModule
-                ])
+                fixture = createComponent(DateTimePickerWithStartView, provideTestDateTimeAdapter())
                 fixture.detectChanges()
 
                 testComponent = fixture.componentInstance
@@ -1088,9 +1069,7 @@ describe('DateTimeComponent', () => {
             let testComponent: DateTimePickerWithNgModel
 
             beforeEach(fakeAsync(async () => {
-                fixture = createComponent(DateTimePickerWithNgModel, [
-                    TestDateTimeModule
-                ])
+                fixture = createComponent(DateTimePickerWithNgModel, provideTestDateTimeAdapter())
                 fixture.detectChanges()
                 await fixture.whenStable().then(() => {
                     fixture.detectChanges()
@@ -1559,9 +1538,7 @@ describe('DateTimeComponent', () => {
             let testComponent: DateTimePickerWithFormControl
 
             beforeEach(fakeAsync(() => {
-                fixture = createComponent(DateTimePickerWithFormControl, [
-                    TestDateTimeModule
-                ])
+                fixture = createComponent(DateTimePickerWithFormControl, provideTestDateTimeAdapter())
                 fixture.detectChanges()
 
                 testComponent = fixture.componentInstance
@@ -1632,9 +1609,7 @@ describe('DateTimeComponent', () => {
             let testComponent: DateTimePickerWithTrigger
 
             beforeEach(fakeAsync(() => {
-                fixture = createComponent(DateTimePickerWithTrigger, [
-                    TestDateTimeModule
-                ])
+                fixture = createComponent(DateTimePickerWithTrigger, provideTestDateTimeAdapter())
                 fixture.detectChanges()
 
                 testComponent = fixture.componentInstance
@@ -1711,8 +1686,7 @@ describe('DateTimeComponent', () => {
 
             beforeEach(fakeAsync(() => {
                 fixture = createComponent(
-                    DateTimePickerWithMinAndMaxValidation,
-                    [TestDateTimeModule]
+                    DateTimePickerWithMinAndMaxValidation, provideTestDateTimeAdapter()
                 )
                 fixture.detectChanges()
 
@@ -1865,9 +1839,7 @@ describe('DateTimeComponent', () => {
             let testComponent: DateTimePickerWithFilterValidation
 
             beforeEach(fakeAsync(() => {
-                fixture = createComponent(DateTimePickerWithFilterValidation, [
-                    TestDateTimeModule
-                ])
+                fixture = createComponent(DateTimePickerWithFilterValidation, provideTestDateTimeAdapter())
                 fixture.detectChanges()
                 testComponent = fixture.componentInstance
             }))
@@ -1940,8 +1912,7 @@ describe('DateTimeComponent', () => {
 
             beforeEach(fakeAsync(() => {
                 fixture = createComponent(
-                    DateTimePickerWithChangeAndInputEvents,
-                    [TestDateTimeModule]
+                    DateTimePickerWithChangeAndInputEvents, provideTestDateTimeAdapter()
                 )
                 fixture.detectChanges()
                 testComponent = fixture.componentInstance
@@ -2219,9 +2190,7 @@ describe('DateTimeComponent', () => {
             let testComponent: DateTimePickerWithISOStrings
 
             beforeEach(fakeAsync(() => {
-                fixture = createComponent(DateTimePickerWithISOStrings, [
-                    TestDateTimeModule
-                ])
+                fixture = createComponent(DateTimePickerWithISOStrings, provideTestDateTimeAdapter())
                 fixture.detectChanges()
                 testComponent = fixture.componentInstance
             }))
@@ -2257,9 +2226,7 @@ describe('DateTimeComponent', () => {
             let testComponent: DateTimePickerWithEvents
 
             beforeEach(fakeAsync(() => {
-                fixture = createComponent(DateTimePickerWithEvents, [
-                    TestDateTimeModule
-                ])
+                fixture = createComponent(DateTimePickerWithEvents, provideTestDateTimeAdapter())
                 fixture.detectChanges()
                 testComponent = fixture.componentInstance
             }))
@@ -2295,7 +2262,7 @@ describe('DateTimeComponent', () => {
     describe('with missing DateTimeAdapter and NXT_DATE_TIME_FORMATS', () => {
         it('should throw when created', () => {
             expect(() => createComponent(StandardDateTimePicker)).toThrowError(
-                /NullInjectorError: No provider for .*/
+                /NG\d+: No provider found for .*/
             )
         })
     })
@@ -2309,7 +2276,11 @@ describe('DateTimeComponent', () => {
                        [pickerType]="pickerType"
                        [pickerMode]="pickerMode" #dt></nxt-date-time>
     `,
-    standalone: false
+    imports: [
+        FormsModule,
+        DateTimeModule,
+        ReactiveFormsModule
+    ]
 })
 class StandardDateTimePicker {
     date: Date | null = new Date(2020, 0, 1)
@@ -2329,7 +2300,11 @@ class StandardDateTimePicker {
         <nxt-date-time [startAt]="startAt"
                        [pickerType]="pickerType" #dt></nxt-date-time>
     `,
-    standalone: false
+    imports: [
+        FormsModule,
+        DateTimeModule,
+        ReactiveFormsModule
+    ]
 })
 class RangeDateTimePicker {
     dates?: Array<Date | undefined> = [new Date(2020, 0, 1), new Date(2020, 1, 1)]
@@ -2348,7 +2323,11 @@ class RangeDateTimePicker {
         <input [nxtDateTime]="dt">
         <nxt-date-time #dt></nxt-date-time>
     `,
-    standalone: false
+    imports: [
+        FormsModule,
+        DateTimeModule,
+        ReactiveFormsModule
+    ]
 })
 class MultiInputDateTimePicker { }
 
@@ -2356,7 +2335,11 @@ class MultiInputDateTimePicker { }
     template: `
         <nxt-date-time #dt></nxt-date-time>
     `,
-    standalone: false
+    imports: [
+        FormsModule,
+        DateTimeModule,
+        ReactiveFormsModule
+    ]
 })
 class NoInputDateTimePicker {
     @ViewChild('dt', { static: true })
@@ -2368,7 +2351,11 @@ class NoInputDateTimePicker {
         <input [nxtDateTime]="dt" [value]="date">
         <nxt-date-time #dt [startAt]="startDate"></nxt-date-time>
     `,
-    standalone: false
+    imports: [
+        FormsModule,
+        DateTimeModule,
+        ReactiveFormsModule
+    ]
 })
 class DateTimePickerWithStartAt {
     date = new Date(2020, 0, 1)
@@ -2384,7 +2371,11 @@ class DateTimePickerWithStartAt {
                        (monthSelected)="onMonthSelection()"
                        (yearSelected)="onYearSelection()"></nxt-date-time>
     `,
-    standalone: false
+    imports: [
+        FormsModule,
+        DateTimeModule,
+        ReactiveFormsModule
+    ]
 })
 class DateTimePickerWithStartView {
     date = new Date(2020, 0, 1)
@@ -2402,7 +2393,11 @@ class DateTimePickerWithStartView {
         <input [(ngModel)]="moment" [selectMode]="selectMode" [nxtDateTime]="dt">
         <nxt-date-time #dt></nxt-date-time>
     `,
-    standalone: false
+    imports: [
+        FormsModule,
+        DateTimeModule,
+        ReactiveFormsModule
+    ]
 })
 class DateTimePickerWithNgModel {
     moment?: Array<Date | undefined> | Date
@@ -2420,7 +2415,11 @@ class DateTimePickerWithNgModel {
                [nxtDateTimeTrigger]="dt">
         <nxt-date-time #dt></nxt-date-time>
     `,
-    standalone: false
+    imports: [
+        FormsModule,
+        DateTimeModule,
+        ReactiveFormsModule
+    ]
 })
 class DateTimePickerWithFormControl {
     formControl = new UntypedFormControl()
@@ -2438,7 +2437,11 @@ class DateTimePickerWithFormControl {
         <button [nxtDateTimeTrigger]="dt">Icon</button>
         <nxt-date-time #dt></nxt-date-time>
     `,
-    standalone: false
+    imports: [
+        FormsModule,
+        DateTimeModule,
+        ReactiveFormsModule
+    ]
 })
 class DateTimePickerWithTrigger {
     @ViewChild('dt', { static: true })
@@ -2454,7 +2457,11 @@ class DateTimePickerWithTrigger {
                [nxtDateTimeTrigger]="dt">
         <nxt-date-time [showSecondsTimer]="true" #dt></nxt-date-time>
     `,
-    standalone: false
+    imports: [
+        FormsModule,
+        DateTimeModule,
+        ReactiveFormsModule
+    ]
 })
 class DateTimePickerWithMinAndMaxValidation {
     @ViewChild('dt', { static: true })
@@ -2477,7 +2484,11 @@ class DateTimePickerWithMinAndMaxValidation {
                [nxtDateTimeTrigger]="dt">
         <nxt-date-time [showSecondsTimer]="true" #dt></nxt-date-time>
     `,
-    standalone: false
+    imports: [
+        FormsModule,
+        DateTimeModule,
+        ReactiveFormsModule
+    ]
 })
 class DateTimePickerWithFilterValidation {
     @ViewChild('dt', { static: true })
@@ -2500,7 +2511,11 @@ class DateTimePickerWithFilterValidation {
                (dateTimeInput)="handleDateTimeInput()">
         <nxt-date-time [showSecondsTimer]="true" #dt></nxt-date-time>
     `,
-    standalone: false
+    imports: [
+        FormsModule,
+        DateTimeModule,
+        ReactiveFormsModule
+    ]
 })
 class DateTimePickerWithChangeAndInputEvents {
     @ViewChild('dt', { static: true })
@@ -2524,7 +2539,11 @@ class DateTimePickerWithChangeAndInputEvents {
     <input [nxtDateTime]="dt" [(ngModel)]="value" [min]="min" [max]="max">
     <nxt-date-time #dt [startAt]="startAt"></nxt-date-time>
   `,
-    standalone: false
+    imports: [
+        FormsModule,
+        DateTimeModule,
+        ReactiveFormsModule
+    ]
 })
 class DateTimePickerWithISOStrings {
     value = new Date(2017, 5, 1).toISOString()
@@ -2542,7 +2561,11 @@ class DateTimePickerWithISOStrings {
     <input [(ngModel)]="selected" [nxtDateTime]="dt">
     <nxt-date-time (open)="isOpenSpy()" (close)="closedSpy()" #dt></nxt-date-time>
   `,
-    standalone: false
+    imports: [
+        FormsModule,
+        DateTimeModule,
+        ReactiveFormsModule
+    ]
 })
 class DateTimePickerWithEvents {
     selected: Date | null = null

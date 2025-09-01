@@ -11,7 +11,9 @@ describe('SortablejsDirective', () => {
           }
         </div>
         `,
-        standalone: false
+        imports: [
+            SortablejsModule
+        ]
     })
     // eslint-disable-next-line @angular-eslint/component-class-suffix
     class TestComponent1 {
@@ -20,11 +22,9 @@ describe('SortablejsDirective', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [
-                TestComponent1
-            ],
             imports: [
-                SortablejsModule
+                SortablejsModule,
+                TestComponent1
             ]
         }).compileComponents()
     })

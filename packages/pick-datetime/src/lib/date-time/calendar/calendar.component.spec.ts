@@ -2,7 +2,7 @@
 import { Component, NgZone } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, MockNgZone, TestDateTimeModule } from '../../../test-helpers'
+import { dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, MockNgZone, provideTestDateTimeAdapter } from '../../../test-helpers'
 import { MonthViewComponent } from '../calendar-month-view/calendar-month-view.component'
 import { MultiYearViewComponent } from '../calendar-multi-year-view/calendar-multi-year-view.component'
 import { YearViewComponent } from '../calendar-year-view/calendar-year-view.component'
@@ -15,13 +15,8 @@ describe('CalendarComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [TestDateTimeModule, DateTimeModule],
-            declarations: [
-                StandardCalendar,
-                CalendarWithMinMax,
-                CalendarWithDateFilter
-            ],
             providers: [
+                provideTestDateTimeAdapter(),
                 DateTimeIntl,
                 { provide: NgZone, useFactory: () => (zone = new MockNgZone()) }
             ]
@@ -448,7 +443,7 @@ describe('CalendarComponent', () => {
                 (monthSelected)="selectedMonth=$event"
                 (yearSelected)="selectedYear=$event"></nxt-date-time-calendar>
     `,
-    standalone: false
+    imports: [DateTimeModule]
 })
 class StandardCalendar {
     selectMode = 'single'
@@ -465,7 +460,7 @@ class StandardCalendar {
                                 [min]="minDate"
                                 [max]="maxDate"></nxt-date-time-calendar>
     `,
-    standalone: false
+    imports: [DateTimeModule]
 })
 class CalendarWithMinMax {
     selectMode = 'single'
@@ -482,7 +477,7 @@ class CalendarWithMinMax {
                                 [pickerMoment]="pickerMoment"
                                 [dateTimeFilter]="dateTimeFilter"></nxt-date-time-calendar>
     `,
-    standalone: false
+    imports: [DateTimeModule]
 })
 class CalendarWithDateFilter {
     selectMode = 'single'

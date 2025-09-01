@@ -1,18 +1,21 @@
 import { AfterViewChecked, ChangeDetectorRef, Component, inject, Input, ViewEncapsulation } from '@angular/core'
 import { LevelLabels } from '../utils/interfaces'
 import { ExpanderService } from '../expander/expander.service'
+import { JsonViewItemComponent } from '../json-view-item/json-view-item.component'
 
 @Component({
     selector: 'nxt-json-view',
     templateUrl: './json-view.component.html',
     styleUrls: ['./json-view.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
-    standalone: false,
     providers: [
         {
             provide: ExpanderService,
             useClass: ExpanderService
         }
+    ],
+    imports: [
+        JsonViewItemComponent
     ]
 })
 export class JsonViewComponent implements AfterViewChecked {

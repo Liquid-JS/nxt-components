@@ -1,10 +1,13 @@
 import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core'
+import { NgStyle, NgClass } from '@angular/common'
 import { cmykToRgb, denormalizeCMYK, denormalizeHSLA, denormalizeRGBA, formatCmyk, formatOutput, hslaToHsva, hsvaToHsla, hsvaToRgba, rgbaToCmyk, rgbaToHex, rgbaToHsva, stringToCmyk, stringToHsva } from '../../util/color'
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Cmyk, Hsla, Hsva, Rgba } from '../../util/formats'
 import { ColorModeInternal, composedPath, CursorEvent, DialogConfig, DirectiveCallbacks, parseColorMode, sizeToString, SliderPosition, TextEvent } from '../../util/helpers'
 import { AlphaChannel, AlphaChannelEnum, AlphaEnabledFormats, ColorFormat, ColorFormatEnum, DialogDisplay, DialogDisplayEnum, OutputFormat, OutputFormatEnum } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
+import { SliderDirective } from '../slider.directive'
+import { TextDirective } from '../text.directive'
 
 /**
  * @internal
@@ -14,7 +17,12 @@ import { ColorPickerService } from '../color-picker.service'
     templateUrl: './color-picker.component.html',
     styleUrls: ['./color-picker.component.scss'],
     encapsulation: ViewEncapsulation.Emulated,
-    standalone: false
+    imports: [
+        NgStyle,
+        SliderDirective,
+        NgClass,
+        TextDirective
+    ]
 })
 export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked {
 

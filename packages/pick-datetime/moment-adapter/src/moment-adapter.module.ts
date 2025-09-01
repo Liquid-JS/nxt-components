@@ -17,6 +17,7 @@ export function provideMomentDateTimeAdapter(): Provider[] {
     ]
 }
 
+/** @deprecated use provideMomentDateTimeAdapter */
 @NgModule({
     providers: [
         provideMomentDateTimeAdapter()

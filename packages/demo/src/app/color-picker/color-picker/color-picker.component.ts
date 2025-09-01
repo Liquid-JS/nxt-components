@@ -1,7 +1,7 @@
 import { OverlayContainer } from '@angular/cdk/overlay'
 import { Platform } from '@angular/cdk/platform'
-
-import { Component, Injector, OnInit, PendingTasks, DOCUMENT } from '@angular/core'
+import { AsyncPipe } from '@angular/common'
+import { Component, DOCUMENT, Injector, OnInit, PendingTasks } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
@@ -18,7 +18,8 @@ import { WaitLoad } from '../../utils/wait-load.class'
         ContentWrapComponent,
         RouterModule,
         ExampleComponent,
-        BsDropdownModule
+        BsDropdownModule,
+        AsyncPipe
     ]
 })
 export class AppColorPickerComponent extends WaitLoad implements OnInit {

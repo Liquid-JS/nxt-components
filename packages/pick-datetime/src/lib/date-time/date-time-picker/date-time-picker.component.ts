@@ -1,5 +1,5 @@
 import { coerceArray } from '@angular/cdk/coercion'
-import { BlockScrollStrategy, Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay'
+import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, EventEmitter, Inject, InjectionToken, Input, NgZone, OnDestroy, OnInit, Optional, Output, ViewContainerRef, DOCUMENT } from '@angular/core'
 import { merge, Subscription } from 'rxjs'
@@ -21,28 +21,12 @@ export const NXT_DTPICKER_SCROLL_STRATEGY = new InjectionToken<
     () => ScrollStrategy
 >('NXT_DTPICKER_SCROLL_STRATEGY')
 
-/** @internal */
-export function NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY(
-    overlay: Overlay
-): () => BlockScrollStrategy {
-    const fn = () => overlay.scrollStrategies.block()
-    return fn
-}
-
-/** @internal */
-export const NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER = {
-    provide: NXT_DTPICKER_SCROLL_STRATEGY,
-    deps: [Overlay],
-    useFactory: NXT_DTPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY
-}
-
 @Component({
     selector: 'nxt-date-time',
     templateUrl: './date-time-picker.component.html',
     styleUrls: ['./date-time-picker.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    standalone: false
+    preserveWhitespaces: false
 })
 export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit, OnDestroy {
     /** Custom class for the picker backdrop */
@@ -283,15 +267,17 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         private readonly ngZone: NgZone,
         protected readonly changeDetector: ChangeDetectorRef,
         dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(NXT_DTPICKER_SCROLL_STRATEGY)
-        private readonly defaultScrollStrategy: () => ScrollStrategy,
         @Inject(NXT_DATE_TIME_FORMATS)
         dateTimeFormats: DateTimeFormats,
+        @Optional()
+        @Inject(NXT_DTPICKER_SCROLL_STRATEGY)
+        private readonly defaultScrollStrategy: () => ScrollStrategy,
         @Optional()
         @Inject(DOCUMENT)
         private readonly document?: Document
     ) {
         super(dateTimeAdapter, dateTimeFormats)
+        this.defaultScrollStrategy = this.defaultScrollStrategy ?? (() => overlay.scrollStrategies.block())
     }
 
     ngOnInit() { }

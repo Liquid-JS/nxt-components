@@ -17,6 +17,7 @@ export function provideNativeDateTimeAdapter(): Provider[] {
     ]
 }
 
+/** @deprecated use provideNativeDateTimeAdapter */
 @NgModule({
     imports: [PlatformModule],
     providers: [

@@ -46,7 +46,7 @@
             }
         </tabset>
         } @else {
-        @if (sources?.[0]; as source) {
+        @if (sources[0]; as source) {
         <div class="example-tab-content example-tab-content--single">
             <pre><code [nxtHighlightAuto]="source.code"
                   [languages]="[source.language]"

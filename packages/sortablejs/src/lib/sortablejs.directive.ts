@@ -23,10 +23,7 @@ import { SortablejsService } from './sortablejs.service'
 export type SortableData<T> = [T] extends [AbstractControl] ? (FormArray<T> | T[]) : T[]
 export type CloneFunction<T> = (item: T) => T
 
-@Directive({
-    selector: '[nxtSortablejs]',
-    standalone: false
-})
+@Directive({ selector: '[nxtSortablejs]' })
 export class SortablejsDirective<T> implements OnChanges, OnDestroy, AfterViewInit {
 
     /** Input data, can be Array or FormArray */

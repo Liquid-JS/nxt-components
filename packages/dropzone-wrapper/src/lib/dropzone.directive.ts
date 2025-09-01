@@ -6,8 +6,7 @@ import { DropzoneConfig, DropzoneEvent, DropzoneEvents, DropzoneListeners, inter
 
 @Directive({
     selector: '[nxtDropzone]',
-    exportAs: 'nxtDropzone',
-    standalone: false
+    exportAs: 'nxtDropzone'
 })
 export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneListeners {
 

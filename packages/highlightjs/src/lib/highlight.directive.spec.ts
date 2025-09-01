@@ -8,7 +8,9 @@ import { HighlightLoader } from './highlight.loader'
 
 @Component({
     template: '<code [nxtHighlight]="code" [language]="language"></code>',
-    imports: [HighlightDirective]
+    imports: [
+        HighlightDirective
+    ]
 })
 class TestHighlightComponent {
     code?: string
@@ -26,7 +28,6 @@ describe('Highlight Directive', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [HighlightDirective, TestHighlightComponent],
             providers: [
                 { provide: HighlightLoader, useValue: highlightLoaderStub },
                 { provide: ComponentFixtureAutoDetect, useValue: true }

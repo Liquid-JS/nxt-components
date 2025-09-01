@@ -16,7 +16,9 @@ export const YEAR_ROWS = 7
     styleUrls: ['./calendar-multi-year-view.component.scss'],
     preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [
+        CalendarBodyComponent
+    ]
 })
 
 export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {

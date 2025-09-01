@@ -6,9 +6,7 @@ describe('JsonViewItemComponent', () => {
     let fixture: ComponentFixture<JsonViewItemComponent>
 
     beforeEach(async () => {
-        await TestBed.configureTestingModule({
-            declarations: [JsonViewItemComponent]
-        })
+        await TestBed.configureTestingModule({})
             .compileComponents()
     })
 

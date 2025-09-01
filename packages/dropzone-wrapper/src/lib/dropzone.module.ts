@@ -1,15 +1,12 @@
-import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { DropzoneComponent } from './dropzone.component'
 import { DropzoneDirective } from './dropzone.directive'
 
+/** @deprecated use standalone imports */
 @NgModule({
-    declarations: [
+    imports: [
         DropzoneComponent,
         DropzoneDirective
-    ],
-    imports: [
-        CommonModule
     ],
     exports: [
         DropzoneComponent,

@@ -9,8 +9,7 @@ const availableCodes = new Set(Object.values(FlagDatabase))
     selector: 'nxt-flag',
     templateUrl: './flag.component.html',
     styleUrls: ['./flag.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated,
-    standalone: false
+    encapsulation: ViewEncapsulation.Emulated
 })
 export class FlagComponent {
 

@@ -1,7 +1,7 @@
 import { Component, DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { dispatchKeyboardEvent, dispatchMouseEvent, TestDateTimeModule } from '../../../test-helpers'
+import { dispatchKeyboardEvent, dispatchMouseEvent, provideTestDateTimeAdapter } from '../../../test-helpers'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 import { DateTimeModule } from '../date-time.module'
 import { MultiYearViewComponent, YEARS_PER_ROW, YEAR_ROWS } from './calendar-multi-year-view.component'
@@ -9,12 +9,10 @@ import { MultiYearViewComponent, YEARS_PER_ROW, YEAR_ROWS } from './calendar-mul
 describe('MultiYearViewComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [TestDateTimeModule, DateTimeModule],
-            declarations: [
-                StandardMultiYearViewComponent,
-                MultiYearViewWithDateFilterComponent
-            ],
-            providers: [DateTimeIntl]
+            providers: [
+                provideTestDateTimeAdapter(),
+                DateTimeIntl
+            ]
         }).compileComponents()
     })
 
@@ -275,7 +273,7 @@ describe('MultiYearViewComponent', () => {
                 [(pickerMoment)]="pickerMoment"
                 (change)="handleChange($event)"></nxt-date-time-multi-year-view>
     `,
-    standalone: false
+    imports: [DateTimeModule]
 })
 class StandardMultiYearViewComponent {
     selected = new Date(2020, 0, 10)
@@ -292,7 +290,7 @@ class StandardMultiYearViewComponent {
                 [(pickerMoment)]="pickerMoment"
                 [dateTimeFilter]="dateTimeFilter"></nxt-date-time-multi-year-view>
     `,
-    standalone: false
+    imports: [DateTimeModule]
 })
 class MultiYearViewWithDateFilterComponent {
     pickerMoment = new Date(2018, 0, 1)

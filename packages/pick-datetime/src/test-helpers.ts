@@ -1,6 +1,6 @@
 // Based on @angular/cdk/testing
-import { Platform, PlatformModule } from '@angular/cdk/platform'
-import { EventEmitter, Inject, Injectable, LOCALE_ID, NgModule, NgZone, Optional } from '@angular/core'
+import { Platform } from '@angular/cdk/platform'
+import { EventEmitter, Inject, Injectable, LOCALE_ID, NgZone, Optional, Provider } from '@angular/core'
 import { DateTimeAdapter } from './lib/class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from './lib/class/date-time-format.class'
 
@@ -630,11 +630,15 @@ export const NXT_TEST_DATE_TIME_FORMATS: DateTimeFormats = {
     monthYearA11yLabel: { year: 'numeric', month: 'long' }
 }
 
-@NgModule({
-    imports: [PlatformModule],
-    providers: [
-        { provide: DateTimeAdapter, useClass: TestDateTimeAdapter },
-        { provide: NXT_DATE_TIME_FORMATS, useValue: NXT_TEST_DATE_TIME_FORMATS }
+export function provideTestDateTimeAdapter(): Provider[] {
+    return [
+        {
+            provide: DateTimeAdapter,
+            useClass: TestDateTimeAdapter
+        },
+        {
+            provide: NXT_DATE_TIME_FORMATS,
+            useValue: NXT_TEST_DATE_TIME_FORMATS
+        }
     ]
-})
-export class TestDateTimeModule { }
+}

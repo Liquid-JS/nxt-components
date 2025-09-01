@@ -1,7 +1,7 @@
 import { Component, DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { dispatchKeyboardEvent, TestDateTimeModule } from '../../../test-helpers'
+import { dispatchKeyboardEvent, provideTestDateTimeAdapter } from '../../../test-helpers'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 import { DateTimeModule } from '../date-time.module'
 import { MonthViewComponent } from './calendar-month-view.component'
@@ -9,12 +9,10 @@ import { MonthViewComponent } from './calendar-month-view.component'
 describe('MonthViewComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [TestDateTimeModule, DateTimeModule],
-            declarations: [
-                StandardMonthViewComponent,
-                MonthViewWithDateFilterComponent
-            ],
-            providers: [DateTimeIntl]
+            providers: [
+                provideTestDateTimeAdapter(),
+                DateTimeIntl
+            ]
         }).compileComponents()
     })
 
@@ -277,7 +275,7 @@ describe('MonthViewComponent', () => {
                 [(selected)]="selected"
                 [(pickerMoment)]="pickerMoment"></nxt-date-time-month-view>
     `,
-    standalone: false
+    imports: [DateTimeModule]
 })
 class StandardMonthViewComponent {
     selected = new Date(2018, 0, 10)
@@ -290,7 +288,7 @@ class StandardMonthViewComponent {
                 [(pickerMoment)]="pickerMoment"
                 [dateTimeFilter]="dateTimeFilter"></nxt-date-time-month-view>
     `,
-    standalone: false
+    imports: [DateTimeModule]
 })
 class MonthViewWithDateFilterComponent {
     pickerMoment = new Date(2018, 0, 1)

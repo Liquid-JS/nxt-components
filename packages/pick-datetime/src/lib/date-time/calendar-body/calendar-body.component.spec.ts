@@ -5,14 +5,7 @@ import { CalendarCell, CalendarBodyComponent } from './calendar-body.component'
 
 describe('CalendarBodyComponent', () => {
     beforeEach(async () => {
-        await TestBed.configureTestingModule({
-            declarations: [
-                CalendarBodyComponent,
-
-                // Test components
-                StandardCalendarBodyComponent
-            ]
-        }).compileComponents()
+        await TestBed.configureTestingModule({}).compileComponents()
     })
 
     describe('standard CalendarBodyComponent', () => {
@@ -83,7 +76,9 @@ describe('CalendarBodyComponent', () => {
                [activeCell]="activeCell"
                (select)="handleSelect()">
         </table>`,
-    standalone: false
+    imports: [
+        CalendarBodyComponent
+    ]
 })
 class StandardCalendarBodyComponent {
     rows = [[1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14]].map(r => r.map(createCell))

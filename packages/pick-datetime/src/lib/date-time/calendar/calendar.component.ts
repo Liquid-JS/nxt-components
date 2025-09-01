@@ -1,10 +1,14 @@
 import { AfterContentInit, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Inject, Input, NgZone, OnDestroy, OnInit, Output } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { take } from 'rxjs/operators'
+import { CdkMonitorFocus } from '@angular/cdk/a11y'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
+import { MonthViewComponent } from '../calendar-month-view/calendar-month-view.component'
+import { YearViewComponent } from '../calendar-year-view/calendar-year-view.component'
+import { MultiYearViewComponent } from '../calendar-multi-year-view/calendar-multi-year-view.component'
 
 @Component({
     selector: 'nxt-date-time-calendar',
@@ -12,7 +16,12 @@ import { DateTimeIntl } from '../date-time-picker-intl.service'
     styleUrls: ['./calendar.component.scss'],
     preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [
+        CdkMonitorFocus,
+        MonthViewComponent,
+        YearViewComponent,
+        MultiYearViewComponent
+    ]
 })
 export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterViewChecked, OnDestroy {
     /**

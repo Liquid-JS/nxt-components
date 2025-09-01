@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Even
 import { take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
+import { TimerBoxComponent } from '../timer-box/timer-box.component'
 
 @Component({
     selector: 'nxt-date-time-timer',
@@ -9,7 +10,9 @@ import { DateTimeIntl } from '../date-time-picker-intl.service'
     styleUrls: ['./timer.component.scss'],
     preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [
+        TimerBoxComponent
+    ]
 })
 export class TimerComponent<T> implements OnInit {
     /** The current picker moment */

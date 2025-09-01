@@ -2,7 +2,7 @@
     [class.nxt-dt-calendar-only-current-month]="hideOtherMonths">
     <thead class="nxt-dt-calendar-header">
         <tr class="nxt-dt-weekdays">
-            @for (weekday of weekdays; track weekday) {
+            @for (weekday of weekdays; track weekday.long) {
             <th [attr.aria-label]="weekday.long"
                 class="nxt-dt-weekday"
                 scope="col">

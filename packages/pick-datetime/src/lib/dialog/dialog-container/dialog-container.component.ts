@@ -48,7 +48,9 @@ const zoomFadeInFrom = {
             transition('enter => exit', [animateChild(), animate(200, style(zoomFadeIn))], { params: { x: '0px', y: '0px', ox: '50%', oy: '50%' } })
         ])
     ],
-    standalone: false
+    imports: [
+        CdkPortalOutlet
+    ]
 })
 export class DialogContainerComponent extends BasePortalOutlet implements OnInit {
     @ViewChild(CdkPortalOutlet, { static: true })

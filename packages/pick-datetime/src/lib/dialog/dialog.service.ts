@@ -21,21 +21,6 @@ export const NXT_DIALOG_SCROLL_STRATEGY = new InjectionToken<
     () => ScrollStrategy
 >('NXT_DIALOG_SCROLL_STRATEGY')
 
-/** @internal */
-export function NXT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(
-    overlay: Overlay
-): () => ScrollStrategy {
-    const fn = () => overlay.scrollStrategies.block()
-    return fn
-}
-
-/** @internal */
-export const NXT_DIALOG_SCROLL_STRATEGY_PROVIDER = {
-    provide: NXT_DIALOG_SCROLL_STRATEGY,
-    deps: [Overlay],
-    useFactory: NXT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY
-}
-
 /**
  * Injection token that can be used to specify default dialog options.
  *
@@ -46,7 +31,9 @@ export const NXT_DIALOG_DEFAULT_OPTIONS = new InjectionToken<DialogConfig>(
 )
 
 /** @internal */
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class DialogService {
     private readonly ariaHiddenElements = new Map<Element, string | null>()
 
@@ -95,6 +82,7 @@ export class DialogService {
         @Optional()
         @Inject(Location)
         private readonly location: Location | undefined,
+        @Optional()
         @Inject(NXT_DIALOG_SCROLL_STRATEGY)
         scrollStrategy: () => ScrollStrategy,
         @Optional()
@@ -106,7 +94,7 @@ export class DialogService {
         private readonly parentDialog: DialogService | undefined,
         private readonly overlayContainer: OverlayContainer
     ) {
-        this.scrollStrategy = scrollStrategy
+        this.scrollStrategy = scrollStrategy ?? (() => overlay.scrollStrategies.block())
         if (!parentDialog && location) {
             location.subscribe(() => this.closeAll())
         }

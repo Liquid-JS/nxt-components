@@ -1,6 +1,8 @@
 import { AnimationEvent } from '@angular/animations'
 import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, ViewChild } from '@angular/core'
 import { Subject } from 'rxjs'
+import { CdkTrapFocus } from '@angular/cdk/a11y'
+import { NgClass } from '@angular/common'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeDirective } from '../../class/date-time.class'
 import { CalendarComponent } from '../calendar/calendar.component'
@@ -19,7 +21,12 @@ import { dateTimePickerAnimations } from './date-time-picker-container.animation
         dateTimePickerAnimations.transformPicker,
         dateTimePickerAnimations.fadeInPicker
     ],
-    standalone: false
+    imports: [
+        CdkTrapFocus,
+        CalendarComponent,
+        TimerComponent,
+        NgClass
+    ]
 })
 export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, AfterViewInit {
 

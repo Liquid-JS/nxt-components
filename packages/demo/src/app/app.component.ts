@@ -18,6 +18,11 @@ const hidden = style({
     marginBottom: '0px'
 })
 
+type MenuItem = {
+    label: string
+    children?: MenuItem[]
+} & ({ link: string, url?: undefined } | { link?: undefined, url: string })
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -58,7 +63,7 @@ export class AppComponent {
 
     readonly logo = logo
 
-    readonly menuItems = [
+    readonly menuItems: MenuItem[] = [
         {
             label: 'nxt-color-picker',
             link: '/color-picker',

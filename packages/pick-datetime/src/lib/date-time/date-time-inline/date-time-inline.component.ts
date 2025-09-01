@@ -19,7 +19,9 @@ export const NXT_DATETIME_VALUE_ACCESSOR: Provider = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     preserveWhitespaces: false,
     providers: [NXT_DATETIME_VALUE_ACCESSOR],
-    standalone: false
+    imports: [
+        DateTimeContainerComponent
+    ]
 })
 export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements OnInit, ControlValueAccessor {
 
