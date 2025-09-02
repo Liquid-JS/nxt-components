@@ -20,9 +20,9 @@ export class GettingStartedComponent implements OnInit {
 
     readonly installScript = 'npm install --save nxt-json-view'
 
-    readonly importModule = `import { JsonViewComponent } from 'nxt-json-view'
+    readonly importComponent = `import { JsonViewComponent } from 'nxt-json-view'
 
-@NgModule({
+@Component({
     ...
     imports: [
         ...

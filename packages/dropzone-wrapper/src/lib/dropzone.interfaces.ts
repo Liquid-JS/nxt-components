@@ -1,14 +1,14 @@
-import { EventEmitter, InjectionToken, Provider } from '@angular/core'
+import { EventEmitter, InjectionToken, makeEnvironmentProviders } from '@angular/core'
 
 export const NXT_DROPZONE_CONFIG = new InjectionToken<DropzoneConfig>('NXT_DROPZONE_CONFIG')
 
-export function provideDropzoneConfig(config: DropzoneConfig): Provider[] {
-    return [
+export function provideDropzoneConfig(config: DropzoneConfig) {
+    return makeEnvironmentProviders([
         {
             provide: NXT_DROPZONE_CONFIG,
             useValue: config
         }
-    ]
+    ])
 }
 
 /** @internal */

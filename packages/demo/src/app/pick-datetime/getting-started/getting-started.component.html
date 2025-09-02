@@ -9,14 +9,14 @@
 
     <br>
 
-    <h2 class="h4">Import main module and DateTime adapter provider</h2>
-    <p>The date & time picker was built to be date implementation agnostic. It comes with two modules providing date adapter implementation, or you can provide your own adapter by implementing <code>DateTimeAdapter</code> (see <a routerLink="../custom-adapter">documentation</a>).</p>
+    <h2 class="h4">Configure DateTime adapter provider</h2>
+    <p>The date & time picker was built to be date implementation agnostic. It comes with two date adapter implementations, or you can provide your own adapter by implementing <code>DateTimeAdapter</code> (see <a routerLink="../custom-adapter">documentation</a>).</p>
 
     <ul>
-        <li><code>NativeDateTimeModule</code> - support for native JavaScript Date object</li>
-        <li><code>MomentDateTimeModule</code> - support for MomentJs</li>
+        <li><code>provideNativeDateTimeAdapter</code> - support for native JavaScript Date object</li>
+        <li><code>provideMomentDateTimeAdapter</code> - support for MomentJs</li>
     </ul>
-    <app-code-block [code]="importModule"
+    <app-code-block [code]="loadConfig"
         [languages]="['typescript']"></app-code-block>
     <br>
 

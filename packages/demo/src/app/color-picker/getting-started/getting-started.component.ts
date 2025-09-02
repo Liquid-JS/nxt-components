@@ -23,9 +23,9 @@ export class GettingStartedComponent {
 
     readonly installScript = 'npm install --save nxt-color-picker'
 
-    readonly importModule = `import { ColorPickerDirective } from 'nxt-color-picker'
+    readonly importDirective = `import { ColorPickerDirective } from 'nxt-color-picker'
 
-@NgModule({
+@Component({
     ...
     imports: [
         ...

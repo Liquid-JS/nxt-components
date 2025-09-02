@@ -18,16 +18,16 @@ Angular component to show flags based on country ISO code.
 npm install --save nxt-flags
 ```
 
-### Import flags module
+### Import flags component
 
 ```ts
-import { FlagsModule } from 'nxt-flags'
+import { FlagComponent } from 'nxt-flags'
 
-@NgModule({
+@Component({
     ...
     imports: [
         ...
-        FlagsModule
+        FlagComponent
     ]
 })
 ```

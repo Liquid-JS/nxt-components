@@ -192,6 +192,13 @@ export default config(
                                 'provideNoopAnimations'
                             ],
                             package: '@angular/platform-browser/animations'
+                        },
+                        {
+                            from: 'package',
+                            name: [
+                                'config'
+                            ],
+                            package: 'typescript-eslint'
                         }
                     ]
                 }

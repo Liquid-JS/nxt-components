@@ -19,31 +19,22 @@ This is an Angular wrapper library for the [Dropzone](http://www.dropzonejs.com/
 npm install --save nxt-dropzone-wrapper dropzone
 ```
 
-### Import and configure dropzone wrapper module
+### Import and configure dropzone wrapper
 
 ```ts
-import { DropzoneConfig, DropzoneModule, NXT_DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
+import { ApplicationConfig } from '@angular/core'
+import { provideDropzoneConfig } from 'nxt-dropzone-wrapper'
 
-const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
-    // Change this to your upload POST address:
-    url: 'https://httpbin.org/post',
-    maxFilesize: 50,
-    acceptedFiles: 'image/*'
-}
-
-@NgModule({
-    ...
-    imports: [
-        ...
-        DropzoneModule
-    ],
+export const appConfig: ApplicationConfig = {
     providers: [
-        {
-            provide: NXT_DROPZONE_CONFIG,
-            useValue: DEFAULT_DROPZONE_CONFIG
-        }
+        provideDropzoneConfig({
+            // These are the global options and can also be set per instance; change url to your upload POST address:
+            url: 'https://httpbin.org/post',
+            acceptedFiles: 'image/*',
+            createImageThumbnails: true
+        })
     ]
-})
+}
 ```
 
 ### Include it in HTML template

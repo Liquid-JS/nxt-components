@@ -3,7 +3,7 @@
     "interfaces": [
         {
             "name": "DropzoneConfig",
-            "id": "interface-DropzoneConfig-6e781a87f56399acb5e404c20413ddcb3182e84533229a99bc08f1c1ae9f8d8ce2d5892ee3fe4084dabed7050f28a3c5688da1facce11fab627384625caa1013",
+            "id": "interface-DropzoneConfig-c0b81b906e0e7210c90b4535bdf41c634246fb0ca06f6875554f6b6dcfc799c6eb70c4e9e541d6ee357351ad9afc72c2b4a2fad99d68ff0ff74ad7c48418f29a",
             "file": "src/lib/dropzone.interfaces.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -58,7 +58,7 @@
     "directives": [
         {
             "name": "DropzoneDirective",
-            "id": "directive-DropzoneDirective-9f4c29eb26479828e0b4d23d26d344aa80ed30e33c2219900ee8ab6a66fb509c723130dbf307f6e704920a70c4cda890da47ae5890faf440595d1cf432f793d2",
+            "id": "directive-DropzoneDirective-4c5043a611085e5137361ec25e134944ea54ac0140035e8d2b79605d8f250b1d11f09eb2d5996bacc6f25a5c99b6f489b422dbb287411ecdec77e7a48ddef7a0",
             "file": "src/lib/dropzone.directive.ts",
             "type": "directive",
             "description": "",
@@ -930,7 +930,6 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "returnType": "Provider[]",
                 "jsdoctags": [
                     {
                         "name": "config",
@@ -978,7 +977,6 @@
                             "deprecationMessage": ""
                         }
                     ],
-                    "returnType": "Provider[]",
                     "jsdoctags": [
                         {
                             "name": "config",

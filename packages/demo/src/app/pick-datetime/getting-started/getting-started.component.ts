@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core'
+import { RouterLink } from '@angular/router'
 import { CodeBlockComponent } from '../../code-block/code-block.component'
 import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
 import { InputsTableComponent } from '../../inputs-table/inputs-table.component'
@@ -16,24 +17,22 @@ import docs from '../documentation.json'
         ContentWrapComponent,
         CodeBlockComponent,
         InputsTableComponent,
-        OutputsTableComponent
+        OutputsTableComponent,
+        RouterLink
     ]
 })
 export class GettingStartedComponent {
 
     readonly installScript = 'npm install --save nxt-pick-datetime'
 
-    readonly importModule = `import { DateTimeModule } from 'nxt-pick-datetime'
-import { NativeDateTimeModule } from 'nxt-pick-datetime/native-adapter'
+    readonly loadConfig = `import { ApplicationConfig } from '@angular/core'
+import { provideNativeDateTimeAdapter } from 'nxt-pick-datetime/native-adapter'
 
-@NgModule({
-    ...
-    imports: [
-        ...
-        DateTimeModule,
-        NativeDateTimeModule
+export const appConfig: ApplicationConfig = {
+    providers: [
+        provideNativeDateTimeAdapter()
     ]
-})`
+}`
 
     readonly includeHTML = `<input [nxtDateTime]="picker"
     [nxtDateTimeTrigger]="picker"

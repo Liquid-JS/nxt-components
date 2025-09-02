@@ -21,9 +21,9 @@ export class GettingStartedComponent {
 
     readonly installScript = 'npm install --save nxt-flags'
 
-    readonly importModule = `import { FlagComponent } from 'nxt-flags'
+    readonly importComponent = `import { FlagComponent } from 'nxt-flags'
 
-@NgModule({
+@Component({
     ...
     imports: [
         ...

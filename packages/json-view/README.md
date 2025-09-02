@@ -18,16 +18,16 @@ An interactive JSON view component for Angular.
 npm install --save nxt-json-view
 ```
 
-### Import JSON view module
+### Import JSON view component
 
 ```ts
-import { JsonViewModule } from 'nxt-json-view'
+import { JsonViewComponent } from 'nxt-json-view'
 
-@NgModule({
+@Component({
     ...
     imports: [
         ...
-        JsonViewModule
+        JsonViewComponent
     ]
 })
 ```

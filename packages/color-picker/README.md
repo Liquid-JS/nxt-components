@@ -18,16 +18,16 @@ A color picker widget for Angular with no dependencies.
 npm install --save nxt-color-picker
 ```
 
-### Import color picker module
+### Import color picker directive
 
 ```ts
-import { ColorPickerModule } from 'nxt-color-picker'
+import { ColorPickerDirective } from 'nxt-color-picker'
 
-@NgModule({
+@Component({
     ...
     imports: [
         ...
-        ColorPickerModule
+        ColorPickerDirective
     ]
 })
 ```

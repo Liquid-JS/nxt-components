@@ -22,25 +22,22 @@ npm install --save nxt-pick-datetime
 npm install --save moment   # if you want to use MomentDateTimeModule
 ```
 
-### Import main module and DateTime adapter provider
+### Configure DateTime adapter provider
 
-The date & time picker was built to be date implementation agnostic. It comes with two modules providing date adapter implementation, or you can provide your own adapter by implementing `DateTimeAdapter` (see [documentation](https://liquid-js.github.io/nxt-components/demo/pick-datetime/custom-adapter)).
+The date & time picker was built to be date implementation agnostic. It comes with two date adapter implementations, or you can provide your own adapter by implementing `DateTimeAdapter` (see [documentation](https://liquid-js.github.io/nxt-components/demo/pick-datetime/custom-adapter)).
 
--   `NativeDateTimeModule` - support for native JavaScript Date object
--   `MomentDateTimeModule` - support for MomentJs
+-   `provideNativeDateTimeAdapter` - support for native JavaScript Date object
+-   `provideNativeDateTimeAdapter` - support for MomentJs
 
 ```ts
-import { DateTimeModule } from 'nxt-pick-datetime'
-import { NativeDateTimeModule } from 'nxt-pick-datetime/native-adapter'
+import { ApplicationConfig } from '@angular/core'
+import { provideNativeDateTimeAdapter } from 'nxt-pick-datetime/native-adapter'
 
-@NgModule({
-    ...
-    imports: [
-        ...
-        DateTimeModule,
-        NativeDateTimeModule
+export const appConfig: ApplicationConfig = {
+    providers: [
+        provideNativeDateTimeAdapter()
     ]
-})
+}
 ```
 
 ### Use it in a template

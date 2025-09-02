@@ -23,28 +23,19 @@ export class GettingStartedComponent {
 
     readonly installScript = 'npm install --save nxt-dropzone-wrapper dropzone'
 
-    readonly importModule = `import { DropzoneConfig, DropzoneModule, NXT_DROPZONE_CONFIG } from 'nxt-dropzone-wrapper'
+    readonly loadConfig = `import { ApplicationConfig } from '@angular/core'
+import { provideDropzoneConfig } from 'nxt-dropzone-wrapper'
 
-const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
-    // Change this to your upload POST address:
-    url: 'https://httpbin.org/post',
-    maxFilesize: 50,
-    acceptedFiles: 'image/*'
-}
-
-@NgModule({
-    ...
-    imports: [
-        ...
-        DropzoneModule
-    ],
+export const appConfig: ApplicationConfig = {
     providers: [
-        {
-            provide: NXT_DROPZONE_CONFIG,
-            useValue: DEFAULT_DROPZONE_CONFIG
-        }
+        provideDropzoneConfig({
+            // These are the global options and can also be set per instance; change url to your upload POST address:
+            url: 'https://httpbin.org/post',
+            acceptedFiles: 'image/*',
+            createImageThumbnails: true
+        })
     ]
-})`
+}`
 
     readonly includeHTML = `<nxt-dropzone [config]="config"
     message="Click or drag images here to upload"

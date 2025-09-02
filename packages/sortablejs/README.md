@@ -18,34 +18,33 @@ This package provides Angular binding for [Storablejs](https://github.com/Sortab
 npm install --save nxt-sortablejs sortablejs
 ```
 
-### Import Sortablejs module
+### Import Sortablejs directive
 
 ```ts
-import { SortablejsModule } from 'nxt-sortablejs'
+import { SortablejsDirective } from 'nxt-sortablejs'
 
-@NgModule({
+@Component({
     ...
     imports: [
         ...
-        SortablejsModule
+        SortablejsDirective
     ]
 })
 ```
 
-If you want to cofigure global Sortablejs options, include SortablejsModule.forRoot in your application.
+If you want to cofigure global Sortablejs options, include `provideGlobalSortableOptions` in your application.
 
 ```ts
-import { SortablejsModule } from 'nxt-sortablejs'
+import { ApplicationConfig } from '@angular/core'
+import { provideGlobalSortableOptions } from 'nxt-sortablejs'
 
-@NgModule({
-    ...
-    imports: [
-        ...
-        SortablejsModule.forRoot({
+export const appConfig: ApplicationConfig = {
+    providers: [
+        provideGlobalSortableOptions({
             animation: 150
         })
     ]
-})
+}
 ```
 
 ### Use it in a template
