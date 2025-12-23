@@ -32,10 +32,10 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/highlightjs"
     },
     "peerDependencies": {
-        "@angular/cdk": "^20.0.0",
-        "@angular/common": "^20.0.0",
-        "@angular/core": "^20.0.0",
-        "@angular/platform-browser": "^20.0.0",
+        "@angular/cdk": "^21.0.0",
+        "@angular/common": "^21.0.0",
+        "@angular/core": "^21.0.0",
+        "@angular/platform-browser": "^21.0.0",
         "highlight.js": ">=11.11.1",
         "rxjs": "^7.8.2"
     },
