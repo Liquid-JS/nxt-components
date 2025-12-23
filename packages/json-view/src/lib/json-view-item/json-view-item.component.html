@@ -3,8 +3,8 @@
         tabindex="0"
         (keydown.space)="toggle()">
         <span class="toggler"
-            [class]="{'collapse': isOpen, 'expand': !isOpen}"
-            [style.visibility]="hasChildren?'visible':'hidden'"></span>
+            [class]="{'collapse': isOpen(), 'expand': !isOpen()}"
+            [style.visibility]="hasChildren()?'visible':'hidden'"></span>
         @if (key()) {
         <span class="key">
             <span>{{key()}}</span>
@@ -12,23 +12,23 @@
         </span>
         }
         <span class="value">
-            @if (isObject) {
+            @if (isObject()) {
             <span>
-                {{ dataType }}
-                @if (isArray) {
-                <span>[ {{ $any(data)?.length }} ]</span>
+                {{ dataType() }}
+                @if (isArray()) {
+                <span>[ {{ $any(data())?.length }} ]</span>
                 }
             </span>
             }
-            @if (!isObject && valueType) {
-            <span [class]="valueType">{{ value }}</span>
+            @if (!isObject() && valueType()) {
+            <span [class]="valueType()">{{ value() }}</span>
             }
         </span>
     </a>
-    @if (hasChildren && isOpen) {
+    @if (hasChildren() && isOpen()) {
     <div class="children">
-        @for (_key of childrenKeys; track _key) {
-        <nxt-json-view-item [data]="data[_key]"
+        @for (_key of childrenKeys(); track _key) {
+        <nxt-json-view-item [data]="data()[_key]"
             [key]="_key"
             [level]="level()+1"
             [levelOpen]="levelOpen()"

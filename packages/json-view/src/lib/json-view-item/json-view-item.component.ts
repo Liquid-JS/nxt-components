@@ -1,4 +1,4 @@
-import { Component, inject, Input, input, model, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core'
+import { Component, computed, effect, inject, input, model, OnDestroy, OnInit, signal, ViewEncapsulation } from '@angular/core'
 import { ExpanderService } from '../expander/expander.service'
 import { LevelLabels } from '../utils/interfaces'
 import { isArray, isBoolean, isNumber, isObject, isString, isUndefined } from '../utils/utils'
@@ -12,38 +12,82 @@ import { isArray, isBoolean, isNumber, isObject, isString, isUndefined } from '.
 
 })
 export class JsonViewItemComponent implements OnInit, OnDestroy {
-    private _data?: any
-    @Input()
-    set data(data: any | undefined) {
-        this._data = data
-        if (this.isInit) {
-            this.init()
-        }
-    }
-    get data(): any | undefined {
-        return this._data
-    }
+
+    readonly data = input<any>()
+
     readonly key = input<string>()
     readonly level = input<number>(0)
     readonly levelOpen = model<number>()
     readonly levelLabels = input<LevelLabels>()
 
-    isOpen: boolean = false
-    childrenKeys?: string[]
-    hasChildren: boolean = false
-    dataType?: string
-    value: any
-    valueType?: string
-    isObject: boolean = false
-    isArray: boolean = false
-    isInit: boolean = false
-    _levelLabels: { [key: string]: string } = {}
+    readonly isOpen = signal(false)
+    private readonly effectRef = effect(() => {
+        const levelOpen = this.levelOpen()
+        this.isOpen.set(!isUndefined(levelOpen) && (this.level() <= levelOpen))
+        this.effectRef.destroy()
+    }, { manualCleanup: true })
+    readonly childrenKeys = computed(() => {
+        const data = this.data()
+        if (isObject(data)) {
+            return Object.keys(data)
+        }
+        return []
+    })
+
+    readonly hasChildren = computed(() => !!(this.childrenKeys().length))
+
+    readonly _levelLabels = computed(() => {
+        const levelLabels = this.levelLabels()
+        return levelLabels?.[this.level()] || {}
+    })
+
+    readonly dataType = computed(() => {
+        let dataType
+        const data = this.data()
+        if (isObject(data)) {
+            dataType = 'Object'
+            if (isArray(data)) {
+                dataType = 'Array'
+            }
+            const key = this.key()
+            if (key && this._levelLabels()[key]) {
+                dataType = this._levelLabels()[key]
+            }
+        }
+        return dataType
+    })
+    readonly value = computed(() => {
+        let value
+        const data = this.data()
+        if (!isObject(data)) {
+            value = data
+            if (null === data) {
+                value = 'null'
+            }
+        }
+        return value
+    })
+    readonly valueType = computed(() => {
+        const data = this.data()
+        if (!isObject(data)) {
+            if (isString(data)) {
+                return 'string'
+            } else if (isNumber(data)) {
+                return 'number'
+            } else if (isBoolean(data)) {
+                return 'boolean'
+            } else if (null === data) {
+                return 'null'
+            }
+        }
+        return
+    })
+    readonly isObject = computed(() => isObject(this.data()))
+    readonly isArray = computed(() => isObject(this.data()) && isArray(this.data()))
 
     private readonly expanderService = inject(ExpanderService)
 
     ngOnInit() {
-        this.init()
-        this.isInit = true
         this.expanderService.addItem(this)
     }
 
@@ -51,68 +95,11 @@ export class JsonViewItemComponent implements OnInit, OnDestroy {
         this.expanderService.removeItem(this)
     }
 
-    init() {
-        this.levelLabelHandle()
-        this.levelOpenHandle()
-        this.childrenKeysHandle()
-        this.dataHandle()
-    }
-
-    levelLabelHandle() {
-        const levelLabels = this.levelLabels()
-        if (levelLabels !== undefined) {
-            this._levelLabels = levelLabels[this.level()] || {}
-        }
-    }
-
-    levelOpenHandle() {
-        const levelOpen = this.levelOpen()
-        if (!isUndefined(levelOpen) && (this.level() <= levelOpen)) {
-            this.isOpen = true
-        }
-    }
-
-    childrenKeysHandle() {
-        if (isObject(this.data)) {
-            this.childrenKeys = Object.keys(this.data)
-            if (this.childrenKeys && this.childrenKeys.length) {
-                this.hasChildren = true
-            }
-        }
-    }
-
-    dataHandle() {
-        if (isObject(this.data)) {
-            this.isObject = true
-            this.dataType = 'Object'
-            if (isArray(this.data)) {
-                this.isArray = true
-                this.dataType = 'Array'
-            }
-            const key = this.key()
-            if (key && this._levelLabels[key]) {
-                this.dataType = this._levelLabels[key]
-            }
-        } else {
-            this.value = this.data
-            if (isString(this.data)) {
-                this.valueType = 'string'
-            } else if (isNumber(this.data)) {
-                this.valueType = 'number'
-            } else if (isBoolean(this.data)) {
-                this.valueType = 'boolean'
-            } else if (null === this.data) {
-                this.valueType = 'null'
-                this.value = 'null'
-            }
-        }
-    }
-
     toggle() {
-        if (!(this.childrenKeys && this.childrenKeys.length)) {
+        if (!(this.childrenKeys().length)) {
             return
         }
-        this.isOpen = !this.isOpen
+        this.isOpen.set(!this.isOpen())
     }
 
 }

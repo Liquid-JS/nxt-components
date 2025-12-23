@@ -7,8 +7,6 @@ import { type JsonViewItemComponent } from '../json-view-item/json-view-item.com
 export class ExpanderService {
     private readonly items = new Set<JsonViewItemComponent>()
 
-    constructor() { }
-
     addItem(item: JsonViewItemComponent) {
         this.items.add(item)
     }
@@ -19,7 +17,7 @@ export class ExpanderService {
 
     expandTo(level: number) {
         this.items.forEach(i => {
-            if (i.level() <= level && !i.isOpen) {
+            if (i.level() <= level && !i.isOpen()) {
                 i.levelOpen.set(level)
                 i.toggle()
             }
@@ -28,7 +26,7 @@ export class ExpanderService {
 
     collapseTo(level: number) {
         this.items.forEach(i => {
-            if (i.level() > level && i.isOpen)
+            if (i.level() > level && i.isOpen())
                 i.toggle()
         })
     }
