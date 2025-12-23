@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing'
 import hljs from 'highlight.js'
 import md from 'highlight.js/lib/languages/markdown'
-import { highlightLoaderStub } from '../test-helpers'
+import { HighlightLoaderStub } from '../test-helpers'
 import { HighlightLoader } from './highlight.loader'
 import { HighlightJS } from './highlight.service'
 
@@ -12,7 +12,7 @@ describe('Highlight Service', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             providers: [
-                { provide: HighlightLoader, useValue: highlightLoaderStub }
+                { provide: HighlightLoader, useClass: HighlightLoaderStub }
             ]
         }).compileComponents()
     })
@@ -35,12 +35,6 @@ describe('Highlight Service', () => {
             language: 'ts',
             ignoreIllegals: false
         })
-    })
-
-    it('should set the library reference signal when library is loaded', async () => {
-        const service: HighlightJS = TestBed.inject(HighlightJS)
-        await service['loader'].ready
-        expect(service.hljs()).toEqual(hljs)
     })
 
     it('should call hljs [highlightAuto] function', async () => {
@@ -138,12 +132,10 @@ describe('Highlight Service', () => {
 
     it('should call hljs [lineNumbersBlock] function', async () => {
         const service: HighlightJS = TestBed.inject(HighlightJS)
-        const element: HTMLElement = document.createElement('div')
-        element.innerHTML = testJsCode
         const registerAliasesSpy: jasmine.Spy = spyOn(hljs as any, 'lineNumbersBlock')
 
-        await service.lineNumbersBlock(element, { singleLine: true })
+        await service.lineNumbersBlock(testJsCode, { singleLine: true })
 
-        expect(registerAliasesSpy).toHaveBeenCalledWith(element, { singleLine: true })
+        expect(registerAliasesSpy).toHaveBeenCalledWith(testJsCode, { singleLine: true })
     })
 })

@@ -44,7 +44,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 171,
+            "kind": 172,
             "methods": [],
             "extends": [
                 "Dropzone.DropzoneOptions"
@@ -834,7 +834,7 @@
                     "defaultValue": "viewChild(DropzoneDirective)",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -935,7 +935,7 @@
                 "file": "src/lib/dropzone.interfaces.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
+                "type": "unknown",
                 "defaultValue": "new InjectionToken<DropzoneConfig>('NXT_DROPZONE_CONFIG')"
             }
         ],
@@ -980,7 +980,7 @@
                     "file": "src/lib/dropzone.interfaces.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "defaultValue": "new InjectionToken<DropzoneConfig>('NXT_DROPZONE_CONFIG')"
                 }
             ]

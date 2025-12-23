@@ -234,18 +234,18 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 184
+                "kind": 185
             },
             {
                 "name": "SortableData",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "",
+                "rawtype": "unknown",
                 "file": "src/lib/sortablejs.directive.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 194
+                "kind": 195
             }
         ],
         "enumerations": [],
@@ -295,18 +295,18 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 184
+                    "kind": 185
                 },
                 {
                     "name": "SortableData",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "",
+                    "rawtype": "unknown",
                     "file": "src/lib/sortablejs.directive.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 194
+                    "kind": 195
                 }
             ]
         }

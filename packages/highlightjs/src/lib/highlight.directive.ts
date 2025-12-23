@@ -2,7 +2,6 @@ import {
     booleanAttribute,
     Directive,
     input,
-    InputSignal,
     output,
     signal
 } from '@angular/core'
@@ -21,17 +20,17 @@ export class HighlightDirective extends HighlightBase {
     /**
      * Code to highlight
      */
-    code = input<string | null>(undefined, { alias: 'nxtHighlight' })
+    readonly code = input<string | null>(undefined, { alias: 'nxtHighlight' })
 
     /**
      * Highlighted result
      */
-    highlightResult = signal<HighlightResult | undefined>(undefined)
+    readonly highlightResult = signal<HighlightResult | undefined>(undefined)
 
     /**
      * The language name highlight only one language
      */
-    readonly language: InputSignal<string> = input.required<string>()
+    readonly language = input.required<string>()
 
     /**
      * An optional flag, when set to true it forces highlighting to finish even in case of detecting
@@ -44,7 +43,7 @@ export class HighlightDirective extends HighlightBase {
     /**
      * Stream that emits when code string is highlighted
      */
-    highlighted = output<HighlightResult>()
+    readonly highlighted = output<HighlightResult>()
 
     highlightElement(code: string) {
         const hljs = this.hljs.hljs()

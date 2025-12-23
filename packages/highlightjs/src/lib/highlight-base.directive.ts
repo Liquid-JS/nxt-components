@@ -24,17 +24,17 @@ export abstract class HighlightBase {
     /**
      * Code to highlight
      */
-    abstract code: InputSignal<string | null | undefined>
+    abstract readonly code: InputSignal<string | null | undefined>
 
     /**
      * Highlighted result
      */
-    abstract highlightResult: WritableSignal<HighlightResult | AutoHighlightResult | undefined>
+    abstract readonly highlightResult: WritableSignal<HighlightResult | AutoHighlightResult | undefined>
 
     /**
      * Stream that emits when code string is highlighted
      */
-    abstract highlighted: OutputEmitterRef<HighlightResult | AutoHighlightResult | undefined>
+    abstract readonly highlighted: OutputEmitterRef<HighlightResult | AutoHighlightResult | undefined>
 
     constructor() {
         effect(() => {

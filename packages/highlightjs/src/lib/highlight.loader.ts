@@ -1,5 +1,7 @@
-import { Injectable, PendingTasks, inject, DOCUMENT } from '@angular/core'
+import { Injectable, PendingTasks, inject, DOCUMENT, resource } from '@angular/core'
 import type { HLJSApi } from 'highlight.js'
+import { filter, firstValueFrom } from 'rxjs'
+import { toObservable } from '@angular/core/rxjs-interop'
 import { NXT_HIGHLIGHT_OPTIONS } from './highlight.model'
 import { LoaderErrors } from './loader-errors'
 import { TokenTreeEmitter } from './output'
@@ -14,23 +16,34 @@ export class HighlightLoader {
     private readonly pendingTasks = inject(PendingTasks)
 
     private _t = this.pendingTasks.add()
-    readonly ready: Promise<HLJSApi> = this.loadLibrary()
-        .then(async hljs => {
-            if (this.options?.lineNumbersLoader) {
-                const plugin = await this.options.lineNumbersLoader();
-                (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)
-            }
+    readonly hljs = resource({
+        loader: () => this.loadLibrary()
+            .then(async hljs => {
+                if (this.options?.lineNumbersLoader) {
+                    const plugin = await this.options.lineNumbersLoader();
+                    (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)
+                }
 
-            hljs.configure({
-                __emitter: TokenTreeEmitter
+                hljs.configure({
+                    __emitter: TokenTreeEmitter
+                })
+
+                if (this.options?.highlightOptions)
+                    hljs.configure(this.options.highlightOptions)
+
+                return hljs
             })
+            .finally(this._t)
+    }).asReadonly()
 
-            if (this.options?.highlightOptions)
-                hljs.configure(this.options.highlightOptions)
+    private readonly _ready$ = toObservable(this.hljs.value).pipe(filter((v): v is HLJSApi => !!v))
 
-            return hljs
-        })
-        .finally(this._t)
+    /**
+     * @deprecated use hljs.value()
+     */
+    get ready() {
+        return firstValueFrom(this._ready$)
+    }
 
     private themeLinkElement?: HTMLLinkElement
 

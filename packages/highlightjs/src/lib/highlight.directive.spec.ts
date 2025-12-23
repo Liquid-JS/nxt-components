@@ -2,7 +2,7 @@ import { Component, DebugElement } from '@angular/core'
 import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import hljs from 'highlight.js'
-import { afterTimeout, highlightLoaderStub } from '../test-helpers'
+import { afterTimeout, HighlightLoaderStub } from '../test-helpers'
 import { HighlightDirective } from './highlight.directive'
 import { HighlightLoader } from './highlight.loader'
 
@@ -29,7 +29,7 @@ describe('Highlight Directive', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             providers: [
-                { provide: HighlightLoader, useValue: highlightLoaderStub },
+                { provide: HighlightLoader, useClass: HighlightLoaderStub },
                 { provide: ComponentFixtureAutoDetect, useValue: true }
             ]
         }).compileComponents()

@@ -148,7 +148,7 @@
                 "file": "src/lib/flag/flag.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
+                "type": "unknown",
                 "defaultValue": "new Set(Object.values(FlagDatabase))"
             },
             {
@@ -158,7 +158,7 @@
                 "file": "src/lib/flag/flag.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
+                "type": "unknown",
                 "defaultValue": "new Set<FlagFormat>(Object.values(FlagFormatEnum))"
             },
             {
@@ -178,12 +178,12 @@
                 "name": "FlagDatabaseKey",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "",
+                "rawtype": "unknown",
                 "file": "src/lib/database.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 198
+                "kind": 199
             },
             {
                 "name": "FlagFormat",
@@ -194,18 +194,18 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 203
+                "kind": 204
             },
             {
                 "name": "FlagSizeAlias",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "",
+                "rawtype": "unknown",
                 "file": "src/lib/types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 198
+                "kind": 199
             }
         ],
         "enumerations": [
@@ -301,7 +301,7 @@
                     "file": "src/lib/flag/flag.component.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "defaultValue": "new Set(Object.values(FlagDatabase))"
                 },
                 {
@@ -311,7 +311,7 @@
                     "file": "src/lib/flag/flag.component.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "defaultValue": "new Set<FlagFormat>(Object.values(FlagFormatEnum))"
                 }
             ],
@@ -421,12 +421,12 @@
                     "name": "FlagDatabaseKey",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "",
+                    "rawtype": "unknown",
                     "file": "src/lib/database.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 198
+                    "kind": 199
                 }
             ],
             "src/lib/types.ts": [
@@ -439,18 +439,18 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 203
+                    "kind": 204
                 },
                 {
                     "name": "FlagSizeAlias",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "",
+                    "rawtype": "unknown",
                     "file": "src/lib/types.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 198
+                    "kind": 199
                 }
             ]
         }

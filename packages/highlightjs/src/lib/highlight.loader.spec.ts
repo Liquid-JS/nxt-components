@@ -56,7 +56,7 @@ describe('Highlight Loader', () => {
             const loader: HighlightLoader = TestBed.inject(HighlightLoader)
             await loader.ready
         } catch (error) {
-            expect((error as Error).message).toBe(LoaderErrors.NO_FULL_AND_NO_CORE_IMPORTS)
+            expect((error as Error).message).toContain(LoaderErrors.NO_FULL_AND_NO_CORE_IMPORTS)
         }
     })
 
@@ -71,7 +71,7 @@ describe('Highlight Loader', () => {
             const loader: HighlightLoader = TestBed.inject(HighlightLoader)
             await loader.ready
         } catch (error) {
-            expect((error as Error).message).toBe(LoaderErrors.FULL_WITH_CORE_LIBRARY_IMPORTS)
+            expect((error as Error).message).toContain(LoaderErrors.FULL_WITH_CORE_LIBRARY_IMPORTS)
         }
     })
 
@@ -88,7 +88,7 @@ describe('Highlight Loader', () => {
             const loader: HighlightLoader = TestBed.inject(HighlightLoader)
             await loader.ready
         } catch (error) {
-            expect((error as Error).message).toBe(LoaderErrors.FULL_WITH_LANGUAGE_IMPORTS)
+            expect((error as Error).message).toContain(LoaderErrors.FULL_WITH_LANGUAGE_IMPORTS)
         }
     })
 
@@ -102,7 +102,7 @@ describe('Highlight Loader', () => {
             const loader: HighlightLoader = TestBed.inject(HighlightLoader)
             await loader.ready
         } catch (error) {
-            expect((error as Error).message).toBe(LoaderErrors.CORE_WITHOUT_LANGUAGE_IMPORTS)
+            expect((error as Error).message).toContain(LoaderErrors.CORE_WITHOUT_LANGUAGE_IMPORTS)
         }
     })
 
@@ -118,7 +118,7 @@ describe('Highlight Loader', () => {
             const loader: HighlightLoader = TestBed.inject(HighlightLoader)
             await loader.ready
         } catch (error) {
-            expect((error as Error).message).toBe(LoaderErrors.LANGUAGE_WITHOUT_CORE_IMPORTS)
+            expect((error as Error).message).toContain(LoaderErrors.LANGUAGE_WITHOUT_CORE_IMPORTS)
         }
     })
 

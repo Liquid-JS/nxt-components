@@ -1,47 +1,41 @@
-import { ChangeDetectorRef, Directive, EventEmitter, inject, Input, OnDestroy, Output, PendingTasks, Pipe, PipeTransform } from '@angular/core'
-import { Subscription } from 'rxjs'
+import { Directive, effect, inject, input, output, PendingTasks, Pipe, PipeTransform } from '@angular/core'
 import { CodeLoader } from './code-loader'
 import { Gist, GistFile } from './gist.model'
 
 @Directive({
     selector: '[nxtGist]'
 })
-export class GistDirective implements OnDestroy {
+export class GistDirective {
 
     private readonly loader = inject(CodeLoader)
     private readonly pendingTasks = inject(PendingTasks)
-    private readonly cdRef = inject(ChangeDetectorRef)
-    private subscription?: Subscription
 
-    @Input('nxtGist')
-    set gist(value: string) {
-        this.subscription?.unsubscribe()
-        this.subscription = undefined
+    readonly gist = input<string>(undefined, { alias: 'nxtGist' })
+    readonly gistLoad = output<Gist>()
+    readonly gistError = output<any>()
 
-        if (value) {
-            const done = this.pendingTasks.add()
-            this.subscription = this.loader.getCodeFromGist(value).subscribe({
-                next: (gist: Gist) => {
-                    this.gistLoad.emit(gist)
-                    this.cdRef.detectChanges()
+    constructor() {
+        effect((cleanup) => {
+            const value = this.gist()
+
+            if (value) {
+                const done = this.pendingTasks.add()
+                const sub = this.loader.getCodeFromGist(value).subscribe({
+                    next: (gist: Gist) => {
+                        this.gistLoad.emit(gist)
+                        done()
+                    },
+                    error: (err) => {
+                        this.gistError.emit(err)
+                        done()
+                    }
+                })
+                cleanup(() => {
+                    sub.unsubscribe()
                     done()
-                },
-                error: (err) => {
-                    this.gistError.emit(err)
-                    this.cdRef.detectChanges()
-                    done()
-                }
-            })
-        }
-    }
-
-    @Output() gistLoad: EventEmitter<Gist> = new EventEmitter<Gist>()
-
-    @Output() gistError: EventEmitter<any> = new EventEmitter<any>()
-
-    ngOnDestroy(): void {
-        this.subscription?.unsubscribe()
-        this.subscription = undefined
+                })
+            }
+        })
     }
 }
 

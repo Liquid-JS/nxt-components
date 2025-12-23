@@ -45,7 +45,7 @@
         },
         {
             "name": "GistFilePipe",
-            "id": "pipe-GistFilePipe-ab2375ec36e74b0a28f4b648abefa3a91a6c1538ab85bc31c43c97ecacef66c85cf19ab7b5761dcb28b6e77a69fb1c9069414fa297e56c86c82c03e343df13af",
+            "id": "pipe-GistFilePipe-77db96068a2043e51ee578b0f5acf5cb203a643bc5f788dc35e7791f98cb2dfe8f70360e4c1be04b3b671ef1af5723145d5a7079549f2eca29cb05a7986b8636",
             "file": "extras/src/gist.ts",
             "type": "pipe",
             "deprecated": false,
@@ -75,7 +75,7 @@
                     "optional": false,
                     "returnType": "GistFile | undefined",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 46,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -147,7 +147,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 171,
+            "kind": 172,
             "methods": [],
             "extends": []
         },
@@ -171,7 +171,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 171,
+            "kind": 172,
             "methods": [],
             "extends": []
         },
@@ -200,7 +200,7 @@
                     "deprecationMessage": ""
                 }
             ],
-            "kind": 181,
+            "kind": 182,
             "methods": [],
             "extends": []
         },
@@ -414,7 +414,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 171,
+            "kind": 172,
             "methods": [],
             "extends": []
         },
@@ -498,7 +498,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 171,
+            "kind": 172,
             "methods": [],
             "extends": []
         },
@@ -532,7 +532,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 171,
+            "kind": 172,
             "methods": [],
             "extends": []
         },
@@ -616,7 +616,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 171,
+            "kind": 172,
             "methods": [],
             "extends": []
         },
@@ -680,7 +680,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 171,
+            "kind": 172,
             "methods": [],
             "extends": []
         },
@@ -714,7 +714,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 171,
+            "kind": 172,
             "methods": [],
             "extends": []
         },
@@ -748,7 +748,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 171,
+            "kind": 172,
             "description": "<p>Full documentation is available here <a href=\"https://highlightjs.readthedocs.io/en/latest/api.html\">https://highlightjs.readthedocs.io/en/latest/api.html</a></p>\n",
             "rawdescription": "\n\nFull documentation is available here https://highlightjs.readthedocs.io/en/latest/api.html\n",
             "methods": [],
@@ -947,7 +947,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 171,
+            "kind": 172,
             "methods": [],
             "extends": []
         },
@@ -1141,7 +1141,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 171,
+            "kind": 172,
             "methods": [],
             "extends": []
         }
@@ -1253,19 +1253,19 @@
         },
         {
             "name": "HighlightJS",
-            "id": "injectable-HighlightJS-fbd200ba81a976b6e895fc81fa4f5d83c5b1c14e2c35b675c8ff12901c23f7a70c455bf8d9dc585cd6dc3aa11a52cc3fec9c7da8dbcf6459fb3117a3ec79a60c",
+            "id": "injectable-HighlightJS-b085458c2c5f6b6f2ac7abc5c1f8bfb1323a839d8a7afa61dee0cf74ba46185292417c0e5267fbd42848355b1a2e010d68b311e244fad383060ef761453dcde4",
             "file": "src/lib/highlight.service.ts",
             "properties": [
                 {
                     "name": "hljs",
-                    "defaultValue": "toSignal(from(this.loader.ready))",
+                    "defaultValue": "this.loader.hljs.value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 21,
+                    "line": 19,
                     "modifierKind": [
                         148
                     ]
@@ -1278,14 +1278,15 @@
                     "optional": false,
                     "returnType": "Promise<void>",
                     "typeParameters": [],
-                    "line": 112,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nEnables debug/development mode.\n",
+                    "line": 129,
+                    "deprecated": true,
+                    "deprecationMessage": "use hljs().debugMode",
+                    "rawdescription": "\n\nEnables debug/development mode.\n\n",
                     "description": "<p>Enables debug/development mode.</p>\n",
                     "modifierKind": [
                         134
-                    ]
+                    ],
+                    "jsdoctags": []
                 },
                 {
                     "name": "getLanguage",
@@ -1300,10 +1301,10 @@
                     "optional": false,
                     "returnType": "Promise<any>",
                     "typeParameters": [],
-                    "line": 96,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nLooks up a language by name or alias.\n",
+                    "line": 109,
+                    "deprecated": true,
+                    "deprecationMessage": "use hljs().getLanguage",
+                    "rawdescription": "\n\nLooks up a language by name or alias.\n\n",
                     "description": "<p>Looks up a language by name or alias.</p>\n",
                     "modifierKind": [
                         134
@@ -1339,10 +1340,10 @@
                     "optional": false,
                     "returnType": "Promise<HighlightResult>",
                     "typeParameters": [],
-                    "line": 28,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nCore highlighting function. Accepts the code to highlight (string) and a list of options (object)\n",
+                    "line": 26,
+                    "deprecated": true,
+                    "deprecationMessage": "use hljs().highlight",
+                    "rawdescription": "\n\nCore highlighting function. Accepts the code to highlight (string) and a list of options (object)\n\n",
                     "description": "<p>Core highlighting function. Accepts the code to highlight (string) and a list of options (object)</p>\n",
                     "modifierKind": [
                         134
@@ -1374,14 +1375,15 @@
                     "optional": false,
                     "returnType": "Promise<void>",
                     "typeParameters": [],
-                    "line": 55,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nApplies highlighting to all elements on a page matching the configured cssSelector. The default cssSelector value is 'pre code',\nwhich highlights all code blocks. This can be called before or after the page’s onload event has fired.\n",
+                    "line": 59,
+                    "deprecated": true,
+                    "deprecationMessage": "use hljs().highlightAll",
+                    "rawdescription": "\n\nApplies highlighting to all elements on a page matching the configured cssSelector. The default cssSelector value is 'pre code',\nwhich highlights all code blocks. This can be called before or after the page’s onload event has fired.\n\n",
                     "description": "<p>Applies highlighting to all elements on a page matching the configured cssSelector. The default cssSelector value is &#39;pre code&#39;,\nwhich highlights all code blocks. This can be called before or after the page’s onload event has fired.</p>\n",
                     "modifierKind": [
                         134
-                    ]
+                    ],
+                    "jsdoctags": []
                 },
                 {
                     "name": "highlightAuto",
@@ -1404,9 +1406,9 @@
                     "returnType": "Promise<AutoHighlightResult>",
                     "typeParameters": [],
                     "line": 36,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nHighlighting with language detection.\n",
+                    "deprecated": true,
+                    "deprecationMessage": "use hljs().highlightAuto",
+                    "rawdescription": "\n\nHighlighting with language detection.\n\n",
                     "description": "<p>Highlighting with language detection.</p>\n",
                     "modifierKind": [
                         134
@@ -1446,10 +1448,10 @@
                     "optional": false,
                     "returnType": "Promise<void>",
                     "typeParameters": [],
-                    "line": 46,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nApplies highlighting to a DOM node containing code.\nThis function is the one to use to apply highlighting dynamically after page load or within initialization code of third-party JavaScript frameworks.\nThe function uses language detection by default but you can specify the language in the class attribute of the DOM node. See the scopes reference for all available language names and scopes.\n",
+                    "line": 48,
+                    "deprecated": true,
+                    "deprecationMessage": "use hljs().highlightElement",
+                    "rawdescription": "\n\nApplies highlighting to a DOM node containing code.\nThis function is the one to use to apply highlighting dynamically after page load or within initialization code of third-party JavaScript frameworks.\nThe function uses language detection by default but you can specify the language in the class attribute of the DOM node. See the scopes reference for all available language names and scopes.\n\n",
                     "description": "<p>Applies highlighting to a DOM node containing code.\nThis function is the one to use to apply highlighting dynamically after page load or within initialization code of third-party JavaScript frameworks.\nThe function uses language detection by default but you can specify the language in the class attribute of the DOM node. See the scopes reference for all available language names and scopes.</p>\n",
                     "modifierKind": [
                         134
@@ -1470,8 +1472,8 @@
                     "name": "lineNumbersBlock",
                     "args": [
                         {
-                            "name": "el",
-                            "type": "HTMLElement",
+                            "name": "code",
+                            "type": "string",
                             "deprecated": false,
                             "deprecationMessage": ""
                         },
@@ -1485,18 +1487,18 @@
                     "optional": false,
                     "returnType": "Promise<void>",
                     "typeParameters": [],
-                    "line": 120,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nDisplay line numbers\n",
+                    "line": 139,
+                    "deprecated": true,
+                    "deprecationMessage": "use hljs().lineNumbersBlock",
+                    "rawdescription": "\n\nDisplay line numbers\n\n",
                     "description": "<p>Display line numbers</p>\n",
                     "modifierKind": [
                         134
                     ],
                     "jsdoctags": [
                         {
-                            "name": "el",
-                            "type": "HTMLElement",
+                            "name": "code",
+                            "type": "string",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1520,9 +1522,9 @@
                     "optional": false,
                     "returnType": "Promise<string[]>",
                     "typeParameters": [],
-                    "line": 88,
-                    "deprecated": false,
-                    "deprecationMessage": "",
+                    "line": 99,
+                    "deprecated": true,
+                    "deprecationMessage": "use hljs().listLanguages",
                     "rawdescription": "\n\n",
                     "description": "",
                     "modifierKind": [
@@ -1531,8 +1533,8 @@
                     "jsdoctags": [
                         {
                             "tagName": {
-                                "pos": 3337,
-                                "end": 3343,
+                                "pos": 3596,
+                                "end": 3602,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1561,10 +1563,10 @@
                     "optional": false,
                     "returnType": "Promise<void>",
                     "typeParameters": [],
-                    "line": 80,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nAdds new language alias or aliases to the library for the specified language name defined under languageName key.\n",
+                    "line": 90,
+                    "deprecated": true,
+                    "deprecationMessage": "use hljs().registerAliases",
+                    "rawdescription": "\n\nAdds new language alias or aliases to the library for the specified language name defined under languageName key.\n\n",
                     "description": "<p>Adds new language alias or aliases to the library for the specified language name defined under languageName key.</p>\n",
                     "modifierKind": [
                         134
@@ -1608,10 +1610,10 @@
                     "optional": false,
                     "returnType": "Promise<void>",
                     "typeParameters": [],
-                    "line": 64,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nAdds new language to the library under the specified name. Used mostly internally.\nThe function is passed the hljs object to be able to use common regular expressions defined within it.\n",
+                    "line": 70,
+                    "deprecated": true,
+                    "deprecationMessage": "use hljs().registerLanguage",
+                    "rawdescription": "\n\nAdds new language to the library under the specified name. Used mostly internally.\nThe function is passed the hljs object to be able to use common regular expressions defined within it.\n\n",
                     "description": "<p>Adds new language to the library under the specified name. Used mostly internally.\nThe function is passed the hljs object to be able to use common regular expressions defined within it.</p>\n",
                     "modifierKind": [
                         134
@@ -1643,14 +1645,15 @@
                     "optional": false,
                     "returnType": "Promise<void>",
                     "typeParameters": [],
-                    "line": 104,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nEnables safe mode. This is the default mode, providing the most reliable experience for production usage.\n",
+                    "line": 119,
+                    "deprecated": true,
+                    "deprecationMessage": "use hljs().safeMode",
+                    "rawdescription": "\n\nEnables safe mode. This is the default mode, providing the most reliable experience for production usage.\n\n",
                     "description": "<p>Enables safe mode. This is the default mode, providing the most reliable experience for production usage.</p>\n",
                     "modifierKind": [
                         134
-                    ]
+                    ],
+                    "jsdoctags": []
                 },
                 {
                     "name": "unregisterLanguage",
@@ -1665,10 +1668,10 @@
                     "optional": false,
                     "returnType": "Promise<void>",
                     "typeParameters": [],
-                    "line": 72,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nRemoves a language and its aliases from the library. Used mostly internally\n",
+                    "line": 80,
+                    "deprecated": true,
+                    "deprecationMessage": "use hljs().unregisterLanguage",
+                    "rawdescription": "\n\nRemoves a language and its aliases from the library. Used mostly internally\n\n",
                     "description": "<p>Removes a language and its aliases from the library. Used mostly internally</p>\n",
                     "modifierKind": [
                         134
@@ -1690,32 +1693,24 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 21
-            },
             "extends": [],
             "type": "injectable"
         },
         {
             "name": "HighlightLoader",
-            "id": "injectable-HighlightLoader-82731b89d34c44539dd5bccb14bfdd208a539b06b638f703d9160749255feb7bc856afc57f06082cf1457dab23b4e19e2ff2d19f795c01831e1636a01c5512c7",
+            "id": "injectable-HighlightLoader-d3885854dc6baee8678623d4dde9fda10cec668da6185cda9a41cc6b42ca9cc74861ff536c52c0d9a30877daf47da0049c9ee7ae00b7c4110ee5dc6dd3357215",
             "file": "src/lib/highlight.loader.ts",
             "properties": [
                 {
-                    "name": "ready",
-                    "defaultValue": "this.loadLibrary()\r\n        .then(async hljs => {\r\n            if (this.options?.lineNumbersLoader) {\r\n                const plugin = await this.options.lineNumbersLoader();\r\n                (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)\r\n            }\r\n\r\n            hljs.configure({\r\n                __emitter: TokenTreeEmitter\r\n            })\r\n\r\n            if (this.options?.highlightOptions)\r\n                hljs.configure(this.options.highlightOptions)\r\n\r\n            return hljs\r\n        })\r\n        .finally(this._t)",
+                    "name": "hljs",
+                    "defaultValue": "resource({\r\n        loader: () => this.loadLibrary()\r\n            .then(async hljs => {\r\n                if (this.options?.lineNumbersLoader) {\r\n                    const plugin = await this.options.lineNumbersLoader();\r\n                    (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)\r\n                }\r\n\r\n                hljs.configure({\r\n                    __emitter: TokenTreeEmitter\r\n                })\r\n\r\n                if (this.options?.highlightOptions)\r\n                    hljs.configure(this.options.highlightOptions)\r\n\r\n                return hljs\r\n            })\r\n            .finally(this._t)\r\n    }).asReadonly()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Promise<HLJSApi>",
+                    "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 17,
+                    "line": 19,
                     "modifierKind": [
                         148
                     ]
@@ -1735,7 +1730,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 82,
+                    "line": 95,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReload theme styles\n",
@@ -1763,7 +1758,43 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 35
+                "line": 48
+            },
+            "accessors": {
+                "ready": {
+                    "name": "ready",
+                    "getSignature": {
+                        "name": "ready",
+                        "type": "",
+                        "returnType": "",
+                        "line": 44,
+                        "rawdescription": "\n\n",
+                        "description": "",
+                        "deprecated": true,
+                        "deprecationMessage": "use hljs.value()",
+                        "jsdoctags": [
+                            {
+                                "pos": 1515,
+                                "end": 1550,
+                                "kind": 332,
+                                "id": 0,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "tagName": {
+                                    "pos": 1516,
+                                    "end": 1526,
+                                    "kind": 80,
+                                    "id": 0,
+                                    "flags": 16842752,
+                                    "transformFlags": 0,
+                                    "escapedText": "deprecated"
+                                },
+                                "comment": "<p>use hljs.value()</p>\n"
+                            }
+                        ]
+                    }
+                }
             },
             "extends": [],
             "type": "injectable"
@@ -1787,13 +1818,13 @@
                 "args": [
                     {
                         "name": "parseTree",
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": ""
                     },
                     {
                         "name": "options",
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": ""
                     }
@@ -1811,7 +1842,7 @@
                             "transformFlags": 0,
                             "escapedText": "parseTree"
                         },
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -1835,7 +1866,7 @@
                             "transformFlags": 0,
                             "escapedText": "options"
                         },
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -1860,7 +1891,7 @@
                     "args": [
                         {
                             "name": "text",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1884,7 +1915,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "text"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1905,7 +1936,7 @@
                     "args": [
                         {
                             "name": "node",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1929,7 +1960,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "node"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1950,7 +1981,7 @@
                     "args": [
                         {
                             "name": "node",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1974,7 +2005,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "node"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1995,7 +2026,7 @@
                     "args": [
                         {
                             "name": "className",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2019,7 +2050,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "className"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2077,7 +2108,7 @@
                     "args": [
                         {
                             "name": "node",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2104,7 +2135,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "node"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2125,13 +2156,13 @@
                     "args": [
                         {
                             "name": "builder",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         },
                         {
                             "name": "node",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2158,7 +2189,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "builder"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2182,7 +2213,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "node"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2203,7 +2234,7 @@
                     "args": [
                         {
                             "name": "node",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2227,7 +2258,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "node"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2268,7 +2299,7 @@
                     "args": [
                         {
                             "name": "scope",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2292,7 +2323,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "scope"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2323,7 +2354,7 @@
                     "args": [
                         {
                             "name": "builder",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2347,7 +2378,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "builder"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2404,7 +2435,7 @@
                 "args": [
                     {
                         "name": "options",
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": ""
                     }
@@ -2422,7 +2453,7 @@
                             "transformFlags": 0,
                             "escapedText": "options"
                         },
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -2447,13 +2478,13 @@
                     "args": [
                         {
                             "name": "emitter",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         },
                         {
                             "name": "name",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2477,7 +2508,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "emitter"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2501,7 +2532,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "name"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2522,7 +2553,7 @@
                     "args": [
                         {
                             "name": "text",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2546,7 +2577,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "text"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2587,7 +2618,7 @@
                     "args": [
                         {
                             "name": "scope",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2611,7 +2642,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "scope"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2642,7 +2673,7 @@
                     "args": [
                         {
                             "name": "node",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2669,7 +2700,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "node"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2693,13 +2724,13 @@
                     "args": [
                         {
                             "name": "builder",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         },
                         {
                             "name": "node",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2726,7 +2757,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "builder"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2750,7 +2781,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "node"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2774,7 +2805,7 @@
                     "args": [
                         {
                             "name": "node",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2798,7 +2829,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "node"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2848,7 +2879,7 @@
                     "args": [
                         {
                             "name": "scope",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2872,7 +2903,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "scope"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2909,7 +2940,7 @@
                     "args": [
                         {
                             "name": "builder",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2933,7 +2964,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "builder"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2964,7 +2995,7 @@
     "directives": [
         {
             "name": "GistDirective",
-            "id": "directive-GistDirective-ab2375ec36e74b0a28f4b648abefa3a91a6c1538ab85bc31c43c97ecacef66c85cf19ab7b5761dcb28b6e77a69fb1c9069414fa297e56c86c82c03e343df13af",
+            "id": "directive-GistDirective-77db96068a2043e51ee578b0f5acf5cb203a643bc5f788dc35e7791f98cb2dfe8f70360e4c1be04b3b671ef1af5723145d5a7079549f2eca29cb05a7986b8636",
             "file": "extras/src/gist.ts",
             "type": "directive",
             "description": "",
@@ -2975,30 +3006,49 @@
             "standalone": false,
             "inputsClass": [
                 {
-                    "name": "nxtGist",
+                    "name": "gist",
+                    "defaultValue": "undefined, { alias: 'nxtGist' }",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
                     "type": "string",
-                    "decorators": []
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 }
             ],
             "outputsClass": [
                 {
                     "name": "gistError",
-                    "defaultValue": "new EventEmitter<any>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40,
-                    "type": "EventEmitter<any>"
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "gistLoad",
-                    "defaultValue": "new EventEmitter<Gist>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 38,
-                    "type": "EventEmitter<Gist>"
+                    "type": "Gist",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 }
             ],
             "deprecated": false,
@@ -3006,58 +3056,20 @@
             "hostBindings": [],
             "hostListeners": [],
             "propertiesClass": [],
-            "methodsClass": [
-                {
-                    "name": "ngOnDestroy",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 42,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
+            "methodsClass": [],
             "extends": [],
-            "implements": [
-                "OnDestroy"
-            ],
-            "accessors": {
-                "gist": {
-                    "name": "gist",
-                    "setSignature": {
-                        "name": "gist",
-                        "type": "void",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "args": [
-                            {
-                                "name": "value",
-                                "type": "string",
-                                "deprecated": false,
-                                "deprecationMessage": ""
-                            }
-                        ],
-                        "returnType": "void",
-                        "line": 17,
-                        "jsdoctags": [
-                            {
-                                "name": "value",
-                                "type": "string",
-                                "deprecated": false,
-                                "deprecationMessage": "",
-                                "tagName": {
-                                    "text": "param"
-                                }
-                            }
-                        ]
-                    }
-                }
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 15
             }
         },
         {
             "name": "HighlightAutoDirective",
-            "id": "directive-HighlightAutoDirective-f0e2a68b860434a812aa5dee8f8720a1767f246dabcfe0e80dcae09ca6149170f73022b9ba09a3489238bb3381822a5591be629e32f9fd4e22f656085da3713d",
+            "id": "directive-HighlightAutoDirective-6c896a4af030cc4195c4567ae8b74f88c55fd1bbc251812fcc775dfc31a21626f882112aee96a0895a35903e1ae722145118bed329b51354095950f7e152d8e7",
             "file": "src/lib/highlight-auto.directive.ts",
             "type": "directive",
             "description": "",
@@ -3081,8 +3093,11 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Code to highlight</p>\n",
-                    "line": 23,
+                    "line": 22,
                     "rawdescription": "\n\nCode to highlight\n",
+                    "modifierKind": [
+                        148
+                    ],
                     "required": false
                 },
                 {
@@ -3093,7 +3108,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>An optional array of language names and aliases restricting detection to only those languages</p>\n<p>The subset can also be set with configure, but the local parameter overrides the option if set.</p>\n",
-                    "line": 35,
+                    "line": 34,
                     "rawdescription": "\n\nAn optional array of language names and aliases restricting detection to only those languages\n\nThe subset can also be set with configure, but the local parameter overrides the option if set.\n",
                     "modifierKind": [
                         148
@@ -3110,8 +3125,11 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Stream that emits when code string is highlighted</p>\n",
-                    "line": 40,
+                    "line": 39,
                     "rawdescription": "\n\nStream that emits when code string is highlighted\n",
+                    "modifierKind": [
+                        148
+                    ],
                     "required": false
                 }
             ],
@@ -3125,12 +3143,15 @@
                     "defaultValue": "signal<AutoHighlightResult | undefined>(undefined)",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Highlighted result</p>\n",
-                    "line": 28,
+                    "line": 27,
                     "rawdescription": "\n\nHighlighted result\n",
+                    "modifierKind": [
+                        148
+                    ],
                     "inheritance": {
                         "file": "HighlightBase"
                     }
@@ -3146,7 +3167,8 @@
                     "line": 27,
                     "rawdescription": "\n\nCode to highlight\n",
                     "modifierKind": [
-                        128
+                        128,
+                        148
                     ],
                     "inheritance": {
                         "file": "HighlightBase"
@@ -3163,7 +3185,8 @@
                     "line": 37,
                     "rawdescription": "\n\nStream that emits when code string is highlighted\n",
                     "modifierKind": [
-                        128
+                        128,
+                        148
                     ],
                     "inheritance": {
                         "file": "HighlightBase"
@@ -3202,7 +3225,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 41,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -3230,7 +3253,7 @@
         },
         {
             "name": "HighlightBase",
-            "id": "directive-HighlightBase-cbeef606a4734b180d10adf6c691f7eac716b9fea1cc068e94ee6acd71624c35b20230d33bfca3e24d4eb205087ee6b90297711d66994b9e533b44628ecb0632",
+            "id": "directive-HighlightBase-5615580c441c612358d17038649156faf96e9f579cd0d74bd5ef3522e1318496d35e3cd1c16bd15df8dd48479b2b4f2dcc9db49920bf84dca577fcb6da17050e",
             "file": "src/lib/highlight-base.directive.ts",
             "type": "directive",
             "description": "",
@@ -3256,7 +3279,8 @@
                     "line": 27,
                     "rawdescription": "\n\nCode to highlight\n",
                     "modifierKind": [
-                        128
+                        128,
+                        148
                     ]
                 },
                 {
@@ -3270,7 +3294,8 @@
                     "line": 37,
                     "rawdescription": "\n\nStream that emits when code string is highlighted\n",
                     "modifierKind": [
-                        128
+                        128,
+                        148
                     ]
                 },
                 {
@@ -3284,7 +3309,8 @@
                     "line": 32,
                     "rawdescription": "\n\nHighlighted result\n",
                     "modifierKind": [
-                        128
+                        128,
+                        148
                     ]
                 },
                 {
@@ -3349,7 +3375,7 @@
         },
         {
             "name": "HighlightDirective",
-            "id": "directive-HighlightDirective-2c1775dd473da3c8ca014c72a3ce12c3e2c552913722e11d9e335778f015c341ba859f5aac4aca650383e54d0467076c20b33c5037a2431a36fed34d7ca8462e",
+            "id": "directive-HighlightDirective-b7b7fe14dc5d2f69cd16a6e91f648543cdd23d509c26ad692aadf348d5452cc7cae86995d5f35a7b03375525080541db386f2afe03793065b1eb057891f9c84e",
             "file": "src/lib/highlight.directive.ts",
             "type": "directive",
             "description": "",
@@ -3373,8 +3399,11 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Code to highlight</p>\n",
-                    "line": 24,
+                    "line": 23,
                     "rawdescription": "\n\nCode to highlight\n",
+                    "modifierKind": [
+                        148
+                    ],
                     "required": false
                 },
                 {
@@ -3386,7 +3415,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>An optional flag, when set to true it forces highlighting to finish even in case of detecting\nillegal syntax for the language instead of throwing an exception</p>\n",
-                    "line": 40,
+                    "line": 39,
                     "rawdescription": "\n\nAn optional flag, when set to true it forces highlighting to finish even in case of detecting\nillegal syntax for the language instead of throwing an exception\n",
                     "modifierKind": [
                         148
@@ -3401,7 +3430,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The language name highlight only one language</p>\n",
-                    "line": 34,
+                    "line": 33,
                     "rawdescription": "\n\nThe language name highlight only one language\n",
                     "modifierKind": [
                         148
@@ -3418,8 +3447,11 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Stream that emits when code string is highlighted</p>\n",
-                    "line": 47,
+                    "line": 46,
                     "rawdescription": "\n\nStream that emits when code string is highlighted\n",
+                    "modifierKind": [
+                        148
+                    ],
                     "required": false
                 }
             ],
@@ -3433,12 +3465,15 @@
                     "defaultValue": "signal<HighlightResult | undefined>(undefined)",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Highlighted result</p>\n",
-                    "line": 29,
+                    "line": 28,
                     "rawdescription": "\n\nHighlighted result\n",
+                    "modifierKind": [
+                        148
+                    ],
                     "inheritance": {
                         "file": "HighlightBase"
                     }
@@ -3454,7 +3489,8 @@
                     "line": 27,
                     "rawdescription": "\n\nCode to highlight\n",
                     "modifierKind": [
-                        128
+                        128,
+                        148
                     ],
                     "inheritance": {
                         "file": "HighlightBase"
@@ -3471,7 +3507,8 @@
                     "line": 37,
                     "rawdescription": "\n\nStream that emits when code string is highlighted\n",
                     "modifierKind": [
-                        128
+                        128,
+                        148
                     ],
                     "inheritance": {
                         "file": "HighlightBase"
@@ -3510,7 +3547,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3708,7 +3745,7 @@
                 "file": "src/lib/output.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
+                "type": "unknown",
                 "defaultValue": "/\\r\\n|\\r|\\n/g"
             },
             {
@@ -3718,7 +3755,7 @@
                 "file": "src/lib/output.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
+                "type": "unknown",
                 "defaultValue": "(node) =>\r\n    // rarely we can have a sublanguage where language is undefined\r\n    // TODO: track down why\r\n    !!node.scope",
                 "rawdescription": "Determines if a node needs to be wrapped in <span>",
                 "description": "<p>Determines if a node needs to be wrapped in <span></p>\n"
@@ -3730,7 +3767,7 @@
                 "file": "src/lib/output.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
+                "type": "unknown",
                 "defaultValue": "(opts = {}) => {\r\n    /** @type DataNode */\r\n    const result = { children: [] }\r\n    Object.assign(result, opts)\r\n    return result\r\n}",
                 "rawdescription": "The contents of this file is from highlight.js, with a small modification to HTMLRenderer to make sure spans don't contain line breaks (important to improve performance of line numbers).",
                 "description": "<p>The contents of this file is from highlight.js, with a small modification to HTMLRenderer to make sure spans don&#39;t contain line breaks (important to improve performance of line numbers).</p>\n"
@@ -3742,7 +3779,7 @@
                 "file": "extras/src/gist.model.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
+                "type": "unknown",
                 "defaultValue": "new InjectionToken<GistOptions>('NXT_GIST_OPTIONS')"
             },
             {
@@ -3752,7 +3789,7 @@
                 "file": "extras/src/code-file-location.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
+                "type": "unknown",
                 "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\r\n    providedIn: 'root',\r\n    factory: CODE_FILE_LOCATION_FACTORY\r\n})",
                 "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\r\nUsed to handle server-side rendering and to stub out during unit tests.",
                 "description": "<p>Injection token used to provide the current location to <code>codeFromUrl</code> pipe.\nUsed to handle server-side rendering and to stub out during unit tests.</p>\n"
@@ -3764,7 +3801,7 @@
                 "file": "src/lib/highlight.model.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
+                "type": "unknown",
                 "defaultValue": "new InjectionToken<HighlightJSOptions>('NXT_HIGHLIGHT_OPTIONS')"
             },
             {
@@ -3785,7 +3822,7 @@
                 "file": "src/lib/output.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
+                "type": "unknown",
                 "defaultValue": "(name, { prefix }) => {\r\n    // sub-language\r\n    if (name.startsWith('language:')) {\r\n        return name.replace('language:', 'language-')\r\n    }\r\n    // tiered scope: comment.line\r\n    if (name.includes('.')) {\r\n        const pieces = name.split('.')\r\n        return [\r\n            `${prefix}${pieces.shift()}`,\r\n            ...(pieces.map((x, i) => `${x}${'_'.repeat(i + 1)}`))\r\n        ].join(' ')\r\n    }\r\n    // simple scope\r\n    return `${prefix}${name}`\r\n}"
             },
             {
@@ -3849,7 +3886,7 @@
                 "args": [
                     {
                         "name": "value",
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": ""
                     }
@@ -3865,7 +3902,7 @@
                             "transformFlags": 0,
                             "escapedText": "value"
                         },
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -4071,7 +4108,7 @@
                     "file": "src/lib/output.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "defaultValue": "/\\r\\n|\\r|\\n/g"
                 },
                 {
@@ -4081,7 +4118,7 @@
                     "file": "src/lib/output.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "defaultValue": "(node) =>\r\n    // rarely we can have a sublanguage where language is undefined\r\n    // TODO: track down why\r\n    !!node.scope",
                     "rawdescription": "Determines if a node needs to be wrapped in <span>",
                     "description": "<p>Determines if a node needs to be wrapped in <span></p>\n"
@@ -4093,7 +4130,7 @@
                     "file": "src/lib/output.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "defaultValue": "(opts = {}) => {\r\n    /** @type DataNode */\r\n    const result = { children: [] }\r\n    Object.assign(result, opts)\r\n    return result\r\n}",
                     "rawdescription": "The contents of this file is from highlight.js, with a small modification to HTMLRenderer to make sure spans don't contain line breaks (important to improve performance of line numbers).",
                     "description": "<p>The contents of this file is from highlight.js, with a small modification to HTMLRenderer to make sure spans don&#39;t contain line breaks (important to improve performance of line numbers).</p>\n"
@@ -4105,7 +4142,7 @@
                     "file": "src/lib/output.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "defaultValue": "(name, { prefix }) => {\r\n    // sub-language\r\n    if (name.startsWith('language:')) {\r\n        return name.replace('language:', 'language-')\r\n    }\r\n    // tiered scope: comment.line\r\n    if (name.includes('.')) {\r\n        const pieces = name.split('.')\r\n        return [\r\n            `${prefix}${pieces.shift()}`,\r\n            ...(pieces.map((x, i) => `${x}${'_'.repeat(i + 1)}`))\r\n        ].join(' ')\r\n    }\r\n    // simple scope\r\n    return `${prefix}${name}`\r\n}"
                 },
                 {
@@ -4127,7 +4164,7 @@
                     "file": "extras/src/gist.model.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "defaultValue": "new InjectionToken<GistOptions>('NXT_GIST_OPTIONS')"
                 }
             ],
@@ -4139,7 +4176,7 @@
                     "file": "extras/src/code-file-location.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\r\n    providedIn: 'root',\r\n    factory: CODE_FILE_LOCATION_FACTORY\r\n})",
                     "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\r\nUsed to handle server-side rendering and to stub out during unit tests.",
                     "description": "<p>Injection token used to provide the current location to <code>codeFromUrl</code> pipe.\nUsed to handle server-side rendering and to stub out during unit tests.</p>\n"
@@ -4153,7 +4190,7 @@
                     "file": "src/lib/highlight.model.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "defaultValue": "new InjectionToken<HighlightJSOptions>('NXT_HIGHLIGHT_OPTIONS')"
                 }
             ],
@@ -4226,7 +4263,7 @@
                     "args": [
                         {
                             "name": "value",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -4242,7 +4279,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "value"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {

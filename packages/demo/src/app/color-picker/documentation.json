@@ -51,7 +51,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 171,
+            "kind": 172,
             "methods": [],
             "extends": []
         },
@@ -95,7 +95,7 @@
                 }
             ],
             "indexSignatures": [],
-            "kind": 171,
+            "kind": 172,
             "methods": [],
             "extends": []
         }
@@ -149,7 +149,7 @@
                     },
                     {
                         "name": "normalized",
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "defaultValue": "true"
@@ -204,7 +204,7 @@
                     },
                     {
                         "name": "normalized",
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "defaultValue": "true",
@@ -328,7 +328,7 @@
                     },
                     {
                         "name": "normalized",
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "defaultValue": "true"
@@ -374,7 +374,7 @@
                     },
                     {
                         "name": "normalized",
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "defaultValue": "true",
@@ -485,7 +485,7 @@
                     },
                     {
                         "name": "normalized",
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "defaultValue": "true"
@@ -531,7 +531,7 @@
                     },
                     {
                         "name": "normalized",
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "defaultValue": "true",
@@ -642,7 +642,7 @@
                     },
                     {
                         "name": "normalized",
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "defaultValue": "true"
@@ -688,7 +688,7 @@
                     },
                     {
                         "name": "normalized",
-                        "type": "",
+                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "defaultValue": "true",
@@ -1195,7 +1195,7 @@
                         },
                         {
                             "name": "fg",
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "defaultValue": "this.dialog?.rgbaText"
@@ -1245,7 +1245,7 @@
                                 "transformFlags": 0,
                                 "escapedText": "fg"
                             },
-                            "type": "",
+                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "defaultValue": "this.dialog?.rgbaText",
@@ -1337,7 +1337,7 @@
                 "file": "src/util/types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
+                "type": "unknown",
                 "defaultValue": "new Set<ColorFormat>([ColorFormatEnum.hsla, ColorFormatEnum.rgba, ColorFormatEnum.cmyk])"
             }
         ],
@@ -2351,7 +2351,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 203
+                "kind": 204
             },
             {
                 "name": "ColorFormat",
@@ -2362,7 +2362,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 203
+                "kind": 204
             },
             {
                 "name": "ColorMode",
@@ -2373,7 +2373,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 192
+                "kind": 193
             },
             {
                 "name": "DialogDisplay",
@@ -2384,7 +2384,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 203
+                "kind": 204
             },
             {
                 "name": "DialogPosition",
@@ -2395,7 +2395,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 203
+                "kind": 204
             },
             {
                 "name": "OutputFormat",
@@ -2406,7 +2406,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 203
+                "kind": 204
             }
         ],
         "enumerations": [
@@ -2589,7 +2589,7 @@
                     "file": "src/util/types.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "unknown",
                     "defaultValue": "new Set<ColorFormat>([ColorFormatEnum.hsla, ColorFormatEnum.rgba, ColorFormatEnum.cmyk])"
                 }
             ]
@@ -3780,7 +3780,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 203
+                    "kind": 204
                 },
                 {
                     "name": "ColorFormat",
@@ -3791,7 +3791,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 203
+                    "kind": 204
                 },
                 {
                     "name": "ColorMode",
@@ -3802,7 +3802,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 192
+                    "kind": 193
                 },
                 {
                     "name": "DialogDisplay",
@@ -3813,7 +3813,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 203
+                    "kind": 204
                 },
                 {
                     "name": "DialogPosition",
@@ -3824,7 +3824,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 203
+                    "kind": 204
                 },
                 {
                     "name": "OutputFormat",
@@ -3835,7 +3835,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 203
+                    "kind": 204
                 }
             ]
         }
