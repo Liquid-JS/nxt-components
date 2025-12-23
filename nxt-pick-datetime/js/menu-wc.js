@@ -54,16 +54,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </a>
                         <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
                             <li class="link">
-                                <a href="modules/DateTimeModule.html" data-type="entity-link" >DateTimeModule</a>
+                                <a href="modules/DateTimeModule.html" data-type="entity-link" class="deprecated-name">DateTimeModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' : 'data-bs-target="#xs-components-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' }>
+                                            'data-bs-target="#components-links-module-DateTimeModule-40b49b59d34db481386b5506c04c3e39498c4a68b22bacb41a5fa9aabc246dcb67f3912838555613a0a822cd6ac3082b0958631073cdfc843092d042568ea437"' : 'data-bs-target="#xs-components-links-module-DateTimeModule-40b49b59d34db481386b5506c04c3e39498c4a68b22bacb41a5fa9aabc246dcb67f3912838555613a0a822cd6ac3082b0958631073cdfc843092d042568ea437"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' :
-                                            'id="xs-components-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-DateTimeModule-40b49b59d34db481386b5506c04c3e39498c4a68b22bacb41a5fa9aabc246dcb67f3912838555613a0a822cd6ac3082b0958631073cdfc843092d042568ea437"' :
+                                            'id="xs-components-links-module-DateTimeModule-40b49b59d34db481386b5506c04c3e39498c4a68b22bacb41a5fa9aabc246dcb67f3912838555613a0a822cd6ac3082b0958631073cdfc843092d042568ea437"' }>
                                             <li class="link">
                                                 <a href="components/CalendarComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CalendarComponent</a>
                                             </li>
@@ -89,13 +89,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                        'data-bs-target="#directives-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' : 'data-bs-target="#xs-directives-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' }>
+                                        'data-bs-target="#directives-links-module-DateTimeModule-40b49b59d34db481386b5506c04c3e39498c4a68b22bacb41a5fa9aabc246dcb67f3912838555613a0a822cd6ac3082b0958631073cdfc843092d042568ea437"' : 'data-bs-target="#xs-directives-links-module-DateTimeModule-40b49b59d34db481386b5506c04c3e39498c4a68b22bacb41a5fa9aabc246dcb67f3912838555613a0a822cd6ac3082b0958631073cdfc843092d042568ea437"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' :
-                                        'id="xs-directives-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-DateTimeModule-40b49b59d34db481386b5506c04c3e39498c4a68b22bacb41a5fa9aabc246dcb67f3912838555613a0a822cd6ac3082b0958631073cdfc843092d042568ea437"' :
+                                        'id="xs-directives-links-module-DateTimeModule-40b49b59d34db481386b5506c04c3e39498c4a68b22bacb41a5fa9aabc246dcb67f3912838555613a0a822cd6ac3082b0958631073cdfc843092d042568ea437"' }>
                                         <li class="link">
                                             <a href="directives/DateTimeInputDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >DateTimeInputDirective</a>
                                         </li>
@@ -104,29 +104,46 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="chapter inner">
-                                    <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                        'data-bs-target="#injectables-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' : 'data-bs-target="#xs-injectables-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' }>
-                                        <span class="icon ion-md-arrow-round-down"></span>
-                                        <span>Injectables</span>
-                                        <span class="icon ion-ios-arrow-down"></span>
-                                    </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' :
-                                        'id="xs-injectables-links-module-DateTimeModule-275b3c753b42a62da823731cd79ea55fbbb3a83181ab492177a4533725413de4a705d85a8809fda0b6c31b2108c74d71ccba6165d30e78df64e726bf064691b7"' }>
-                                        <li class="link">
-                                            <a href="injectables/DateTimeIntl.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >DateTimeIntl</a>
-                                        </li>
-                                    </ul>
-                                </li>
                             </li>
                             <li class="link">
-                                <a href="modules/MomentDateTimeModule.html" data-type="entity-link" >MomentDateTimeModule</a>
+                                <a href="modules/MomentDateTimeModule.html" data-type="entity-link" class="deprecated-name">MomentDateTimeModule</a>
                             </li>
                             <li class="link">
-                                <a href="modules/NativeDateTimeModule.html" data-type="entity-link" >NativeDateTimeModule</a>
+                                <a href="modules/NativeDateTimeModule.html" data-type="entity-link" class="deprecated-name">NativeDateTimeModule</a>
                             </li>
                 </ul>
                 </li>
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#components-links"' :
+                            'data-bs-target="#xs-components-links"' }>
+                            <span class="icon ion-md-cog"></span>
+                            <span>Components</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="components-links"' : 'id="xs-components-links"' }>
+                            <li class="link">
+                                <a href="components/CalendarComponent.html" data-type="entity-link" >CalendarComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/DateTimeComponent.html" data-type="entity-link" >DateTimeComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/DateTimeInlineComponent.html" data-type="entity-link" >DateTimeInlineComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/MonthViewComponent.html" data-type="entity-link" >MonthViewComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/MultiYearViewComponent.html" data-type="entity-link" >MultiYearViewComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/TimerComponent.html" data-type="entity-link" >TimerComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/YearViewComponent.html" data-type="entity-link" >YearViewComponent</a>
+                            </li>
+                        </ul>
+                    </li>
                         <li class="chapter">
                             <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#directives-links"' :
                                 'data-bs-target="#xs-directives-links"' }>
@@ -137,6 +154,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <ul class="links collapse " ${ isNormalMode ? 'id="directives-links"' : 'id="xs-directives-links"' }>
                                 <li class="link">
                                     <a href="directives/DateTimeDirective.html" data-type="entity-link" >DateTimeDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="directives/DateTimeInputDirective.html" data-type="entity-link" >DateTimeInputDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="directives/DateTimeTriggerDirective.html" data-type="entity-link" >DateTimeTriggerDirective</a>
                                 </li>
                             </ul>
                         </li>

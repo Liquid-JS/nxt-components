@@ -109,14 +109,14 @@
 <li><a href="https://liquid-js.github.io/nxt-components/nxt-color-picker">API docs</a></li>
 </ul>
 <h3>Installing</h3>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-color-picker</code></pre></div><h3>Import color picker module</h3>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { ColorPickerModule } from &#39;nxt-color-picker&#39;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-color-picker</code></pre></div><h3>Import color picker directive</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { ColorPickerDirective } from &#39;nxt-color-picker&#39;
 
-&#64;NgModule({
+&#64;Component({
     ...
     imports: [
         ...
-        ColorPickerModule
+        ColorPickerDirective
     ]
 })</code></pre></div><h3>Include it in HTML template</h3>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;input [(nxtColor)]=&quot;color&quot; 

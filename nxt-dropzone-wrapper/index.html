@@ -110,29 +110,20 @@
 <li><a href="https://docs.dropzone.dev/configuration/basics/configuration-options">Dropzone documentation</a></li>
 </ul>
 <h3>Installing</h3>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-dropzone-wrapper dropzone</code></pre></div><h3>Import and configure dropzone wrapper module</h3>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { DropzoneConfig, DropzoneModule, NXT_DROPZONE_CONFIG } from &#39;nxt-dropzone-wrapper&#39;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-dropzone-wrapper dropzone</code></pre></div><h3>Import and configure dropzone wrapper</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { ApplicationConfig } from &#39;&#64;angular/core&#39;
+import { provideDropzoneConfig } from &#39;nxt-dropzone-wrapper&#39;
 
-const DEFAULT_DROPZONE_CONFIG: DropzoneConfig = {
-    // Change this to your upload POST address:
-    url: &#39;https://httpbin.org/post&#39;,
-    maxFilesize: 50,
-    acceptedFiles: &#39;image/*&#39;
-}
-
-&#64;NgModule({
-    ...
-    imports: [
-        ...
-        DropzoneModule
-    ],
+export const appConfig: ApplicationConfig = {
     providers: [
-        {
-            provide: NXT_DROPZONE_CONFIG,
-            useValue: DEFAULT_DROPZONE_CONFIG
-        }
+        provideDropzoneConfig({
+            // These are the global options and can also be set per instance; change url to your upload POST address:
+            url: &#39;https://httpbin.org/post&#39;,
+            acceptedFiles: &#39;image/*&#39;,
+            createImageThumbnails: true
+        })
     ]
-})</code></pre></div><h3>Include it in HTML template</h3>
+}</code></pre></div><h3>Include it in HTML template</h3>
 <p>This library provides two ways to create a Dropzone element, component for simple use cases and directive for more custom use cases.</p>
 <h4>Use dropzone component</h4>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;nxt-dropzone [config]=&quot;config&quot;

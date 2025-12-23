@@ -173,6 +173,12 @@
             </tr>
 
 
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../directives/DropzoneDirective.html" target="_self" >DropzoneDirective</a></code>
+                </td>
+            </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
@@ -1232,7 +1238,7 @@ nxt-dropzone {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="dz-wrapper"    [class.dropzone]="useDropzoneClass"    [nxtDropzone]="config"    [disabled]="disabled">    <div class="dz-message"        [class.disabled]="disabled"        [class.dz-placeholder]="placeholder">        <div class="dz-text"            [innerHTML]="config?.dictDefaultMessage || message"></div>        <div *ngIf="placeholder"            class="dz-image"            [style.background-image]="getPlaceholder()"></div>    </div>    <ng-content></ng-content></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="dz-wrapper"    [class.dropzone]="useDropzoneClass"    [nxtDropzone]="config"    [disabled]="disabled">    <div class="dz-message"        [class.disabled]="disabled"        [class.dz-placeholder]="placeholder">        <div class="dz-text"            [innerHTML]="config?.dictDefaultMessage || message"></div>        @if (placeholder) {        <div class="dz-image"            [style.background-image]="getPlaceholder()"></div>        }    </div>    <ng-content></ng-content></div></div>'
     var COMPONENTS = [{'name': 'DropzoneComponent', 'selector': 'nxt-dropzone'}];
     var DIRECTIVES = [{'name': 'DropzoneDirective', 'selector': '[nxtDropzone]'}];
     var ACTUAL_COMPONENT = {'name': 'DropzoneComponent'};

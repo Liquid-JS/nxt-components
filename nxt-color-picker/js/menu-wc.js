@@ -54,16 +54,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </a>
                         <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
                             <li class="link">
-                                <a href="modules/ColorPickerModule.html" data-type="entity-link" >ColorPickerModule</a>
+                                <a href="modules/ColorPickerModule.html" data-type="entity-link" class="deprecated-name">ColorPickerModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                        'data-bs-target="#directives-links-module-ColorPickerModule-874d3bc618c79e22cc5bd9dc4bbf67958a34b95700c4af4cd2c3ad0a347a29635adce40771ac3a4f5b6ca0b32563366df2e41de2d072e7b48d9b0a420da2b427"' : 'data-bs-target="#xs-directives-links-module-ColorPickerModule-874d3bc618c79e22cc5bd9dc4bbf67958a34b95700c4af4cd2c3ad0a347a29635adce40771ac3a4f5b6ca0b32563366df2e41de2d072e7b48d9b0a420da2b427"' }>
+                                        'data-bs-target="#directives-links-module-ColorPickerModule-55dae12d87239eba27fa653289587e331a2a46e4c55eba1514520fe5e46f9293a718469ac6c7da0029974ad65c6668b2cc5910863e2825d5aee750ae9bf10fa7"' : 'data-bs-target="#xs-directives-links-module-ColorPickerModule-55dae12d87239eba27fa653289587e331a2a46e4c55eba1514520fe5e46f9293a718469ac6c7da0029974ad65c6668b2cc5910863e2825d5aee750ae9bf10fa7"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-ColorPickerModule-874d3bc618c79e22cc5bd9dc4bbf67958a34b95700c4af4cd2c3ad0a347a29635adce40771ac3a4f5b6ca0b32563366df2e41de2d072e7b48d9b0a420da2b427"' :
-                                        'id="xs-directives-links-module-ColorPickerModule-874d3bc618c79e22cc5bd9dc4bbf67958a34b95700c4af4cd2c3ad0a347a29635adce40771ac3a4f5b6ca0b32563366df2e41de2d072e7b48d9b0a420da2b427"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-ColorPickerModule-55dae12d87239eba27fa653289587e331a2a46e4c55eba1514520fe5e46f9293a718469ac6c7da0029974ad65c6668b2cc5910863e2825d5aee750ae9bf10fa7"' :
+                                        'id="xs-directives-links-module-ColorPickerModule-55dae12d87239eba27fa653289587e331a2a46e4c55eba1514520fe5e46f9293a718469ac6c7da0029974ad65c6668b2cc5910863e2825d5aee750ae9bf10fa7"' }>
                                         <li class="link">
                                             <a href="directives/ColorPickerDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ColorPickerDirective</a>
                                         </li>
@@ -72,6 +72,19 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                 </ul>
                 </li>
+                        <li class="chapter">
+                            <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#directives-links"' :
+                                'data-bs-target="#xs-directives-links"' }>
+                                <span class="icon ion-md-code-working"></span>
+                                <span>Directives</span>
+                                <span class="icon ion-ios-arrow-down"></span>
+                            </div>
+                            <ul class="links collapse " ${ isNormalMode ? 'id="directives-links"' : 'id="xs-directives-links"' }>
+                                <li class="link">
+                                    <a href="directives/ColorPickerDirective.html" data-type="entity-link" >ColorPickerDirective</a>
+                                </li>
+                            </ul>
+                        </li>
                     <li class="chapter">
                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#classes-links"' :
                             'data-bs-target="#xs-classes-links"' }>

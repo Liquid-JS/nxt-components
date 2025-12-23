@@ -104,7 +104,9 @@
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Modules</li>
-    <li class="breadcrumb-item" >SortablejsModule</li>
+    <li class="breadcrumb-item" 
+        class="breadcrumb-item deprecated-name"
+    >SortablejsModule</li>
 </ol>
 
 
@@ -128,17 +130,24 @@
         </p>
 
 
+            <p class="comment">
+                <h3 class="deprecated">Deprecated</h3>
+            </p>
+            <p class="comment">
+                use standalone imports
+            </p>
 
 
 
         <div class="container-fluid module">
             <div class="row">
                 <div class="col-sm-3">
-                    <h3>Declarations<a href="https://angular.io/api/core/NgModule#declarations" target="_blank" rel="noopener noreferrer"
-                            title="Official documentation about module declarations"><span class="icon ion-ios-information-circle-outline"></span></a></h3>
+                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" rel="noopener noreferrer"
+                            title="Official documentation about module imports"><span
+                                class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="../directives/SortablejsDirective.html">SortablejsDirective</a>
+                            <a href="../modules/SortablejsDirective.html">SortablejsDirective</a>
                         </li>
                     </ul>
                 </div>
@@ -167,9 +176,14 @@
                     <a name="forRoot"></a>
                     <span class="name">
                             <span class="modifier">Static</span>
-                        <span ><b>forRoot</b></span>
+                        <span class="deprecated-name"><b>forRoot</b></span>
                         <a href="#forRoot"><span class="icon ion-ios-link"></span></a>
                     </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4 deprecated">
+                    use provideGlobalSortableOptions
                 </td>
             </tr>
             <tr>

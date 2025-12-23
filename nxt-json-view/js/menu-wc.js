@@ -54,16 +54,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </a>
                         <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
                             <li class="link">
-                                <a href="modules/JsonViewModule.html" data-type="entity-link" >JsonViewModule</a>
+                                <a href="modules/JsonViewModule.html" data-type="entity-link" class="deprecated-name">JsonViewModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-JsonViewModule-c03a761cc397242e8a0e67387ad8e0d27a6cfc84ff82ea2c944674b27cc3f4d6524be2f3830c946090944e93fda74050156cdc379301cc410864970d9f95bc72"' : 'data-bs-target="#xs-components-links-module-JsonViewModule-c03a761cc397242e8a0e67387ad8e0d27a6cfc84ff82ea2c944674b27cc3f4d6524be2f3830c946090944e93fda74050156cdc379301cc410864970d9f95bc72"' }>
+                                            'data-bs-target="#components-links-module-JsonViewModule-b2d29f6b5d522b069dfae164dcb7673534c6d23bd515465cbe52ed45d17105a37774415f1ce2ba3400060f7a74e4c13594cdb3075b8d1d7bafd2f9fea12bb093"' : 'data-bs-target="#xs-components-links-module-JsonViewModule-b2d29f6b5d522b069dfae164dcb7673534c6d23bd515465cbe52ed45d17105a37774415f1ce2ba3400060f7a74e4c13594cdb3075b8d1d7bafd2f9fea12bb093"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-JsonViewModule-c03a761cc397242e8a0e67387ad8e0d27a6cfc84ff82ea2c944674b27cc3f4d6524be2f3830c946090944e93fda74050156cdc379301cc410864970d9f95bc72"' :
-                                            'id="xs-components-links-module-JsonViewModule-c03a761cc397242e8a0e67387ad8e0d27a6cfc84ff82ea2c944674b27cc3f4d6524be2f3830c946090944e93fda74050156cdc379301cc410864970d9f95bc72"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-JsonViewModule-b2d29f6b5d522b069dfae164dcb7673534c6d23bd515465cbe52ed45d17105a37774415f1ce2ba3400060f7a74e4c13594cdb3075b8d1d7bafd2f9fea12bb093"' :
+                                            'id="xs-components-links-module-JsonViewModule-b2d29f6b5d522b069dfae164dcb7673534c6d23bd515465cbe52ed45d17105a37774415f1ce2ba3400060f7a74e4c13594cdb3075b8d1d7bafd2f9fea12bb093"' }>
                                             <li class="link">
                                                 <a href="components/JsonViewComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >JsonViewComponent</a>
                                             </li>
@@ -72,6 +72,19 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                 </ul>
                 </li>
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#components-links"' :
+                            'data-bs-target="#xs-components-links"' }>
+                            <span class="icon ion-md-cog"></span>
+                            <span>Components</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="components-links"' : 'id="xs-components-links"' }>
+                            <li class="link">
+                                <a href="components/JsonViewComponent.html" data-type="entity-link" >JsonViewComponent</a>
+                            </li>
+                        </ul>
+                    </li>
                         <li class="chapter">
                             <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#injectables-links"' :
                                 'data-bs-target="#xs-injectables-links"' }>

@@ -113,23 +113,20 @@
 </ul>
 <h3>Installing</h3>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-pick-datetime
-npm install --save moment   # if you want to use MomentDateTimeModule</code></pre></div><h3>Import main module and DateTime adapter provider</h3>
-<p>The date &amp; time picker was built to be date implementation agnostic. It comes with two modules providing date adapter implementation, or you can provide your own adapter by implementing <code>DateTimeAdapter</code> (see <a href="https://liquid-js.github.io/nxt-components/demo/pick-datetime/custom-adapter">documentation</a>).</p>
+npm install --save moment   # if you want to use MomentDateTimeModule</code></pre></div><h3>Configure DateTime adapter provider</h3>
+<p>The date &amp; time picker was built to be date implementation agnostic. It comes with two date adapter implementations, or you can provide your own adapter by implementing <code>DateTimeAdapter</code> (see <a href="https://liquid-js.github.io/nxt-components/demo/pick-datetime/custom-adapter">documentation</a>).</p>
 <ul>
-<li><code>NativeDateTimeModule</code> - support for native JavaScript Date object</li>
-<li><code>MomentDateTimeModule</code> - support for MomentJs</li>
+<li><code>provideNativeDateTimeAdapter</code> - support for native JavaScript Date object</li>
+<li><code>provideNativeDateTimeAdapter</code> - support for MomentJs</li>
 </ul>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { DateTimeModule } from &#39;nxt-pick-datetime&#39;
-import { NativeDateTimeModule } from &#39;nxt-pick-datetime/native-adapter&#39;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { ApplicationConfig } from &#39;&#64;angular/core&#39;
+import { provideNativeDateTimeAdapter } from &#39;nxt-pick-datetime/native-adapter&#39;
 
-&#64;NgModule({
-    ...
-    imports: [
-        ...
-        DateTimeModule,
-        NativeDateTimeModule
+export const appConfig: ApplicationConfig = {
+    providers: [
+        provideNativeDateTimeAdapter()
     ]
-})</code></pre></div><h3>Use it in a template</h3>
+}</code></pre></div><h3>Use it in a template</h3>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;input [nxtDateTime]=&quot;picker&quot;
     [nxtDateTimeTrigger]=&quot;picker&quot;
     placeholder=&quot;Date and time&quot;&gt;

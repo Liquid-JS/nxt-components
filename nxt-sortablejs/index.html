@@ -109,27 +109,26 @@
 <li><a href="https://liquid-js.github.io/nxt-components/nxt-sortablejs">API docs</a></li>
 </ul>
 <h3>Installing</h3>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-sortablejs sortablejs</code></pre></div><h3>Import Sortablejs module</h3>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { SortablejsModule } from &#39;nxt-sortablejs&#39;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">npm install --save nxt-sortablejs sortablejs</code></pre></div><h3>Import Sortablejs directive</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { SortablejsDirective } from &#39;nxt-sortablejs&#39;
 
-&#64;NgModule({
+&#64;Component({
     ...
     imports: [
         ...
-        SortablejsModule
+        SortablejsDirective
     ]
-})</code></pre></div><p>If you want to cofigure global Sortablejs options, include SortablejsModule.forRoot in your application.</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { SortablejsModule } from &#39;nxt-sortablejs&#39;
+})</code></pre></div><p>If you want to cofigure global Sortablejs options, include <code>provideGlobalSortableOptions</code> in your application.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { ApplicationConfig } from &#39;&#64;angular/core&#39;
+import { provideGlobalSortableOptions } from &#39;nxt-sortablejs&#39;
 
-&#64;NgModule({
-    ...
-    imports: [
-        ...
-        SortablejsModule.forRoot({
+export const appConfig: ApplicationConfig = {
+    providers: [
+        provideGlobalSortableOptions({
             animation: 150
         })
     ]
-})</code></pre></div><h3>Use it in a template</h3>
+}</code></pre></div><h3>Use it in a template</h3>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;ul [nxtSortablejs]=&quot;items&quot;&gt;
     &lt;li *ngFor=&quot;let item of items&quot;&gt;{{ item }}&lt;/li&gt;
 &lt;/ul&gt;</code></pre></div>

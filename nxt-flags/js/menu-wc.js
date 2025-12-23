@@ -54,16 +54,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </a>
                         <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
                             <li class="link">
-                                <a href="modules/FlagsModule.html" data-type="entity-link" >FlagsModule</a>
+                                <a href="modules/FlagsModule.html" data-type="entity-link" class="deprecated-name">FlagsModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-FlagsModule-62d0fe63283904f6567336e07a637e4207c396335e088c2286c95a741ba6a0ef08245e1e77fa1547c8fb6bbd3f6e964ca4e8deb34ff251e733833ac76c317e74"' : 'data-bs-target="#xs-components-links-module-FlagsModule-62d0fe63283904f6567336e07a637e4207c396335e088c2286c95a741ba6a0ef08245e1e77fa1547c8fb6bbd3f6e964ca4e8deb34ff251e733833ac76c317e74"' }>
+                                            'data-bs-target="#components-links-module-FlagsModule-27104f9ecc0620a8e79c57466ebb58893745adc9694f8f9299a7a0dc6005a605bf75853d7a9244d427d5981b1ef94676b2061cbaeff5109d0ee6eba96befeae7"' : 'data-bs-target="#xs-components-links-module-FlagsModule-27104f9ecc0620a8e79c57466ebb58893745adc9694f8f9299a7a0dc6005a605bf75853d7a9244d427d5981b1ef94676b2061cbaeff5109d0ee6eba96befeae7"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FlagsModule-62d0fe63283904f6567336e07a637e4207c396335e088c2286c95a741ba6a0ef08245e1e77fa1547c8fb6bbd3f6e964ca4e8deb34ff251e733833ac76c317e74"' :
-                                            'id="xs-components-links-module-FlagsModule-62d0fe63283904f6567336e07a637e4207c396335e088c2286c95a741ba6a0ef08245e1e77fa1547c8fb6bbd3f6e964ca4e8deb34ff251e733833ac76c317e74"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FlagsModule-27104f9ecc0620a8e79c57466ebb58893745adc9694f8f9299a7a0dc6005a605bf75853d7a9244d427d5981b1ef94676b2061cbaeff5109d0ee6eba96befeae7"' :
+                                            'id="xs-components-links-module-FlagsModule-27104f9ecc0620a8e79c57466ebb58893745adc9694f8f9299a7a0dc6005a605bf75853d7a9244d427d5981b1ef94676b2061cbaeff5109d0ee6eba96befeae7"' }>
                                             <li class="link">
                                                 <a href="components/FlagComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >FlagComponent</a>
                                             </li>
@@ -72,6 +72,19 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                 </ul>
                 </li>
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#components-links"' :
+                            'data-bs-target="#xs-components-links"' }>
+                            <span class="icon ion-md-cog"></span>
+                            <span>Components</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="components-links"' : 'id="xs-components-links"' }>
+                            <li class="link">
+                                <a href="components/FlagComponent.html" data-type="entity-link" >FlagComponent</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="chapter">
                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#miscellaneous-links"'
                             : 'data-bs-target="#xs-miscellaneous-links"' }>
