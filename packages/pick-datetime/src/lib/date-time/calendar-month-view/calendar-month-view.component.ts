@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core'
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Output, ViewChild, input } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
@@ -25,8 +25,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     /**
      * Whether to hide dates in other months at the start or end of the current month
      */
-    @Input()
-    hideOtherMonths: boolean = false
+    readonly hideOtherMonths = input<boolean>(false)
 
     /**
      * Define the first day of a week
@@ -287,7 +286,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
         // Cases in which the date would not be selected
         // 1, the calendar cell is NOT enabled (is NOT valid)
         // 2, the selected date is NOT in current picker's month and the hideOtherMonths is enabled
-        if (!cell.enabled || (this.hideOtherMonths && cell.out)) {
+        if (!cell.enabled || (this.hideOtherMonths() && cell.out)) {
             return
         }
 

@@ -1,4 +1,4 @@
-@for (row of rows; track rowIndex; let rowIndex = $index) {
+@for (row of rows(); track rowIndex; let rowIndex = $index) {
 <tr role="row">
     @for (item of row; track colIndex; let colIndex = $index) {
     <td class="nxt-dt-calendar-cell {{item.cellClass}}"
@@ -12,14 +12,14 @@
         [class.nxt-dt-calendar-cell-range-to-long]="isInRange(item.value - 7)"
         [attr.aria-label]="item.ariaLabel"
         [attr.aria-disabled]="!item.enabled || null"
-        [style.width.%]="100 / numCols"
-        [style.paddingTop.%]="50 * cellRatio / numCols"
-        [style.paddingBottom.%]="50 * cellRatio / numCols"
+        [style.width.%]="100 / numCols()"
+        [style.paddingTop.%]="50 * cellRatio() / numCols()"
+        [style.paddingBottom.%]="50 * cellRatio() / numCols()"
         (click)="selectCell(item)">
         <span class="nxt-dt-calendar-cell-content"
             [ngClass]="{
                 'nxt-dt-calendar-cell-out': item.out,
-                'nxt-dt-calendar-cell-today': item.value === todayValue,
+                'nxt-dt-calendar-cell-today': item.value === todayValue(),
                 'nxt-dt-calendar-cell-selected': isSelected(item.value)
               }">
             {{item.displayValue}}

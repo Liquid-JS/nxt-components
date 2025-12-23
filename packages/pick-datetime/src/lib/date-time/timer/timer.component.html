@@ -6,7 +6,7 @@
     [value]="hourValue"
     [min]="0"
     [max]="23"
-    [step]="stepHour"
+    [step]="stepHour()"
     inputLabel="Hour"
     (inputChange)="setHourValueViaInput($event)"
     (valueChange)="setHourValue($event)"></nxt-date-time-timer-box>
@@ -18,11 +18,11 @@
     [value]="minuteValue"
     [min]="0"
     [max]="59"
-    [step]="stepMinute"
+    [step]="stepMinute()"
     inputLabel="Minute"
     (inputChange)="setMinuteValue($event)"
     (valueChange)="setMinuteValue($event)"></nxt-date-time-timer-box>
-@if (showSecondsTimer) {
+@if (showSecondsTimer()) {
 <nxt-date-time-timer-box [showDivider]="true"
     [upBtnAriaLabel]="upSecondButtonLabel"
     [downBtnAriaLabel]="downSecondButtonLabel"
@@ -31,13 +31,13 @@
     [value]="secondValue"
     [min]="0"
     [max]="59"
-    [step]="stepSecond"
+    [step]="stepSecond()"
     inputLabel="Second"
     (inputChange)="setSecondValue($event)"
     (valueChange)="setSecondValue($event)"></nxt-date-time-timer-box>
 }
 
-@if (hour12Timer) {
+@if (hour12Timer()) {
 <div class="nxt-dt-timer-hour12">
     <button class="nxt-dt-control-button nxt-dt-timer-hour12-box"
         type="button"

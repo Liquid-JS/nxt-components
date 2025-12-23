@@ -1,5 +1,5 @@
 import { coerceNumberProperty } from '@angular/cdk/coercion'
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, OnDestroy, OnInit, Output, input } from '@angular/core'
 import { Subject, Subscription } from 'rxjs'
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
 import { NumberFixedLenPipe } from '../number-fixed-len.pipe'
@@ -18,31 +18,31 @@ import { NumberFixedLenPipe } from '../number-fixed-len.pipe'
 
 export class TimerBoxComponent implements OnInit, OnDestroy {
 
-    @Input() showDivider = false
+    readonly showDivider = input(false)
 
-    @Input() upBtnAriaLabel?: string
+    readonly upBtnAriaLabel = input<string>()
 
-    @Input() upBtnDisabled: boolean = false
+    readonly upBtnDisabled = input<boolean>(false)
 
-    @Input() downBtnAriaLabel?: string
+    readonly downBtnAriaLabel = input<string>()
 
-    @Input() downBtnDisabled: boolean = false
+    readonly downBtnDisabled = input<boolean>(false)
 
     /**
      * Value would be displayed in the box
      * If it is undefiend, the box would display [value]
      */
-    @Input() boxValue?: number
+    readonly boxValue = input<number>()
 
-    @Input() value: number = 0
+    readonly value = input<number>(0)
 
-    @Input() min: number = 0
+    readonly min = input<number>(0)
 
-    @Input() max: number = 0
+    readonly max = input<number>(0)
 
-    @Input() step = 1
+    readonly step = input(1)
 
-    @Input() inputLabel?: string
+    readonly inputLabel = input<string>()
 
     @Output() valueChange = new EventEmitter<number>()
 
@@ -53,7 +53,7 @@ export class TimerBoxComponent implements OnInit, OnDestroy {
     private inputStreamSub?: Subscription
 
     get displayValue(): number {
-        return this.boxValue || this.value
+        return this.boxValue() || this.value()
     }
 
     /** @internal */
@@ -83,11 +83,11 @@ export class TimerBoxComponent implements OnInit, OnDestroy {
     }
 
     upBtnClicked(): void {
-        this.updateValue(this.value + this.step)
+        this.updateValue(this.value() + this.step())
     }
 
     downBtnClicked(): void {
-        this.updateValue(this.value - this.step)
+        this.updateValue(this.value() - this.step())
     }
 
     handleInputChange(val: string): void {
@@ -99,7 +99,7 @@ export class TimerBoxComponent implements OnInit, OnDestroy {
     }
 
     private updateValueViaInput(value: number): void {
-        if (value > this.max || value < this.min) {
+        if (value > this.max() || value < this.min()) {
             return
         }
         this.inputChange.emit(value)

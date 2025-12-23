@@ -1,7 +1,7 @@
 import { coerceArray } from '@angular/cdk/coercion'
 import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, EventEmitter, Inject, InjectionToken, Input, NgZone, OnDestroy, OnInit, Optional, Output, ViewContainerRef, DOCUMENT } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, EventEmitter, Inject, InjectionToken, Input, NgZone, OnDestroy, OnInit, Optional, Output, ViewContainerRef, DOCUMENT, input } from '@angular/core'
 import { merge, Subscription } from 'rxjs'
 import { filter, take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
@@ -30,12 +30,10 @@ export const NXT_DTPICKER_SCROLL_STRATEGY = new InjectionToken<
 })
 export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit, OnDestroy {
     /** Custom class for the picker backdrop */
-    @Input()
-    backdropClass?: string | string[]
+    readonly backdropClass = input<string | string[]>()
 
     /** Custom class for the picker overlay pane */
-    @Input()
-    panelClass?: string | string[]
+    readonly panelClass = input<string | string[]>()
 
     private _startAt?: T
     /**
@@ -146,8 +144,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     /**
      * The scroll strategy when the picker is open (see [CDK documentation](https://material.angular.io/cdk/overlay/overview#scroll-strategies))
      */
-    @Input()
-    scrollStrategy?: ScrollStrategy
+    readonly scrollStrategy = input<ScrollStrategy>()
 
     /**
      * Callback when the picker is opened
@@ -293,14 +290,14 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         }
     }
 
-    registerInput(input: DateTimeInputDirective<T>): void {
+    registerInput(inputDirective: DateTimeInputDirective<T>): void {
         if (this._dtInput) {
             throw Error(
                 'A Nxt DateTimePicker can only be associated with a single input.'
             )
         }
 
-        this._dtInput = input
+        this._dtInput = inputDirective
         this.dtInputSub = this._dtInput.valueChange.subscribe((value) => {
             if (Array.isArray(value)) {
                 this.selecteds = value
@@ -493,20 +490,22 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
      * Open the picker as a dialog
      */
     private openAsDialog(): void {
+        const backdropClass = this.backdropClass()
+        const panelClass = this.panelClass()
         this.dialogRef = this.dialogService.open(
             DateTimeContainerComponent,
             {
                 autoFocus: false,
                 backdropClass: [
                     'cdk-overlay-dark-backdrop',
-                    ...this.backdropClass ? coerceArray(this.backdropClass) : []
+                    ...backdropClass ? coerceArray(backdropClass) : []
                 ],
                 paneClass: [
                     'nxt-dt-dialog',
-                    ...this.panelClass ? coerceArray(this.panelClass) : []
+                    ...panelClass ? coerceArray(panelClass) : []
                 ],
                 viewContainerRef: this.viewContainerRef,
-                scrollStrategy: this.scrollStrategy || this.defaultScrollStrategy()
+                scrollStrategy: this.scrollStrategy() || this.defaultScrollStrategy()
             }
         )
         this.pickerContainer = this.dialogRef.componentInstance
@@ -559,17 +558,19 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     }
 
     private createPopup(): void {
+        const backdropClass = this.backdropClass()
+        const panelClass = this.panelClass()
         const overlayConfig = new OverlayConfig({
             positionStrategy: this.createPopupPositionStrategy(),
             hasBackdrop: true,
             backdropClass: [
                 'cdk-overlay-transparent-backdrop',
-                ...this.backdropClass ? coerceArray(this.backdropClass) : []
+                ...backdropClass ? coerceArray(backdropClass) : []
             ],
-            scrollStrategy: this.scrollStrategy || this.defaultScrollStrategy(),
+            scrollStrategy: this.scrollStrategy() || this.defaultScrollStrategy(),
             panelClass: [
                 'nxt-dt-popup',
-                ...this.panelClass ? coerceArray(this.panelClass) : []
+                ...panelClass ? coerceArray(panelClass) : []
             ]
         })
 

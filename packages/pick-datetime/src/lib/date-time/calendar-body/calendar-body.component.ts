@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, NgZone, OnInit, Output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, NgZone, OnInit, Output, input } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { NgClass } from '@angular/common'
 import { SelectMode } from '../../class/date-time.class'
@@ -31,44 +31,37 @@ export class CalendarBodyComponent implements OnInit {
     /**
      * The cell number of the active cell in the table.
      */
-    @Input()
-    activeCell = 0
+    readonly activeCell = input(0)
 
     /**
      * The cells to display in the table.
      */
-    @Input()
-    rows?: CalendarCell[][]
+    readonly rows = input<CalendarCell[][]>()
 
     /**
      * The number of columns in the table.
      */
-    @Input()
-    numCols = 7
+    readonly numCols = input(7)
 
     /**
      * The ratio (width / height) to use for the cells in the table.
      */
-    @Input()
-    cellRatio = 1
+    readonly cellRatio = input(1)
 
     /**
      * The value in the table that corresponds to today.
      */
-    @Input()
-    todayValue?: number
+    readonly todayValue = input<number>()
 
     /**
      * The value in the table that is currently selected.
      */
-    @Input()
-    selectedValues?: Array<number | undefined>
+    readonly selectedValues = input<Array<number | undefined>>()
 
     /**
      * Current picker select mode
      */
-    @Input()
-    selectMode?: SelectMode
+    readonly selectMode = input<SelectMode>()
 
     /**
      * Emit when a calendar cell is selected
@@ -84,14 +77,15 @@ export class CalendarBodyComponent implements OnInit {
     }
 
     get isInSingleMode(): boolean {
-        return this.selectMode === 'single'
+        return this.selectMode() === 'single'
     }
 
     get isInRangeMode(): boolean {
+        const selectMode = this.selectMode()
         return (
-            this.selectMode === 'range' ||
-            this.selectMode === 'rangeFrom' ||
-            this.selectMode === 'rangeTo'
+            selectMode === 'range' ||
+            selectMode === 'rangeFrom' ||
+            selectMode === 'rangeTo'
         )
     }
 
@@ -107,25 +101,26 @@ export class CalendarBodyComponent implements OnInit {
     }
 
     isActiveCell(rowIndex: number, colIndex: number): boolean {
-        const cellNumber = rowIndex * this.numCols + colIndex
-        return cellNumber === this.activeCell
+        const cellNumber = rowIndex * this.numCols() + colIndex
+        return cellNumber === this.activeCell()
     }
 
     /**
      * Check if the cell is selected
      */
     isSelected(value: number): boolean {
-        if (!this.selectedValues || this.selectedValues.length === 0) {
+        const selectedValues = this.selectedValues()
+        if (!selectedValues || selectedValues.length === 0) {
             return false
         }
 
         if (this.isInSingleMode) {
-            return value === this.selectedValues[0]
+            return value === selectedValues[0]
         }
 
         if (this.isInRangeMode) {
-            const fromValue = this.selectedValues[0]
-            const toValue = this.selectedValues[1]
+            const fromValue = selectedValues[0]
+            const toValue = selectedValues[1]
 
             return value === fromValue || value === toValue
         }
@@ -137,8 +132,9 @@ export class CalendarBodyComponent implements OnInit {
      */
     isInRange(value: number): boolean {
         if (this.isInRangeMode) {
-            const fromValue = this.selectedValues?.[0]
-            const toValue = this.selectedValues?.[1]
+            const selectedValues = this.selectedValues()
+            const fromValue = selectedValues?.[0]
+            const toValue = selectedValues?.[1]
 
             if (fromValue !== undefined && toValue !== undefined) {
                 return value >= fromValue && value <= toValue
@@ -154,7 +150,7 @@ export class CalendarBodyComponent implements OnInit {
      */
     isRangeFrom(value: number): boolean {
         if (this.isInRangeMode) {
-            const fromValue = this.selectedValues?.[0]
+            const fromValue = this.selectedValues()?.[0]
             return fromValue !== undefined && value === fromValue
         }
         return false
@@ -165,7 +161,7 @@ export class CalendarBodyComponent implements OnInit {
      */
     isRangeTo(value: number): boolean {
         if (this.isInRangeMode) {
-            const toValue = this.selectedValues?.[1]
+            const toValue = this.selectedValues()?.[1]
             return toValue !== undefined && value === toValue
         }
         return false

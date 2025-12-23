@@ -4,14 +4,14 @@ import {
     ElementRef,
     EventEmitter,
     Inject,
-    Input,
     NgZone,
     OnChanges,
     OnDestroy,
     Optional,
     Output,
     Renderer2,
-    SimpleChange
+    SimpleChange,
+    input
 } from '@angular/core'
 
 import { type AbstractControl, type FormArray } from '@angular/forms'
@@ -27,8 +27,7 @@ export type CloneFunction<T> = (item: T) => T
 export class SortablejsDirective<T> implements OnChanges, OnDestroy, AfterViewInit {
 
     /** Input data, can be Array or FormArray */
-    @Input('nxtSortablejs')
-    data?: SortableData<T>
+    readonly data = input<SortableData<T>>(undefined, { alias: 'nxtSortablejs' })
 
     /**
      * CSS selector for the sortable container
@@ -36,16 +35,13 @@ export class SortablejsDirective<T> implements OnChanges, OnDestroy, AfterViewIn
      * Mostly required when used with custom components which wrap items in multiple containers. In that case,
      * this should be the selector for the direct HTML parent of sortable items.
      */
-    @Input()
-    sortablejsContainer?: string
+    readonly sortablejsContainer = input<string>()
 
     /** Sortablejs configuration */
-    @Input()
-    config?: Options
+    readonly config = input<Options>()
 
     /** A function invoked when cloning items from template dataset into target dataset */
-    @Input()
-    cloneFunction?: CloneFunction<T>
+    readonly cloneFunction = input<CloneFunction<T>>()
 
     /** Initialised a new Sortablejs instance */
     @Output() readonly init = new EventEmitter<Sortable>()
@@ -94,7 +90,8 @@ export class SortablejsDirective<T> implements OnChanges, OnDestroy, AfterViewIn
     }
 
     private create() {
-        const container = this.sortablejsContainer ? this.element.nativeElement.querySelector(this.sortablejsContainer) : this.element.nativeElement
+        const sortablejsContainer = this.sortablejsContainer()
+        const container = sortablejsContainer ? this.element.nativeElement.querySelector(sortablejsContainer) : this.element.nativeElement
 
         setTimeout(() => {
             if (typeof window != 'undefined') {
@@ -105,12 +102,13 @@ export class SortablejsDirective<T> implements OnChanges, OnDestroy, AfterViewIn
     }
 
     private getBindings(): SortablejsBindings<T> {
-        if (!this.data) {
+        const data = this.data()
+        if (!data) {
             return new SortablejsBindings([])
-        } else if (this.data instanceof SortablejsBindings) {
-            return this.data
+        } else if (data instanceof SortablejsBindings) {
+            return data
         } else {
-            return new SortablejsBindings([this.data])
+            return new SortablejsBindings([data])
         }
     }
 
@@ -119,7 +117,7 @@ export class SortablejsDirective<T> implements OnChanges, OnDestroy, AfterViewIn
     }
 
     private get optionsWithoutEvents() {
-        return { ...(this.globalConfig || {}), ...(this.config || {}) }
+        return { ...(this.globalConfig || {}), ...(this.config() || {}) }
     }
 
     private proxyEvent(eventName: string, ...params: any[]) {
@@ -139,7 +137,7 @@ export class SortablejsDirective<T> implements OnChanges, OnDestroy, AfterViewIn
 
     private clone(item: T): T {
         // by default pass the item through, no cloning performed
-        return (this.cloneFunction || (subitem => subitem))(item)
+        return (this.cloneFunction() || (subitem => subitem))(item)
     }
 
     private get overridenOptions(): Options {

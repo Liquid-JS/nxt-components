@@ -1,5 +1,5 @@
 <table class="nxt-dt-calendar-table nxt-dt-calendar-month-table"
-    [class.nxt-dt-calendar-only-current-month]="hideOtherMonths">
+    [class.nxt-dt-calendar-only-current-month]="hideOtherMonths()">
     <thead class="nxt-dt-calendar-header">
         <tr class="nxt-dt-weekdays">
             @for (weekday of weekdays; track weekday.long) {

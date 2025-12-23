@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectorRef, Directive, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core'
+import { AfterContentInit, ChangeDetectorRef, Directive, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, input } from '@angular/core'
 import { merge, Observable, of as observableOf, Subscription } from 'rxjs'
 import { DateTimeComponent } from './date-time-picker/date-time-picker.component'
 
@@ -7,13 +7,12 @@ import { DateTimeComponent } from './date-time-picker/date-time-picker.component
 })
 export class DateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterContentInit, OnDestroy {
 
-    @Input('nxtDateTimeTrigger')
-    dtPicker?: DateTimeComponent<T>
+    readonly dtPicker = input<DateTimeComponent<T>>(undefined, { alias: 'nxtDateTimeTrigger' })
 
     private _disabled?: boolean
     @Input()
     get disabled(): boolean {
-        return this._disabled ?? !!this.dtPicker?.disabled
+        return this._disabled ?? !!this.dtPicker()?.disabled
     }
 
     set disabled(value: boolean) {
@@ -52,8 +51,9 @@ export class DateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterCont
 
     @HostListener('click', ['$event'])
     handleClickOnHost(event: Event): void {
-        if (this.dtPicker) {
-            this.dtPicker.open()
+        const dtPicker = this.dtPicker()
+        if (dtPicker) {
+            dtPicker.open()
             event.stopPropagation()
         }
     }
@@ -62,11 +62,13 @@ export class DateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterCont
         this.stateChanges?.unsubscribe()
         this.stateChanges = undefined
 
-        const inputDisabled = this.dtPicker && this.dtPicker.dtInput ?
-            this.dtPicker.dtInput.disabledChange : observableOf()
+        const dtPicker = this.dtPicker()
+        const inputDisabled = dtPicker && dtPicker.dtInput ?
+            dtPicker.dtInput.disabledChange : observableOf()
 
-        const pickerDisabled = this.dtPicker ?
-            this.dtPicker.disabledChange : observableOf()
+        const dtPickerValue = this.dtPicker()
+        const pickerDisabled = dtPickerValue ?
+            dtPickerValue.disabledChange : observableOf()
 
         this.stateChanges = merge(pickerDisabled as Observable<boolean>, inputDisabled as Observable<boolean>)
             .subscribe(() => {

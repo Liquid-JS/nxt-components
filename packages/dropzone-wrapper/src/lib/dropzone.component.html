@@ -1,14 +1,14 @@
 <div class="dz-wrapper"
-    [class.dropzone]="useDropzoneClass"
-    [nxtDropzone]="config"
-    [disabled]="disabled">
+    [class.dropzone]="useDropzoneClass()"
+    [nxtDropzone]="config()"
+    [disabled]="disabled()">
     <div class="dz-message"
-        [class.disabled]="disabled"
-        [class.dz-placeholder]="placeholder">
+        [class.disabled]="disabled()"
+        [class.dz-placeholder]="placeholder()">
         <div class="dz-text"
-            [innerHTML]="config?.dictDefaultMessage || message"></div>
+            [innerHTML]="config()?.dictDefaultMessage || message()"></div>
 
-        @if (placeholder) {
+        @if (placeholder()) {
         <div class="dz-image"
             [style.background-image]="getPlaceholder()"></div>
         }

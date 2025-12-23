@@ -19,8 +19,8 @@ export class ExpanderService {
 
     expandTo(level: number) {
         this.items.forEach(i => {
-            if (i.level <= level && !i.isOpen) {
-                i.levelOpen = level
+            if (i.level() <= level && !i.isOpen) {
+                i.levelOpen.set(level)
                 i.toggle()
             }
         })
@@ -28,7 +28,7 @@ export class ExpanderService {
 
     collapseTo(level: number) {
         this.items.forEach(i => {
-            if (i.level > level && i.isOpen)
+            if (i.level() > level && i.isOpen)
                 i.toggle()
         })
     }

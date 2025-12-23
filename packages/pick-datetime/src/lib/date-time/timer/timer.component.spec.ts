@@ -42,7 +42,7 @@ describe('TimerComponent', () => {
             const timerBoxes = timerElement.querySelectorAll(
                 'nxt-date-time-timer-box'
             )
-            expect(timerInstance.showSecondsTimer).toBeFalsy()
+            expect(timerInstance.showSecondsTimer()).toBeFalsy()
             expect(timerBoxes.length).toBe(2)
         })
 
@@ -53,7 +53,7 @@ describe('TimerComponent', () => {
             const timerBoxes = timerElement.querySelectorAll(
                 'nxt-date-time-timer-box'
             )
-            expect(timerInstance.showSecondsTimer).toBeTruthy()
+            expect(timerInstance.showSecondsTimer()).toBeTruthy()
             expect(timerBoxes.length).toBe(3)
         })
 
@@ -61,7 +61,7 @@ describe('TimerComponent', () => {
             const toggleBtn = timerElement.querySelector(
                 'button.nxt-dt-timer-hour12-box'
             )
-            expect(timerInstance.hour12Timer).toBeFalsy()
+            expect(timerInstance.hour12Timer()).toBeFalsy()
             expect(toggleBtn).toBeFalsy()
         })
 
@@ -72,7 +72,7 @@ describe('TimerComponent', () => {
             const toggleBtn = timerElement.querySelector(
                 'button.nxt-dt-timer-hour12-box'
             )
-            expect(timerInstance.hour12Timer).toBeTruthy()
+            expect(timerInstance.hour12Timer()).toBeTruthy()
             expect(toggleBtn).toBeTruthy()
         })
 
@@ -116,7 +116,7 @@ describe('TimerComponent', () => {
         }))
 
         it('should add or minus stepHour hours when hour arrow button clicked', fakeAsync(() => {
-            expect(timerInstance.stepHour).toBe(1)
+            expect(timerInstance.stepHour()).toBe(1)
 
             const arrowBtns = timerElement.querySelectorAll<HTMLButtonElement>(
                 'button.nxt-dt-control-arrow-button'
@@ -139,7 +139,7 @@ describe('TimerComponent', () => {
 
             testComponent.stepHour = 2
             fixture.detectChanges()
-            expect(timerInstance.stepHour).toBe(2)
+            expect(timerInstance.stepHour()).toBe(2)
 
             arrowBtns[0].click()
             fixture.detectChanges()
@@ -157,7 +157,7 @@ describe('TimerComponent', () => {
         }))
 
         it('should add or minus stepMinute minutes when minute arrow button clicked', fakeAsync(() => {
-            expect(timerInstance.stepMinute).toBe(1)
+            expect(timerInstance.stepMinute()).toBe(1)
 
             const arrowBtns = timerElement.querySelectorAll<HTMLButtonElement>(
                 'button.nxt-dt-control-arrow-button'
@@ -180,7 +180,7 @@ describe('TimerComponent', () => {
 
             testComponent.stepMinute = 2
             fixture.detectChanges()
-            expect(timerInstance.stepMinute).toBe(2)
+            expect(timerInstance.stepMinute()).toBe(2)
 
             arrowBtns[2].click()
             fixture.detectChanges()
@@ -198,7 +198,7 @@ describe('TimerComponent', () => {
         }))
 
         it('should add or minus stepSecond seconds when second arrow button clicked', fakeAsync(() => {
-            expect(timerInstance.stepSecond).toBe(1)
+            expect(timerInstance.stepSecond()).toBe(1)
 
             testComponent.showSecondsTimer = true
             fixture.detectChanges()
@@ -223,7 +223,7 @@ describe('TimerComponent', () => {
 
             testComponent.stepSecond = 2
             fixture.detectChanges()
-            expect(timerInstance.stepSecond).toBe(2)
+            expect(timerInstance.stepSecond()).toBe(2)
 
             arrowBtns[4].click()
             fixture.detectChanges()

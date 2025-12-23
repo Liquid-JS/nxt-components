@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core'
+import { Directive, ElementRef, EventEmitter, HostListener, Output, input } from '@angular/core'
 import * as clipboard from 'clipboard-polyfill'
 
 @Directive({
@@ -8,9 +8,9 @@ import * as clipboard from 'clipboard-polyfill'
 })
 export class ClipboardDirective {
 
-    @Input() target?: HTMLElement
+    readonly target = input<HTMLElement>()
 
-    @Input() text?: string
+    readonly text = input<string>()
 
     @Output() clipboardSuccess = new EventEmitter<void>()
 
@@ -32,11 +32,13 @@ export class ClipboardDirective {
                     [type: string]: clipboard.ClipboardItemDataType
                 } = {}
 
-                if (this.target) {
-                    data['text/plain'] = this.target.innerText
-                    data['text/html'] = this.target.innerHTML
-                } else if (this.text)
-                    data['text/plain'] = this.text
+                const targetValue = this.target()
+                const text = this.text()
+                if (targetValue) {
+                    data['text/plain'] = targetValue.innerText
+                    data['text/html'] = targetValue.innerHTML
+                } else if (text)
+                    data['text/plain'] = text
                 else if (event) {
                     const target = event.target as HTMLElement
                     data['text/plain'] = target?.innerText

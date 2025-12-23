@@ -1,6 +1,6 @@
 import { CdkTableModule } from '@angular/cdk/table'
 
-import { Component, Input, ViewEncapsulation } from '@angular/core'
+import { Component, ViewEncapsulation, input } from '@angular/core'
 
 @Component({
     selector: 'app-inputs-table',
@@ -13,5 +13,5 @@ import { Component, Input, ViewEncapsulation } from '@angular/core'
 })
 export class InputsTableComponent {
 
-    @Input() inputs?: any[]
+    readonly inputs = input<any[]>()
 }

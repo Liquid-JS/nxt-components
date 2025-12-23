@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Input, NgZone, OnInit, Output } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Input, NgZone, OnInit, Output, input } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
@@ -56,32 +56,27 @@ export class TimerComponent<T> implements OnInit {
     /**
      * Whether to show the second's timer
      */
-    @Input()
-    showSecondsTimer: boolean = false
+    readonly showSecondsTimer = input<boolean>(false)
 
     /**
      * Whether the timer is in hour12 format
      */
-    @Input()
-    hour12Timer: boolean = false
+    readonly hour12Timer = input<boolean>(false)
 
     /**
      * Hours to change per step
      */
-    @Input()
-    stepHour = 1
+    readonly stepHour = input(1)
 
     /**
      * Minutes to change per step
      */
-    @Input()
-    stepMinute = 1
+    readonly stepMinute = input(1)
 
     /**
      * Seconds to change per step
      */
-    @Input()
-    stepSecond = 1
+    readonly stepSecond = input(1)
 
     get hourValue(): number {
         return this.dateTimeAdapter.getHours(this.pickerMoment)
@@ -95,7 +90,7 @@ export class TimerComponent<T> implements OnInit {
     get hourBoxValue(): number {
         let hours = this.hourValue
 
-        if (!this.hour12Timer) {
+        if (!this.hour12Timer()) {
             return hours
         } else {
             if (hours === 0) {
@@ -196,9 +191,10 @@ export class TimerComponent<T> implements OnInit {
      * We need this to handle the hour value when the timer is in hour12 mode
      */
     setHourValueViaInput(hours: number): void {
-        if (this.hour12Timer && this.isPM && hours >= 1 && hours <= 11) {
+        const hour12Timer = this.hour12Timer()
+        if (hour12Timer && this.isPM && hours >= 1 && hours <= 11) {
             hours = hours + 12
-        } else if (this.hour12Timer && !this.isPM && hours === 12) {
+        } else if (hour12Timer && !this.isPM && hours === 12) {
             hours = 0
         }
 
@@ -247,7 +243,7 @@ export class TimerComponent<T> implements OnInit {
     upHourEnabled(): boolean {
         return (
             !this.max ||
-            this.compareHours(this.stepHour, this.max) < 1
+            this.compareHours(this.stepHour(), this.max) < 1
         )
     }
 
@@ -257,7 +253,7 @@ export class TimerComponent<T> implements OnInit {
     downHourEnabled(): boolean {
         return (
             !this.min ||
-            this.compareHours(-this.stepHour, this.min) > -1
+            this.compareHours(-this.stepHour(), this.min) > -1
         )
     }
 
@@ -267,7 +263,7 @@ export class TimerComponent<T> implements OnInit {
     upMinuteEnabled(): boolean {
         return (
             !this.max ||
-            this.compareMinutes(this.stepMinute, this.max) < 1
+            this.compareMinutes(this.stepMinute(), this.max) < 1
         )
     }
 
@@ -277,7 +273,7 @@ export class TimerComponent<T> implements OnInit {
     downMinuteEnabled(): boolean {
         return (
             !this.min ||
-            this.compareMinutes(-this.stepMinute, this.min) > -1
+            this.compareMinutes(-this.stepMinute(), this.min) > -1
         )
     }
 
@@ -287,7 +283,7 @@ export class TimerComponent<T> implements OnInit {
     upSecondEnabled(): boolean {
         return (
             !this.max ||
-            this.compareSeconds(this.stepSecond, this.max) < 1
+            this.compareSeconds(this.stepSecond(), this.max) < 1
         )
     }
 
@@ -297,7 +293,7 @@ export class TimerComponent<T> implements OnInit {
     downSecondEnabled(): boolean {
         return (
             !this.min ||
-            this.compareSeconds(-this.stepSecond, this.min) > -1
+            this.compareSeconds(-this.stepSecond(), this.min) > -1
         )
     }
 

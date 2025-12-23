@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core'
+import { Component, ViewEncapsulation, input } from '@angular/core'
 import { TooltipDirective, TooltipModule } from 'ngx-bootstrap/tooltip'
 import { HighlightAutoDirective } from 'nxt-highlightjs'
 import { ClipboardDirective } from './clipboard.directive'
@@ -16,11 +16,11 @@ import { ClipboardDirective } from './clipboard.directive'
 })
 export class CodeBlockComponent {
 
-    @Input() code?: string
+    readonly code = input<string>()
 
-    @Input() copy = true
+    readonly copy = input(true)
 
-    @Input() languages?: string[]
+    readonly languages = input<string[]>()
 
     private ts?: any
 

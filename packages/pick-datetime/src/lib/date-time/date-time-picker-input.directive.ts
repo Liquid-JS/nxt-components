@@ -1,4 +1,4 @@
-import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit, Output, Provider, Renderer2 } from '@angular/core'
+import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit, Output, Provider, Renderer2, input } from '@angular/core'
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../class/date-time-adapter.class'
@@ -131,8 +131,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     /**
      * The character to separate the 'from' and 'to' in input value
      */
-    @Input()
-    rangeSeparator = '~'
+    readonly rangeSeparator = input('~')
 
     private _value?: T
     @Input()
@@ -557,7 +556,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
                             'value',
                             fromFormatted +
                             ' ' +
-                            this.rangeSeparator +
+                            this.rangeSeparator() +
                             ' ' +
                             toFormatted
                         )
@@ -710,7 +709,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
      * Handle input change in range mode
      */
     private changeInputInRangeMode(inputValue: string): void {
-        const selecteds = inputValue.split(this.rangeSeparator)
+        const selecteds = inputValue.split(this.rangeSeparator())
         let fromString: string | undefined = selecteds[0]
         let toString: string | undefined = selecteds[1]
 

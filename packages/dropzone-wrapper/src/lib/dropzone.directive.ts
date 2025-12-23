@@ -1,6 +1,6 @@
 /* eslint-disable @angular-eslint/no-output-rename */
 import { isPlatformBrowser } from '@angular/common'
-import { Directive, DoCheck, ElementRef, EventEmitter, HostBinding, Inject, Input, KeyValueDiffers, NgZone, OnDestroy, OnInit, Optional, Output, PLATFORM_ID } from '@angular/core'
+import { Directive, DoCheck, ElementRef, EventEmitter, HostBinding, Inject, Input, KeyValueDiffers, NgZone, OnDestroy, OnInit, Optional, Output, PLATFORM_ID, input } from '@angular/core'
 import Dropzone from 'dropzone'
 import { DropzoneConfig, DropzoneEvent, DropzoneEvents, DropzoneListeners, internalChanges, NXT_DROPZONE_CONFIG, NXT_DROPZONE_LISTENERS, _DropzoneConfig } from './dropzone.interfaces'
 
@@ -36,9 +36,9 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
         ? new _DropzoneConfig(this.defaults)
         : undefined
     /** Can be used to provide optional custom config */
-    @Input('nxtDropzone') config?: DropzoneConfig
+    readonly config = input<DropzoneConfig>(undefined, { alias: 'nxtDropzone' })
 
-    private configDiff = this.differs.find(this.config || {}).create()
+    private configDiff = this.differs.find(this.config() || {}).create()
     private paramDiff = this.differs.find(this._params || {}).create()
 
     @Output('init') readonly DZ_INIT = this.component?.DZ_INIT
@@ -158,16 +158,17 @@ export class DropzoneDirective implements OnInit, OnDestroy, DoCheck, DropzoneLi
 
     /** @internal */
     ngDoCheck(): void {
-        const changes = this.configDiff.diff(this.config || {} as any)
+        const changes = this.configDiff.diff(this.config() || {} as any)
 
         if (changes) {
             let newParams = this.defaults
                 ? new _DropzoneConfig(this.defaults)
                 : undefined
-            if (newParams && this.config)
-                newParams.assign(this.config)
-            else if (this.config)
-                newParams = new _DropzoneConfig(this.config)
+            const config = this.config()
+            if (newParams && config)
+                newParams.assign(config)
+            else if (config)
+                newParams = new _DropzoneConfig(config)
             const d = this.paramDiff.diff(newParams || {} as any)
             if (d) {
                 this._params = newParams

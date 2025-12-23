@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component, Injector, Input, Type, ViewEncapsulation } from '@angular/core'
+import { Component, Injector, Input, Type, ViewEncapsulation, input } from '@angular/core'
 import { TabsModule } from 'ngx-bootstrap/tabs'
 import { HighlightAutoDirective } from 'nxt-highlightjs'
 import { HighlightLineNumbersDirective } from 'nxt-highlightjs/line-numbers'
@@ -74,7 +74,7 @@ export function resolveTempaltes(cfg: LoaderConfig, prefix: string) {
 })
 export class ExampleComponent {
 
-    @Input() asTab = false
+    readonly asTab = input(false)
 
     _config?: ExampleConfig
     sources?: SourceDef[]
@@ -122,7 +122,7 @@ export class ExampleComponent {
         return this._config
     }
 
-    @Input() injector?: Injector
+    readonly injector = input<Injector>()
 
     tabTrackBy(_i: number, val: SourceDef) {
         return val.key

@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Inject, Input, NgZone, OnDestroy, OnInit, Output } from '@angular/core'
+import { AfterContentInit, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Inject, Input, NgZone, OnDestroy, OnInit, Output, input } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { take } from 'rxjs/operators'
 import { CdkMonitorFocus } from '@angular/cdk/a11y'
@@ -27,14 +27,12 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     /**
      * Date filter for the month and year view
      */
-    @Input()
-    dateTimeFilter?: DateFilter<T>
+    readonly dateTimeFilter = input<DateFilter<T>>()
 
     /**
      * Set the first day of week
      */
-    @Input()
-    firstDayOfWeek = 0
+    readonly firstDayOfWeek = input(0)
 
     /** The minimum selectable date */
     private _minDate?: T
@@ -89,8 +87,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
             this.getValidDate(value) || this.dateTimeAdapter.now()
     }
 
-    @Input()
-    selectMode?: SelectMode
+    readonly selectMode = input<SelectMode>()
 
     /** The currently selected moment */
     private _selected?: T
@@ -120,14 +117,12 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     /**
      * The view that the calendar should start in
      */
-    @Input()
-    startView: 'month' | 'year' | 'multi-years' = 'month'
+    readonly startView = input<'month' | 'year' | 'multi-years'>('month')
 
     /**
      * Whether to hide dates in other months at the start or end of the current month
      */
-    @Input()
-    hideOtherMonths: boolean = false
+    readonly hideOtherMonths = input<boolean>(false)
 
     /** Emits when the currently picker moment changes */
     @Output()
@@ -201,14 +196,15 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     }
 
     get isInSingleMode(): boolean {
-        return this.selectMode === 'single'
+        return this.selectMode() === 'single'
     }
 
     get isInRangeMode(): boolean {
+        const selectMode = this.selectMode()
         return (
-            this.selectMode === 'range' ||
-            this.selectMode === 'rangeFrom' ||
-            this.selectMode === 'rangeTo'
+            selectMode === 'range' ||
+            selectMode === 'rangeFrom' ||
+            selectMode === 'rangeTo'
         )
     }
 
@@ -223,14 +219,17 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     /**
      * Date filter for the month and year view
      */
-    dateTimeFilterForViews = (date?: T) => (
-        !!date &&
-        (!this.dateTimeFilter || this.dateTimeFilter(date, 'date')) &&
-        (!this.min ||
-            this.dateTimeAdapter.compare(date, this.min) >= 0) &&
-        (!this.max ||
-            this.dateTimeAdapter.compare(date, this.max) <= 0)
-    )
+    dateTimeFilterForViews = (date?: T) => {
+        const dateTimeFilter = this.dateTimeFilter()
+        return (
+            !!date &&
+            (!dateTimeFilter || dateTimeFilter(date, 'date')) &&
+            (!this.min ||
+                this.dateTimeAdapter.compare(date, this.min) >= 0) &&
+            (!this.max ||
+                this.dateTimeAdapter.compare(date, this.max) <= 0)
+        )
+    }
 
     /**
      * Bind class 'nxt-dt-calendar' to host
@@ -268,7 +267,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     ngOnInit() { }
 
     ngAfterContentInit(): void {
-        this._currentView = this.startView
+        this._currentView = this.startView()
     }
 
     ngAfterViewChecked() {

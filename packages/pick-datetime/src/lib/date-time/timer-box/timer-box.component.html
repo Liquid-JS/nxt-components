@@ -1,12 +1,12 @@
-@if (showDivider) {
+@if (showDivider()) {
 <div class="nxt-dt-timer-divider"
     aria-hidden="true"></div>
 }
 <button class="nxt-dt-control-button nxt-dt-control-arrow-button"
     type="button"
     tabindex="-1"
-    [disabled]="upBtnDisabled"
-    [attr.aria-label]="upBtnAriaLabel"
+    [disabled]="upBtnDisabled()"
+    [attr.aria-label]="upBtnAriaLabel()"
     (click)="upBtnClicked()">
     <span class="nxt-dt-control-button-content"
         tabindex="-1">
@@ -34,13 +34,13 @@
         [value]="displayValue | numberFixedLen : 2"
         (input)="handleInputChange(valueInput.value)"
         #valueInput>
-    <span class="nxt-hidden-accessible">{{inputLabel}}</span>
+    <span class="nxt-hidden-accessible">{{inputLabel()}}</span>
 </label>
 <button class="nxt-dt-control-button nxt-dt-control-arrow-button"
     type="button"
     tabindex="-1"
-    [disabled]="downBtnDisabled"
-    [attr.aria-label]="downBtnAriaLabel"
+    [disabled]="downBtnDisabled()"
+    [attr.aria-label]="downBtnAriaLabel()"
     (click)="downBtnClicked()">
     <span class="nxt-dt-control-button-content"
         tabindex="-1">

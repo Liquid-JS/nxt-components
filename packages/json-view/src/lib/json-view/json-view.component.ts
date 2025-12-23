@@ -1,4 +1,4 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, inject, Input, ViewEncapsulation } from '@angular/core'
+import { AfterViewChecked, ChangeDetectorRef, Component, inject, ViewEncapsulation, input, model } from '@angular/core'
 import { LevelLabels } from '../utils/interfaces'
 import { ExpanderService } from '../expander/expander.service'
 import { JsonViewItemComponent } from '../json-view-item/json-view-item.component'
@@ -20,11 +20,11 @@ import { JsonViewItemComponent } from '../json-view-item/json-view-item.componen
 })
 export class JsonViewComponent implements AfterViewChecked {
     /** JSON data, any valid JSON object */
-    @Input() data: any
+    readonly data = input<any>()
     /** Initial number of levels to be expanded; to expand / collapse the view after initial render, use `expandTo` / `collapseTo` */
-    @Input() levelOpen?: number
+    readonly levelOpen = model<number>()
     /** Custom labels for elements within the hierarcy */
-    @Input() levelLabels?: LevelLabels
+    readonly levelLabels = input<LevelLabels>()
 
     private readonly expanderService = inject(ExpanderService)
     private readonly cdRef = inject(ChangeDetectorRef)
@@ -32,14 +32,14 @@ export class JsonViewComponent implements AfterViewChecked {
     ngAfterViewChecked(): void {
         if (this.levelOpen != undefined) {
             // Reset levelOpen to keep nested items collapsed when toggling
-            this.levelOpen = undefined
+            this.levelOpen.set(undefined)
             this.cdRef.detectChanges()
         }
     }
 
     /** Expand all items up to the given level */
     expandTo(level: number) {
-        this.levelOpen = level
+        this.levelOpen.set(level)
         this.expanderService.expandTo(level)
     }
 

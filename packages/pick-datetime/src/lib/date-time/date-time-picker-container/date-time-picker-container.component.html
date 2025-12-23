@@ -4,7 +4,7 @@
 
     @if (pickerType === 'both' || pickerType === 'calendar') {
     <nxt-date-time-calendar class="nxt-dt-container-row"
-        [firstDayOfWeek]="picker?.firstDayOfWeek ?? 0"
+        [firstDayOfWeek]="picker?.firstDayOfWeek() ?? 0"
         [(pickerMoment)]="pickerMoment"
         [selected]="picker?.selected"
         [selecteds]="picker?.selecteds ?? []"
@@ -12,8 +12,8 @@
         [min]="picker?.min"
         [max]="picker?.max"
         [dateTimeFilter]="picker?.dateTimeFilter"
-        [startView]="picker?.startView ?? 'month'"
-        [hideOtherMonths]="!!picker?.hideOtherMonths"
+        [startView]="picker?.startView() ?? 'month'"
+        [hideOtherMonths]="!!picker?.hideOtherMonths()"
         (yearSelected)="picker?.selectYear($event)"
         (monthSelected)="picker?.selectMonth($event)"
         (selectedChange)="dateSelected($event)"></nxt-date-time-calendar>
@@ -24,11 +24,11 @@
         [pickerMoment]="pickerMoment"
         [min]="picker?.min"
         [max]="picker?.max"
-        [showSecondsTimer]="!!picker?.showSecondsTimer"
-        [hour12Timer]="!!picker?.hour12Timer"
-        [stepHour]="picker?.stepHour ?? 1"
-        [stepMinute]="picker?.stepMinute ?? 1"
-        [stepSecond]="picker?.stepSecond ?? 1"
+        [showSecondsTimer]="!!picker?.showSecondsTimer()"
+        [hour12Timer]="!!picker?.hour12Timer()"
+        [stepHour]="picker?.stepHour() ?? 1"
+        [stepMinute]="picker?.stepMinute() ?? 1"
+        [stepSecond]="picker?.stepSecond() ?? 1"
         (selectedChange)="timeSelected($event)"></nxt-date-time-timer>
     }
 

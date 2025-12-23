@@ -19,21 +19,21 @@
         <p>{{ desc }}</p>
         }
     </div>
-    @if (!asTab && config.component) {
+    @if (!asTab() && config.component) {
     <div class="example__preview">
         <ng-container [ngComponentOutlet]="config.component"
-            [ngComponentOutletInjector]="injector"></ng-container>
+            [ngComponentOutletInjector]="injector()"></ng-container>
     </div>
     }
     @if (sources && sources.length) {
     <div class="example__source">
-        @if (sources.length > 1 || (asTab && config.component)) {
+        @if (sources.length > 1 || (asTab() && config.component)) {
         <tabset>
-            @if (asTab && config.component) {
+            @if (asTab() && config.component) {
             <tab heading="Preview"
                 class="example-tab-preview">
                 <ng-container [ngComponentOutlet]="config.component"
-                    [ngComponentOutletInjector]="injector"></ng-container>
+                    [ngComponentOutletInjector]="injector()"></ng-container>
             </tab>
             }
             @for (source of sources; track source) {

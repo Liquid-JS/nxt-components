@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core'
+import { Component, inject, Input, OnDestroy, OnInit, ViewEncapsulation, input, model } from '@angular/core'
 import { NgClass } from '@angular/common'
 import { LevelLabels } from '../utils/interfaces'
 import { isArray, isBoolean, isNumber, isObject, isString, isUndefined } from '../utils/utils'
@@ -24,10 +24,10 @@ export class JsonViewItemComponent implements OnInit, OnDestroy {
     get data(): any | undefined {
         return this._data
     }
-    @Input() key?: string
-    @Input() level: number = 0
-    @Input() levelOpen?: number
-    @Input() levelLabels?: LevelLabels
+    readonly key = input<string>()
+    readonly level = input<number>(0)
+    readonly levelOpen = model<number>()
+    readonly levelLabels = input<LevelLabels>()
 
     isOpen: boolean = false
     childrenKeys?: string[]
@@ -60,13 +60,15 @@ export class JsonViewItemComponent implements OnInit, OnDestroy {
     }
 
     levelLabelHandle() {
-        if (this.levelLabels !== undefined) {
-            this._levelLabels = this.levelLabels[this.level] || {}
+        const levelLabels = this.levelLabels()
+        if (levelLabels !== undefined) {
+            this._levelLabels = levelLabels[this.level()] || {}
         }
     }
 
     levelOpenHandle() {
-        if (!isUndefined(this.levelOpen) && (this.level <= this.levelOpen)) {
+        const levelOpen = this.levelOpen()
+        if (!isUndefined(levelOpen) && (this.level() <= levelOpen)) {
             this.isOpen = true
         }
     }
@@ -88,8 +90,9 @@ export class JsonViewItemComponent implements OnInit, OnDestroy {
                 this.isArray = true
                 this.dataType = 'Array'
             }
-            if (this.key && this._levelLabels[this.key]) {
-                this.dataType = this._levelLabels[this.key]
+            const key = this.key()
+            if (key && this._levelLabels[key]) {
+                this.dataType = this._levelLabels[key]
             }
         } else {
             this.value = this.data

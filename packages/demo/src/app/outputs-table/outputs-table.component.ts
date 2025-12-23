@@ -1,6 +1,6 @@
 import { CdkTableModule } from '@angular/cdk/table'
 
-import { Component, Input, ViewEncapsulation } from '@angular/core'
+import { Component, ViewEncapsulation, input } from '@angular/core'
 
 @Component({
     selector: 'app-outputs-table',
@@ -13,7 +13,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core'
 })
 export class OutputsTableComponent {
 
-    @Input() outputs?: any[]
+    readonly outputs = input<any[]>()
 
     formatOutputType(out: string) {
         return out.match(/<(.*)>/)?.[1] || out

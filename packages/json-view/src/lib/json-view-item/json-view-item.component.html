@@ -5,9 +5,9 @@
         <span class="toggler"
             [ngClass]="{'collapse': isOpen, 'expand': !isOpen}"
             [style.visibility]="hasChildren?'visible':'hidden'"></span>
-        @if (key) {
+        @if (key()) {
         <span class="key">
-            <span>{{key}}</span>
+            <span>{{key()}}</span>
             <span>: </span>
         </span>
         }
@@ -30,9 +30,9 @@
         @for (_key of childrenKeys; track _key) {
         <nxt-json-view-item [data]="data[_key]"
             [key]="_key"
-            [level]="level+1"
-            [levelOpen]="levelOpen"
-            [levelLabels]="levelLabels"></nxt-json-view-item>
+            [level]="level()+1"
+            [levelOpen]="levelOpen()"
+            [levelLabels]="levelLabels()"></nxt-json-view-item>
         }
     </div>
     }

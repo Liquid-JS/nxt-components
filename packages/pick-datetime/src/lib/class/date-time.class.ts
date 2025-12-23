@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, Inject, Input } from '@angular/core'
+import { Directive, EventEmitter, Inject, input } from '@angular/core'
 import { DateTimeAdapter } from './date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from './date-time-format.class'
 
@@ -22,44 +22,44 @@ export abstract class DateTimeDirective<T> {
     /**
      * When true, shows a timer to configure the seconds value
      */
-    @Input() showSecondsTimer = false
+    readonly showSecondsTimer = input(false)
 
     /**
      * When true, the timer will be in 12-hour format mode
      */
-    @Input() hour12Timer = false
+    readonly hour12Timer = input(false)
 
     /**
      * The view that the calendar should start on
      */
-    @Input() startView: ViewType = 'month'
+    readonly startView = input<ViewType>('month')
 
     /**
      * Hours to change per step
      */
-    @Input() stepHour = 1
+    readonly stepHour = input(1)
 
     /**
      * Minutes to change per step
      */
-    @Input() stepMinute = 1
+    readonly stepMinute = input(1)
 
     /**
      * Seconds to change per step
      */
-    @Input() stepSecond = 1
+    readonly stepSecond = input(1)
 
     /**
      * Set the first day of week
      *
      * Valid values are from 0 [Sunday] to 6 [Saturday]
      */
-    @Input() firstDayOfWeek = 0
+    readonly firstDayOfWeek = input(0)
 
     /**
      * If true, don't show dates from preious / next month on the calendar month view
      */
-    @Input() hideOtherMonths = false
+    readonly hideOtherMonths = input(false)
 
     readonly id = `nxt-dt-picker-${nextUniqueId++}`
 
