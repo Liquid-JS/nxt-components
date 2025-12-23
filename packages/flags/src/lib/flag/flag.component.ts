@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core'
+import { Component, computed, input, ViewEncapsulation } from '@angular/core'
 import { FlagDatabase, FlagDatabaseKey } from '../database'
 import { FlagFormat, FlagFormatEnum, FlagSize, FlagSizeAlias } from '../types'
 
@@ -9,76 +9,70 @@ const availableCodes = new Set(Object.values(FlagDatabase))
     selector: 'nxt-flag',
     templateUrl: './flag.component.html',
     styleUrls: ['./flag.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
+    host: {
+        '[style.width.px]': '_size()',
+        '[style.height.px]': '_height()',
+        '[style.borderRadius]': '_radius()',
+        '[style.backgroundImage]': '_image()',
+        '[style.display]': '_display()'
+    }
 })
 export class FlagComponent {
 
-    private _code?: string
     /** ISO 3166-1-alpha-2 country code */
-    @Input() set country(val: FlagDatabaseKey) {
+    readonly country = input<FlagDatabaseKey>()
+
+    private readonly _code = computed(() => {
+        const val = this.country()
         const lc: FlagDatabaseKey | undefined = (val && val.toLowerCase() as any) || undefined
         if (lc && lc in FlagDatabase) {
-            this._code = FlagDatabase[lc]
+            return FlagDatabase[lc]
         } else if (lc && availableCodes.has(lc)) {
-            this._code = lc
+            return lc
         } else {
-            this._code = undefined
+            return undefined
         }
-    }
+    })
 
-    private _format: FlagFormat = FlagFormatEnum.None
     /** Flag format */
-    @Input() set format(val: FlagFormat) {
-        this._format = availableFormats.has(val)
+    readonly format = input<FlagFormat>(FlagFormatEnum.None)
+
+    private readonly _format = computed(() => {
+        const val = this.format()
+        return availableFormats.has(val)
             ? val
             : FlagFormatEnum.None
-    }
+    })
 
-    private _size = 48
     /** Flag width, either value in pixels or FlagSizeAlias */
-    @Input() set size(val: number | FlagSizeAlias) {
+    readonly size = input<number | FlagSizeAlias>(48)
+
+    /** @internal */
+    readonly _size = computed(() => {
+        const val = this.size()
         if (typeof val == 'string' && val.toLowerCase() in FlagSize) {
-            this._size = FlagSize[val.toLowerCase() as (FlagSizeAlias)]
+            return FlagSize[val.toLowerCase() as (FlagSizeAlias)]
         } else {
-            this._size = Number.isInteger(val) && Number(val) > 0
+            return Number.isInteger(val) && Number(val) > 0
                 ? Number(val)
                 : 48
         }
-    }
+    })
 
     /** @internal */
-    @HostBinding('style.width.px')
-    get width() {
-        return this._size
-    }
+    readonly _height = computed(() => this._format() == FlagFormatEnum.None
+        ? Math.floor(this._size() / 1.5)
+        : this._size())
 
     /** @internal */
-    @HostBinding('style.height.px')
-    get height() {
-        return this._format == FlagFormatEnum.None
-            ? Math.floor(this._size / 1.5)
-            : this._size
-    }
+    readonly _radius = computed(() => this._format() == FlagFormatEnum.Round ? '100%' : '0%')
 
     /** @internal */
-    @HostBinding('style.borderRadius')
-    get radius() {
-        return this._format == FlagFormatEnum.Round ? '100%' : '0%'
-    }
+    readonly _image = computed(() => `url(assets/flags/${this._code()}.svg)`)
 
     /** @internal */
-    @HostBinding('style.backgroundImage')
-    get image() {
-        return `url(assets/flags/${this._code}.svg)`
-    }
-
-    /** @internal */
-    @HostBinding('style.display')
-    get display() {
-        return this._code
-            ? ''
-            : 'none'
-    }
-
-    constructor() { }
+    readonly _display = computed(() => this._code()
+        ? ''
+        : 'none')
 }
