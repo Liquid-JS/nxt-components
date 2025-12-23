@@ -292,16 +292,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#backdropClass" >backdropClass</a>
-                            </li>
-                            <li>
                                 <a href="#disabled" >disabled</a>
                             </li>
                             <li>
                                 <a href="#isOpen" >isOpen</a>
-                            </li>
-                            <li>
-                                <a href="#panelClass" >panelClass</a>
                             </li>
                             <li>
                                 <a href="#pickerMode" >pickerMode</a>
@@ -310,10 +304,16 @@
                                 <a href="#pickerType" >pickerType</a>
                             </li>
                             <li>
-                                <a href="#scrollStrategy" >scrollStrategy</a>
+                                <a href="#startAt" >startAt</a>
                             </li>
                             <li>
-                                <a href="#startAt" >startAt</a>
+                                <a href="#backdropClass" >backdropClass</a>
+                            </li>
+                            <li>
+                                <a href="#panelClass" >panelClass</a>
+                            </li>
+                            <li>
+                                <a href="#scrollStrategy" >scrollStrategy</a>
                             </li>
                             <li>
                                 <a href="#firstDayOfWeek" >firstDayOfWeek</a>
@@ -575,28 +575,6 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="backdropClass"></a>
-                        <b>backdropClass</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>string | string[]</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Custom class for the picker backdrop</p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="disabled"></a>
                         <b>disabled</b>
                     </td>
@@ -632,28 +610,6 @@
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>Whether the calendar is open</p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="panelClass"></a>
-                        <b>panelClass</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>string | string[]</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Custom class for the picker overlay pane</p>
 </div>
                     </td>
                 </tr>
@@ -716,28 +672,6 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="scrollStrategy"></a>
-                        <b>scrollStrategy</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>ScrollStrategy</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>The scroll strategy when the picker is open (see <a href="https://material.angular.io/cdk/overlay/overview#scroll-strategies">CDK documentation</a>)</p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="startAt"></a>
                         <b>startAt</b>
                     </td>
@@ -761,14 +695,74 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="firstDayOfWeek"></a>
-                        <b>firstDayOfWeek</b>
+                        <a name="backdropClass"></a>
+                        <b>backdropClass</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                        <i>Type : </i>    <code>string | string[]</code>
 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Custom class for the picker backdrop</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="panelClass"></a>
+                        <b>panelClass</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Custom class for the picker overlay pane</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="scrollStrategy"></a>
+                        <b>scrollStrategy</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ScrollStrategy</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The scroll strategy when the picker is open (see <a href="https://material.angular.io/cdk/overlay/overview#scroll-strategies">CDK documentation</a>)</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="firstDayOfWeek"></a>
+                        <b>firstDayOfWeek</b>
                     </td>
                 </tr>
                 <tr>
@@ -795,12 +789,6 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
                         <i>Default value : </i><code>false</code>
                     </td>
                 </tr>
@@ -822,12 +810,6 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
                         <i>Default value : </i><code>false</code>
                     </td>
                 </tr>
@@ -845,12 +827,6 @@
                     <td class="col-md-4">
                         <a name="showSecondsTimer"></a>
                         <b>showSecondsTimer</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
                     </td>
                 </tr>
                 <tr>
@@ -903,12 +879,6 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
                         <i>Default value : </i><code>1</code>
                     </td>
                 </tr>
@@ -930,12 +900,6 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
                         <i>Default value : </i><code>1</code>
                     </td>
                 </tr>
@@ -953,12 +917,6 @@
                     <td class="col-md-4">
                         <a name="stepSecond"></a>
                         <b>stepSecond</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
                     </td>
                 </tr>
                 <tr>
@@ -1299,7 +1257,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>registerInput(input: <a href="../directives/DateTimeInputDirective.html" target="_self">DateTimeInputDirective&lt;T&gt;</a>)</code>
+<code>registerInput(inputDirective: <a href="../directives/DateTimeInputDirective.html" target="_self">DateTimeInputDirective&lt;T&gt;</a>)</code>
                 </td>
             </tr>
 
@@ -1322,7 +1280,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>input</td>
+                                                <td>inputDirective</td>
                                             <td>
                                                             <code><a href="../directives/DateTimeInputDirective.html" target="_self" >DateTimeInputDirective&lt;T&gt;</a></code>
                                             </td>
