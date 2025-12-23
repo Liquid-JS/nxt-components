@@ -24,7 +24,7 @@
 <br>
 }
 
-<pre [ngClass]="{ 'empty': !gist }"><code [nxtGist]="gistId"
+<pre [class.empty]="!gist"><code [nxtGist]="gistId"
     (gistLoad)="setGist($event)"
     (gistError)="error = $event; loading = false"
     [nxtHighlight]="(gist | gistFile: selectedFile)?.content"

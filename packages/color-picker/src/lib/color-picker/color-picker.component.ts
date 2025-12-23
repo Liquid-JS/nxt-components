@@ -1,5 +1,5 @@
 import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core'
-import { NgStyle, NgClass } from '@angular/common'
+import { NgStyle } from '@angular/common'
 import { cmykToRgb, denormalizeCMYK, denormalizeHSLA, denormalizeRGBA, formatCmyk, formatOutput, hslaToHsva, hsvaToHsla, hsvaToRgba, rgbaToCmyk, rgbaToHex, rgbaToHsva, stringToCmyk, stringToHsva } from '../../util/color'
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Cmyk, Hsla, Hsva, Rgba } from '../../util/formats'
@@ -20,7 +20,6 @@ import { TextDirective } from '../text.directive'
     imports: [
         NgStyle,
         SliderDirective,
-        NgClass,
         TextDirective
     ]
 })

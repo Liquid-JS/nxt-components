@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, NgZone, OnInit, Output, input } from '@angular/core'
 import { take } from 'rxjs/operators'
-import { NgClass } from '@angular/common'
+
 import { SelectMode } from '../../class/date-time.class'
 
 export class CalendarCell {
@@ -22,10 +22,8 @@ export class CalendarCell {
     templateUrl: './calendar-body.component.html',
     styleUrls: ['./calendar-body.component.scss'],
     preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        NgClass
-    ]
+    changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class CalendarBodyComponent implements OnInit {
     /**

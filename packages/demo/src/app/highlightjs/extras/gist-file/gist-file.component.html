@@ -12,7 +12,7 @@
 </div>
 }
 
-<pre [ngClass]="{ 'empty': !gist }"><code [nxtGist]="gistId"
+<pre [class.empty]="!gist"><code [nxtGist]="gistId"
     (gistLoad)="gist = $event; loading = false"
     (gistError)="error = $event; loading = false"
     [nxtHighlight]="(gist | gistFile: 'sample.component.ts')?.content"

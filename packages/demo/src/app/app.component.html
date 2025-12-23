@@ -31,7 +31,7 @@
 <div class="container-fluid">
     <div class="row">
         <nav class="col-md-3 col-lg-2 d-md-block bg-body sidebar"
-            [ngClass]="{ collapse: (navbarCollapsed && animationDone) }"
+            [class.collapse]="(navbarCollapsed && animationDone)"
             [@expandCollapseNav]="navbarCollapsed ? 'close' : 'open'"
             (@expandCollapseNav.done)="animationDone = true">
             <div class="position-sticky p-2 sidebar-sticky">

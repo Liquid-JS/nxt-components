@@ -17,7 +17,7 @@
         [style.paddingBottom.%]="50 * cellRatio() / numCols()"
         (click)="selectCell(item)">
         <span class="nxt-dt-calendar-cell-content"
-            [ngClass]="{
+            [class]="{
                 'nxt-dt-calendar-cell-out': item.out,
                 'nxt-dt-calendar-cell-today': item.value === todayValue(),
                 'nxt-dt-calendar-cell-selected': isSelected(item.value)

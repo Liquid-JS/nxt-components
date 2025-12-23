@@ -3,7 +3,7 @@
         tabindex="0"
         (keydown.space)="toggle()">
         <span class="toggler"
-            [ngClass]="{'collapse': isOpen, 'expand': !isOpen}"
+            [class]="{'collapse': isOpen, 'expand': !isOpen}"
             [style.visibility]="hasChildren?'visible':'hidden'"></span>
         @if (key()) {
         <span class="key">
@@ -21,7 +21,7 @@
             </span>
             }
             @if (!isObject && valueType) {
-            <span [ngClass]="valueType">{{ value }}</span>
+            <span [class]="valueType">{{ value }}</span>
             }
         </span>
     </a>

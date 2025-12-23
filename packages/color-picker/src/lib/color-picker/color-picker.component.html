@@ -20,7 +20,7 @@
             backgroundColor: hueSliderColor || ''
         }">
         <div class="color-picker__cursor color-picker__cursor--sv"
-            [ngClass]="{ 'color-picker__cursor--light': svSliderLight }"
+            [class.color-picker__cursor--light]="svSliderLight"
             [ngStyle]="{
                 top: (slider?.v || 0) * 100 + '%',
                 left: (slider?.s || 0) * 100 + '%'
@@ -37,7 +37,7 @@
                         title="Add color to preset"
                         i18n-title="@@nxt-color-picker.button.add-color"
                         class="color-picker__add-selected"
-                        [ngClass]="{ 'color-picker__add-selected--light': alphaSliderLight }"
+                        [class.color-picker__add-selected--light]="alphaSliderLight"
                         (click)="onAddPresetColor(selectedColor)"><svg xmlns="http://www.w3.org/2000/svg"
                             width="24"
                             height="24"
@@ -59,7 +59,7 @@
                 (dragStart)="onDragStart('hue')"
                 (dragEnd)="onDragEnd('hue')">
                 <div class="color-picker__cursor"
-                    [ngClass]="{ 'color-picker__cursor--light': hueSliderLight }"
+                    [class.color-picker__cursor--light]="hueSliderLight"
                     [ngStyle]="{
                         left: (slider?.h || 0) * 100 + '%'
                     }"></div>
@@ -73,7 +73,7 @@
                 (dragStart)="onDragStart('value')"
                 (dragEnd)="onDragEnd('value')">
                 <div class="color-picker__cursor"
-                    [ngClass]="{ 'color-picker__cursor--light': valueSliderLight }"
+                    [class.color-picker__cursor--light]="valueSliderLight"
                     [ngStyle]="{
                         left: (1 - (slider?.v || 0)) * 100 + '%'
                     }"></div>
@@ -91,7 +91,7 @@
                         backgroundImage: alphaSliderColor || ''
                     }">
                     <div class="color-picker__cursor"
-                        [ngClass]="{ 'color-picker__cursor--light': alphaSliderLight }"
+                        [class.color-picker__cursor--light]="alphaSliderLight"
                         [ngStyle]="{
                             left: (slider?.a || 0) * 100 + '%'
                         }"></div>

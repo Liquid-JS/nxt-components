@@ -1,5 +1,5 @@
 <input class="form-control"
-    [ngClass]="{ 'is-invalid': dateTimeControl.invalid }"
+    [class.is-invalid]="dateTimeControl.invalid"
     [(ngModel)]="value"
     #dateTimeControl="ngModel"
     placeholder="Date and time"

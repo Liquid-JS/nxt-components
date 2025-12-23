@@ -55,8 +55,8 @@ export class SandboxComponent {
         const componentRef = this.componentRef()
         if (this.type === 'directive' && directiveRef) {
             directiveRef.reset()
-        } else if (this.type === 'component' && componentRef && componentRef.directiveRef) {
-            componentRef.directiveRef.reset()
+        } else if (this.type === 'component' && componentRef && componentRef.directiveRef()) {
+            componentRef.directiveRef()!.reset()
         }
     }
 

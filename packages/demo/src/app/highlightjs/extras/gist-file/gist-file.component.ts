@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { HighlightDirective } from 'nxt-highlightjs'
 import { Gist, GistDirective, GistFilePipe } from 'nxt-highlightjs/extras'
@@ -8,8 +7,7 @@ import { Gist, GistDirective, GistFilePipe } from 'nxt-highlightjs/extras'
     imports: [
         GistDirective,
         GistFilePipe,
-        HighlightDirective,
-        NgClass
+        HighlightDirective
     ],
     templateUrl: './gist-file.component.html',
     styleUrl: './gist-file.component.scss',

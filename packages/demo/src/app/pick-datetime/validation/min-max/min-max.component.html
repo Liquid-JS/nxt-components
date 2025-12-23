@@ -1,5 +1,5 @@
 <input class="form-control"
-    [ngClass]="{ 'is-invalid': minDateTimeControl.invalid }"
+    [class.is-invalid]="minDateTimeControl.invalid"
     [(ngModel)]="value"
     #minDateTimeControl="ngModel"
     placeholder="Date and time"
@@ -14,7 +14,7 @@
 }
 <br>
 <input class="form-control"
-    [ngClass]="{ 'is-invalid': maxDateTimeControl.invalid }"
+    [class.is-invalid]="maxDateTimeControl.invalid"
     [(ngModel)]="value"
     #maxDateTimeControl="ngModel"
     placeholder="Date and time"

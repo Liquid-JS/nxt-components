@@ -601,7 +601,7 @@ $theme-color: #3f51b5;
 .nxt-dt-container-disabled,
 .nxt-dt-trigger-disabled {
     opacity: 0.35;
-    filter: Alpha(opacity = 35);
+    filter: Alpha(opacity=35);
     background-image: none;
     cursor: default !important;
 }
@@ -663,7 +663,7 @@ $theme-color: #3f51b5;
 
 .nxt-hidden-accessible {
     border: 0;
-    clip: rect(0 0 0 0);
+    clip-path: rect(0 0 0 0);
     height: 1px;
     margin: -1px;
     overflow: hidden;

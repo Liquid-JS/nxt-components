@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnDestroy, OnInit, ViewEncapsulation, input, model } from '@angular/core'
-import { NgClass } from '@angular/common'
+
 import { LevelLabels } from '../utils/interfaces'
 import { isArray, isBoolean, isNumber, isObject, isString, isUndefined } from '../utils/utils'
 import { ExpanderService } from '../expander/expander.service'
@@ -9,8 +9,8 @@ import { ExpanderService } from '../expander/expander.service'
     selector: 'nxt-json-view-item',
     templateUrl: './json-view-item.component.html',
     styleUrls: ['./json-view-item.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated,
-    imports: [NgClass]
+    encapsulation: ViewEncapsulation.Emulated
+
 })
 export class JsonViewItemComponent implements OnInit, OnDestroy {
     private _data?: any

@@ -1,4 +1,4 @@
-import { KeyValuePipe, NgClass } from '@angular/common'
+import { KeyValuePipe } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { HighlightDirective } from 'nxt-highlightjs'
@@ -11,8 +11,7 @@ import { Gist, GistDirective, GistFilePipe } from 'nxt-highlightjs/extras'
         GistFilePipe,
         HighlightDirective,
         KeyValuePipe,
-        FormsModule,
-        NgClass
+        FormsModule
     ],
     templateUrl: './gist.component.html',
     styleUrl: './gist.component.scss',

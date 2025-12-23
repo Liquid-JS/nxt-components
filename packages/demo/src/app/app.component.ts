@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations'
-import { CommonModule, ViewportScroller } from '@angular/common'
+import { ViewportScroller } from '@angular/common'
 import { Component, ElementRef, ViewChild } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import logo from '../assets/nxt-logo.png'
@@ -53,7 +53,6 @@ type MenuItem = {
         ])
     ],
     imports: [
-        CommonModule,
         RouterModule
     ]
 })
