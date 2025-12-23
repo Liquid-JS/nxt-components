@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewEncapsulation } from '@angular/core'
+import { Component, ViewEncapsulation, viewChild } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 // eslint-disable-next-line @import/no-extraneous-dependencies
 import Dropzone from 'dropzone'
@@ -27,8 +27,8 @@ export class SandboxComponent {
         maxFiles: 1
     }
 
-    @ViewChild(DropzoneComponent) componentRef?: DropzoneComponent
-    @ViewChild(DropzoneDirective) directiveRef?: DropzoneDirective
+    readonly componentRef = viewChild(DropzoneComponent)
+    readonly directiveRef = viewChild(DropzoneDirective)
 
     onUploadInit(dz: Dropzone) {
         console.log('onUploadInit:', dz)
@@ -51,10 +51,12 @@ export class SandboxComponent {
     }
 
     resetDropzone(): void {
-        if (this.type === 'directive' && this.directiveRef) {
-            this.directiveRef.reset()
-        } else if (this.type === 'component' && this.componentRef && this.componentRef.directiveRef) {
-            this.componentRef.directiveRef.reset()
+        const directiveRef = this.directiveRef()
+        const componentRef = this.componentRef()
+        if (this.type === 'directive' && directiveRef) {
+            directiveRef.reset()
+        } else if (this.type === 'component' && componentRef && componentRef.directiveRef) {
+            componentRef.directiveRef.reset()
         }
     }
 

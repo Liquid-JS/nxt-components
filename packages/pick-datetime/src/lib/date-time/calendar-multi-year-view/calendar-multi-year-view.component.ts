@@ -1,7 +1,7 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Input, OnInit, Output, ViewChild } from '@angular/core'
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Input, OnInit, Output, viewChild } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
-import { CalendarCell, CalendarBodyComponent } from '../calendar-body/calendar-body.component'
+import { CalendarBodyComponent, CalendarCell } from '../calendar-body/calendar-body.component'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 
 /** @internal */
@@ -206,8 +206,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     readonly keyboardEnter = new EventEmitter<void>()
 
     /** The body of calendar table */
-    @ViewChild(CalendarBodyComponent, { static: true })
-    private calendarBodyElm?: CalendarBodyComponent
+    private readonly calendarBodyElm = viewChild(CalendarBodyComponent)
 
     /** @internal */
     @HostBinding('class.nxt-dt-calendar-view')
@@ -446,6 +445,6 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     }
 
     private focusActiveCell() {
-        this.calendarBodyElm?.focusActiveCell()
+        this.calendarBodyElm()?.focusActiveCell()
     }
 }

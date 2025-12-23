@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Inject, Input, OnInit, Output, Provider, ViewChild } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Inject, Input, OnInit, Output, Provider, viewChild } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
@@ -25,8 +25,7 @@ export const NXT_DATETIME_VALUE_ACCESSOR: Provider = {
 })
 export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements OnInit, ControlValueAccessor {
 
-    @ViewChild(DateTimeContainerComponent, { static: true })
-    private container?: DateTimeContainerComponent<T>
+    private readonly container = viewChild(DateTimeContainerComponent)
 
     private _pickerType: PickerType = 'both'
     /**
@@ -261,21 +260,24 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
     }
 
     ngOnInit() {
-        if (this.container)
-            this.container.picker = this
+        const container = this.container()
+        if (container)
+            container.picker = this
     }
 
     writeValue(value: any): void {
         value = value ?? undefined
         if (this.isInSingleMode) {
             this.value = value
-            if (this.container)
-                this.container.pickerMoment = value
+            const container = this.container()
+            if (container)
+                container.pickerMoment = value
         } else {
             this.values = value
-            if (this.container)
-                this.container.pickerMoment = this._values?.[
-                    this.container.activeSelectedIndex
+            const container = this.container()
+            if (container)
+                container.pickerMoment = this._values?.[
+                    container.activeSelectedIndex
                 ]
         }
     }

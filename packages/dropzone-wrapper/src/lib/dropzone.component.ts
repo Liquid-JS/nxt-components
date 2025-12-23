@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/no-output-rename */
-import { Component, EventEmitter, OnInit, Output, ViewChild, ViewEncapsulation, input } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation, input, viewChild } from '@angular/core'
 import { DropzoneDirective } from './dropzone.directive'
 import { DropzoneConfig, DropzoneListeners, NXT_DROPZONE_LISTENERS } from './dropzone.interfaces'
 
@@ -79,7 +79,7 @@ export class DropzoneComponent implements OnInit, DropzoneListeners {
 
     @Output('queueComplete') readonly DZ_QUEUECOMPLETE = new EventEmitter<void>()
 
-    @ViewChild(DropzoneDirective) directiveRef?: DropzoneDirective
+    readonly directiveRef = viewChild(DropzoneDirective)
 
     constructor() { }
 

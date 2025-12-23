@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Output, ViewChild, input } from '@angular/core'
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Output, input, viewChild } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
@@ -243,8 +243,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     readonly pickerMomentChange = new EventEmitter<T>()
 
     /** The body of calendar table */
-    @ViewChild(CalendarBodyComponent, { static: true })
-    private calendarBodyElm?: CalendarBodyComponent
+    private readonly calendarBodyElm = viewChild(CalendarBodyComponent)
 
     /** @internal */
     @HostBinding('class.nxt-dt-calendar-view')
@@ -595,6 +594,6 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     }
 
     private focusActiveCell() {
-        this.calendarBodyElm?.focusActiveCell()
+        this.calendarBodyElm()?.focusActiveCell()
     }
 }

@@ -1,7 +1,7 @@
 import { animate, animateChild, AnimationEvent, keyframes, style, transition, trigger } from '@angular/animations'
 import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory } from '@angular/cdk/a11y'
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal'
-import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EmbeddedViewRef, EventEmitter, HostBinding, HostListener, Inject, OnInit, Optional, ViewChild, DOCUMENT } from '@angular/core'
+import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EmbeddedViewRef, EventEmitter, HostBinding, HostListener, Inject, OnInit, Optional, DOCUMENT, viewChild } from '@angular/core'
 import { DialogConfig } from '../../class/dialog-config.class'
 
 /** @internal */
@@ -53,8 +53,7 @@ const zoomFadeInFrom = {
     ]
 })
 export class DialogContainerComponent extends BasePortalOutlet implements OnInit {
-    @ViewChild(CdkPortalOutlet, { static: true })
-    portalOutlet?: CdkPortalOutlet
+    readonly portalOutlet = viewChild(CdkPortalOutlet)
 
     /** The class that traps and manages focus within the dialog */
     private focusTrap?: ConfigurableFocusTrap
@@ -148,14 +147,15 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
     attachComponentPortal<T>(
         portal: ComponentPortal<T>
     ): ComponentRef<T> {
-        if (this.portalOutlet?.hasAttached()) {
+        const portalOutlet = this.portalOutlet()
+        if (portalOutlet?.hasAttached()) {
             throw Error(
                 'Attempting to attach dialog content after content is already attached'
             )
         }
 
         this.savePreviouslyFocusedElement()
-        return this.portalOutlet!.attachComponentPortal(portal)
+        return portalOutlet!.attachComponentPortal(portal)
     }
 
     attachTemplatePortal<C>(

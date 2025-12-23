@@ -1,5 +1,5 @@
 import { AnimationEvent } from '@angular/animations'
-import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, ViewChild } from '@angular/core'
+import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, viewChild } from '@angular/core'
 import { Subject } from 'rxjs'
 import { CdkTrapFocus } from '@angular/cdk/a11y'
 import { NgClass } from '@angular/common'
@@ -30,11 +30,9 @@ import { dateTimePickerAnimations } from './date-time-picker-container.animation
 })
 export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, AfterViewInit {
 
-    @ViewChild(CalendarComponent)
-    calendar?: CalendarComponent<T>
+    readonly calendar = viewChild(CalendarComponent)
 
-    @ViewChild(TimerComponent)
-    timer?: TimerComponent<T>
+    readonly timer = viewChild(TimerComponent)
 
     picker?: DateTimeDirective<T>
     activeSelectedIndex = 0 // The current active SelectedIndex in range select mode (0: 'from', 1: 'to')
@@ -464,10 +462,12 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
             return
         }
 
-        if (this.calendar) {
-            this.calendar.focusActiveCell()
-        } else if (this.timer) {
-            this.timer.focus()
+        const calendar = this.calendar()
+        const timer = this.timer()
+        if (calendar) {
+            calendar.focusActiveCell()
+        } else if (timer) {
+            timer.focus()
         }
     }
 }
