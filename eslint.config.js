@@ -28,7 +28,6 @@ export default config(
         languageOptions: {
             parser,
             parserOptions: {
-                project: 'tsconfig.json',
                 projectService: {
                     allowDefaultProject: ['.*', '*.js', '*.cjs', 'packages/*/*.js', 'packages/*/*.cjs']
                 },

@@ -33,15 +33,15 @@
         "@angular-devkit/schematics": "^20.0.0"
     },
     "dependencies": {
-        "sitemap": "^8.0.0",
+        "sitemap": "^9.0.0",
         "tslib": "^2.8.1"
     },
     "devDependencies": {
-        "@rollup/plugin-typescript": "^12.1.4",
+        "@rollup/plugin-typescript": "^12.3.0",
         "builtins": "^5.1.0",
-        "globby": "^14.1.0",
+        "globby": "^16.1.0",
         "json-schema-to-typescript": "^15.0.4",
-        "rollup": "^4.50.0",
+        "rollup": "^4.54.0",
         "rollup-plugin-copy": "^3.5.0"
     }
 }

@@ -11,7 +11,7 @@ export function createHost(tree: Tree): workspaces.WorkspaceHost {
             if (!data) {
                 throw new SchematicsException('File not found.')
             }
-            return virtualFs.fileBufferToString(data)
+            return virtualFs.fileBufferToString(data.buffer as ArrayBuffer)
         },
         writeFile: async (path: string, data: string): Promise<void> => tree.overwrite(path, data),
         isDirectory: async (path: string): Promise<boolean> => !tree.exists(path) && tree.getDir(path).subfiles.length > 0,

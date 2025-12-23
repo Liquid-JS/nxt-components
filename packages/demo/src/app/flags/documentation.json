@@ -9,7 +9,7 @@
     "components": [
         {
             "name": "FlagComponent",
-            "id": "component-FlagComponent-a2a2d90a607aa2f76b84ba0d267bd75764eb2c1f07e49a95ad36ff0b2e4786683582a4d8864bce20d76b81fbee7159487f920ed4ae977acf31ff54fe78d5a44d",
+            "id": "component-FlagComponent-b100a4974ea9e81e0199c91e13ac65676d2785315a087bc3ab3e02382bdda16dfe0a82352afa8a502947a1dd5893d009937ea225abdb0dacff267e8ec12c15eb",
             "file": "src/lib/flag/flag.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.Emulated"

@@ -13521,7 +13521,7 @@
     "modules": [
         {
             "name": "DateTimeModule",
-            "id": "module-DateTimeModule-d37d6dc3ea2605f8a39265583ebbeb5f9500225d569dd5d89ab370079ff3bec1b336f167592dbc65ee941d71ca411deddbbadba4ffd9d569b6408b938798e3ec",
+            "id": "module-DateTimeModule-40b49b59d34db481386b5506c04c3e39498c4a68b22bacb41a5fa9aabc246dcb67f3912838555613a0a822cd6ac3082b0958631073cdfc843092d042568ea437",
             "description": "",
             "deprecationMessage": "use standalone imports",
             "deprecated": true,
