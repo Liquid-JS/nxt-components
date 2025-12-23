@@ -1279,7 +1279,8 @@ class TemplatePlayground {
             const booleanFlags = [
                 'hideGenerator', 'disableSourceCode', 'disableGraph', 'disableCoverage', 'disablePrivate', 'disableProtected', 'disableInternal',
                 'disableLifeCycleHooks', 'disableConstructors', 'disableRoutesGraph', 'disableSearch', 'disableDependencies', 'disableProperties',
-                'disableDomTree', 'disableTemplateTab', 'disableStyleTab', 'disableMainGraph', 'hideDarkModeToggle', 'minimal', 'serve', 'open', 'watch', 'silent',
+                'disableDomTree', 'disableTemplateTab', 'disableStyleTab', 'disableMainGraph', 'disableFilePath', 'disableOverview',
+                'hideDarkModeToggle', 'minimal', 'serve', 'open', 'watch', 'silent',
                 'coverageTest', 'coverageTestThresholdFail', 'coverageTestShowOnlyFailed'
             ];
             const valueFlags = [

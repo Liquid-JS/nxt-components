@@ -24,6 +24,20 @@ interface CompoDocConfig {
   disablePrivate?: boolean;
   disableProtected?: boolean;
   disableInternal?: boolean;
+  disableLifeCycleHooks?: boolean;
+  disableConstructors?: boolean;
+  disableRoutesGraph?: boolean;
+  disableSearch?: boolean;
+  disableDependencies?: boolean;
+  disableProperties?: boolean;
+  disableDomTree?: boolean;
+  disableTemplateTab?: boolean;
+  disableStyleTab?: boolean;
+  disableMainGraph?: boolean;
+  disableFilePath?: boolean;
+  disableOverview?: boolean;
+  hideDarkModeToggle?: boolean;
+  minimal?: boolean;
   customFavicon?: string;
   includes?: string;
   includesName?: string;
@@ -52,12 +66,26 @@ interface CompoDocConfig {
         <h3>CompoDoc Configuration</h3>
         <div class="config-options">
           <label><input type="checkbox" [(ngModel)]="config.hideGenerator" (change)="updateConfig()"> Hide Generator</label>
+          <label><input type="checkbox" [(ngModel)]="config.hideDarkModeToggle" (change)="updateConfig()"> Hide Dark Mode Toggle</label>
+          <label><input type="checkbox" [(ngModel)]="config.minimal" (change)="updateConfig()"> Minimal Mode</label>
+          <label><input type="checkbox" [(ngModel)]="config.disableOverview" (change)="updateConfig()"> Disable Overview</label>
+          <label><input type="checkbox" [(ngModel)]="config.disableFilePath" (change)="updateConfig()"> Disable File Path</label>
           <label><input type="checkbox" [(ngModel)]="config.disableSourceCode" (change)="updateConfig()"> Disable Source Code</label>
           <label><input type="checkbox" [(ngModel)]="config.disableGraph" (change)="updateConfig()"> Disable Graph</label>
+          <label><input type="checkbox" [(ngModel)]="config.disableMainGraph" (change)="updateConfig()"> Disable Main Graph</label>
+          <label><input type="checkbox" [(ngModel)]="config.disableRoutesGraph" (change)="updateConfig()"> Disable Routes Graph</label>
           <label><input type="checkbox" [(ngModel)]="config.disableCoverage" (change)="updateConfig()"> Disable Coverage</label>
+          <label><input type="checkbox" [(ngModel)]="config.disableSearch" (change)="updateConfig()"> Disable Search</label>
+          <label><input type="checkbox" [(ngModel)]="config.disableDependencies" (change)="updateConfig()"> Disable Dependencies</label>
           <label><input type="checkbox" [(ngModel)]="config.disablePrivate" (change)="updateConfig()"> Disable Private</label>
           <label><input type="checkbox" [(ngModel)]="config.disableProtected" (change)="updateConfig()"> Disable Protected</label>
           <label><input type="checkbox" [(ngModel)]="config.disableInternal" (change)="updateConfig()"> Disable Internal</label>
+          <label><input type="checkbox" [(ngModel)]="config.disableLifeCycleHooks" (change)="updateConfig()"> Disable Lifecycle Hooks</label>
+          <label><input type="checkbox" [(ngModel)]="config.disableConstructors" (change)="updateConfig()"> Disable Constructors</label>
+          <label><input type="checkbox" [(ngModel)]="config.disableProperties" (change)="updateConfig()"> Disable Properties</label>
+          <label><input type="checkbox" [(ngModel)]="config.disableDomTree" (change)="updateConfig()"> Disable DOM Tree</label>
+          <label><input type="checkbox" [(ngModel)]="config.disableTemplateTab" (change)="updateConfig()"> Disable Template Tab</label>
+          <label><input type="checkbox" [(ngModel)]="config.disableStyleTab" (change)="updateConfig()"> Disable Style Tab</label>
         </div>
       </div>
 
