@@ -1,6 +1,6 @@
 @if (show) {
 <div class="color-picker"
-    [ngStyle]="{
+    [style]="{
         visibility: !show ? 'hidden' : 'visible',
         width: width || '',
         height: height || ''
@@ -16,12 +16,10 @@
         (newValue)="onColorChange($event)"
         (dragStart)="onDragStart('saturation-lightness')"
         (dragEnd)="onDragEnd('saturation-lightness')"
-        [ngStyle]="{ 
-            backgroundColor: hueSliderColor || ''
-        }">
+        [style.backgroundColor]="hueSliderColor || ''">
         <div class="color-picker__cursor color-picker__cursor--sv"
             [class.color-picker__cursor--light]="svSliderLight"
-            [ngStyle]="{
+            [style]="{
                 top: (slider?.v || 0) * 100 + '%',
                 left: (slider?.s || 0) * 100 + '%'
             }"></div>
@@ -30,9 +28,7 @@
     <div class="color-picker__controls">
         <div class="color-picker__selected">
             <div class="color-picker__selected-color">
-                <div [ngStyle]="{ 
-                    backgroundColor: selectedColor || ''
-                }">@if (presetColorsEditable && !(maxPresetColors && (presetColors?.length || 0) >= maxPresetColors)) {
+                <div [style.backgroundColor]="selectedColor || ''">@if (presetColorsEditable && !(maxPresetColors && (presetColors?.length || 0) >= maxPresetColors)) {
                     <button type="button"
                         title="Add color to preset"
                         i18n-title="@@nxt-color-picker.button.add-color"
@@ -60,9 +56,7 @@
                 (dragEnd)="onDragEnd('hue')">
                 <div class="color-picker__cursor"
                     [class.color-picker__cursor--light]="hueSliderLight"
-                    [ngStyle]="{
-                        left: (slider?.h || 0) * 100 + '%'
-                    }"></div>
+                    [style.left]="(slider?.h || 0) * 100 + '%'"></div>
             </div>
             }
             @if (mode == colorModeInternal.grayscale) {
@@ -74,9 +68,7 @@
                 (dragEnd)="onDragEnd('value')">
                 <div class="color-picker__cursor"
                     [class.color-picker__cursor--light]="valueSliderLight"
-                    [ngStyle]="{
-                        left: (1 - (slider?.v || 0)) * 100 + '%'
-                    }"></div>
+                    [style.left]="(1 - (slider?.v || 0)) * 100 + '%'"></div>
             </div>
             }
             @if (alphaChannel != 'disabled') {
@@ -87,14 +79,10 @@
                 (dragStart)="onDragStart('alpha')"
                 (dragEnd)="onDragEnd('alpha')">
                 <div class="color-picker__slider--alpha-bg"
-                    [ngStyle]="{
-                        backgroundImage: alphaSliderColor || ''
-                    }">
+                    [style.backgroundImage]="alphaSliderColor || ''">
                     <div class="color-picker__cursor"
                         [class.color-picker__cursor--light]="alphaSliderLight"
-                        [ngStyle]="{
-                            left: (slider?.a || 0) * 100 + '%'
-                        }"></div>
+                        [style.left]="(slider?.a || 0) * 100 + '%'"></div>
                 </div>
             </div>
             }
@@ -368,9 +356,7 @@
                 tabindex="0"
                 (keydown.enter)="setColorFromString(color)">
                 <div class="color-picker__preset-item-fill"
-                    [ngStyle]="{ 
-                        backgroundColor: rgba || ''
-                    }">@if (presetColorsEditable) {
+                    [style.backgroundColor]="rgba || ''">@if (presetColorsEditable) {
                     <button type="button"
                         title="Remove Color"
                         i18n-title="@@nxt-color-picker.button.remove-color"
