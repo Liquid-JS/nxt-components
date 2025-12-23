@@ -8,7 +8,7 @@
     "directives": [
         {
             "name": "SortablejsDirective",
-            "id": "directive-SortablejsDirective-b6f37d43c1ca0ca1a1ad9dac57fcdbf68266fc8db2ef55aac4fb1a7e45ff1822bb3f669965a8fb4cd5ad552e9df1b7569c0105af7a7a90b2d258455514cf9a56",
+            "id": "directive-SortablejsDirective-fdf11a4e8c8435c9077aa9f3791b550c15c3d5d94dddfa9f62238243c15da9eacf49c962dd6d92c730038fe1e6871de7ab699116e8e71306163d7b8ad97e235d",
             "file": "src/lib/sortablejs.directive.ts",
             "type": "directive",
             "description": "",
@@ -26,7 +26,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>A function invoked when cloning items from template dataset into target dataset</p>\n",
-                    "line": 43,
+                    "line": 48,
                     "rawdescription": "\nA function invoked when cloning items from template dataset into target dataset",
                     "modifierKind": [
                         148
@@ -41,7 +41,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Sortablejs configuration</p>\n",
-                    "line": 40,
+                    "line": 45,
                     "rawdescription": "\nSortablejs configuration",
                     "modifierKind": [
                         148
@@ -57,7 +57,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Input data, can be Array or FormArray</p>\n",
-                    "line": 29,
+                    "line": 34,
                     "rawdescription": "\nInput data, can be Array or FormArray",
                     "modifierKind": [
                         148
@@ -72,7 +72,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>CSS selector for the sortable container</p>\n<p>Mostly required when used with custom components which wrap items in multiple containers. In that case,\nthis should be the selector for the direct HTML parent of sortable items.</p>\n",
-                    "line": 37,
+                    "line": 42,
                     "rawdescription": "\n\nCSS selector for the sortable container\n\nMostly required when used with custom components which wrap items in multiple containers. In that case,\nthis should be the selector for the direct HTML parent of sortable items.\n",
                     "modifierKind": [
                         148
@@ -83,13 +83,18 @@
             "outputsClass": [
                 {
                     "name": "init",
-                    "defaultValue": "new EventEmitter<Sortable>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nInitialised a new Sortablejs instance",
+                    "type": "Sortable",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Initialised a new Sortablejs instance</p>\n",
-                    "line": 46,
-                    "type": "EventEmitter"
+                    "line": 51,
+                    "rawdescription": "\nInitialised a new Sortablejs instance",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 }
             ],
             "deprecated": false,
@@ -103,93 +108,7 @@
                 "OnChanges",
                 "OnDestroy",
                 "AfterViewInit"
-            ],
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "globalConfig",
-                        "type": "Options | undefined",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "service",
-                        "type": "SortablejsService",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "element",
-                        "type": "ElementRef",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "zone",
-                        "type": "NgZone",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "renderer",
-                        "type": "Renderer2",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 48,
-                "jsdoctags": [
-                    {
-                        "name": "globalConfig",
-                        "type": "Options | undefined",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "service",
-                        "type": "SortablejsService",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "element",
-                        "type": "ElementRef",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "zone",
-                        "type": "NgZone",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "renderer",
-                        "type": "Renderer2",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            }
+            ]
         }
     ],
     "components": [],

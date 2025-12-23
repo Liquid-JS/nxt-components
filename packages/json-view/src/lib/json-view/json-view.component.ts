@@ -23,12 +23,14 @@ export class JsonViewComponent implements AfterViewChecked {
     readonly data = input<any>()
     /** Initial number of levels to be expanded; to expand / collapse the view after initial render, use `expandTo` / `collapseTo` */
     readonly levelOpen = input<number>()
+    /** Custom labels for elements within the hierarcy */
+    readonly levelLabels = input<LevelLabels>()
+
+    /** @internal */
     readonly _levelOpen = linkedSignal({
         source: () => this.levelOpen(),
         computation: level => level
     })
-    /** Custom labels for elements within the hierarcy */
-    readonly levelLabels = input<LevelLabels>()
 
     private readonly expanderService = inject(ExpanderService)
 

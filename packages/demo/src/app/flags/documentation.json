@@ -9,12 +9,13 @@
     "components": [
         {
             "name": "FlagComponent",
-            "id": "component-FlagComponent-b100a4974ea9e81e0199c91e13ac65676d2785315a087bc3ab3e02382bdda16dfe0a82352afa8a502947a1dd5893d009937ea225abdb0dacff267e8ec12c15eb",
+            "id": "component-FlagComponent-566cff1ffe0e73d1bcbfa2eaf5077afef99ce13c07a65395d81b227bb15cd3d9c6d53827d73fd121d12728c8782ec78f5392104368ba315206d4a4c4a5a76cbf",
             "file": "src/lib/flag/flag.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.Emulated"
             ],
             "entryComponents": [],
+            "host": {},
             "inputs": [],
             "outputs": [],
             "providers": [],
@@ -33,31 +34,48 @@
                     "name": "country",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nISO 3166-1-alpha-2 country code",
-                    "description": "<p>ISO 3166-1-alpha-2 country code</p>\n",
-                    "line": 18,
                     "type": "FlagDatabaseKey",
-                    "decorators": []
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>ISO 3166-1-alpha-2 country code</p>\n",
+                    "line": 24,
+                    "rawdescription": "\nISO 3166-1-alpha-2 country code",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "format",
+                    "defaultValue": "FlagFormatEnum.None",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nFlag format",
-                    "description": "<p>Flag format</p>\n",
-                    "line": 31,
                     "type": "FlagFormat",
-                    "decorators": []
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Flag format</p>\n",
+                    "line": 39,
+                    "rawdescription": "\nFlag format",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "size",
+                    "defaultValue": "48",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nFlag width, either value in pixels or FlagSizeAlias",
-                    "description": "<p>Flag width, either value in pixels or FlagSizeAlias</p>\n",
-                    "line": 39,
                     "type": "number | FlagSizeAlias",
-                    "decorators": []
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Flag width, either value in pixels or FlagSizeAlias</p>\n",
+                    "line": 49,
+                    "rawdescription": "\nFlag width, either value in pixels or FlagSizeAlias",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 }
             ],
             "outputsClass": [],
@@ -73,113 +91,7 @@
             "rawdescription": "\n",
             "type": "component",
             "assetsDirs": [],
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 81
-            },
-            "extends": [],
-            "accessors": {
-                "country": {
-                    "name": "country",
-                    "setSignature": {
-                        "name": "country",
-                        "type": "void",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "args": [
-                            {
-                                "name": "val",
-                                "type": "FlagDatabaseKey",
-                                "deprecated": false,
-                                "deprecationMessage": ""
-                            }
-                        ],
-                        "returnType": "void",
-                        "line": 18,
-                        "rawdescription": "\nISO 3166-1-alpha-2 country code",
-                        "description": "<p>ISO 3166-1-alpha-2 country code</p>\n",
-                        "jsdoctags": [
-                            {
-                                "name": "val",
-                                "type": "FlagDatabaseKey",
-                                "deprecated": false,
-                                "deprecationMessage": "",
-                                "tagName": {
-                                    "text": "param"
-                                }
-                            }
-                        ]
-                    }
-                },
-                "format": {
-                    "name": "format",
-                    "setSignature": {
-                        "name": "format",
-                        "type": "void",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "args": [
-                            {
-                                "name": "val",
-                                "type": "FlagFormat",
-                                "deprecated": false,
-                                "deprecationMessage": ""
-                            }
-                        ],
-                        "returnType": "void",
-                        "line": 31,
-                        "rawdescription": "\nFlag format",
-                        "description": "<p>Flag format</p>\n",
-                        "jsdoctags": [
-                            {
-                                "name": "val",
-                                "type": "FlagFormat",
-                                "deprecated": false,
-                                "deprecationMessage": "",
-                                "tagName": {
-                                    "text": "param"
-                                }
-                            }
-                        ]
-                    }
-                },
-                "size": {
-                    "name": "size",
-                    "setSignature": {
-                        "name": "size",
-                        "type": "void",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "args": [
-                            {
-                                "name": "val",
-                                "type": "number | FlagSizeAlias",
-                                "deprecated": false,
-                                "deprecationMessage": ""
-                            }
-                        ],
-                        "returnType": "void",
-                        "line": 39,
-                        "rawdescription": "\nFlag width, either value in pixels or FlagSizeAlias",
-                        "description": "<p>Flag width, either value in pixels or FlagSizeAlias</p>\n",
-                        "jsdoctags": [
-                            {
-                                "name": "val",
-                                "type": "number | FlagSizeAlias",
-                                "deprecated": false,
-                                "deprecationMessage": "",
-                                "tagName": {
-                                    "text": "param"
-                                }
-                            }
-                        ]
-                    }
-                }
-            }
+            "extends": []
         }
     ],
     "modules": [
