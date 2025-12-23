@@ -148,6 +148,10 @@
 
 
 
+            <tr>
+                <td class="col-md-3">host</td>
+                <td class="col-md-9"><code>{<br>}</code></td>
+            </tr>
 
 
 
@@ -214,43 +218,10 @@
 
 
 
-                    <tr>
-                        <td class="col-md-4">
-                            <h6><b>Accessors</b></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <ul class="index-list">
-                                <li>
-                                    <a href="#country" >country</a>
-                                </li>
-                                <li>
-                                    <a href="#format" >format</a>
-                                </li>
-                                <li>
-                                    <a href="#size" >size</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
         </tbody>
     </table>
 </section>
 
-    <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor()</code>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-</section>
 
     <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
@@ -292,6 +263,11 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
+                        <i>Default value : </i><code>FlagFormatEnum.None</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
                         <div class="io-description"><p>Flag format</p>
 </div>
                     </td>
@@ -314,6 +290,11 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
+                        <i>Default value : </i><code>48</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
                         <div class="io-description"><p>Flag width, either value in pixels or FlagSizeAlias</p>
 </div>
                     </td>
@@ -326,179 +307,6 @@
 
 
 
-    <section data-compodoc="block-accessors">
-    <h3 id="accessors">
-        Accessors
-    </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="country"></a>
-                        <span class="name"><b>country</b><a href="#country"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>country(val: <a href="../undefineds/FlagDatabaseKey.html" target="_self">FlagDatabaseKey</a>)</code></span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>ISO 3166-1-alpha-2 country code</p>
-</div>
-
-                                <div class="io-description">
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                        <td>Type</td>
-                                                    <td>Optional</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                            <td>val</td>
-                                                    
-                                                            <td>
-                                                                            <code><a href="../miscellaneous/typealiases.html#FlagDatabaseKey" target="_self" >FlagDatabaseKey</a></code>
-                                                            </td>
-                                                    
-                                                        <td>
-                                                                No
-                                                        </td>
-                                                        
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                                <div>
-                                </div>
-                                <div class="io-description">
-                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                                </div>
-                        </td>
-                    </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="format"></a>
-                        <span class="name"><b>format</b><a href="#format"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>format(val: <a href="../undefineds/FlagFormat.html" target="_self">FlagFormat</a>)</code></span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Flag format</p>
-</div>
-
-                                <div class="io-description">
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                        <td>Type</td>
-                                                    <td>Optional</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                            <td>val</td>
-                                                    
-                                                            <td>
-                                                                            <code><a href="../miscellaneous/typealiases.html#FlagFormat" target="_self" >FlagFormat</a></code>
-                                                            </td>
-                                                    
-                                                        <td>
-                                                                No
-                                                        </td>
-                                                        
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                                <div>
-                                </div>
-                                <div class="io-description">
-                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                                </div>
-                        </td>
-                    </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="size"></a>
-                        <span class="name"><b>size</b><a href="#size"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>size(val: <a href="../undefineds/FlagSizeAlias.html" target="_self">number | FlagSizeAlias</a>)</code></span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Flag width, either value in pixels or FlagSizeAlias</p>
-</div>
-
-                                <div class="io-description">
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                        <td>Type</td>
-                                                    <td>Optional</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                            <td>val</td>
-                                                    
-                                                            <td>
-                                                                            <code><a href="../miscellaneous/typealiases.html#FlagSizeAlias" target="_self" >number | FlagSizeAlias</a></code>
-                                                            </td>
-                                                    
-                                                        <td>
-                                                                No
-                                                        </td>
-                                                        
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                                <div>
-                                </div>
-                                <div class="io-description">
-                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                                </div>
-                        </td>
-                    </tr>
-            </tbody>
-        </table>
-</section>
 </div>
 
 
