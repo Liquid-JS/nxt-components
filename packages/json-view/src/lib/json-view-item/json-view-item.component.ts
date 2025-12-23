@@ -1,8 +1,7 @@
-import { Component, inject, Input, OnDestroy, OnInit, ViewEncapsulation, input, model } from '@angular/core'
-
+import { Component, inject, Input, input, model, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core'
+import { ExpanderService } from '../expander/expander.service'
 import { LevelLabels } from '../utils/interfaces'
 import { isArray, isBoolean, isNumber, isObject, isString, isUndefined } from '../utils/utils'
-import { ExpanderService } from '../expander/expander.service'
 
 /** @internal */
 @Component({

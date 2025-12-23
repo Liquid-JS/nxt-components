@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common'
+import { NgComponentOutlet } from '@angular/common'
 import { Component, Injector, Input, Type, ViewEncapsulation, input } from '@angular/core'
 import { TabsModule } from 'ngx-bootstrap/tabs'
 import { HighlightAutoDirective } from 'nxt-highlightjs'
@@ -63,10 +63,10 @@ export function resolveTempaltes(cfg: LoaderConfig, prefix: string) {
 @Component({
     selector: 'app-example',
     imports: [
-        CommonModule,
         TabsModule,
         HighlightAutoDirective,
-        HighlightLineNumbersDirective
+        HighlightLineNumbersDirective,
+        NgComponentOutlet
     ],
     templateUrl: './example.component.html',
     styleUrls: ['./example.component.scss'],

@@ -13,7 +13,6 @@ import {
     SimpleChange,
     input
 } from '@angular/core'
-
 import { type AbstractControl, type FormArray } from '@angular/forms'
 import Sortable, { Options, SortableEvent } from 'sortablejs'
 import { GLOBALS } from './globals'

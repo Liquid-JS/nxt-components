@@ -1,5 +1,4 @@
 import { CdkTableModule } from '@angular/cdk/table'
-
 import { Component, ViewEncapsulation, input } from '@angular/core'
 
 @Component({

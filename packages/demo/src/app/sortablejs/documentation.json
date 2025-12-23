@@ -8,7 +8,7 @@
     "directives": [
         {
             "name": "SortablejsDirective",
-            "id": "directive-SortablejsDirective-ad63e8b02973b02473ab086b86a80975ce7f485b1b56b659d632a6e648b250aa48f8acf81053ec6b0157e88a222637cb2767b580e08a646d9d73f0f2e17aa3b1",
+            "id": "directive-SortablejsDirective-b6f37d43c1ca0ca1a1ad9dac57fcdbf68266fc8db2ef55aac4fb1a7e45ff1822bb3f669965a8fb4cd5ad552e9df1b7569c0105af7a7a90b2d258455514cf9a56",
             "file": "src/lib/sortablejs.directive.ts",
             "type": "directive",
             "description": "",
@@ -22,41 +22,62 @@
                     "name": "cloneFunction",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nA function invoked when cloning items from template dataset into target dataset",
-                    "description": "<p>A function invoked when cloning items from template dataset into target dataset</p>\n",
-                    "line": 48,
                     "type": "CloneFunction<T>",
-                    "decorators": []
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>A function invoked when cloning items from template dataset into target dataset</p>\n",
+                    "line": 43,
+                    "rawdescription": "\nA function invoked when cloning items from template dataset into target dataset",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "config",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nSortablejs configuration",
-                    "description": "<p>Sortablejs configuration</p>\n",
-                    "line": 44,
                     "type": "Options",
-                    "decorators": []
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Sortablejs configuration</p>\n",
+                    "line": 40,
+                    "rawdescription": "\nSortablejs configuration",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
-                    "name": "nxtSortablejs",
+                    "name": "data",
+                    "defaultValue": "undefined, { alias: 'nxtSortablejs' }",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nInput data, can be Array or FormArray",
-                    "description": "<p>Input data, can be Array or FormArray</p>\n",
-                    "line": 31,
                     "type": "SortableData<T>",
-                    "decorators": []
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Input data, can be Array or FormArray</p>\n",
+                    "line": 29,
+                    "rawdescription": "\nInput data, can be Array or FormArray",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "sortablejsContainer",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nCSS selector for the sortable container\n\nMostly required when used with custom components which wrap items in multiple containers. In that case,\nthis should be the selector for the direct HTML parent of sortable items.\n",
-                    "description": "<p>CSS selector for the sortable container</p>\n<p>Mostly required when used with custom components which wrap items in multiple containers. In that case,\nthis should be the selector for the direct HTML parent of sortable items.</p>\n",
-                    "line": 40,
                     "type": "string",
-                    "decorators": []
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>CSS selector for the sortable container</p>\n<p>Mostly required when used with custom components which wrap items in multiple containers. In that case,\nthis should be the selector for the direct HTML parent of sortable items.</p>\n",
+                    "line": 37,
+                    "rawdescription": "\n\nCSS selector for the sortable container\n\nMostly required when used with custom components which wrap items in multiple containers. In that case,\nthis should be the selector for the direct HTML parent of sortable items.\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 }
             ],
             "outputsClass": [
@@ -67,7 +88,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nInitialised a new Sortablejs instance",
                     "description": "<p>Initialised a new Sortablejs instance</p>\n",
-                    "line": 51,
+                    "line": 46,
                     "type": "EventEmitter"
                 }
             ],
@@ -120,7 +141,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 53,
+                "line": 48,
                 "jsdoctags": [
                     {
                         "name": "globalConfig",

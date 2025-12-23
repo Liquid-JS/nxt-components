@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common'
+import { JsonPipe } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { FormArray, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { SortablejsDirective } from 'nxt-sortablejs'
@@ -11,10 +11,10 @@ import { CodeBlockComponent } from '../../../code-block/code-block.component'
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
         SortablejsDirective,
-        CommonModule,
         CodeBlockComponent,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        JsonPipe
     ]
 })
 export class FormArrayComponent {

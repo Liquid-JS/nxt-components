@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { Component, Injector, OnInit, PendingTasks } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { registerLocale } from 'i18n-iso-countries'
@@ -15,11 +15,11 @@ registerLocale(locl)
     templateUrl: './flags.component.html',
     styleUrls: ['./flags.component.scss'],
     imports: [
-        CommonModule,
         MetaDirective,
         ContentWrapComponent,
         ExampleComponent,
-        RouterModule
+        RouterModule,
+        AsyncPipe
     ]
 })
 export class AppFlagsComponent extends WaitLoad implements OnInit {

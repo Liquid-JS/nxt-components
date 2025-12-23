@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { Component, Injector, OnInit, PendingTasks } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
@@ -12,12 +12,12 @@ import { WaitLoad } from '../../utils/wait-load.class'
     templateUrl: './sortablejs.component.html',
     styleUrls: ['./sortablejs.component.scss'],
     imports: [
-        CommonModule,
         MetaDirective,
         ContentWrapComponent,
         RouterModule,
         ExampleComponent,
-        BsDropdownModule
+        BsDropdownModule,
+        AsyncPipe
     ]
 })
 export class AppSortablejsComponent extends WaitLoad implements OnInit {

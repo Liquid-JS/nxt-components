@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common'
+import { DatePipe } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { DateTimeComponent, DateTimeInputDirective, DateTimeTriggerDirective } from 'nxt-pick-datetime'
@@ -13,7 +13,7 @@ import { DateTimeComponent, DateTimeInputDirective, DateTimeTriggerDirective } f
         DateTimeInputDirective,
         DateTimeComponent,
         FormsModule,
-        CommonModule
+        DatePipe
     ]
 })
 export class ValidateMinMaxComponent {

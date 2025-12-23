@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { Component, Injector, OnInit, PendingTasks, ViewEncapsulation } from '@angular/core'
 import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
 import { ExampleComponent, ExampleConfig } from '../../example/example.component'
@@ -14,7 +14,7 @@ import { WaitLoad } from '../../utils/wait-load.class'
         MetaDirective,
         ContentWrapComponent,
         ExampleComponent,
-        CommonModule
+        AsyncPipe
     ]
 })
 export class CustomAdapterComponent extends WaitLoad implements OnInit {

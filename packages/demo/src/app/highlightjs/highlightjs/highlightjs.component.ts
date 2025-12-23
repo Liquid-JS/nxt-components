@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { Component, Injector, OnInit, PendingTasks, ViewEncapsulation } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
@@ -9,11 +9,11 @@ import { WaitLoad } from '../../utils/wait-load.class'
 @Component({
     selector: 'app-highlightjs',
     imports: [
-        CommonModule,
         MetaDirective,
         ContentWrapComponent,
         ExampleComponent,
-        RouterModule
+        RouterModule,
+        AsyncPipe
     ],
     templateUrl: './highlightjs.component.html',
     styleUrl: './highlightjs.component.scss',

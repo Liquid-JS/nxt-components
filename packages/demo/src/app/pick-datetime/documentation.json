@@ -87,7 +87,7 @@
         },
         {
             "name": "DateTimeInputEvent",
-            "id": "interface-DateTimeInputEvent-b741e1b0597ce0dd297a2aed448aabc368ac9f87ab90fcd652a6244311bf79d9c6c3ae39b7bfd1cfc8962abeba159e77af76c80bf5bc2d4c0222cacb9269e5c7",
+            "id": "interface-DateTimeInputEvent-04c04b616a28f44f520b3b807c2fa7f68946d0aed4918cb89a0ad94041a99d07728d5dd53b6e680c9fe4fcbffd989ea3759a7305bb7f16217bab9fefc60cd6e1",
             "file": "src/lib/date-time/date-time-picker-input.directive.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -3617,7 +3617,7 @@
     "classes": [
         {
             "name": "CalendarCell",
-            "id": "class-CalendarCell-431c72de74c5a7739a00adab54f2dc6b0b1e6f3b17909a0165947775bc9fca3ed74ef6c44b6f1f360ac1b3e45377a74b9e9fa9d7e466bd530ba30066134f8fad",
+            "id": "class-CalendarCell-8b66a02c7a6703844af69f723d1ddd07fba9e9affb65ec2001b9711dc468b248134f194bd26b676dce39db3f370eccf6376a09c6bc2f589a56ba7e0885230443",
             "file": "src/lib/date-time/calendar-body/calendar-body.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -3667,7 +3667,7 @@
                         "defaultValue": "''"
                     }
                 ],
-                "line": 6,
+                "line": 5,
                 "jsdoctags": [
                     {
                         "name": "value",
@@ -3738,7 +3738,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 10,
+                    "line": 9,
                     "modifierKind": [
                         125
                     ]
@@ -3752,7 +3752,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 13,
+                    "line": 12,
                     "modifierKind": [
                         125
                     ]
@@ -3765,7 +3765,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 9,
+                    "line": 8,
                     "modifierKind": [
                         125
                     ]
@@ -3778,7 +3778,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 11,
+                    "line": 10,
                     "modifierKind": [
                         125
                     ]
@@ -3792,7 +3792,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 12,
+                    "line": 11,
                     "modifierKind": [
                         125
                     ]
@@ -3805,7 +3805,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 8,
+                    "line": 7,
                     "modifierKind": [
                         125
                     ]
@@ -6041,7 +6041,7 @@
     "directives": [
         {
             "name": "DateTimeDirective",
-            "id": "directive-DateTimeDirective-0e42441cb6672965b475ee857b40b1c89778903745395d43ddbcb6f172b137c6cd548c1c2e1606d17e0330d368031fea338768dbf82190ed64810401860fbfe4",
+            "id": "directive-DateTimeDirective-68e854004e9f3a7d7ed4cff85bc02d93b9d274cc232d5db5cbf85ec5a4c78043228bea33828b36d1f8a993f19a3255195ab2d12cd869bc972fdc7c6f22f892a9",
             "file": "src/lib/class/date-time.class.ts",
             "type": "directive",
             "description": "",
@@ -6055,88 +6055,121 @@
                     "defaultValue": "0",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nSet the first day of week\n\nValid values are from 0 [Sunday] to 6 [Saturday]\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Set the first day of week</p>\n<p>Valid values are from 0 [Sunday] to 6 [Saturday]</p>\n",
                     "line": 57,
-                    "type": "number",
-                    "decorators": []
+                    "rawdescription": "\n\nSet the first day of week\n\nValid values are from 0 [Sunday] to 6 [Saturday]\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "hideOtherMonths",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nIf true, don't show dates from preious / next month on the calendar month view\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>If true, don&#39;t show dates from preious / next month on the calendar month view</p>\n",
                     "line": 62,
-                    "type": "boolean",
-                    "decorators": []
+                    "rawdescription": "\n\nIf true, don't show dates from preious / next month on the calendar month view\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "hour12Timer",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nWhen true, the timer will be in 12-hour format mode\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>When true, the timer will be in 12-hour format mode</p>\n",
                     "line": 30,
-                    "type": "boolean",
-                    "decorators": []
+                    "rawdescription": "\n\nWhen true, the timer will be in 12-hour format mode\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "showSecondsTimer",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nWhen true, shows a timer to configure the seconds value\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>When true, shows a timer to configure the seconds value</p>\n",
                     "line": 25,
-                    "type": "boolean",
-                    "decorators": []
+                    "rawdescription": "\n\nWhen true, shows a timer to configure the seconds value\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "startView",
                     "defaultValue": "'month'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nThe view that the calendar should start on\n",
+                    "type": "ViewType",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>The view that the calendar should start on</p>\n",
                     "line": 35,
-                    "type": "ViewType",
-                    "decorators": []
+                    "rawdescription": "\n\nThe view that the calendar should start on\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "stepHour",
                     "defaultValue": "1",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nHours to change per step\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Hours to change per step</p>\n",
                     "line": 40,
-                    "type": "number",
-                    "decorators": []
+                    "rawdescription": "\n\nHours to change per step\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "stepMinute",
                     "defaultValue": "1",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nMinutes to change per step\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Minutes to change per step</p>\n",
                     "line": 45,
-                    "type": "number",
-                    "decorators": []
+                    "rawdescription": "\n\nMinutes to change per step\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "stepSecond",
                     "defaultValue": "1",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nSeconds to change per step\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Seconds to change per step</p>\n",
                     "line": 50,
-                    "type": "number",
-                    "decorators": []
+                    "rawdescription": "\n\nSeconds to change per step\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 }
             ],
             "outputsClass": [],
@@ -6497,7 +6530,7 @@
         },
         {
             "name": "DateTimeInputDirective",
-            "id": "directive-DateTimeInputDirective-b741e1b0597ce0dd297a2aed448aabc368ac9f87ab90fcd652a6244311bf79d9c6c3ae39b7bfd1cfc8962abeba159e77af76c80bf5bc2d4c0222cacb9269e5c7",
+            "id": "directive-DateTimeInputDirective-04c04b616a28f44f520b3b807c2fa7f68946d0aed4918cb89a0ad94041a99d07728d5dd53b6e680c9fe4fcbffd989ea3759a7305bb7f16217bab9fefc60cd6e1",
             "file": "src/lib/date-time/date-time-picker-input.directive.ts",
             "type": "directive",
             "description": "",
@@ -6566,17 +6599,6 @@
                     "decorators": []
                 },
                 {
-                    "name": "rangeSeparator",
-                    "defaultValue": "'~'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nThe character to separate the 'from' and 'to' in input value\n",
-                    "description": "<p>The character to separate the &#39;from&#39; and &#39;to&#39; in input value</p>\n",
-                    "line": 135,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
                     "name": "selectMode",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -6590,7 +6612,7 @@
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 139,
+                    "line": 138,
                     "type": "T",
                     "decorators": []
                 },
@@ -6598,9 +6620,24 @@
                     "name": "values",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 161,
+                    "line": 160,
                     "type": "Array<T>",
                     "decorators": []
+                },
+                {
+                    "name": "rangeSeparator",
+                    "defaultValue": "'~'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>The character to separate the &#39;from&#39; and &#39;to&#39; in input value</p>\n",
+                    "line": 134,
+                    "rawdescription": "\n\nThe character to separate the 'from' and 'to' in input value\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 }
             ],
             "outputsClass": [
@@ -6611,7 +6648,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCallback to invoke when `change` event is fired on this `<input>`\n",
                     "description": "<p>Callback to invoke when <code>change</code> event is fired on this <code>&lt;input&gt;</code></p>\n",
-                    "line": 191,
+                    "line": 190,
                     "type": "EventEmitter"
                 },
                 {
@@ -6621,7 +6658,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCallback to invoke when an `input` event is fired on this `<input>`.\n",
                     "description": "<p>Callback to invoke when an <code>input</code> event is fired on this <code>&lt;input&gt;</code>.</p>\n",
-                    "line": 197,
+                    "line": 196,
                     "type": "EventEmitter"
                 }
             ],
@@ -6644,7 +6681,7 @@
                     ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 481
+                    "line": 480
                 },
                 {
                     "name": "change",
@@ -6661,7 +6698,7 @@
                     ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 498
+                    "line": 497
                 },
                 {
                     "name": "input",
@@ -6678,7 +6715,7 @@
                     ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 486
+                    "line": 485
                 },
                 {
                     "name": "keydown",
@@ -6697,7 +6734,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nOpen the picker when user hold alt + ArrowDown\n",
                     "description": "<p>Open the picker when user hold alt + ArrowDown</p>\n",
-                    "line": 473
+                    "line": 472
                 }
             ],
             "propertiesClass": [
@@ -6710,7 +6747,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits when the disabled state has changed</p>\n",
-                    "line": 354,
+                    "line": 353,
                     "rawdescription": "\nEmits when the disabled state has changed",
                     "modifierKind": [
                         148
@@ -6724,7 +6761,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "<p>The date-time-picker that this input is associated with</p>\n",
-                    "line": 216,
+                    "line": 215,
                     "rawdescription": "\nThe date-time-picker that this input is associated with"
                 },
                 {
@@ -6736,7 +6773,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits when the value changes (either due to user input or programmatic change)</p>\n",
-                    "line": 351,
+                    "line": 350,
                     "rawdescription": "\nEmits when the value changes (either due to user input or programmatic change)",
                     "modifierKind": [
                         148
@@ -6750,7 +6787,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 517,
+                    "line": 516,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the native input property 'value'\n",
@@ -6769,7 +6806,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 481,
+                    "line": 480,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -6806,7 +6843,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 498,
+                    "line": 497,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -6843,7 +6880,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 486,
+                    "line": 485,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -6880,7 +6917,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 473,
+                    "line": 472,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nOpen the picker when user hold alt + ArrowDown\n",
@@ -6912,7 +6949,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 406,
+                    "line": 405,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6922,7 +6959,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 431,
+                    "line": 430,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6932,7 +6969,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 398,
+                    "line": 397,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6949,7 +6986,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 449,
+                    "line": 448,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -6977,7 +7014,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 453,
+                    "line": 452,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7006,7 +7043,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 465,
+                    "line": 464,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7035,7 +7072,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 457,
+                    "line": 456,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7063,7 +7100,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 461,
+                    "line": 460,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7091,7 +7128,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 440,
+                    "line": 439,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7146,7 +7183,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 384,
+                "line": 383,
                 "jsdoctags": [
                     {
                         "name": "elmRef",
@@ -7425,7 +7462,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 143,
+                        "line": 142,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -7442,7 +7479,7 @@
                         "name": "value",
                         "type": "",
                         "returnType": "",
-                        "line": 139
+                        "line": 138
                     }
                 },
                 "values": {
@@ -7461,7 +7498,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 165,
+                        "line": 164,
                         "jsdoctags": [
                             {
                                 "name": "values",
@@ -7478,7 +7515,7 @@
                         "name": "values",
                         "type": "",
                         "returnType": "",
-                        "line": 161
+                        "line": 160
                     }
                 },
                 "elementRef": {
@@ -7487,7 +7524,7 @@
                         "name": "elementRef",
                         "type": "",
                         "returnType": "",
-                        "line": 199
+                        "line": 198
                     }
                 },
                 "isInSingleMode": {
@@ -7496,7 +7533,7 @@
                         "name": "isInSingleMode",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 203
+                        "line": 202
                     }
                 },
                 "isInRangeMode": {
@@ -7505,14 +7542,14 @@
                         "name": "isInRangeMode",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 207
+                        "line": 206
                     }
                 }
             }
         },
         {
             "name": "DateTimeTriggerDirective",
-            "id": "directive-DateTimeTriggerDirective-d59cfe568513b5bb875272a59ba01cba425115f5d7bebd45c4e60c4466c915249de281abeb080b118452d3080d99b4bc4ef7a6b04c5fb455f55af207ce5b2f3c",
+            "id": "directive-DateTimeTriggerDirective-195962cb0219900f75c24f58fa7326b5edd02a5ff5782ed3354c9f14f394093db6f9e71595fdc92b0e2890aa82b27bf57ca5a8bba204cb1703db9e2e80a15098",
             "file": "src/lib/date-time/date-time-picker-trigger.directive.ts",
             "type": "directive",
             "description": "",
@@ -7526,17 +7563,24 @@
                     "name": "disabled",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "boolean",
                     "decorators": []
                 },
                 {
-                    "name": "nxtDateTimeTrigger",
+                    "name": "dtPicker",
+                    "defaultValue": "undefined, { alias: 'nxtDateTimeTrigger' }",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 11,
                     "type": "DateTimeComponent<T>",
-                    "decorators": []
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 }
             ],
             "outputsClass": [],
@@ -7559,7 +7603,7 @@
                     ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 54
+                    "line": 53
                 }
             ],
             "propertiesClass": [],
@@ -7577,7 +7621,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 54,
+                    "line": 53,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -7607,7 +7651,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 43,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -7624,7 +7668,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 37,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7645,7 +7689,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 47,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -7655,7 +7699,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 35,
+                    "line": 34,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -7680,7 +7724,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 29,
+                "line": 28,
                 "jsdoctags": [
                     {
                         "name": "changeDetector",
@@ -7710,7 +7754,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 19,
+                        "line": 18,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -7727,7 +7771,7 @@
                         "name": "disabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 15
+                        "line": 14
                     }
                 }
             }
@@ -7736,7 +7780,7 @@
     "components": [
         {
             "name": "CalendarComponent",
-            "id": "component-CalendarComponent-1e345b313b81fc43decfb31155f2ce1124bfac0d54f45d6cb32f86dc31271f287ad7f66cd389362dabdec6fed2c12e5cf36aee035d0c5afe0841af161286b181",
+            "id": "component-CalendarComponent-8fc4d7c01c9c6c4d29cbd34cf0ef19eafae982a8affee863f0c3fcacfb598368a8963bdc24ac5f2885ba323765236f6c2d8637bc04d4a358c50867c686f2964c",
             "file": "src/lib/date-time/calendar/calendar.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -7756,42 +7800,10 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "dateTimeFilter",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nDate filter for the month and year view\n",
-                    "description": "<p>Date filter for the month and year view</p>\n",
-                    "line": 31,
-                    "type": "DateFilter<T>",
-                    "decorators": []
-                },
-                {
-                    "name": "firstDayOfWeek",
-                    "defaultValue": "0",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nSet the first day of week\n",
-                    "description": "<p>Set the first day of week</p>\n",
-                    "line": 37,
-                    "type": "number",
-                    "decorators": []
-                },
-                {
-                    "name": "hideOtherMonths",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nWhether to hide dates in other months at the start or end of the current month\n",
-                    "description": "<p>Whether to hide dates in other months at the start or end of the current month</p>\n",
-                    "line": 130,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
                     "name": "max",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 62,
+                    "line": 60,
                     "type": "T",
                     "decorators": []
                 },
@@ -7799,7 +7811,7 @@
                     "name": "min",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 42,
+                    "line": 40,
                     "type": "T",
                     "decorators": []
                 },
@@ -7807,7 +7819,7 @@
                     "name": "pickerMoment",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 82,
+                    "line": 80,
                     "type": "T",
                     "decorators": []
                 },
@@ -7815,7 +7827,7 @@
                     "name": "selected",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 98,
+                    "line": 95,
                     "type": "T",
                     "decorators": []
                 },
@@ -7823,28 +7835,85 @@
                     "name": "selecteds",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 109,
+                    "line": 106,
                     "type": "Array<T>",
                     "decorators": []
+                },
+                {
+                    "name": "dateTimeFilter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DateFilter<T>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Date filter for the month and year view</p>\n",
+                    "line": 30,
+                    "rawdescription": "\n\nDate filter for the month and year view\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "firstDayOfWeek",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Set the first day of week</p>\n",
+                    "line": 35,
+                    "rawdescription": "\n\nSet the first day of week\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "hideOtherMonths",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Whether to hide dates in other months at the start or end of the current month</p>\n",
+                    "line": 125,
+                    "rawdescription": "\n\nWhether to hide dates in other months at the start or end of the current month\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "selectMode",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 93,
                     "type": "SelectMode",
-                    "decorators": []
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 90,
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "startView",
                     "defaultValue": "'month'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nThe view that the calendar should start in\n",
-                    "description": "<p>The view that the calendar should start in</p>\n",
-                    "line": 124,
                     "type": "\"month\" | \"year\" | \"multi-years\"",
-                    "decorators": []
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>The view that the calendar should start in</p>\n",
+                    "line": 120,
+                    "rawdescription": "\n\nThe view that the calendar should start in\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 }
             ],
             "outputsClass": [
@@ -7855,7 +7924,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits the selected month\n\nThis doesn't imply a change on the selected date.\n",
                     "description": "<p>Emits the selected month</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 158,
+                    "line": 153,
                     "type": "EventEmitter"
                 },
                 {
@@ -7865,7 +7934,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nEmits when the currently picker moment changes",
                     "description": "<p>Emits when the currently picker moment changes</p>\n",
-                    "line": 134,
+                    "line": 129,
                     "type": "EventEmitter"
                 },
                 {
@@ -7875,7 +7944,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nEmits when the currently selected date changes",
                     "description": "<p>Emits when the currently selected date changes</p>\n",
-                    "line": 138,
+                    "line": 133,
                     "type": "EventEmitter"
                 },
                 {
@@ -7885,7 +7954,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nEmits when any date is selected",
                     "description": "<p>Emits when any date is selected</p>\n",
-                    "line": 142,
+                    "line": 137,
                     "type": "EventEmitter"
                 },
                 {
@@ -7895,7 +7964,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits the selected year\n\nThis doesn't imply a change on the selected date.\n",
                     "description": "<p>Emits the selected year</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 150,
+                    "line": 145,
                     "type": "EventEmitter"
                 }
             ],
@@ -7909,7 +7978,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Date filter for the month and year view</p>\n",
-                    "line": 226,
+                    "line": 222,
                     "rawdescription": "\n\nDate filter for the month and year view\n"
                 }
             ],
@@ -7928,7 +7997,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 316,
+                    "line": 315,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7950,7 +8019,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 379,
+                    "line": 378,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFocus to the host element\n",
@@ -7975,7 +8044,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 332,
+                    "line": 331,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nChange the pickerMoment value and switch to a specific view\n",
@@ -8014,7 +8083,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 344,
+                    "line": 343,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nChange the pickerMoment value\n",
@@ -8037,7 +8106,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 370,
+                    "line": 369,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nWhether the next period button is enabled.\n",
@@ -8049,7 +8118,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 308,
+                    "line": 307,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandles user clicks on the next button.\n",
@@ -8061,7 +8130,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 270,
+                    "line": 269,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -8071,7 +8140,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 274,
+                    "line": 273,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -8081,7 +8150,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 281,
+                    "line": 280,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -8091,7 +8160,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 268,
+                    "line": 267,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -8101,7 +8170,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 361,
+                    "line": 360,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nWhether the previous period button is enabled.\n",
@@ -8113,7 +8182,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 297,
+                    "line": 296,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandles user clicks on the previous button.\n",
@@ -8132,7 +8201,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 396,
+                    "line": 395,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -8160,7 +8229,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 392,
+                    "line": 391,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -8181,7 +8250,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 289,
+                    "line": 288,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nToggle between month view and year view\n",
@@ -8193,7 +8262,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 354,
+                    "line": 353,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -8268,7 +8337,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 252,
+                "line": 251,
                 "jsdoctags": [
                     {
                         "name": "elmRef",
@@ -8350,7 +8419,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 46,
+                        "line": 44,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -8367,7 +8436,7 @@
                         "name": "min",
                         "type": "",
                         "returnType": "",
-                        "line": 42
+                        "line": 40
                     }
                 },
                 "max": {
@@ -8386,7 +8455,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 66,
+                        "line": 64,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -8403,7 +8472,7 @@
                         "name": "max",
                         "type": "",
                         "returnType": "",
-                        "line": 62
+                        "line": 60
                     }
                 },
                 "pickerMoment": {
@@ -8422,7 +8491,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 86,
+                        "line": 84,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -8439,7 +8508,7 @@
                         "name": "pickerMoment",
                         "type": "",
                         "returnType": "",
-                        "line": 82
+                        "line": 80
                     }
                 },
                 "selected": {
@@ -8458,7 +8527,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 102,
+                        "line": 99,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -8475,7 +8544,7 @@
                         "name": "selected",
                         "type": "",
                         "returnType": "",
-                        "line": 98
+                        "line": 95
                     }
                 },
                 "selecteds": {
@@ -8494,7 +8563,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 113,
+                        "line": 110,
                         "jsdoctags": [
                             {
                                 "name": "values",
@@ -8511,7 +8580,7 @@
                         "name": "selecteds",
                         "type": "",
                         "returnType": "",
-                        "line": 109
+                        "line": 106
                     }
                 },
                 "periodButtonText": {
@@ -8520,7 +8589,7 @@
                         "name": "periodButtonText",
                         "type": "string",
                         "returnType": "string",
-                        "line": 160
+                        "line": 155
                     }
                 },
                 "periodButtonLabel": {
@@ -8529,7 +8598,7 @@
                         "name": "periodButtonLabel",
                         "type": "string",
                         "returnType": "string",
-                        "line": 169
+                        "line": 164
                     }
                 },
                 "prevButtonLabel": {
@@ -8538,7 +8607,7 @@
                         "name": "prevButtonLabel",
                         "type": "",
                         "returnType": "",
-                        "line": 175
+                        "line": 170
                     }
                 },
                 "nextButtonLabel": {
@@ -8547,7 +8616,7 @@
                         "name": "nextButtonLabel",
                         "type": "",
                         "returnType": "",
-                        "line": 184
+                        "line": 179
                     }
                 },
                 "currentView": {
@@ -8566,7 +8635,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 198,
+                        "line": 193,
                         "jsdoctags": [
                             {
                                 "name": "view",
@@ -8583,7 +8652,7 @@
                         "name": "currentView",
                         "type": "",
                         "returnType": "",
-                        "line": 194
+                        "line": 189
                     }
                 },
                 "isInSingleMode": {
@@ -8592,7 +8661,7 @@
                         "name": "isInSingleMode",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 203
+                        "line": 198
                     }
                 },
                 "isInRangeMode": {
@@ -8601,7 +8670,7 @@
                         "name": "isInRangeMode",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 207
+                        "line": 202
                     }
                 },
                 "showControlArrows": {
@@ -8610,7 +8679,7 @@
                         "name": "showControlArrows",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 215
+                        "line": 211
                     }
                 },
                 "isMonthView": {
@@ -8619,14 +8688,14 @@
                         "name": "isMonthView",
                         "type": "",
                         "returnType": "",
-                        "line": 219
+                        "line": 215
                     }
                 }
             }
         },
         {
             "name": "DateTimeComponent",
-            "id": "component-DateTimeComponent-41ee25d311a622674802b7e4c1d9e89ab47c2afd5d2cff0e2ea5b0016b12f2c19c6858f14ce1961c488edbc58ca096f9e05fa7eaf71d9fd445bdd3cf4670a678",
+            "id": "component-DateTimeComponent-43052a4cde04aedc376357278fa461e084fad45733c50959660879a6eac60921979a083967661d8760bab3954b2f5e58fb3aff4d989c6168e607a7b06aa2ee34",
             "file": "src/lib/date-time/date-time-picker/date-time-picker.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -8646,22 +8715,12 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "backdropClass",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nCustom class for the picker backdrop",
-                    "description": "<p>Custom class for the picker backdrop</p>\n",
-                    "line": 34,
-                    "type": "string | string[]",
-                    "decorators": []
-                },
-                {
                     "name": "disabled",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nWhether the date time picker should be disabled",
                     "description": "<p>Whether the date time picker should be disabled</p>\n",
-                    "line": 120,
+                    "line": 118,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -8671,18 +8730,8 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nWhether the calendar is open",
                     "description": "<p>Whether the calendar is open</p>\n",
-                    "line": 135,
+                    "line": 133,
                     "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "panelClass",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nCustom class for the picker overlay pane",
-                    "description": "<p>Custom class for the picker overlay pane</p>\n",
-                    "line": 38,
-                    "type": "string | string[]",
                     "decorators": []
                 },
                 {
@@ -8691,7 +8740,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe style the picker would open as\n\n-    `'popup'` - display picker attached to the trigger element\n-    `'dialog'` - display picker as a dialog\n",
                     "description": "<p>The style the picker would open as</p>\n<ul>\n<li><code>&#39;popup&#39;</code> - display picker attached to the trigger element</li>\n<li><code>&#39;dialog&#39;</code> - display picker as a dialog</li>\n</ul>\n",
-                    "line": 105,
+                    "line": 103,
                     "type": "PickerMode",
                     "decorators": []
                 },
@@ -8701,18 +8750,8 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the type of the dateTime picker\n\n-    `'both'` - show both calendar and timer\n-    `'calendar'` - show only calendar\n-    `'timer'` - show only timer\n",
                     "description": "<p>Set the type of the dateTime picker</p>\n<ul>\n<li><code>&#39;both&#39;</code> - show both calendar and timer</li>\n<li><code>&#39;calendar&#39;</code> - show only calendar</li>\n<li><code>&#39;timer&#39;</code> - show only timer</li>\n</ul>\n",
-                    "line": 84,
+                    "line": 82,
                     "type": "PickerType",
-                    "decorators": []
-                },
-                {
-                    "name": "scrollStrategy",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nThe scroll strategy when the picker is open (see [CDK documentation](https://material.angular.io/cdk/overlay/overview#scroll-strategies))\n",
-                    "description": "<p>The scroll strategy when the picker is open (see <a href=\"https://material.angular.io/cdk/overlay/overview#scroll-strategies\">CDK documentation</a>)</p>\n",
-                    "line": 150,
-                    "type": "ScrollStrategy",
                     "decorators": []
                 },
                 {
@@ -8721,20 +8760,69 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe date to show when picker opens\n\nDefaults to selected date (if available) or current date.\n",
                     "description": "<p>The date to show when picker opens</p>\n<p>Defaults to selected date (if available) or current date.</p>\n",
-                    "line": 47,
+                    "line": 45,
                     "type": "T",
                     "decorators": []
+                },
+                {
+                    "name": "backdropClass",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | string[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Custom class for the picker backdrop</p>\n",
+                    "line": 33,
+                    "rawdescription": "\nCustom class for the picker backdrop",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "panelClass",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | string[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Custom class for the picker overlay pane</p>\n",
+                    "line": 36,
+                    "rawdescription": "\nCustom class for the picker overlay pane",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "scrollStrategy",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ScrollStrategy",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>The scroll strategy when the picker is open (see <a href=\"https://material.angular.io/cdk/overlay/overview#scroll-strategies\">CDK documentation</a>)</p>\n",
+                    "line": 147,
+                    "rawdescription": "\n\nThe scroll strategy when the picker is open (see [CDK documentation](https://material.angular.io/cdk/overlay/overview#scroll-strategies))\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "firstDayOfWeek",
                     "defaultValue": "0",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nSet the first day of week\n\nValid values are from 0 [Sunday] to 6 [Saturday]\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Set the first day of week</p>\n<p>Valid values are from 0 [Sunday] to 6 [Saturday]</p>\n",
                     "line": 57,
-                    "type": "number",
-                    "decorators": [],
+                    "rawdescription": "\n\nSet the first day of week\n\nValid values are from 0 [Sunday] to 6 [Saturday]\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -8744,11 +8832,15 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nIf true, don't show dates from preious / next month on the calendar month view\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>If true, don&#39;t show dates from preious / next month on the calendar month view</p>\n",
                     "line": 62,
-                    "type": "boolean",
-                    "decorators": [],
+                    "rawdescription": "\n\nIf true, don't show dates from preious / next month on the calendar month view\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -8758,11 +8850,15 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nWhen true, the timer will be in 12-hour format mode\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>When true, the timer will be in 12-hour format mode</p>\n",
                     "line": 30,
-                    "type": "boolean",
-                    "decorators": [],
+                    "rawdescription": "\n\nWhen true, the timer will be in 12-hour format mode\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -8772,11 +8868,15 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nWhen true, shows a timer to configure the seconds value\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>When true, shows a timer to configure the seconds value</p>\n",
                     "line": 25,
-                    "type": "boolean",
-                    "decorators": [],
+                    "rawdescription": "\n\nWhen true, shows a timer to configure the seconds value\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -8786,11 +8886,16 @@
                     "defaultValue": "'month'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nThe view that the calendar should start on\n",
+                    "type": "ViewType",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>The view that the calendar should start on</p>\n",
                     "line": 35,
-                    "type": "ViewType",
-                    "decorators": [],
+                    "rawdescription": "\n\nThe view that the calendar should start on\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -8800,11 +8905,15 @@
                     "defaultValue": "1",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nHours to change per step\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Hours to change per step</p>\n",
                     "line": 40,
-                    "type": "number",
-                    "decorators": [],
+                    "rawdescription": "\n\nHours to change per step\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -8814,11 +8923,15 @@
                     "defaultValue": "1",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nMinutes to change per step\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Minutes to change per step</p>\n",
                     "line": 45,
-                    "type": "number",
-                    "decorators": [],
+                    "rawdescription": "\n\nMinutes to change per step\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -8828,11 +8941,15 @@
                     "defaultValue": "1",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nSeconds to change per step\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Seconds to change per step</p>\n",
                     "line": 50,
-                    "type": "number",
-                    "decorators": [],
+                    "rawdescription": "\n\nSeconds to change per step\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -8846,7 +8963,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCallback when the picker is closed\n",
                     "description": "<p>Callback when the picker is closed</p>\n",
-                    "line": 164,
+                    "line": 161,
                     "type": "EventEmitter"
                 },
                 {
@@ -8856,7 +8973,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits when picker open state changes\n",
                     "description": "<p>Emits when picker open state changes</p>\n",
-                    "line": 186,
+                    "line": 183,
                     "type": "EventEmitter"
                 },
                 {
@@ -8866,7 +8983,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits selected month in year view\n\nThis doesn't imply a change on the selected date.\n",
                     "description": "<p>Emits selected month in year view</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 180,
+                    "line": 177,
                     "type": "EventEmitter"
                 },
                 {
@@ -8876,7 +8993,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCallback when the picker is opened\n",
                     "description": "<p>Callback when the picker is opened</p>\n",
-                    "line": 157,
+                    "line": 154,
                     "type": "EventEmitter"
                 },
                 {
@@ -8886,7 +9003,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits selected year in multi-year view\n\nThis doesn't imply a change on the selected date.\n",
                     "description": "<p>Emits selected year in multi-year view</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 172,
+                    "line": 169,
                     "type": "EventEmitter"
                 }
             ],
@@ -8900,7 +9017,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emit when the selected value has been confirmed</p>\n",
-                    "line": 191,
+                    "line": 188,
                     "rawdescription": "\n\nEmit when the selected value has been confirmed\n",
                     "modifierKind": [
                         148
@@ -8915,7 +9032,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits when the date time picker is disabled</p>\n",
-                    "line": 196,
+                    "line": 193,
                     "rawdescription": "\n\nEmits when the date time picker is disabled\n",
                     "modifierKind": [
                         148
@@ -8993,7 +9110,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 421,
+                    "line": 418,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHide the picker\n",
@@ -9013,7 +9130,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 479,
+                    "line": 476,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nConfirm the selected value\n",
@@ -9037,7 +9154,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 285,
+                    "line": 282,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9047,7 +9164,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 283,
+                    "line": 280,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9057,7 +9174,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 313,
+                    "line": 310,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9065,7 +9182,7 @@
                     "name": "registerInput",
                     "args": [
                         {
-                            "name": "input",
+                            "name": "inputDirective",
                             "type": "DateTimeInputDirective<T>",
                             "deprecated": false,
                             "deprecationMessage": ""
@@ -9074,12 +9191,12 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 296,
+                    "line": 293,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "name": "input",
+                            "name": "inputDirective",
                             "type": "DateTimeInputDirective<T>",
                             "deprecated": false,
                             "deprecationMessage": "",
@@ -9102,7 +9219,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 374,
+                    "line": 371,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSelects the given date\n",
@@ -9135,7 +9252,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 414,
+                    "line": 411,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits selected month in year view\n",
@@ -9168,7 +9285,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 407,
+                    "line": 404,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits the selected year in multi-year view\n",
@@ -9297,7 +9414,7 @@
                         "optional": true
                     }
                 ],
-                "line": 261,
+                "line": 258,
                 "jsdoctags": [
                     {
                         "name": "overlay",
@@ -9408,7 +9525,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 69,
+                        "line": 67,
                         "jsdoctags": [
                             {
                                 "name": "date",
@@ -9425,7 +9542,7 @@
                         "name": "startAt",
                         "type": "",
                         "returnType": "",
-                        "line": 47,
+                        "line": 45,
                         "rawdescription": "\n\nThe date to show when picker opens\n\nDefaults to selected date (if available) or current date.\n",
                         "description": "<p>The date to show when picker opens</p>\n<p>Defaults to selected date (if available) or current date.</p>\n"
                     }
@@ -9446,7 +9563,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 88,
+                        "line": 86,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -9463,7 +9580,7 @@
                         "name": "pickerType",
                         "type": "",
                         "returnType": "PickerType",
-                        "line": 84,
+                        "line": 82,
                         "rawdescription": "\n\nSet the type of the dateTime picker\n\n-    `'both'` - show both calendar and timer\n-    `'calendar'` - show only calendar\n-    `'timer'` - show only timer\n",
                         "description": "<p>Set the type of the dateTime picker</p>\n<ul>\n<li><code>&#39;both&#39;</code> - show both calendar and timer</li>\n<li><code>&#39;calendar&#39;</code> - show only calendar</li>\n<li><code>&#39;timer&#39;</code> - show only timer</li>\n</ul>\n"
                     }
@@ -9484,7 +9601,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 109,
+                        "line": 107,
                         "jsdoctags": [
                             {
                                 "name": "mode",
@@ -9501,7 +9618,7 @@
                         "name": "pickerMode",
                         "type": "",
                         "returnType": "",
-                        "line": 105,
+                        "line": 103,
                         "rawdescription": "\n\nThe style the picker would open as\n\n-    `'popup'` - display picker attached to the trigger element\n-    `'dialog'` - display picker as a dialog\n",
                         "description": "<p>The style the picker would open as</p>\n<ul>\n<li><code>&#39;popup&#39;</code> - display picker attached to the trigger element</li>\n<li><code>&#39;dialog&#39;</code> - display picker as a dialog</li>\n</ul>\n"
                     }
@@ -9522,7 +9639,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 124,
+                        "line": 122,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -9539,7 +9656,7 @@
                         "name": "disabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 120,
+                        "line": 118,
                         "rawdescription": "\nWhether the date time picker should be disabled",
                         "description": "<p>Whether the date time picker should be disabled</p>\n"
                     }
@@ -9560,7 +9677,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 139,
+                        "line": 137,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -9577,7 +9694,7 @@
                         "name": "isOpen",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 135,
+                        "line": 133,
                         "rawdescription": "\nWhether the calendar is open",
                         "description": "<p>Whether the calendar is open</p>\n"
                     }
@@ -9588,7 +9705,7 @@
                         "name": "dtInput",
                         "type": "",
                         "returnType": "",
-                        "line": 213
+                        "line": 210
                     }
                 },
                 "selected": {
@@ -9607,7 +9724,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 222,
+                        "line": 219,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -9624,7 +9741,7 @@
                         "name": "selected",
                         "type": "",
                         "returnType": "",
-                        "line": 218
+                        "line": 215
                     }
                 },
                 "selecteds": {
@@ -9643,7 +9760,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 232,
+                        "line": 229,
                         "jsdoctags": [
                             {
                                 "name": "values",
@@ -9660,7 +9777,7 @@
                         "name": "selecteds",
                         "type": "",
                         "returnType": "",
-                        "line": 228
+                        "line": 225
                     }
                 },
                 "min": {
@@ -9669,7 +9786,7 @@
                         "name": "min",
                         "type": "",
                         "returnType": "",
-                        "line": 238,
+                        "line": 235,
                         "rawdescription": "\nThe minimum selectable date",
                         "description": "<p>The minimum selectable date</p>\n"
                     }
@@ -9680,7 +9797,7 @@
                         "name": "max",
                         "type": "",
                         "returnType": "",
-                        "line": 243,
+                        "line": 240,
                         "rawdescription": "\nThe maximum selectable date",
                         "description": "<p>The maximum selectable date</p>\n"
                     }
@@ -9691,7 +9808,7 @@
                         "name": "dateTimeFilter",
                         "type": "",
                         "returnType": "",
-                        "line": 247
+                        "line": 244
                     }
                 },
                 "selectMode": {
@@ -9700,7 +9817,7 @@
                         "name": "selectMode",
                         "type": "",
                         "returnType": "",
-                        "line": 251
+                        "line": 248
                     }
                 },
                 "isInSingleMode": {
@@ -9709,7 +9826,7 @@
                         "name": "isInSingleMode",
                         "type": "",
                         "returnType": "",
-                        "line": 255
+                        "line": 252
                     }
                 },
                 "isInRangeMode": {
@@ -9718,14 +9835,14 @@
                         "name": "isInRangeMode",
                         "type": "",
                         "returnType": "",
-                        "line": 259
+                        "line": 256
                     }
                 }
             }
         },
         {
             "name": "DateTimeInlineComponent",
-            "id": "component-DateTimeInlineComponent-05ccc72ca550e7362e97d2fa7d7ab06c9bfbd5699510e534654bcd3414133660925a1086c81bf78ce025a1c56f966f39496daf3fc28c4bce5e223a6e2c74c731",
+            "id": "component-DateTimeInlineComponent-7bdf095500c631437a2642de96432d9028d80bc4bc1087a99dfbb0f1a25600f8927ebddc85dd928fdd9e68b221b4ebcb8f00d5294a75e15e4ed5cfb5fa8f889d",
             "file": "src/lib/date-time/date-time-inline/date-time-inline.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -9754,7 +9871,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nA function to filter available date & time",
                     "description": "<p>A function to filter available date &amp; time</p>\n",
-                    "line": 123,
+                    "line": 122,
                     "type": "any",
                     "decorators": []
                 },
@@ -9764,7 +9881,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nWhether the date time picker should be disabled",
                     "description": "<p>Whether the date time picker should be disabled</p>\n",
-                    "line": 53,
+                    "line": 52,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -9774,7 +9891,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nThe maximum valid date",
                     "description": "<p>The maximum valid date</p>\n",
-                    "line": 146,
+                    "line": 145,
                     "type": "T | undefined",
                     "decorators": []
                 },
@@ -9784,7 +9901,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nThe minimum valid date",
                     "description": "<p>The minimum valid date</p>\n",
-                    "line": 134,
+                    "line": 133,
                     "type": "T | undefined",
                     "decorators": []
                 },
@@ -9794,7 +9911,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the type of the dateTime picker\n\n-    `'both'` - show both calendar and timer\n-    `'calendar'` - show only calendar\n-    `'timer'` - show only timer\n",
                     "description": "<p>Set the type of the dateTime picker</p>\n<ul>\n<li><code>&#39;both&#39;</code> - show both calendar and timer</li>\n<li><code>&#39;calendar&#39;</code> - show only calendar</li>\n<li><code>&#39;timer&#39;</code> - show only timer</li>\n</ul>\n",
-                    "line": 40,
+                    "line": 39,
                     "type": "PickerType",
                     "decorators": []
                 },
@@ -9804,7 +9921,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe picker select mode\n\n-    `'single'` - select a single date\n-    `'range'` - select a range [from, to]\n-    `'rangeFrom'` - an open range with a fixed start date\n-    `'rangeTo'` - an open range with a fixed end date\n",
                     "description": "<p>The picker select mode</p>\n<ul>\n<li><code>&#39;single&#39;</code> - select a single date</li>\n<li><code>&#39;range&#39;</code> - select a range [from, to]</li>\n<li><code>&#39;rangeFrom&#39;</code> - an open range with a fixed start date</li>\n<li><code>&#39;rangeTo&#39;</code> - an open range with a fixed end date</li>\n</ul>\n",
-                    "line": 71,
+                    "line": 70,
                     "type": "SelectMode",
                     "decorators": []
                 },
@@ -9814,7 +9931,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe date to show when picker opens\n\nDefaults to selected date (if available) or current date.\n",
                     "description": "<p>The date to show when picker opens</p>\n<p>Defaults to selected date (if available) or current date.</p>\n",
-                    "line": 95,
+                    "line": 94,
                     "type": "T",
                     "decorators": []
                 },
@@ -9822,7 +9939,7 @@
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 157,
+                    "line": 156,
                     "type": "T",
                     "decorators": []
                 },
@@ -9830,7 +9947,7 @@
                     "name": "values",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 170,
+                    "line": 169,
                     "type": "any",
                     "decorators": []
                 },
@@ -9839,11 +9956,15 @@
                     "defaultValue": "0",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nSet the first day of week\n\nValid values are from 0 [Sunday] to 6 [Saturday]\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Set the first day of week</p>\n<p>Valid values are from 0 [Sunday] to 6 [Saturday]</p>\n",
                     "line": 57,
-                    "type": "number",
-                    "decorators": [],
+                    "rawdescription": "\n\nSet the first day of week\n\nValid values are from 0 [Sunday] to 6 [Saturday]\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -9853,11 +9974,15 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nIf true, don't show dates from preious / next month on the calendar month view\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>If true, don&#39;t show dates from preious / next month on the calendar month view</p>\n",
                     "line": 62,
-                    "type": "boolean",
-                    "decorators": [],
+                    "rawdescription": "\n\nIf true, don't show dates from preious / next month on the calendar month view\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -9867,11 +9992,15 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nWhen true, the timer will be in 12-hour format mode\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>When true, the timer will be in 12-hour format mode</p>\n",
                     "line": 30,
-                    "type": "boolean",
-                    "decorators": [],
+                    "rawdescription": "\n\nWhen true, the timer will be in 12-hour format mode\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -9881,11 +10010,15 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nWhen true, shows a timer to configure the seconds value\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>When true, shows a timer to configure the seconds value</p>\n",
                     "line": 25,
-                    "type": "boolean",
-                    "decorators": [],
+                    "rawdescription": "\n\nWhen true, shows a timer to configure the seconds value\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -9895,11 +10028,16 @@
                     "defaultValue": "'month'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nThe view that the calendar should start on\n",
+                    "type": "ViewType",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>The view that the calendar should start on</p>\n",
                     "line": 35,
-                    "type": "ViewType",
-                    "decorators": [],
+                    "rawdescription": "\n\nThe view that the calendar should start on\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -9909,11 +10047,15 @@
                     "defaultValue": "1",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nHours to change per step\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Hours to change per step</p>\n",
                     "line": 40,
-                    "type": "number",
-                    "decorators": [],
+                    "rawdescription": "\n\nHours to change per step\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -9923,11 +10065,15 @@
                     "defaultValue": "1",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nMinutes to change per step\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Minutes to change per step</p>\n",
                     "line": 45,
-                    "type": "number",
-                    "decorators": [],
+                    "rawdescription": "\n\nMinutes to change per step\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -9937,11 +10083,15 @@
                     "defaultValue": "1",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nSeconds to change per step\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Seconds to change per step</p>\n",
                     "line": 50,
-                    "type": "number",
-                    "decorators": [],
+                    "rawdescription": "\n\nSeconds to change per step\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
                     "inheritance": {
                         "file": "DateTimeDirective"
                     }
@@ -9955,7 +10105,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits selected month in year view\n\nThis doesn't imply a change on the selected date.\n",
                     "description": "<p>Emits selected month in year view</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 203,
+                    "line": 202,
                     "type": "EventEmitter"
                 },
                 {
@@ -9965,7 +10115,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits selected year in multi-year view\n\nThis doesn't imply a change on the selected date.\n",
                     "description": "<p>Emits selected year in multi-year view</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 195,
+                    "line": 194,
                     "type": "EventEmitter"
                 }
             ],
@@ -10042,7 +10192,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 263,
+                    "line": 262,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -10059,7 +10209,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 283,
+                    "line": 285,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -10087,7 +10237,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 287,
+                    "line": 289,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -10115,7 +10265,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 295,
+                    "line": 297,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -10146,7 +10296,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 319,
+                    "line": 321,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits selected month in year view\n",
@@ -10179,7 +10329,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 312,
+                    "line": 314,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits the selected year in multi-year view\n",
@@ -10212,7 +10362,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 291,
+                    "line": 293,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -10331,7 +10481,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 252,
+                "line": 251,
                 "jsdoctags": [
                     {
                         "name": "changeDetector",
@@ -10386,7 +10536,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 44,
+                        "line": 43,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -10403,7 +10553,7 @@
                         "name": "pickerType",
                         "type": "",
                         "returnType": "PickerType",
-                        "line": 40,
+                        "line": 39,
                         "rawdescription": "\n\nSet the type of the dateTime picker\n\n-    `'both'` - show both calendar and timer\n-    `'calendar'` - show only calendar\n-    `'timer'` - show only timer\n",
                         "description": "<p>Set the type of the dateTime picker</p>\n<ul>\n<li><code>&#39;both&#39;</code> - show both calendar and timer</li>\n<li><code>&#39;calendar&#39;</code> - show only calendar</li>\n<li><code>&#39;timer&#39;</code> - show only timer</li>\n</ul>\n"
                     }
@@ -10424,7 +10574,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 57,
+                        "line": 56,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -10441,7 +10591,7 @@
                         "name": "disabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 53,
+                        "line": 52,
                         "rawdescription": "\nWhether the date time picker should be disabled",
                         "description": "<p>Whether the date time picker should be disabled</p>\n"
                     }
@@ -10462,7 +10612,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 75,
+                        "line": 74,
                         "jsdoctags": [
                             {
                                 "name": "mode",
@@ -10479,7 +10629,7 @@
                         "name": "selectMode",
                         "type": "",
                         "returnType": "",
-                        "line": 71,
+                        "line": 70,
                         "rawdescription": "\n\nThe picker select mode\n\n-    `'single'` - select a single date\n-    `'range'` - select a range [from, to]\n-    `'rangeFrom'` - an open range with a fixed start date\n-    `'rangeTo'` - an open range with a fixed end date\n",
                         "description": "<p>The picker select mode</p>\n<ul>\n<li><code>&#39;single&#39;</code> - select a single date</li>\n<li><code>&#39;range&#39;</code> - select a range [from, to]</li>\n<li><code>&#39;rangeFrom&#39;</code> - an open range with a fixed start date</li>\n<li><code>&#39;rangeTo&#39;</code> - an open range with a fixed end date</li>\n</ul>\n"
                     }
@@ -10500,7 +10650,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 114,
+                        "line": 113,
                         "jsdoctags": [
                             {
                                 "name": "date",
@@ -10517,7 +10667,7 @@
                         "name": "startAt",
                         "type": "",
                         "returnType": "",
-                        "line": 95,
+                        "line": 94,
                         "rawdescription": "\n\nThe date to show when picker opens\n\nDefaults to selected date (if available) or current date.\n",
                         "description": "<p>The date to show when picker opens</p>\n<p>Defaults to selected date (if available) or current date.</p>\n"
                     }
@@ -10538,7 +10688,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 127,
+                        "line": 126,
                         "jsdoctags": [
                             {
                                 "name": "filter",
@@ -10555,7 +10705,7 @@
                         "name": "dateTimeFilter",
                         "type": "",
                         "returnType": "",
-                        "line": 123,
+                        "line": 122,
                         "rawdescription": "\nA function to filter available date & time",
                         "description": "<p>A function to filter available date &amp; time</p>\n"
                     }
@@ -10576,7 +10726,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 134,
+                        "line": 133,
                         "rawdescription": "\nThe minimum valid date",
                         "description": "<p>The minimum valid date</p>\n",
                         "jsdoctags": [
@@ -10595,7 +10745,7 @@
                         "name": "min",
                         "type": "",
                         "returnType": "",
-                        "line": 139
+                        "line": 138
                     }
                 },
                 "max": {
@@ -10614,7 +10764,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 146,
+                        "line": 145,
                         "rawdescription": "\nThe maximum valid date",
                         "description": "<p>The maximum valid date</p>\n",
                         "jsdoctags": [
@@ -10633,7 +10783,7 @@
                         "name": "max",
                         "type": "",
                         "returnType": "",
-                        "line": 151
+                        "line": 150
                     }
                 },
                 "value": {
@@ -10652,7 +10802,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 161,
+                        "line": 160,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -10669,7 +10819,7 @@
                         "name": "value",
                         "type": "",
                         "returnType": "",
-                        "line": 157
+                        "line": 156
                     }
                 },
                 "values": {
@@ -10688,7 +10838,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 174,
+                        "line": 173,
                         "jsdoctags": [
                             {
                                 "name": "values",
@@ -10705,7 +10855,7 @@
                         "name": "values",
                         "type": "",
                         "returnType": "",
-                        "line": 170
+                        "line": 169
                     }
                 },
                 "selected": {
@@ -10724,7 +10874,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 210,
+                        "line": 209,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -10741,7 +10891,7 @@
                         "name": "selected",
                         "type": "",
                         "returnType": "",
-                        "line": 206
+                        "line": 205
                     }
                 },
                 "selecteds": {
@@ -10760,7 +10910,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 220,
+                        "line": 219,
                         "jsdoctags": [
                             {
                                 "name": "values",
@@ -10777,7 +10927,7 @@
                         "name": "selecteds",
                         "type": "",
                         "returnType": "",
-                        "line": 216
+                        "line": 215
                     }
                 },
                 "isOpen": {
@@ -10786,7 +10936,7 @@
                         "name": "isOpen",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 225
+                        "line": 224
                     }
                 },
                 "pickerMode": {
@@ -10795,7 +10945,7 @@
                         "name": "pickerMode",
                         "type": "",
                         "returnType": "PickerMode",
-                        "line": 229
+                        "line": 228
                     }
                 },
                 "isInSingleMode": {
@@ -10804,7 +10954,7 @@
                         "name": "isInSingleMode",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 233
+                        "line": 232
                     }
                 },
                 "isInRangeMode": {
@@ -10813,14 +10963,14 @@
                         "name": "isInRangeMode",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 237
+                        "line": 236
                     }
                 }
             }
         },
         {
             "name": "MonthViewComponent",
-            "id": "component-MonthViewComponent-51e538addc761e744091295dd9200dd3486253baf7a0031b25430a9c1a72caa7a6f707b5b280353edb20c4545e0789ae88660230f8889bd88a39ff94e64865c0",
+            "id": "component-MonthViewComponent-055c7f0724adbe0efb539a57361f1186919b8431de4f394f6e45552d486c996318c7c4ffa472d2c4d342d1e77327e8ff251d6da8cb30f570fdd7451a5b49060e",
             "file": "src/lib/date-time/calendar-month-view/calendar-month-view.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -10843,7 +10993,7 @@
                     "name": "dateTimeFilter",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 132,
+                    "line": 131,
                     "type": "any",
                     "decorators": []
                 },
@@ -10851,26 +11001,15 @@
                     "name": "firstDayOfWeek",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 37,
+                    "line": 36,
                     "type": "number",
-                    "decorators": []
-                },
-                {
-                    "name": "hideOtherMonths",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nWhether to hide dates in other months at the start or end of the current month\n",
-                    "description": "<p>Whether to hide dates in other months at the start or end of the current month</p>\n",
-                    "line": 29,
-                    "type": "boolean",
                     "decorators": []
                 },
                 {
                     "name": "max",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 163,
+                    "line": 162,
                     "type": "T",
                     "decorators": []
                 },
@@ -10878,7 +11017,7 @@
                     "name": "min",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 147,
+                    "line": 146,
                     "type": "T",
                     "decorators": []
                 },
@@ -10886,7 +11025,7 @@
                     "name": "pickerMoment",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 103,
+                    "line": 102,
                     "type": "T",
                     "decorators": []
                 },
@@ -10894,7 +11033,7 @@
                     "name": "selected",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 73,
+                    "line": 72,
                     "type": "T",
                     "decorators": []
                 },
@@ -10902,7 +11041,7 @@
                     "name": "selecteds",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 89,
+                    "line": 88,
                     "type": "Array<T>",
                     "decorators": []
                 },
@@ -10910,9 +11049,25 @@
                     "name": "selectMode",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 58,
+                    "line": 57,
                     "type": "SelectMode",
                     "decorators": []
+                },
+                {
+                    "name": "hideOtherMonths",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Whether to hide dates in other months at the start or end of the current month</p>\n",
+                    "line": 28,
+                    "rawdescription": "\n\nWhether to hide dates in other months at the start or end of the current month\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 }
             ],
             "outputsClass": [
@@ -10923,7 +11078,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nEmits when any date is activated",
                     "description": "<p>Emits when any date is activated</p>\n",
-                    "line": 244,
+                    "line": 243,
                     "type": "EventEmitter"
                 },
                 {
@@ -10933,7 +11088,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCallback to invoke when a new date is selected\n",
                     "description": "<p>Callback to invoke when a new date is selected</p>\n",
-                    "line": 234,
+                    "line": 233,
                     "type": "EventEmitter"
                 },
                 {
@@ -10943,7 +11098,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCallback to invoke when any date is selected.\n",
                     "description": "<p>Callback to invoke when any date is selected.</p>\n",
-                    "line": 240,
+                    "line": 239,
                     "type": "EventEmitter"
                 }
             ],
@@ -10957,7 +11112,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 228
+                    "line": 227
                 },
                 {
                     "name": "selectedDates",
@@ -10967,7 +11122,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "<p>An array to hold all selectedDates&#39; value\nthe value is the day number in current month</p>\n",
-                    "line": 225,
+                    "line": 224,
                     "rawdescription": "\n\nAn array to hold all selectedDates' value\nthe value is the day number in current month\n"
                 },
                 {
@@ -10978,7 +11133,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "<p>The date of the month that today falls on.</p>\n",
-                    "line": 219,
+                    "line": 218,
                     "rawdescription": "\n\nThe date of the month that today falls on.\n"
                 }
             ],
@@ -10996,7 +11151,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 314,
+                    "line": 312,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandle keydown event on calendar body\n",
@@ -11034,7 +11189,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 550,
+                    "line": 548,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCheck if the give dates are defined and in the same month\n",
@@ -11068,7 +11223,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 273,
+                    "line": 271,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -11078,7 +11233,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 278,
+                    "line": 276,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -11088,7 +11243,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 263,
+                    "line": 261,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -11105,7 +11260,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 286,
+                    "line": 284,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandle a calendarCell selected\n",
@@ -11164,7 +11319,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 254,
+                "line": 252,
                 "jsdoctags": [
                     {
                         "name": "cdRef",
@@ -11218,7 +11373,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 41,
+                        "line": 40,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -11235,7 +11390,7 @@
                         "name": "firstDayOfWeek",
                         "type": "number",
                         "returnType": "number",
-                        "line": 37
+                        "line": 36
                     }
                 },
                 "selectMode": {
@@ -11254,7 +11409,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 62,
+                        "line": 61,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -11271,7 +11426,7 @@
                         "name": "selectMode",
                         "type": "",
                         "returnType": "SelectMode",
-                        "line": 58
+                        "line": 57
                     }
                 },
                 "selected": {
@@ -11290,7 +11445,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 77,
+                        "line": 76,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -11307,7 +11462,7 @@
                         "name": "selected",
                         "type": "",
                         "returnType": "",
-                        "line": 73
+                        "line": 72
                     }
                 },
                 "selecteds": {
@@ -11326,7 +11481,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 93,
+                        "line": 92,
                         "jsdoctags": [
                             {
                                 "name": "values",
@@ -11343,7 +11498,7 @@
                         "name": "selecteds",
                         "type": "",
                         "returnType": "",
-                        "line": 89
+                        "line": 88
                     }
                 },
                 "pickerMoment": {
@@ -11362,7 +11517,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 107,
+                        "line": 106,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -11379,7 +11534,7 @@
                         "name": "pickerMoment",
                         "type": "",
                         "returnType": "",
-                        "line": 103
+                        "line": 102
                     }
                 },
                 "dateTimeFilter": {
@@ -11398,7 +11553,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 136,
+                        "line": 135,
                         "jsdoctags": [
                             {
                                 "name": "filter",
@@ -11415,7 +11570,7 @@
                         "name": "dateTimeFilter",
                         "type": "",
                         "returnType": "",
-                        "line": 132
+                        "line": 131
                     }
                 },
                 "min": {
@@ -11434,7 +11589,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 151,
+                        "line": 150,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -11451,7 +11606,7 @@
                         "name": "min",
                         "type": "",
                         "returnType": "",
-                        "line": 147
+                        "line": 146
                     }
                 },
                 "max": {
@@ -11470,7 +11625,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 167,
+                        "line": 166,
                         "jsdoctags": [
                             {
                                 "name": "value",
@@ -11487,7 +11642,7 @@
                         "name": "max",
                         "type": "",
                         "returnType": "",
-                        "line": 163
+                        "line": 162
                     }
                 },
                 "weekdays": {
@@ -11496,7 +11651,7 @@
                         "name": "weekdays",
                         "type": "",
                         "returnType": "",
-                        "line": 178
+                        "line": 177
                     }
                 },
                 "days": {
@@ -11505,7 +11660,7 @@
                         "name": "days",
                         "type": "",
                         "returnType": "",
-                        "line": 183
+                        "line": 182
                     }
                 },
                 "activeCell": {
@@ -11514,7 +11669,7 @@
                         "name": "activeCell",
                         "type": "",
                         "returnType": "",
-                        "line": 187
+                        "line": 186
                     }
                 },
                 "isInSingleMode": {
@@ -11523,7 +11678,7 @@
                         "name": "isInSingleMode",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 198
+                        "line": 197
                     }
                 },
                 "isInRangeMode": {
@@ -11532,14 +11687,14 @@
                         "name": "isInRangeMode",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 202
+                        "line": 201
                     }
                 }
             }
         },
         {
             "name": "MultiYearViewComponent",
-            "id": "component-MultiYearViewComponent-524e9323cd0ddb87cde5893d37c09fcd46841612e88fb921b940ee9ce999c064a14885d27f0f78e8bfdf2f3958894193cd13766ccded448ac219c55b7d57cc17",
+            "id": "component-MultiYearViewComponent-14909d369830c623a2460c1152f9bb4cab4f5500cf089f21f036968252171de9d84b4bd7af3faa7bb48fe81877fa128562e964d3673a697c5abbeb80e485514a",
             "file": "src/lib/date-time/calendar-multi-year-view/calendar-multi-year-view.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -11665,7 +11820,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 284,
+                    "line": 283,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -11682,7 +11837,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 319,
+                    "line": 318,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -11703,7 +11858,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 315,
+                    "line": 314,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nWhether the next period button is enabled",
@@ -11722,7 +11877,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 278,
+                    "line": 277,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nGenerate the next year list\n",
@@ -11745,7 +11900,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 233,
+                    "line": 232,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -11755,7 +11910,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 230,
+                    "line": 229,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -11765,7 +11920,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 307,
+                    "line": 306,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nWhether the previous period button is enabled",
@@ -11784,7 +11939,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 269,
+                    "line": 268,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nGenerate the previous year list\n",
@@ -11814,7 +11969,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 242,
+                    "line": 241,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandle a calendarCell selected\n",
@@ -11873,7 +12028,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 222,
+                "line": 221,
                 "jsdoctags": [
                     {
                         "name": "cdRef",
@@ -12247,7 +12402,7 @@
         },
         {
             "name": "TimerComponent",
-            "id": "component-TimerComponent-757a1f1877c36190018b97d9963be7a64b96de3edca309125635d810cb4b1d00cdc1decf575115bd4a916ff0ba544ce761b0d1ed7f5ca0fa4ca1aded890ce159",
+            "id": "component-TimerComponent-176f89ec159be684644d5c9ee906c6f938c609b0e118c510d2a9bb013f768b346c086a5deeff201be9af04ddeff21c376f857fffd417f4166946e86632eb0a95",
             "file": "src/lib/date-time/timer/timer.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -12266,17 +12421,6 @@
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
-                {
-                    "name": "hour12Timer",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nWhether the timer is in hour12 format\n",
-                    "description": "<p>Whether the timer is in hour12 format</p>\n",
-                    "line": 66,
-                    "type": "boolean",
-                    "decorators": []
-                },
                 {
                     "name": "max",
                     "deprecated": false,
@@ -12302,48 +12446,81 @@
                     "decorators": []
                 },
                 {
+                    "name": "hour12Timer",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Whether the timer is in hour12 format</p>\n",
+                    "line": 64,
+                    "rawdescription": "\n\nWhether the timer is in hour12 format\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
                     "name": "showSecondsTimer",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nWhether to show the second's timer\n",
-                    "description": "<p>Whether to show the second&#39;s timer</p>\n",
-                    "line": 60,
                     "type": "boolean",
-                    "decorators": []
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Whether to show the second&#39;s timer</p>\n",
+                    "line": 59,
+                    "rawdescription": "\n\nWhether to show the second's timer\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "stepHour",
                     "defaultValue": "1",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nHours to change per step\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Hours to change per step</p>\n",
-                    "line": 72,
-                    "type": "number",
-                    "decorators": []
+                    "line": 69,
+                    "rawdescription": "\n\nHours to change per step\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "stepMinute",
                     "defaultValue": "1",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nMinutes to change per step\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Minutes to change per step</p>\n",
-                    "line": 78,
-                    "type": "number",
-                    "decorators": []
+                    "line": 74,
+                    "rawdescription": "\n\nMinutes to change per step\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "stepSecond",
                     "defaultValue": "1",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n\nSeconds to change per step\n",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Seconds to change per step</p>\n",
-                    "line": 84,
-                    "type": "number",
-                    "decorators": []
+                    "line": 79,
+                    "rawdescription": "\n\nSeconds to change per step\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 }
             ],
             "outputsClass": [
@@ -12352,7 +12529,7 @@
                     "defaultValue": "new EventEmitter<T>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 156,
+                    "line": 151,
                     "type": "EventEmitter"
                 }
             ],
@@ -12364,7 +12541,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 257,
+                    "line": 253,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCheck if the down hour button is enabled\n",
@@ -12376,7 +12553,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 277,
+                    "line": 273,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCheck if the down minute button is enabled\n",
@@ -12388,7 +12565,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 297,
+                    "line": 293,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCheck if the down second button is enabled\n",
@@ -12400,7 +12577,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 183,
+                    "line": 178,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFocus to the host element\n",
@@ -12412,7 +12589,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 178,
+                    "line": 173,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -12429,7 +12606,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 208,
+                    "line": 204,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -12457,7 +12634,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 198,
+                    "line": 193,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the hour value via typing into timer box input\nWe need this to handle the hour value when the timer is in hour12 mode\n",
@@ -12487,7 +12664,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 226,
+                    "line": 222,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -12515,7 +12692,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 214,
+                    "line": 210,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -12543,7 +12720,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 220,
+                    "line": 216,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -12564,7 +12741,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 247,
+                    "line": 243,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCheck if the up hour button is enabled\n",
@@ -12576,7 +12753,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 267,
+                    "line": 263,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCheck if the up minute button is enabled\n",
@@ -12588,7 +12765,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 287,
+                    "line": 283,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCheck if the up second button is enabled\n",
@@ -12648,7 +12825,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 168,
+                "line": 163,
                 "jsdoctags": [
                     {
                         "name": "ngZone",
@@ -12816,7 +12993,7 @@
                         "name": "hourValue",
                         "type": "number",
                         "returnType": "number",
-                        "line": 86
+                        "line": 81
                     }
                 },
                 "hourBoxValue": {
@@ -12825,7 +13002,7 @@
                         "name": "hourBoxValue",
                         "type": "number",
                         "returnType": "number",
-                        "line": 95,
+                        "line": 90,
                         "rawdescription": "\n\nThe value would be displayed in hourBox.\nWe need this because the value displayed in hourBox it not\nthe same as the hourValue when the timer is in hour12Timer mode.\n",
                         "description": "<p>The value would be displayed in hourBox.\nWe need this because the value displayed in hourBox it not\nthe same as the hourValue when the timer is in hour12Timer mode.</p>\n"
                     }
@@ -12836,7 +13013,7 @@
                         "name": "minuteValue",
                         "type": "number",
                         "returnType": "number",
-                        "line": 117
+                        "line": 112
                     }
                 },
                 "secondValue": {
@@ -12845,7 +13022,7 @@
                         "name": "secondValue",
                         "type": "number",
                         "returnType": "number",
-                        "line": 121
+                        "line": 116
                     }
                 },
                 "upHourButtonLabel": {
@@ -12854,7 +13031,7 @@
                         "name": "upHourButtonLabel",
                         "type": "string",
                         "returnType": "string",
-                        "line": 125
+                        "line": 120
                     }
                 },
                 "downHourButtonLabel": {
@@ -12863,7 +13040,7 @@
                         "name": "downHourButtonLabel",
                         "type": "string",
                         "returnType": "string",
-                        "line": 129
+                        "line": 124
                     }
                 },
                 "upMinuteButtonLabel": {
@@ -12872,7 +13049,7 @@
                         "name": "upMinuteButtonLabel",
                         "type": "string",
                         "returnType": "string",
-                        "line": 133
+                        "line": 128
                     }
                 },
                 "downMinuteButtonLabel": {
@@ -12881,7 +13058,7 @@
                         "name": "downMinuteButtonLabel",
                         "type": "string",
                         "returnType": "string",
-                        "line": 137
+                        "line": 132
                     }
                 },
                 "upSecondButtonLabel": {
@@ -12890,7 +13067,7 @@
                         "name": "upSecondButtonLabel",
                         "type": "string",
                         "returnType": "string",
-                        "line": 141
+                        "line": 136
                     }
                 },
                 "downSecondButtonLabel": {
@@ -12899,7 +13076,7 @@
                         "name": "downSecondButtonLabel",
                         "type": "string",
                         "returnType": "string",
-                        "line": 145
+                        "line": 140
                     }
                 },
                 "hour12ButtonLabel": {
@@ -12908,14 +13085,14 @@
                         "name": "hour12ButtonLabel",
                         "type": "string",
                         "returnType": "string",
-                        "line": 149
+                        "line": 144
                     }
                 }
             }
         },
         {
             "name": "YearViewComponent",
-            "id": "component-YearViewComponent-ae4af2970d743aa143f6498f05f59635db846d7873c3f45699b66f475e32413ef015913c9eafb57bbe32b7cc441c9d3797a3561394f917a49ba4aac4ee911cdb",
+            "id": "component-YearViewComponent-e9a54a4fbe943245ba7bf0151f883e45751cb7023b99bc9268bb2d5858424befff9f6e5868efeb70819af822c361212b712cc1bb73cc3c40721fd2e00b4d9b5c",
             "file": "src/lib/date-time/calendar-year-view/calendar-year-view.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -13070,7 +13247,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 274,
+                    "line": 273,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandle keydown event on calendar body\n",
@@ -13093,7 +13270,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 224,
+                    "line": 223,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -13103,7 +13280,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 229,
+                    "line": 228,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -13113,7 +13290,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 217,
+                    "line": 216,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -13130,7 +13307,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 237,
+                    "line": 236,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandle a calendarCell selected\n",
@@ -13189,7 +13366,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 206,
+                "line": 205,
                 "jsdoctags": [
                     {
                         "name": "cdRef",

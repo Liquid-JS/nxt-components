@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { Component, Injector, OnInit, PendingTasks, ViewEncapsulation } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
@@ -14,10 +14,10 @@ import { WaitLoad } from '../../utils/wait-load.class'
         MetaDirective,
         ContentWrapComponent,
         ExampleComponent,
-        CommonModule,
         RouterModule,
         BsDropdownModule,
-        CodeBlockComponent
+        CodeBlockComponent,
+        AsyncPipe
     ],
     templateUrl: './extras.component.html',
     styleUrl: './extras.component.scss',

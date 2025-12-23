@@ -1,8 +1,7 @@
 import { AnimationEvent } from '@angular/animations'
+import { CdkTrapFocus } from '@angular/cdk/a11y'
 import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, viewChild } from '@angular/core'
 import { Subject } from 'rxjs'
-import { CdkTrapFocus } from '@angular/cdk/a11y'
-
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeDirective } from '../../class/date-time.class'
 import { CalendarComponent } from '../calendar/calendar.component'

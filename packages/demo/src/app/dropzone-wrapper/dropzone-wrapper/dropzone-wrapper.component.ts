@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { Component, Injector, OnInit, PendingTasks } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
@@ -11,11 +11,11 @@ import { WaitLoad } from '../../utils/wait-load.class'
     templateUrl: './dropzone-wrapper.component.html',
     styleUrls: ['./dropzone-wrapper.component.scss'],
     imports: [
-        CommonModule,
         MetaDirective,
         ContentWrapComponent,
         RouterModule,
-        ExampleComponent
+        ExampleComponent,
+        AsyncPipe
     ]
 })
 export class AppDropzoneWrapperComponent extends WaitLoad implements OnInit {

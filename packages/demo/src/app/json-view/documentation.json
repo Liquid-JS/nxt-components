@@ -34,7 +34,7 @@
     "injectables": [
         {
             "name": "ExpanderService",
-            "id": "injectable-ExpanderService-65acdfec985b778f6bb9647fbfcbaf3c86cb54bccc480bffc32d39cf500f8ec56e57322f928386da584adb56dbd94b92d48157c08abc94bbbbe2db101fc20cf9",
+            "id": "injectable-ExpanderService-5d2f1861831bcd67aa78a8337589699aa01107b125e1fe7ab03f9f64445d0a9e3eca3703a1274ff9cfe047853469e7803e69d5a1b8fb35da7d57e7f507ebd6a1",
             "file": "src/lib/expander/expander.service.ts",
             "properties": [],
             "methods": [
@@ -174,7 +174,7 @@
     "components": [
         {
             "name": "JsonViewComponent",
-            "id": "component-JsonViewComponent-0309d784ec5d891a374c6314f7b4338f00d4f10e43b72fe73f63dd1b7e48d2d63b86486ef94dadff0294f08b2780ac3a0be3585548db7c1c51ae2a802ba17ae3",
+            "id": "component-JsonViewComponent-c15ad481f47f5d1b1643057563b449e390718b74fb9f52f61c8b09879f0a2dcf7622bc2f09f169b7c60065538ebede0e85f89aa320b019feb7409f38e38710a4",
             "file": "src/lib/json-view/json-view.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.Emulated"
@@ -203,34 +203,65 @@
                     "name": "data",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nJSON data, any valid JSON object",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>JSON data, any valid JSON object</p>\n",
                     "line": 23,
-                    "type": "any",
-                    "decorators": []
+                    "rawdescription": "\nJSON data, any valid JSON object",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "levelLabels",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nCustom labels for elements within the hierarcy",
+                    "type": "LevelLabels",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Custom labels for elements within the hierarcy</p>\n",
                     "line": 27,
-                    "type": "LevelLabels",
-                    "decorators": []
+                    "rawdescription": "\nCustom labels for elements within the hierarcy",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "levelOpen",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nInitial number of levels to be expanded; to expand / collapse the view after initial render, use `expandTo` / `collapseTo`",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Initial number of levels to be expanded; to expand / collapse the view after initial render, use <code>expandTo</code> / <code>collapseTo</code></p>\n",
                     "line": 25,
-                    "type": "number",
-                    "decorators": []
+                    "rawdescription": "\nInitial number of levels to be expanded; to expand / collapse the view after initial render, use `expandTo` / `collapseTo`",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "levelOpen",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Initial number of levels to be expanded; to expand / collapse the view after initial render, use <code>expandTo</code> / <code>collapseTo</code></p>\n",
+                    "line": 25,
+                    "rawdescription": "\nInitial number of levels to be expanded; to expand / collapse the view after initial render, use `expandTo` / `collapseTo`",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                }
+            ],
             "propertiesClass": [],
             "methodsClass": [
                 {

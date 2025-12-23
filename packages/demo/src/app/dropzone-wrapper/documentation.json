@@ -58,7 +58,7 @@
     "directives": [
         {
             "name": "DropzoneDirective",
-            "id": "directive-DropzoneDirective-4c5043a611085e5137361ec25e134944ea54ac0140035e8d2b79605d8f250b1d11f09eb2d5996bacc6f25a5c99b6f489b422dbb287411ecdec77e7a48ddef7a0",
+            "id": "directive-DropzoneDirective-523406f0ad908b3dfbb70469f0328b76feed114821ba71c6a98d32bccd62cc365d46605676a382896f20b6303cd822f7f9ddb3e5ef2fee22a315463fa3f6ba0a",
             "file": "src/lib/dropzone.directive.ts",
             "type": "directive",
             "description": "",
@@ -80,14 +80,20 @@
                     "decorators": []
                 },
                 {
-                    "name": "nxtDropzone",
+                    "name": "config",
+                    "defaultValue": "undefined, { alias: 'nxtDropzone' }",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nCan be used to provide optional custom config",
+                    "type": "DropzoneConfig",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Can be used to provide optional custom config</p>\n",
                     "line": 39,
-                    "type": "DropzoneConfig",
-                    "decorators": []
+                    "rawdescription": "\nCan be used to provide optional custom config",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 }
             ],
             "outputsClass": [
@@ -474,7 +480,7 @@
     "components": [
         {
             "name": "DropzoneComponent",
-            "id": "component-DropzoneComponent-c639d3d541e4f0e15232651fe6e475c5bb66d6a4a4d09e266eb42ac72d7a77bf610074f4f8ae319680b54920e2902b20b312a1615bc1b339ed5255733860d9e7",
+            "id": "component-DropzoneComponent-1232f5714206a4a0c92485df0a8617f9d28f1716f15d57dff2cafa1d826aeb35ded49d1a25d260d4bad7e67a84a6876e14dafbb5b0ae45a2aa95bb1edd671ec7",
             "file": "src/lib/dropzone.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -504,55 +510,80 @@
                     "name": "config",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nCustom config to override the global defaults",
+                    "type": "DropzoneConfig",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Custom config to override the global defaults</p>\n",
                     "line": 28,
-                    "type": "DropzoneConfig",
-                    "decorators": []
+                    "rawdescription": "\nCustom config to override the global defaults",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "disabled",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nDisables / detaches Dropzone from the element",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Disables / detaches Dropzone from the element</p>\n",
                     "line": 25,
-                    "type": "boolean",
-                    "decorators": []
+                    "rawdescription": "\nDisables / detaches Dropzone from the element",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "message",
                     "defaultValue": "'Click or drag files to upload'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nMessage to show for the user on the upload area",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Message to show for the user on the upload area</p>\n",
                     "line": 31,
-                    "type": "string",
-                    "decorators": []
+                    "rawdescription": "\nMessage to show for the user on the upload area",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "placeholder",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nPlaceholder image to be shown as the upload area",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Placeholder image to be shown as the upload area</p>\n",
                     "line": 33,
-                    "type": "string",
-                    "decorators": []
+                    "rawdescription": "\nPlaceholder image to be shown as the upload area",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 },
                 {
                     "name": "useDropzoneClass",
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nUse 'dropzone' class (use provided default styles)",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
                     "description": "<p>Use &#39;dropzone&#39; class (use provided default styles)</p>\n",
                     "line": 36,
-                    "type": "boolean",
-                    "decorators": []
+                    "rawdescription": "\nUse 'dropzone' class (use provided default styles)",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
                 }
             ],
             "outputsClass": [
@@ -800,21 +831,16 @@
             "propertiesClass": [
                 {
                     "name": "directiveRef",
+                    "defaultValue": "viewChild(DropzoneDirective)",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "DropzoneDirective",
+                    "type": "",
                     "indexKey": "",
-                    "optional": true,
+                    "optional": false,
                     "description": "",
                     "line": 82,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "DropzoneDirective"
-                        }
-                    ],
                     "modifierKind": [
-                        170
+                        148
                     ]
                 }
             ],

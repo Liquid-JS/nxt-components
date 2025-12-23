@@ -1,5 +1,4 @@
 /// <reference types="trusted-types" />
-
 import { TrustedTypePolicy } from 'trusted-types/lib'
 
 /**

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { Component, Injector, OnInit, PendingTasks } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 import { RouterModule } from '@angular/router'
@@ -17,8 +17,8 @@ import { WaitLoad } from '../../utils/wait-load.class'
         MetaDirective,
         RouterModule,
         ExampleComponent,
-        CommonModule,
-        BsDropdownModule
+        BsDropdownModule,
+        AsyncPipe
     ]
 })
 export class AppJsonViewComponent extends WaitLoad implements OnInit {

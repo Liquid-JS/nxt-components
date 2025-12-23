@@ -1,5 +1,4 @@
 import { CdkTableModule } from '@angular/cdk/table'
-
 import { Component, ViewEncapsulation } from '@angular/core'
 import { SortablejsDirective } from 'nxt-sortablejs'
 

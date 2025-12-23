@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, NgZone, OnInit, Output, input } from '@angular/core'
 import { take } from 'rxjs/operators'
-
 import { SelectMode } from '../../class/date-time.class'
 
 export class CalendarCell {

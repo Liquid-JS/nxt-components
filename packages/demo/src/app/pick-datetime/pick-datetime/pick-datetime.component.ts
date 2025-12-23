@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { Component, Injector, OnInit, PendingTasks } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
@@ -15,9 +15,9 @@ import { WaitLoad } from '../../utils/wait-load.class'
         MetaDirective,
         ContentWrapComponent,
         ExampleComponent,
-        CommonModule,
         RouterModule,
-        BsDropdownModule
+        BsDropdownModule,
+        AsyncPipe
     ]
 })
 export class AppPickDatetimeComponent extends WaitLoad implements OnInit {
