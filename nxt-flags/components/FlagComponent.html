@@ -192,6 +192,25 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#country" >country</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#size" >size</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
                 <tr>
@@ -203,13 +222,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#country" >country</a>
-                            </li>
-                            <li>
                                 <a href="#format" >format</a>
-                            </li>
-                            <li>
-                                <a href="#size" >size</a>
                             </li>
                         </ul>
                     </td>
@@ -229,41 +242,13 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="country"></a>
-                        <b>country</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#FlagDatabaseKey" target="_self" >FlagDatabaseKey</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>ISO 3166-1-alpha-2 country code</p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="format"></a>
                         <b>format</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#FlagFormat" target="_self" >FlagFormat</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>FlagFormatEnum.None</code>
+                        <i>Default value : </i><code>FlagFormatEnum.None, {        transform: (val: FlagFormat | FlagFormatEnum) &#x3D;&gt; availableFormats.has(val)            ? val            : FlagFormatEnum.None    }</code>
                     </td>
                 </tr>
                 <tr>
@@ -274,38 +259,104 @@
                 </tr>
             </tbody>
         </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="size"></a>
-                        <b>size</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#FlagSizeAlias" target="_self" >number | FlagSizeAlias</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>48</code>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Flag width, either value in pixels or FlagSizeAlias</p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
 </section>
 
 
 
 
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="country"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>country</b></span>
+                        <a href="#country"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input(undefined as string | undefined, {
+        transform: (val: FlagDatabaseKey | string | undefined) &#x3D;&gt; {
+            const lc: FlagDatabaseKey | undefined &#x3D; (val &amp;&amp; val.toLowerCase() as any) || undefined
+            if (lc &amp;&amp; lc in FlagDatabase) {
+                return FlagDatabase[lc]
+            } else if (lc &amp;&amp; availableCodes.has(lc)) {
+                return lc
+            } else {
+                return undefined
+            }
+        }
+    })</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>ISO 3166-1-alpha-2 country code</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="size"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>size</b></span>
+                        <a href="#size"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>input(48, {
+        transform: (val: number | FlagSizeAlias) &#x3D;&gt; {
+            if (typeof val &#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; val.toLowerCase() in FlagSize) {
+                return FlagSize[val.toLowerCase() as (FlagSizeAlias)]
+            } else {
+                return Number.isInteger(val) &amp;&amp; Number(val) &gt; 0
+                    ? Number(val)
+                    : 48
+            }
+        }
+    })</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Flag width, either value in pixels or FlagSizeAlias</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
 
 </div>
 
