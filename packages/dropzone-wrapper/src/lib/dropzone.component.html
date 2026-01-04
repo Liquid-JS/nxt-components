@@ -6,7 +6,7 @@
         [class.disabled]="disabled()"
         [class.dz-placeholder]="placeholder()">
         <div class="dz-text"
-            [innerHTML]="config()?.dictDefaultMessage || message()"></div>
+            [innerHTML]="text()"></div>
 
         @if (placeholder()) {
         <div class="dz-image"

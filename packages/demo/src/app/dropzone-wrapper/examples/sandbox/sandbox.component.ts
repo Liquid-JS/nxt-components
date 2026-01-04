@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, viewChild } from '@angular/core'
+import { Component, ViewEncapsulation, computed, signal, viewChild } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 // eslint-disable-next-line @import/no-extraneous-dependencies
 import Dropzone from 'dropzone'
@@ -17,15 +17,26 @@ import { DropzoneComponent, DropzoneConfig, DropzoneDirective } from 'nxt-dropzo
 })
 export class SandboxComponent {
 
-    type: 'component' | 'directive' = 'component'
+    readonly type = signal<'component' | 'directive'>('component')
 
-    disabled = false
-    autoReset = false
+    readonly disabled = signal(false)
+    readonly autoReset = signal(false)
+    readonly clickable = signal(true)
+    readonly maxFiles = signal<number | undefined>(1)
 
-    config: DropzoneConfig = {
-        clickable: true,
-        maxFiles: 1
-    }
+    private readonly timeout = computed(() => this.autoReset() ? 5000 : undefined)
+
+    readonly config = computed(() => {
+        const cfg: DropzoneConfig = {
+            clickable: this.clickable(),
+            maxFiles: this.maxFiles() ?? 5
+        }
+        const timeout = this.timeout()
+        cfg.autoReset = timeout
+        cfg.errorReset = timeout
+        cfg.cancelReset = timeout
+        return cfg
+    })
 
     readonly componentRef = viewChild(DropzoneComponent)
     readonly directiveRef = viewChild(DropzoneDirective)
@@ -42,20 +53,12 @@ export class SandboxComponent {
         console.log('onUploadError:', dz, err)
     }
 
-    toggleAutoReset(value: boolean) {
-        this.autoReset = !!value
-        const timeout = this.autoReset ? 5000 : undefined
-        this.config.autoReset = timeout
-        this.config.errorReset = timeout
-        this.config.cancelReset = timeout
-    }
-
     resetDropzone(): void {
         const directiveRef = this.directiveRef()
         const componentRef = this.componentRef()
-        if (this.type === 'directive' && directiveRef) {
+        if (this.type() === 'directive' && directiveRef) {
             directiveRef.reset()
-        } else if (this.type === 'component' && componentRef && componentRef.directiveRef()) {
+        } else if (this.type() === 'component' && componentRef?.directiveRef()) {
             componentRef.directiveRef()!.reset()
         }
     }

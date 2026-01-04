@@ -1,4 +1,5 @@
-import { EventEmitter, InjectionToken, makeEnvironmentProviders } from '@angular/core'
+/* eslint-disable @angular-eslint/no-output-rename */
+import { InjectionToken, makeEnvironmentProviders, output, Directive, OutputEmitterRef } from '@angular/core'
 
 export const NXT_DROPZONE_CONFIG = new InjectionToken<DropzoneConfig>('NXT_DROPZONE_CONFIG')
 
@@ -12,10 +13,7 @@ export function provideDropzoneConfig(config: DropzoneConfig) {
 }
 
 /** @internal */
-export type DropzoneEvent = 'init' | 'drop' | 'dragStart' | 'dragEnd' | 'dragEnter' | 'dragOver' | 'dragLeave' | 'paste' | 'reset' | 'addedFile' | 'addedFiles' | 'removedFile' | 'thumbnail' | 'error' | 'errorMultiple' | 'processing' | 'processingMultiple' | 'uploadProgress' | 'totalUploadProgress' | 'sending' | 'sendingMultiple' | 'success' | 'successMultiple' | 'canceled' | 'canceledMultiple' | 'complete' | 'completeMultiple' | 'maxFilesExceeded' | 'maxFilesReached' | 'queueComplete'
-
-/** @internal */
-export const DropzoneEvents: DropzoneEvent[] = [
+export const DropzoneEvents = [
     'init',
 
     'drop',
@@ -58,7 +56,13 @@ export const DropzoneEvents: DropzoneEvent[] = [
     'maxFilesReached',
 
     'queueComplete'
-]
+] as const
+
+/** @internal */
+export type DropzoneEvent = typeof DropzoneEvents[number]
+
+/** @internal */
+export type DZ_EVENTS = { [P in `DZ_${Uppercase<DropzoneEvent>}`]: OutputEmitterRef<any> }
 
 export interface DropzoneConfig extends Dropzone.DropzoneOptions {
     /**
@@ -115,50 +119,39 @@ export class _DropzoneConfig implements DropzoneConfig {
 }
 
 /** @internal */
-export interface DropzoneListeners {
-    readonly DZ_INIT: EventEmitter<Dropzone>
-
-    readonly DZ_DROP: EventEmitter<DragEvent>
-    readonly DZ_DRAGSTART: EventEmitter<DragEvent>
-    readonly DZ_DRAGEND: EventEmitter<DragEvent>
-    readonly DZ_DRAGENTER: EventEmitter<DragEvent>
-    readonly DZ_DRAGOVER: EventEmitter<DragEvent>
-    readonly DZ_DRAGLEAVE: EventEmitter<DragEvent>
-    readonly DZ_PASTE: EventEmitter<DragEvent>
-
-    readonly DZ_RESET: EventEmitter<void>
-
-    readonly DZ_ADDEDFILE: EventEmitter<Dropzone.DropzoneFile>
-    readonly DZ_ADDEDFILES: EventEmitter<Dropzone.DropzoneFile>
-    readonly DZ_REMOVEDFILE: EventEmitter<Dropzone.DropzoneFile>
-    readonly DZ_THUMBNAIL: EventEmitter<[Dropzone.DropzoneFile, string]>
-
-    readonly DZ_ERROR: EventEmitter<[Dropzone.DropzoneFile, string | Error]>
-    readonly DZ_ERRORMULTIPLE: EventEmitter<[Dropzone.DropzoneFile[], string | Error]>
-
-    readonly DZ_PROCESSING: EventEmitter<Dropzone.DropzoneFile>
-    readonly DZ_PROCESSINGMULTIPLE: EventEmitter<Dropzone.DropzoneFile[]>
-
-    readonly DZ_UPLOADPROGRESS: EventEmitter<[Dropzone.DropzoneFile, number, number]>
-    readonly DZ_TOTALUPLOADPROGRESS: EventEmitter<[number, number, number]>
-
-    readonly DZ_SENDING: EventEmitter<[Dropzone.DropzoneFile, XMLHttpRequest, FormData]>
-    readonly DZ_SENDINGMULTIPLE: EventEmitter<[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]>
-
+@Directive()
+export class DropzoneListeners implements DZ_EVENTS {
+    readonly DZ_INIT = output<Dropzone>({ alias: 'init' })
+    readonly DZ_DROP = output<DragEvent>({ alias: 'drop' })
+    readonly DZ_DRAGSTART = output<DragEvent>({ alias: 'dragStart' })
+    readonly DZ_DRAGEND = output<DragEvent>({ alias: 'dragEnd' })
+    readonly DZ_DRAGENTER = output<DragEvent>({ alias: 'dragEnter' })
+    readonly DZ_DRAGOVER = output<DragEvent>({ alias: 'dragOver' })
+    readonly DZ_DRAGLEAVE = output<DragEvent>({ alias: 'dragLeave' })
+    readonly DZ_PASTE = output<DragEvent>({ alias: 'paste' })
+    readonly DZ_RESET = output<void>({ alias: 'reset' })
+    readonly DZ_ADDEDFILE = output<Dropzone.DropzoneFile>({ alias: 'addedFile' })
+    readonly DZ_ADDEDFILES = output<Dropzone.DropzoneFile>({ alias: 'addedFiles' })
+    readonly DZ_REMOVEDFILE = output<Dropzone.DropzoneFile>({ alias: 'removedFile' })
+    readonly DZ_THUMBNAIL = output<[Dropzone.DropzoneFile, string]>({ alias: 'thumbnail' })
+    readonly DZ_ERROR = output<[Dropzone.DropzoneFile, string | Error]>({ alias: 'error' })
+    readonly DZ_ERRORMULTIPLE = output<[Dropzone.DropzoneFile[], string | Error]>({ alias: 'errorMultiple' })
+    readonly DZ_PROCESSING = output<Dropzone.DropzoneFile>({ alias: 'processing' })
+    readonly DZ_PROCESSINGMULTIPLE = output<Dropzone.DropzoneFile[]>({ alias: 'processingMultiple' })
+    readonly DZ_UPLOADPROGRESS = output<[Dropzone.DropzoneFile, number, number]>({ alias: 'uploadProgress' })
+    readonly DZ_TOTALUPLOADPROGRESS = output<[number, number, number]>({ alias: 'totalUploadProgress' })
+    readonly DZ_SENDING = output<[Dropzone.DropzoneFile, XMLHttpRequest, FormData]>({ alias: 'sending' })
+    readonly DZ_SENDINGMULTIPLE = output<[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]>({ alias: 'sendingMultiple' })
     // eslint-disable-next-line @typescript-eslint/no-restricted-types
-    readonly DZ_SUCCESS: EventEmitter<[Dropzone.DropzoneFile, Object | string]>
-    readonly DZ_SUCCESSMULTIPLE: EventEmitter<Dropzone.DropzoneFile[]>
-
-    readonly DZ_CANCELED: EventEmitter<Dropzone.DropzoneFile>
-    readonly DZ_CANCELEDMULTIPLE: EventEmitter<Dropzone.DropzoneFile[]>
-
-    readonly DZ_COMPLETE: EventEmitter<Dropzone.DropzoneFile>
-    readonly DZ_COMPLETEMULTIPLE: EventEmitter<Dropzone.DropzoneFile[]>
-
-    readonly DZ_MAXFILESEXCEEDED: EventEmitter<Dropzone.DropzoneFile>
-    readonly DZ_MAXFILESREACHED: EventEmitter<Dropzone.DropzoneFile[]>
-
-    readonly DZ_QUEUECOMPLETE: EventEmitter<void>
+    readonly DZ_SUCCESS = output<[Dropzone.DropzoneFile, Object | string]>({ alias: 'success' })
+    readonly DZ_SUCCESSMULTIPLE = output<Dropzone.DropzoneFile[]>({ alias: 'successMultiple' })
+    readonly DZ_CANCELED = output<Dropzone.DropzoneFile>({ alias: 'canceled' })
+    readonly DZ_CANCELEDMULTIPLE = output<Dropzone.DropzoneFile[]>({ alias: 'canceledMultiple' })
+    readonly DZ_COMPLETE = output<Dropzone.DropzoneFile>({ alias: 'complete' })
+    readonly DZ_COMPLETEMULTIPLE = output<Dropzone.DropzoneFile[]>({ alias: 'completeMultiple' })
+    readonly DZ_MAXFILESEXCEEDED = output<Dropzone.DropzoneFile>({ alias: 'maxFilesExceeded' })
+    readonly DZ_MAXFILESREACHED = output<Dropzone.DropzoneFile[]>({ alias: 'maxFilesReached' })
+    readonly DZ_QUEUECOMPLETE = output<void>({ alias: 'queueComplete' })
 }
 
 /** @internal */

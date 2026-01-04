@@ -8,8 +8,8 @@
                 role="switch"
                 id="is-directive"
                 name="is-directive"
-                [ngModel]="type == 'directive'"
-                (ngModelChange)="type = $event ? 'directive' : 'component'">
+                [ngModel]="type() == 'directive'"
+                (ngModelChange)="type.set($event ? 'directive' : 'component')">
             <label class="form-check-label"
                 for="is-directive">Directive</label>
         </div>
@@ -20,8 +20,8 @@
                 role="switch"
                 id="is-disabled"
                 name="is-disabled"
-                [ngModel]="disabled"
-                (ngModelChange)="disabled = !!$event">
+                [ngModel]="disabled()"
+                (ngModelChange)="disabled.set(!!$event)">
             <label class="form-check-label"
                 for="is-disabled">Disabled</label>
         </div>
@@ -32,8 +32,8 @@
                 role="switch"
                 id="is-multiple"
                 name="is-multiple"
-                [ngModel]="config.maxFiles != 1"
-                (ngModelChange)="config.maxFiles = $event ? undefined : 1">
+                [ngModel]="maxFiles() != 1"
+                (ngModelChange)="maxFiles.set($event ? undefined : 1)">
             <label class="form-check-label"
                 for="is-multiple">Upload multiple files</label>
         </div>
@@ -44,8 +44,8 @@
                 role="switch"
                 id="auto-reset"
                 name="auto-reset"
-                [ngModel]="autoReset"
-                (ngModelChange)="toggleAutoReset($event)">
+                [ngModel]="autoReset()"
+                (ngModelChange)="autoReset.set(!!$event)">
             <label class="form-check-label"
                 for="auto-reset">Auto reset</label>
         </div>
@@ -56,8 +56,8 @@
                 role="switch"
                 id="click-action"
                 name="click-action"
-                [ngModel]="config.clickable"
-                (ngModelChange)="config.clickable = !!$event">
+                [ngModel]="clickable()"
+                (ngModelChange)="clickable.set(!!$event)">
             <label class="form-check-label"
                 for="click-action">Click action</label>
         </div>
@@ -70,17 +70,17 @@
     </div>
     <div class="col demo-dz-column">
         <h3 class="h5">Dropzone</h3>
-        @if (type == 'directive') {
+        @if (type() == 'directive') {
         <div class="dropzone dropzone-container"
-            [nxtDropzone]="config"
-            [disabled]="disabled"
+            [nxtDropzone]="config()"
+            [disabled]="disabled()"
             (init)="onUploadInit($event)"
             (error)="onUploadError($event)"
             (success)="onUploadSuccess($event)"></div>
         } @else {
         <nxt-dropzone class="dropzone-container"
-            [config]="config"
-            [disabled]="disabled"
+            [config]="config()"
+            [disabled]="disabled()"
             message="Click or drag images here to upload"
             (init)="onUploadInit($event)"
             (error)="onUploadError($event)"
