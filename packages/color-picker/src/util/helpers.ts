@@ -1,4 +1,4 @@
-import { ElementRef } from '@angular/core'
+import { ElementRef, InputSignal } from '@angular/core'
 import { AlphaChannel, ColorMode, DialogDisplay, DialogPosition, InputChangeEvent, OutputFormat, SliderChangeEvent } from './types'
 
 /**
@@ -99,26 +99,26 @@ export interface DialogConfig {
     callbacks: DirectiveCallbacks
     elementRef: ElementRef
     color: any
-    width: string
-    height: string
-    dialogDisplay: DialogDisplay
-    fallbackColor?: string
-    mode: ColorMode
-    cmykEnabled: boolean
-    alphaChannel: AlphaChannel
-    outputFormat: OutputFormat
-    disableInput: boolean
-    ignoredElements?: any[]
-    saveClickOutside: boolean
-    closeClickOutside: boolean
-    useRootViewContainer: boolean
-    position: DialogPosition | DialogPosition[]
-    presetLabel: boolean | string
-    presetColors?: string[]
-    maxPresetColors?: number
-    okButton: boolean
-    cancelButton: boolean
-    presetColorsEditable: boolean
+    width: InputSignal<string>
+    height: InputSignal<string>
+    dialogDisplay: InputSignal<DialogDisplay>
+    fallbackColor: InputSignal<string | undefined>
+    mode: InputSignal<ColorMode>
+    cmykEnabled: InputSignal<boolean>
+    alphaChannel: InputSignal<AlphaChannel>
+    outputFormat: InputSignal<OutputFormat>
+    disableInput: InputSignal<boolean>
+    ignoredElements: InputSignal<any[] | undefined>
+    saveClickOutside: InputSignal<boolean>
+    closeClickOutside: InputSignal<boolean>
+    useRootViewContainer: InputSignal<boolean>
+    position: InputSignal<DialogPosition | DialogPosition[]>
+    presetLabel: InputSignal<boolean | string>
+    presetColors: InputSignal<string[] | undefined>
+    maxPresetColors: InputSignal<number | undefined>
+    okButton: InputSignal<boolean>
+    cancelButton: InputSignal<boolean>
+    presetColorsEditable: InputSignal<boolean>
 }
 
 /**

@@ -206,43 +206,43 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     setupDialog(config: DialogConfig) {
         this.setInitialColor(config.color)
 
-        this.mode = parseColorMode(config.mode)
+        this.mode = parseColorMode(config.mode())
 
         this.callbacks = config.callbacks
 
-        this.disableInput = config.disableInput
+        this.disableInput = config.disableInput()
 
-        this.cmykEnabled = config.cmykEnabled
-        this.alphaChannel = config.alphaChannel
-        this.outputFormat = config.outputFormat
-        this.dialogDisplay = config.dialogDisplay
+        this.cmykEnabled = config.cmykEnabled()
+        this.alphaChannel = config.alphaChannel()
+        this.outputFormat = config.outputFormat()
+        this.dialogDisplay = config.dialogDisplay()
 
         this.ignoredElements = [
-            ...config.ignoredElements ?? [],
+            ...config.ignoredElements() ?? [],
             this.elRef && this.elRef.nativeElement,
             config.elementRef && config.elementRef.nativeElement
         ].filter(e => !!e)
 
-        this.saveClickOutside = config.saveClickOutside
-        this.closeClickOutside = config.closeClickOutside
+        this.saveClickOutside = config.saveClickOutside()
+        this.closeClickOutside = config.closeClickOutside()
 
-        this.width = sizeToString(config.width)
-        this.height = sizeToString(config.height)
+        this.width = sizeToString(config.width())
+        this.height = sizeToString(config.height())
 
-        this.okButton = config.okButton
+        this.okButton = config.okButton()
 
-        this.cancelButton = config.cancelButton
+        this.cancelButton = config.cancelButton()
 
-        this.fallbackColor = config.fallbackColor || '#fff'
+        this.fallbackColor = config.fallbackColor() || '#fff'
 
-        this.setPresetConfig(config.presetLabel, config.presetColors)
+        this.setPresetConfig(config.presetLabel(), config.presetColors())
 
-        this.maxPresetColors = config.maxPresetColors
+        this.maxPresetColors = config.maxPresetColors()
 
-        this.presetColorsEditable = config.presetColorsEditable
+        this.presetColorsEditable = config.presetColorsEditable()
 
-        if (config.outputFormat == OutputFormatEnum.hex &&
-            config.alphaChannel != AlphaChannelEnum.always && config.alphaChannel != AlphaChannelEnum.forced) {
+        if (config.outputFormat() == OutputFormatEnum.hex &&
+            config.alphaChannel() != AlphaChannelEnum.always && config.alphaChannel() != AlphaChannelEnum.forced) {
             this.alphaChannel = AlphaChannelEnum.disabled
         }
     }

@@ -1,6 +1,6 @@
 import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
-import { ApplicationRef, ComponentRef, Directive, ElementRef, HostListener, Injector, Input, OnChanges, OnDestroy, SimpleChanges, ViewContainerRef, inject, output } from '@angular/core'
+import { ApplicationRef, ComponentRef, Directive, ElementRef, HostListener, Injector, OnChanges, OnDestroy, SimpleChanges, ViewContainerRef, inject, output, input, linkedSignal } from '@angular/core'
 import { compositeColors, hsvaToRgba, stringToHsva } from '../util/color'
 import { opaqueSliderLight } from '../util/contrast'
 import { Hsva, Rgba } from '../util/formats'
@@ -26,9 +26,9 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             this.toggleChange.emit(state)
 
             if (state) {
-                this.open.emit(this.nxtColor)
+                this.open.emit(this.nxtColor())
             } else {
-                this.close.emit(this.nxtColor)
+                this.close.emit(this.nxtColor())
             }
         },
         cmykChanged: (value: string, ignore: boolean = true) => {
@@ -66,82 +66,87 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     private overlayRef?: OverlayRef
 
     private get resIgnoredElements() {
-        const ign = Array.isArray(this.ignoredElements) ? this.ignoredElements : [this.ignoredElements]
+        const ignoredElements = this.ignoredElements()
+        const ign = Array.isArray(ignoredElements) ? ignoredElements : [ignoredElements]
         return ign.filter(el => !!el)
     }
 
     /** The color to show in the color picker dialog */
-    @Input() nxtColor?: string
+    readonly _nxtColor = input<string | undefined>(undefined, { alias: 'nxtColor' })
+    readonly nxtColor = linkedSignal({
+        source: () => this._nxtColor(),
+        computation: v => v
+    })
 
     /** Use this option to set color picker dialog width */
-    @Input() width: string = '230px'
+    readonly width = input<string>('230px')
     /** Use this option to force color picker dialog height */
-    @Input() height: string = 'auto'
+    readonly height = input<string>('auto')
 
     /** Sets the default open / close state of the color picker */
-    @Input() toggle: boolean = false
+    readonly toggle = input<boolean>(false)
     /** Disables opening of the color picker dialog via toggle */
-    @Input() disabled: boolean = false
+    readonly disabled = input<boolean>(false)
 
     /** Dialog color mode */
-    @Input() mode: ColorMode = 'color'
+    readonly mode = input<ColorMode>('color')
 
     /** Enables CMYK input format and color change event */
-    @Input() cmykEnabled: boolean = false
+    readonly cmykEnabled = input<boolean>(false)
 
     /** Output color format */
-    @Input() outputFormat: OutputFormat = OutputFormatEnum.auto
+    readonly outputFormat = input<OutputFormat>(OutputFormatEnum.auto)
     /** Alpha channel mode */
-    @Input() alphaChannel: AlphaChannel = AlphaChannelEnum.enabled
+    readonly alphaChannel = input<AlphaChannel>(AlphaChannelEnum.enabled)
     /** Used when the color is not well-formed or is undefined */
-    @Input() fallbackColor?: string
+    readonly fallbackColor = input<string>()
 
     /** Dialog position */
-    @Input() position: DialogPosition | DialogPosition[] = DialogPositionEnum.auto
+    readonly position = input<DialogPosition | DialogPosition[]>(DialogPositionEnum.auto)
     /** Dialog offset percentage relative to the directive element */
-    @Input() positionOffset: number = 0
+    readonly positionOffset = input<number>(0)
 
     /**
      * Show label for preset colors
      *
      * If string is given, it overrides the default label.
      */
-    @Input() presetLabel: boolean | string = true
+    readonly presetLabel = input<boolean | string>(true)
     /** Array of preset colors to show in the color picker dialog */
-    @Input() presetColors?: string[]
+    readonly presetColors = input<string[]>()
 
     /** Disables / hides the color input field from the dialog */
-    @Input() disableInput: boolean = false
+    readonly disableInput = input<boolean>(false)
 
     /** Dialog positioning mode */
-    @Input() dialogDisplay: DialogDisplay = DialogDisplayEnum.popup
+    readonly dialogDisplay = input<DialogDisplay>(DialogDisplayEnum.popup)
 
     /** Array of HTML elements that will be ignored when clicked */
-    @Input() ignoredElements?: any[]
+    readonly ignoredElements = input<any[]>()
 
     /** Save currently selected color when user clicks outside */
-    @Input() saveClickOutside: boolean = true
+    readonly saveClickOutside = input<boolean>(true)
     /** Close the color picker dialog when user clicks outside */
-    @Input() closeClickOutside: boolean = true
+    readonly closeClickOutside = input<boolean>(true)
 
     /** Show an OK / Apply button which saves the color */
-    @Input() okButton: boolean = false
+    readonly okButton = input<boolean>(false)
 
     /** Show a Cancel / Reset button which resets the color */
-    @Input() cancelButton: boolean = false
+    readonly cancelButton = input<boolean>(false)
 
     /** Show buttons to add / remove preset colors */
-    @Input() presetColorsEditable: boolean = false
+    readonly presetColorsEditable = input<boolean>(false)
 
     /** Use this option to set the max colors allowed in presets */
-    @Input() maxPresetColors?: number
+    readonly maxPresetColors = input<number>()
 
     /**
      * Create dialog component in the root view container
      *
      * Note: The root component needs to have public viewContainerRef.
      */
-    @Input() useRootViewContainer: boolean = false
+    readonly useRootViewContainer = input<boolean>(false)
 
     /** Current color value, emit when dialog is isOpen */
     readonly open = output<string | undefined>()
@@ -187,7 +192,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         const path = new Set(composedPath(event))
         const ignored = this.resIgnoredElements.find(el => path.has(el))
 
-        if (!this.disabled && !ignored) {
+        if (!this.disabled() && !ignored) {
             this.openDialog()
         }
     }
@@ -201,8 +206,8 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         if (this.dialog) {
             this.dialog.setColorFromString(value, true)
         } else {
-            this.nxtColor = value
-            this.nxtColorChange.emit(this.nxtColor)
+            this.nxtColor.set(value)
+            this.nxtColorChange.emit(value)
         }
     }
 
@@ -213,7 +218,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
     /** @internal */
     ngOnChanges(changes: SimpleChanges) {
-        if (changes['toggle'] && !this.disabled) {
+        if (changes['toggle'] && !this.disabled()) {
             if (changes['toggle'].currentValue) {
                 this.openDialog()
             } else {
@@ -223,13 +228,13 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
         if (changes['nxtColor']) {
             if (this.dialog && !this.ignoreChanges) {
-                if (this.dialogDisplay == DialogDisplayEnum.inline) {
+                if (this.dialogDisplay() == DialogDisplayEnum.inline) {
                     this.dialog.setInitialColor(changes['nxtColor'].currentValue)
                 }
 
                 this.dialog.setColorFromString(changes['nxtColor'].currentValue, false)
 
-                if (this.useRootViewContainer && this.dialogDisplay != DialogDisplayEnum.inline) {
+                if (this.useRootViewContainer() && this.dialogDisplay() != DialogDisplayEnum.inline) {
                     this.cmpRef?.changeDetectorRef.detectChanges()
                 }
             }
@@ -238,7 +243,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         }
 
         if ((changes['presetLabel'] || changes['presetColors']) && this.dialog) {
-            this.dialog.setPresetConfig(this.presetLabel, this.presetColors)
+            this.dialog.setPresetConfig(this.presetLabel(), this.presetColors())
         }
 
         if (changes['dialogDisplay']) {
@@ -246,11 +251,11 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             this.create()
         }
 
-        if ((changes['position'] || changes['positionOffset']) && this.dialogDisplay == DialogDisplayEnum.popup) {
+        if ((changes['position'] || changes['positionOffset']) && this.dialogDisplay() == DialogDisplayEnum.popup) {
             if (this.overlayRef) {
                 this.overlayRef.updatePositionStrategy(this.overlay.position()
                     .flexibleConnectedTo(this.elRef)
-                    .withPositions(this.getPositions(this.positionOffset)))
+                    .withPositions(this.getPositions(this.positionOffset())))
             }
         }
     }
@@ -264,12 +269,12 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
                 this.dialog = this.cmpRef.instance
                 this.setupDialog()
             }
-            this.dialog.openDialog(this.nxtColor)
+            this.dialog.openDialog(this.nxtColor())
         }
     }
 
     closeDialog() {
-        if (this.dialog && this.dialogDisplay == DialogDisplayEnum.popup) {
+        if (this.dialog && this.dialogDisplay() == DialogDisplayEnum.popup) {
             this.dialog.closeDialog()
         }
     }
@@ -308,7 +313,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
         this.dialogCreated = true
 
-        if (this.useRootViewContainer && this.dialogDisplay != DialogDisplayEnum.inline) {
+        if (this.useRootViewContainer() && this.dialogDisplay() != DialogDisplayEnum.inline) {
             const classOfRootComponent = this.appRef.componentTypes[0]
             const appInstance = this.injector.get(classOfRootComponent)
 
@@ -319,12 +324,12 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             }
         }
 
-        if (this.dialogDisplay != DialogDisplayEnum.inline) {
+        if (this.dialogDisplay() != DialogDisplayEnum.inline) {
             const pos = this.overlay.position()
                 .flexibleConnectedTo(this.elRef)
                 .withFlexibleDimensions(false)
                 .withPush(false)
-                .withPositions(this.getPositions(this.positionOffset))
+                .withPositions(this.getPositions(this.positionOffset()))
             this.overlayRef = this.overlay.create({ positionStrategy: pos, scrollStrategy: this.overlay.scrollStrategies.reposition({ autoClose: true }) })
             this.cmpRef = this.overlayRef.attach(new ComponentPortal(ColorPickerComponent, null, this.injector))
         } else {
@@ -341,14 +346,15 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     }
 
     private setupDialog() {
-        this.dialog?.setupDialog({ ...this, callbacks: this._callbacks, elementRef: this.elRef, color: this.nxtColor })
+        this.dialog?.setupDialog({ ...this, callbacks: this._callbacks, elementRef: this.elRef, color: this.nxtColor() })
     }
 
     private getPositions(offset = 0) {
         const pos: ConnectedPosition[] = []
-        const positions = Array.isArray(this.position)
-            ? this.position
-            : [this.position || DialogPositionEnum.auto]
+        const position = this.position()
+        const positions = Array.isArray(position)
+            ? position
+            : [position || DialogPositionEnum.auto]
 
         const bb = this.elRef.nativeElement.getBoundingClientRect()
         const positionCfg = {
