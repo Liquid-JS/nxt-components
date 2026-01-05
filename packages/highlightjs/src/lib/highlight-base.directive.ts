@@ -24,7 +24,7 @@ export abstract class HighlightBase {
     /**
      * Code to highlight
      */
-    abstract readonly code: InputSignal<string | null | undefined>
+    abstract readonly code: InputSignal<string | undefined>
 
     /**
      * Highlighted result

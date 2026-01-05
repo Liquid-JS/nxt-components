@@ -1,13 +1,12 @@
 import { KeyValuePipe } from '@angular/common'
-import { Component, ViewEncapsulation } from '@angular/core'
+import { Component, computed, linkedSignal, ViewEncapsulation } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { HighlightDirective } from 'nxt-highlightjs'
-import { Gist, GistDirective, GistFilePipe } from 'nxt-highlightjs/extras'
+import { Gist, GistFilePipe, gistResource } from 'nxt-highlightjs/extras'
 
 @Component({
     selector: 'app-gist',
     imports: [
-        GistDirective,
         GistFilePipe,
         HighlightDirective,
         KeyValuePipe,
@@ -19,24 +18,19 @@ import { Gist, GistDirective, GistFilePipe } from 'nxt-highlightjs/extras'
 })
 export class GistComponent {
 
-    gistId = '745149f6fc352f9036908ffe99054578'
-    gist?: Gist
-    error?: Error
-    loading = true
+    readonly gistId = '745149f6fc352f9036908ffe99054578'
+    readonly gist = gistResource(this.gistId)
 
-    selectedFile?: string
+    readonly selectedFile = linkedSignal<Gist | undefined, string | undefined>({
+        source: () => this.gist.hasValue() ? this.gist.value() : undefined,
+        computation: (gist, prev) => {
+            if (!gist || ((prev?.value && prev.value in gist.files)))
+                return prev?.value
 
-    setGist(gist: Gist) {
-        this.gist = gist
-        if (this.selectedFile && this.selectedFile in gist.files)
-            return
+            return Object.keys(gist.files)[0]
+        }
+    })
 
-        this.selectedFile = Object.keys(gist.files)[0]
-        this.loading = false
-    }
-
-    extName(file?: string) {
-        return file?.split('.').reverse()[0]
-    }
+    readonly extName = computed(() => this.selectedFile()?.split('.').reverse()[0] ?? '')
 
 }

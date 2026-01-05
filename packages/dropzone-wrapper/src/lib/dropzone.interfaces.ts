@@ -118,7 +118,6 @@ export class _DropzoneConfig implements DropzoneConfig {
     }
 }
 
-/** @internal */
 @Directive()
 export class DropzoneListeners implements DZ_EVENTS {
     readonly DZ_INIT = output<Dropzone>({ alias: 'init' })

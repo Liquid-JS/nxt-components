@@ -4,6 +4,9 @@ import { NXT_HIGHLIGHT_FILE_LOCATION } from './code-file-location'
 import { CodeLoader } from './code-loader'
 import { isUrl } from './gist.model'
 
+/**
+ * @deprecated use fileResource with `{ formatUrl: true }`
+ */
 @Pipe({
     name: 'codeFromUrl'
 })

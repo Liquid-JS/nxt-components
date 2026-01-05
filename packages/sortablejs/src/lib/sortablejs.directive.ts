@@ -167,7 +167,7 @@ export class SortablejsDirective<T> implements OnChanges, OnDestroy, AfterViewIn
     private get isCloning() {
         const groupOptions = this.sortableInstance?.options.group
         return groupOptions && (typeof groupOptions != 'string')
-            ? groupOptions.checkPull?.(this.sortableInstance!, this.sortableInstance!, null as any, null as any) === 'clone'
+            ? groupOptions.checkPull?.(this.sortableInstance!, this.sortableInstance!, undefined as any, undefined as any) === 'clone'
             : groupOptions === 'clone'
     }
 

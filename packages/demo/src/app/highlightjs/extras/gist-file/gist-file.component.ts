@@ -1,11 +1,10 @@
 import { Component, ViewEncapsulation } from '@angular/core'
 import { HighlightDirective } from 'nxt-highlightjs'
-import { Gist, GistDirective, GistFilePipe } from 'nxt-highlightjs/extras'
+import { GistFilePipe, gistResource } from 'nxt-highlightjs/extras'
 
 @Component({
     selector: 'app-gist-file',
     imports: [
-        GistDirective,
         GistFilePipe,
         HighlightDirective
     ],
@@ -15,9 +14,7 @@ import { Gist, GistDirective, GistFilePipe } from 'nxt-highlightjs/extras'
 })
 export class GistFileComponent {
 
-    gistId = '745149f6fc352f9036908ffe99054578'
-    gist?: Gist
-    error?: Error
-    loading = true
+    readonly gistId = '745149f6fc352f9036908ffe99054578'
+    readonly gist = gistResource(this.gistId)
 
 }

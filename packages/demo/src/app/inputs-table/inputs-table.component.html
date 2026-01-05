@@ -1,6 +1,6 @@
-@if (inputs()?.length) {
+@if (parsed()?.length) {
 <table cdk-table
-    [dataSource]="inputs()!"
+    [dataSource]="parsed()!"
     class="table table-hover">
     <tr cdk-header-row
         *cdkHeaderRowDef="['name', 'type', 'default-value', 'description']"></tr>

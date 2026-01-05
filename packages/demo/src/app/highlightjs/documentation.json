@@ -2,13 +2,13 @@
     "pipes": [
         {
             "name": "CodeFromUrlPipe",
-            "id": "pipe-CodeFromUrlPipe-1942ec1709007bfcd4e250ba767a7ddc7496e42ffa56cd39ab97b9122798c5ea658b46f6eedae23a4b961ef4e808b07829a89820f7f73d1f94d93e9673873b48",
-            "file": "extras/src/code-from-url.ts",
+            "id": "pipe-CodeFromUrlPipe-050d36ec586a359d271f81aa3c6c1de2c65ce0b23d260f4ebe20a9f1e79f4bd304f488f4f90a105856590506d44c4b82e74c78cb77ab46bd9dc575d153980b4e",
+            "file": "extras/src/code-from-url.pipe.ts",
             "type": "pipe",
-            "deprecated": false,
-            "deprecationMessage": "",
+            "deprecated": true,
+            "deprecationMessage": "use fileResource with `{ formatUrl: true }`",
             "description": "",
-            "rawdescription": "\n",
+            "rawdescription": "\n\n",
             "properties": [],
             "methods": [
                 {
@@ -24,7 +24,7 @@
                     "optional": false,
                     "returnType": "Observable<string>",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 18,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -45,7 +45,7 @@
         },
         {
             "name": "GistFilePipe",
-            "id": "pipe-GistFilePipe-77db96068a2043e51ee578b0f5acf5cb203a643bc5f788dc35e7791f98cb2dfe8f70360e4c1be04b3b671ef1af5723145d5a7079549f2eca29cb05a7986b8636",
+            "id": "pipe-GistFilePipe-6f3251e303f674136967117448aaca00fd232f9fcf9623185164c5d54f05eff846bd7421c3cc7eecdb36fdf6ebcff07e18714618c01cac5be0546ee828412b95",
             "file": "extras/src/gist.ts",
             "type": "pipe",
             "deprecated": false,
@@ -75,7 +75,7 @@
                     "optional": false,
                     "returnType": "GistFile | undefined",
                     "typeParameters": [],
-                    "line": 46,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -109,7 +109,7 @@
     "interfaces": [
         {
             "name": "ChangeStatus",
-            "id": "interface-ChangeStatus-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "id": "interface-ChangeStatus-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -123,7 +123,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 68
+                    "line": 72
                 },
                 {
                     "name": "deletions",
@@ -133,7 +133,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 69
+                    "line": 73
                 },
                 {
                     "name": "total",
@@ -143,31 +143,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 67
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 172,
-            "methods": [],
-            "extends": []
-        },
-        {
-            "name": "CodeFileLocation",
-            "id": "interface-CodeFileLocation-84cff7fa5b68fe8dbd142da4ba7277f01b619c88703148ce1e0af47c67e7678634fd891cf9fb361ea194cea730984ebf4ce3fc1229197df2e152a74597e768e8",
-            "file": "extras/src/code-file-location.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "properties": [
-                {
-                    "name": "formatPathname",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "function",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 14
+                    "line": 71
                 }
             ],
             "indexSignatures": [],
@@ -177,7 +153,7 @@
         },
         {
             "name": "Files",
-            "id": "interface-Files-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "id": "interface-Files-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -185,7 +161,7 @@
             "properties": [],
             "indexSignatures": [
                 {
-                    "id": "index-declaration-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+                    "id": "index-declaration-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
                     "args": [
                         {
                             "name": "fileName",
@@ -195,7 +171,7 @@
                         }
                     ],
                     "returnType": "GistFile",
-                    "line": 90,
+                    "line": 94,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -206,7 +182,7 @@
         },
         {
             "name": "Gist",
-            "id": "interface-Gist-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "id": "interface-Gist-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -220,7 +196,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 108
+                    "line": 112
                 },
                 {
                     "name": "comments_url",
@@ -230,7 +206,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 110
+                    "line": 114
                 },
                 {
                     "name": "commits_url",
@@ -240,7 +216,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 97
+                    "line": 101
                 },
                 {
                     "name": "created_at",
@@ -250,7 +226,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 105
+                    "line": 109
                 },
                 {
                     "name": "description",
@@ -260,7 +236,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 107
+                    "line": 111
                 },
                 {
                     "name": "files",
@@ -270,7 +246,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 103
+                    "line": 107
                 },
                 {
                     "name": "forks",
@@ -280,7 +256,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 112
+                    "line": 116
                 },
                 {
                     "name": "forks_url",
@@ -290,7 +266,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 96
+                    "line": 100
                 },
                 {
                     "name": "git_pull_url",
@@ -300,7 +276,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 100
+                    "line": 104
                 },
                 {
                     "name": "git_push_url",
@@ -310,7 +286,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 101
+                    "line": 105
                 },
                 {
                     "name": "history",
@@ -320,7 +296,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 113
+                    "line": 117
                 },
                 {
                     "name": "html_url",
@@ -330,7 +306,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 102
+                    "line": 106
                 },
                 {
                     "name": "id",
@@ -340,7 +316,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 98
+                    "line": 102
                 },
                 {
                     "name": "node_id",
@@ -350,7 +326,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 99
+                    "line": 103
                 },
                 {
                     "name": "owner",
@@ -360,7 +336,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 111
+                    "line": 115
                 },
                 {
                     "name": "public",
@@ -370,7 +346,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 104
+                    "line": 108
                 },
                 {
                     "name": "truncated",
@@ -380,7 +356,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 114
+                    "line": 118
                 },
                 {
                     "name": "updated_at",
@@ -390,7 +366,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 106
+                    "line": 110
                 },
                 {
                     "name": "url",
@@ -400,7 +376,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 95
+                    "line": 99
                 },
                 {
                     "name": "user",
@@ -410,7 +386,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 109
+                    "line": 113
                 }
             ],
             "indexSignatures": [],
@@ -420,7 +396,7 @@
         },
         {
             "name": "GistFile",
-            "id": "interface-GistFile-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "id": "interface-GistFile-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -434,7 +410,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 87
+                    "line": 91
                 },
                 {
                     "name": "filename",
@@ -444,7 +420,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 81
+                    "line": 85
                 },
                 {
                     "name": "language",
@@ -454,7 +430,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 83
+                    "line": 87
                 },
                 {
                     "name": "raw_url",
@@ -464,7 +440,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 84
+                    "line": 88
                 },
                 {
                     "name": "size",
@@ -474,7 +450,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 85
+                    "line": 89
                 },
                 {
                     "name": "truncated",
@@ -484,7 +460,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 86
+                    "line": 90
                 },
                 {
                     "name": "type",
@@ -494,7 +470,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 82
+                    "line": 86
                 }
             ],
             "indexSignatures": [],
@@ -504,7 +480,7 @@
         },
         {
             "name": "GistOptions",
-            "id": "interface-GistOptions-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "id": "interface-GistOptions-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -518,7 +494,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 9
+                    "line": 10
                 },
                 {
                     "name": "clientSecret",
@@ -528,7 +504,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 10
+                    "line": 11
                 }
             ],
             "indexSignatures": [],
@@ -538,7 +514,7 @@
         },
         {
             "name": "HighlightJSOptions",
-            "id": "interface-HighlightJSOptions-508c33c0e92298d21a7ef5a92f8988fe866400922df708cc5e16caa7c47bb87788efbbd046dedc5f91cfaa91dba7a8aadaac1acdbddf3e840983dc2258e6d623",
+            "id": "interface-HighlightJSOptions-a8576e1b98801dce4c7d719cf982fa239e4b03066304d208e4c64b1257762543db8f3cfd4c15066defefaf5bc9ba34ea8a17bf064f92515b6bab45f43903f006",
             "file": "src/lib/highlight.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -622,7 +598,7 @@
         },
         {
             "name": "History",
-            "id": "interface-History-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "id": "interface-History-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -636,7 +612,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 76
+                    "line": 80
                 },
                 {
                     "name": "committed_at",
@@ -646,7 +622,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 75
+                    "line": 79
                 },
                 {
                     "name": "url",
@@ -656,7 +632,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 77
+                    "line": 81
                 },
                 {
                     "name": "user",
@@ -666,7 +642,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 73
+                    "line": 77
                 },
                 {
                     "name": "version",
@@ -676,7 +652,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 74
+                    "line": 78
                 }
             ],
             "indexSignatures": [],
@@ -686,41 +662,7 @@
         },
         {
             "name": "LineNumbersOptions",
-            "id": "interface-LineNumbersOptions-f9bca46650922c6c697d850727576550b1bef626d2c141bf40f6bd335a241afe4d3d3ebd2e7b123c27170e622ef1e0070d3294f46bc1ed792556b25afc2d0b54",
-            "file": "line-numbers/src/line-numbers-lib.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "properties": [
-                {
-                    "name": "singleLine",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 3
-                },
-                {
-                    "name": "startFrom",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 2
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 172,
-            "methods": [],
-            "extends": []
-        },
-        {
-            "name": "LineNumbersOptions",
-            "id": "interface-LineNumbersOptions-508c33c0e92298d21a7ef5a92f8988fe866400922df708cc5e16caa7c47bb87788efbbd046dedc5f91cfaa91dba7a8aadaac1acdbddf3e840983dc2258e6d623-1",
+            "id": "interface-LineNumbersOptions-a8576e1b98801dce4c7d719cf982fa239e4b03066304d208e4c64b1257762543db8f3cfd4c15066defefaf5bc9ba34ea8a17bf064f92515b6bab45f43903f006",
             "file": "src/lib/highlight.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -752,14 +694,11 @@
             "description": "<p>Full documentation is available here <a href=\"https://highlightjs.readthedocs.io/en/latest/api.html\">https://highlightjs.readthedocs.io/en/latest/api.html</a></p>\n",
             "rawdescription": "\n\nFull documentation is available here https://highlightjs.readthedocs.io/en/latest/api.html\n",
             "methods": [],
-            "extends": [],
-            "isDuplicate": true,
-            "duplicateId": 1,
-            "duplicateName": "LineNumbersOptions-1"
+            "extends": []
         },
         {
             "name": "Owner",
-            "id": "interface-Owner-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "id": "interface-Owner-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -767,26 +706,6 @@
             "properties": [
                 {
                     "name": "avatar_url",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 28
-                },
-                {
-                    "name": "events_url",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 39
-                },
-                {
-                    "name": "followers_url",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -796,127 +715,17 @@
                     "line": 32
                 },
                 {
-                    "name": "following_url",
+                    "name": "events_url",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 33
+                    "line": 43
                 },
                 {
-                    "name": "gists_url",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 34
-                },
-                {
-                    "name": "gravatar_id",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 29
-                },
-                {
-                    "name": "html_url",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 31
-                },
-                {
-                    "name": "id",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 26
-                },
-                {
-                    "name": "login",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 25
-                },
-                {
-                    "name": "node_id",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 27
-                },
-                {
-                    "name": "organizations_url",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 37
-                },
-                {
-                    "name": "received_events_url",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 40
-                },
-                {
-                    "name": "repos_url",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 38
-                },
-                {
-                    "name": "site_admin",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 42
-                },
-                {
-                    "name": "starred_url",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 35
-                },
-                {
-                    "name": "subscriptions_url",
+                    "name": "followers_url",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -926,7 +735,77 @@
                     "line": 36
                 },
                 {
-                    "name": "type",
+                    "name": "following_url",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
+                },
+                {
+                    "name": "gists_url",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38
+                },
+                {
+                    "name": "gravatar_id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "html_url",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "login",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                },
+                {
+                    "name": "node_id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
+                },
+                {
+                    "name": "organizations_url",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -936,6 +815,66 @@
                     "line": 41
                 },
                 {
+                    "name": "received_events_url",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 44
+                },
+                {
+                    "name": "repos_url",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 42
+                },
+                {
+                    "name": "site_admin",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 46
+                },
+                {
+                    "name": "starred_url",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39
+                },
+                {
+                    "name": "subscriptions_url",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 45
+                },
+                {
                     "name": "url",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -943,7 +882,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 30
+                    "line": 34
                 }
             ],
             "indexSignatures": [],
@@ -953,7 +892,7 @@
         },
         {
             "name": "User",
-            "id": "interface-User-2c58765237ce7d4b2d1803ec0abb2ee475cf717c04ba82fb628d2e6f051a3ffdf5313648d9fd1b0186faa2cbe63d88b13e62c6c2753b2115ff21965b2e053d5e",
+            "id": "interface-User-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -967,7 +906,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 49
+                    "line": 53
                 },
                 {
                     "name": "events_url",
@@ -977,7 +916,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 60
+                    "line": 64
                 },
                 {
                     "name": "followers_url",
@@ -987,7 +926,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 53
+                    "line": 57
                 },
                 {
                     "name": "following_url",
@@ -997,7 +936,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 54
+                    "line": 58
                 },
                 {
                     "name": "gists_url",
@@ -1007,7 +946,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 55
+                    "line": 59
                 },
                 {
                     "name": "gravatar_id",
@@ -1017,7 +956,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 50
+                    "line": 54
                 },
                 {
                     "name": "html_url",
@@ -1027,7 +966,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 52
+                    "line": 56
                 },
                 {
                     "name": "id",
@@ -1037,7 +976,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 47
+                    "line": 51
                 },
                 {
                     "name": "login",
@@ -1047,7 +986,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 46
+                    "line": 50
                 },
                 {
                     "name": "node_id",
@@ -1057,7 +996,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 48
+                    "line": 52
                 },
                 {
                     "name": "organizations_url",
@@ -1067,7 +1006,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 58
+                    "line": 62
                 },
                 {
                     "name": "received_events_url",
@@ -1077,7 +1016,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 61
+                    "line": 65
                 },
                 {
                     "name": "repos_url",
@@ -1087,7 +1026,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 59
+                    "line": 63
                 },
                 {
                     "name": "site_admin",
@@ -1097,7 +1036,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 63
+                    "line": 67
                 },
                 {
                     "name": "starred_url",
@@ -1107,7 +1046,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 56
+                    "line": 60
                 },
                 {
                     "name": "subscriptions_url",
@@ -1117,7 +1056,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 57
+                    "line": 61
                 },
                 {
                     "name": "type",
@@ -1127,7 +1066,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 62
+                    "line": 66
                 },
                 {
                     "name": "url",
@@ -1137,7 +1076,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 51
+                    "line": 55
                 }
             ],
             "indexSignatures": [],
@@ -1147,110 +1086,6 @@
         }
     ],
     "injectables": [
-        {
-            "name": "CodeLoader",
-            "id": "injectable-CodeLoader-e6a3e79e728a61bab9182ea67bea46aacf2077714b58bc62d374c24c5a36d608489bd388829e7baab130b26eeedb244cb19938f88952433cd6b9c36528a5e1e2",
-            "file": "extras/src/code-loader.ts",
-            "properties": [],
-            "methods": [
-                {
-                    "name": "getCodeFromGist",
-                    "args": [
-                        {
-                            "name": "id",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Observable<Gist>",
-                    "typeParameters": [],
-                    "line": 19,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nGet plus code\n\n",
-                    "description": "<p>Get plus code</p>\n",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 486,
-                                "end": 488,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "id"
-                            },
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 480,
-                                "end": 485,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": "<p>Gist ID</p>\n"
-                        }
-                    ]
-                },
-                {
-                    "name": "getCodeFromUrl",
-                    "args": [
-                        {
-                            "name": "url",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Observable<string>",
-                    "typeParameters": [],
-                    "line": 32,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nGet code by URL\n\n",
-                    "description": "<p>Get code by URL</p>\n",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 978,
-                                "end": 981,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "url"
-                            },
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 972,
-                                "end": 977,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": "<p>File raw link</p>\n"
-                        }
-                    ]
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "description": "",
-            "rawdescription": "\n",
-            "extends": [],
-            "type": "injectable"
-        },
         {
             "name": "HighlightJS",
             "id": "injectable-HighlightJS-b085458c2c5f6b6f2ac7abc5c1f8bfb1323a839d8a7afa61dee0cf74ba46185292417c0e5267fbd42848355b1a2e010d68b311e244fad383060ef761453dcde4",
@@ -1798,1208 +1633,58 @@
             },
             "extends": [],
             "type": "injectable"
+        },
+        {
+            "name": "HighlightLoaderStub",
+            "id": "injectable-HighlightLoaderStub-c9a63001c98f69e8e0a29b16dcffddabee53b89db80c3e94c73296125a7821930ba258b276f67135571099e5f27131d3c89208ace511ea2bedb161c9a6884871",
+            "file": "src/test-helpers.ts",
+            "properties": [
+                {
+                    "name": "hljs",
+                    "defaultValue": "resource({\r\n        loader: () => this.ready\r\n    }).asReadonly()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "ready",
+                    "defaultValue": "new Promise<HLJSApi>((resolve) => {\r\n        (hljs as any).lineNumbersBlock = activateLineNumbers(document)\r\n        resolve(hljs)\r\n    })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "methods": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "extends": [],
+            "type": "injectable"
         }
     ],
     "guards": [],
     "interceptors": [],
-    "classes": [
-        {
-            "name": "HTMLRenderer",
-            "id": "class-HTMLRenderer-923f4fa6a4f7becb52c78535a4068ad3a7325539350b41e0d34d46b510db738d0aaf755d604324197b9b788fdf8e1320bdb8a8a575c8ef1b74ea8dedda344596",
-            "file": "src/lib/output.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "class",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "<p>Creates a new HTMLRenderer</p>\n",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "parseTree",
-                        "type": "unknown",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "options",
-                        "type": "unknown",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 227,
-                "rawdescription": "\n\nCreates a new HTMLRenderer\n\n",
-                "jsdoctags": [
-                    {
-                        "name": {
-                            "pos": 5311,
-                            "end": 5320,
-                            "kind": 80,
-                            "id": 0,
-                            "flags": 16842752,
-                            "transformFlags": 0,
-                            "escapedText": "parseTree"
-                        },
-                        "type": "unknown",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "pos": 5305,
-                            "end": 5310,
-                            "kind": 80,
-                            "id": 0,
-                            "flags": 16842752,
-                            "transformFlags": 0,
-                            "escapedText": "param"
-                        },
-                        "comment": "<ul>\n<li>the parse tree (must support <code>walk</code> API)</li>\n</ul>\n"
-                    },
-                    {
-                        "name": {
-                            "pos": 5379,
-                            "end": 5386,
-                            "kind": 80,
-                            "id": 0,
-                            "flags": 16842752,
-                            "transformFlags": 0,
-                            "escapedText": "options"
-                        },
-                        "type": "unknown",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "pos": 5373,
-                            "end": 5378,
-                            "kind": 80,
-                            "id": 0,
-                            "flags": 16842752,
-                            "transformFlags": 0,
-                            "escapedText": "param"
-                        },
-                        "comment": ""
-                    }
-                ]
-            },
-            "inputsClass": [],
-            "outputsClass": [],
-            "properties": [],
-            "methods": [
-                {
-                    "name": "addText",
-                    "args": [
-                        {
-                            "name": "text",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 245,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nAdds texts to the output stream\n",
-                    "description": "<p>Adds texts to the output stream</p>\n",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 5649,
-                                "end": 5653,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "text"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 5643,
-                                "end": 5648,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "closeNode",
-                    "args": [
-                        {
-                            "name": "node",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 267,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nAdds a node close to the output stream (if needed)\n",
-                    "description": "<p>Adds a node close to the output stream (if needed)</p>\n",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 6317,
-                                "end": 6321,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "node"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 6311,
-                                "end": 6316,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "openNode",
-                    "args": [
-                        {
-                            "name": "node",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 255,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nAdds a node open to the output stream (if needed)\n",
-                    "description": "<p>Adds a node open to the output stream (if needed)</p>\n",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 6011,
-                                "end": 6015,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "node"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 6005,
-                                "end": 6010,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "span",
-                    "args": [
-                        {
-                            "name": "className",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 287,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nBuilds a span element\n",
-                    "description": "<p>Builds a span element</p>\n",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 6659,
-                                "end": 6668,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "className"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 6653,
-                                "end": 6658,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "value",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 277,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nreturns the accumulated buffer\n",
-                    "description": "<p>returns the accumulated buffer</p>\n"
-                }
-            ],
-            "indexSignatures": [],
-            "extends": [],
-            "hostBindings": [],
-            "hostListeners": []
-        },
-        {
-            "name": "TokenTree",
-            "id": "class-TokenTree-923f4fa6a4f7becb52c78535a4068ad3a7325539350b41e0d34d46b510db738d0aaf755d604324197b9b788fdf8e1320bdb8a8a575c8ef1b74ea8dedda344596",
-            "file": "src/lib/output.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "class",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 22
-            },
-            "inputsClass": [],
-            "outputsClass": [],
-            "properties": [],
-            "methods": [
-                {
-                    "name": "_collapse",
-                    "args": [
-                        {
-                            "name": "node",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 95,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\n",
-                    "description": "",
-                    "modifierKind": [
-                        126
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 2249,
-                                "end": 2253,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "node"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 2243,
-                                "end": 2248,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "_walk",
-                    "args": [
-                        {
-                            "name": "builder",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "node",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 81,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\n",
-                    "description": "",
-                    "modifierKind": [
-                        126
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 1849,
-                                "end": 1856,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "builder"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 1843,
-                                "end": 1848,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        },
-                        {
-                            "name": {
-                                "pos": 1872,
-                                "end": 1876,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "node"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 1866,
-                                "end": 1871,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "add",
-                    "args": [
-                        {
-                            "name": "node",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 38,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 976,
-                                "end": 980,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "node"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 970,
-                                "end": 975,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "closeAllNodes",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 58,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "closeNode",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 50,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "openNode",
-                    "args": [
-                        {
-                            "name": "scope",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 43,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 1064,
-                                "end": 1069,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "scope"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 1058,
-                                "end": 1063,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "toJSON",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 62,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "walk",
-                    "args": [
-                        {
-                            "name": "builder",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 70,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\n",
-                    "description": "",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 1606,
-                                "end": 1613,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "builder"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 1600,
-                                "end": 1605,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                }
-            ],
-            "indexSignatures": [],
-            "extends": [],
-            "accessors": {
-                "top": {
-                    "name": "top",
-                    "getSignature": {
-                        "name": "top",
-                        "type": "",
-                        "returnType": "",
-                        "line": 29
-                    }
-                },
-                "root": {
-                    "name": "root",
-                    "getSignature": {
-                        "name": "root",
-                        "type": "",
-                        "returnType": "",
-                        "line": 33
-                    }
-                }
-            },
-            "hostBindings": [],
-            "hostListeners": []
-        },
-        {
-            "name": "TokenTreeEmitter",
-            "id": "class-TokenTreeEmitter-923f4fa6a4f7becb52c78535a4068ad3a7325539350b41e0d34d46b510db738d0aaf755d604324197b9b788fdf8e1320bdb8a8a575c8ef1b74ea8dedda344596",
-            "file": "src/lib/output.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "class",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "options",
-                        "type": "unknown",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 129,
-                "rawdescription": "\n\n",
-                "jsdoctags": [
-                    {
-                        "name": {
-                            "pos": 3162,
-                            "end": 3169,
-                            "kind": 80,
-                            "id": 0,
-                            "flags": 16842752,
-                            "transformFlags": 0,
-                            "escapedText": "options"
-                        },
-                        "type": "unknown",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "pos": 3156,
-                            "end": 3161,
-                            "kind": 80,
-                            "id": 0,
-                            "flags": 16842752,
-                            "transformFlags": 0,
-                            "escapedText": "param"
-                        },
-                        "comment": ""
-                    }
-                ]
-            },
-            "inputsClass": [],
-            "outputsClass": [],
-            "properties": [],
-            "methods": [
-                {
-                    "name": "__addSublanguage",
-                    "args": [
-                        {
-                            "name": "emitter",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "name",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 162,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\n",
-                    "description": "",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 3584,
-                                "end": 3591,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "emitter"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 3578,
-                                "end": 3583,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        },
-                        {
-                            "name": {
-                                "pos": 3607,
-                                "end": 3611,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "name"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 3601,
-                                "end": 3606,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "addText",
-                    "args": [
-                        {
-                            "name": "text",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 141,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\n",
-                    "description": "",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 3289,
-                                "end": 3293,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "text"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 3283,
-                                "end": 3288,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "endScope",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 154,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "finalize",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "boolean",
-                    "typeParameters": [],
-                    "line": 175,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "startScope",
-                    "args": [
-                        {
-                            "name": "scope",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 150,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 3434,
-                                "end": 3439,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "scope"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 3428,
-                                "end": 3433,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "toHTML",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 170,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "_collapse",
-                    "args": [
-                        {
-                            "name": "node",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 95,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\n",
-                    "description": "",
-                    "modifierKind": [
-                        126
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 2249,
-                                "end": 2253,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "node"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 2243,
-                                "end": 2248,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ],
-                    "inheritance": {
-                        "file": "TokenTree"
-                    }
-                },
-                {
-                    "name": "_walk",
-                    "args": [
-                        {
-                            "name": "builder",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "node",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 81,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\n",
-                    "description": "",
-                    "modifierKind": [
-                        126
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 1849,
-                                "end": 1856,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "builder"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 1843,
-                                "end": 1848,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        },
-                        {
-                            "name": {
-                                "pos": 1872,
-                                "end": 1876,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "node"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 1866,
-                                "end": 1871,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ],
-                    "inheritance": {
-                        "file": "TokenTree"
-                    }
-                },
-                {
-                    "name": "add",
-                    "args": [
-                        {
-                            "name": "node",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 38,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 976,
-                                "end": 980,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "node"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 970,
-                                "end": 975,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ],
-                    "inheritance": {
-                        "file": "TokenTree"
-                    }
-                },
-                {
-                    "name": "closeAllNodes",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 58,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "inheritance": {
-                        "file": "TokenTree"
-                    }
-                },
-                {
-                    "name": "closeNode",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 50,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "inheritance": {
-                        "file": "TokenTree"
-                    }
-                },
-                {
-                    "name": "openNode",
-                    "args": [
-                        {
-                            "name": "scope",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 43,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "",
-                    "description": "",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 1064,
-                                "end": 1069,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "scope"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 1058,
-                                "end": 1063,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ],
-                    "inheritance": {
-                        "file": "TokenTree"
-                    }
-                },
-                {
-                    "name": "toJSON",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 62,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "inheritance": {
-                        "file": "TokenTree"
-                    }
-                },
-                {
-                    "name": "walk",
-                    "args": [
-                        {
-                            "name": "builder",
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 70,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\n",
-                    "description": "",
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 1606,
-                                "end": 1613,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "builder"
-                            },
-                            "type": "unknown",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "pos": 1600,
-                                "end": 1605,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "param"
-                            },
-                            "comment": ""
-                        }
-                    ],
-                    "inheritance": {
-                        "file": "TokenTree"
-                    }
-                }
-            ],
-            "indexSignatures": [],
-            "extends": [
-                "TokenTree"
-            ],
-            "hostBindings": [],
-            "hostListeners": []
-        }
-    ],
+    "classes": [],
     "directives": [
         {
             "name": "GistDirective",
-            "id": "directive-GistDirective-77db96068a2043e51ee578b0f5acf5cb203a643bc5f788dc35e7791f98cb2dfe8f70360e4c1be04b3b671ef1af5723145d5a7079549f2eca29cb05a7986b8636",
+            "id": "directive-GistDirective-6f3251e303f674136967117448aaca00fd232f9fcf9623185164c5d54f05eff846bd7421c3cc7eecdb36fdf6ebcff07e18714618c01cac5be0546ee828412b95",
             "file": "extras/src/gist.ts",
             "type": "directive",
             "description": "",
-            "rawdescription": "\n",
+            "rawdescription": "\n\n",
             "selector": "[nxtGist]",
             "providers": [],
             "hostDirectives": [],
@@ -3014,7 +1699,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 13,
+                    "line": 16,
                     "modifierKind": [
                         148
                     ],
@@ -3030,7 +1715,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 15,
+                    "line": 18,
                     "modifierKind": [
                         148
                     ],
@@ -3044,15 +1729,15 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 14,
+                    "line": 17,
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 }
             ],
-            "deprecated": false,
-            "deprecationMessage": "",
+            "deprecated": true,
+            "deprecationMessage": "use gistResource",
             "hostBindings": [],
             "hostListeners": [],
             "propertiesClass": [],
@@ -3064,12 +1749,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 15
+                "line": 18
             }
         },
         {
             "name": "HighlightAutoDirective",
-            "id": "directive-HighlightAutoDirective-6c896a4af030cc4195c4567ae8b74f88c55fd1bbc251812fcc775dfc31a21626f882112aee96a0895a35903e1ae722145118bed329b51354095950f7e152d8e7",
+            "id": "directive-HighlightAutoDirective-2205c97f156613df53a0ad9b8f4390aadd0f2f08f3596a7265b916b6567c4641cf9a6e155d7f6347c2f597e24f41ca776edc71897e815ff76a74cf34a1fa6ba7",
             "file": "src/lib/highlight-auto.directive.ts",
             "type": "directive",
             "description": "",
@@ -3089,7 +1774,7 @@
                     "defaultValue": "undefined, { alias: 'nxtHighlightAuto' }",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string | null",
+                    "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Code to highlight</p>\n",
@@ -3160,7 +1845,7 @@
                     "name": "code",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "InputSignal<string | null | undefined>",
+                    "type": "InputSignal<string | undefined>",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Code to highlight</p>\n",
@@ -3253,7 +1938,7 @@
         },
         {
             "name": "HighlightBase",
-            "id": "directive-HighlightBase-5615580c441c612358d17038649156faf96e9f579cd0d74bd5ef3522e1318496d35e3cd1c16bd15df8dd48479b2b4f2dcc9db49920bf84dca577fcb6da17050e",
+            "id": "directive-HighlightBase-2d50b2daafcfc4637267e9f95c351129994f7f98208babacde3b88508c23c8062a5fab2826ef7f01920be2cc3e1b9c60711fe1f757306ffeeaea13500026d338",
             "file": "src/lib/highlight-base.directive.ts",
             "type": "directive",
             "description": "",
@@ -3272,7 +1957,7 @@
                     "name": "code",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "InputSignal<string | null | undefined>",
+                    "type": "InputSignal<string | undefined>",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Code to highlight</p>\n",
@@ -3375,7 +2060,7 @@
         },
         {
             "name": "HighlightDirective",
-            "id": "directive-HighlightDirective-b7b7fe14dc5d2f69cd16a6e91f648543cdd23d509c26ad692aadf348d5452cc7cae86995d5f35a7b03375525080541db386f2afe03793065b1eb057891f9c84e",
+            "id": "directive-HighlightDirective-02e8540daba14f582e42a55649a78931b381823ee53fe8fb9352e7e1f73ba25603155f3f68af35f59f3b67cdd5f4e746fcbf8a0b0598e1a26db71408f4ef8f64",
             "file": "src/lib/highlight.directive.ts",
             "type": "directive",
             "description": "",
@@ -3395,7 +2080,7 @@
                     "defaultValue": "undefined, { alias: 'nxtHighlight' }",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string | null",
+                    "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Code to highlight</p>\n",
@@ -3482,7 +2167,7 @@
                     "name": "code",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "InputSignal<string | null | undefined>",
+                    "type": "InputSignal<string | undefined>",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Code to highlight</p>\n",
@@ -3633,7 +2318,7 @@
     "modules": [
         {
             "name": "HighlightExstrasModule",
-            "id": "module-HighlightExstrasModule-d369acc2e884abc479ba99067400e20d045d34cfc5ab26bc500a83c2effde64631a6e8ac7e3c9150ee1f72675df227e62bed8bc13691714bf124f7592699f39a",
+            "id": "module-HighlightExstrasModule-edbcd086d45c21678c9f72d53c406fa809608195a5e2d1d0e801526e824c0f556f5b4e3e727a357aacfbdc0943bce0c951adb2b3b3d0244e5e8e6e5a35782df0",
             "description": "",
             "deprecationMessage": "use standalone imports",
             "deprecated": true,
@@ -3737,105 +2422,7 @@
         }
     ],
     "miscellaneous": {
-        "variables": [
-            {
-                "name": "BREAK_LINE_REGEXP",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/lib/output.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "unknown",
-                "defaultValue": "/\\r\\n|\\r|\\n/g"
-            },
-            {
-                "name": "emitsWrappingTags",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/lib/output.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "unknown",
-                "defaultValue": "(node) =>\r\n    // rarely we can have a sublanguage where language is undefined\r\n    // TODO: track down why\r\n    !!node.scope",
-                "rawdescription": "Determines if a node needs to be wrapped in <span>",
-                "description": "<p>Determines if a node needs to be wrapped in <span></p>\n"
-            },
-            {
-                "name": "newNode",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/lib/output.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "unknown",
-                "defaultValue": "(opts = {}) => {\r\n    /** @type DataNode */\r\n    const result = { children: [] }\r\n    Object.assign(result, opts)\r\n    return result\r\n}",
-                "rawdescription": "The contents of this file is from highlight.js, with a small modification to HTMLRenderer to make sure spans don't contain line breaks (important to improve performance of line numbers).",
-                "description": "<p>The contents of this file is from highlight.js, with a small modification to HTMLRenderer to make sure spans don&#39;t contain line breaks (important to improve performance of line numbers).</p>\n"
-            },
-            {
-                "name": "NXT_GIST_OPTIONS",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "extras/src/gist.model.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "unknown",
-                "defaultValue": "new InjectionToken<GistOptions>('NXT_GIST_OPTIONS')"
-            },
-            {
-                "name": "NXT_HIGHLIGHT_FILE_LOCATION",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "extras/src/code-file-location.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "unknown",
-                "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\r\n    providedIn: 'root',\r\n    factory: CODE_FILE_LOCATION_FACTORY\r\n})",
-                "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\r\nUsed to handle server-side rendering and to stub out during unit tests.",
-                "description": "<p>Injection token used to provide the current location to <code>codeFromUrl</code> pipe.\nUsed to handle server-side rendering and to stub out during unit tests.</p>\n"
-            },
-            {
-                "name": "NXT_HIGHLIGHT_OPTIONS",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/lib/highlight.model.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "unknown",
-                "defaultValue": "new InjectionToken<HighlightJSOptions>('NXT_HIGHLIGHT_OPTIONS')"
-            },
-            {
-                "name": "policy",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/lib/trusted-types.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Pick | undefined",
-                "rawdescription": "Enable usage of the library together with \"trusted-types\" HTTP Content-Security-Policy (CSP)\r\n\r\nCan be added to angular.json -> serve -> options -> headers to try it out in DEV mode\r\n\"Content-Security-Policy\": \"trusted-types nxt-highlightjs; require-trusted-types-for 'script'\"\r\n\r\nRead more...\r\nAngular Security: https://angular.io/guide/security#enforcing-trusted-types\r\nTrusted Types: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/trusted-types",
-                "description": "<p>Enable usage of the library together with &quot;trusted-types&quot; HTTP Content-Security-Policy (CSP)</p>\n<p>Can be added to angular.json -&gt; serve -&gt; options -&gt; headers to try it out in DEV mode\n&quot;Content-Security-Policy&quot;: &quot;trusted-types nxt-highlightjs; require-trusted-types-for &#39;script&#39;&quot;</p>\n<p>Read more...\nAngular Security: <a href=\"https://angular.io/guide/security#enforcing-trusted-types\">https://angular.io/guide/security#enforcing-trusted-types</a>\nTrusted Types: <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/trusted-types\">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/trusted-types</a></p>\n"
-            },
-            {
-                "name": "scopeToCSSClass",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/lib/output.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "unknown",
-                "defaultValue": "(name, { prefix }) => {\r\n    // sub-language\r\n    if (name.startsWith('language:')) {\r\n        return name.replace('language:', 'language-')\r\n    }\r\n    // tiered scope: comment.line\r\n    if (name.includes('.')) {\r\n        const pieces = name.split('.')\r\n        return [\r\n            `${prefix}${pieces.shift()}`,\r\n            ...(pieces.map((x, i) => `${x}${'_'.repeat(i + 1)}`))\r\n        ].join(' ')\r\n    }\r\n    // simple scope\r\n    return `${prefix}${name}`\r\n}"
-            },
-            {
-                "name": "SPAN_CLOSE",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/lib/output.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "'</span>'"
-            }
-        ],
+        "variables": [],
         "functions": [
             {
                 "name": "activateLineNumbers",
@@ -3866,18 +2453,8 @@
                 ]
             },
             {
-                "name": "CODE_FILE_LOCATION_FACTORY",
-                "file": "extras/src/code-file-location.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "args": []
-            },
-            {
-                "name": "escapeHTML",
-                "file": "src/lib/output.ts",
+                "name": "afterTimeout",
+                "file": "src/test-helpers.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
@@ -3885,84 +2462,158 @@
                 "description": "",
                 "args": [
                     {
-                        "name": "value",
-                        "type": "unknown",
+                        "name": "timeout",
+                        "type": "number",
                         "deprecated": false,
                         "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "Promise<void>",
+                "jsdoctags": [
+                    {
+                        "name": "timeout",
+                        "type": "number",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "fileResource",
+                "file": "extras/src/code-loader.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "<p>Code resource by URL</p>\n",
+                "args": [
+                    {
+                        "name": "url",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "formatUrl",
+                        "type": "unknown",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "destrucuredGroupId": "cf480483-193e-4f17-9c24-32fa9e58f7f8",
+                        "destructuredParameter": true
+                    },
+                    {
+                        "name": "options",
+                        "type": "any[]",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "dotDotDotToken": true,
+                        "destrucuredGroupId": "cf480483-193e-4f17-9c24-32fa9e58f7f8",
+                        "destructuredParameter": true
                     }
                 ],
                 "jsdoctags": [
                     {
                         "name": {
-                            "pos": 6839,
-                            "end": 6844,
+                            "pos": 1709,
+                            "end": 1712,
                             "kind": 80,
                             "id": 0,
                             "flags": 16777216,
                             "transformFlags": 0,
-                            "escapedText": "value"
+                            "escapedText": "url"
                         },
-                        "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
-                            "pos": 6833,
-                            "end": 6838,
+                            "pos": 1703,
+                            "end": 1708,
                             "kind": 80,
                             "id": 0,
                             "flags": 16777216,
                             "transformFlags": 0,
                             "escapedText": "param"
                         },
-                        "comment": ""
+                        "comment": "<p>File raw link</p>\n"
                     },
                     {
+                        "name": "formatUrl",
+                        "type": "unknown",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "destrucuredGroupId": "cf480483-193e-4f17-9c24-32fa9e58f7f8",
+                        "destructuredParameter": true,
                         "tagName": {
-                            "pos": 6850,
-                            "end": 6857,
-                            "kind": 80,
-                            "id": 0,
-                            "flags": 16777216,
-                            "transformFlags": 0,
-                            "escapedText": "returns"
-                        },
-                        "comment": ""
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "options",
+                        "type": "any[]",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "dotDotDotToken": true,
+                        "destrucuredGroupId": "cf480483-193e-4f17-9c24-32fa9e58f7f8",
+                        "destructuredParameter": true,
+                        "tagName": {
+                            "text": "param"
+                        }
                     }
                 ]
             },
             {
-                "name": "getPolicy",
-                "file": "src/lib/trusted-types.ts",
+                "name": "gistResource",
+                "file": "extras/src/code-loader.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "description": "",
-                "args": []
-            },
-            {
-                "name": "isUrl",
-                "file": "extras/src/gist.model.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
+                "description": "<p>Gist resource by id</p>\n",
                 "args": [
                     {
-                        "name": "url",
-                        "type": "string",
+                        "name": "id",
                         "deprecated": false,
                         "deprecationMessage": ""
-                    }
-                ],
-                "returnType": "boolean",
-                "jsdoctags": [
+                    },
                     {
-                        "name": "url",
-                        "type": "string",
+                        "name": "options",
+                        "type": "Omit",
                         "deprecated": false,
                         "deprecationMessage": "",
+                        "optional": true
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": {
+                            "pos": 2512,
+                            "end": 2514,
+                            "kind": 80,
+                            "id": 0,
+                            "flags": 16777216,
+                            "transformFlags": 0,
+                            "escapedText": "id"
+                        },
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "pos": 2506,
+                            "end": 2511,
+                            "kind": 80,
+                            "id": 0,
+                            "flags": 16777216,
+                            "transformFlags": 0,
+                            "escapedText": "param"
+                        },
+                        "comment": "<p>Gist ID</p>\n"
+                    },
+                    {
+                        "name": "options",
+                        "type": "Omit",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
                         "tagName": {
                             "text": "param"
                         }
@@ -4025,189 +2676,11 @@
                         }
                     }
                 ]
-            },
-            {
-                "name": "trustedHTMLFromStringBypass",
-                "file": "src/lib/trusted-types.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "args": [
-                    {
-                        "name": "html",
-                        "type": "string",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "jsdoctags": [
-                    {
-                        "name": "html",
-                        "type": "string",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
             }
         ],
         "typealiases": [],
-        "enumerations": [
-            {
-                "name": "LoaderErrors",
-                "childs": [
-                    {
-                        "name": "FULL_WITH_CORE_LIBRARY_IMPORTS",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "value": "The full library and the core library were imported, only one of them should be imported!"
-                    },
-                    {
-                        "name": "FULL_WITH_LANGUAGE_IMPORTS",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "value": "The highlighting languages were imported they are not needed!"
-                    },
-                    {
-                        "name": "CORE_WITHOUT_LANGUAGE_IMPORTS",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "value": "The highlighting languages were not imported!"
-                    },
-                    {
-                        "name": "LANGUAGE_WITHOUT_CORE_IMPORTS",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "value": "The core library was not imported!"
-                    },
-                    {
-                        "name": "NO_FULL_AND_NO_CORE_IMPORTS",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "value": "Highlight.js library was not imported!"
-                    }
-                ],
-                "ctype": "miscellaneous",
-                "subtype": "enum",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "file": "src/lib/loader-errors.ts"
-            }
-        ],
-        "groupedVariables": {
-            "src/lib/output.ts": [
-                {
-                    "name": "BREAK_LINE_REGEXP",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/lib/output.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "defaultValue": "/\\r\\n|\\r|\\n/g"
-                },
-                {
-                    "name": "emitsWrappingTags",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/lib/output.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "defaultValue": "(node) =>\r\n    // rarely we can have a sublanguage where language is undefined\r\n    // TODO: track down why\r\n    !!node.scope",
-                    "rawdescription": "Determines if a node needs to be wrapped in <span>",
-                    "description": "<p>Determines if a node needs to be wrapped in <span></p>\n"
-                },
-                {
-                    "name": "newNode",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/lib/output.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "defaultValue": "(opts = {}) => {\r\n    /** @type DataNode */\r\n    const result = { children: [] }\r\n    Object.assign(result, opts)\r\n    return result\r\n}",
-                    "rawdescription": "The contents of this file is from highlight.js, with a small modification to HTMLRenderer to make sure spans don't contain line breaks (important to improve performance of line numbers).",
-                    "description": "<p>The contents of this file is from highlight.js, with a small modification to HTMLRenderer to make sure spans don&#39;t contain line breaks (important to improve performance of line numbers).</p>\n"
-                },
-                {
-                    "name": "scopeToCSSClass",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/lib/output.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "defaultValue": "(name, { prefix }) => {\r\n    // sub-language\r\n    if (name.startsWith('language:')) {\r\n        return name.replace('language:', 'language-')\r\n    }\r\n    // tiered scope: comment.line\r\n    if (name.includes('.')) {\r\n        const pieces = name.split('.')\r\n        return [\r\n            `${prefix}${pieces.shift()}`,\r\n            ...(pieces.map((x, i) => `${x}${'_'.repeat(i + 1)}`))\r\n        ].join(' ')\r\n    }\r\n    // simple scope\r\n    return `${prefix}${name}`\r\n}"
-                },
-                {
-                    "name": "SPAN_CLOSE",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/lib/output.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "'</span>'"
-                }
-            ],
-            "extras/src/gist.model.ts": [
-                {
-                    "name": "NXT_GIST_OPTIONS",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "extras/src/gist.model.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "defaultValue": "new InjectionToken<GistOptions>('NXT_GIST_OPTIONS')"
-                }
-            ],
-            "extras/src/code-file-location.ts": [
-                {
-                    "name": "NXT_HIGHLIGHT_FILE_LOCATION",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "extras/src/code-file-location.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\r\n    providedIn: 'root',\r\n    factory: CODE_FILE_LOCATION_FACTORY\r\n})",
-                    "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\r\nUsed to handle server-side rendering and to stub out during unit tests.",
-                    "description": "<p>Injection token used to provide the current location to <code>codeFromUrl</code> pipe.\nUsed to handle server-side rendering and to stub out during unit tests.</p>\n"
-                }
-            ],
-            "src/lib/highlight.model.ts": [
-                {
-                    "name": "NXT_HIGHLIGHT_OPTIONS",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/lib/highlight.model.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "defaultValue": "new InjectionToken<HighlightJSOptions>('NXT_HIGHLIGHT_OPTIONS')"
-                }
-            ],
-            "src/lib/trusted-types.ts": [
-                {
-                    "name": "policy",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/lib/trusted-types.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Pick | undefined",
-                    "rawdescription": "Enable usage of the library together with \"trusted-types\" HTTP Content-Security-Policy (CSP)\r\n\r\nCan be added to angular.json -> serve -> options -> headers to try it out in DEV mode\r\n\"Content-Security-Policy\": \"trusted-types nxt-highlightjs; require-trusted-types-for 'script'\"\r\n\r\nRead more...\r\nAngular Security: https://angular.io/guide/security#enforcing-trusted-types\r\nTrusted Types: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/trusted-types",
-                    "description": "<p>Enable usage of the library together with &quot;trusted-types&quot; HTTP Content-Security-Policy (CSP)</p>\n<p>Can be added to angular.json -&gt; serve -&gt; options -&gt; headers to try it out in DEV mode\n&quot;Content-Security-Policy&quot;: &quot;trusted-types nxt-highlightjs; require-trusted-types-for &#39;script&#39;&quot;</p>\n<p>Read more...\nAngular Security: <a href=\"https://angular.io/guide/security#enforcing-trusted-types\">https://angular.io/guide/security#enforcing-trusted-types</a>\nTrusted Types: <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/trusted-types\">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/trusted-types</a></p>\n"
-                }
-            ]
-        },
+        "enumerations": [],
+        "groupedVariables": {},
         "groupedFunctions": {
             "line-numbers/src/line-numbers-lib.ts": [
                 {
@@ -4239,22 +2712,10 @@
                     ]
                 }
             ],
-            "extras/src/code-file-location.ts": [
+            "src/test-helpers.ts": [
                 {
-                    "name": "CODE_FILE_LOCATION_FACTORY",
-                    "file": "extras/src/code-file-location.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "args": []
-                }
-            ],
-            "src/lib/output.ts": [
-                {
-                    "name": "escapeHTML",
-                    "file": "src/lib/output.ts",
+                    "name": "afterTimeout",
+                    "file": "src/test-helpers.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,
@@ -4262,85 +2723,160 @@
                     "description": "",
                     "args": [
                         {
-                            "name": "value",
-                            "type": "unknown",
+                            "name": "timeout",
+                            "type": "number",
                             "deprecated": false,
                             "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "Promise<void>",
+                    "jsdoctags": [
+                        {
+                            "name": "timeout",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "extras/src/code-loader.ts": [
+                {
+                    "name": "fileResource",
+                    "file": "extras/src/code-loader.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "<p>Code resource by URL</p>\n",
+                    "args": [
+                        {
+                            "name": "url",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "formatUrl",
+                            "type": "unknown",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "destrucuredGroupId": "cf480483-193e-4f17-9c24-32fa9e58f7f8",
+                            "destructuredParameter": true
+                        },
+                        {
+                            "name": "options",
+                            "type": "any[]",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "dotDotDotToken": true,
+                            "destrucuredGroupId": "cf480483-193e-4f17-9c24-32fa9e58f7f8",
+                            "destructuredParameter": true
                         }
                     ],
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 6839,
-                                "end": 6844,
+                                "pos": 1709,
+                                "end": 1712,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16777216,
                                 "transformFlags": 0,
-                                "escapedText": "value"
+                                "escapedText": "url"
                             },
-                            "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 6833,
-                                "end": 6838,
+                                "pos": 1703,
+                                "end": 1708,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16777216,
                                 "transformFlags": 0,
                                 "escapedText": "param"
                             },
-                            "comment": ""
+                            "comment": "<p>File raw link</p>\n"
                         },
                         {
+                            "name": "formatUrl",
+                            "type": "unknown",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "destrucuredGroupId": "cf480483-193e-4f17-9c24-32fa9e58f7f8",
+                            "destructuredParameter": true,
                             "tagName": {
-                                "pos": 6850,
-                                "end": 6857,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16777216,
-                                "transformFlags": 0,
-                                "escapedText": "returns"
-                            },
-                            "comment": ""
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "options",
+                            "type": "any[]",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "dotDotDotToken": true,
+                            "destrucuredGroupId": "cf480483-193e-4f17-9c24-32fa9e58f7f8",
+                            "destructuredParameter": true,
+                            "tagName": {
+                                "text": "param"
+                            }
                         }
                     ]
-                }
-            ],
-            "src/lib/trusted-types.ts": [
-                {
-                    "name": "getPolicy",
-                    "file": "src/lib/trusted-types.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "args": []
                 },
                 {
-                    "name": "trustedHTMLFromStringBypass",
-                    "file": "src/lib/trusted-types.ts",
+                    "name": "gistResource",
+                    "file": "extras/src/code-loader.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "description": "",
+                    "description": "<p>Gist resource by id</p>\n",
                     "args": [
                         {
-                            "name": "html",
-                            "type": "string",
+                            "name": "id",
                             "deprecated": false,
                             "deprecationMessage": ""
+                        },
+                        {
+                            "name": "options",
+                            "type": "Omit",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
                         }
                     ],
                     "jsdoctags": [
                         {
-                            "name": "html",
-                            "type": "string",
+                            "name": {
+                                "pos": 2512,
+                                "end": 2514,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "id"
+                            },
                             "deprecated": false,
                             "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 2506,
+                                "end": 2511,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16777216,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>Gist ID</p>\n"
+                        },
+                        {
+                            "name": "options",
+                            "type": "Omit",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
                             "tagName": {
                                 "text": "param"
                             }
@@ -4349,35 +2885,6 @@
                 }
             ],
             "extras/src/gist.model.ts": [
-                {
-                    "name": "isUrl",
-                    "file": "extras/src/gist.model.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "args": [
-                        {
-                            "name": "url",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "returnType": "boolean",
-                    "jsdoctags": [
-                        {
-                            "name": "url",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
                 {
                     "name": "provideGistOptions",
                     "file": "extras/src/gist.model.ts",
@@ -4439,51 +2946,7 @@
                 }
             ]
         },
-        "groupedEnumerations": {
-            "src/lib/loader-errors.ts": [
-                {
-                    "name": "LoaderErrors",
-                    "childs": [
-                        {
-                            "name": "FULL_WITH_CORE_LIBRARY_IMPORTS",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "value": "The full library and the core library were imported, only one of them should be imported!"
-                        },
-                        {
-                            "name": "FULL_WITH_LANGUAGE_IMPORTS",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "value": "The highlighting languages were imported they are not needed!"
-                        },
-                        {
-                            "name": "CORE_WITHOUT_LANGUAGE_IMPORTS",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "value": "The highlighting languages were not imported!"
-                        },
-                        {
-                            "name": "LANGUAGE_WITHOUT_CORE_IMPORTS",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "value": "The core library was not imported!"
-                        },
-                        {
-                            "name": "NO_FULL_AND_NO_CORE_IMPORTS",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "value": "Highlight.js library was not imported!"
-                        }
-                    ],
-                    "ctype": "miscellaneous",
-                    "subtype": "enum",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "file": "src/lib/loader-errors.ts"
-                }
-            ]
-        },
+        "groupedEnumerations": {},
         "groupedTypeAliases": {}
     }
 }

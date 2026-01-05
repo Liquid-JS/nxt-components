@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core'
-import { CodeFromUrlPipe } from './code-from-url'
+import { CodeFromUrlPipe } from './code-from-url.pipe'
 import { GistDirective, GistFilePipe } from './gist'
 
 /** @deprecated use standalone imports */

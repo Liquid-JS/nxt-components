@@ -1,4 +1,4 @@
-export * from './code-from-url'
+export * from './code-from-url.pipe'
 export * from './code-loader'
 export * from './gist'
 export * from './gist.model'

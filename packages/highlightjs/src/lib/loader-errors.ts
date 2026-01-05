@@ -1,3 +1,6 @@
+/**
+ * @internal
+ */
 export enum LoaderErrors {
     FULL_WITH_CORE_LIBRARY_IMPORTS = 'The full library and the core library were imported, only one of them should be imported!',
     FULL_WITH_LANGUAGE_IMPORTS = 'The highlighting languages were imported they are not needed!',

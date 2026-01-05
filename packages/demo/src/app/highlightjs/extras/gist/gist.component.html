@@ -1,31 +1,30 @@
-@if (loading) {
+@if (gist.isLoading()) {
 <div class="d-flex justify-content-center">
     <div class="spinner-border"
         role="status">
         <span class="visually-hidden">Loading...</span>
     </div>
 </div>
-} @else if (error) {
+} @else if (gist.error(); as err) {
 <div class="alert alert-danger"
     role="alert">
-    <span class="gist-loading-error">{{ error.message }}</span>
+    <span class="gist-loading-error">{{ err.message }}</span>
 </div>
 } @else {
 <label for="gist"
     class="form-label">File</label>
-<select [(ngModel)]="selectedFile"
+<select [ngModel]="selectedFile()"
+    (ngModelChange)="selectedFile.set($event)"
     class="form-select"
     name="gist">
-    @for (file of gist?.files | keyvalue; track file.key) {
+    @for (file of gist.value()?.files | keyvalue; track file.key) {
     <option [value]="file.key">{{ file.value.filename }}</option>
     }
 </select>
 
 <br>
-}
 
-<pre [class.empty]="!gist"><code [nxtGist]="gistId"
-    (gistLoad)="setGist($event)"
-    (gistError)="error = $event; loading = false"
-    [nxtHighlight]="(gist | gistFile: selectedFile)?.content"
-    [language]="extName(selectedFile) ?? ''"></code></pre>
+<pre [class.empty]="!gist.hasValue()"><code
+    [nxtHighlight]="(gist.value() | gistFile: selectedFile())?.content"
+    [language]="extName()"></code></pre>
+}

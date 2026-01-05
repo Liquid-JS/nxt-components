@@ -20,7 +20,7 @@ export class HighlightDirective extends HighlightBase {
     /**
      * Code to highlight
      */
-    readonly code = input<string | null>(undefined, { alias: 'nxtHighlight' })
+    readonly code = input<string>(undefined, { alias: 'nxtHighlight' })
 
     /**
      * Highlighted result

@@ -2,6 +2,9 @@ import { Directive, effect, inject, input, output, PendingTasks, Pipe, PipeTrans
 import { CodeLoader } from './code-loader'
 import { Gist, GistFile } from './gist.model'
 
+/**
+ * @deprecated use gistResource
+ */
 @Directive({
     selector: '[nxtGist]'
 })

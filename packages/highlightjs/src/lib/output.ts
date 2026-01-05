@@ -60,7 +60,7 @@ class TokenTree {
     }
 
     toJSON() {
-        return JSON.stringify(this.rootNode, null, 4)
+        return JSON.stringify(this.rootNode, undefined, 4)
     }
 
     /**

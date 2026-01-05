@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common'
-import { Directive, ElementRef, KeyValueDiffers, NgZone, OnDestroy, PLATFORM_ID, computed, effect, inject, input, signal } from '@angular/core'
+import { Directive, ElementRef, KeyValueDiffers, NgZone, OnDestroy, PLATFORM_ID, computed, effect, inject, input } from '@angular/core'
 import Dropzone from 'dropzone'
 import { DropzoneConfig, DropzoneEvent, DropzoneEvents, DropzoneListeners, internalChanges, NXT_DROPZONE_CONFIG, _DropzoneConfig, NXT_DROPZONE_LISTENERS } from './dropzone.interfaces'
 
@@ -20,18 +20,16 @@ export class DropzoneDirective extends DropzoneListeners implements OnDestroy {
     private readonly defaults = inject(NXT_DROPZONE_CONFIG, { optional: true })
     private readonly listeners: DropzoneListeners = inject(NXT_DROPZONE_LISTENERS, { optional: true }) || this
 
-    readonly disabled = input(false)
+    readonly disabled = input<boolean>(false)
 
     /** Can be used to provide optional custom config */
     readonly _config = input<DropzoneConfig>(undefined, { alias: 'nxtDropzone' })
     private readonly configDiff = this.differs.find(this._config() || {}).create()
-    private readonly config = computed(() => {
-        const cfg = this._config()
-        return cfg ? { ...cfg } : {}
-    }, {
-        equal: (_, n) => !this.configDiff.diff(n || {} as any)
+    private readonly config = computed(() => ({ ...this._config() }), {
+        equal: (_, n) => !this.configDiff.diff(n)
     })
-    private readonly params = computed(() => {
+
+    private readonly _params = computed(() => {
         let newParams = this.defaults
             ? new _DropzoneConfig(this.defaults)
             : undefined
@@ -40,15 +38,33 @@ export class DropzoneDirective extends DropzoneListeners implements OnDestroy {
             newParams.assign(config)
         else if (config)
             newParams = new _DropzoneConfig(config)
-        return newParams
+        const params = { ...newParams }
+        Object.entries(params).forEach(([k, v]) => {
+            if (v === undefined)
+                delete (params as any)[k]
+        })
+        return params as DropzoneConfig
+    })
+    private readonly paramDiff = this.differs.find({ ...this._params() }).create()
+    private readonly params = computed(() => ({ ...this._params() }), {
+        equal: (_, n) => {
+            const d = this.paramDiff.diff(n)
+            if (d) {
+                let hasChanges = false
+                d.forEachItem(r => {
+                    if (!internalChanges.has(r.key as any) && r.currentValue !== r.previousValue)
+                        hasChanges = true
+                })
+                return !hasChanges
+            }
+            return !d
+        }
     })
 
-    private readonly paramDiff = this.differs.find(this.params() || {}).create()
-
-    private readonly instance = signal<Dropzone | undefined>(undefined)
+    private _instance?: Dropzone | undefined
 
     get dropzone() {
-        return this.instance()
+        return this._instance
     }
 
     /** @internal */
@@ -59,24 +75,10 @@ export class DropzoneDirective extends DropzoneListeners implements OnDestroy {
 
     constructor() {
         super()
+        let disabled = this.disabled()
         effect(() => {
-            const params = this.params()
-            const d = this.paramDiff.diff(params || {} as any)
-            if (d) {
-                let hasChanges = false
-                d.forEachItem(r => {
-                    if (!internalChanges.has(r.key as any) && r.currentValue !== r.previousValue)
-                        hasChanges = true
-                })
-                if (hasChanges) {
-                    this.destroyInstance()
-                    this.initInstance()
-                }
-            }
-        })
-        effect(() => {
-            const instance = this.instance()
-            const disabled = this.disabled()
+            disabled = this.disabled()
+            const instance = this._instance
             if (instance) {
                 if (disabled)
                     this.zone.runOutsideAngular(() => {
@@ -88,6 +90,11 @@ export class DropzoneDirective extends DropzoneListeners implements OnDestroy {
                     })
             }
         })
+        effect(() => {
+            const params = this.params()
+            this.destroyInstance()
+            this.initInstance(params, disabled)
+        })
     }
 
     /** @internal */
@@ -97,7 +104,7 @@ export class DropzoneDirective extends DropzoneListeners implements OnDestroy {
 
     /** @internal */
     reset(cancel?: boolean) {
-        const instance = this.instance()
+        const instance = this._instance
         if (instance) {
             this.zone.runOutsideAngular(() => {
                 instance.removeAllFiles(cancel)
@@ -105,15 +112,19 @@ export class DropzoneDirective extends DropzoneListeners implements OnDestroy {
         }
     }
 
-    private initInstance() {
-        const params = this.params()
+    private initInstance(params?: DropzoneConfig, disabled = false) {
         if (!isPlatformBrowser(this.platformId) || !params) {
             return
         }
 
         this.zone.runOutsideAngular(() => {
             const instance = new Dropzone(this.elementRef.nativeElement, params)
-            this.instance.set(instance)
+            if (disabled)
+                this.zone.runOutsideAngular(() => {
+                    instance.disable()
+                })
+
+            this._instance = instance
 
             this.zone.run(() => {
                 this.listeners.DZ_INIT.emit(instance)
@@ -121,20 +132,23 @@ export class DropzoneDirective extends DropzoneListeners implements OnDestroy {
 
             // Add auto reset handling for events
             instance.on('success', () => {
-                if ((params.autoReset ?? -1) >= 0) {
-                    setTimeout(() => this.reset(), params.autoReset)
+                const timeout = this.params()?.autoReset ?? -1
+                if (timeout >= 0) {
+                    setTimeout(() => this.reset(), timeout)
                 }
             })
 
             instance.on('error', () => {
-                if ((params.errorReset ?? -1) >= 0) {
-                    setTimeout(() => this.reset(), params.errorReset)
+                const timeout = this.params()?.errorReset ?? -1
+                if (timeout >= 0) {
+                    setTimeout(() => this.reset(), timeout)
                 }
             })
 
             instance.on('canceled', () => {
-                if ((params.cancelReset ?? -1) >= 0) {
-                    setTimeout(() => this.reset(), params.cancelReset)
+                const timeout = this.params()?.cancelReset ?? -1
+                if (timeout >= 0) {
+                    setTimeout(() => this.reset(), timeout)
                 }
             })
 
@@ -156,13 +170,13 @@ export class DropzoneDirective extends DropzoneListeners implements OnDestroy {
     }
 
     private destroyInstance() {
-        const instance = this.instance()
+        const instance = this._instance
         if (instance) {
             this.zone.runOutsideAngular(() => {
                 instance.destroy()
             })
 
-            this.instance.set(undefined)
+            this._instance = undefined
         }
     }
 }

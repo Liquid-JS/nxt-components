@@ -4,16 +4,22 @@ import { inject, InjectionToken, DOCUMENT } from '@angular/core'
 /**
  * Injection token used to provide the current location to `codeFromUrl` pipe.
  * Used to handle server-side rendering and to stub out during unit tests.
+ *
+ * @internal
  */
 export const NXT_HIGHLIGHT_FILE_LOCATION = new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {
     providedIn: 'root',
     factory: CODE_FILE_LOCATION_FACTORY
 })
 
+/**
+ * @internal
+ */
 export interface CodeFileLocation {
     formatPathname: (path: string) => string
 }
 
+/** @internal */
 export function CODE_FILE_LOCATION_FACTORY() {
     const location = inject(DOCUMENT)?.location
     const base = inject(APP_BASE_HREF, { optional: true })?.replace(/\/+$/igm, '')

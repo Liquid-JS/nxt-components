@@ -20,6 +20,9 @@ export interface HighlightJSOptions {
     themePath?: string
 }
 
+/**
+ * @internal
+ */
 export const NXT_HIGHLIGHT_OPTIONS = new InjectionToken<HighlightJSOptions>('NXT_HIGHLIGHT_OPTIONS')
 
 export function provideHighlightOptions(options: HighlightJSOptions) {

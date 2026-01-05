@@ -1,5 +1,6 @@
 import { InjectionToken, Provider } from '@angular/core'
 
+/** @internal */
 export function isUrl(url: string): boolean {
     const regExp: RegExp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!]))?/
     return regExp.test(url)
@@ -10,6 +11,9 @@ export interface GistOptions {
     clientSecret: string
 }
 
+/**
+ * @internal
+ */
 export const NXT_GIST_OPTIONS = new InjectionToken<GistOptions>('NXT_GIST_OPTIONS')
 
 export function provideGistOptions(options: GistOptions): Provider[] {

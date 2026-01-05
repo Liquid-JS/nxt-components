@@ -1,3 +1,6 @@
+/**
+ * @internal
+ */
 interface LineNumbersOptions {
     startFrom?: number
     singleLine?: boolean

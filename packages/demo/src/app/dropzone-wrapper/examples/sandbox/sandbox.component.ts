@@ -29,7 +29,7 @@ export class SandboxComponent {
     readonly config = computed(() => {
         const cfg: DropzoneConfig = {
             clickable: this.clickable(),
-            maxFiles: this.maxFiles() ?? 5
+            maxFiles: this.maxFiles()
         }
         const timeout = this.timeout()
         cfg.autoReset = timeout

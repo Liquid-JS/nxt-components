@@ -10,11 +10,16 @@ import { TrustedTypePolicy } from 'trusted-types/lib'
  * Read more...
  * Angular Security: https://angular.io/guide/security#enforcing-trusted-types
  * Trusted Types: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/trusted-types
+ *
+ * @internal
  */
 let policy: Pick<TrustedTypePolicy<{
     createHTML: (s: string) => string
 }>, 'name' | 'createHTML'> | undefined
 
+/**
+ * @internal
+ */
 function getPolicy() {
     if (!policy) {
         try {
@@ -31,6 +36,9 @@ function getPolicy() {
     return policy
 }
 
+/**
+ * @internal
+ */
 export function trustedHTMLFromStringBypass(html: string) {
     return getPolicy()?.createHTML(html) || html
 }

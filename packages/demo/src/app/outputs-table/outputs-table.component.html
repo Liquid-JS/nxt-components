@@ -1,6 +1,6 @@
-@if (outputs()?.length) {
+@if (parsed()?.length) {
 <table cdk-table
-    [dataSource]="outputs()!"
+    [dataSource]="parsed()!"
     class="table table-hover">
     <tr cdk-header-row
         *cdkHeaderRowDef="['name', 'type', 'description']"></tr>
@@ -16,7 +16,7 @@
         <th cdk-header-cell
             *cdkHeaderCellDef>Type</th>
         <td cdk-cell
-            *cdkCellDef="let output">{{ formatOutputType(output.defaultValue || output.type) }}</td>
+            *cdkCellDef="let output">{{ output.type }}</td>
     </ng-container>
     <ng-container cdkColumnDef="description">
         <th cdk-header-cell
