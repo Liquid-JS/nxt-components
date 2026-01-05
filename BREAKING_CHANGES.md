@@ -1,5 +1,12 @@
 # Breaking changes
 
+## v21
+
+-   **all**: convert to signal-based change detection
+-   **all**: deprecate module imports, convert to standalone components and services
+-   **nxt-highlightjs**: deprecate async API on HighlightJS service; use signal for direct access to hljs API
+-   **nxt-highlightjs/extras**: deprecate pipes and directives; use resource-based file and gist loaders
+
 ## v16
 
 -   **nxt-color-picker:** rename `addColorButton` => `presetColorsEditable`, improve typing

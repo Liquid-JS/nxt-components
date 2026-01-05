@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http'
-import { inject, Injectable, Signal } from '@angular/core'
+import { inject, Injectable, PendingTasks, Signal } from '@angular/core'
 import { EMPTY, Observable, shareReplay } from 'rxjs'
 import { rxResource, RxResourceOptions } from '@angular/core/rxjs-interop'
 import { Gist, isUrl, NXT_GIST_OPTIONS } from './gist.model'
@@ -13,6 +13,7 @@ export class CodeLoader {
 
     readonly http = inject(HttpClient)
     readonly options = inject(NXT_GIST_OPTIONS, { optional: true })
+    private readonly pendingTasks = inject(PendingTasks)
 
     /**
      * Get plus code
@@ -42,6 +43,23 @@ export class CodeLoader {
         // Check if URL is valid
         if (isUrl(url)) {
             return this.http.get(url, options).pipe(
+                obs => new Observable(sub => {
+                    const done = this.pendingTasks.add()
+                    const s = obs.subscribe({
+                        next: val => {
+                            sub.next(val)
+                            done()
+                        },
+                        error: err => {
+                            sub.error(err)
+                            console.log(err)
+                            done()
+                        },
+                        complete: () => sub.complete()
+                    })
+                    s.add(() => done())
+                    return s
+                }),
                 // Catch response
                 shareReplay(1)
             )

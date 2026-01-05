@@ -1,3 +1,4 @@
+export * from './code-file-location'
 export * from './code-from-url.pipe'
 export * from './code-loader'
 export * from './gist'
