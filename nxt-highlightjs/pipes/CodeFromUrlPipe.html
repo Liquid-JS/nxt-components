@@ -112,7 +112,9 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Pipes</li>
-  <li class="breadcrumb-item" >CodeFromUrlPipe</li>
+  <li class="breadcrumb-item" 
+        class="breadcrumb-item deprecated-name"
+    >CodeFromUrlPipe</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -131,9 +133,15 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>extras/src/code-from-url.ts</code>
+            <code>extras/src/code-from-url.pipe.ts</code>
         </p>
 
+            <p class="comment">
+                <h3 class="deprecated">Deprecated</h3>
+            </p>
+            <p class="comment">
+                use fileResource with `{ formatUrl: true }`
+            </p>
 
 
 

@@ -62,29 +62,29 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/HighlightExstrasModule.html" data-type="entity-link" class="deprecated-name">HighlightExstrasModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                        'data-bs-target="#directives-links-module-HighlightExstrasModule-d369acc2e884abc479ba99067400e20d045d34cfc5ab26bc500a83c2effde64631a6e8ac7e3c9150ee1f72675df227e62bed8bc13691714bf124f7592699f39a"' : 'data-bs-target="#xs-directives-links-module-HighlightExstrasModule-d369acc2e884abc479ba99067400e20d045d34cfc5ab26bc500a83c2effde64631a6e8ac7e3c9150ee1f72675df227e62bed8bc13691714bf124f7592699f39a"' }>
+                                        'data-bs-target="#directives-links-module-HighlightExstrasModule-edbcd086d45c21678c9f72d53c406fa809608195a5e2d1d0e801526e824c0f556f5b4e3e727a357aacfbdc0943bce0c951adb2b3b3d0244e5e8e6e5a35782df0"' : 'data-bs-target="#xs-directives-links-module-HighlightExstrasModule-edbcd086d45c21678c9f72d53c406fa809608195a5e2d1d0e801526e824c0f556f5b4e3e727a357aacfbdc0943bce0c951adb2b3b3d0244e5e8e6e5a35782df0"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-HighlightExstrasModule-d369acc2e884abc479ba99067400e20d045d34cfc5ab26bc500a83c2effde64631a6e8ac7e3c9150ee1f72675df227e62bed8bc13691714bf124f7592699f39a"' :
-                                        'id="xs-directives-links-module-HighlightExstrasModule-d369acc2e884abc479ba99067400e20d045d34cfc5ab26bc500a83c2effde64631a6e8ac7e3c9150ee1f72675df227e62bed8bc13691714bf124f7592699f39a"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-HighlightExstrasModule-edbcd086d45c21678c9f72d53c406fa809608195a5e2d1d0e801526e824c0f556f5b4e3e727a357aacfbdc0943bce0c951adb2b3b3d0244e5e8e6e5a35782df0"' :
+                                        'id="xs-directives-links-module-HighlightExstrasModule-edbcd086d45c21678c9f72d53c406fa809608195a5e2d1d0e801526e824c0f556f5b4e3e727a357aacfbdc0943bce0c951adb2b3b3d0244e5e8e6e5a35782df0"' }>
                                         <li class="link">
-                                            <a href="directives/GistDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >GistDirective</a>
+                                            <a href="directives/GistDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" class="deprecated-name">GistDirective</a>
                                         </li>
                                     </ul>
                                 </li>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#pipes-links-module-HighlightExstrasModule-d369acc2e884abc479ba99067400e20d045d34cfc5ab26bc500a83c2effde64631a6e8ac7e3c9150ee1f72675df227e62bed8bc13691714bf124f7592699f39a"' : 'data-bs-target="#xs-pipes-links-module-HighlightExstrasModule-d369acc2e884abc479ba99067400e20d045d34cfc5ab26bc500a83c2effde64631a6e8ac7e3c9150ee1f72675df227e62bed8bc13691714bf124f7592699f39a"' }>
+                                            'data-bs-target="#pipes-links-module-HighlightExstrasModule-edbcd086d45c21678c9f72d53c406fa809608195a5e2d1d0e801526e824c0f556f5b4e3e727a357aacfbdc0943bce0c951adb2b3b3d0244e5e8e6e5a35782df0"' : 'data-bs-target="#xs-pipes-links-module-HighlightExstrasModule-edbcd086d45c21678c9f72d53c406fa809608195a5e2d1d0e801526e824c0f556f5b4e3e727a357aacfbdc0943bce0c951adb2b3b3d0244e5e8e6e5a35782df0"' }>
                                             <span class="icon ion-md-add"></span>
                                             <span>Pipes</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-HighlightExstrasModule-d369acc2e884abc479ba99067400e20d045d34cfc5ab26bc500a83c2effde64631a6e8ac7e3c9150ee1f72675df227e62bed8bc13691714bf124f7592699f39a"' :
-                                            'id="xs-pipes-links-module-HighlightExstrasModule-d369acc2e884abc479ba99067400e20d045d34cfc5ab26bc500a83c2effde64631a6e8ac7e3c9150ee1f72675df227e62bed8bc13691714bf124f7592699f39a"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-HighlightExstrasModule-edbcd086d45c21678c9f72d53c406fa809608195a5e2d1d0e801526e824c0f556f5b4e3e727a357aacfbdc0943bce0c951adb2b3b3d0244e5e8e6e5a35782df0"' :
+                                            'id="xs-pipes-links-module-HighlightExstrasModule-edbcd086d45c21678c9f72d53c406fa809608195a5e2d1d0e801526e824c0f556f5b4e3e727a357aacfbdc0943bce0c951adb2b3b3d0244e5e8e6e5a35782df0"' }>
                                             <li class="link">
-                                                <a href="pipes/CodeFromUrlPipe.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CodeFromUrlPipe</a>
+                                                <a href="pipes/CodeFromUrlPipe.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" class="deprecated-name">CodeFromUrlPipe</a>
                                             </li>
                                             <li class="link">
                                                 <a href="pipes/GistFilePipe.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >GistFilePipe</a>
@@ -123,7 +123,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="directives-links"' : 'id="xs-directives-links"' }>
                                 <li class="link">
-                                    <a href="directives/GistDirective.html" data-type="entity-link" >GistDirective</a>
+                                    <a href="directives/GistDirective.html" data-type="entity-link" class="deprecated-name">GistDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="directives/HighlightAutoDirective.html" data-type="entity-link" >HighlightAutoDirective</a>
@@ -139,25 +139,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                             </ul>
                         </li>
-                    <li class="chapter">
-                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#classes-links"' :
-                            'data-bs-target="#xs-classes-links"' }>
-                            <span class="icon ion-ios-paper"></span>
-                            <span>Classes</span>
-                            <span class="icon ion-ios-arrow-down"></span>
-                        </div>
-                        <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
-                            <li class="link">
-                                <a href="classes/HTMLRenderer.html" data-type="entity-link" >HTMLRenderer</a>
-                            </li>
-                            <li class="link">
-                                <a href="classes/TokenTree.html" data-type="entity-link" >TokenTree</a>
-                            </li>
-                            <li class="link">
-                                <a href="classes/TokenTreeEmitter.html" data-type="entity-link" >TokenTreeEmitter</a>
-                            </li>
-                        </ul>
-                    </li>
                         <li class="chapter">
                             <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#injectables-links"' :
                                 'data-bs-target="#xs-injectables-links"' }>
@@ -167,13 +148,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
-                                    <a href="injectables/CodeLoader.html" data-type="entity-link" >CodeLoader</a>
-                                </li>
-                                <li class="link">
                                     <a href="injectables/HighlightJS.html" data-type="entity-link" >HighlightJS</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/HighlightLoader.html" data-type="entity-link" >HighlightLoader</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/HighlightLoaderStub.html" data-type="entity-link" >HighlightLoaderStub</a>
                                 </li>
                             </ul>
                         </li>
@@ -187,9 +168,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
                                 <a href="interfaces/ChangeStatus.html" data-type="entity-link" >ChangeStatus</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/CodeFileLocation.html" data-type="entity-link" >CodeFileLocation</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Files.html" data-type="entity-link" >Files</a>
@@ -213,9 +191,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/LineNumbersOptions.html" data-type="entity-link" >LineNumbersOptions</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/LineNumbersOptions-1.html" data-type="entity-link" >LineNumbersOptions</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/Owner.html" data-type="entity-link" >Owner</a>
                             </li>
                             <li class="link">
@@ -232,7 +207,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="pipes-links"' : 'id="xs-pipes-links"' }>
                                 <li class="link">
-                                    <a href="pipes/CodeFromUrlPipe.html" data-type="entity-link" >CodeFromUrlPipe</a>
+                                    <a href="pipes/CodeFromUrlPipe.html" data-type="entity-link" class="deprecated-name">CodeFromUrlPipe</a>
                                 </li>
                                 <li class="link">
                                     <a href="pipes/GistFilePipe.html" data-type="entity-link" >GistFilePipe</a>
@@ -248,13 +223,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
                             <li class="link">
-                                <a href="miscellaneous/enumerations.html" data-type="entity-link">Enums</a>
-                            </li>
-                            <li class="link">
                                 <a href="miscellaneous/functions.html" data-type="entity-link">Functions</a>
-                            </li>
-                            <li class="link">
-                                <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
                             </li>
                         </ul>
                     </li>

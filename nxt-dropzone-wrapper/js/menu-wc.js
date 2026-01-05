@@ -115,6 +115,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <li class="link">
                                     <a href="directives/DropzoneDirective.html" data-type="entity-link" >DropzoneDirective</a>
                                 </li>
+                                <li class="link">
+                                    <a href="directives/DropzoneListeners.html" data-type="entity-link" >DropzoneListeners</a>
+                                </li>
                             </ul>
                         </li>
                     <li class="chapter">
