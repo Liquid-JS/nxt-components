@@ -21,18 +21,18 @@ import { DropzoneConfig, DropzoneListeners, NXT_DROPZONE_LISTENERS } from './dro
 export class DropzoneComponent extends DropzoneListeners implements OnInit {
 
     /** Disables / detaches Dropzone from the element */
-    readonly disabled = input(false)
+    readonly disabled = input<boolean>(false)
 
     /** Custom config to override the global defaults */
     readonly config = input<DropzoneConfig>()
 
     /** Message to show for the user on the upload area */
-    readonly message = input('Click or drag files to upload')
+    readonly message = input<string>('Click or drag files to upload')
     /** Placeholder image to be shown as the upload area */
-    readonly placeholder = input('')
+    readonly placeholder = input<string>('')
 
     /** Use 'dropzone' class (use provided default styles) */
-    readonly useDropzoneClass = input(true)
+    readonly useDropzoneClass = input<boolean>(true)
 
     readonly directiveRef = viewChild(DropzoneDirective)
 

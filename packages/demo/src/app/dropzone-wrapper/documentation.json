@@ -1153,7 +1153,7 @@
     "components": [
         {
             "name": "DropzoneComponent",
-            "id": "component-DropzoneComponent-b8962132e9341d5650bf981cffd76bf3dd583276e4ee83b6fa93285be85f6bb5815eeee6d6be4bc046f1ddf0b9e6f4dbb4636fbd45dc58c22c873668f7b89894",
+            "id": "component-DropzoneComponent-d924055416f8414e44ac0f54b87bbf3a2e28f4227324a4df6201f7033a16d0b296891f20e27dd59a0652db1a748b68923bcb7d06c3c59c206539623e6c30d94c",
             "file": "src/lib/dropzone.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -1199,6 +1199,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "type": "boolean",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Disables / detaches Dropzone from the element</p>\n",
@@ -1214,6 +1215,7 @@
                     "defaultValue": "'Click or drag files to upload'",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Message to show for the user on the upload area</p>\n",
@@ -1229,6 +1231,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Placeholder image to be shown as the upload area</p>\n",
@@ -1244,6 +1247,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "type": "boolean",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Use &#39;dropzone&#39; class (use provided default styles)</p>\n",
