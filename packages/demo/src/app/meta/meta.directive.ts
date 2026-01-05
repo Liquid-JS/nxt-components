@@ -1,5 +1,5 @@
 import { Location } from '@angular/common'
-import { Directive, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, DOCUMENT } from '@angular/core'
+import { Directive, Inject, Input, OnDestroy, OnInit, DOCUMENT, output } from '@angular/core'
 import { Meta, MetaDefinition, Title } from '@angular/platform-browser'
 import { Router } from '@angular/router'
 
@@ -75,7 +75,7 @@ export class MetaDirective implements OnInit, OnDestroy, OnInit {
         this.dom.querySelector('head')?.appendChild(el)
     }
 
-    @Output() done = new EventEmitter<void>()
+    readonly done = output<void>()
 
     constructor(
         private readonly titleService: Title,
@@ -92,7 +92,7 @@ export class MetaDirective implements OnInit, OnDestroy, OnInit {
     }
 
     ngOnInit(): void {
-        this.done.emit()
+        this.done.emit(undefined)
     }
 
     ngOnDestroy(): void {

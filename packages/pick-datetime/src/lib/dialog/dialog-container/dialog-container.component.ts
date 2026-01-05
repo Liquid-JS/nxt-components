@@ -1,7 +1,7 @@
 import { animate, animateChild, AnimationEvent, keyframes, style, transition, trigger } from '@angular/animations'
 import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory } from '@angular/cdk/a11y'
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal'
-import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EmbeddedViewRef, EventEmitter, HostBinding, HostListener, Inject, OnInit, Optional, DOCUMENT, viewChild } from '@angular/core'
+import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EmbeddedViewRef, HostBinding, HostListener, Inject, OnInit, Optional, DOCUMENT, viewChild, output } from '@angular/core'
 import { DialogConfig } from '../../class/dialog-config.class'
 
 /** @internal */
@@ -62,7 +62,7 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
     ariaLabelledBy?: string
 
     /** Emits when an animation state changes */
-    readonly animationStateChanged = new EventEmitter<AnimationEvent>()
+    readonly animationStateChanged = output<AnimationEvent>()
 
     isAnimating = false
 

@@ -1,8 +1,8 @@
-import { AnimationEvent } from '@angular/animations'
 import { GlobalPositionStrategy, OverlayRef } from '@angular/cdk/overlay'
 import { Location } from '@angular/common'
 import { Subject, SubscriptionLike as ISubscription } from 'rxjs'
 import { filter, take } from 'rxjs/operators'
+import { outputToObservable } from '@angular/core/rxjs-interop'
 import { DialogContainerComponent } from '../dialog/dialog-container/dialog-container.component'
 import { DialogPosition } from './dialog-config.class'
 
@@ -33,9 +33,9 @@ export class DialogRef<T> {
         readonly id?: string,
         location?: Location
     ) {
-        this.container.animationStateChanged
+        outputToObservable(this.container.animationStateChanged)
             .pipe(
-                filter((event: AnimationEvent) => event.phaseName === 'done' && event.toState === 'enter'),
+                filter((event) => event.phaseName === 'done' && event.toState === 'enter'),
                 take(1)
             )
             .subscribe(() => {
@@ -43,9 +43,9 @@ export class DialogRef<T> {
                 this._afterOpen$.complete()
             })
 
-        this.container.animationStateChanged
+        outputToObservable(this.container.animationStateChanged)
             .pipe(
-                filter((event: AnimationEvent) => event.phaseName === 'done' && event.toState === 'exit'),
+                filter((event) => event.phaseName === 'done' && event.toState === 'exit'),
                 take(1)
             )
             .subscribe(() => {
@@ -73,9 +73,9 @@ export class DialogRef<T> {
     close(dialogResult?: any) {
         this.result = dialogResult
 
-        this.container.animationStateChanged
+        outputToObservable(this.container.animationStateChanged)
             .pipe(
-                filter((event: AnimationEvent) => event.phaseName === 'start'),
+                filter((event) => event.phaseName === 'start'),
                 take(1)
             )
             .subscribe(() => {

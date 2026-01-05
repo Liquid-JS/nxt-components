@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Inject, Input, NgZone, OnDestroy, OnInit, Output, input } from '@angular/core'
+import { AfterContentInit, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Inject, Input, NgZone, OnDestroy, OnInit, input, output } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { take } from 'rxjs/operators'
 import { CdkMonitorFocus } from '@angular/cdk/a11y'
@@ -125,32 +125,27 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     readonly hideOtherMonths = input<boolean>(false)
 
     /** Emits when the currently picker moment changes */
-    @Output()
-    readonly pickerMomentChange = new EventEmitter<T>()
+    readonly pickerMomentChange = output<T>()
 
     /** Emits when the currently selected date changes */
-    @Output()
-    readonly selectedChange = new EventEmitter<T | undefined>()
+    readonly selectedChange = output<T | undefined>()
 
     /** Emits when any date is selected */
-    @Output()
-    readonly userSelection = new EventEmitter<void>()
+    readonly userSelection = output<void>()
 
     /**
      * Emits the selected year
      *
      * This doesn't imply a change on the selected date.
      */
-    @Output()
-    readonly yearSelected = new EventEmitter<T>()
+    readonly yearSelected = output<T>()
 
     /**
      * Emits the selected month
      *
      * This doesn't imply a change on the selected date.
      */
-    @Output()
-    readonly monthSelected = new EventEmitter<T>()
+    readonly monthSelected = output<T>()
 
     get periodButtonText(): string {
         return this.isMonthView
@@ -351,7 +346,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     }
 
     userSelected(): void {
-        this.userSelection.emit()
+        this.userSelection.emit(undefined)
     }
 
     /**

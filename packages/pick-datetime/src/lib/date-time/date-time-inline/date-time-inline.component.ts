@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Inject, Input, OnInit, Output, Provider, viewChild } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, HostBinding, Inject, Input, OnInit, Provider, viewChild, output } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
@@ -190,16 +190,14 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
      *
      * This doesn't imply a change on the selected date.
      */
-    @Output()
-    readonly yearSelected = new EventEmitter<T>()
+    readonly yearSelected = output<T>()
 
     /**
      * Emits selected month in year view
      *
      * This doesn't imply a change on the selected date.
      */
-    @Output()
-    readonly monthSelected = new EventEmitter<T>()
+    readonly monthSelected = output<T>()
 
     private _selected?: T
     get selected() {

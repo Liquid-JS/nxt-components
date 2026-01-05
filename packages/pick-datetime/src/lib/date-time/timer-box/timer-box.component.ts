@@ -1,5 +1,5 @@
 import { coerceNumberProperty } from '@angular/cdk/coercion'
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, OnDestroy, OnInit, Output, input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, HostBinding, OnDestroy, OnInit, input, output } from '@angular/core'
 import { Subject, Subscription } from 'rxjs'
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
 import { NumberFixedLenPipe } from '../number-fixed-len.pipe'
@@ -44,9 +44,9 @@ export class TimerBoxComponent implements OnInit, OnDestroy {
 
     readonly inputLabel = input<string>()
 
-    @Output() valueChange = new EventEmitter<number>()
+    readonly valueChange = output<number>()
 
-    @Output() inputChange = new EventEmitter<number>()
+    readonly inputChange = output<number>()
 
     private inputStream = new Subject<string>()
 

@@ -1,7 +1,7 @@
 import { coerceArray } from '@angular/cdk/coercion'
 import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, EventEmitter, Inject, InjectionToken, Input, NgZone, OnDestroy, OnInit, Optional, Output, ViewContainerRef, DOCUMENT, input } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, Inject, InjectionToken, Input, NgZone, OnDestroy, OnInit, Optional, ViewContainerRef, DOCUMENT, input, output, OutputRefSubscription } from '@angular/core'
 import { merge, Subscription } from 'rxjs'
 import { filter, take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
@@ -123,7 +123,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         value = !!value
         if (value !== this._disabled) {
             this._disabled = value
-            this.disabledChange.next(value)
+            this.disabledChange.emit(value)
         }
     }
 
@@ -150,47 +150,42 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
      * Callback when the picker is opened
      */
     // eslint-disable-next-line @angular-eslint/no-output-rename
-    @Output('open')
-    readonly afterPickerOpened = new EventEmitter<void>()
+    readonly afterPickerOpened = output<void>({ alias: 'open' })
 
     /**
      * Callback when the picker is closed
      */
     // eslint-disable-next-line @angular-eslint/no-output-rename
-    @Output('close')
-    readonly afterPickerClosed = new EventEmitter<void>()
+    readonly afterPickerClosed = output<void>({ alias: 'close' })
 
     /**
      * Emits selected year in multi-year view
      *
      * This doesn't imply a change on the selected date.
      */
-    @Output()
-    readonly yearSelected = new EventEmitter<T>()
+    readonly yearSelected = output<T>()
 
     /**
      * Emits selected month in year view
      *
      * This doesn't imply a change on the selected date.
      */
-    @Output()
-    readonly monthSelected = new EventEmitter<T>()
+    readonly monthSelected = output<T>()
 
     /**
      * Emits when picker open state changes
      */
-    @Output()
-    readonly isOpenChange = new EventEmitter<boolean>()
+    readonly isOpenChange = output<boolean>()
 
     /**
      * Emit when the selected value has been confirmed
      */
-    readonly confirmSelectedChange = new EventEmitter<Array<T | undefined> | T>()
+    readonly confirmSelectedChange = output<Array<T | undefined> | T>()
 
     /**
      * Emits when the date time picker is disabled
      */
-    readonly disabledChange = new EventEmitter<boolean>()
+    readonly disabledChange = output<boolean>()
 
     private pickerContainerPortal?: ComponentPortal<
         DateTimeContainerComponent<T>
@@ -198,7 +193,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     private pickerContainer?: DateTimeContainerComponent<T>
     private popupRef?: OverlayRef
     private dialogRef?: DialogRef<DateTimeContainerComponent<T>>
-    private dtInputSub?: Subscription
+    private dtInputSub?: OutputRefSubscription
     private hidePickerStreamSub?: Subscription
     private confirmSelectedStreamSub?: Subscription
     private pickerOpenedStreamSub?: Subscription
@@ -283,7 +278,6 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         this.close()
         this.dtInputSub?.unsubscribe()
         this.dtInputSub = undefined
-        this.disabledChange.complete()
 
         if (this.popupRef) {
             this.popupRef.dispose()
@@ -449,7 +443,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
             if (this._isOpen) {
                 this._isOpen = false
                 this.isOpenChange.emit(this._isOpen)
-                this.afterPickerClosed.emit()
+                this.afterPickerClosed.emit(undefined)
                 this.focusedElementBeforeOpen = undefined
             }
         }
@@ -513,7 +507,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         this.dialogRef.afterOpen().subscribe(() => {
             this._isOpen = true
             this.isOpenChange.emit(this._isOpen)
-            this.afterPickerOpened.emit()
+            this.afterPickerOpened.emit(undefined)
         })
         this.dialogRef.afterClosed().subscribe(() => this.close())
     }
@@ -552,7 +546,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
                 .subscribe(() => {
                     this._isOpen = true
                     this.isOpenChange.emit(this._isOpen)
-                    this.afterPickerOpened.emit()
+                    this.afterPickerOpened.emit(undefined)
                 })
         }
     }

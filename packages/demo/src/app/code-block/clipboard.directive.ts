@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Output, input } from '@angular/core'
+import { Directive, ElementRef, HostListener, input, output } from '@angular/core'
 import * as clipboard from 'clipboard-polyfill'
 
 @Directive({
@@ -12,9 +12,9 @@ export class ClipboardDirective {
 
     readonly text = input<string>()
 
-    @Output() clipboardSuccess = new EventEmitter<void>()
+    readonly clipboardSuccess = output<void>()
 
-    @Output() clipboardError = new EventEmitter<Error>()
+    readonly clipboardError = output<Error>()
 
     constructor(
         protected elementRef: ElementRef
@@ -49,7 +49,7 @@ export class ClipboardDirective {
 
                 return clipboard.write([new clipboard.ClipboardItem(data)])
             })
-            .then(() => this.clipboardSuccess.emit())
+            .then(() => this.clipboardSuccess.emit(undefined))
             .catch(err => this.clipboardError.emit(err))
     }
 

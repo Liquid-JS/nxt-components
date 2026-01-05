@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core'
+import { Directive, HostListener, input, output } from '@angular/core'
 import { TextEvent } from '../util/helpers'
 
 /**
@@ -9,21 +9,22 @@ import { TextEvent } from '../util/helpers'
 })
 export class TextDirective {
 
-    @Input() rg?: number
-    @Input('nxtText') text: any
+    readonly rg = input<number>()
+    readonly text = input<any>(undefined, { alias: 'nxtText' })
 
-    @Output() newValue = new EventEmitter<TextEvent>()
+    readonly newValue = output<TextEvent>()
 
     @HostListener('input', ['$event'])
     @HostListener('change', ['$event'])
     inputChange(event: Event) {
         const value = (((event?.target as HTMLInputElement | null)?.['value'] || '') + '').trim()
 
-        if (this.rg == undefined) {
+        const rg = this.rg()
+        if (rg == undefined) {
             this.newValue.emit(value)
         } else {
             const numeric = parseFloat(value)
-            this.newValue.emit({ v: numeric, rg: this.rg })
+            this.newValue.emit({ v: numeric, rg })
         }
     }
 }

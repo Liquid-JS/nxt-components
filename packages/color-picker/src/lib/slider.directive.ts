@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core'
+import { Directive, ElementRef, HostListener, input, output } from '@angular/core'
 import { CursorEvent } from '../util/helpers'
 
 /**
@@ -11,15 +11,15 @@ export class SliderDirective {
 
     private isMoving = false
 
-    @Input() rgX?: number
-    @Input() rgY?: number
+    readonly rgX = input<number>()
+    readonly rgY = input<number>()
 
-    @Input('nxtSlider') slider?: string
+    readonly slider = input<string>(undefined, { alias: 'nxtSlider' })
 
-    @Output() dragEnd = new EventEmitter()
-    @Output() dragStart = new EventEmitter()
+    readonly dragEnd = output()
+    readonly dragStart = output()
 
-    @Output() newValue = new EventEmitter<CursorEvent>()
+    readonly newValue = output<CursorEvent>()
 
     constructor(
         private elRef: ElementRef
@@ -82,12 +82,14 @@ export class SliderDirective {
         const x = Math.max(0, Math.min(this.getX(event), width))
         const y = Math.max(0, Math.min(this.getY(event), height))
 
-        if (this.rgX != undefined && this.rgY != undefined) {
-            this.newValue.emit({ s: x / width, v: (1 - y / height), rgX: this.rgX, rgY: this.rgY })
-        } else if (this.rgX == undefined && this.rgY != undefined) {
-            this.newValue.emit({ v: y / height, rgY: this.rgY })
-        } else if (this.rgX != undefined && this.rgY == undefined) {
-            this.newValue.emit({ v: x / width, rgX: this.rgX })
+        const rgX = this.rgX()
+        const rgY = this.rgY()
+        if (rgX != undefined && rgY != undefined) {
+            this.newValue.emit({ s: x / width, v: (1 - y / height), rgX, rgY })
+        } else if (rgX == undefined && rgY != undefined) {
+            this.newValue.emit({ v: y / height, rgY })
+        } else if (rgX != undefined && rgY == undefined) {
+            this.newValue.emit({ v: x / width, rgX })
         }
     }
 }

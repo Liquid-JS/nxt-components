@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Input, OnInit, Output, viewChild } from '@angular/core'
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnInit, viewChild, output } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
 import { CalendarBodyComponent, CalendarCell } from '../calendar-body/calendar-body.component'
@@ -186,24 +186,20 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
      * Callback to invoke when a new month is selected
      */
 
-    @Output()
-    readonly change = new EventEmitter<T>()
+    readonly change = output<T>()
 
     /**
      * Emits the selected year
      *
      * This doesn't imply a change on the selected date.
      */
-    @Output()
-    readonly yearSelected = new EventEmitter<T>()
+    readonly yearSelected = output<T>()
 
     /** Emits when any date is activated */
-    @Output()
-    readonly pickerMomentChange: EventEmitter<T> = new EventEmitter<T>()
+    readonly pickerMomentChange = output<T>()
 
     /** Emits when use keyboard enter to select a calendar cell */
-    @Output()
-    readonly keyboardEnter = new EventEmitter<void>()
+    readonly keyboardEnter = output<void>()
 
     /** The body of calendar table */
     private readonly calendarBodyElm = viewChild(CalendarBodyComponent)
@@ -370,7 +366,7 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
 
             case 'enter':
                 this.selectYear(this.dateTimeAdapter.getYear(this._pickerMoment))
-                this.keyboardEnter.emit()
+                this.keyboardEnter.emit(undefined)
                 break
 
             default:

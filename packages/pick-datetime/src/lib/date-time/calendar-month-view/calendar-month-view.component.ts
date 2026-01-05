@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostBinding, Inject, Input, OnDestroy, OnInit, Output, input, viewChild } from '@angular/core'
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Inject, Input, OnDestroy, OnInit, input, viewChild, output } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
@@ -229,18 +229,15 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     /**
      * Callback to invoke when a new date is selected
      */
-    @Output()
-    readonly selectedChange = new EventEmitter<T | undefined>()
+    readonly selectedChange = output<T | undefined>()
 
     /**
      * Callback to invoke when any date is selected.
      */
-    @Output()
-    readonly userSelection = new EventEmitter<void>()
+    readonly userSelection = output<void>()
 
     /** Emits when any date is activated */
-    @Output()
-    readonly pickerMomentChange = new EventEmitter<T>()
+    readonly pickerMomentChange = output<T>()
 
     /** The body of calendar table */
     private readonly calendarBodyElm = viewChild(CalendarBodyComponent)
@@ -303,7 +300,7 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
         )
 
         this.selectedChange.emit(selected)
-        this.userSelection.emit()
+        this.userSelection.emit(undefined)
     }
 
     /**

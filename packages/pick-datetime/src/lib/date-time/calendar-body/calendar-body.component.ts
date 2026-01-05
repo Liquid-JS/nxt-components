@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, NgZone, OnInit, Output, input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, NgZone, OnInit, input, output } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { SelectMode } from '../../class/date-time.class'
 
@@ -63,9 +63,7 @@ export class CalendarBodyComponent implements OnInit {
     /**
      * Emit when a calendar cell is selected
      */
-    @Output()
-
-    readonly select = new EventEmitter<CalendarCell>()
+    readonly select = output<CalendarCell>()
 
     /** @internal */
     @HostBinding('class.nxt-dt-calendar-body')

@@ -1,4 +1,4 @@
-import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit, Output, Provider, Renderer2, input } from '@angular/core'
+import { AfterContentInit, Directive, ElementRef, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit, Provider, Renderer2, input, output, OutputRefSubscription } from '@angular/core'
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../class/date-time-adapter.class'
@@ -186,14 +186,12 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     /**
      * Callback to invoke when `change` event is fired on this `<input>`
      */
-    @Output()
-    readonly dateTimeChange = new EventEmitter<DateTimeInputEvent<T>>()
+    readonly dateTimeChange = output<DateTimeInputEvent<T>>()
 
     /**
      * Callback to invoke when an `input` event is fired on this `<input>`.
      */
-    @Output()
-    readonly dateTimeInput = new EventEmitter<DateTimeInputEvent<T>>()
+    readonly dateTimeInput = output<DateTimeInputEvent<T>>()
 
     get elementRef() {
         return this.elmRef
@@ -214,7 +212,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     /** The date-time-picker that this input is associated with */
     dtPicker?: DateTimeComponent<T>
 
-    private dtPickerSub?: Subscription
+    private dtPickerSub?: OutputRefSubscription
     private localeSub?: Subscription
 
     private lastValueValid = true
@@ -347,10 +345,10 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     ])
 
     /** Emits when the value changes (either due to user input or programmatic change) */
-    readonly valueChange = new EventEmitter<Array<T | undefined> | T | undefined>()
+    readonly valueChange = output<Array<T | undefined> | T | undefined>()
 
     /** Emits when the disabled state has changed */
-    readonly disabledChange = new EventEmitter<boolean>()
+    readonly disabledChange = output<boolean>()
 
     /** @internal */
     @HostBinding('attr.aria-haspopup')
@@ -404,7 +402,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
 
     ngAfterContentInit(): void {
         this.dtPickerSub = this.dtPicker?.confirmSelectedChange.subscribe(
-            (selecteds: T[] | T) => {
+            (selecteds) => {
                 if (Array.isArray(selecteds)) {
                     this.values = selecteds
                 } else {
@@ -432,8 +430,6 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         this.dtPickerSub = undefined
         this.localeSub?.unsubscribe()
         this.localeSub = undefined
-        this.valueChange.complete()
-        this.disabledChange.complete()
     }
 
     writeValue(value: any): void {

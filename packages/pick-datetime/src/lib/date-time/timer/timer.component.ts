@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Input, NgZone, OnInit, Output, input } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Input, NgZone, OnInit, input, output } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
@@ -147,8 +147,7 @@ export class TimerComponent<T> implements OnInit {
             : this.pickerIntl.hour12AMLabel
     }
 
-    @Output()
-    readonly selectedChange = new EventEmitter<T>()
+    readonly selectedChange = output<T>()
 
     /** @internal */
     @HostBinding('class.nxt-dt-timer')

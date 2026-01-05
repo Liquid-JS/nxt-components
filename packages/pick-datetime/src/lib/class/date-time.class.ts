@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, Inject, input } from '@angular/core'
+import { Directive, OutputEmitterRef, Inject, input } from '@angular/core'
 import { DateTimeAdapter } from './date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from './date-time-format.class'
 
@@ -89,9 +89,9 @@ export abstract class DateTimeDirective<T> {
 
     abstract select(date: T | Array<T | undefined>): void
 
-    abstract yearSelected: EventEmitter<T>
+    abstract yearSelected: OutputEmitterRef<T>
 
-    abstract monthSelected: EventEmitter<T>
+    abstract monthSelected: OutputEmitterRef<T>
 
     abstract selectYear(normalizedYear: T): void
 

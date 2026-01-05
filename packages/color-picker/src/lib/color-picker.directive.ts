@@ -1,6 +1,6 @@
 import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
-import { ApplicationRef, ComponentRef, Directive, ElementRef, EventEmitter, HostListener, Injector, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewContainerRef } from '@angular/core'
+import { ApplicationRef, ComponentRef, Directive, ElementRef, HostListener, Injector, Input, OnChanges, OnDestroy, SimpleChanges, ViewContainerRef, output } from '@angular/core'
 import { compositeColors, hsvaToRgba, stringToHsva } from '../util/color'
 import { opaqueSliderLight } from '../util/contrast'
 import { Hsva, Rgba } from '../util/formats'
@@ -42,7 +42,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             this.nxtColorChange.emit(value)
         },
         colorSelectCanceled: () => {
-            this.colorSelectCancel.emit()
+            this.colorSelectCancel.emit(undefined)
         },
         colorSelected: (value: string) => {
             this.colorSelect.emit(value)
@@ -144,35 +144,35 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Input() useRootViewContainer: boolean = false
 
     /** Current color value, emit when dialog is isOpen */
-    @Output() open = new EventEmitter<string>(true)
+    readonly open = output<string>()
     /** Current color value, emit when dialog is closed */
-    @Output() close = new EventEmitter<string>(true)
+    readonly close = output<string>()
 
     /** Input name and its value, emit when user changes color through inputs */
-    @Output() inputChange = new EventEmitter<InputChangeEvent>(true)
+    readonly inputChange = output<InputChangeEvent>()
 
     /** Status of the dialog, emit when dialog is isOpen / closed */
-    @Output() toggleChange = new EventEmitter<boolean>(true)
+    readonly toggleChange = output<boolean>()
 
     /** Slider name and current color, emit when slider dragging starts */
-    @Output() sliderDragStart = new EventEmitter<SliderChangeEvent>(true)
+    readonly sliderDragStart = output<SliderChangeEvent>()
     /** Slider name and its value, emit when user changes color through slider */
-    @Output() sliderChange = new EventEmitter<SliderChangeEvent>(true)
+    readonly sliderChange = output<SliderChangeEvent>()
     /** Slider name and current color, emit when slider dragging ends */
-    @Output() sliderDragEnd = new EventEmitter<SliderChangeEvent>(true)
+    readonly sliderDragEnd = output<SliderChangeEvent>()
 
     /** Color select canceled, emit when Cancel button is pressed */
-    @Output() colorSelect = new EventEmitter<string>(true)
+    readonly colorSelect = output<string>()
     /** Selected color value, emit when OK button pressed or user clicks outside (if saveClickOutside is true) */
-    @Output() colorSelectCancel = new EventEmitter<void>(true)
+    readonly colorSelectCancel = output<void>()
     /** Changed color value, emit when color changes */
-    @Output() nxtColorChange = new EventEmitter<string>(false)
+    readonly nxtColorChange = output<string>()
 
     /** Outputs the color as CMYK string if CMYK is enabled */
-    @Output() cmykColorChange = new EventEmitter<string>(true)
+    readonly cmykColorChange = output<string>()
 
     /** Preset colors, emit when preset color is added / removed */
-    @Output() presetColorsChange = new EventEmitter<string[]>(true)
+    readonly presetColorsChange = output<string[]>()
 
     /** @internal */
     constructor(
