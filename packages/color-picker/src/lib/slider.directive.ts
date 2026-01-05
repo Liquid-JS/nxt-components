@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, input, output } from '@angular/core'
+import { Directive, ElementRef, HostListener, inject, input, output } from '@angular/core'
 import { CursorEvent } from '../util/helpers'
 
 /**
@@ -20,10 +20,7 @@ export class SliderDirective {
     readonly dragStart = output()
 
     readonly newValue = output<CursorEvent>()
-
-    constructor(
-        private elRef: ElementRef
-    ) { }
+    private readonly elRef = inject(ElementRef)
 
     @HostListener('mousedown', ['$event'])
     @HostListener('touchstart', ['$event'])
@@ -33,7 +30,7 @@ export class SliderDirective {
 
         this.setCursor(event)
         this.isMoving = true
-        this.dragStart.emit()
+        this.dragStart.emit(undefined)
     }
 
     @HostListener('document:mousemove', ['$event'])
@@ -55,7 +52,7 @@ export class SliderDirective {
             event.preventDefault()
 
             this.isMoving = false
-            this.dragEnd.emit()
+            this.dragEnd.emit(undefined)
         }
     }
 

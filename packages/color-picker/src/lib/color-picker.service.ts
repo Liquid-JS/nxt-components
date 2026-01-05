@@ -12,8 +12,6 @@ export class ColorPickerService {
 
     private active?: ColorPickerComponent
 
-    constructor() { }
-
     setActive(active: ColorPickerComponent) {
         if (active && active.dialogDisplay == DialogDisplayEnum.popup) {
             if (this.active && this.active != active) {

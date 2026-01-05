@@ -1,6 +1,6 @@
 import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
-import { ApplicationRef, ComponentRef, Directive, ElementRef, HostListener, Injector, Input, OnChanges, OnDestroy, SimpleChanges, ViewContainerRef, output } from '@angular/core'
+import { ApplicationRef, ComponentRef, Directive, ElementRef, HostListener, Injector, Input, OnChanges, OnDestroy, SimpleChanges, ViewContainerRef, inject, output } from '@angular/core'
 import { compositeColors, hsvaToRgba, stringToHsva } from '../util/color'
 import { opaqueSliderLight } from '../util/contrast'
 import { Hsva, Rgba } from '../util/formats'
@@ -144,9 +144,9 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     @Input() useRootViewContainer: boolean = false
 
     /** Current color value, emit when dialog is isOpen */
-    readonly open = output<string>()
+    readonly open = output<string | undefined>()
     /** Current color value, emit when dialog is closed */
-    readonly close = output<string>()
+    readonly close = output<string | undefined>()
 
     /** Input name and its value, emit when user changes color through inputs */
     readonly inputChange = output<InputChangeEvent>()
@@ -174,14 +174,11 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     /** Preset colors, emit when preset color is added / removed */
     readonly presetColorsChange = output<string[]>()
 
-    /** @internal */
-    constructor(
-        private injector: Injector,
-        private appRef: ApplicationRef,
-        private vcRef: ViewContainerRef,
-        private elRef: ElementRef,
-        private overlay: Overlay
-    ) { }
+    private readonly injector = inject(Injector)
+    private readonly appRef = inject(ApplicationRef)
+    private readonly vcRef = inject(ViewContainerRef)
+    private readonly elRef = inject(ElementRef)
+    private readonly overlay = inject(Overlay)
 
     /** @internal */
     @HostListener('focus', ['$event'])

@@ -1,5 +1,6 @@
-import { ApplicationRef, ElementRef, Injector } from '@angular/core'
-import { inject } from '@angular/core/testing'
+import { ElementRef, ViewContainerRef } from '@angular/core'
+import { TestBed } from '@angular/core/testing'
+import { Overlay } from '@angular/cdk/overlay'
 import { ColorPickerDirective } from './color-picker.directive'
 
 describe('ColorPickerDirective', () => {
@@ -8,12 +9,30 @@ describe('ColorPickerDirective', () => {
 
     let directive: ColorPickerDirective
 
-    beforeEach(inject([Injector, ApplicationRef], (inj: Injector, app: ApplicationRef) => {
+    beforeEach(() => {
         parentEl = document.createElement('div')
         targetEl = document.createElement('div')
         parentEl.appendChild(targetEl)
-        directive = new ColorPickerDirective(inj, app, undefined as any, new ElementRef(targetEl), undefined as any)
-    }))
+
+        TestBed.configureTestingModule({
+            providers: [
+                {
+                    provide: ViewContainerRef,
+                    useValue: undefined
+                },
+                {
+                    provide: ElementRef,
+                    useValue: new ElementRef(targetEl)
+                },
+                {
+                    provide: Overlay,
+                    useValue: undefined
+                }
+            ]
+        }).runInInjectionContext(() => {
+            directive = new ColorPickerDirective()
+        })
+    })
 
     afterEach(() => {
         if (targetEl) {

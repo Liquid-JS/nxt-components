@@ -1,4 +1,5 @@
 import { ElementRef } from '@angular/core'
+import { TestBed } from '@angular/core/testing'
 import { SliderDirective } from './slider.directive'
 
 describe('SliderDirective', () => {
@@ -8,7 +9,16 @@ describe('SliderDirective', () => {
 
     beforeEach(() => {
         targetEl = document.createElement('div')
-        directive = new SliderDirective(new ElementRef(targetEl))
+        TestBed.configureTestingModule({
+            providers: [
+                {
+                    provide: ElementRef,
+                    useValue: new ElementRef(targetEl)
+                }
+            ]
+        }).runInInjectionContext(() => {
+            directive = new SliderDirective()
+        })
     })
 
     afterEach(() => {

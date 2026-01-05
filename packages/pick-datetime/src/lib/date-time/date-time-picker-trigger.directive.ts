@@ -1,5 +1,6 @@
 import { AfterContentInit, ChangeDetectorRef, Directive, HostBinding, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, input } from '@angular/core'
-import { merge, Observable, of as observableOf, Subscription } from 'rxjs'
+import { merge, of as observableOf, Subscription } from 'rxjs'
+import { outputToObservable } from '@angular/core/rxjs-interop'
 import { DateTimeComponent } from './date-time-picker/date-time-picker.component'
 
 @Directive({
@@ -64,13 +65,13 @@ export class DateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterCont
 
         const dtPicker = this.dtPicker()
         const inputDisabled = dtPicker && dtPicker.dtInput ?
-            dtPicker.dtInput.disabledChange : observableOf()
+            outputToObservable(dtPicker.dtInput.disabledChange) : observableOf()
 
         const dtPickerValue = this.dtPicker()
         const pickerDisabled = dtPickerValue ?
-            dtPickerValue.disabledChange : observableOf()
+            outputToObservable(dtPickerValue.disabledChange) : observableOf()
 
-        this.stateChanges = merge(pickerDisabled as Observable<boolean>, inputDisabled as Observable<boolean>)
+        this.stateChanges = merge(pickerDisabled, inputDisabled)
             .subscribe(() => {
                 this.changeDetector.markForCheck()
             })
