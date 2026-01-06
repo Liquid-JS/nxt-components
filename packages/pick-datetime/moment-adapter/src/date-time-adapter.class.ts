@@ -15,9 +15,9 @@ export interface MomentDateTimeAdapterOptions {
 /** InjectionToken for moment date adapter to configure options */
 export const NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS = new InjectionToken<MomentDateTimeAdapterOptions>(
     'NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {
-        providedIn: 'root',
-        factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY
-    })
+    providedIn: 'root',
+    factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY
+})
 
 /** @internal */
 export function NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY(): MomentDateTimeAdapterOptions {
@@ -219,7 +219,7 @@ export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
             throw Error(`Invalid seconds "${seconds}". Seconds has to be between 0 and 59.`)
         }
 
-        const result = this.createMoment({ year, month, date, hours, minutes, seconds }).locale(this.locale)
+        const result = this.createMoment({ year, month, date, hours, minutes, seconds }).locale(this.locale())
 
         // If the result isn't valid, the date must have been out of bounds for this month.
         if (!result.isValid()) {
@@ -230,11 +230,11 @@ export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
     }
 
     clone(date: Moment): Moment {
-        return this.createMoment(date).clone().locale(this.locale)
+        return this.createMoment(date).clone().locale(this.locale())
     }
 
     now(): Moment {
-        return this.createMoment().locale(this.locale)
+        return this.createMoment().locale(this.locale())
     }
 
     format(date: Moment, displayFormat: any): string {
@@ -247,9 +247,9 @@ export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
 
     parse(value: any, parseFormat: any): Moment | undefined {
         if (value && typeof value === 'string') {
-            return this.createMoment(value, parseFormat, this.locale)
+            return this.createMoment(value, parseFormat, this.locale())
         }
-        return value ? this.createMoment(value).locale(this.locale) : undefined
+        return value ? this.createMoment(value).locale(this.locale()) : undefined
     }
 
     /**
@@ -266,7 +266,7 @@ export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
             if (!value) {
                 return undefined
             }
-            date = this.createMoment(value, moment.ISO_8601).locale(this.locale)
+            date = this.createMoment(value, moment.ISO_8601).locale(this.locale())
         }
         if (date && this.isValid(date)) {
             return date

@@ -93,13 +93,13 @@
     tabindex="-1">
     @switch (currentView) {
     @case ('month') {
-    <nxt-date-time-month-view [pickerMoment]="pickerMoment"
+    <nxt-date-time-month-view [pickerMoment]="pickerMoment()"
         [firstDayOfWeek]="firstDayOfWeek()"
-        [selected]="selected"
-        [selecteds]="selecteds"
+        [selected]="selected()"
+        [selecteds]="selecteds()"
         [selectMode]="selectMode() ?? 'single'"
-        [min]="min"
-        [max]="max"
+        [min]="min()"
+        [max]="max()"
         [dateTimeFilter]="dateTimeFilter()"
         [hideOtherMonths]="hideOtherMonths()"
         (pickerMomentChange)="handlePickerMomentChange($event)"
@@ -107,12 +107,12 @@
         (userSelection)="userSelected()"></nxt-date-time-month-view>
     }
     @case ('year') {
-    <nxt-date-time-year-view [pickerMoment]="pickerMoment"
-        [selected]="selected"
-        [selecteds]="selecteds"
+    <nxt-date-time-year-view [pickerMoment]="pickerMoment()"
+        [selected]="selected()"
+        [selecteds]="selecteds()"
         [selectMode]="selectMode() ?? 'single'"
-        [min]="min"
-        [max]="max"
+        [min]="min()"
+        [max]="max()"
         [dateTimeFilter]="dateTimeFilter()"
         (keyboardEnter)="focusActiveCell()"
         (pickerMomentChange)="handlePickerMomentChange($event)"
@@ -120,12 +120,12 @@
         (change)="goToDateInView($event, 'month')"></nxt-date-time-year-view>
     }
     @case ('multi-years') {
-    <nxt-date-time-multi-year-view [pickerMoment]="pickerMoment"
-        [selected]="selected"
-        [selecteds]="selecteds"
+    <nxt-date-time-multi-year-view [pickerMoment]="pickerMoment()"
+        [selected]="selected()"
+        [selecteds]="selecteds()"
         [selectMode]="selectMode() ?? 'single'"
-        [min]="min"
-        [max]="max"
+        [min]="min()"
+        [max]="max()"
         [dateTimeFilter]="dateTimeFilter()"
         (keyboardEnter)="focusActiveCell()"
         (pickerMomentChange)="handlePickerMomentChange($event)"

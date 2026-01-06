@@ -304,7 +304,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
 
     getYearName(date: Date): string {
         if (SUPPORTS_INTL_API) {
-            const dtf = new Intl.DateTimeFormat(this.locale, {
+            const dtf = new Intl.DateTimeFormat(this.locale(), {
                 year: 'numeric',
                 timeZone: 'utc'
             })
@@ -315,7 +315,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
 
     getMonthNames(style: 'long' | 'short' | 'narrow'): string[] {
         if (SUPPORTS_INTL_API) {
-            const dtf = new Intl.DateTimeFormat(this.locale, {
+            const dtf = new Intl.DateTimeFormat(this.locale(), {
                 month: style,
                 timeZone: 'utc'
             })
@@ -330,7 +330,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
 
     getDayOfWeekNames(style: 'long' | 'short' | 'narrow'): string[] {
         if (SUPPORTS_INTL_API) {
-            const dtf = new Intl.DateTimeFormat(this.locale, {
+            const dtf = new Intl.DateTimeFormat(this.locale(), {
                 weekday: style,
                 timeZone: 'utc'
             })
@@ -346,7 +346,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
 
     getDateNames(): string[] {
         if (SUPPORTS_INTL_API) {
-            const dtf = new Intl.DateTimeFormat(this.locale, {
+            const dtf = new Intl.DateTimeFormat(this.locale(), {
                 day: 'numeric',
                 timeZone: 'utc'
             })
@@ -532,7 +532,7 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
             }
 
             displayFormat = { ...displayFormat, timeZone: 'utc' }
-            const dtf = new Intl.DateTimeFormat(this.locale, displayFormat)
+            const dtf = new Intl.DateTimeFormat(this.locale(), displayFormat)
             return this.stripDirectionalityCharacters(this._format(dtf, date))
         }
 

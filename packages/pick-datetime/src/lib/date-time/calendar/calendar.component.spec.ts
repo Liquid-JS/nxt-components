@@ -47,7 +47,7 @@ describe('CalendarComponent', () => {
 
         it('should be in month view with specified month active', () => {
             expect(calendarInstance.currentView).toBe('month')
-            expect(calendarInstance.pickerMoment).toEqual(
+            expect(calendarInstance.pickerMoment()).toEqual(
                 new Date(2018, 0, 31)
             )
         })
@@ -68,7 +68,7 @@ describe('CalendarComponent', () => {
             fixture.detectChanges()
 
             expect(calendarInstance.currentView).toBe('multi-years')
-            expect(calendarInstance.pickerMoment).toEqual(
+            expect(calendarInstance.pickerMoment()).toEqual(
                 new Date(2018, 0, 31)
             );
 
@@ -93,7 +93,7 @@ describe('CalendarComponent', () => {
             fixture.detectChanges()
 
             expect(calendarInstance.currentView).toBe('multi-years')
-            expect(calendarInstance.pickerMoment).toEqual(
+            expect(calendarInstance.pickerMoment()).toEqual(
                 new Date(2018, 0, 31)
             );
             (calendarElement.querySelector(
@@ -144,7 +144,7 @@ describe('CalendarComponent', () => {
                 })
 
                 it('should initially set pickerMoment', () => {
-                    expect(calendarInstance.pickerMoment).toEqual(
+                    expect(calendarInstance.pickerMoment()).toEqual(
                         new Date(2018, 0, 31)
                     )
                 })
@@ -216,7 +216,7 @@ describe('CalendarComponent', () => {
                         fixture.detectChanges()
 
                         expect(calendarInstance.currentView).toBe('month')
-                        expect(calendarInstance.pickerMoment).toEqual(
+                        expect(calendarInstance.pickerMoment()).toEqual(
                             new Date(2018, 1, 28)
                         )
                         expect(testComponent.selected).toBeUndefined()
@@ -249,7 +249,7 @@ describe('CalendarComponent', () => {
                         fixture.detectChanges()
 
                         expect(calendarInstance.currentView).toBe('year')
-                        expect(calendarInstance.pickerMoment).toEqual(
+                        expect(calendarInstance.pickerMoment()).toEqual(
                             new Date(2019, 0, 31)
                         )
                         expect(testComponent.selected).toBeUndefined()
@@ -282,28 +282,26 @@ describe('CalendarComponent', () => {
             const monthViewDebugElm = fixture.debugElement.query(
                 By.directive(MonthViewComponent)
             )
-            const monthViewComp = monthViewDebugElm.componentInstance
+            const monthViewComp: MonthViewComponent<Date> = monthViewDebugElm.componentInstance
             expect(monthViewComp).toBeTruthy()
 
-            spyOn(monthViewComp, 'generateCalendar').and.callThrough()
+            const daysList = monthViewComp.days()
             testComponent.minDate = new Date(2017, 10, 1)
             fixture.detectChanges()
-
-            expect(monthViewComp.generateCalendar).toHaveBeenCalled()
+            expect(monthViewComp.days()).not.toBe(daysList)
         })
 
         it('should re-render the month view when the maxDate changes', () => {
             const monthViewDebugElm = fixture.debugElement.query(
                 By.directive(MonthViewComponent)
             )
-            const monthViewComp = monthViewDebugElm.componentInstance
+            const monthViewComp: MonthViewComponent<Date> = monthViewDebugElm.componentInstance
             expect(monthViewComp).toBeTruthy()
 
-            spyOn(monthViewComp, 'generateCalendar').and.callThrough()
+            const daysList = monthViewComp.days()
             testComponent.maxDate = new Date(2017, 10, 1)
             fixture.detectChanges()
-
-            expect(monthViewComp.generateCalendar).toHaveBeenCalled()
+            expect(monthViewComp.days()).not.toBe(daysList)
         })
 
         it('should re-render the year view when the minDate changes', () => {
@@ -322,14 +320,13 @@ describe('CalendarComponent', () => {
             const yearViewDebugElm = fixture.debugElement.query(
                 By.directive(YearViewComponent)
             )
-            const yearViewComp = yearViewDebugElm.componentInstance
+            const yearViewComp: YearViewComponent<Date> = yearViewDebugElm.componentInstance
             expect(yearViewComp).toBeTruthy()
 
-            spyOn(yearViewComp, 'generateMonthList').and.callThrough()
+            const monthList = yearViewComp.months()
             testComponent.minDate = new Date(2017, 10, 1)
             fixture.detectChanges()
-
-            expect(yearViewComp.generateMonthList).toHaveBeenCalled()
+            expect(yearViewComp.months()).not.toBe(monthList)
         })
 
         it('should re-render the year view when the maxDate changes', () => {
@@ -348,14 +345,13 @@ describe('CalendarComponent', () => {
             const yearViewDebugElm = fixture.debugElement.query(
                 By.directive(YearViewComponent)
             )
-            const yearViewComp = yearViewDebugElm.componentInstance
+            const yearViewComp: YearViewComponent<Date> = yearViewDebugElm.componentInstance
             expect(yearViewComp).toBeTruthy()
 
-            spyOn(yearViewComp, 'generateMonthList').and.callThrough()
+            const monthList = yearViewComp.months()
             testComponent.maxDate = new Date(2017, 10, 1)
             fixture.detectChanges()
-
-            expect(yearViewComp.generateMonthList).toHaveBeenCalled()
+            expect(yearViewComp.months()).not.toBe(monthList)
         })
 
         it('should re-render the multi-years view when the minDate changes', () => {

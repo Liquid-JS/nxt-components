@@ -387,9 +387,9 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         @Inject(NXT_DATE_TIME_FORMATS)
         private readonly dateTimeFormats: DateTimeFormats
     ) {
-        this.localeSub = this.dateTimeAdapter.localeChanges.subscribe(() => {
+        /* this.localeSub = this.dateTimeAdapter.localeChanges.subscribe(() => {
             this.value = this.value
-        })
+        })*/
     }
 
     ngOnInit(): void {

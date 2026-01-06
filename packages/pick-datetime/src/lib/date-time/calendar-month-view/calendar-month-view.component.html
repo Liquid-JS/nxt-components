@@ -2,7 +2,7 @@
     [class.nxt-dt-calendar-only-current-month]="hideOtherMonths()">
     <thead class="nxt-dt-calendar-header">
         <tr class="nxt-dt-weekdays">
-            @for (weekday of weekdays; track weekday.long) {
+            @for (weekday of weekdays(); track weekday.long) {
             <th [attr.aria-label]="weekday.long"
                 class="nxt-dt-weekday"
                 scope="col">
@@ -19,11 +19,11 @@
     <!-- eslint-disable-next-line @angular-eslint/template/interactive-supports-focus -->
     <tbody nxtDateTimeCalendarBody
         role="grid"
-        [rows]="days"
-        [todayValue]="todayDate ?? undefined"
-        [selectedValues]="selectedDates"
-        [selectMode]="selectMode"
-        [activeCell]="activeCell ?? 0"
+        [rows]="days()"
+        [todayValue]="todayDate()"
+        [selectedValues]="selectedDates()"
+        [selectMode]="selectMode()"
+        [activeCell]="activeCell() ?? 0"
         (keydown)="handleCalendarKeydown($event)"
         (select)="selectCalendarCell($event)">
     </tbody>

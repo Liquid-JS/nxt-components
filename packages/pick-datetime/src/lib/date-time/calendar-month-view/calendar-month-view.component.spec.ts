@@ -65,7 +65,7 @@ describe('MonthViewComponent', () => {
         })
 
         it('should set Sunday as first day of week by default', () => {
-            expect(monthViewInstance.firstDayOfWeek).toBe(0)
+            expect(monthViewInstance.firstDayOfWeek()).toBe(0)
             const weekdayCells = monthViewElement.querySelectorAll(
                 '.nxt-dt-weekday'
             )
@@ -73,7 +73,7 @@ describe('MonthViewComponent', () => {
         })
 
         it('should set Monday as first day of week if firstDayOfWeek set to 1', () => {
-            monthViewInstance.firstDayOfWeek = 1
+            testComponent.firstDayOfWeek = 1
             fixture.detectChanges()
             const weekdayCells = monthViewElement.querySelectorAll(
                 '.nxt-dt-weekday'
@@ -82,7 +82,7 @@ describe('MonthViewComponent', () => {
         })
 
         it('should set Saturday as first day of week if firstDayOfWeek set to 6', () => {
-            monthViewInstance.firstDayOfWeek = 6
+            testComponent.firstDayOfWeek = 6
             fixture.detectChanges()
             const weekdayCells = monthViewElement.querySelectorAll(
                 '.nxt-dt-weekday'
@@ -98,7 +98,7 @@ describe('MonthViewComponent', () => {
             fixture.detectChanges()
             expect(testComponent.pickerMoment).toEqual(new Date(2018, 0, 4))
 
-            monthViewInstance.pickerMoment = new Date(2017, 0, 1)
+            testComponent.pickerMoment = new Date(2017, 0, 1)
             fixture.detectChanges()
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowLeft')
@@ -131,7 +131,7 @@ describe('MonthViewComponent', () => {
 
             expect(testComponent.pickerMoment).toEqual(new Date(2017, 11, 29))
 
-            monthViewInstance.pickerMoment = new Date(2017, 0, 7)
+            testComponent.pickerMoment = new Date(2017, 0, 7)
             fixture.detectChanges()
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowUp')
@@ -156,7 +156,7 @@ describe('MonthViewComponent', () => {
         })
 
         it('should go to beginning of the month on home press', () => {
-            monthViewInstance.pickerMoment = new Date(2018, 0, 7)
+            testComponent.pickerMoment = new Date(2018, 0, 7)
             fixture.detectChanges()
 
             const calendarBodyEl = monthViewElement.querySelector(
@@ -174,7 +174,7 @@ describe('MonthViewComponent', () => {
         })
 
         it('should go to end of the month on end press', () => {
-            monthViewInstance.pickerMoment = new Date(2018, 0, 7)
+            testComponent.pickerMoment = new Date(2018, 0, 7)
             fixture.detectChanges()
 
             const calendarBodyEl = monthViewElement.querySelector(
@@ -272,13 +272,15 @@ describe('MonthViewComponent', () => {
     template: `
         <nxt-date-time-month-view
                 [(selected)]="selected"
-                [(pickerMoment)]="pickerMoment"></nxt-date-time-month-view>
+                [(pickerMoment)]="pickerMoment"
+                [firstDayOfWeek]="firstDayOfWeek"></nxt-date-time-month-view>
     `,
     imports: [MonthViewComponent]
 })
 class StandardMonthViewComponent {
     selected = new Date(2018, 0, 10)
     pickerMoment = new Date(2018, 0, 5)
+    firstDayOfWeek?: number
 }
 
 @Component({

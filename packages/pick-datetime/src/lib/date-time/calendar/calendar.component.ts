@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Inject, Input, NgZone, OnDestroy, OnInit, input, output } from '@angular/core'
+import { AfterContentInit, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Inject, NgZone, OnDestroy, OnInit, computed, input, linkedSignal, output } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { take } from 'rxjs/operators'
 import { CdkMonitorFocus } from '@angular/cdk/a11y'
@@ -35,84 +35,67 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     readonly firstDayOfWeek = input(0)
 
     /** The minimum selectable date */
-    private _minDate?: T
-    @Input()
-    get min() {
-        return this._minDate
-    }
+    readonly min = input<T | undefined, T | undefined>(undefined, {
+        transform: (value) => {
+            value = this.dateTimeAdapter.deserialize(value)
+            value = this.getValidDate(value)
 
-    set min(value: T | undefined) {
-        value = this.dateTimeAdapter.deserialize(value)
-        value = this.getValidDate(value)
-
-        this._minDate = value
-            ? this.dateTimeAdapter.createDate(
-                this.dateTimeAdapter.getYear(value),
-                this.dateTimeAdapter.getMonth(value),
-                this.dateTimeAdapter.getDate(value)
-            )
-            : undefined
-    }
+            return value
+                ? this.dateTimeAdapter.createDate(
+                    this.dateTimeAdapter.getYear(value),
+                    this.dateTimeAdapter.getMonth(value),
+                    this.dateTimeAdapter.getDate(value)
+                )
+                : undefined
+        }
+    })
 
     /** The maximum selectable date */
-    private _maxDate?: T
-    @Input()
-    get max() {
-        return this._maxDate
-    }
+    readonly max = input<T | undefined, T | undefined>(undefined, {
+        transform: (value) => {
+            value = this.dateTimeAdapter.deserialize(value)
+            value = this.getValidDate(value)
 
-    set max(value: T | undefined) {
-        value = this.dateTimeAdapter.deserialize(value)
-        value = this.getValidDate(value)
-
-        this._maxDate = value
-            ? this.dateTimeAdapter.createDate(
-                this.dateTimeAdapter.getYear(value),
-                this.dateTimeAdapter.getMonth(value),
-                this.dateTimeAdapter.getDate(value)
-            )
-            : undefined
-    }
+            return value
+                ? this.dateTimeAdapter.createDate(
+                    this.dateTimeAdapter.getYear(value),
+                    this.dateTimeAdapter.getMonth(value),
+                    this.dateTimeAdapter.getDate(value)
+                )
+                : undefined
+        }
+    })
 
     /** The current picker moment */
-    private _pickerMoment?: T
-    @Input()
-    get pickerMoment() {
-        return this._pickerMoment
-    }
+    // eslint-disable-next-line @angular-eslint/no-input-rename
+    readonly _pickerMomentInput = input<T | undefined>(undefined, { alias: 'pickerMoment' })
 
-    set pickerMoment(value: T | undefined) {
-        value = this.dateTimeAdapter.deserialize(value)
-        this._pickerMoment =
-            this.getValidDate(value) || this.dateTimeAdapter.now()
-    }
+    /** Settable signal for pickerMoment */
+    private readonly _pickerMoment = linkedSignal({
+        source: () => this._pickerMomentInput(),
+        computation: v => v
+    })
+    readonly pickerMoment = computed(() => {
+        const value = this.dateTimeAdapter.deserialize(this._pickerMoment())
+        return this.getValidDate(value) || this.dateTimeAdapter.now()
+    })
 
     readonly selectMode = input<SelectMode>()
 
     /** The currently selected moment */
-    private _selected?: T
-    @Input()
-    get selected() {
-        return this._selected
-    }
+    readonly selected = input<T | undefined, T | undefined>(undefined, {
+        transform: (value) => {
+            value = this.dateTimeAdapter.deserialize(value)
+            return this.getValidDate(value)
+        }
+    })
 
-    set selected(value: T | undefined) {
-        value = this.dateTimeAdapter.deserialize(value)
-        this._selected = this.getValidDate(value)
-    }
-
-    private _selecteds = new Array<T | undefined>()
-    @Input()
-    get selecteds() {
-        return this._selecteds
-    }
-
-    set selecteds(values: Array<T | undefined>) {
-        this._selecteds = values.map(v => {
+    readonly selecteds = input<Array<T | undefined>, Array<T | undefined>>([], {
+        transform: (values) => values.map(v => {
             v = this.dateTimeAdapter.deserialize(v)
             return this.getValidDate(v)
         })
-    }
+    })
 
     /**
      * The view that the calendar should start in
@@ -150,10 +133,10 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
     get periodButtonText(): string {
         return this.isMonthView
             ? this.dateTimeAdapter.format(
-                this.pickerMoment,
+                this.pickerMoment(),
                 this.dateTimeFormats.monthYearLabel
             )
-            : this.dateTimeAdapter.getYearName(this.pickerMoment)
+            : this.dateTimeAdapter.getYearName(this.pickerMoment())
     }
 
     get periodButtonLabel(): string {
@@ -219,10 +202,10 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
         return (
             !!date &&
             (!dateTimeFilter || dateTimeFilter(date, 'date')) &&
-            (!this.min ||
-                this.dateTimeAdapter.compare(date, this.min) >= 0) &&
-            (!this.max ||
-                this.dateTimeAdapter.compare(date, this.max) <= 0)
+            (!this.min() ||
+                this.dateTimeAdapter.compare(date, this.min()) >= 0) &&
+            (!this.max() ||
+                this.dateTimeAdapter.compare(date, this.max()) <= 0)
         )
     }
 
@@ -289,22 +272,24 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
      * Handles user clicks on the previous button.
      */
     previousClicked(): void {
-        this.pickerMoment = this.isMonthView
-            ? this.dateTimeAdapter.addCalendarMonths(this.pickerMoment, -1)
-            : this.dateTimeAdapter.addCalendarYears(this.pickerMoment, -1)
+        const newVal = this.isMonthView
+            ? this.dateTimeAdapter.addCalendarMonths(this.pickerMoment(), -1)
+            : this.dateTimeAdapter.addCalendarYears(this.pickerMoment(), -1)
+        this._pickerMoment.set(newVal)
 
-        this.pickerMomentChange.emit(this.pickerMoment)
+        this.pickerMomentChange.emit(newVal)
     }
 
     /**
      * Handles user clicks on the next button.
      */
     nextClicked(): void {
-        this.pickerMoment = this.isMonthView
-            ? this.dateTimeAdapter.addCalendarMonths(this.pickerMoment, 1)
-            : this.dateTimeAdapter.addCalendarYears(this.pickerMoment, 1)
+        const newVal = this.isMonthView
+            ? this.dateTimeAdapter.addCalendarMonths(this.pickerMoment(), 1)
+            : this.dateTimeAdapter.addCalendarYears(this.pickerMoment(), 1)
+        this._pickerMoment.set(newVal)
 
-        this.pickerMomentChange.emit(this.pickerMoment)
+        this.pickerMomentChange.emit(newVal)
     }
 
     dateSelected(date?: T): void {
@@ -336,13 +321,13 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
      * Change the pickerMoment value
      */
     handlePickerMomentChange(date: T): void {
-        this.pickerMoment = this.dateTimeAdapter.clampDate(
+        const newVal = this.dateTimeAdapter.clampDate(
             date,
-            this.min,
-            this.max
+            this.min(),
+            this.max()
         )
-        this.pickerMomentChange.emit(this.pickerMoment)
-        return
+        this._pickerMoment.set(newVal)
+        this.pickerMomentChange.emit(newVal)
     }
 
     userSelected(): void {
@@ -354,7 +339,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
      */
     prevButtonEnabled(): boolean {
         return (
-            !this.min || !this.isSameView(this.pickerMoment, this.min)
+            !this.min() || !this.isSameView(this.pickerMoment(), this.min())
         )
     }
 
@@ -363,7 +348,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
      */
     nextButtonEnabled(): boolean {
         return (
-            !this.max || !this.isSameView(this.pickerMoment, this.max)
+            !this.max || !this.isSameView(this.pickerMoment(), this.max())
         )
     }
 

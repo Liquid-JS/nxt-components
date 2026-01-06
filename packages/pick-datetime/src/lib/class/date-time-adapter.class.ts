@@ -1,14 +1,8 @@
-import { Observable, Subject } from 'rxjs'
+import { signal } from '@angular/core'
 
 export abstract class DateTimeAdapter<T> {
     /** The locale to use for all dates */
-    protected locale: any
-
-    /** A stream that emits when the locale changes */
-    protected _localeChanges = new Subject<void>()
-    get localeChanges(): Observable<void> {
-        return this._localeChanges
-    }
+    protected readonly locale = signal<any>(undefined)
 
     /** total milliseconds in a day */
     protected readonly millisecondsInDay = 86400000
@@ -260,8 +254,7 @@ export abstract class DateTimeAdapter<T> {
      * Sets the locale used for all dates.
      */
     setLocale(locale: any) {
-        this.locale = locale
-        this._localeChanges.next()
+        this.locale.set(locale)
     }
 
     /**

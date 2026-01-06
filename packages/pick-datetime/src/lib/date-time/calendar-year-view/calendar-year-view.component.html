@@ -9,13 +9,13 @@
     <!-- eslint-disable-next-line @angular-eslint/template/interactive-supports-focus -->
     <tbody nxtDateTimeCalendarBody
         role="grid"
-        [rows]="months"
+        [rows]="months()"
         [numCols]="3"
         [cellRatio]="3 / 7"
-        [activeCell]="activeCell ?? 0"
-        [todayValue]="todayMonth??undefined"
-        [selectedValues]="selectedMonths"
-        [selectMode]="selectMode"
+        [activeCell]="activeCell() ?? 0"
+        [todayValue]="todayMonth()"
+        [selectedValues]="selectedMonths()"
+        [selectMode]="selectMode()"
         (keydown)="handleCalendarKeydown($event)"
         (select)="selectCalendarCell($event)">
     </tbody>
