@@ -1,38 +1,38 @@
-<div [cdkTrapFocus]="picker?.pickerMode !== 'inline'"
-    [@fadeInPicker]="picker?.pickerMode === 'inline'? '' : 'enter'"
+<div [cdkTrapFocus]="pickerMode() !== 'inline'"
+    [@fadeInPicker]="pickerMode() === 'inline'? '' : 'enter'"
     class="nxt-dt-container-inner">
 
-    @if (pickerType === 'both' || pickerType === 'calendar') {
+    @if (pickerType() === 'both' || pickerType() === 'calendar') {
     <nxt-date-time-calendar class="nxt-dt-container-row"
-        [firstDayOfWeek]="picker?.firstDayOfWeek() ?? 0"
+        [firstDayOfWeek]="firstDayOfWeek() ?? 0"
         [(pickerMoment)]="pickerMoment"
-        [selected]="picker?.selected"
-        [selecteds]="picker?.selecteds ?? []"
-        [selectMode]="picker?.selectMode"
-        [min]="picker?.min"
-        [max]="picker?.max"
-        [dateTimeFilter]="picker?.dateTimeFilter"
-        [startView]="picker?.startView() ?? 'month'"
-        [hideOtherMonths]="!!picker?.hideOtherMonths()"
-        (yearSelected)="picker?.selectYear($event)"
-        (monthSelected)="picker?.selectMonth($event)"
+        [selected]="selected()"
+        [selecteds]="selecteds() ?? []"
+        [selectMode]="selectMode()"
+        [min]="min()"
+        [max]="max()"
+        [dateTimeFilter]="dateTimeFilter()"
+        [startView]="startView() ?? 'month'"
+        [hideOtherMonths]="!!hideOtherMonths()"
+        (yearSelected)="picker()?.selectYear($event)"
+        (monthSelected)="picker()?.selectMonth($event)"
         (selectedChange)="dateSelected($event)"></nxt-date-time-calendar>
     }
 
-    @if (pickerType === 'both' || pickerType === 'timer') {
+    @if (pickerType() === 'both' || pickerType() === 'timer') {
     <nxt-date-time-timer class="nxt-dt-container-row"
         [pickerMoment]="pickerMoment"
-        [min]="picker?.min"
-        [max]="picker?.max"
-        [showSecondsTimer]="!!picker?.showSecondsTimer()"
-        [hour12Timer]="!!picker?.hour12Timer()"
-        [stepHour]="picker?.stepHour() ?? 1"
-        [stepMinute]="picker?.stepMinute() ?? 1"
-        [stepSecond]="picker?.stepSecond() ?? 1"
+        [min]="min()"
+        [max]="max()"
+        [showSecondsTimer]="!!showSecondsTimer()"
+        [hour12Timer]="!!hour12Timer()"
+        [stepHour]="stepHour() ?? 1"
+        [stepMinute]="stepMinute() ?? 1"
+        [stepSecond]="stepSecond() ?? 1"
         (selectedChange)="timeSelected($event)"></nxt-date-time-timer>
     }
 
-    @if (picker?.isInRangeMode) {
+    @if (isInRangeMode()) {
     <div role="radiogroup"
         class="nxt-dt-container-info nxt-dt-container-row">
         <div role="radio"
@@ -45,8 +45,8 @@
             #from>
             <span class="nxt-dt-control-content nxt-dt-container-range-content"
                 tabindex="-1">
-                <span class="nxt-dt-container-info-label">{{fromLabel}}:</span>
-                <span class="nxt-dt-container-info-value">{{fromFormattedValue}}</span>
+                <span class="nxt-dt-container-info-label">{{fromLabel()}}:</span>
+                <span class="nxt-dt-container-info-value">{{fromFormattedValue()}}</span>
             </span>
         </div>
         <div role="radio"
@@ -59,14 +59,14 @@
             #to>
             <span class="nxt-dt-control-content nxt-dt-container-range-content"
                 tabindex="-1">
-                <span class="nxt-dt-container-info-label">{{toLabel}}:</span>
-                <span class="nxt-dt-container-info-value">{{toFormattedValue}}</span>
+                <span class="nxt-dt-container-info-label">{{toLabel()}}:</span>
+                <span class="nxt-dt-container-info-value">{{toFormattedValue()}}</span>
             </span>
         </div>
     </div>
     }
 
-    @if (showControlButtons) {
+    @if (showControlButtons()) {
     <div class="nxt-dt-container-buttons nxt-dt-container-row">
         <button class="nxt-dt-control nxt-dt-control-button nxt-dt-container-control-button"
             type="button"
@@ -74,7 +74,7 @@
             (click)="onCancelClicked($event)">
             <span class="nxt-dt-control-content nxt-dt-control-button-content"
                 tabindex="-1">
-                {{cancelLabel}}
+                {{cancelLabel()}}
             </span>
         </button>
         <button class="nxt-dt-control nxt-dt-control-button nxt-dt-container-control-button"
@@ -83,7 +83,7 @@
             (click)="onSetClicked($event)">
             <span class="nxt-dt-control-content nxt-dt-control-button-content"
                 tabindex="-1">
-                {{setLabel}}
+                {{setLabel()}}
             </span>
         </button>
     </div>

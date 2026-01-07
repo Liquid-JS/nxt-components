@@ -1,7 +1,7 @@
 import { coerceArray } from '@angular/cdk/coercion'
 import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, Inject, InjectionToken, Input, NgZone, OnDestroy, OnInit, Optional, ViewContainerRef, DOCUMENT, input, output, OutputRefSubscription } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, Inject, InjectionToken, NgZone, OnDestroy, OnInit, Optional, ViewContainerRef, DOCUMENT, input, output, OutputRefSubscription, computed, signal, linkedSignal, effect } from '@angular/core'
 import { merge, Subscription } from 'rxjs'
 import { filter, take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
@@ -35,42 +35,42 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     /** Custom class for the picker overlay pane */
     readonly panelClass = input<string | string[]>()
 
-    private _startAt?: T
     /**
      * The date to show when picker opens
      *
      * Defaults to selected date (if available) or current date.
      */
-    @Input()
-    get startAt() {
+    readonly _startAt = input<T | undefined, T | undefined>(undefined, {
+        // eslint-disable-next-line @angular-eslint/no-input-rename
+        alias: 'startAt',
+        transform: date => this.getValidDate(
+            this.dateTimeAdapter.deserialize(date)
+        )
+    })
+    readonly startAt = computed(() => {
         // If an explicit startAt is set we start there, otherwise we start at whatever the currently
         // selected value is.
-        if (this._startAt) {
-            return this._startAt
+        const startAt = this._startAt()
+        if (startAt) {
+            return startAt
         }
 
-        if (this._dtInput) {
-            if (this._dtInput.selectMode === 'single') {
-                return this._dtInput.value
+        const dtInput = this.dtInput()
+        if (dtInput) {
+            if (dtInput.selectMode === 'single') {
+                return dtInput.value
             } else if (
-                this._dtInput.selectMode === 'range' ||
-                this._dtInput.selectMode === 'rangeFrom'
+                dtInput.selectMode === 'range' ||
+                dtInput.selectMode === 'rangeFrom'
             ) {
-                return this._dtInput.values[0]
-            } else if (this._dtInput.selectMode === 'rangeTo') {
-                return this._dtInput.values[1]
+                return dtInput.values[0]
+            } else if (dtInput.selectMode === 'rangeTo') {
+                return dtInput.values[1]
             }
         }
         return
-    }
+    })
 
-    set startAt(date: T | undefined) {
-        this._startAt = this.getValidDate(
-            this.dateTimeAdapter.deserialize(date)
-        )
-    }
-
-    private _pickerType: PickerType = 'both'
     /**
      * Set the type of the dateTime picker
      *
@@ -78,68 +78,39 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
      * -    `'calendar'` - show only calendar
      * -    `'timer'` - show only timer
      */
-    @Input()
-    get pickerType(): PickerType {
-        return this._pickerType
-    }
+    readonly pickerType = input<PickerType>('both')
 
-    set pickerType(val: PickerType) {
-        if (val !== this._pickerType) {
-            this._pickerType = val
-            if (this._dtInput) {
-                this._dtInput.formatNativeInputValue()
-            }
-        }
-    }
-
-    private _pickerMode: PickerMode = 'popup'
     /**
      * The style the picker would open as
      *
      * -    `'popup'` - display picker attached to the trigger element
      * -    `'dialog'` - display picker as a dialog
      */
-    @Input()
-    get pickerMode() {
-        return this._pickerMode
-    }
-
-    set pickerMode(mode: PickerMode) {
-        if (mode === 'popup') {
-            this._pickerMode = mode
-        } else {
-            this._pickerMode = 'dialog'
+    readonly pickerMode = input<PickerMode, PickerMode>('popup', {
+        transform: mode => {
+            if (mode === 'popup') {
+                return mode
+            } else {
+                return 'dialog'
+            }
         }
-    }
+    })
 
-    private _disabled?: boolean
     /** Whether the date time picker should be disabled */
-    @Input()
-    override get disabled(): boolean {
-        return this._disabled ?? !!this._dtInput?.disabled
-    }
+    // eslint-disable-next-line @angular-eslint/no-input-rename
+    readonly _disabled = input<boolean | undefined>(undefined, { alias: 'disabled' })
+    readonly disabled = linkedSignal({
+        source: () => this._disabled(),
+        computation: value => value ?? !!this.dtInput()?.disabled
+    })
 
-    override set disabled(value: boolean) {
-        value = !!value
-        if (value !== this._disabled) {
-            this._disabled = value
-            this.disabledChange.emit(value)
-        }
-    }
-
-    private _isOpen: boolean = false
     /** Whether the calendar is open */
-    @Input()
-    get isOpen(): boolean {
-        return this._isOpen
-    }
-
-    set isOpen(val: boolean) {
-        if (val)
-            this.open()
-        else
-            this.close()
-    }
+    // eslint-disable-next-line @angular-eslint/no-input-rename
+    readonly _isOpen = input(false, { alias: 'isOpen' })
+    readonly isOpen = linkedSignal({
+        source: () => this._isOpen(),
+        computation: v => v
+    })
 
     /**
      * The scroll strategy when the picker is open (see [CDK documentation](https://material.angular.io/cdk/overlay/overview#scroll-strategies))
@@ -201,56 +172,28 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     /** The element that was focused before the date time picker was isOpen */
     private focusedElementBeforeOpen?: HTMLElement
 
-    private _dtInput?: DateTimeInputDirective<T>
-    get dtInput() {
-        return this._dtInput
-    }
+    private readonly _dtInput = signal<DateTimeInputDirective<T> | undefined>(undefined)
+    readonly dtInput = this._dtInput.asReadonly()
 
-    private _selected?: T
-    get selected() {
-        return this._selected
-    }
+    private readonly valueChange = computed(() => this._dtInput()?.valueChange)
 
-    set selected(value: T | undefined) {
-        this._selected = value
-        this.changeDetector.markForCheck()
-    }
+    readonly selected = signal<T | undefined>(undefined)
 
-    private _selecteds = new Array<T | undefined>()
-    get selecteds() {
-        return this._selecteds || []
-    }
-
-    set selecteds(values: Array<T | undefined>) {
-        this._selecteds = values
-        this.changeDetector.markForCheck()
-    }
+    readonly selecteds = signal(new Array<T | undefined>())
 
     /** The minimum selectable date */
-    get min() {
-        return (this._dtInput && this._dtInput.min)
-    }
+    readonly min = computed(() => this.dtInput()?.min)
 
     /** The maximum selectable date */
-    get max() {
-        return (this._dtInput && this._dtInput.max)
-    }
+    readonly max = computed(() => this.dtInput()?.max)
 
-    get dateTimeFilter() {
-        return this._dtInput?.dateTimeFilter
-    }
+    readonly dateTimeFilter = computed(() => this.dtInput()?.dateTimeFilter)
 
-    get selectMode() {
-        return this._dtInput?.selectMode
-    }
+    readonly selectMode = computed(() => this.dtInput()?.selectMode)
 
-    get isInSingleMode() {
-        return !!this._dtInput?.isInSingleMode
-    }
+    readonly isInSingleMode = computed(() => !!this.dtInput()?.isInSingleMode)
 
-    get isInRangeMode() {
-        return !!this._dtInput?.isInRangeMode
-    }
+    readonly isInRangeMode = computed(() => !!this.dtInput()?.isInRangeMode)
 
     constructor(
         private readonly overlay: Overlay,
@@ -270,6 +213,43 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     ) {
         super(dateTimeAdapter, dateTimeFormats)
         this.defaultScrollStrategy = this.defaultScrollStrategy ?? (() => overlay.scrollStrategies.block())
+
+        effect((registerCleanup) => {
+            const vc = this.valueChange()
+            if (vc) {
+                const sub = vc.subscribe((value) => {
+                    if (Array.isArray(value)) {
+                        this.selecteds.set(value)
+                    } else {
+                        this.selected.set(value)
+                    }
+                })
+                registerCleanup(() => sub.unsubscribe())
+            }
+        })
+
+        effect(() => {
+            // TODO: neccesary?
+            this.pickerType()
+            this._dtInput()?.formatNativeInputValue()
+        })
+
+        let disabled: boolean | undefined
+        effect(() => {
+            const value = this.disabled()
+            if (disabled != undefined) {
+                this.disabledChange.emit(value)
+            }
+            disabled = value
+        })
+
+        effect(() => {
+            if (this._isOpen()) {
+                this.open()
+            } else {
+                this.close()
+            }
+        })
     }
 
     ngOnInit() { }
@@ -285,28 +265,21 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     }
 
     registerInput(inputDirective: DateTimeInputDirective<T>): void {
-        if (this._dtInput) {
+        if (this._dtInput()) {
             throw Error(
                 'A Nxt DateTimePicker can only be associated with a single input.'
             )
         }
 
-        this._dtInput = inputDirective
-        this.dtInputSub = this._dtInput.valueChange.subscribe((value) => {
-            if (Array.isArray(value)) {
-                this.selecteds = value
-            } else {
-                this.selected = value
-            }
-        })
+        this._dtInput.set(inputDirective)
     }
 
     open(): void {
-        if (this._isOpen || this.disabled) {
+        if (this.isOpen() || this.disabled()) {
             return
         }
 
-        if (!this._dtInput) {
+        if (!this._dtInput()) {
             throw Error(
                 'Attempted to open an DateTimePicker with no associated input.'
             )
@@ -317,32 +290,32 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         }
 
         // reset the picker selected value
-        if (this.isInSingleMode) {
-            this.selected = this._dtInput.value
-        } else if (this.isInRangeMode) {
-            this.selecteds = this._dtInput.values
+        if (this.isInSingleMode()) {
+            this.selected.set(this._dtInput()!.value)
+        } else if (this.isInRangeMode()) {
+            this.selecteds.set(this._dtInput()!.values)
         }
 
         // when the picker is open , we make sure the picker's current selected time value
         // is the same as the _startAt time value.
-        if (this.selected && this.pickerType !== 'calendar' && this._startAt) {
-            this.selected = this.dateTimeAdapter.createDate(
-                this.dateTimeAdapter.getYear(this.selected),
-                this.dateTimeAdapter.getMonth(this.selected),
-                this.dateTimeAdapter.getDate(this.selected),
-                this.dateTimeAdapter.getHours(this._startAt),
-                this.dateTimeAdapter.getMinutes(this._startAt),
-                this.dateTimeAdapter.getSeconds(this._startAt)
-            )
+        if (this.selected() && this.pickerType() !== 'calendar' && this._startAt()) {
+            this.selected.set(this.dateTimeAdapter.createDate(
+                this.dateTimeAdapter.getYear(this.selected()),
+                this.dateTimeAdapter.getMonth(this.selected()),
+                this.dateTimeAdapter.getDate(this.selected()),
+                this.dateTimeAdapter.getHours(this._startAt()),
+                this.dateTimeAdapter.getMinutes(this._startAt()),
+                this.dateTimeAdapter.getSeconds(this._startAt())
+            ))
         }
 
-        if (this.pickerMode === 'dialog')
+        if (this.pickerMode() === 'dialog')
             this.openAsDialog()
         else
             this.openAsPopup()
 
         if (this.pickerContainer)
-            this.pickerContainer.picker = this
+            this.pickerContainer.picker.set(this)
 
         // Listen to picker container's hidePickerStream
         this.hidePickerStreamSub = this.pickerContainer?.hidePickerStream.subscribe(
@@ -364,9 +337,9 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
      */
     select(date: T[] | T): void {
         if (Array.isArray(date)) {
-            this.selecteds = [...date]
+            this.selecteds.set([...date])
         } else {
-            this.selected = date
+            this.selected.set(date)
         }
 
         /**
@@ -379,14 +352,14 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
          * 5) selectMode is 'rangeTo' and selecteds[1] has value.
          */
         if (
-            this.pickerMode !== 'dialog' &&
-            this.pickerType === 'calendar' &&
-            ((this.selectMode === 'single' && this.selected) ||
-                (this.selectMode === 'rangeFrom' && this.selecteds[0]) ||
-                (this.selectMode === 'rangeTo' && this.selecteds[1]) ||
-                (this.selectMode === 'range' &&
-                    this.selecteds[0] &&
-                    this.selecteds[1]))
+            this.pickerMode() !== 'dialog' &&
+            this.pickerType() === 'calendar' &&
+            ((this.selectMode() === 'single' && this.selected()) ||
+                (this.selectMode() === 'rangeFrom' && this.selecteds()[0]) ||
+                (this.selectMode() === 'rangeTo' && this.selecteds()[1]) ||
+                (this.selectMode() === 'range' &&
+                    this.selecteds()[0] &&
+                    this.selecteds()[1]))
         ) {
             this.confirmSelect()
         }
@@ -410,7 +383,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
      * Hide the picker
      */
     close(): void {
-        if (!this._isOpen) {
+        if (!this.isOpen()) {
             return
         }
 
@@ -440,9 +413,9 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         }
 
         const completeClose = () => {
-            if (this._isOpen) {
-                this._isOpen = false
-                this.isOpenChange.emit(this._isOpen)
+            if (this.isOpen()) {
+                this.isOpen.set(false)
+                this.isOpenChange.emit(this.isOpen())
                 this.afterPickerClosed.emit(undefined)
                 this.focusedElementBeforeOpen = undefined
             }
@@ -468,12 +441,12 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
      * Confirm the selected value
      */
     confirmSelect(_event?: any): void {
-        if (this.isInSingleMode) {
+        if (this.isInSingleMode()) {
             const selected =
-                this.selected || this.startAt || this.dateTimeAdapter.now()
+                this.selected() || this.startAt() || this.dateTimeAdapter.now()
             this.confirmSelectedChange.emit(selected)
-        } else if (this.isInRangeMode) {
-            this.confirmSelectedChange.emit(this.selecteds)
+        } else if (this.isInRangeMode()) {
+            this.confirmSelectedChange.emit(this.selecteds())
         }
 
         this.close()
@@ -505,8 +478,8 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         this.pickerContainer = this.dialogRef.componentInstance
 
         this.dialogRef.afterOpen().subscribe(() => {
-            this._isOpen = true
-            this.isOpenChange.emit(this._isOpen)
+            this.isOpen.set(true)
+            this.isOpenChange.emit(this.isOpen())
             this.afterPickerOpened.emit(undefined)
         })
         this.dialogRef.afterClosed().subscribe(() => this.close())
@@ -544,8 +517,8 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
             this.pickerOpenedStreamSub = this.pickerContainer?.pickerOpenedStream
                 .pipe(take(1))
                 .subscribe(() => {
-                    this._isOpen = true
-                    this.isOpenChange.emit(this._isOpen)
+                    this.isOpen.set(true)
+                    this.isOpenChange.emit(this.isOpen())
                     this.afterPickerOpened.emit(undefined)
                 })
         }
@@ -579,7 +552,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
                     filter(
                         event =>
                             !!(event.code.toLowerCase() === 'escape' ||
-                                (this._dtInput &&
+                                (this._dtInput() &&
                                     event.altKey &&
                                     event.code.toLowerCase() === 'arrowup'))
                     )
@@ -591,10 +564,10 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
      * Create the popup PositionStrategy.
      */
     private createPopupPositionStrategy(): PositionStrategy | undefined {
-        if (this._dtInput)
+        if (this._dtInput())
             return this.overlay
                 .position()
-                .flexibleConnectedTo(this._dtInput.elementRef)
+                .flexibleConnectedTo(this._dtInput()!.elementRef)
                 .withTransformOriginOn('.nxt-dt-container')
                 .withFlexibleDimensions(false)
                 .withPush(false)

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, HostBinding, Inject, Input, OnInit, Provider, viewChild, output } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, HostBinding, Inject, OnInit, Provider, viewChild, output, input, computed, linkedSignal, signal } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
@@ -27,7 +27,6 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
 
     private readonly container = viewChild(DateTimeContainerComponent)
 
-    private _pickerType: PickerType = 'both'
     /**
      * Set the type of the dateTime picker
      *
@@ -35,29 +34,16 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
      * -    `'calendar'` - show only calendar
      * -    `'timer'` - show only timer
      */
-    @Input()
-    get pickerType(): PickerType {
-        return this._pickerType
-    }
+    readonly pickerType = input<PickerType>('both')
 
-    set pickerType(val: PickerType) {
-        if (val !== this._pickerType) {
-            this._pickerType = val
-        }
-    }
-
-    private _disabled = false
     /** Whether the date time picker should be disabled */
-    @Input()
-    override get disabled(): boolean {
-        return !!this._disabled
-    }
+    // eslint-disable-next-line @angular-eslint/no-input-rename
+    readonly _disabled = input(false, { alias: 'disabled' })
+    readonly disabled = linkedSignal({
+        source: () => this._disabled(),
+        computation: v => v
+    })
 
-    override set disabled(value: boolean) {
-        this._disabled = !!value
-    }
-
-    private _selectMode: SelectMode = 'single'
     /**
      * The picker select mode
      *
@@ -66,124 +52,93 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
      * -    `'rangeFrom'` - an open range with a fixed start date
      * -    `'rangeTo'` - an open range with a fixed end date
      */
-    @Input()
-    get selectMode() {
-        return this._selectMode
-    }
+    readonly selectMode = input<SelectMode>('single')
 
-    set selectMode(mode: SelectMode) {
-        if (
-            mode !== 'single' &&
-            mode !== 'range' &&
-            mode !== 'rangeFrom' &&
-            mode !== 'rangeTo'
-        ) {
-            throw Error('DateTime Error: invalid selectMode value!')
-        }
-
-        this._selectMode = mode
-    }
-
-    private _startAt?: T
-    /**
-     * The date to show when picker opens
-     *
-     * Defaults to selected date (if available) or current date.
-     */
-    @Input()
-    get startAt() {
-        if (this._startAt) {
-            return this._startAt
-        }
-
-        if (this.selectMode === 'single') {
-            return this.value
-        } else if (
-            this.selectMode === 'range' ||
-            this.selectMode === 'rangeFrom'
-        ) {
-            return this.values?.[0]
-        } else if (this.selectMode === 'rangeTo') {
-            return this.values?.[1]
-        } else {
-            return
-        }
-    }
-
-    set startAt(date: T | undefined) {
-        this._startAt = this.getValidDate(
-            this.dateTimeAdapter.deserialize(date)
-        )
-    }
-
-    private _dateTimeFilter?: DateFilter<T>
-    /** A function to filter available date & time */
-    @Input()
-    get dateTimeFilter() {
-        return this._dateTimeFilter
-    }
-
-    set dateTimeFilter(filter: DateFilter<T> | undefined) {
-        this._dateTimeFilter = filter
-    }
-
-    private _min?: T
-    /** The minimum valid date */
-    @Input()
-    set min(value: T | undefined) {
-        this._min = this.getValidDate(this.dateTimeAdapter.deserialize(value))
-        this.changeDetector.markForCheck()
-    }
-
-    get min() {
-        return this._min
-    }
-
-    private _max?: T
-    /** The maximum valid date */
-    @Input()
-    set max(value: T | undefined) {
-        this._max = this.getValidDate(this.dateTimeAdapter.deserialize(value))
-        this.changeDetector.markForCheck()
-    }
-
-    get max() {
-        return this._max
-    }
-
-    private _value?: T
-    @Input()
-    get value() {
-        return this._value
-    }
-
-    set value(value: T | undefined) {
+    // eslint-disable-next-line @angular-eslint/no-input-rename
+    readonly _valueInput = input<T | undefined>(undefined, { alias: 'value' })
+    private readonly _value = linkedSignal({
+        source: () => this._valueInput(),
+        computation: v => v
+    })
+    readonly value = computed(() => {
+        let value = this._value()
         value = this.dateTimeAdapter.deserialize(value)
         value = this.getValidDate(value)
-        this._value = value
-        this.selected = value
-    }
+        return value
+    })
 
-    private _values?: Array<T | undefined>
-    @Input()
-    get values() {
-        return this._values
-    }
-
-    set values(values: Array<T | undefined> | undefined) {
+    // eslint-disable-next-line @angular-eslint/no-input-rename
+    readonly _valuesInput = input<Array<T | undefined> | undefined>(undefined, { alias: 'values' })
+    private readonly _values = linkedSignal({
+        source: () => this._valuesInput(),
+        computation: v => v
+    })
+    readonly values = computed(() => {
+        let values = this._values()
         if (values && values.length > 0) {
             values = values.map(v => {
                 v = this.dateTimeAdapter.deserialize(v)
                 v = this.getValidDate(v)
                 return (v && this.dateTimeAdapter.clone(v))
             })
-            this._values = [...values]
-            this.selecteds = [...values]
+            return [...values]
         } else {
-            this._values = []
-            this.selecteds = []
+            return []
         }
-    }
+    })
+
+    /**
+     * The date to show when picker opens
+     *
+     * Defaults to selected date (if available) or current date.
+     */
+    readonly _startAt = input<T | undefined, T | undefined>(undefined, {
+        // eslint-disable-next-line @angular-eslint/no-input-rename
+        alias: 'startAt',
+        transform: date => this.getValidDate(
+            this.dateTimeAdapter.deserialize(date)
+        )
+    })
+    readonly startAt = computed(() => {
+        const startAt = this._startAt()
+        if (startAt) {
+            return startAt
+        }
+
+        const selectMode = this.selectMode()
+
+        if (selectMode === 'single') {
+            return this.value()
+        } else if (
+            selectMode === 'range' ||
+            selectMode === 'rangeFrom'
+        ) {
+            return this.values()?.[0]
+        } else if (selectMode === 'rangeTo') {
+            return this.values()?.[1]
+        } else {
+            return
+        }
+    })
+
+    /** A function to filter available date & time */
+    readonly dateTimeFilter = input<DateFilter<T>>()
+
+    /** The minimum valid date */
+    readonly min = input<T | undefined, T | undefined>(undefined, {
+        transform: value => {
+            value = this.dateTimeAdapter.deserialize(value)
+            return this.getValidDate(value)
+        }
+    })
+
+    /** The maximum valid date */
+    readonly max = input<T | undefined, T | undefined>(undefined, {
+        transform: value => {
+            value = this.dateTimeAdapter.deserialize(value)
+            return this.getValidDate(value)
+        }
+    })
 
     /**
      * Emits selected year in multi-year view
@@ -199,45 +154,27 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
      */
     readonly monthSelected = output<T>()
 
-    private _selected?: T
-    get selected() {
-        return this._selected
-    }
+    readonly selected = linkedSignal({
+        source: () => this.value(),
+        computation: v => v
+    })
 
-    set selected(value: T | undefined) {
-        this._selected = value
-        this.changeDetector.markForCheck()
-    }
+    readonly selecteds = linkedSignal({
+        source: () => this.values(),
+        computation: v => v || []
+    })
 
-    private _selecteds = new Array<T | undefined>()
-    get selecteds() {
-        return this._selecteds
-    }
+    readonly isOpen = signal(true).asReadonly()
 
-    set selecteds(values: Array<T | undefined>) {
-        this._selecteds = values
-        this.changeDetector.markForCheck()
-    }
+    readonly pickerMode = signal<PickerMode>('inline').asReadonly()
 
-    get isOpen(): boolean {
-        return true
-    }
+    readonly isInSingleMode = computed(() => this.selectMode() === 'single')
 
-    get pickerMode(): PickerMode {
-        return 'inline'
-    }
-
-    get isInSingleMode(): boolean {
-        return this._selectMode === 'single'
-    }
-
-    get isInRangeMode(): boolean {
-        return (
-            this._selectMode === 'range' ||
-            this._selectMode === 'rangeFrom' ||
-            this._selectMode === 'rangeTo'
-        )
-    }
+    readonly isInRangeMode = computed(() => (
+        this.selectMode() === 'range' ||
+        this.selectMode() === 'rangeFrom' ||
+        this.selectMode() === 'rangeTo'
+    ))
 
     /** @internal */
     @HostBinding('class.nxt-dt-inline')
@@ -260,21 +197,21 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
     ngOnInit() {
         const container = this.container()
         if (container)
-            container.picker = this
+            container.picker.set(this)
     }
 
     writeValue(value: any): void {
         value = value ?? undefined
-        if (this.isInSingleMode) {
-            this.value = value
+        if (this.isInSingleMode()) {
+            this._value.set(value)
             const container = this.container()
             if (container)
                 container.pickerMoment = value
         } else {
-            this.values = value
+            this._values.set(value)
             const container = this.container()
             if (container)
-                container.pickerMoment = this._values?.[
+                container.pickerMoment = this.values()?.[
                     container.activeSelectedIndex
                 ]
         }
@@ -289,18 +226,18 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
     }
 
     setDisabledState(isDisabled: boolean): void {
-        this.disabled = isDisabled
+        this.disabled.set(isDisabled)
     }
 
     select(date: T[] | T): void {
-        if (this.disabled) {
+        if (this.disabled()) {
             return
         }
 
         if (Array.isArray(date)) {
-            this.values = [...date]
+            this._values.set([...date])
         } else {
-            this.value = date
+            this._value.set(date)
         }
         this.onModelChange?.(date)
         this.onModelTouched?.()

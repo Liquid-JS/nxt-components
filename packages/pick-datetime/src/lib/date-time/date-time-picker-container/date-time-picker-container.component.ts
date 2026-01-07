@@ -1,6 +1,6 @@
 import { AnimationEvent } from '@angular/animations'
 import { CdkTrapFocus } from '@angular/cdk/a11y'
-import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, viewChild } from '@angular/core'
+import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, computed, ElementRef, HostBinding, HostListener, OnInit, signal, viewChild } from '@angular/core'
 import { Subject } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeDirective } from '../../class/date-time.class'
@@ -32,7 +32,7 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
 
     readonly timer = viewChild(TimerComponent)
 
-    picker?: DateTimeDirective<T>
+    readonly picker = signal<DateTimeDirective<T> | undefined>(undefined)
     activeSelectedIndex = 0 // The current active SelectedIndex in range select mode (0: 'from', 1: 'to')
 
     /**
@@ -57,81 +57,93 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
      * The current picker moment. This determines which time period is shown and which date is
      * highlighted when using keyboard navigation.
      */
-    private _clamPickerMoment?: T
+    private readonly _clamPickerMoment = signal<T | undefined>(undefined)
 
     get pickerMoment() {
-        return this._clamPickerMoment
+        return this._clamPickerMoment()
     }
 
     set pickerMoment(value: T | undefined) {
         if (value) {
-            this._clamPickerMoment = this.dateTimeAdapter.clampDate(
+            this._clamPickerMoment.set(this.dateTimeAdapter.clampDate(
                 value,
-                this.picker?.min,
-                this.picker?.max
-            )
+                this.min(),
+                this.max()
+            ))
         }
-        this.cdRef.markForCheck()
     }
 
-    get pickerType() {
-        return this.picker?.pickerType
-    }
+    readonly pickerType = computed(() => this.picker()?.pickerType())
+    readonly pickerMode = computed(() => this.picker()?.pickerMode())
+    readonly min = computed(() => this.picker()?.min())
+    readonly max = computed(() => this.picker()?.max())
+    readonly selected = computed(() => this.picker()?.selected())
+    readonly selecteds = computed(() => this.picker()?.selecteds())
+    readonly selectMode = computed(() => this.picker()?.selectMode())
+    readonly isInRangeMode = computed(() => this.picker()?.isInRangeMode())
+    readonly firstDayOfWeek = computed(() => this.picker()?.firstDayOfWeek())
+    readonly dateTimeFilter = computed(() => this.picker()?.dateTimeFilter())
+    readonly startView = computed(() => this.picker()?.startView())
+    readonly hideOtherMonths = computed(() => this.picker()?.hideOtherMonths())
+    readonly showSecondsTimer = computed(() => this.picker()?.showSecondsTimer())
+    readonly hour12Timer = computed(() => this.picker()?.hour12Timer())
+    readonly stepHour = computed(() => this.picker()?.stepHour())
+    readonly stepMinute = computed(() => this.picker()?.stepMinute())
+    readonly stepSecond = computed(() => this.picker()?.stepSecond())
 
-    get cancelLabel(): string {
-        return this.pickerIntl.cancelBtnLabel
-    }
+    private readonly formatString = computed(() => this.picker()?.formatString())
+    private readonly disabled = computed(() => this.picker()?.disabled())
+    private readonly startAt = computed(() => this.picker()?.startAt())
+    private readonly dateTimeChecker = computed(() => this.picker()?.dateTimeChecker())
 
-    get setLabel(): string {
-        return this.pickerIntl.setBtnLabel
-    }
+    readonly cancelLabel = this.pickerIntl.cancelBtnLabel.asReadonly()
+
+    readonly setLabel = this.pickerIntl.setBtnLabel.asReadonly()
 
     /**
      * The range 'from' label
      */
-    get fromLabel(): string {
-        return this.pickerIntl.rangeFromLabel
-    }
+    readonly fromLabel = this.pickerIntl.rangeFromLabel.asReadonly()
 
     /**
      * The range 'to' label
      */
-    get toLabel(): string {
-        return this.pickerIntl.rangeToLabel
-    }
+    readonly toLabel = this.pickerIntl.rangeToLabel.asReadonly()
 
     /**
      * The range 'from' formatted value
      */
-    get fromFormattedValue(): string {
-        const value = this.picker?.selecteds[0]
+    readonly fromFormattedValue = computed(() => {
+        const value = this.selecteds()?.[0]
         return value
-            ? this.dateTimeAdapter.format(value, this.picker?.formatString)
+            ? this.dateTimeAdapter.format(value, this.formatString())
             : ''
-    }
+    })
 
     /**
      * The range 'to' formatted value
      */
-    get toFormattedValue(): string {
-        const value = this.picker?.selecteds[1]
+    readonly toFormattedValue = computed(() => {
+        const value = this.selecteds()?.[1]
         return value
-            ? this.dateTimeAdapter.format(value, this.picker?.formatString)
+            ? this.dateTimeAdapter.format(value, this.formatString())
             : ''
-    }
+    })
 
     /**
      * Cases in which the control buttons show in the picker
      * 1) picker mode is 'dialog'
      * 2) picker type is NOT 'calendar' and the picker mode is NOT 'inline'
      */
-    get showControlButtons(): boolean {
+    readonly showControlButtons = computed(() => {
+        const pickerMode = this.pickerMode()
+        const pickerType = this.pickerType()
         return (
-            this.picker?.pickerMode === 'dialog' ||
-            (this.picker?.pickerType !== 'calendar' &&
-                this.picker?.pickerMode !== 'inline')
+            pickerMode === 'dialog' ||
+            (pickerType !== 'calendar' &&
+                pickerMode !== 'inline')
         )
-    }
+    })
 
     get containerElm(): HTMLElement {
         return this.elmRef.nativeElement
@@ -146,37 +158,37 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
     /** @internal */
     @HostBinding('class.nxt-dt-popup-container')
     get popupContainerClass(): boolean {
-        return this.picker?.pickerMode === 'popup'
+        return this.pickerMode() === 'popup'
     }
 
     /** @internal */
     @HostBinding('class.nxt-dt-dialog-container')
     get dialogContainerClass(): boolean {
-        return this.picker?.pickerMode === 'dialog'
+        return this.pickerMode() === 'dialog'
     }
 
     /** @internal */
     @HostBinding('class.nxt-dt-inline-container')
     get inlineContainerClass(): boolean {
-        return this.picker?.pickerMode === 'inline'
+        return this.pickerMode() === 'inline'
     }
 
     /** @internal */
     @HostBinding('class.nxt-dt-container-disabled')
     get containerDisabledClass(): boolean {
-        return !!this.picker?.disabled
+        return !!this.disabled()
     }
 
     /** @internal */
     @HostBinding('attr.id')
     get containerId(): string | undefined {
-        return this.picker?.id
+        return this.picker()?.id
     }
 
     /** @internal */
     @HostBinding('@transformPicker')
     get containerAnimation(): any {
-        return this.picker?.pickerMode === 'inline' ? '' : 'enter'
+        return this.pickerMode() === 'inline' ? '' : 'enter'
     }
 
     constructor(
@@ -207,25 +219,27 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
     dateSelected(date?: T): void {
         let result
 
-        if (this.picker?.isInSingleMode) {
+        const picker = this.picker()
+
+        if (picker?.isInSingleMode()) {
             result = this.dateSelectedInSingleMode(date)
             if (result) {
                 this.pickerMoment = result
-                this.picker.select(result)
+                picker.select(result)
             } else {
                 // we close the picker when result is undefined and pickerType is calendar.
-                if (this.pickerType === 'calendar') {
+                if (this.pickerType() === 'calendar') {
                     this.hidePicker$.next()
                 }
             }
             return
         }
 
-        if (this.picker?.isInRangeMode) {
+        if (picker?.isInRangeMode()) {
             result = this.dateSelectedInRangeMode(date)
             if (result) {
                 this.pickerMoment = result[this.activeSelectedIndex]
-                this.picker.select(result)
+                picker.select(result)
             }
         }
     }
@@ -233,17 +247,19 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
     timeSelected(time?: T): void {
         this.pickerMoment = this.dateTimeAdapter.clone(time)
 
-        if (!this.picker?.dateTimeChecker(this.pickerMoment)) {
+        const picker = this.picker()
+
+        if (!picker?.dateTimeChecker()?.(this.pickerMoment)) {
             return
         }
 
-        if (this.picker.isInSingleMode) {
-            this.picker.select(this.pickerMoment)
+        if (picker.isInSingleMode()) {
+            picker.select(this.pickerMoment)
             return
         }
 
-        if (this.picker.isInRangeMode) {
-            const selecteds = [...this.picker?.selecteds || []]
+        if (this.isInRangeMode()) {
+            const selecteds = [...this.selecteds() || []]
 
             // check if the 'from' is after 'to' or 'to'is before 'from'
             // In this case, we set both the 'from' and 'to' the same value
@@ -267,7 +283,7 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
                 selecteds[this.activeSelectedIndex] = this.pickerMoment
             }
 
-            this.picker.select(selecteds)
+            picker.select(selecteds)
         }
     }
 
@@ -284,7 +300,7 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
      * Handle click on set button
      */
     onSetClicked(event: Event): void {
-        if (!this.picker?.dateTimeChecker?.(this.pickerMoment)) {
+        if (!this.dateTimeChecker()?.(this.pickerMoment)) {
             this.hidePicker$.next()
             event.preventDefault()
             return
@@ -339,13 +355,13 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
      */
     private setActiveSelectedIndex(index: number): void {
         if (
-            this.picker?.selectMode === 'range' &&
+            this.selectMode() === 'range' &&
             this.activeSelectedIndex !== index
         ) {
             this.activeSelectedIndex = index
 
-            const selected = this.picker?.selecteds[this.activeSelectedIndex]
-            if (this.picker.selecteds && selected) {
+            const selected = this.selecteds()?.[this.activeSelectedIndex]
+            if (this.selecteds() && selected) {
                 this.pickerMoment = this.dateTimeAdapter.clone(selected)
             }
         }
@@ -353,8 +369,8 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
     }
 
     private initPicker(): void {
-        this.pickerMoment = this.picker?.startAt || this.dateTimeAdapter.now()
-        this.activeSelectedIndex = this.picker?.selectMode === 'rangeTo' ? 1 : 0
+        this.pickerMoment = this.startAt() || this.dateTimeAdapter.now()
+        this.activeSelectedIndex = this.selectMode() === 'rangeTo' ? 1 : 0
     }
 
     /**
@@ -362,7 +378,7 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
      * it returns undefined when date is not selected.
      */
     private dateSelectedInSingleMode(date?: T): T | undefined {
-        if (this.dateTimeAdapter.isSameDay(date, this.picker?.selected)) {
+        if (this.dateTimeAdapter.isSameDay(date, this.selected())) {
             return undefined
         }
 
@@ -373,8 +389,8 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
      * Select dates in range Mode
      */
     private dateSelectedInRangeMode(date?: T): Array<T | undefined> | undefined {
-        let from = this.picker?.selecteds[0]
-        let to = this.picker?.selecteds[1]
+        let from = this.selecteds()?.[0]
+        let to = this.selecteds()?.[1]
 
         const result = this.updateAndCheckCalendarDate(date)
 
@@ -385,10 +401,9 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
         // if the given calendar day is after or equal to 'from',
         // set ths given date as 'to'
         // otherwise, set it as 'from' and set 'to' to undefined
-        if (this.picker?.selectMode === 'range') {
+        if (this.selectMode() === 'range') {
             if (
-                this.picker.selecteds &&
-                this.picker.selecteds.length &&
+                this.selecteds()?.length &&
                 !to &&
                 from &&
                 (this.dateTimeAdapter.differenceInCalendarDays(result, from) ?? 0) >= 0
@@ -400,14 +415,14 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
                 to = undefined
                 this.activeSelectedIndex = 0
             }
-        } else if (this.picker?.selectMode === 'rangeFrom') {
+        } else if (this.selectMode() === 'rangeFrom') {
             from = result
 
             // if the from value is after the to value, set the to value as undefined
             if (to && this.dateTimeAdapter.compare(from, to) > 0) {
                 to = undefined
             }
-        } else if (this.picker?.selectMode === 'rangeTo') {
+        } else if (this.selectMode() === 'rangeTo') {
             to = result
 
             // if the from value is after the to value, set the from value as undefined
@@ -430,7 +445,7 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
         let result
 
         // if the picker is 'both', update the calendar date's time value
-        if (this.picker?.pickerType === 'both') {
+        if (this.pickerType() === 'both') {
             result = this.dateTimeAdapter.createDate(
                 this.dateTimeAdapter.getYear(date),
                 this.dateTimeAdapter.getMonth(date),
@@ -441,22 +456,22 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
             )
             result = this.dateTimeAdapter.clampDate(
                 result,
-                this.picker.min,
-                this.picker.max
+                this.min(),
+                this.max()
             )
         } else {
             result = this.dateTimeAdapter.clone(date)
         }
 
         // check the updated dateTime
-        return this.picker?.dateTimeChecker(result) ? result : undefined
+        return this.dateTimeChecker()?.(result) ? result : undefined
     }
 
     /**
      * Focus to the picker
      */
     private focusPicker(): void {
-        if (this.picker?.pickerMode === 'inline') {
+        if (this.pickerMode() === 'inline') {
             return
         }
 

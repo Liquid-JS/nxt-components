@@ -1,9 +1,9 @@
-<nxt-date-time-timer-box [upBtnAriaLabel]="upHourButtonLabel"
-    [downBtnAriaLabel]="downHourButtonLabel"
+<nxt-date-time-timer-box [upBtnAriaLabel]="upHourButtonLabel()"
+    [downBtnAriaLabel]="downHourButtonLabel()"
     [upBtnDisabled]="!upHourEnabled()"
     [downBtnDisabled]="!downHourEnabled()"
-    [boxValue]="hourBoxValue"
-    [value]="hourValue"
+    [boxValue]="hourBoxValue()"
+    [value]="hourValue()"
     [min]="0"
     [max]="23"
     [step]="stepHour()"
@@ -11,11 +11,11 @@
     (inputChange)="setHourValueViaInput($event)"
     (valueChange)="setHourValue($event)"></nxt-date-time-timer-box>
 <nxt-date-time-timer-box [showDivider]="true"
-    [upBtnAriaLabel]="upMinuteButtonLabel"
-    [downBtnAriaLabel]="downMinuteButtonLabel"
+    [upBtnAriaLabel]="upMinuteButtonLabel()"
+    [downBtnAriaLabel]="downMinuteButtonLabel()"
     [upBtnDisabled]="!upMinuteEnabled()"
     [downBtnDisabled]="!downMinuteEnabled()"
-    [value]="minuteValue"
+    [value]="minuteValue()"
     [min]="0"
     [max]="59"
     [step]="stepMinute()"
@@ -24,11 +24,11 @@
     (valueChange)="setMinuteValue($event)"></nxt-date-time-timer-box>
 @if (showSecondsTimer()) {
 <nxt-date-time-timer-box [showDivider]="true"
-    [upBtnAriaLabel]="upSecondButtonLabel"
-    [downBtnAriaLabel]="downSecondButtonLabel"
+    [upBtnAriaLabel]="upSecondButtonLabel()"
+    [downBtnAriaLabel]="downSecondButtonLabel()"
     [upBtnDisabled]="!upSecondEnabled()"
     [downBtnDisabled]="!downSecondEnabled()"
-    [value]="secondValue"
+    [value]="secondValue()"
     [min]="0"
     [max]="59"
     [step]="stepSecond()"
@@ -45,7 +45,7 @@
         (click)="setMeridiem($event)">
         <span class="nxt-dt-control-button-content"
             tabindex="-1">
-            {{hour12ButtonLabel}}
+            {{hour12ButtonLabel()}}
         </span>
     </button>
 </div>

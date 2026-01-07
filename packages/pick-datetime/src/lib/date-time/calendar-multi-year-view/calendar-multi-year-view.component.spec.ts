@@ -86,14 +86,14 @@ describe('MultiYearViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowLeft')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2017, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowLeft')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2016, 0, 5)
             )
         })
@@ -105,14 +105,14 @@ describe('MultiYearViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowRight')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2019, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowRight')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2020, 0, 5)
             )
         })
@@ -124,14 +124,14 @@ describe('MultiYearViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowUp')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2018 - YEARS_PER_ROW, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowUp')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2018 - YEARS_PER_ROW * 2, 0, 5)
             )
         })
@@ -143,14 +143,14 @@ describe('MultiYearViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowDown')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2018 + YEARS_PER_ROW, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowDown')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2018 + YEARS_PER_ROW * 2, 0, 5)
             )
         })
@@ -162,14 +162,14 @@ describe('MultiYearViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'Home')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2016, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'Home')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2016, 0, 5)
             )
         })
@@ -181,14 +181,14 @@ describe('MultiYearViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'End')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2036, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'End')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2036, 0, 5)
             )
         })
@@ -200,14 +200,14 @@ describe('MultiYearViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'PageUp')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2018 - YEARS_PER_ROW * YEAR_ROWS, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'PageUp')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2018 - YEARS_PER_ROW * YEAR_ROWS * 2, 0, 5)
             )
         })
@@ -219,14 +219,14 @@ describe('MultiYearViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'PageDown')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2018 + YEARS_PER_ROW * YEAR_ROWS, 0, 5)
             )
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'PageDown')
             fixture.detectChanges()
 
-            expect(multiYearViewInstance.pickerMoment).toEqual(
+            expect(multiYearViewInstance.pickerMoment()).toEqual(
                 new Date(2018 + YEARS_PER_ROW * YEAR_ROWS * 2, 0, 5)
             )
         })

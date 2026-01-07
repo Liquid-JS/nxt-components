@@ -1,6 +1,6 @@
 <button class="nxt-dt-control-button nxt-dt-control-arrow-button"
     [disabled]="!previousEnabled()"
-    [attr.aria-label]="prevButtonLabel"
+    [attr.aria-label]="prevButtonLabel()"
     type="button"
     tabindex="0"
     (click)="prevYearList($event)">
@@ -26,25 +26,25 @@
 <table class="nxt-dt-calendar-table nxt-dt-calendar-multi-year-table">
     <thead class="nxt-dt-calendar-header">
         <tr>
-            <th colspan="3">{{tableHeader}}</th>
+            <th colspan="3">{{tableHeader()}}</th>
         </tr>
     </thead>
     <!-- eslint-disable-next-line @angular-eslint/template/interactive-supports-focus -->
     <tbody nxtDateTimeCalendarBody
         role="grid"
-        [rows]="years"
+        [rows]="years()"
         [numCols]="3"
         [cellRatio]="3 / 7"
-        [activeCell]="activeCell ?? 0"
-        [todayValue]="todayYear"
-        [selectedValues]="selectedYears"
-        [selectMode]="selectMode"
+        [activeCell]="activeCell() ?? 0"
+        [todayValue]="todayYear()"
+        [selectedValues]="selectedYears()"
+        [selectMode]="selectMode()"
         (keydown)="handleCalendarKeydown($event)"
         (select)="selectCalendarCell($event)"></tbody>
 </table>
 <button class="nxt-dt-control-button nxt-dt-control-arrow-button"
     [disabled]="!nextEnabled()"
-    [attr.aria-label]="nextButtonLabel"
+    [attr.aria-label]="nextButtonLabel()"
     type="button"
     tabindex="0"
     (click)="nextYearList($event)">

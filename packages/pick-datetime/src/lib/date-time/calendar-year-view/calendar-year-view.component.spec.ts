@@ -20,7 +20,7 @@ describe('YearViewComponent', () => {
         let testComponent: StandardYearViewComponent
         let yearViewDebugElement: DebugElement
         let yearViewElement: HTMLElement
-        let yearViewInstance: YearViewComponent<Date>
+        //let yearViewInstance: YearViewComponent<Date>
 
         beforeEach(() => {
             fixture = TestBed.createComponent(StandardYearViewComponent)
@@ -31,7 +31,7 @@ describe('YearViewComponent', () => {
             )
             yearViewElement = yearViewDebugElement.nativeElement
             testComponent = fixture.componentInstance
-            yearViewInstance = yearViewDebugElement.componentInstance
+            //yearViewInstance = yearViewDebugElement.componentInstance
         })
 
         it('should have 12 months', () => {

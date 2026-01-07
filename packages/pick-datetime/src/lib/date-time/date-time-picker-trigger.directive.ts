@@ -64,8 +64,8 @@ export class DateTimeTriggerDirective<T> implements OnInit, OnChanges, AfterCont
         this.stateChanges = undefined
 
         const dtPicker = this.dtPicker()
-        const inputDisabled = dtPicker && dtPicker.dtInput ?
-            outputToObservable(dtPicker.dtInput.disabledChange) : observableOf()
+        const inputDisabled = dtPicker && dtPicker.dtInput() ?
+            outputToObservable(dtPicker.dtInput()!.disabledChange) : observableOf()
 
         const dtPickerValue = this.dtPicker()
         const pickerDisabled = dtPickerValue ?

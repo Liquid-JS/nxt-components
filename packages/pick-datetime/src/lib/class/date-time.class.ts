@@ -1,4 +1,4 @@
-import { Directive, OutputEmitterRef, Inject, input } from '@angular/core'
+import { Directive, OutputEmitterRef, Inject, input, Signal, computed, signal } from '@angular/core'
 import { DateTimeAdapter } from './date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from './date-time-format.class'
 
@@ -63,29 +63,31 @@ export abstract class DateTimeDirective<T> {
 
     readonly id = `nxt-dt-picker-${nextUniqueId++}`
 
-    abstract get selected(): T | undefined
+    abstract selected: Signal<T | undefined>
 
-    abstract get selecteds(): Array<T | undefined>
+    abstract selecteds: Signal<Array<T | undefined>>
 
-    abstract get dateTimeFilter(): DateFilter<T> | undefined
+    abstract dateTimeFilter: Signal<DateFilter<T> | undefined>
 
-    abstract get max(): T | undefined
+    abstract max: Signal<T | undefined>
 
-    abstract get min(): T | undefined
+    abstract min: Signal<T | undefined>
 
-    abstract get selectMode(): SelectMode | undefined
+    abstract selectMode: Signal<SelectMode | undefined>
 
-    abstract get startAt(): T | undefined
+    abstract startAt: Signal<T | undefined>
 
-    abstract get isOpen(): boolean
+    abstract isOpen: Signal<boolean>
 
-    abstract get pickerMode(): PickerMode
+    abstract pickerMode: Signal<PickerMode>
 
-    abstract get pickerType(): PickerType
+    abstract pickerType: Signal<PickerType>
 
-    abstract get isInSingleMode(): boolean
+    abstract isInSingleMode: Signal<boolean>
 
-    abstract get isInRangeMode(): boolean
+    abstract isInRangeMode: Signal<boolean>
+
+    abstract disabled: Signal<boolean>
 
     abstract select(date: T | Array<T | undefined>): void
 
@@ -97,27 +99,21 @@ export abstract class DateTimeDirective<T> {
 
     abstract selectMonth(normalizedMonth: T): void
 
-    get formatString(): string {
-        return this.pickerType === 'both'
-            ? this.dateTimeFormats.fullPickerInput
-            : this.pickerType === 'calendar'
-                ? this.dateTimeFormats.datePickerInput
-                : this.dateTimeFormats.timePickerInput
-    }
+    readonly formatString = computed(() => this.pickerType() === 'both'
+        ? this.dateTimeFormats.fullPickerInput
+        : this.pickerType() === 'calendar'
+            ? this.dateTimeFormats.datePickerInput
+            : this.dateTimeFormats.timePickerInput)
 
     /**
      * Date Time Checker to check if the give dateTime is selectable
      */
-    dateTimeChecker = (dateTime: T | undefined) => (
+    readonly dateTimeChecker = signal((dateTime: T | undefined) => (
         !!dateTime &&
-        (!this.dateTimeFilter || this.dateTimeFilter(dateTime)) &&
-        (!this.min || this.dateTimeAdapter.compare(dateTime, this.min) >= 0) &&
-        (!this.max || this.dateTimeAdapter.compare(dateTime, this.max) <= 0)
-    )
-
-    get disabled(): boolean {
-        return false
-    }
+        (!this.dateTimeFilter() || this.dateTimeFilter()!(dateTime)) &&
+        (!this.min() || this.dateTimeAdapter.compare(dateTime, this.min()) >= 0) &&
+        (!this.max() || this.dateTimeAdapter.compare(dateTime, this.max()) <= 0)
+    ))
 
     constructor(
         protected readonly dateTimeAdapter: DateTimeAdapter<T>,

@@ -1,5 +1,4 @@
-import { AfterContentInit, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Inject, NgZone, OnDestroy, OnInit, computed, input, linkedSignal, output } from '@angular/core'
-import { Subscription } from 'rxjs'
+import { AfterContentInit, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Inject, NgZone, OnDestroy, OnInit, afterRenderEffect, computed, input, linkedSignal, output } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { CdkMonitorFocus } from '@angular/cdk/a11y'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
@@ -130,69 +129,56 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
      */
     readonly monthSelected = output<T>()
 
-    get periodButtonText(): string {
-        return this.isMonthView
-            ? this.dateTimeAdapter.format(
-                this.pickerMoment(),
-                this.dateTimeFormats.monthYearLabel
-            )
-            : this.dateTimeAdapter.getYearName(this.pickerMoment())
-    }
+    readonly periodButtonText = computed(() => this.isMonthView()
+        ? this.dateTimeAdapter.format(
+            this.pickerMoment(),
+            this.dateTimeFormats.monthYearLabel
+        )
+        : this.dateTimeAdapter.getYearName(this.pickerMoment()))
 
-    get periodButtonLabel(): string {
-        return this.isMonthView
-            ? this.pickerIntl.switchToMultiYearViewLabel
-            : this.pickerIntl.switchToMonthViewLabel
-    }
+    readonly periodButtonLabel = computed(() => this.isMonthView()
+        ? this.pickerIntl.switchToMultiYearViewLabel()
+        : this.pickerIntl.switchToMonthViewLabel())
 
-    get prevButtonLabel() {
-        if (this._currentView === 'month') {
-            return this.pickerIntl.prevMonthLabel
-        } else if (this._currentView === 'year') {
-            return this.pickerIntl.prevYearLabel
+    readonly prevButtonLabel = computed(() => {
+        const currentView = this.currentView()
+        if (currentView === 'month') {
+            return this.pickerIntl.prevMonthLabel()
+        } else if (currentView === 'year') {
+            return this.pickerIntl.prevYearLabel()
         }
         return
-    }
+    })
 
-    get nextButtonLabel() {
-        if (this._currentView === 'month') {
-            return this.pickerIntl.nextMonthLabel
-        } else if (this._currentView === 'year') {
-            return this.pickerIntl.nextYearLabel
+    readonly nextButtonLabel = computed(() => {
+        const currentView = this.currentView()
+        if (currentView === 'month') {
+            return this.pickerIntl.nextMonthLabel()
+        } else if (currentView === 'year') {
+            return this.pickerIntl.nextYearLabel()
         }
         return
-    }
+    })
 
-    private _currentView?: 'month' | 'year' | 'multi-years'
-    get currentView() {
-        return this._currentView
-    }
+    readonly currentView = linkedSignal({
+        source: () => this.startView(),
+        computation: v => v
+    })
 
-    set currentView(view: 'month' | 'year' | 'multi-years' | undefined) {
-        this._currentView = view
-        this.moveFocusOnNextTick = true
-    }
+    readonly isInSingleMode = computed(() => this.selectMode() === 'single')
 
-    get isInSingleMode(): boolean {
-        return this.selectMode() === 'single'
-    }
-
-    get isInRangeMode(): boolean {
+    readonly isInRangeMode = computed(() => {
         const selectMode = this.selectMode()
         return (
             selectMode === 'range' ||
             selectMode === 'rangeFrom' ||
             selectMode === 'rangeTo'
         )
-    }
+    })
 
-    get showControlArrows(): boolean {
-        return this._currentView !== 'multi-years'
-    }
+    readonly showControlArrows = computed(() => this.currentView() !== 'multi-years')
 
-    get isMonthView() {
-        return this._currentView === 'month'
-    }
+    readonly isMonthView = computed(() => this.currentView() === 'month')
 
     /**
      * Date filter for the month and year view
@@ -219,15 +205,6 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
         return true
     }
 
-    private intlChangesSub?: Subscription
-
-    /**
-     * Used for scheduling that focus should be moved to the active cell on the next tick.
-     * We need to schedule it, rather than do it immediately, because we have to wait
-     * for Angular to re-evaluate the view children.
-     */
-    private moveFocusOnNextTick = false
-
     constructor(
         private readonly elmRef: ElementRef<HTMLElement>,
         private readonly pickerIntl: DateTimeIntl,
@@ -237,42 +214,40 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
         @Inject(NXT_DATE_TIME_FORMATS)
         private readonly dateTimeFormats: DateTimeFormats
     ) {
-        this.intlChangesSub = this.pickerIntl.changes.subscribe(() => {
-            this.cdRef.markForCheck()
+        afterRenderEffect(() => {
+            this.currentView()
+            this.ngZone.runOutsideAngular(() => {
+                this.elmRef.nativeElement
+                    ?.querySelector<HTMLElement>('.nxt-dt-calendar-cell-active')
+                    ?.focus()
+            })
         })
     }
 
     ngOnInit() { }
 
     ngAfterContentInit(): void {
-        this._currentView = this.startView()
     }
 
     ngAfterViewChecked() {
-        if (this.moveFocusOnNextTick) {
-            this.moveFocusOnNextTick = false
-            this.focusActiveCell()
-        }
     }
 
     ngOnDestroy(): void {
-        this.intlChangesSub?.unsubscribe()
-        this.intlChangesSub = undefined
     }
 
     /**
      * Toggle between month view and year view
      */
     toggleViews(): void {
-        this.currentView =
-            this._currentView == 'month' ? 'multi-years' : 'month'
+        this.currentView.set(
+            this.currentView() == 'month' ? 'multi-years' : 'month')
     }
 
     /**
      * Handles user clicks on the previous button.
      */
     previousClicked(): void {
-        const newVal = this.isMonthView
+        const newVal = this.isMonthView()
             ? this.dateTimeAdapter.addCalendarMonths(this.pickerMoment(), -1)
             : this.dateTimeAdapter.addCalendarYears(this.pickerMoment(), -1)
         this._pickerMoment.set(newVal)
@@ -284,7 +259,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
      * Handles user clicks on the next button.
      */
     nextClicked(): void {
-        const newVal = this.isMonthView
+        const newVal = this.isMonthView()
             ? this.dateTimeAdapter.addCalendarMonths(this.pickerMoment(), 1)
             : this.dateTimeAdapter.addCalendarYears(this.pickerMoment(), 1)
         this._pickerMoment.set(newVal)
@@ -313,7 +288,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
         view: 'month' | 'year' | 'multi-years'
     ): void {
         this.handlePickerMomentChange(date)
-        this.currentView = view
+        this.currentView.set(view)
         return
     }
 
@@ -380,7 +355,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
      * Whether the two dates represent the same view in the current view mode (month or year).
      */
     private isSameView(date1?: T, date2?: T): boolean {
-        if (this._currentView === 'month') {
+        if (this.currentView() === 'month') {
             return !!(
                 date1 &&
                 date2 &&
@@ -389,7 +364,7 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
                 this.dateTimeAdapter.getMonth(date1) ===
                 this.dateTimeAdapter.getMonth(date2)
             )
-        } else if (this._currentView === 'year') {
+        } else if (this.currentView() === 'year') {
             return !!(
                 date1 &&
                 date2 &&

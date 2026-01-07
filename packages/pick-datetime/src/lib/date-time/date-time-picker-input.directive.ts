@@ -1,4 +1,4 @@
-import { AfterContentInit, Directive, ElementRef, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit, Provider, Renderer2, input, output, OutputRefSubscription } from '@angular/core'
+import { AfterContentInit, Directive, ElementRef, forwardRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit, Provider, Renderer2, input, output, OutputRefSubscription, signal } from '@angular/core'
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs'
 import { DateTimeAdapter } from '../class/date-time-adapter.class'
@@ -210,7 +210,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     }
 
     /** The date-time-picker that this input is associated with */
-    dtPicker?: DateTimeComponent<T>
+    readonly dtPicker = signal<DateTimeComponent<T> | undefined>(undefined)
 
     private dtPickerSub?: OutputRefSubscription
     private localeSub?: Subscription
@@ -359,7 +359,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     /** @internal */
     @HostBinding('attr.aria-owns')
     get inputAriaOwns() {
-        return (this.dtPicker?.isOpen && this.dtPicker.id) || undefined
+        return (this.dtPicker()?.isOpen() && this.dtPicker()!.id) || undefined
     }
 
     /** @internal */
@@ -401,7 +401,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     }
 
     ngAfterContentInit(): void {
-        this.dtPickerSub = this.dtPicker?.confirmSelectedChange.subscribe(
+        this.dtPickerSub = this.dtPicker()?.confirmSelectedChange.subscribe(
             (selecteds) => {
                 if (Array.isArray(selecteds)) {
                     this.values = selecteds
@@ -467,7 +467,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     @HostListener('keydown', ['$event'])
     handleKeydownOnHost(event: KeyboardEvent): void {
         if (event.altKey && event.code.toLowerCase() === 'arrowdown') {
-            this.dtPicker?.open()
+            this.dtPicker()?.open()
             event.preventDefault()
         }
     }
@@ -517,7 +517,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
                 this._value
                     ? this.dateTimeAdapter.format(
                         this._value,
-                        this.dtPicker?.formatString
+                        this.dtPicker()?.formatString()
                     )
                     : ''
             )
@@ -529,13 +529,13 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
                 const fromFormatted = from
                     ? this.dateTimeAdapter.format(
                         from,
-                        this.dtPicker?.formatString
+                        this.dtPicker()?.formatString()
                     )
                     : ''
                 const toFormatted = to
                     ? this.dateTimeAdapter.format(
                         to,
-                        this.dtPicker?.formatString
+                        this.dtPicker()?.formatString()
                     )
                     : ''
 
@@ -587,8 +587,8 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
      */
     private registerDateTimePicker(picker: DateTimeComponent<T>) {
         if (picker) {
-            this.dtPicker = picker
-            this.dtPicker.registerInput(this)
+            this.dtPicker.set(picker)
+            picker.registerInput(this)
         }
     }
 
@@ -628,7 +628,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
      */
     private changeInputInSingleMode(inputValue: string): void {
         let value: string | undefined = inputValue
-        if (this.dtPicker?.pickerType === 'timer') {
+        if (this.dtPicker()?.pickerType() === 'timer') {
             value = this.convertTimeStringToDateTimeString(value, this.value)
         }
 
@@ -662,7 +662,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
                 ? this._values[0]
                 : this._values[1]
 
-        if (this.dtPicker?.pickerType === 'timer') {
+        if (this.dtPicker()?.pickerType() === 'timer') {
             inputValue = this.convertTimeStringToDateTimeString(
                 inputValue,
                 originalValue
@@ -709,7 +709,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         let fromString: string | undefined = selecteds[0]
         let toString: string | undefined = selecteds[1]
 
-        if (this.dtPicker?.pickerType === 'timer') {
+        if (this.dtPicker()?.pickerType() === 'timer') {
             fromString = this.convertTimeStringToDateTimeString(
                 fromString,
                 this.values[0]

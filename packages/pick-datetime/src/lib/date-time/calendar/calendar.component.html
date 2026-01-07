@@ -3,9 +3,9 @@
     <button class="nxt-dt-control nxt-dt-control-button nxt-dt-control-arrow-button"
         type="button"
         tabindex="0"
-        [style.visibility]="showControlArrows? 'visible': 'hidden'"
+        [style.visibility]="showControlArrows()? 'visible': 'hidden'"
         [disabled]="!prevButtonEnabled()"
-        [attr.aria-label]="prevButtonLabel"
+        [attr.aria-label]="prevButtonLabel()"
         (click)="previousClicked()">
         <span class="nxt-dt-control-content nxt-dt-control-button-content"
             tabindex="-1">
@@ -30,14 +30,14 @@
         <button class="nxt-dt-control nxt-dt-control-button nxt-dt-control-period-button"
             type="button"
             tabindex="0"
-            [attr.aria-label]="periodButtonLabel"
+            [attr.aria-label]="periodButtonLabel()"
             (click)="toggleViews()">
             <span class="nxt-dt-control-content nxt-dt-control-button-content"
                 tabindex="-1">
-                {{periodButtonText}}
+                {{periodButtonText()}}
 
                 <span class="nxt-dt-control-button-arrow"
-                    [style.transform]="'rotate(' + (isMonthView? 0 : 180) +'deg)'">
+                    [style.transform]="'rotate(' + (isMonthView()? 0 : 180) +'deg)'">
                     <!-- <editor-fold desc="SVG Arrow"> -->
                     <svg version="1.1"
                         xmlns="http://www.w3.org/2000/svg"
@@ -63,9 +63,9 @@
     <button class="nxt-dt-control nxt-dt-control-button nxt-dt-control-arrow-button"
         type="button"
         tabindex="0"
-        [style.visibility]="showControlArrows? 'visible': 'hidden'"
+        [style.visibility]="showControlArrows()? 'visible': 'hidden'"
         [disabled]="!nextButtonEnabled()"
-        [attr.aria-label]="nextButtonLabel"
+        [attr.aria-label]="nextButtonLabel()"
         (click)="nextClicked()">
         <span class="nxt-dt-control-content nxt-dt-control-button-content"
             tabindex="-1">
@@ -91,7 +91,7 @@
 <div class="nxt-dt-calendar-main"
     cdkMonitorSubtreeFocus
     tabindex="-1">
-    @switch (currentView) {
+    @switch (currentView()) {
     @case ('month') {
     <nxt-date-time-month-view [pickerMoment]="pickerMoment()"
         [firstDayOfWeek]="firstDayOfWeek()"
