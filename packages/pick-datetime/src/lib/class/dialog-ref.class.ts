@@ -8,6 +8,8 @@ import { DialogPosition } from './dialog-config.class'
 
 export class DialogRef<T> {
 
+    readonly isAnimating = this.container.isAnimating
+
     private result: any
 
     private readonly _beforeClose$ = new Subject<void>()
@@ -25,7 +27,7 @@ export class DialogRef<T> {
     componentInstance?: T
 
     /** Whether the user is allowed to close the dialog */
-    disableClose = !!this.container.config?.disableClose
+    disableClose = !!this.container.config()?.disableClose
 
     constructor(
         private readonly overlayRef: OverlayRef,
@@ -63,7 +65,7 @@ export class DialogRef<T> {
 
         if (location) {
             this.locationChanged = location.subscribe(() => {
-                if (this.container.config?.closeOnNavigation) {
+                if (this.container.config()?.closeOnNavigation) {
                     this.close()
                 }
             })
@@ -142,10 +144,6 @@ export class DialogRef<T> {
         this.overlayRef.updateSize({ width, height })
         this.overlayRef.updatePosition()
         return this
-    }
-
-    isAnimating(): boolean {
-        return this.container.isAnimating
     }
 
     afterOpen() {

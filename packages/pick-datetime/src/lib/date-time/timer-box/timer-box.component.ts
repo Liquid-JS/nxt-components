@@ -1,5 +1,5 @@
 import { coerceNumberProperty } from '@angular/cdk/coercion'
-import { ChangeDetectionStrategy, Component, HostBinding, OnDestroy, OnInit, input, output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, computed, input, output } from '@angular/core'
 import { Subject, Subscription } from 'rxjs'
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
 import { NumberFixedLenPipe } from '../number-fixed-len.pipe'
@@ -13,7 +13,10 @@ import { NumberFixedLenPipe } from '../number-fixed-len.pipe'
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         NumberFixedLenPipe
-    ]
+    ],
+    host: {
+        '[class.nxt-dt-timer-box]': 'true'
+    }
 })
 
 export class TimerBoxComponent implements OnInit, OnDestroy {
@@ -52,18 +55,7 @@ export class TimerBoxComponent implements OnInit, OnDestroy {
 
     private inputStreamSub?: Subscription
 
-    get displayValue(): number {
-        return this.boxValue() || this.value()
-    }
-
-    /** @internal */
-    @HostBinding('class.nxt-dt-timer-box')
-    get timerBoxClass(): boolean {
-        return true
-    }
-
-    constructor() {
-    }
+    readonly displayValue = computed(() => this.boxValue() || this.value())
 
     ngOnInit() {
         this.inputStreamSub = this.inputStream.pipe(

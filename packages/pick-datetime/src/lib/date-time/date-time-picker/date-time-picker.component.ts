@@ -1,7 +1,7 @@
 import { coerceArray } from '@angular/cdk/coercion'
 import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, Inject, InjectionToken, NgZone, OnDestroy, OnInit, Optional, ViewContainerRef, DOCUMENT, input, output, OutputRefSubscription, computed, signal, linkedSignal, effect } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, Inject, InjectionToken, NgZone, OnDestroy, Optional, ViewContainerRef, DOCUMENT, input, output, computed, signal, linkedSignal, effect } from '@angular/core'
 import { merge, Subscription } from 'rxjs'
 import { filter, take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
@@ -28,7 +28,7 @@ export const NXT_DTPICKER_SCROLL_STRATEGY = new InjectionToken<
     changeDetection: ChangeDetectionStrategy.OnPush,
     preserveWhitespaces: false
 })
-export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit, OnDestroy {
+export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDestroy {
     /** Custom class for the picker backdrop */
     readonly backdropClass = input<string | string[]>()
 
@@ -57,14 +57,14 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
 
         const dtInput = this.dtInput()
         if (dtInput) {
-            if (dtInput.selectMode === 'single') {
+            if (dtInput.selectMode() === 'single') {
                 return dtInput.value
             } else if (
-                dtInput.selectMode === 'range' ||
-                dtInput.selectMode === 'rangeFrom'
+                dtInput.selectMode() === 'range' ||
+                dtInput.selectMode() === 'rangeFrom'
             ) {
                 return dtInput.values[0]
-            } else if (dtInput.selectMode === 'rangeTo') {
+            } else if (dtInput.selectMode() === 'rangeTo') {
                 return dtInput.values[1]
             }
         }
@@ -101,16 +101,13 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     readonly _disabled = input<boolean | undefined>(undefined, { alias: 'disabled' })
     readonly disabled = linkedSignal({
         source: () => this._disabled(),
-        computation: value => value ?? !!this.dtInput()?.disabled
+        computation: value => value ?? !!this.dtInput()?.disabled()
     })
 
     /** Whether the calendar is open */
     // eslint-disable-next-line @angular-eslint/no-input-rename
     readonly _isOpen = input(false, { alias: 'isOpen' })
-    readonly isOpen = linkedSignal({
-        source: () => this._isOpen(),
-        computation: v => v
-    })
+    readonly isOpen = signal(false)
 
     /**
      * The scroll strategy when the picker is open (see [CDK documentation](https://material.angular.io/cdk/overlay/overview#scroll-strategies))
@@ -164,7 +161,6 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     private pickerContainer?: DateTimeContainerComponent<T>
     private popupRef?: OverlayRef
     private dialogRef?: DialogRef<DateTimeContainerComponent<T>>
-    private dtInputSub?: OutputRefSubscription
     private hidePickerStreamSub?: Subscription
     private confirmSelectedStreamSub?: Subscription
     private pickerOpenedStreamSub?: Subscription
@@ -182,18 +178,18 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
     readonly selecteds = signal(new Array<T | undefined>())
 
     /** The minimum selectable date */
-    readonly min = computed(() => this.dtInput()?.min)
+    readonly min = computed(() => this.dtInput()?.min())
 
     /** The maximum selectable date */
-    readonly max = computed(() => this.dtInput()?.max)
+    readonly max = computed(() => this.dtInput()?.max())
 
-    readonly dateTimeFilter = computed(() => this.dtInput()?.dateTimeFilter)
+    readonly dateTimeFilter = computed(() => this.dtInput()?.dateTimeFilter())
 
-    readonly selectMode = computed(() => this.dtInput()?.selectMode)
+    readonly selectMode = computed(() => this.dtInput()?.selectMode())
 
-    readonly isInSingleMode = computed(() => !!this.dtInput()?.isInSingleMode)
+    readonly isInSingleMode = computed(() => !!this.dtInput()?.isInSingleMode())
 
-    readonly isInRangeMode = computed(() => !!this.dtInput()?.isInRangeMode)
+    readonly isInRangeMode = computed(() => !!this.dtInput()?.isInRangeMode())
 
     constructor(
         private readonly overlay: Overlay,
@@ -229,7 +225,6 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
         })
 
         effect(() => {
-            // TODO: neccesary?
             this.pickerType()
             this._dtInput()?.formatNativeInputValue()
         })
@@ -243,21 +238,27 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnInit
             disabled = value
         })
 
+        let isOpen: boolean | undefined
         effect(() => {
-            if (this._isOpen()) {
-                this.open()
-            } else {
-                this.close()
+            const _isOpen = this._isOpen()
+            if (isOpen === undefined) {
+                isOpen = _isOpen
+                if (isOpen)
+                    this.open()
+                return
+            }
+            if (isOpen != _isOpen) {
+                if ((isOpen = _isOpen)) {
+                    this.open()
+                } else {
+                    this.close()
+                }
             }
         })
     }
 
-    ngOnInit() { }
-
     ngOnDestroy(): void {
         this.close()
-        this.dtInputSub?.unsubscribe()
-        this.dtInputSub = undefined
 
         if (this.popupRef) {
             this.popupRef.dispose()

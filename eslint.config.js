@@ -190,7 +190,7 @@ export default config(
                                 'provideAnimations',
                                 'provideNoopAnimations'
                             ],
-                            package: '@angular/platform-browser/animations'
+                            package: '@angular/platform-browser/types/animations.d.ts'
                         },
                         {
                             from: 'package',

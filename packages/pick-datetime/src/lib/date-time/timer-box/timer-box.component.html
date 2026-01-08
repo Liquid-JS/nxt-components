@@ -31,7 +31,7 @@
 <label class="nxt-dt-timer-content">
     <input class="nxt-dt-timer-input"
         maxlength="2"
-        [value]="displayValue | numberFixedLen : 2"
+        [value]="displayValue() | numberFixedLen : 2"
         (input)="handleInputChange(valueInput.value)"
         #valueInput>
     <span class="nxt-hidden-accessible">{{inputLabel()}}</span>

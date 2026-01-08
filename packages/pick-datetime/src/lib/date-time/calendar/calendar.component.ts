@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Inject, NgZone, OnDestroy, OnInit, afterRenderEffect, computed, input, linkedSignal, output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ElementRef, Inject, NgZone, afterRenderEffect, computed, input, linkedSignal, output } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { CdkMonitorFocus } from '@angular/cdk/a11y'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
@@ -20,9 +20,12 @@ import { MultiYearViewComponent } from '../calendar-multi-year-view/calendar-mul
         MonthViewComponent,
         YearViewComponent,
         MultiYearViewComponent
-    ]
+    ],
+    host: {
+        '[class.nxt-dt-calendar]': 'true'
+    }
 })
-export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterViewChecked, OnDestroy {
+export class CalendarComponent<T> {
     /**
      * Date filter for the month and year view
      */
@@ -195,21 +198,10 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
         )
     }
 
-    /**
-     * Bind class 'nxt-dt-calendar' to host
-     *
-     * @internal
-     */
-    @HostBinding('class.nxt-dt-calendar')
-    get calendarClass(): boolean {
-        return true
-    }
-
     constructor(
         private readonly elmRef: ElementRef<HTMLElement>,
         private readonly pickerIntl: DateTimeIntl,
         private readonly ngZone: NgZone,
-        private readonly cdRef: ChangeDetectorRef,
         private readonly dateTimeAdapter: DateTimeAdapter<T>,
         @Inject(NXT_DATE_TIME_FORMATS)
         private readonly dateTimeFormats: DateTimeFormats
@@ -222,17 +214,6 @@ export class CalendarComponent<T> implements OnInit, AfterContentInit, AfterView
                     ?.focus()
             })
         })
-    }
-
-    ngOnInit() { }
-
-    ngAfterContentInit(): void {
-    }
-
-    ngAfterViewChecked() {
-    }
-
-    ngOnDestroy(): void {
     }
 
     /**

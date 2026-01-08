@@ -36,10 +36,10 @@
     <div role="radiogroup"
         class="nxt-dt-container-info nxt-dt-container-row">
         <div role="radio"
-            [tabindex]="activeSelectedIndex === 0 ? 0 : -1"
-            [attr.aria-checked]="activeSelectedIndex === 0"
+            [tabindex]="activeSelectedIndex() === 0 ? 0 : -1"
+            [attr.aria-checked]="activeSelectedIndex() === 0"
             class="nxt-dt-control nxt-dt-container-range nxt-dt-container-from"
-            [class.nxt-dt-container-info-active]="activeSelectedIndex === 0"
+            [class.nxt-dt-container-info-active]="activeSelectedIndex() === 0"
             (click)="handleClickOnInfoGroup($event, 0)"
             (keydown)="handleKeydownOnInfoGroup($event, to, 0)"
             #from>
@@ -50,10 +50,10 @@
             </span>
         </div>
         <div role="radio"
-            [tabindex]="activeSelectedIndex === 1 ? 0 : -1"
-            [attr.aria-checked]="activeSelectedIndex === 1"
+            [tabindex]="activeSelectedIndex() === 1 ? 0 : -1"
+            [attr.aria-checked]="activeSelectedIndex() === 1"
             class="nxt-dt-control nxt-dt-container-range nxt-dt-container-to"
-            [class.nxt-dt-container-info-active]="activeSelectedIndex === 1"
+            [class.nxt-dt-container-info-active]="activeSelectedIndex() === 1"
             (click)="handleClickOnInfoGroup($event, 1)"
             (keydown)="handleKeydownOnInfoGroup($event, from, 1)"
             #to>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, NgZone, OnInit, computed, input, output, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ElementRef, NgZone, computed, input, linkedSignal, output } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
@@ -12,9 +12,13 @@ import { TimerBoxComponent } from '../timer-box/timer-box.component'
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         TimerBoxComponent
-    ]
+    ],
+    host: {
+        '[class.nxt-dt-timer]': 'true',
+        '[attr.tabindex]': '-1'
+    }
 })
-export class TimerComponent<T> implements OnInit {
+export class TimerComponent<T> {
     /** The current picker moment */
     readonly pickerMoment = input<T | undefined, T | undefined>(undefined, {
         transform: value => {
@@ -38,8 +42,6 @@ export class TimerComponent<T> implements OnInit {
             return this.getValidDate(value)
         }
     })
-
-    private readonly isPM = signal(false) // a flag indicates the current timer moment is in PM or AM
 
     /**
      * Whether to show the second's timer
@@ -67,33 +69,47 @@ export class TimerComponent<T> implements OnInit {
     readonly stepSecond = input(1)
 
     readonly hourValue = computed(() => this.dateTimeAdapter.getHours(this.pickerMoment()))
+    private readonly hoursWithPM = computed(() => {
+        let hours = this.hourValue()
+
+        let isPM: boolean | undefined
+
+        if (!this.hour12Timer()) {
+            return { hours, isPM }
+        } else {
+            if (hours === 0) {
+                hours = 12
+                isPM = false
+            } else if (hours > 0 && hours < 12) {
+                isPM = false
+            } else if (hours === 12) {
+                isPM = true
+            } else if (hours > 12 && hours < 24) {
+                hours = hours - 12
+                isPM = true
+            }
+
+            return { hours, isPM }
+        }
+    })
+
+    private _isPM = false
+    // a flag indicates the current timer moment is in PM or AM
+    private readonly isPM = linkedSignal({
+        source: () => this.hoursWithPM().isPM,
+        computation: (v) => {
+            if (v != undefined)
+                return this._isPM = v
+            return this._isPM
+        }
+    })
 
     /**
      * The value would be displayed in hourBox.
      * We need this because the value displayed in hourBox it not
      * the same as the hourValue when the timer is in hour12Timer mode.
      */
-    readonly hourBoxValue = computed(() => {
-        let hours = this.hourValue()
-
-        if (!this.hour12Timer()) {
-            return hours
-        } else {
-            if (hours === 0) {
-                hours = 12
-                this.isPM.set(false)
-            } else if (hours > 0 && hours < 12) {
-                this.isPM.set(false)
-            } else if (hours === 12) {
-                this.isPM.set(true)
-            } else if (hours > 12 && hours < 24) {
-                hours = hours - 12
-                this.isPM.set(true)
-            }
-
-            return hours
-        }
-    })
+    readonly hourBoxValue = computed(() => this.hoursWithPM().hours)
 
     readonly minuteValue = computed(() => this.dateTimeAdapter.getMinutes(this.pickerMoment()))
 
@@ -117,27 +133,12 @@ export class TimerComponent<T> implements OnInit {
 
     readonly selectedChange = output<T>()
 
-    /** @internal */
-    @HostBinding('class.nxt-dt-timer')
-    get timerClass(): boolean {
-        return true
-    }
-
-    /** @internal */
-    @HostBinding('attr.tabindex')
-    get timeTabIndex(): number {
-        return -1
-    }
-
     constructor(
         private readonly ngZone: NgZone,
         private readonly elmRef: ElementRef<HTMLElement>,
         private readonly pickerIntl: DateTimeIntl,
-        private readonly cdRef: ChangeDetectorRef,
         private readonly dateTimeAdapter: DateTimeAdapter<T>
     ) { }
-
-    ngOnInit() { }
 
     /**
      * Focus to the host element

@@ -1,7 +1,7 @@
 import { animate, animateChild, AnimationEvent, keyframes, style, transition, trigger } from '@angular/animations'
 import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory } from '@angular/cdk/a11y'
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal'
-import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EmbeddedViewRef, HostBinding, HostListener, Inject, OnInit, Optional, DOCUMENT, viewChild, output } from '@angular/core'
+import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EmbeddedViewRef, Inject, Optional, DOCUMENT, viewChild, output, signal, computed } from '@angular/core'
 import { DialogConfig } from '../../class/dialog-config.class'
 
 /** @internal */
@@ -50,83 +50,53 @@ const zoomFadeInFrom = {
     ],
     imports: [
         CdkPortalOutlet
-    ]
+    ],
+    host: {
+        '[class.nxt-dialog-container]': 'true',
+        '[attr.tabindex]': '-1',
+        '[attr.aria-labelledby]': 'ariaLabelledBy()',
+        '[attr.id]': 'config()?.id',
+        '[attr.role]': 'config()?.role',
+        '[attr.aria-describedby]': 'config()?.ariaDescribedBy',
+        '[@slideModal]': 'dialogContainerAnimation()',
+        '(@slideModal.start)': 'onAnimationStart($event)',
+        '(@slideModal.done)': 'onAnimationDone($event)'
+    }
 })
-export class DialogContainerComponent extends BasePortalOutlet implements OnInit {
+export class DialogContainerComponent extends BasePortalOutlet {
     readonly portalOutlet = viewChild(CdkPortalOutlet)
 
     /** The class that traps and manages focus within the dialog */
-    private focusTrap?: ConfigurableFocusTrap
+    private readonly focusTrap = signal<ConfigurableFocusTrap | undefined>(undefined)
 
     /** ID of the element that should be considered as the dialog's label */
-    ariaLabelledBy?: string
+    readonly ariaLabelledBy = signal<string | undefined>(undefined)
 
     /** Emits when an animation state changes */
     readonly animationStateChanged = output<AnimationEvent>()
 
-    isAnimating = false
+    readonly isAnimating = signal(false)
 
-    private _config?: DialogConfig
-    get config() {
-        return this._config
-    }
+    private readonly _config = signal<DialogConfig | undefined>(undefined)
+    readonly config = this._config.asReadonly()
 
-    private state: DialogContainerState = 'enter'
+    private readonly state = signal<DialogContainerState>('enter')
 
     // for animation purpose
-    private params: any = {
+    private readonly params = signal({
         x: '0px',
         y: '0px',
         ox: '50%',
         oy: '50%',
         scale: 0
-    }
+    })
 
     // A variable to hold the focused element before the dialog was open.
     // This would help us to refocus back to element when the dialog was closed.
     private elementFocusedBeforeDialogWasOpened?: HTMLElement
 
     /** @internal */
-    @HostBinding('class.nxt-dialog-container')
-    get dialogContainerClass(): boolean {
-        return true
-    }
-
-    /** @internal */
-    @HostBinding('attr.tabindex')
-    get dialogContainerTabIndex(): number {
-        return -1
-    }
-
-    /** @internal */
-    @HostBinding('attr.id')
-    get dialogContainerId() {
-        return this._config?.id
-    }
-
-    /** @internal */
-    @HostBinding('attr.role')
-    get dialogContainerRole() {
-        return this._config?.role
-    }
-
-    /** @internal */
-    @HostBinding('attr.aria-labelledby')
-    get dialogContainerAriaLabelledby() {
-        return this.ariaLabelledBy
-    }
-
-    /** @internal */
-    @HostBinding('attr.aria-describedby')
-    get dialogContainerAriaDescribedby() {
-        return this._config?.ariaDescribedBy
-    }
-
-    /** @internal */
-    @HostBinding('@slideModal')
-    get dialogContainerAnimation() {
-        return { value: this.state, params: this.params }
-    }
+    readonly dialogContainerAnimation = computed(() => ({ value: this.state(), params: this.params() }))
 
     constructor(
         private readonly changeDetector: ChangeDetectorRef,
@@ -138,8 +108,6 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
     ) {
         super()
     }
-
-    ngOnInit() { }
 
     /**
      * Attach a ComponentPortal as content to this dialog container.
@@ -165,20 +133,18 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
     }
 
     setConfig(config: DialogConfig): void {
-        this._config = config
+        this._config.set(config)
 
         if (config.event) {
             this.calculateZoomOrigin(config.event)
         }
     }
 
-    @HostListener('@slideModal.start', ['$event'])
     onAnimationStart(event: AnimationEvent): void {
-        this.isAnimating = true
+        this.isAnimating.set(true)
         this.animationStateChanged.emit(event)
     }
 
-    @HostListener('@slideModal.done', ['$event'])
     onAnimationDone(event: AnimationEvent): void {
         if (event.toState === 'enter') {
             this.trapFocus()
@@ -187,11 +153,11 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
         }
 
         this.animationStateChanged.emit(event)
-        this.isAnimating = false
+        this.isAnimating.set(false)
     }
 
     startExitAnimation() {
-        this.state = 'exit'
+        this.state.set('exit')
         this.changeDetector.markForCheck()
     }
 
@@ -199,11 +165,7 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
      * Calculate origin used in the `zoomFadeInFrom()`
      * for animation purpose
      */
-    private calculateZoomOrigin(event: any): void {
-        if (!event) {
-            return
-        }
-
+    private calculateZoomOrigin(event: MouseEvent): void {
         const clientX = event.clientX
         const clientY = event.clientY
 
@@ -214,13 +176,13 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
         const ox = clientX / window.innerWidth
         const oy = clientY / window.innerHeight
 
-        this.params.x = `${x}px`
-        this.params.y = `${y}px`
-        this.params.ox = `${ox * 100}%`
-        this.params.oy = `${oy * 100}%`
-        this.params.scale = 0
-
-        return
+        this.params.set({
+            x: `${x}px`,
+            y: `${y}px`,
+            ox: `${ox * 100}%`,
+            oy: `${oy * 100}%`,
+            scale: 0
+        })
     }
 
     /**
@@ -236,14 +198,14 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
     }
 
     private trapFocus(): void {
-        if (!this.focusTrap) {
-            this.focusTrap = this.focusTrapFactory.create(
+        if (!this.focusTrap()) {
+            this.focusTrap.set(this.focusTrapFactory.create(
                 this.elementRef.nativeElement
-            )
+            ))
         }
 
-        if (this._config?.autoFocus) {
-            this.focusTrap?.focusInitialElementWhenReady().catch(() => { })
+        if (this._config()?.autoFocus) {
+            this.focusTrap()?.focusInitialElementWhenReady().catch(() => { })
         }
     }
 
@@ -254,9 +216,9 @@ export class DialogContainerComponent extends BasePortalOutlet implements OnInit
             toFocus.focus()
         }
 
-        if (this.focusTrap) {
-            this.focusTrap.destroy()
-            this.focusTrap = undefined
+        if (this.focusTrap()) {
+            this.focusTrap()!.destroy()
+            this.focusTrap.set(undefined)
         }
     }
 }

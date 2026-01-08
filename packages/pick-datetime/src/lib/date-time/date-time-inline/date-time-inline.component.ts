@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, HostBinding, Inject, OnInit, Provider, viewChild, output, input, computed, linkedSignal, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, forwardRef, Inject, OnInit, Provider, viewChild, output, input, computed, linkedSignal, signal } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
@@ -21,7 +21,10 @@ export const NXT_DATETIME_VALUE_ACCESSOR: Provider = {
     providers: [NXT_DATETIME_VALUE_ACCESSOR],
     imports: [
         DateTimeContainerComponent
-    ]
+    ],
+    host: {
+        '[class.nxt-dt-inline]': 'true'
+    }
 })
 export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements OnInit, ControlValueAccessor {
 
@@ -176,17 +179,10 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
         this.selectMode() === 'rangeTo'
     ))
 
-    /** @internal */
-    @HostBinding('class.nxt-dt-inline')
-    get inlineClass(): boolean {
-        return true
-    }
-
     private onModelChange?: (date: T | T[]) => void
     private onModelTouched?: () => void
 
     constructor(
-        protected readonly changeDetector: ChangeDetectorRef,
         dateTimeAdapter: DateTimeAdapter<T>,
         @Inject(NXT_DATE_TIME_FORMATS)
         dateTimeFormats: DateTimeFormats
@@ -212,7 +208,7 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
             const container = this.container()
             if (container)
                 container.pickerMoment = this.values()?.[
-                    container.activeSelectedIndex
+                    container.activeSelectedIndex()
                 ]
         }
     }

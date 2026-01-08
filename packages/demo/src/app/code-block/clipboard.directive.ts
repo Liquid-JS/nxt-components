@@ -1,10 +1,13 @@
-import { Directive, ElementRef, HostListener, input, output } from '@angular/core'
+import { Directive, ElementRef, input, output } from '@angular/core'
 import * as clipboard from 'clipboard-polyfill'
 
 @Directive({
     selector: '[appClipboard]',
     exportAs: 'appClipboard',
-    standalone: true
+    standalone: true,
+    host: {
+        '(click)': 'onClick($event)'
+    }
 })
 export class ClipboardDirective {
 
@@ -20,7 +23,6 @@ export class ClipboardDirective {
         protected elementRef: ElementRef
     ) { }
 
-    @HostListener('click', ['$event'])
     onClick(event?: MouseEvent) {
         if (event) {
             event.preventDefault?.()

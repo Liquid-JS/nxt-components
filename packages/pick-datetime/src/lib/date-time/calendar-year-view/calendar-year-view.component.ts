@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Inject, OnDestroy, OnInit, viewChild, output, input, computed } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Inject, viewChild, output, input, computed } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
@@ -18,9 +18,12 @@ const MONTHS_PER_ROW = 3
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CalendarBodyComponent
-    ]
+    ],
+    host: {
+        '[class.nxt-dt-calendar-view]': 'true'
+    }
 })
-export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy {
+export class YearViewComponent<T> {
     /**
      * The select mode of the picker;
      */
@@ -177,27 +180,11 @@ export class YearViewComponent<T> implements OnInit, AfterContentInit, OnDestroy
     /** The body of calendar table */
     private readonly calendarBodyElm = viewChild(CalendarBodyComponent)
 
-    /** @internal */
-    @HostBinding('class.nxt-dt-calendar-view')
-    get calendarView(): boolean {
-        return true
-    }
-
     constructor(
-        private readonly cdRef: ChangeDetectorRef,
         private readonly dateTimeAdapter: DateTimeAdapter<T>,
         @Inject(NXT_DATE_TIME_FORMATS)
         private readonly dateTimeFormats: DateTimeFormats
     ) { }
-
-    ngOnInit() {
-    }
-
-    ngAfterContentInit(): void {
-    }
-
-    ngOnDestroy(): void {
-    }
 
     /**
      * Handle a calendarCell selected

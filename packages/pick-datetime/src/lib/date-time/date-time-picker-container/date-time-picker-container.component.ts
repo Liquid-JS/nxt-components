@@ -1,6 +1,6 @@
 import { AnimationEvent } from '@angular/animations'
 import { CdkTrapFocus } from '@angular/cdk/a11y'
-import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, computed, ElementRef, HostBinding, HostListener, OnInit, signal, viewChild } from '@angular/core'
+import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, computed, ElementRef, signal, viewChild } from '@angular/core'
 import { Subject } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeDirective } from '../../class/date-time.class'
@@ -24,16 +24,26 @@ import { dateTimePickerAnimations } from './date-time-picker-container.animation
         CdkTrapFocus,
         CalendarComponent,
         TimerComponent
-    ]
+    ],
+    host: {
+        '[class.nxt-dt-container]': 'true',
+        '[class.nxt-dt-popup-container]': "pickerMode() === 'popup'",
+        '[class.nxt-dt-dialog-container]': "pickerMode() === 'dialog'",
+        '[class.nxt-dt-inline-container]': "pickerMode() === 'inline'",
+        '[class.nxt-dt-container-disabled]': 'disabled()',
+        '[attr.id]': 'picker()?.id',
+        '[@transformPicker]': "pickerMode() === 'inline' ? '' : 'enter'",
+        '(@transformPicker.done)': 'handleContainerAnimationDone($event)'
+    }
 })
-export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, AfterViewInit {
+export class DateTimeContainerComponent<T> implements AfterContentInit, AfterViewInit {
 
     readonly calendar = viewChild(CalendarComponent)
 
     readonly timer = viewChild(TimerComponent)
 
     readonly picker = signal<DateTimeDirective<T> | undefined>(undefined)
-    activeSelectedIndex = 0 // The current active SelectedIndex in range select mode (0: 'from', 1: 'to')
+    readonly activeSelectedIndex = signal(0) // The current active SelectedIndex in range select mode (0: 'from', 1: 'to')
 
     /**
      * Stream emits when try to hide picker
@@ -90,9 +100,9 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
     readonly stepHour = computed(() => this.picker()?.stepHour())
     readonly stepMinute = computed(() => this.picker()?.stepMinute())
     readonly stepSecond = computed(() => this.picker()?.stepSecond())
+    readonly disabled = computed(() => this.picker()?.disabled())
 
     private readonly formatString = computed(() => this.picker()?.formatString())
-    private readonly disabled = computed(() => this.picker()?.disabled())
     private readonly startAt = computed(() => this.picker()?.startAt())
     private readonly dateTimeChecker = computed(() => this.picker()?.dateTimeChecker())
 
@@ -149,56 +159,11 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
         return this.elmRef.nativeElement
     }
 
-    /** @internal */
-    @HostBinding('class.nxt-dt-container')
-    get containerClass(): boolean {
-        return true
-    }
-
-    /** @internal */
-    @HostBinding('class.nxt-dt-popup-container')
-    get popupContainerClass(): boolean {
-        return this.pickerMode() === 'popup'
-    }
-
-    /** @internal */
-    @HostBinding('class.nxt-dt-dialog-container')
-    get dialogContainerClass(): boolean {
-        return this.pickerMode() === 'dialog'
-    }
-
-    /** @internal */
-    @HostBinding('class.nxt-dt-inline-container')
-    get inlineContainerClass(): boolean {
-        return this.pickerMode() === 'inline'
-    }
-
-    /** @internal */
-    @HostBinding('class.nxt-dt-container-disabled')
-    get containerDisabledClass(): boolean {
-        return !!this.disabled()
-    }
-
-    /** @internal */
-    @HostBinding('attr.id')
-    get containerId(): string | undefined {
-        return this.picker()?.id
-    }
-
-    /** @internal */
-    @HostBinding('@transformPicker')
-    get containerAnimation(): any {
-        return this.pickerMode() === 'inline' ? '' : 'enter'
-    }
-
     constructor(
-        private readonly cdRef: ChangeDetectorRef,
         private readonly elmRef: ElementRef<HTMLElement>,
         private readonly pickerIntl: DateTimeIntl,
         private readonly dateTimeAdapter: DateTimeAdapter<T>
     ) { }
-
-    ngOnInit() { }
 
     ngAfterContentInit(): void {
         this.initPicker()
@@ -208,7 +173,6 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
         this.focusPicker()
     }
 
-    @HostListener('@transformPicker.done', ['$event'])
     handleContainerAnimationDone(event: AnimationEvent): void {
         const toState = event.toState
         if (toState === 'enter') {
@@ -238,7 +202,7 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
         if (picker?.isInRangeMode()) {
             result = this.dateSelectedInRangeMode(date)
             if (result) {
-                this.pickerMoment = result[this.activeSelectedIndex]
+                this.pickerMoment = result[this.activeSelectedIndex()]
                 picker.select(result)
             }
         }
@@ -264,13 +228,13 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
             // check if the 'from' is after 'to' or 'to'is before 'from'
             // In this case, we set both the 'from' and 'to' the same value
             if (
-                (this.activeSelectedIndex === 0 &&
+                (this.activeSelectedIndex() === 0 &&
                     selecteds[1] &&
                     this.dateTimeAdapter.compare(
                         this.pickerMoment,
                         selecteds[1]
                     ) === 1) ||
-                (this.activeSelectedIndex === 1 &&
+                (this.activeSelectedIndex() === 1 &&
                     selecteds[0] &&
                     this.dateTimeAdapter.compare(
                         this.pickerMoment,
@@ -280,7 +244,7 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
                 selecteds[0] = this.pickerMoment
                 selecteds[1] = this.pickerMoment
             } else {
-                selecteds[this.activeSelectedIndex] = this.pickerMoment
+                selecteds[this.activeSelectedIndex()] = this.pickerMoment
             }
 
             picker.select(selecteds)
@@ -356,11 +320,11 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
     private setActiveSelectedIndex(index: number): void {
         if (
             this.selectMode() === 'range' &&
-            this.activeSelectedIndex !== index
+            this.activeSelectedIndex() !== index
         ) {
-            this.activeSelectedIndex = index
+            this.activeSelectedIndex.set(index)
 
-            const selected = this.selecteds()?.[this.activeSelectedIndex]
+            const selected = this.selecteds()?.[this.activeSelectedIndex()]
             if (this.selecteds() && selected) {
                 this.pickerMoment = this.dateTimeAdapter.clone(selected)
             }
@@ -370,7 +334,7 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
 
     private initPicker(): void {
         this.pickerMoment = this.startAt() || this.dateTimeAdapter.now()
-        this.activeSelectedIndex = this.selectMode() === 'rangeTo' ? 1 : 0
+        this.activeSelectedIndex.set(this.selectMode() === 'rangeTo' ? 1 : 0)
     }
 
     /**
@@ -409,11 +373,11 @@ export class DateTimeContainerComponent<T> implements OnInit, AfterContentInit, 
                 (this.dateTimeAdapter.differenceInCalendarDays(result, from) ?? 0) >= 0
             ) {
                 to = result
-                this.activeSelectedIndex = 1
+                this.activeSelectedIndex.set(1)
             } else {
                 from = result
                 to = undefined
-                this.activeSelectedIndex = 0
+                this.activeSelectedIndex.set(0)
             }
         } else if (this.selectMode() === 'rangeFrom') {
             from = result

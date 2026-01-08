@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, HostBinding, OnInit, viewChild, output, input, computed, linkedSignal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, viewChild, output, input, computed, linkedSignal } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
 import { CalendarBodyComponent, CalendarCell } from '../calendar-body/calendar-body.component'
@@ -18,10 +18,14 @@ export const YEAR_ROWS = 7
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CalendarBodyComponent
-    ]
+    ],
+    host: {
+        '[class.nxt-dt-calendar-view]': 'true',
+        '[class.nxt-dt-calendar-multi-year-view]': 'true'
+    }
 })
 
-export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
+export class MultiYearViewComponent<T> {
 
     /**
      * The select mode of the picker;
@@ -174,28 +178,10 @@ export class MultiYearViewComponent<T> implements OnInit, AfterContentInit {
     /** The body of calendar table */
     private readonly calendarBodyElm = viewChild(CalendarBodyComponent)
 
-    /** @internal */
-    @HostBinding('class.nxt-dt-calendar-view')
-    get calendarView(): boolean {
-        return true
-    }
-
-    /** @internal */
-    @HostBinding('class.nxt-dt-calendar-multi-year-view')
-    get calendarMultiYearView(): boolean {
-        return true
-    }
-
     constructor(
         private readonly pickerIntl: DateTimeIntl,
         private readonly dateTimeAdapter: DateTimeAdapter<T>
     ) { }
-
-    ngOnInit() {
-    }
-
-    ngAfterContentInit(): void {
-    }
 
     /**
      * Handle a calendarCell selected

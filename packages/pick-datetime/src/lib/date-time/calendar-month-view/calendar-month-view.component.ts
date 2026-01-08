@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Inject, OnDestroy, OnInit, input, viewChild, output, linkedSignal, computed } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Inject, input, viewChild, output, linkedSignal, computed } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
@@ -18,9 +18,12 @@ const WEEKS_PER_VIEW = 6
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CalendarBodyComponent
-    ]
+    ],
+    host: {
+        '[class.nxt-dt-calendar-view]': 'true'
+    }
 })
-export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestroy {
+export class MonthViewComponent<T> {
     /**
      * Whether to hide dates in other months at the start or end of the current month
      */
@@ -269,27 +272,11 @@ export class MonthViewComponent<T> implements OnInit, AfterContentInit, OnDestro
     /** The body of calendar table */
     private readonly calendarBodyElm = viewChild(CalendarBodyComponent)
 
-    /** @internal */
-    @HostBinding('class.nxt-dt-calendar-view')
-    get calendarView(): boolean {
-        return true
-    }
-
     constructor(
-        private readonly cdRef: ChangeDetectorRef,
         private readonly dateTimeAdapter: DateTimeAdapter<T>,
         @Inject(NXT_DATE_TIME_FORMATS)
         private readonly dateTimeFormats: DateTimeFormats
     ) { }
-
-    ngOnInit() {
-    }
-
-    ngAfterContentInit(): void {
-    }
-
-    ngOnDestroy(): void {
-    }
 
     /**
      * Handle a calendarCell selected

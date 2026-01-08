@@ -15,9 +15,9 @@ export interface MomentDateTimeAdapterOptions {
 /** InjectionToken for moment date adapter to configure options */
 export const NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS = new InjectionToken<MomentDateTimeAdapterOptions>(
     'NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {
-    providedIn: 'root',
-    factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY
-})
+        providedIn: 'root',
+        factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY
+    })
 
 /** @internal */
 export function NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY(): MomentDateTimeAdapterOptions {
