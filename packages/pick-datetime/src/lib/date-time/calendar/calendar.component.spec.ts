@@ -171,8 +171,8 @@ describe('CalendarComponent', () => {
 
                     spyOn(activeCell, 'focus').and.callThrough()
                     fixture.detectChanges()
-                    zone.simulateZoneExit()
                     await fixture.whenStable()
+                    zone.simulateZoneExit()
 
                     calendarInstance.currentView.set('multi-years')
                     fixture.detectChanges()

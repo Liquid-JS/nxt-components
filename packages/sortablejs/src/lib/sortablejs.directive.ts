@@ -24,7 +24,7 @@ export type CloneFunction<T> = (item: T) => T
 @Directive({ selector: '[nxtSortablejs]' })
 export class SortablejsDirective<T> implements OnChanges, OnDestroy, AfterViewInit {
 
-    private readonly globalConfig = inject(GLOBALS, { optional: true }) ?? undefined
+    private readonly globalConfig = inject(GLOBALS, { optional: true })
     private readonly service = inject(SortablejsService)
     private readonly element = inject(ElementRef)
     private readonly zone = inject(NgZone)

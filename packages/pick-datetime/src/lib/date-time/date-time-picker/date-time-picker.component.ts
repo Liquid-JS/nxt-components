@@ -1,11 +1,9 @@
 import { coerceArray } from '@angular/cdk/coercion'
 import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, Inject, InjectionToken, NgZone, OnDestroy, Optional, ViewContainerRef, DOCUMENT, input, output, computed, signal, linkedSignal, effect } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ComponentRef, InjectionToken, NgZone, OnDestroy, ViewContainerRef, DOCUMENT, input, output, computed, signal, linkedSignal, effect, inject } from '@angular/core'
 import { merge, Subscription } from 'rxjs'
 import { filter, take } from 'rxjs/operators'
-import { DateTimeAdapter } from '../../class/date-time-adapter.class'
-import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateTimeDirective, PickerMode, PickerType } from '../../class/date-time.class'
 import { DialogRef } from '../../class/dialog-ref.class'
 import { DialogService } from '../../dialog/dialog.service'
@@ -29,6 +27,13 @@ export const NXT_DTPICKER_SCROLL_STRATEGY = new InjectionToken<
     preserveWhitespaces: false
 })
 export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDestroy {
+    private readonly overlay = inject(Overlay)
+    private readonly viewContainerRef = inject(ViewContainerRef)
+    private readonly dialogService = inject(DialogService)
+    private readonly ngZone = inject(NgZone)
+    private readonly defaultScrollStrategy = inject(NXT_DTPICKER_SCROLL_STRATEGY, { optional: true }) ?? (() => this.overlay.scrollStrategies.block())
+    private readonly document = inject<Document>(DOCUMENT, { optional: true })
+
     /** Custom class for the picker backdrop */
     readonly backdropClass = input<string | string[]>()
 
@@ -58,14 +63,14 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDest
         const dtInput = this.dtInput()
         if (dtInput) {
             if (dtInput.selectMode() === 'single') {
-                return dtInput.value
+                return dtInput.value()
             } else if (
                 dtInput.selectMode() === 'range' ||
                 dtInput.selectMode() === 'rangeFrom'
             ) {
-                return dtInput.values[0]
+                return dtInput.values()[0]
             } else if (dtInput.selectMode() === 'rangeTo') {
-                return dtInput.values[1]
+                return dtInput.values()[1]
             }
         }
         return
@@ -191,25 +196,8 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDest
 
     readonly isInRangeMode = computed(() => !!this.dtInput()?.isInRangeMode())
 
-    constructor(
-        private readonly overlay: Overlay,
-        private readonly viewContainerRef: ViewContainerRef,
-        private readonly dialogService: DialogService,
-        private readonly ngZone: NgZone,
-        protected readonly changeDetector: ChangeDetectorRef,
-        dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(NXT_DATE_TIME_FORMATS)
-        dateTimeFormats: DateTimeFormats,
-        @Optional()
-        @Inject(NXT_DTPICKER_SCROLL_STRATEGY)
-        private readonly defaultScrollStrategy: () => ScrollStrategy,
-        @Optional()
-        @Inject(DOCUMENT)
-        private readonly document?: Document
-    ) {
-        super(dateTimeAdapter, dateTimeFormats)
-        this.defaultScrollStrategy = this.defaultScrollStrategy ?? (() => overlay.scrollStrategies.block())
-
+    constructor() {
+        super()
         effect((registerCleanup) => {
             const vc = this.valueChange()
             if (vc) {
@@ -222,11 +210,6 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDest
                 })
                 registerCleanup(() => sub.unsubscribe())
             }
-        })
-
-        effect(() => {
-            this.pickerType()
-            this._dtInput()?.formatNativeInputValue()
         })
 
         let disabled: boolean | undefined
@@ -263,6 +246,15 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDest
         if (this.popupRef) {
             this.popupRef.dispose()
         }
+
+        this.hidePickerStreamSub?.unsubscribe()
+        this.hidePickerStreamSub = undefined
+
+        this.confirmSelectedStreamSub?.unsubscribe()
+        this.confirmSelectedStreamSub = undefined
+
+        this.pickerOpenedStreamSub?.unsubscribe()
+        this.pickerOpenedStreamSub = undefined
     }
 
     registerInput(inputDirective: DateTimeInputDirective<T>): void {
@@ -292,9 +284,9 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDest
 
         // reset the picker selected value
         if (this.isInSingleMode()) {
-            this.selected.set(this._dtInput()!.value)
+            this.selected.set(this._dtInput()!.value())
         } else if (this.isInRangeMode()) {
-            this.selecteds.set(this._dtInput()!.values)
+            this.selecteds.set(this._dtInput()!.values())
         }
 
         // when the picker is open , we make sure the picker's current selected time value

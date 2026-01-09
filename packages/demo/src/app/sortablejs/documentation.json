@@ -8,7 +8,7 @@
     "directives": [
         {
             "name": "SortablejsDirective",
-            "id": "directive-SortablejsDirective-d98b614e6465a71c1892d8aa18dc124556470c45f3479375cad86451b87984e63484a221b4eec0228886729191308d989c3d89c112c19fde63731b2174547ae2",
+            "id": "directive-SortablejsDirective-255b0ef04ae1f31c5c5b9df43d61ac8606b7e3e77a1c756b0474d6f709c57f27887bda7170c14759135da9eb1374779bfc47f1af82c88cdaa34376dab5e73cdb",
             "file": "src/lib/sortablejs.directive.ts",
             "type": "directive",
             "description": "",

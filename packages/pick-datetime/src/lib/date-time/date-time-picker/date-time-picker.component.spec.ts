@@ -268,7 +268,7 @@ describe('DateTimeComponent', () => {
                     .toBe(
                         false
                     )
-                expect(testComponent.dateTimePickerInput()?.value).toEqual(
+                expect(testComponent.dateTimePickerInput()?.value()).toEqual(
                     new Date(2020, 0, 1)
                 ) // not update to clicked value
             }))
@@ -303,7 +303,7 @@ describe('DateTimeComponent', () => {
                     .toBe(
                         false
                     )
-                expect(testComponent.dateTimePickerInput()?.value).toEqual(
+                expect(testComponent.dateTimePickerInput()?.value()).toEqual(
                     new Date(2020, 0, 1)
                 )
             }))
@@ -344,7 +344,7 @@ describe('DateTimeComponent', () => {
                     .toBe(
                         false
                     )
-                expect(testComponent.dateTimePickerInput()?.value).toEqual(
+                expect(testComponent.dateTimePickerInput()?.value()).toEqual(
                     new Date(2020, 0, 2)
                 )
             }))
@@ -480,7 +480,7 @@ describe('DateTimeComponent', () => {
                         .toBe(
                             false
                         )
-                    expect(testComponent.dateTimePickerInput()?.value).toEqual(
+                    expect(testComponent.dateTimePickerInput()?.value()).toEqual(
                         new Date(2020, 0, 2)
                     )
                 }))
@@ -523,7 +523,7 @@ describe('DateTimeComponent', () => {
                         .toBe(
                             false
                         )
-                    expect(testComponent.dateTimePickerInput()?.value).toEqual(
+                    expect(testComponent.dateTimePickerInput()?.value()).toEqual(
                         new Date(2020, 0, 2)
                     )
                 }))
@@ -561,7 +561,7 @@ describe('DateTimeComponent', () => {
                         .toBe(
                             false
                         )
-                    expect(testComponent.dateTimePickerInput()?.value).toEqual(
+                    expect(testComponent.dateTimePickerInput()?.value()).toEqual(
                         new Date(2020, 0, 1)
                     )
                 }))
@@ -1085,7 +1085,7 @@ describe('DateTimeComponent', () => {
 
             it('should update dateTimePicker when model changes', fakeAsync(() => {
                 const dateTimePickerInput = testComponent.dateTimePickerInput()
-                expect(dateTimePickerInput?.value).toBeUndefined()
+                expect(dateTimePickerInput?.value()).toBeUndefined()
                 expect(testComponent.dateTimePicker()?.selected()).toBeUndefined()
 
                 const selected = new Date(2017, 0, 1)
@@ -1094,7 +1094,7 @@ describe('DateTimeComponent', () => {
                 flush()
                 fixture.detectChanges()
 
-                expect(dateTimePickerInput?.value).toEqual(
+                expect(dateTimePickerInput?.value()).toEqual(
                     selected
                 )
                 expect(testComponent.dateTimePicker()?.selected()).toEqual(selected)
@@ -1103,7 +1103,7 @@ describe('DateTimeComponent', () => {
             it('should update model when date is selected', fakeAsync(() => {
                 expect(testComponent.moment).toBeUndefined()
                 const dateTimePickerInput = testComponent.dateTimePickerInput()
-                expect(dateTimePickerInput?.value).toBeUndefined()
+                expect(dateTimePickerInput?.value()).toBeUndefined()
 
                 const selected = new Date(2017, 0, 1)
                 testComponent.dateTimePicker()?.select(selected)
@@ -1115,7 +1115,7 @@ describe('DateTimeComponent', () => {
                 fixture.detectChanges()
 
                 expect(testComponent.moment).toEqual(selected)
-                expect(dateTimePickerInput?.value).toEqual(
+                expect(dateTimePickerInput?.value()).toEqual(
                     selected
                 )
             }))
@@ -1224,7 +1224,7 @@ describe('DateTimeComponent', () => {
                 it('should update dateTimePicker when model changes', fakeAsync(() => {
                     const dateTimePickerInput = testComponent.dateTimePickerInput()
                     expect(
-                        dateTimePickerInput?.values.length
+                        dateTimePickerInput?.values().length
                     ).toBe(0)
                     expect(testComponent.dateTimePicker()?.selecteds().length).toBe(
                         0
@@ -1238,12 +1238,12 @@ describe('DateTimeComponent', () => {
                     fixture.detectChanges()
 
                     expect(
-                        dateTimePickerInput?.values.length
+                        dateTimePickerInput?.values().length
                     ).toBe(2)
-                    expect(dateTimePickerInput!.values[0]).toEqual(
+                    expect(dateTimePickerInput!.values()[0]).toEqual(
                         from
                     )
-                    expect(dateTimePickerInput!.values[1]).toEqual(
+                    expect(dateTimePickerInput!.values()[1]).toEqual(
                         to
                     )
                     expect(testComponent.dateTimePicker()?.selecteds().length).toBe(
@@ -1261,7 +1261,7 @@ describe('DateTimeComponent', () => {
                     expect(testComponent.moment).toBeUndefined()
                     const dateTimePickerInput = testComponent.dateTimePickerInput()
                     expect(
-                        dateTimePickerInput?.values.length
+                        dateTimePickerInput?.values().length
                     ).toBe(0)
 
                     const from = new Date(2017, 0, 1)
@@ -1280,12 +1280,12 @@ describe('DateTimeComponent', () => {
                         expect(testComponent.moment[1]).toEqual(to)
                     }
                     expect(
-                        dateTimePickerInput?.values.length
+                        dateTimePickerInput?.values().length
                     ).toBe(2)
-                    expect(dateTimePickerInput?.values[0]).toEqual(
+                    expect(dateTimePickerInput?.values()[0]).toEqual(
                         from
                     )
-                    expect(dateTimePickerInput?.values[1]).toEqual(
+                    expect(dateTimePickerInput?.values()[1]).toEqual(
                         to
                     )
                 }))
@@ -1303,7 +1303,7 @@ describe('DateTimeComponent', () => {
                 it('should update dateTimePicker when model changes', fakeAsync(() => {
                     const dateTimePickerInput = testComponent.dateTimePickerInput()
                     expect(
-                        dateTimePickerInput?.values.length
+                        dateTimePickerInput?.values().length
                     ).toBe(0)
                     expect(testComponent.dateTimePicker()?.selecteds().length).toBe(
                         0
@@ -1315,11 +1315,11 @@ describe('DateTimeComponent', () => {
                     flush()
                     fixture.detectChanges()
 
-                    expect(dateTimePickerInput?.values[0]).toEqual(
+                    expect(dateTimePickerInput?.values()[0]).toEqual(
                         from
                     )
                     expect(
-                        dateTimePickerInput?.values[1]
+                        dateTimePickerInput?.values()[1]
                     ).toBeFalsy()
                     expect(testComponent.dateTimePicker()?.selecteds()[0]).toEqual(
                         from
@@ -1362,10 +1362,10 @@ describe('DateTimeComponent', () => {
                         to
                     )
                     const dateTimePickerInput = testComponent.dateTimePickerInput()
-                    expect(dateTimePickerInput?.values[0]).toEqual(
+                    expect(dateTimePickerInput?.values()[0]).toEqual(
                         newSelectedFrom
                     )
-                    expect(dateTimePickerInput?.values[1]).toEqual(
+                    expect(dateTimePickerInput?.values()[1]).toEqual(
                         to
                     )
                     expect(testComponent.moment[0]).toEqual(newSelectedFrom)
@@ -1405,11 +1405,11 @@ describe('DateTimeComponent', () => {
                         testComponent.dateTimePicker()?.selecteds()[1]
                     ).toBeFalsy()
                     const dateTimePickerInput = testComponent.dateTimePickerInput()
-                    expect(dateTimePickerInput?.values[0]).toEqual(
+                    expect(dateTimePickerInput?.values()[0]).toEqual(
                         newSelectedFrom
                     )
                     expect(
-                        dateTimePickerInput?.values[1]
+                        dateTimePickerInput?.values()[1]
                     ).toBeFalsy()
                     expect(testComponent.moment[0]).toEqual(newSelectedFrom)
                     expect(testComponent.moment[1]).toBeFalsy()
@@ -1428,7 +1428,7 @@ describe('DateTimeComponent', () => {
                 it('should update dateTimePicker when model changes', fakeAsync(() => {
                     const dateTimePickerInput = testComponent.dateTimePickerInput()
                     expect(
-                        dateTimePickerInput?.values.length
+                        dateTimePickerInput?.values().length
                     ).toBe(0)
                     expect(testComponent.dateTimePicker()?.selecteds().length).toBe(
                         0
@@ -1441,9 +1441,9 @@ describe('DateTimeComponent', () => {
                     fixture.detectChanges()
 
                     expect(
-                        dateTimePickerInput?.values[0]
+                        dateTimePickerInput?.values()[0]
                     ).toBeFalsy()
-                    expect(dateTimePickerInput?.values[1]).toEqual(
+                    expect(dateTimePickerInput?.values()[1]).toEqual(
                         to
                     )
                     expect(
@@ -1487,10 +1487,10 @@ describe('DateTimeComponent', () => {
                         newSelectedTo
                     )
                     const dateTimePickerInput = testComponent.dateTimePickerInput()
-                    expect(dateTimePickerInput?.values[0]).toEqual(
+                    expect(dateTimePickerInput?.values()[0]).toEqual(
                         from
                     )
-                    expect(dateTimePickerInput?.values[1]).toEqual(
+                    expect(dateTimePickerInput?.values()[1]).toEqual(
                         newSelectedTo
                     )
                     expect(testComponent.moment[0]).toEqual(from)
@@ -1531,9 +1531,9 @@ describe('DateTimeComponent', () => {
                     )
                     const dateTimePickerInput = testComponent.dateTimePickerInput()
                     expect(
-                        dateTimePickerInput?.values[0]
+                        dateTimePickerInput?.values()[0]
                     ).toBeFalsy()
-                    expect(dateTimePickerInput?.values[1]).toEqual(
+                    expect(dateTimePickerInput?.values()[1]).toEqual(
                         newSelectedTo
                     )
                     expect(testComponent.moment[0]).toBeFalsy()
@@ -1560,14 +1560,14 @@ describe('DateTimeComponent', () => {
 
             it('should update dateTimePicker when formControl changes', () => {
                 const dateTimePickerInput = testComponent.dateTimePickerInput()
-                expect(dateTimePickerInput?.value).toBeUndefined()
+                expect(dateTimePickerInput?.value()).toBeUndefined()
                 expect(testComponent.dateTimePicker()?.selected()).toBeUndefined()
 
                 const selected = new Date(2017, 0, 1)
                 testComponent.formControl.setValue(selected)
                 fixture.detectChanges()
 
-                expect(dateTimePickerInput?.value).toEqual(
+                expect(dateTimePickerInput?.value()).toEqual(
                     selected
                 )
                 expect(testComponent.dateTimePicker()?.selected()).toEqual(selected)
@@ -1576,7 +1576,7 @@ describe('DateTimeComponent', () => {
             it('should update formControl when date is selected', fakeAsync(() => {
                 expect(testComponent.formControl.value).toBeNull()
                 const dateTimePickerInput = testComponent.dateTimePickerInput()
-                expect(dateTimePickerInput?.value).toBeUndefined()
+                expect(dateTimePickerInput?.value()).toBeUndefined()
 
                 const selected = new Date(2017, 0, 1)
                 testComponent.dateTimePicker()?.select(selected)
@@ -1588,7 +1588,7 @@ describe('DateTimeComponent', () => {
                 fixture.detectChanges()
 
                 expect(testComponent.formControl.value).toEqual(selected)
-                expect(dateTimePickerInput?.value).toEqual(
+                expect(dateTimePickerInput?.value()).toEqual(
                     selected
                 )
             }))
@@ -2222,7 +2222,7 @@ describe('DateTimeComponent', () => {
                     new Date(2017, 6, 1)
                 )
                 const dateTimePickerInput = testComponent.dateTimePickerInput()
-                expect(dateTimePickerInput?.value).toEqual(
+                expect(dateTimePickerInput?.value()).toEqual(
                     new Date(2017, 5, 1)
                 )
                 expect(dateTimePickerInput?.min()).toEqual(

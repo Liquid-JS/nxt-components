@@ -1,6 +1,6 @@
 import { AnimationEvent } from '@angular/animations'
 import { CdkTrapFocus } from '@angular/cdk/a11y'
-import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, computed, ElementRef, signal, viewChild } from '@angular/core'
+import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, computed, ElementRef, signal, viewChild, inject } from '@angular/core'
 import { Subject } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeDirective } from '../../class/date-time.class'
@@ -37,6 +37,9 @@ import { dateTimePickerAnimations } from './date-time-picker-container.animation
     }
 })
 export class DateTimeContainerComponent<T> implements AfterContentInit, AfterViewInit {
+    private readonly elmRef = inject<ElementRef<HTMLElement>>(ElementRef)
+    private readonly pickerIntl = inject(DateTimeIntl)
+    private readonly dateTimeAdapter = inject<DateTimeAdapter<T>>(DateTimeAdapter)
 
     readonly calendar = viewChild(CalendarComponent)
 
@@ -158,12 +161,6 @@ export class DateTimeContainerComponent<T> implements AfterContentInit, AfterVie
     get containerElm(): HTMLElement {
         return this.elmRef.nativeElement
     }
-
-    constructor(
-        private readonly elmRef: ElementRef<HTMLElement>,
-        private readonly pickerIntl: DateTimeIntl,
-        private readonly dateTimeAdapter: DateTimeAdapter<T>
-    ) { }
 
     ngAfterContentInit(): void {
         this.initPicker()

@@ -31,7 +31,7 @@ export class DialogConfig {
     autoFocus = true
 
     /** Whether the dialog has a backdrop */
-    hasBackdrop?= true
+    hasBackdrop? = true
 
     /**
      * Custom style for the backdrop
@@ -42,7 +42,7 @@ export class DialogConfig {
     data?: any
 
     /** Whether the user can use escape or clicking outside to close a modal */
-    disableClose?= false
+    disableClose? = false
 
     /**
      * ID for the modal. If omitted, a unique one will be generated.

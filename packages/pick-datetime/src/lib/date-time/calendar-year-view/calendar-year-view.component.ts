@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, viewChild, output, input, computed } from '@angular/core'
+import { ChangeDetectionStrategy, Component, viewChild, output, input, computed, inject } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
@@ -24,6 +24,9 @@ const MONTHS_PER_ROW = 3
     }
 })
 export class YearViewComponent<T> {
+    private readonly dateTimeAdapter = inject<DateTimeAdapter<T>>(DateTimeAdapter)
+    private readonly dateTimeFormats = inject<DateTimeFormats>(NXT_DATE_TIME_FORMATS)
+
     /**
      * The select mode of the picker;
      */
@@ -179,12 +182,6 @@ export class YearViewComponent<T> {
 
     /** The body of calendar table */
     private readonly calendarBodyElm = viewChild(CalendarBodyComponent)
-
-    constructor(
-        private readonly dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(NXT_DATE_TIME_FORMATS)
-        private readonly dateTimeFormats: DateTimeFormats
-    ) { }
 
     /**
      * Handle a calendarCell selected

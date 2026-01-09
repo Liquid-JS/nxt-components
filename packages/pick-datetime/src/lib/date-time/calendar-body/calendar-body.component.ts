@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, NgZone, computed, input, output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ElementRef, NgZone, computed, input, output, inject } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { SelectMode } from '../../class/date-time.class'
 
@@ -28,6 +28,9 @@ export class CalendarCell {
 
 })
 export class CalendarBodyComponent {
+    private readonly elmRef = inject<ElementRef<HTMLElement>>(ElementRef)
+    private readonly ngZone = inject(NgZone)
+
     /**
      * The cell number of the active cell in the table.
      */
@@ -78,11 +81,6 @@ export class CalendarBodyComponent {
             selectMode === 'rangeTo'
         )
     })
-
-    constructor(
-        private readonly elmRef: ElementRef<HTMLElement>,
-        private readonly ngZone: NgZone
-    ) { }
 
     selectCell(cell: CalendarCell): void {
         this.select.emit(cell)

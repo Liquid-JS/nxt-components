@@ -1,4 +1,4 @@
-import { Inject, Injectable, InjectionToken, LOCALE_ID, Optional } from '@angular/core'
+import { inject, Injectable, InjectionToken, LOCALE_ID } from '@angular/core'
 import moment, { Moment } from 'moment'
 import { DateTimeAdapter } from 'nxt-pick-datetime'
 
@@ -13,11 +13,10 @@ export interface MomentDateTimeAdapterOptions {
 }
 
 /** InjectionToken for moment date adapter to configure options */
-export const NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS = new InjectionToken<MomentDateTimeAdapterOptions>(
-    'NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {
-        providedIn: 'root',
-        factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY
-    })
+export const NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS = new InjectionToken<MomentDateTimeAdapterOptions>('NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {
+    providedIn: 'root',
+    factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY
+})
 
 /** @internal */
 export function NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY(): MomentDateTimeAdapterOptions {
@@ -41,6 +40,7 @@ function range<T>(length: number, valueFunction: (index: number) => T): T[] {
 
 @Injectable()
 export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
+    private readonly options = inject(NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS, { optional: true })
 
     private _localeData: {
         longMonths: string[]
@@ -51,14 +51,9 @@ export class MomentDateTimeAdapter extends DateTimeAdapter<Moment> {
         dates: string[]
     } = {} as any
 
-    constructor(
-        @Optional()
-        @Inject(LOCALE_ID)
-        dateTimeLocale?: string,
-        @Optional()
-        @Inject(NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS)
-        private readonly options?: MomentDateTimeAdapterOptions
-    ) {
+    constructor() {
+        const dateTimeLocale = inject(LOCALE_ID, { optional: true })
+
         super()
         this.setLocale(dateTimeLocale || moment.locale())
     }

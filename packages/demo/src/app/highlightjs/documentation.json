@@ -2511,21 +2511,10 @@
                         "deprecationMessage": ""
                     },
                     {
-                        "name": "formatUrl",
-                        "type": "unknown",
+                        "name": "_options",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
-                        "destructuredParameter": true
-                    },
-                    {
-                        "name": "options",
-                        "type": "any[]",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "dotDotDotToken": true,
-                        "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
-                        "destructuredParameter": true
+                        "defaultValue": "{}"
                     }
                 ],
                 "jsdoctags": [
@@ -2553,24 +2542,10 @@
                         "comment": "<p>File raw link</p>\n"
                     },
                     {
-                        "name": "formatUrl",
-                        "type": "unknown",
+                        "name": "_options",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
-                        "destructuredParameter": true,
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "options",
-                        "type": "any[]",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "dotDotDotToken": true,
-                        "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
-                        "destructuredParameter": true,
+                        "defaultValue": "{}",
                         "tagName": {
                             "text": "param"
                         }
@@ -2602,8 +2577,8 @@
                 "jsdoctags": [
                     {
                         "name": {
-                            "pos": 3158,
-                            "end": 3160,
+                            "pos": 3188,
+                            "end": 3190,
                             "kind": 80,
                             "id": 0,
                             "flags": 16777216,
@@ -2613,8 +2588,8 @@
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
-                            "pos": 3152,
-                            "end": 3157,
+                            "pos": 3182,
+                            "end": 3187,
                             "kind": 80,
                             "id": 0,
                             "flags": 16777216,
@@ -2789,21 +2764,10 @@
                             "deprecationMessage": ""
                         },
                         {
-                            "name": "formatUrl",
-                            "type": "unknown",
+                            "name": "_options",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
-                            "destructuredParameter": true
-                        },
-                        {
-                            "name": "options",
-                            "type": "any[]",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "dotDotDotToken": true,
-                            "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
-                            "destructuredParameter": true
+                            "defaultValue": "{}"
                         }
                     ],
                     "jsdoctags": [
@@ -2831,24 +2795,10 @@
                             "comment": "<p>File raw link</p>\n"
                         },
                         {
-                            "name": "formatUrl",
-                            "type": "unknown",
+                            "name": "_options",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
-                            "destructuredParameter": true,
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "options",
-                            "type": "any[]",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "dotDotDotToken": true,
-                            "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
-                            "destructuredParameter": true,
+                            "defaultValue": "{}",
                             "tagName": {
                                 "text": "param"
                             }
@@ -2880,8 +2830,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3158,
-                                "end": 3160,
+                                "pos": 3188,
+                                "end": 3190,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16777216,
@@ -2891,8 +2841,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 3152,
-                                "end": 3157,
+                                "pos": 3182,
+                                "end": 3187,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16777216,

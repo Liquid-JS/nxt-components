@@ -74,7 +74,8 @@ export class CodeLoader {
  *
  * @param url File raw link
  */
-export function fileResource(url: string | Signal<string>, { formatUrl, ...options }: Omit<RxResourceOptions<string, string>, 'params' | 'stream'> & { formatUrl?: boolean } = {}) {
+export function fileResource(url: string | Signal<string>, _options: Omit<RxResourceOptions<string, string>, 'params' | 'stream'> & { formatUrl?: boolean } = {}) {
+    const { formatUrl, ...options } = _options
     const cl = options?.injector ? options.injector.get(CodeLoader) : inject(CodeLoader)
     const location = options?.injector ? options.injector.get(NXT_HIGHLIGHT_FILE_LOCATION) : inject(NXT_HIGHLIGHT_FILE_LOCATION)
 

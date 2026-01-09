@@ -1,4 +1,4 @@
-import { AfterContentInit, Directive, ElementRef, forwardRef, Inject, Input, OnDestroy, OnInit, Provider, Renderer2, input, output, OutputRefSubscription, signal, computed, linkedSignal, effect } from '@angular/core'
+import { AfterContentInit, Directive, ElementRef, forwardRef, OnDestroy, OnInit, Provider, Renderer2, input, output, OutputRefSubscription, signal, computed, linkedSignal, effect, inject } from '@angular/core'
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms'
 import { DateTimeAdapter } from '../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../class/date-time-format.class'
@@ -45,6 +45,11 @@ export interface DateTimeInputEvent<T> {
     }
 })
 export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDestroy, ControlValueAccessor, Validator {
+    private readonly elmRef = inject<ElementRef<HTMLInputElement>>(ElementRef)
+    private readonly renderer = inject(Renderer2)
+    private readonly dateTimeAdapter = inject<DateTimeAdapter<T>>(DateTimeAdapter)
+    private readonly dateTimeFormats = inject<DateTimeFormats>(NXT_DATE_TIME_FORMATS)
+
     /**
      * The date & time picker this input is associated with
      */
@@ -88,55 +93,127 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
      */
     readonly rangeSeparator = input<string>('~')
 
-    private _value?: T
-    @Input()
-    get value() {
-        return this._value
-    }
+    // eslint-disable-next-line @angular-eslint/no-input-rename
+    readonly _valueInput = input<T>(undefined, { alias: 'value' })
+    private readonly _value = linkedSignal({
+        source: () => this._valueInput(),
+        computation: v => v
+    })
 
-    set value(value: T | undefined) {
+    private readonly valueValidity = computed(() => {
+        let value = this._value()
         value = this.dateTimeAdapter.deserialize(value)
-        this.lastValueValid.set(!value || !!this.dateTimeAdapter.isValid(value))
-        value = this.getValidDate(value)
-        const oldDate = this._value
-        this._value = value
-
-        // set the input property 'value'
-        this.formatNativeInputValue()
-
-        // check if the input value changed
-        if (!this.dateTimeAdapter.isEqual(oldDate, value)) {
-            this.valueChange.emit(value)
+        const lastValueValid = !value || !!this.dateTimeAdapter.isValid(value)
+        return {
+            value,
+            lastValueValid
         }
-    }
+    }, {
+        equal: (a, b) => a.lastValueValid == b.lastValueValid && this.dateTimeAdapter.isEqual(a.value, b.value)
+    })
 
-    private _values: Array<T | undefined> = []
-    @Input()
-    get values() {
-        return this._values
-    }
+    private readonly parsedValue = linkedSignal(() => this.valueValidity().value)
+    readonly value = this.parsedValue.asReadonly()
 
-    set values(values: Array<T | undefined>) {
+    // eslint-disable-next-line @angular-eslint/no-input-rename
+    readonly _valuesInput = input<Array<T | undefined>>(new Array<T | undefined>(), { alias: 'values' })
+    private readonly _values = linkedSignal({
+        source: () => this._valuesInput(),
+        computation: v => v
+    })
+
+    private readonly valuesValidity = computed(() => {
+        let values = this._values()
+
+        let lastValueValid: boolean
+
         if (values && values.length > 0) {
-            this._values = values.map(v => {
+            values = values.map(v => {
                 v = this.dateTimeAdapter.deserialize(v)
                 return this.getValidDate(v)
             })
-            this.lastValueValid.set(
-                (!this._values[0] ||
-                    this.dateTimeAdapter.isValid(this._values[0])) &&
-                (!this._values[1] ||
-                    this.dateTimeAdapter.isValid(this._values[1])))
+            lastValueValid = ((!values[0] ||
+                this.dateTimeAdapter.isValid(values[0])) &&
+                (!values[1] ||
+                    this.dateTimeAdapter.isValid(values[1]))
+            )
         } else {
-            this._values = []
-            this.lastValueValid.set(true)
+            values = []
+            lastValueValid = true
         }
 
-        // set the input property 'value'
-        this.formatNativeInputValue()
+        return {
+            values,
+            lastValueValid
+        }
+    }, {
+        equal: (a, b) => a.lastValueValid == b.lastValueValid && this.dateTimeAdapter.isEqual(a.values[0], b.values[0]) && this.dateTimeAdapter.isEqual(a.values[1], b.values[1])
+    })
 
-        this.valueChange.emit(this._values)
-    }
+    private readonly parsedValues = linkedSignal(() => this.valuesValidity().values)
+    readonly values = this.parsedValues.asReadonly()
+
+    private readonly nativeElementValue = computed(() => {
+        /**
+         * Define the native input property 'value'
+         */
+        if (this.isInSingleMode()) {
+            const value = this.value()
+            return value
+                ? this.dateTimeAdapter.format(
+                    value,
+                    this.dtPicker()?.formatString()
+                )
+                : undefined
+        } else if (this.isInRangeMode()) {
+            const values = this.values()
+            if (values && values.length > 0) {
+                const from = values[0]
+                const to = values[1]
+
+                const fromFormatted = from
+                    ? this.dateTimeAdapter.format(
+                        from,
+                        this.dtPicker()?.formatString()
+                    )
+                    : ''
+                const toFormatted = to
+                    ? this.dateTimeAdapter.format(
+                        to,
+                        this.dtPicker()?.formatString()
+                    )
+                    : ''
+
+                if (!fromFormatted && !toFormatted) {
+                    return undefined
+                } else {
+                    if (this.selectMode() === 'range') {
+                        return (
+                            fromFormatted +
+                            ' ' +
+                            this.rangeSeparator() +
+                            ' ' +
+                            toFormatted
+                        )
+                    } else if (this.selectMode() === 'rangeFrom') {
+                        return (
+                            fromFormatted
+                        )
+                    } else if (this.selectMode() === 'rangeTo') {
+                        return (
+                            this.elmRef.nativeElement,
+                            'value',
+                            toFormatted
+                        )
+                    }
+                }
+            } else {
+                return undefined
+            }
+        }
+
+        return undefined
+    })
 
     /**
      * Callback to invoke when `change` event is fired on this `<input>`
@@ -168,138 +245,156 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
 
     private dtPickerSub?: OutputRefSubscription
 
-    private readonly lastValueValid = signal(true)
+    private readonly lastValueValid = linkedSignal({
+        source: () => this.valueValidity().lastValueValid && this.valuesValidity().lastValueValid,
+        computation: v => v
+    })
 
     private onModelChange?: (date: T | Array<T | undefined> | undefined) => void
     private onModelTouched?: () => void
     private validatorOnChange?: () => void
 
     /** The form control validator for whether the input parses */
-    private readonly parseValidator: ValidatorFn = () => this.lastValueValid()
-        ? null
-        : { dateTimeParse: { text: this.elmRef.nativeElement.value } }
+    private readonly parseValidator = computed<ValidatorFn>(() => {
+        const lastValueValid = this.lastValueValid()
+        return () => lastValueValid
+            ? null
+            : { dateTimeParse: { text: this.elmRef.nativeElement.value } }
+    })
 
     /** The form control validator for the min date */
-    private readonly minValidator: ValidatorFn = (
-        control
-    ) => {
+    private readonly minValidator = computed<ValidatorFn>(() => {
         const min = this.min()
-
-        if (this.isInSingleMode()) {
-            const controlValue = this.getValidDate(
-                this.dateTimeAdapter.deserialize(control.value)
-            )
-            return !min ||
-                !controlValue ||
-                this.dateTimeAdapter.compare(min, controlValue) <= 0
-                ? null
-                : { dateTimeMin: { min, actual: controlValue } }
-        } else if (this.isInRangeMode() && control.value) {
-            const controlValueFrom = this.getValidDate(
-                this.dateTimeAdapter.deserialize(control.value[0])
-            )
-            const controlValueTo = this.getValidDate(
-                this.dateTimeAdapter.deserialize(control.value[1])
-            )
-            return !min ||
-                !controlValueFrom ||
-                !controlValueTo ||
-                this.dateTimeAdapter.compare(min, controlValueFrom) <= 0
-                ? null
-                : {
-                    dateTimeMin: {
-                        min,
-                        actual: [controlValueFrom, controlValueTo]
+        const isInSingleMode = this.isInSingleMode()
+        const isInRangeMode = this.isInRangeMode()
+        return (
+            control
+        ) => {
+            if (isInSingleMode) {
+                const controlValue = this.getValidDate(
+                    this.dateTimeAdapter.deserialize(control.value)
+                )
+                return !min ||
+                    !controlValue ||
+                    this.dateTimeAdapter.compare(min, controlValue) <= 0
+                    ? null
+                    : { dateTimeMin: { min, actual: controlValue } }
+            } else if (isInRangeMode && control.value) {
+                const controlValueFrom = this.getValidDate(
+                    this.dateTimeAdapter.deserialize(control.value[0])
+                )
+                const controlValueTo = this.getValidDate(
+                    this.dateTimeAdapter.deserialize(control.value[1])
+                )
+                return !min ||
+                    !controlValueFrom ||
+                    !controlValueTo ||
+                    this.dateTimeAdapter.compare(min, controlValueFrom) <= 0
+                    ? null
+                    : {
+                        dateTimeMin: {
+                            min,
+                            actual: [controlValueFrom, controlValueTo]
+                        }
                     }
-                }
+            }
+            return null
         }
-        return null
-    }
+    })
 
     /** The form control validator for the max date */
-    private readonly maxValidator: ValidatorFn = (
-        control
-    ) => {
+    private readonly maxValidator = computed<ValidatorFn>(() => {
         const max = this.max()
+        const isInSingleMode = this.isInSingleMode()
+        const isInRangeMode = this.isInRangeMode()
+        return (
+            control
+        ) => {
+            if (isInSingleMode) {
+                const controlValue = this.getValidDate(
+                    this.dateTimeAdapter.deserialize(control.value)
+                )
+                return !max ||
+                    !controlValue ||
+                    this.dateTimeAdapter.compare(max, controlValue) >= 0
+                    ? null
+                    : { dateTimeMax: { max, actual: controlValue } }
+            } else if (isInRangeMode && control.value) {
+                const controlValueFrom = this.getValidDate(
+                    this.dateTimeAdapter.deserialize(control.value[0])
+                )
+                const controlValueTo = this.getValidDate(
+                    this.dateTimeAdapter.deserialize(control.value[1])
+                )
+                return !max ||
+                    !controlValueFrom ||
+                    !controlValueTo ||
+                    this.dateTimeAdapter.compare(max, controlValueTo) >= 0
+                    ? null
+                    : {
+                        dateTimeMax: {
+                            max,
+                            actual: [controlValueFrom, controlValueTo]
+                        }
+                    }
+            }
+            return null
+        }
+    })
 
-        if (this.isInSingleMode()) {
+    /** The form control validator for the date filter */
+    private readonly filterValidator = computed<ValidatorFn>(() => {
+        const dateTimeFilter = this.dateTimeFilter()
+        return (
+            control: AbstractControl
+        ): ValidationErrors | null => {
             const controlValue = this.getValidDate(
                 this.dateTimeAdapter.deserialize(control.value)
             )
-            return !max ||
+            return !dateTimeFilter ||
                 !controlValue ||
-                this.dateTimeAdapter.compare(max, controlValue) >= 0
+                dateTimeFilter(controlValue)
                 ? null
-                : { dateTimeMax: { max, actual: controlValue } }
-        } else if (this.isInRangeMode() && control.value) {
-            const controlValueFrom = this.getValidDate(
-                this.dateTimeAdapter.deserialize(control.value[0])
-            )
-            const controlValueTo = this.getValidDate(
-                this.dateTimeAdapter.deserialize(control.value[1])
-            )
-            return !max ||
-                !controlValueFrom ||
-                !controlValueTo ||
-                this.dateTimeAdapter.compare(max, controlValueTo) >= 0
-                ? null
-                : {
-                    dateTimeMax: {
-                        max,
-                        actual: [controlValueFrom, controlValueTo]
-                    }
-                }
+                : { dateTimeFilter: true }
         }
-        return null
-    }
-
-    /** The form control validator for the date filter */
-    private readonly filterValidator: ValidatorFn = (
-        control: AbstractControl
-    ): ValidationErrors | null => {
-        const controlValue = this.getValidDate(
-            this.dateTimeAdapter.deserialize(control.value)
-        )
-        return !this.dateTimeFilter() ||
-            !controlValue ||
-            this.dateTimeFilter()!(controlValue)
-            ? null
-            : { dateTimeFilter: true }
-    }
+    })
 
     /**
      * The form control validator for the range.
      * Check whether the 'before' value is before the 'to' value
      */
-    private readonly rangeValidator: ValidatorFn = (
-        control
-    ) => {
-        if (this.isInSingleMode() || !control.value) {
-            return null
+    private readonly rangeValidator = computed<ValidatorFn>(() => {
+        const isInSingleMode = this.isInSingleMode()
+        return (
+            control
+        ) => {
+            if (isInSingleMode || !control.value) {
+                return null
+            }
+
+            const controlValueFrom = this.getValidDate(
+                this.dateTimeAdapter.deserialize(control.value[0])
+            )
+            const controlValueTo = this.getValidDate(
+                this.dateTimeAdapter.deserialize(control.value[1])
+            )
+
+            return !controlValueFrom ||
+                !controlValueTo ||
+                this.dateTimeAdapter.compare(controlValueFrom, controlValueTo) <= 0
+                ? null
+                : { dateTimeRange: true }
         }
-
-        const controlValueFrom = this.getValidDate(
-            this.dateTimeAdapter.deserialize(control.value[0])
-        )
-        const controlValueTo = this.getValidDate(
-            this.dateTimeAdapter.deserialize(control.value[1])
-        )
-
-        return !controlValueFrom ||
-            !controlValueTo ||
-            this.dateTimeAdapter.compare(controlValueFrom, controlValueTo) <= 0
-            ? null
-            : { dateTimeRange: true }
-    }
+    })
 
     /** The combined form control validator for this input */
-    private readonly validator = Validators.compose([
-        this.parseValidator,
-        this.minValidator,
-        this.maxValidator,
-        this.filterValidator,
-        this.rangeValidator
-    ])
+    private readonly validator = computed(() => Validators.compose([
+        this.parseValidator(),
+        this.minValidator(),
+        this.maxValidator(),
+        this.filterValidator(),
+        this.rangeValidator()
+    ]))
 
     /** Emits when the value changes (either due to user input or programmatic change) */
     readonly valueChange = output<Array<T | undefined> | T | undefined>()
@@ -316,13 +411,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     /** @internal */
     readonly maxIso8601 = computed(() => this.max() ? this.dateTimeAdapter.toIso8601(this.max()!) : undefined)
 
-    constructor(
-        private readonly elmRef: ElementRef<HTMLInputElement>,
-        private readonly renderer: Renderer2,
-        private readonly dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(NXT_DATE_TIME_FORMATS)
-        private readonly dateTimeFormats: DateTimeFormats
-    ) {
+    constructor() {
         let picker: DateTimeComponent<T> | undefined
         effect(() => {
             /**
@@ -334,6 +423,30 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
                 this.dtPicker.set(picker)
                 picker.registerInput(this)
             }
+        })
+
+        effect(() => {
+            const value = this.nativeElementValue()
+            if (value != undefined) {
+                this.renderer.setProperty(
+                    this.elmRef.nativeElement,
+                    'value',
+                    value
+                )
+            }
+        })
+
+        effect(() => {
+            this.validator()
+            this.validatorOnChange?.()
+        })
+
+        effect(() => {
+            this.valueChange.emit(this.parsedValue())
+        })
+
+        effect(() => {
+            this.valueChange.emit(this.parsedValues())
         })
     }
 
@@ -349,9 +462,9 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         this.dtPickerSub = this.dtPicker()?.confirmSelectedChange.subscribe(
             (selecteds) => {
                 if (Array.isArray(selecteds)) {
-                    this.values = selecteds
+                    this._values.set(selecteds)
                 } else {
-                    this.value = selecteds
+                    this._value.set(selecteds)
                 }
 
                 this.onModelChange?.(selecteds)
@@ -378,9 +491,9 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     writeValue(value: any): void {
         value = value ?? undefined
         if (this.isInSingleMode()) {
-            this.value = value
+            this._value.set(value)
         } else {
-            this.values = value
+            this._values.set(value)
         }
     }
 
@@ -397,7 +510,8 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     }
 
     validate(c: AbstractControl) {
-        return this.validator ? this.validator(c) : null
+        const validator = this.validator()
+        return validator ? validator(c) : null
     }
 
     registerOnValidatorChange(fn: () => void): void {
@@ -432,9 +546,9 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     handleChangeOnHost(_event: any): void {
         let v
         if (this.isInSingleMode()) {
-            v = this.value
+            v = this.value()
         } else if (this.isInRangeMode()) {
-            v = this.values
+            v = this.values()
         }
 
         this.dateTimeChange.emit({
@@ -447,7 +561,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     /**
      * Set the native input property 'value'
      */
-    formatNativeInputValue(): void {
+    /* formatNativeInputValue(): void {
         if (this.isInSingleMode()) {
             this.renderer.setProperty(
                 this.elmRef.nativeElement,
@@ -518,7 +632,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         }
 
         return
-    }
+    }*/
 
     /**
      * Convert a given obj to a valid date object
@@ -557,7 +671,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     private changeInputInSingleMode(inputValue: string): void {
         let value: string | undefined = inputValue
         if (this.dtPicker()?.pickerType() === 'timer') {
-            value = this.convertTimeStringToDateTimeString(value, this.value)
+            value = this.convertTimeStringToDateTimeString(value, this.value())
         }
 
         let result = this.dateTimeAdapter.parse(
@@ -569,9 +683,9 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
 
         // if the newValue is the same as the oldValue, we intend to not fire the valueChange event
         // result equals to undefined means there is input event, but the input value is invalid
-        if (!this.isSameValue(result, this._value) || result === undefined) {
-            this._value = result
-            this.valueChange.emit(result)
+        if (!this.isSameValue(result, this.value()) || result === undefined) {
+            this.parsedValue.set(result)
+            //this.valueChange.emit(result)
             this.onModelChange?.(result)
             this.dateTimeInput.emit({
                 source: this,
@@ -587,8 +701,8 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     private changeInputInRangeFromToMode(inputValue?: string): void {
         const originalValue =
             this.selectMode() === 'rangeFrom'
-                ? this._values[0]
-                : this._values[1]
+                ? this.values()[0]
+                : this.values()[1]
 
         if (this.dtPicker()?.pickerType() === 'timer') {
             inputValue = this.convertTimeStringToDateTimeString(
@@ -607,24 +721,25 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         // if the newValue is the same as the oldValue, we intend to not fire the valueChange event
         if (
             (this.selectMode() === 'rangeFrom' &&
-                this.isSameValue(result, this._values[0]) &&
+                this.isSameValue(result, this.values()[0]) &&
                 result) ||
             (this.selectMode() === 'rangeTo' &&
-                this.isSameValue(result, this._values[1]) &&
+                this.isSameValue(result, this.values()[1]) &&
                 result)
         ) {
             return
         }
 
-        this._values =
+        this.parsedValues.set(
             this.selectMode() === 'rangeFrom'
-                ? [result, this._values[1]]
-                : [this._values[0], result]
-        this.valueChange.emit(this._values)
-        this.onModelChange?.(this._values)
+                ? [result, this.values()[1]]
+                : [this.values()[0], result]
+        )
+        // this.valueChange.emit(this.values())
+        this.onModelChange?.(this.parsedValues())
         this.dateTimeInput.emit({
             source: this,
-            value: this._values,
+            value: this.parsedValues(),
             input: this.elmRef.nativeElement
         })
     }
@@ -640,11 +755,11 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         if (this.dtPicker()?.pickerType() === 'timer') {
             fromString = this.convertTimeStringToDateTimeString(
                 fromString,
-                this.values[0]
+                this.values()[0]
             )
             toString = this.convertTimeStringToDateTimeString(
                 toString,
-                this.values[1]
+                this.values()[1]
             )
         }
 
@@ -663,16 +778,16 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
 
         // if the newValue is the same as the oldValue, we intend to not fire the valueChange event
         if (
-            !this.isSameValue(from, this._values[0]) ||
-            !this.isSameValue(to, this._values[1]) ||
+            !this.isSameValue(from, this.values()[0]) ||
+            !this.isSameValue(to, this.values()[1]) ||
             (!from && !to)
         ) {
-            this._values = [from, to]
-            this.valueChange.emit(this._values)
-            this.onModelChange?.(this._values)
+            this.parsedValues.set([from, to])
+            //this.valueChange.emit(this.values())
+            this.onModelChange?.(this.parsedValues())
             this.dateTimeInput.emit({
                 source: this,
-                value: this._values,
+                value: this.parsedValues(),
                 input: this.elmRef.nativeElement
             })
         }

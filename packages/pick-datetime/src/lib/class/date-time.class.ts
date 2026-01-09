@@ -1,4 +1,4 @@
-import { Directive, OutputEmitterRef, Inject, input, Signal, computed, signal } from '@angular/core'
+import { Directive, OutputEmitterRef, input, Signal, computed, signal, inject } from '@angular/core'
 import { DateTimeAdapter } from './date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from './date-time-format.class'
 
@@ -19,6 +19,9 @@ export type DateFilter<T> = (date?: T, forRender?: RenderItem) => boolean
 
 @Directive()
 export abstract class DateTimeDirective<T> {
+    protected readonly dateTimeAdapter = inject<DateTimeAdapter<T>>(DateTimeAdapter)
+    protected readonly dateTimeFormats = inject<DateTimeFormats>(NXT_DATE_TIME_FORMATS)
+
     /**
      * When true, shows a timer to configure the seconds value
      */
@@ -114,12 +117,6 @@ export abstract class DateTimeDirective<T> {
         (!this.min() || this.dateTimeAdapter.compare(dateTime, this.min()) >= 0) &&
         (!this.max() || this.dateTimeAdapter.compare(dateTime, this.max()) <= 0)
     ))
-
-    constructor(
-        protected readonly dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(NXT_DATE_TIME_FORMATS)
-        protected readonly dateTimeFormats: DateTimeFormats
-    ) { }
 
     protected getValidDate(obj: any): T | undefined {
         return this.dateTimeAdapter.isDateInstance(obj) &&

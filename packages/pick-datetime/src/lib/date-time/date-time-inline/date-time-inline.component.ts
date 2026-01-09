@@ -1,7 +1,5 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Inject, OnInit, Provider, viewChild, output, input, computed, linkedSignal, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, forwardRef, OnInit, Provider, viewChild, output, input, computed, linkedSignal, signal } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
-import { DateTimeAdapter } from '../../class/date-time-adapter.class'
-import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateFilter, DateTimeDirective, PickerMode, PickerType, SelectMode } from '../../class/date-time.class'
 import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
 
@@ -181,14 +179,6 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
 
     private onModelChange?: (date: T | T[]) => void
     private onModelTouched?: () => void
-
-    constructor(
-        dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(NXT_DATE_TIME_FORMATS)
-        dateTimeFormats: DateTimeFormats
-    ) {
-        super(dateTimeAdapter, dateTimeFormats)
-    }
 
     ngOnInit() {
         const container = this.container()

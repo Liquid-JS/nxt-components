@@ -1,5 +1,5 @@
 import { Platform } from '@angular/cdk/platform'
-import { Inject, Injectable, LOCALE_ID, Optional } from '@angular/core'
+import { inject, Injectable, LOCALE_ID } from '@angular/core'
 import { DateTimeAdapter } from 'nxt-pick-datetime'
 
 /**
@@ -107,12 +107,10 @@ export class NativeDateTimeAdapter extends DateTimeAdapter<Date> {
      */
     useUtcForDisplay: boolean
 
-    constructor(
-        platform: Platform,
-        @Optional()
-        @Inject(LOCALE_ID)
-        dateTimeLocale?: string
-    ) {
+    constructor() {
+        const platform = inject(Platform)
+        const dateTimeLocale = inject(LOCALE_ID, { optional: true })
+
         super()
         super.setLocale(dateTimeLocale)
 

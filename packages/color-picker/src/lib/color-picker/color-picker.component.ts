@@ -1,4 +1,4 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core'
+import { AfterViewChecked, Component, ElementRef, inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core'
 import { cmykToRgb, denormalizeCMYK, denormalizeHSLA, denormalizeRGBA, formatCmyk, formatOutput, hslaToHsva, hsvaToHsla, hsvaToRgba, rgbaToCmyk, rgbaToHex, rgbaToHsva, stringToCmyk, stringToHsva } from '../../util/color'
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Cmyk, Hsla, Hsva, Rgba } from '../../util/formats'
@@ -99,7 +99,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
     presetColorsEditable: boolean = false
     private readonly elRef = inject(ElementRef)
-    private readonly cdRef = inject(ChangeDetectorRef)
     private readonly service = inject(ColorPickerService)
 
     onCancel(event: Event) {
@@ -767,11 +766,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
             if (this.callbacks) {
                 this.callbacks.stateChanged(false)
-            }
-
-            //@ts-ignore
-            if (!this.cdRef['destroyed']) {
-                this.cdRef.detectChanges()
             }
         }
     }

@@ -1,6 +1,6 @@
 // Based on @angular/cdk/testing
 import { Platform } from '@angular/cdk/platform'
-import { EventEmitter, Inject, Injectable, LOCALE_ID, NgZone, Optional, Provider } from '@angular/core'
+import { EventEmitter, Injectable, LOCALE_ID, NgZone, Provider, inject } from '@angular/core'
 import { DateTimeAdapter } from './lib/class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from './lib/class/date-time-format.class'
 
@@ -218,12 +218,10 @@ export class TestDateTimeAdapter extends DateTimeAdapter<Date> {
      */
     useUtcForDisplay: boolean
 
-    constructor(
-        platform: Platform,
-        @Optional()
-        @Inject(LOCALE_ID)
-        dateTimeLocale?: string
-    ) {
+    constructor() {
+        const platform = inject(Platform)
+        const dateTimeLocale = inject(LOCALE_ID, { optional: true })
+
         super()
         super.setLocale(dateTimeLocale)
 

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Directive, computed, input } from '@angular/core'
+import { Directive, computed, input } from '@angular/core'
 import { DateTimeComponent } from './date-time-picker/date-time-picker.component'
 
 @Directive({
@@ -9,16 +9,11 @@ import { DateTimeComponent } from './date-time-picker/date-time-picker.component
     }
 })
 export class DateTimeTriggerDirective<T> {
-
     readonly dtPicker = input<DateTimeComponent<T>>(undefined, { alias: 'nxtDateTimeTrigger' })
 
     // eslint-disable-next-line @angular-eslint/no-input-rename
     readonly _disabled = input<boolean>(undefined, { alias: 'disabled' })
     readonly disabled = computed(() => this._disabled() ?? !!this.dtPicker()?.disabled())
-
-    constructor(
-        protected readonly changeDetector: ChangeDetectorRef
-    ) { }
 
     handleClickOnHost(event: Event): void {
         const dtPicker = this.dtPicker()

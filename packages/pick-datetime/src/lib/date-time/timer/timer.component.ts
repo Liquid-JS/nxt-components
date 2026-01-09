@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, NgZone, computed, input, linkedSignal, output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ElementRef, NgZone, computed, input, linkedSignal, output, inject } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
@@ -19,6 +19,11 @@ import { TimerBoxComponent } from '../timer-box/timer-box.component'
     }
 })
 export class TimerComponent<T> {
+    private readonly ngZone = inject(NgZone)
+    private readonly elmRef = inject<ElementRef<HTMLElement>>(ElementRef)
+    private readonly pickerIntl = inject(DateTimeIntl)
+    private readonly dateTimeAdapter = inject<DateTimeAdapter<T>>(DateTimeAdapter)
+
     /** The current picker moment */
     readonly pickerMoment = input<T | undefined, T | undefined>(undefined, {
         transform: value => {
@@ -132,13 +137,6 @@ export class TimerComponent<T> {
         : this.pickerIntl.hour12AMLabel())
 
     readonly selectedChange = output<T>()
-
-    constructor(
-        private readonly ngZone: NgZone,
-        private readonly elmRef: ElementRef<HTMLElement>,
-        private readonly pickerIntl: DateTimeIntl,
-        private readonly dateTimeAdapter: DateTimeAdapter<T>
-    ) { }
 
     /**
      * Focus to the host element

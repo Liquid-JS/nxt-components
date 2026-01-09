@@ -1,7 +1,7 @@
 import { Overlay, OverlayConfig, OverlayContainer, OverlayRef, ScrollStrategy } from '@angular/cdk/overlay'
 import { ComponentPortal, ComponentType } from '@angular/cdk/portal'
 import { Location } from '@angular/common'
-import { ComponentRef, Inject, Injectable, InjectionToken, Injector, Optional, SkipSelf, TemplateRef } from '@angular/core'
+import { ComponentRef, Injectable, InjectionToken, Injector, TemplateRef, inject } from '@angular/core'
 import { defer, of, Subject } from 'rxjs'
 import { concatAll } from 'rxjs/operators'
 import { DialogConfig } from '../class/dialog-config.class'
@@ -35,6 +35,13 @@ export const NXT_DIALOG_DEFAULT_OPTIONS = new InjectionToken<DialogConfig>(
     providedIn: 'root'
 })
 export class DialogService {
+    private readonly overlay = inject(Overlay)
+    private readonly injector = inject(Injector)
+    private readonly location = inject<Location>(Location, { optional: true }) ?? undefined
+    private readonly defaultOptions = inject<DialogConfig>(NXT_DIALOG_DEFAULT_OPTIONS, { optional: true }) ?? undefined
+    private readonly parentDialog = inject<DialogService>(DialogService, { optional: true, skipSelf: true })
+    private readonly overlayContainer = inject(OverlayContainer)
+
     private readonly ariaHiddenElements = new Map<Element, string | null>()
 
     private readonly _openDialogsAtThisLevel: Array<DialogRef<any>> = []
@@ -74,27 +81,12 @@ export class DialogService {
                 : of([undefined], this._afterAllClosed).pipe(concatAll())
     )
 
-    private scrollStrategy: () => ScrollStrategy
+    private readonly scrollStrategy = inject(NXT_DIALOG_SCROLL_STRATEGY, { optional: true }) ?? (() => this.overlay.scrollStrategies.block())
 
-    constructor(
-        private readonly overlay: Overlay,
-        private readonly injector: Injector,
-        @Optional()
-        @Inject(Location)
-        private readonly location: Location | undefined,
-        @Optional()
-        @Inject(NXT_DIALOG_SCROLL_STRATEGY)
-        scrollStrategy: () => ScrollStrategy,
-        @Optional()
-        @Inject(NXT_DIALOG_DEFAULT_OPTIONS)
-        private readonly defaultOptions: DialogConfig | undefined,
-        @Optional()
-        @SkipSelf()
-        @Inject(DialogService)
-        private readonly parentDialog: DialogService | undefined,
-        private readonly overlayContainer: OverlayContainer
-    ) {
-        this.scrollStrategy = scrollStrategy ?? (() => overlay.scrollStrategies.block())
+    constructor() {
+        const location = this.location
+        const parentDialog = this.parentDialog
+
         if (!parentDialog && location) {
             location.subscribe(() => this.closeAll())
         }
@@ -235,8 +227,7 @@ export class DialogService {
     private getOverlayConfig(dialogConfig: DialogConfig): OverlayConfig {
         const state = new OverlayConfig({
             positionStrategy: this.overlay.position().global(),
-            scrollStrategy:
-                dialogConfig.scrollStrategy || this.scrollStrategy(),
+            scrollStrategy: dialogConfig.scrollStrategy || this.scrollStrategy(),
             panelClass: dialogConfig.paneClass,
             hasBackdrop: dialogConfig.hasBackdrop,
             minWidth: dialogConfig.minWidth,

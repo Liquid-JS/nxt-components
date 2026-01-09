@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, input, viewChild, output, linkedSignal, computed } from '@angular/core'
+import { ChangeDetectionStrategy, Component, input, viewChild, output, linkedSignal, computed, inject } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
@@ -24,6 +24,9 @@ const WEEKS_PER_VIEW = 6
     }
 })
 export class MonthViewComponent<T> {
+    private readonly dateTimeAdapter = inject<DateTimeAdapter<T>>(DateTimeAdapter)
+    private readonly dateTimeFormats = inject<DateTimeFormats>(NXT_DATE_TIME_FORMATS)
+
     /**
      * Whether to hide dates in other months at the start or end of the current month
      */
@@ -271,12 +274,6 @@ export class MonthViewComponent<T> {
 
     /** The body of calendar table */
     private readonly calendarBodyElm = viewChild(CalendarBodyComponent)
-
-    constructor(
-        private readonly dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(NXT_DATE_TIME_FORMATS)
-        private readonly dateTimeFormats: DateTimeFormats
-    ) { }
 
     /**
      * Handle a calendarCell selected

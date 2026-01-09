@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, viewChild, output, input, computed, linkedSignal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, viewChild, output, input, computed, linkedSignal, inject } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
 import { CalendarBodyComponent, CalendarCell } from '../calendar-body/calendar-body.component'
@@ -26,6 +26,8 @@ export const YEAR_ROWS = 7
 })
 
 export class MultiYearViewComponent<T> {
+    private readonly pickerIntl = inject(DateTimeIntl)
+    private readonly dateTimeAdapter = inject<DateTimeAdapter<T>>(DateTimeAdapter)
 
     /**
      * The select mode of the picker;
@@ -177,11 +179,6 @@ export class MultiYearViewComponent<T> {
 
     /** The body of calendar table */
     private readonly calendarBodyElm = viewChild(CalendarBodyComponent)
-
-    constructor(
-        private readonly pickerIntl: DateTimeIntl,
-        private readonly dateTimeAdapter: DateTimeAdapter<T>
-    ) { }
 
     /**
      * Handle a calendarCell selected

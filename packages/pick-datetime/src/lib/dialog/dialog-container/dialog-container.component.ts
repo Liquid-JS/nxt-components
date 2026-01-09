@@ -1,7 +1,7 @@
 import { animate, animateChild, AnimationEvent, keyframes, style, transition, trigger } from '@angular/animations'
 import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory } from '@angular/cdk/a11y'
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal'
-import { ChangeDetectorRef, Component, ComponentRef, ElementRef, EmbeddedViewRef, Inject, Optional, DOCUMENT, viewChild, output, signal, computed } from '@angular/core'
+import { Component, ComponentRef, ElementRef, EmbeddedViewRef, DOCUMENT, viewChild, output, signal, computed, inject } from '@angular/core'
 import { DialogConfig } from '../../class/dialog-config.class'
 
 /** @internal */
@@ -64,6 +64,10 @@ const zoomFadeInFrom = {
     }
 })
 export class DialogContainerComponent extends BasePortalOutlet {
+    private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef)
+    private readonly focusTrapFactory = inject(ConfigurableFocusTrapFactory)
+    private readonly document = inject<Document>(DOCUMENT, { optional: true })
+
     readonly portalOutlet = viewChild(CdkPortalOutlet)
 
     /** The class that traps and manages focus within the dialog */
@@ -97,17 +101,6 @@ export class DialogContainerComponent extends BasePortalOutlet {
 
     /** @internal */
     readonly dialogContainerAnimation = computed(() => ({ value: this.state(), params: this.params() }))
-
-    constructor(
-        private readonly changeDetector: ChangeDetectorRef,
-        private readonly elementRef: ElementRef<HTMLElement>,
-        private readonly focusTrapFactory: ConfigurableFocusTrapFactory,
-        @Optional()
-        @Inject(DOCUMENT)
-        private readonly document?: Document
-    ) {
-        super()
-    }
 
     /**
      * Attach a ComponentPortal as content to this dialog container.
@@ -158,7 +151,6 @@ export class DialogContainerComponent extends BasePortalOutlet {
 
     startExitAnimation() {
         this.state.set('exit')
-        this.changeDetector.markForCheck()
     }
 
     /**

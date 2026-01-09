@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Inject, NgZone, afterRenderEffect, computed, input, linkedSignal, output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ElementRef, NgZone, afterRenderEffect, computed, input, linkedSignal, output, inject } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { CdkMonitorFocus } from '@angular/cdk/a11y'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
@@ -26,6 +26,12 @@ import { MultiYearViewComponent } from '../calendar-multi-year-view/calendar-mul
     }
 })
 export class CalendarComponent<T> {
+    private readonly elmRef = inject<ElementRef<HTMLElement>>(ElementRef)
+    private readonly pickerIntl = inject(DateTimeIntl)
+    private readonly ngZone = inject(NgZone)
+    private readonly dateTimeAdapter = inject<DateTimeAdapter<T>>(DateTimeAdapter)
+    private readonly dateTimeFormats = inject<DateTimeFormats>(NXT_DATE_TIME_FORMATS)
+
     /**
      * Date filter for the month and year view
      */
@@ -198,21 +204,15 @@ export class CalendarComponent<T> {
         )
     }
 
-    constructor(
-        private readonly elmRef: ElementRef<HTMLElement>,
-        private readonly pickerIntl: DateTimeIntl,
-        private readonly ngZone: NgZone,
-        private readonly dateTimeAdapter: DateTimeAdapter<T>,
-        @Inject(NXT_DATE_TIME_FORMATS)
-        private readonly dateTimeFormats: DateTimeFormats
-    ) {
+    constructor() {
         afterRenderEffect(() => {
             this.currentView()
-            this.ngZone.runOutsideAngular(() => {
+            this.focusActiveCell()
+            /*this.ngZone.runOutsideAngular(() => {
                 this.elmRef.nativeElement
                     ?.querySelector<HTMLElement>('.nxt-dt-calendar-cell-active')
                     ?.focus()
-            })
+            })*/
         })
     }
 
