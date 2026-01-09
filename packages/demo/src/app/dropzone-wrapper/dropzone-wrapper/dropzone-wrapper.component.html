@@ -1,4 +1,4 @@
-@if (!loading) {
+@if (!examples.isLoading()) {
 <app-meta title="nxt-dropzone-wrapper"
     (done)="doneCb()"
     description="Angular wrapper library for Dropzone"></app-meta>
@@ -21,7 +21,7 @@
         <li><a href="https://docs.dropzone.dev/configuration/basics/configuration-options"><strong>Dropzone documentation</strong></a></li>
     </ul>
 
-    @for (example of examples | async; track example; let i = $index) {
+    @for (example of examples.value(); track example.component; let i = $index) {
     <app-example [injector]="injector"
         [config]="example"
         [asTab]="true"

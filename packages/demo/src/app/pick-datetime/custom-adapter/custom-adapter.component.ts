@@ -1,9 +1,7 @@
-import { AsyncPipe } from '@angular/common'
-import { Component, Injector, OnInit, PendingTasks, ViewEncapsulation } from '@angular/core'
+import { Component, inject, Injector, PendingTasks, resource, ViewEncapsulation } from '@angular/core'
 import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
 import { ExampleComponent, ExampleConfig } from '../../example/example.component'
 import { MetaDirective } from '../../meta/meta.directive'
-import { WaitLoad } from '../../utils/wait-load.class'
 
 @Component({
     selector: 'app-custom-adapter',
@@ -13,31 +11,22 @@ import { WaitLoad } from '../../utils/wait-load.class'
     imports: [
         MetaDirective,
         ContentWrapComponent,
-        ExampleComponent,
-        AsyncPipe
+        ExampleComponent
     ]
 })
-export class CustomAdapterComponent extends WaitLoad implements OnInit {
+export class CustomAdapterComponent {
 
-    // @ts-expect-error TypeScript cannot provide types based on attributes yet
-    readonly exampleImpl = import('./custom-adapter.example.ts', { with: { loader: 'text' } })
-        .then(res => ({
-            name: 'Custom date & time adapter module',
-            path: 'pick-datetime/custom-adapter/custom-adapter.example.ts',
-            source: (res as any as { default: string }).default?.trim()
-        } as ExampleConfig))
+    readonly exampleImpl = resource({
+        // @ts-expect-error TypeScript cannot provide types based on attributes yet
+        loader: () => import('./custom-adapter.example.ts', { with: { loader: 'text' } })
+            .then(res => ({
+                name: 'Custom date & time adapter module',
+                path: 'pick-datetime/custom-adapter/custom-adapter.example.ts',
+                source: (res as any as { default: string }).default?.trim()
+            } as ExampleConfig))
+    })
 
-    readonly doneCb = this.ims.add()
+    readonly doneCb = inject(PendingTasks).add()
 
-    constructor(
-        readonly injector: Injector,
-        readonly ims: PendingTasks
-    ) {
-        super()
-    }
-
-    ngOnInit(): void {
-        this.exampleImpl.then(() => this.doneLoading())
-            .catch(console.error)
-    }
+    readonly injector = inject(Injector)
 }

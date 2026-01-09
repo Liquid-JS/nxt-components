@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, NgZone, computed, input, output, inject } from '@angular/core'
+import { Component, ElementRef, NgZone, computed, input, output, inject } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { SelectMode } from '../../class/date-time.class'
 
@@ -21,7 +21,6 @@ export class CalendarCell {
     templateUrl: './calendar-body.component.html',
     styleUrls: ['./calendar-body.component.scss'],
     preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class.nxt-dt-calendar-body]': 'true'
     }

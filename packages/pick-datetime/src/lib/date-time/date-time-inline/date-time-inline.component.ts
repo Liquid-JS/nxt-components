@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, OnInit, Provider, viewChild, output, input, computed, linkedSignal, signal } from '@angular/core'
+import { Component, forwardRef, OnInit, Provider, viewChild, output, input, computed, linkedSignal, signal } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 import { DateFilter, DateTimeDirective, PickerMode, PickerType, SelectMode } from '../../class/date-time.class'
 import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
@@ -14,7 +14,6 @@ export const NXT_DATETIME_VALUE_ACCESSOR: Provider = {
     selector: 'nxt-date-time-inline',
     templateUrl: './date-time-inline.component.html',
     styleUrls: ['./date-time-inline.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     preserveWhitespaces: false,
     providers: [NXT_DATETIME_VALUE_ACCESSOR],
     imports: [

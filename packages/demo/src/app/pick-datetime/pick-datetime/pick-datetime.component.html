@@ -1,4 +1,4 @@
-@if (!loading) {
+@if (!examples.isLoading()) {
 <app-meta title="nxt-pick-datetime"
     (done)="doneCb()"
     description="Simple responsive Angular date and time picker."></app-meta>
@@ -38,7 +38,7 @@
                 class="dropdown-menu"
                 role="menu"
                 aria-labelledby="button-basic">
-                @for (example of examples | async; track example; let i = $index) {
+                @for (example of examples.value(); track example.component; let i = $index) {
                 <li role="menuitem"><a class="dropdown-item"
                         routerLink="."
                         fragment="example-{{ i }}">{{ example.name }}</a></li>
@@ -49,7 +49,7 @@
 
     <hr class="no-padding">
 
-    @for (example of examples | async; track example; let i = $index) {
+    @for (example of examples.value(); track example.component; let i = $index) {
     <app-example [injector]="injector"
         [config]="example"
         id="example-{{ i }}"></app-example>

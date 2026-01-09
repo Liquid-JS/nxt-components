@@ -1,8 +1,8 @@
-@if (config) {
+@if (config(); as cfg) {
 <div class="example-container">
     <div class="example__title">
-        <h2 class="h3">{{ config.name }}</h2>
-        <span><a href="https://github.com/Liquid-JS/nxt-components/tree/master/packages/demo/src/app/{{ config.path }}"
+        <h2 class="h3">{{ cfg.name }}</h2>
+        <span><a href="https://github.com/Liquid-JS/nxt-components/tree/master/packages/demo/src/app/{{ cfg.path }}"
                 target="_blank"
                 class="example-open-github">
                 <svg viewBox="0 0 1024 1024"
@@ -15,28 +15,28 @@
                         fill="currentColor" />
                 </svg>
                 View on GitHub</a></span>
-        @if (config.description; as desc) {
+        @if (cfg.description; as desc) {
         <p>{{ desc }}</p>
         }
     </div>
-    @if (!asTab() && config.component) {
+    @if (!asTab() && cfg.component) {
     <div class="example__preview">
-        <ng-container [ngComponentOutlet]="config.component"
+        <ng-container [ngComponentOutlet]="cfg.component"
             [ngComponentOutletInjector]="injector()"></ng-container>
     </div>
     }
-    @if (sources && sources.length) {
+    @if (sources(); as src) {
     <div class="example__source">
-        @if (sources.length > 1 || (asTab() && config.component)) {
+        @if (src.length > 1 || (asTab() && cfg.component)) {
         <tabset>
-            @if (asTab() && config.component) {
+            @if (asTab() && cfg.component) {
             <tab heading="Preview"
                 class="example-tab-preview">
-                <ng-container [ngComponentOutlet]="config.component"
+                <ng-container [ngComponentOutlet]="cfg.component"
                     [ngComponentOutletInjector]="injector()"></ng-container>
             </tab>
             }
-            @for (source of sources; track source) {
+            @for (source of src; track source.key) {
             <tab [heading]="source.tab"
                 class="example-tab-content">
                 <pre><code [nxtHighlightAuto]="source.code"
@@ -45,14 +45,12 @@
             </tab>
             }
         </tabset>
-        } @else {
-        @if (sources[0]; as source) {
+        } @else if (src[0]; as source) {
         <div class="example-tab-content example-tab-content--single">
             <pre><code [nxtHighlightAuto]="source.code"
                   [languages]="[source.language]"
                 lineNumbers></code></pre>
         </div>
-        }
         }
     </div>
     }

@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core'
-import { Title } from '@angular/platform-browser'
+import { Component, ViewEncapsulation } from '@angular/core'
 import { CodeBlockComponent } from '../../code-block/code-block.component'
 import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
 import { InputsTableComponent } from '../../inputs-table/inputs-table.component'
 import docs from '../documentation.json'
+import { MetaDirective } from '../../meta/meta.directive'
 
 @Component({
     selector: 'app-getting-started',
@@ -13,10 +13,11 @@ import docs from '../documentation.json'
     imports: [
         ContentWrapComponent,
         CodeBlockComponent,
-        InputsTableComponent
+        InputsTableComponent,
+        MetaDirective
     ]
 })
-export class GettingStartedComponent implements OnInit {
+export class GettingStartedComponent {
 
     readonly installScript = 'npm install --save nxt-json-view'
 
@@ -59,12 +60,4 @@ export class GettingStartedComponent implements OnInit {
     readonly componentDocs = docs.components.find(d => d.selector == 'nxt-json-view')
 
     readonly inputs = this.componentDocs?.inputsClass.sort((a, b) => a.line - b.line) ?? []
-
-    constructor(
-        private readonly title: Title
-    ) { }
-
-    ngOnInit(): void {
-        this.title.setTitle('Getting started | nxt-json-view')
-    }
 }

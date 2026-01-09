@@ -1,12 +1,10 @@
-import { AsyncPipe } from '@angular/common'
-import { Component, Injector, OnInit, PendingTasks } from '@angular/core'
+import { Component, inject, Injector, PendingTasks, resource } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { registerLocale } from 'i18n-iso-countries'
 import locl from 'i18n-iso-countries/langs/en.json'
 import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
-import { ExampleComponent, ExampleConfig, LoaderConfig, resolveTempaltes } from '../../example/example.component'
+import { ExampleComponent, LoaderConfig, resolveTempaltes } from '../../example/example.component'
 import { MetaDirective } from '../../meta/meta.directive'
-import { WaitLoad } from '../../utils/wait-load.class'
 
 registerLocale(locl)
 
@@ -18,45 +16,32 @@ registerLocale(locl)
         MetaDirective,
         ContentWrapComponent,
         ExampleComponent,
-        RouterModule,
-        AsyncPipe
+        RouterModule
     ]
 })
-export class AppFlagsComponent extends WaitLoad implements OnInit {
+export class AppFlagsComponent {
 
-    readonly examples = Promise.all(new Array<LoaderConfig>(
-        {
-            path: 'basic-example',
-            name: 'Basic usage',
-            include: ['html', 'ts']
-        }
-    )
-        .map(p => Promise.all([
-            import(`../examples/${p.path}/${p.path}.component.ts`),
-            ...p.include.map(ext => ext == 'ts'
-                // @ts-expect-error TypeScript cannot provide types based on attributes yet
-                ? import(`../examples/${p.path}/${p.path}.component.ts`, { with: { loader: 'text' } })
-                : import(`../examples/${p.path}/${p.path}.component.${ext}`))
-        ])
-            .then(resolveTempaltes(p, 'flags/examples'))
+    readonly examples = resource({
+        loader: () => Promise.all(new Array<LoaderConfig>(
+            {
+                path: 'basic-example',
+                name: 'Basic usage',
+                include: ['html', 'ts']
+            }
         )
-    )
+            .map(p => Promise.all([
+                import(`../examples/${p.path}/${p.path}.component.ts`),
+                ...p.include.map(ext => ext == 'ts'
+                    // @ts-expect-error TypeScript cannot provide types based on attributes yet
+                    ? import(`../examples/${p.path}/${p.path}.component.ts`, { with: { loader: 'text' } })
+                    : import(`../examples/${p.path}/${p.path}.component.${ext}`))
+            ])
+                .then(resolveTempaltes(p, 'flags/examples'))
+            )
+        )
+    })
 
-    readonly doneCb = this.ims.add()
+    readonly doneCb = inject(PendingTasks).add()
 
-    constructor(
-        readonly injector: Injector,
-        readonly ims: PendingTasks
-    ) {
-        super()
-    }
-
-    ngOnInit(): void {
-        this.examples.then(() => this.doneLoading())
-            .catch(console.error)
-    }
-
-    exampleTrackBy(_i: number, val: ExampleConfig) {
-        return val.component
-    }
+    readonly injector = inject(Injector)
 }

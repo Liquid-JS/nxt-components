@@ -1,7 +1,7 @@
 import { coerceArray } from '@angular/cdk/coercion'
 import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
-import { ChangeDetectionStrategy, Component, ComponentRef, InjectionToken, NgZone, OnDestroy, ViewContainerRef, DOCUMENT, input, output, computed, signal, linkedSignal, effect, inject } from '@angular/core'
+import { Component, ComponentRef, InjectionToken, NgZone, OnDestroy, ViewContainerRef, DOCUMENT, input, output, computed, signal, linkedSignal, effect, inject } from '@angular/core'
 import { merge, Subscription } from 'rxjs'
 import { filter, take } from 'rxjs/operators'
 import { DateTimeDirective, PickerMode, PickerType } from '../../class/date-time.class'
@@ -23,7 +23,6 @@ export const NXT_DTPICKER_SCROLL_STRATEGY = new InjectionToken<
     selector: 'nxt-date-time',
     templateUrl: './date-time-picker.component.html',
     styleUrls: ['./date-time-picker.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     preserveWhitespaces: false
 })
 export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDestroy {

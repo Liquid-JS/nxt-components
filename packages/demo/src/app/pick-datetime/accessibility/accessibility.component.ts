@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core'
-import { Title } from '@angular/platform-browser'
+import { Component, ViewEncapsulation } from '@angular/core'
 import { ContentWrapComponent } from '../../content-wrap/content-wrap.component'
 import { MetaDirective } from '../../meta/meta.directive'
 
@@ -13,14 +12,6 @@ import { MetaDirective } from '../../meta/meta.directive'
         ContentWrapComponent
     ]
 })
-export class AccessibilityComponent implements OnInit {
-
-    constructor(
-        private readonly title: Title
-    ) { }
-
-    ngOnInit(): void {
-        this.title.setTitle('Accessibility | nxt-pick-datetime')
-    }
+export class AccessibilityComponent {
 
 }

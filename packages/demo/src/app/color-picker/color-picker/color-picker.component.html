@@ -1,4 +1,4 @@
-@if (!loading) {
+@if (!examples.isLoading()) {
 <app-meta title="nxt-color-picker"
     (done)="doneCb()"
     description="A color picker widget for Angular with no dependencies."></app-meta>
@@ -31,7 +31,7 @@
             <ul *dropdownMenu
                 class="dropdown-menu"
                 role="menu">
-                @for (example of examples | async; track example; let i = $index) {
+                @for (example of examples.value(); track example.component; let i = $index) {
                 <li role="menuitem"><a class="dropdown-item"
                         routerLink="."
                         fragment="example-{{ i }}">{{ example.name }}</a></li>
@@ -42,7 +42,7 @@
 
     <hr class="no-padding">
 
-    @for (example of examples | async; track example; let i = $index) {
+    @for (example of examples.value(); track example.component; let i = $index) {
     <app-example [injector]="injector"
         [config]="example"
         id="example-{{ i }}"></app-example>

@@ -3558,7 +3558,7 @@
     "classes": [
         {
             "name": "CalendarCell",
-            "id": "class-CalendarCell-fdec67f5c2e4702543ca04dc45aa606c63fa0f8baee07ddab6f817d1b40a9245276a24ff663d7c10e505628749ab8fe251ef02ca42304f7efad90f1be6d251c3",
+            "id": "class-CalendarCell-48da3071d0f812855f363aa4262e6869b7e2d4b854966496832bae3d0c474e9d0d7afb7ac0b3ea0a86a1f20083649cd8b541926769ccc08bec0919d73c870638",
             "file": "src/lib/date-time/calendar-body/calendar-body.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -7262,9 +7262,8 @@
     "components": [
         {
             "name": "CalendarComponent",
-            "id": "component-CalendarComponent-a855d099eb3adfd06c7ec5b4494f528962fc5489841987bd26ddbe87633879cf49a6d31ad3b5be230be0635a8cd08ca881a7443135bf4d8f763cf705a9e89f7b",
+            "id": "component-CalendarComponent-39aca3345bd19eb0fda801ae2c3e4feb3c14f0b4a54b03eb27ab1b66e9f0464f4283d374b4f8dad5006b4a05a166905c1945fd27e151167b2d517055fbfd5116",
             "file": "src/lib/date-time/calendar/calendar.component.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "host": {},
@@ -7291,7 +7290,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The current picker moment</p>\n",
-                    "line": 79,
+                    "line": 78,
                     "rawdescription": "\nThe current picker moment",
                     "modifierKind": [
                         148
@@ -7306,7 +7305,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Date filter for the month and year view</p>\n",
-                    "line": 38,
+                    "line": 37,
                     "rawdescription": "\n\nDate filter for the month and year view\n",
                     "modifierKind": [
                         148
@@ -7322,7 +7321,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Set the first day of week</p>\n",
-                    "line": 43,
+                    "line": 42,
                     "rawdescription": "\n\nSet the first day of week\n",
                     "modifierKind": [
                         148
@@ -7338,7 +7337,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Whether to hide dates in other months at the start or end of the current month</p>\n",
-                    "line": 116,
+                    "line": 115,
                     "rawdescription": "\n\nWhether to hide dates in other months at the start or end of the current month\n",
                     "modifierKind": [
                         148
@@ -7354,7 +7353,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The maximum selectable date</p>\n",
-                    "line": 62,
+                    "line": 61,
                     "rawdescription": "\nThe maximum selectable date",
                     "modifierKind": [
                         148
@@ -7370,7 +7369,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The minimum selectable date</p>\n",
-                    "line": 46,
+                    "line": 45,
                     "rawdescription": "\nThe minimum selectable date",
                     "modifierKind": [
                         148
@@ -7386,7 +7385,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The currently selected moment</p>\n",
-                    "line": 94,
+                    "line": 93,
                     "rawdescription": "\nThe currently selected moment",
                     "modifierKind": [
                         148
@@ -7402,7 +7401,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 101,
+                    "line": 100,
                     "modifierKind": [
                         148
                     ],
@@ -7416,7 +7415,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 91,
+                    "line": 90,
                     "modifierKind": [
                         148
                     ],
@@ -7431,7 +7430,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The view that the calendar should start in</p>\n",
-                    "line": 111,
+                    "line": 110,
                     "rawdescription": "\n\nThe view that the calendar should start in\n",
                     "modifierKind": [
                         148
@@ -7448,7 +7447,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits the selected month</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 139,
+                    "line": 138,
                     "rawdescription": "\n\nEmits the selected month\n\nThis doesn't imply a change on the selected date.\n",
                     "modifierKind": [
                         148
@@ -7463,7 +7462,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits when the currently picker moment changes</p>\n",
-                    "line": 119,
+                    "line": 118,
                     "rawdescription": "\nEmits when the currently picker moment changes",
                     "modifierKind": [
                         148
@@ -7478,7 +7477,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits when the currently selected date changes</p>\n",
-                    "line": 122,
+                    "line": 121,
                     "rawdescription": "\nEmits when the currently selected date changes",
                     "modifierKind": [
                         148
@@ -7493,7 +7492,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits when any date is selected</p>\n",
-                    "line": 125,
+                    "line": 124,
                     "rawdescription": "\nEmits when any date is selected",
                     "modifierKind": [
                         148
@@ -7508,7 +7507,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits the selected year</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 132,
+                    "line": 131,
                     "rawdescription": "\n\nEmits the selected year\n\nThis doesn't imply a change on the selected date.\n",
                     "modifierKind": [
                         148
@@ -7526,7 +7525,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 172,
+                    "line": 171,
                     "modifierKind": [
                         148
                     ]
@@ -7540,7 +7539,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Date filter for the month and year view</p>\n",
-                    "line": 195,
+                    "line": 194,
                     "rawdescription": "\n\nDate filter for the month and year view\n"
                 },
                 {
@@ -7552,7 +7551,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 179,
+                    "line": 178,
                     "modifierKind": [
                         148
                     ]
@@ -7566,7 +7565,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 177,
+                    "line": 176,
                     "modifierKind": [
                         148
                     ]
@@ -7580,7 +7579,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 190,
+                    "line": 189,
                     "modifierKind": [
                         148
                     ]
@@ -7594,7 +7593,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 162,
+                    "line": 161,
                     "modifierKind": [
                         148
                     ]
@@ -7608,7 +7607,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 148,
+                    "line": 147,
                     "modifierKind": [
                         148
                     ]
@@ -7622,7 +7621,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 141,
+                    "line": 140,
                     "modifierKind": [
                         148
                     ]
@@ -7636,7 +7635,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 86,
+                    "line": 85,
                     "modifierKind": [
                         148
                     ]
@@ -7650,7 +7649,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 152,
+                    "line": 151,
                     "modifierKind": [
                         148
                     ]
@@ -7664,7 +7663,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 188,
+                    "line": 187,
                     "modifierKind": [
                         148
                     ]
@@ -7685,7 +7684,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 251,
+                    "line": 250,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7707,7 +7706,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 314,
+                    "line": 313,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFocus to the host element\n",
@@ -7732,7 +7731,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 267,
+                    "line": 266,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nChange the pickerMoment value and switch to a specific view\n",
@@ -7771,7 +7770,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 279,
+                    "line": 278,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nChange the pickerMoment value\n",
@@ -7794,7 +7793,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 305,
+                    "line": 304,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nWhether the next period button is enabled.\n",
@@ -7806,7 +7805,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 242,
+                    "line": 241,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandles user clicks on the next button.\n",
@@ -7818,7 +7817,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 296,
+                    "line": 295,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nWhether the previous period button is enabled.\n",
@@ -7830,7 +7829,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 230,
+                    "line": 229,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandles user clicks on the previous button.\n",
@@ -7849,7 +7848,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 331,
+                    "line": 330,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7877,7 +7876,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 327,
+                    "line": 326,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -7898,7 +7897,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 222,
+                    "line": 221,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nToggle between month view and year view\n",
@@ -7910,7 +7909,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 289,
+                    "line": 288,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -7948,15 +7947,14 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 205
+                "line": 204
             },
             "extends": []
         },
         {
             "name": "DateTimeComponent",
-            "id": "component-DateTimeComponent-b3f5df854526647362a3708bc7bb466b9f00f9a00851225ed920a73ada580c00d2b8f21388ecbb746a53aec446a8fd3c9b06089492c4e69a25e685d2cc6eac18",
+            "id": "component-DateTimeComponent-131127b66b46d9da47e5272d7acdbabd5d827fb83e4dca8ec17f7be03843a7e2937d953a795073dabed1b1ddf7e2cee38476646f6bf7f6d3cd7460c4c33954de",
             "file": "src/lib/date-time/date-time-picker/date-time-picker.component.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -7982,7 +7980,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Whether the date time picker should be disabled</p>\n",
-                    "line": 106,
+                    "line": 105,
                     "rawdescription": "\nWhether the date time picker should be disabled",
                     "modifierKind": [
                         148
@@ -7998,7 +7996,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Whether the calendar is open</p>\n",
-                    "line": 114,
+                    "line": 113,
                     "rawdescription": "\nWhether the calendar is open",
                     "modifierKind": [
                         148
@@ -8014,7 +8012,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The date to show when picker opens</p>\n<p>Defaults to selected date (if available) or current date.</p>\n",
-                    "line": 48,
+                    "line": 47,
                     "rawdescription": "\n\nThe date to show when picker opens\n\nDefaults to selected date (if available) or current date.\n",
                     "modifierKind": [
                         148
@@ -8029,7 +8027,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Custom class for the picker backdrop</p>\n",
-                    "line": 38,
+                    "line": 37,
                     "rawdescription": "\nCustom class for the picker backdrop",
                     "modifierKind": [
                         148
@@ -8044,7 +8042,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Custom class for the picker overlay pane</p>\n",
-                    "line": 41,
+                    "line": 40,
                     "rawdescription": "\nCustom class for the picker overlay pane",
                     "modifierKind": [
                         148
@@ -8060,7 +8058,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The style the picker would open as</p>\n<ul>\n<li><code>&#39;popup&#39;</code> - display picker attached to the trigger element</li>\n<li><code>&#39;dialog&#39;</code> - display picker as a dialog</li>\n</ul>\n",
-                    "line": 94,
+                    "line": 93,
                     "rawdescription": "\n\nThe style the picker would open as\n\n-    `'popup'` - display picker attached to the trigger element\n-    `'dialog'` - display picker as a dialog\n",
                     "modifierKind": [
                         148
@@ -8076,7 +8074,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Set the type of the dateTime picker</p>\n<ul>\n<li><code>&#39;both&#39;</code> - show both calendar and timer</li>\n<li><code>&#39;calendar&#39;</code> - show only calendar</li>\n<li><code>&#39;timer&#39;</code> - show only timer</li>\n</ul>\n",
-                    "line": 86,
+                    "line": 85,
                     "rawdescription": "\n\nSet the type of the dateTime picker\n\n-    `'both'` - show both calendar and timer\n-    `'calendar'` - show only calendar\n-    `'timer'` - show only timer\n",
                     "modifierKind": [
                         148
@@ -8091,7 +8089,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The scroll strategy when the picker is open (see <a href=\"https://material.angular.io/cdk/overlay/overview#scroll-strategies\">CDK documentation</a>)</p>\n",
-                    "line": 120,
+                    "line": 119,
                     "rawdescription": "\n\nThe scroll strategy when the picker is open (see [CDK documentation](https://material.angular.io/cdk/overlay/overview#scroll-strategies))\n",
                     "modifierKind": [
                         148
@@ -8261,7 +8259,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Callback when the picker is closed</p>\n",
-                    "line": 132,
+                    "line": 131,
                     "rawdescription": "\n\nCallback when the picker is closed\n",
                     "modifierKind": [
                         148
@@ -8277,7 +8275,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Callback when the picker is opened</p>\n",
-                    "line": 126,
+                    "line": 125,
                     "rawdescription": "\n\nCallback when the picker is opened\n",
                     "modifierKind": [
                         148
@@ -8292,7 +8290,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emit when the selected value has been confirmed</p>\n",
-                    "line": 156,
+                    "line": 155,
                     "rawdescription": "\n\nEmit when the selected value has been confirmed\n",
                     "modifierKind": [
                         148
@@ -8307,7 +8305,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits when the date time picker is disabled</p>\n",
-                    "line": 161,
+                    "line": 160,
                     "rawdescription": "\n\nEmits when the date time picker is disabled\n",
                     "modifierKind": [
                         148
@@ -8322,7 +8320,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits when picker open state changes</p>\n",
-                    "line": 151,
+                    "line": 150,
                     "rawdescription": "\n\nEmits when picker open state changes\n",
                     "modifierKind": [
                         148
@@ -8337,7 +8335,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits selected month in year view</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 146,
+                    "line": 145,
                     "rawdescription": "\n\nEmits selected month in year view\n\nThis doesn't imply a change on the selected date.\n",
                     "modifierKind": [
                         148
@@ -8352,7 +8350,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits selected year in multi-year view</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 139,
+                    "line": 138,
                     "rawdescription": "\n\nEmits selected year in multi-year view\n\nThis doesn't imply a change on the selected date.\n",
                     "modifierKind": [
                         148
@@ -8370,7 +8368,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 191,
+                    "line": 190,
                     "modifierKind": [
                         148
                     ],
@@ -8387,7 +8385,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 107,
+                    "line": 106,
                     "modifierKind": [
                         148
                     ],
@@ -8404,7 +8402,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 177,
+                    "line": 176,
                     "modifierKind": [
                         148
                     ]
@@ -8418,7 +8416,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 197,
+                    "line": 196,
                     "modifierKind": [
                         148
                     ],
@@ -8435,7 +8433,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 195,
+                    "line": 194,
                     "modifierKind": [
                         148
                     ],
@@ -8452,7 +8450,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 115,
+                    "line": 114,
                     "modifierKind": [
                         148
                     ],
@@ -8469,7 +8467,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The maximum selectable date</p>\n",
-                    "line": 189,
+                    "line": 188,
                     "rawdescription": "\nThe maximum selectable date",
                     "modifierKind": [
                         148
@@ -8487,7 +8485,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The minimum selectable date</p>\n",
-                    "line": 186,
+                    "line": 185,
                     "rawdescription": "\nThe minimum selectable date",
                     "modifierKind": [
                         148
@@ -8505,7 +8503,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 181,
+                    "line": 180,
                     "modifierKind": [
                         148
                     ],
@@ -8522,7 +8520,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 183,
+                    "line": 182,
                     "modifierKind": [
                         148
                     ],
@@ -8539,7 +8537,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 193,
+                    "line": 192,
                     "modifierKind": [
                         148
                     ],
@@ -8556,7 +8554,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 55,
+                    "line": 54,
                     "modifierKind": [
                         148
                     ],
@@ -8724,7 +8722,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 378,
+                    "line": 377,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHide the picker\n",
@@ -8744,7 +8742,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 436,
+                    "line": 435,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nConfirm the selected value\n",
@@ -8768,7 +8766,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 243,
+                    "line": 242,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -8778,7 +8776,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 270,
+                    "line": 269,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -8795,7 +8793,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 260,
+                    "line": 259,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -8823,7 +8821,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 331,
+                    "line": 330,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSelects the given date\n",
@@ -8856,7 +8854,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 371,
+                    "line": 370,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits selected month in year view\n",
@@ -8889,7 +8887,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 364,
+                    "line": 363,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits the selected year in multi-year view\n",
@@ -8961,7 +8959,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 197
+                "line": 196
             },
             "extends": [
                 "DateTimeDirective"
@@ -8972,9 +8970,8 @@
         },
         {
             "name": "DateTimeInlineComponent",
-            "id": "component-DateTimeInlineComponent-7dcc2a0b69e645bdf795865c88db9d8a6b455a01cabe329ea06ef2e76d2c7ffef0a55669c1ad8c1ecdc9740f6d52405c3b50734f1f551aad690dfb9828c38bd1",
+            "id": "component-DateTimeInlineComponent-4924918998d762c12f5da5847298cd553f1ac33ed17f1f7795cf4ef96830f6e732aa6e6ba629a5f846bab08e78106d0f35237d57a5617b5d1f8072c58ab41644",
             "file": "src/lib/date-time/date-time-inline/date-time-inline.component.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "host": {},
@@ -9005,7 +9002,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Whether the date time picker should be disabled</p>\n",
-                    "line": 42,
+                    "line": 41,
                     "rawdescription": "\nWhether the date time picker should be disabled",
                     "modifierKind": [
                         148
@@ -9021,7 +9018,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The date to show when picker opens</p>\n<p>Defaults to selected date (if available) or current date.</p>\n",
-                    "line": 96,
+                    "line": 95,
                     "rawdescription": "\n\nThe date to show when picker opens\n\nDefaults to selected date (if available) or current date.\n",
                     "modifierKind": [
                         148
@@ -9037,7 +9034,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 59,
+                    "line": 58,
                     "modifierKind": [
                         148
                     ],
@@ -9052,7 +9049,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 72,
+                    "line": 71,
                     "modifierKind": [
                         148
                     ],
@@ -9066,7 +9063,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>A function to filter available date &amp; time</p>\n",
-                    "line": 126,
+                    "line": 125,
                     "rawdescription": "\nA function to filter available date & time",
                     "modifierKind": [
                         148
@@ -9082,7 +9079,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The maximum valid date</p>\n",
-                    "line": 137,
+                    "line": 136,
                     "rawdescription": "\nThe maximum valid date",
                     "modifierKind": [
                         148
@@ -9098,7 +9095,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The minimum valid date</p>\n",
-                    "line": 129,
+                    "line": 128,
                     "rawdescription": "\nThe minimum valid date",
                     "modifierKind": [
                         148
@@ -9114,7 +9111,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Set the type of the dateTime picker</p>\n<ul>\n<li><code>&#39;both&#39;</code> - show both calendar and timer</li>\n<li><code>&#39;calendar&#39;</code> - show only calendar</li>\n<li><code>&#39;timer&#39;</code> - show only timer</li>\n</ul>\n",
-                    "line": 38,
+                    "line": 37,
                     "rawdescription": "\n\nSet the type of the dateTime picker\n\n-    `'both'` - show both calendar and timer\n-    `'calendar'` - show only calendar\n-    `'timer'` - show only timer\n",
                     "modifierKind": [
                         148
@@ -9130,7 +9127,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The picker select mode</p>\n<ul>\n<li><code>&#39;single&#39;</code> - select a single date</li>\n<li><code>&#39;range&#39;</code> - select a range [from, to]</li>\n<li><code>&#39;rangeFrom&#39;</code> - an open range with a fixed start date</li>\n<li><code>&#39;rangeTo&#39;</code> - an open range with a fixed end date</li>\n</ul>\n",
-                    "line": 56,
+                    "line": 55,
                     "rawdescription": "\n\nThe picker select mode\n\n-    `'single'` - select a single date\n-    `'range'` - select a range [from, to]\n-    `'rangeFrom'` - an open range with a fixed start date\n-    `'rangeTo'` - an open range with a fixed end date\n",
                     "modifierKind": [
                         148
@@ -9299,7 +9296,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits selected month in year view</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 156,
+                    "line": 155,
                     "rawdescription": "\n\nEmits selected month in year view\n\nThis doesn't imply a change on the selected date.\n",
                     "modifierKind": [
                         148
@@ -9314,7 +9311,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits selected year in multi-year view</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 149,
+                    "line": 148,
                     "rawdescription": "\n\nEmits selected year in multi-year view\n\nThis doesn't imply a change on the selected date.\n",
                     "modifierKind": [
                         148
@@ -9332,7 +9329,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 43,
+                    "line": 42,
                     "modifierKind": [
                         148
                     ],
@@ -9349,7 +9346,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 174,
+                    "line": 173,
                     "modifierKind": [
                         148
                     ],
@@ -9366,7 +9363,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 172,
+                    "line": 171,
                     "modifierKind": [
                         148
                     ],
@@ -9383,7 +9380,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 168,
+                    "line": 167,
                     "modifierKind": [
                         148
                     ],
@@ -9400,7 +9397,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 170,
+                    "line": 169,
                     "modifierKind": [
                         148
                     ],
@@ -9417,7 +9414,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 158,
+                    "line": 157,
                     "modifierKind": [
                         148
                     ],
@@ -9434,7 +9431,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 163,
+                    "line": 162,
                     "modifierKind": [
                         148
                     ],
@@ -9451,7 +9448,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 103,
+                    "line": 102,
                     "modifierKind": [
                         148
                     ],
@@ -9468,7 +9465,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 64,
+                    "line": 63,
                     "modifierKind": [
                         148
                     ]
@@ -9482,7 +9479,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 77,
+                    "line": 76,
                     "modifierKind": [
                         148
                     ]
@@ -9695,7 +9692,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 183,
+                    "line": 182,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -9712,7 +9709,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 206,
+                    "line": 205,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9740,7 +9737,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 210,
+                    "line": 209,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9768,7 +9765,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 218,
+                    "line": 217,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9799,7 +9796,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 242,
+                    "line": 241,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits selected month in year view\n",
@@ -9832,7 +9829,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 235,
+                    "line": 234,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEmits the selected year in multi-year view\n",
@@ -9865,7 +9862,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 214,
+                    "line": 213,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9893,7 +9890,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 189,
+                    "line": 188,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -9969,9 +9966,8 @@
         },
         {
             "name": "MonthViewComponent",
-            "id": "component-MonthViewComponent-a121130feb2f60fc12b2eb0222f0b8d7bba59cdb07ed1f9bbaa7d7bc286cb9aa91dbe8d78ee4eb7bd1ecb670009fba486332df9295a444fdce262d4148d02bf9",
+            "id": "component-MonthViewComponent-44d51b14924ba3e4f366079c5aba9060d7674f4f3125cb55a8d16495d83a0e856d56dbee6d39e85c24cecc6a30538f0165fdbaa8e6256bbb70215146c6bd2058",
             "file": "src/lib/date-time/calendar-month-view/calendar-month-view.component.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "host": {},
@@ -9997,7 +9993,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>A function used to filter which dates are selectable</p>\n",
-                    "line": 79,
+                    "line": 78,
                     "rawdescription": "\n\nA function used to filter which dates are selectable\n",
                     "modifierKind": [
                         148
@@ -10013,7 +10009,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Define the first day of a week\nSunday: 0 ~ Saturday: 6</p>\n",
-                    "line": 40,
+                    "line": 39,
                     "rawdescription": "\n\nDefine the first day of a week\nSunday: 0 ~ Saturday: 6\n",
                     "modifierKind": [
                         148
@@ -10029,7 +10025,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Whether to hide dates in other months at the start or end of the current month</p>\n",
-                    "line": 33,
+                    "line": 32,
                     "rawdescription": "\n\nWhether to hide dates in other months at the start or end of the current month\n",
                     "modifierKind": [
                         148
@@ -10045,7 +10041,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The maximum selectable date</p>\n",
-                    "line": 90,
+                    "line": 89,
                     "rawdescription": "\nThe maximum selectable date",
                     "modifierKind": [
                         148
@@ -10061,7 +10057,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The minimum selectable date</p>\n",
-                    "line": 82,
+                    "line": 81,
                     "rawdescription": "\nThe minimum selectable date",
                     "modifierKind": [
                         148
@@ -10077,7 +10073,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 69,
+                    "line": 68,
                     "modifierKind": [
                         148
                     ],
@@ -10092,7 +10088,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The currently selected date</p>\n",
-                    "line": 55,
+                    "line": 54,
                     "rawdescription": "\nThe currently selected date",
                     "modifierKind": [
                         148
@@ -10108,7 +10104,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 62,
+                    "line": 61,
                     "modifierKind": [
                         148
                     ],
@@ -10123,7 +10119,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The select mode of the picker;</p>\n",
-                    "line": 52,
+                    "line": 51,
                     "rawdescription": "\n\nThe select mode of the picker;\n",
                     "modifierKind": [
                         148
@@ -10140,7 +10136,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits when any date is activated</p>\n",
-                    "line": 273,
+                    "line": 272,
                     "rawdescription": "\nEmits when any date is activated",
                     "modifierKind": [
                         148
@@ -10155,7 +10151,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Callback to invoke when a new date is selected</p>\n",
-                    "line": 265,
+                    "line": 264,
                     "rawdescription": "\n\nCallback to invoke when a new date is selected\n",
                     "modifierKind": [
                         148
@@ -10170,7 +10166,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Callback to invoke when any date is selected.</p>\n",
-                    "line": 270,
+                    "line": 269,
                     "rawdescription": "\n\nCallback to invoke when any date is selected.\n",
                     "modifierKind": [
                         148
@@ -10188,7 +10184,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 110,
+                    "line": 109,
                     "modifierKind": [
                         148
                     ]
@@ -10202,7 +10198,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 173,
+                    "line": 172,
                     "modifierKind": [
                         148
                     ]
@@ -10216,7 +10212,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 166,
+                    "line": 165,
                     "modifierKind": [
                         148
                     ]
@@ -10230,7 +10226,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 255,
+                    "line": 254,
                     "modifierKind": [
                         148
                     ]
@@ -10244,7 +10240,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 186,
+                    "line": 185,
                     "modifierKind": [
                         148
                     ]
@@ -10258,7 +10254,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 184,
+                    "line": 183,
                     "modifierKind": [
                         148
                     ]
@@ -10272,7 +10268,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>An array to hold all selectedDates&#39; value\nthe value is the day number in current month</p>\n",
-                    "line": 217,
+                    "line": 216,
                     "rawdescription": "\n\nAn array to hold all selectedDates' value\nthe value is the day number in current month\n",
                     "modifierKind": [
                         148
@@ -10287,7 +10283,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The date of the month that today falls on.</p>\n",
-                    "line": 205,
+                    "line": 204,
                     "rawdescription": "\n\nThe date of the month that today falls on.\n",
                     "modifierKind": [
                         148
@@ -10302,7 +10298,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 97,
+                    "line": 96,
                     "modifierKind": [
                         148
                     ]
@@ -10322,7 +10318,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 309,
+                    "line": 308,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandle keydown event on calendar body\n",
@@ -10360,7 +10356,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 472,
+                    "line": 471,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nCheck if the give dates are defined and in the same month\n",
@@ -10401,7 +10397,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 281,
+                    "line": 280,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandle a calendarCell selected\n",
@@ -10439,9 +10435,8 @@
         },
         {
             "name": "MultiYearViewComponent",
-            "id": "component-MultiYearViewComponent-f07016b569155857c513e6fbf1af11c1d7b7d99294dca4bfcfb2c4878db5e7b17d079b4d1f51f2401f20f7eeb3bef94e61ac5e687b6bc29b6309193c15188232",
+            "id": "component-MultiYearViewComponent-06926c37868d9301fe822e9ed3d6094d31be19e63922e4ca8da6d9b5967795aa23e3aaaf0d2c1309c8f963ce729076c5a3ffbf1535e75f18fe0a8d85b330fadf",
             "file": "src/lib/date-time/calendar-multi-year-view/calendar-multi-year-view.component.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "host": {},
@@ -10468,7 +10463,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Settable signal for pickerMoment</p>\n",
-                    "line": 54,
+                    "line": 53,
                     "rawdescription": "\nSettable signal for pickerMoment",
                     "modifierKind": [
                         148
@@ -10483,7 +10478,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>A function used to filter which dates are selectable</p>\n",
-                    "line": 68,
+                    "line": 67,
                     "rawdescription": "\n\nA function used to filter which dates are selectable\n",
                     "modifierKind": [
                         148
@@ -10499,7 +10494,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The maximum selectable date</p>\n",
-                    "line": 79,
+                    "line": 78,
                     "rawdescription": "\nThe maximum selectable date",
                     "modifierKind": [
                         148
@@ -10515,7 +10510,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The minimum selectable date</p>\n",
-                    "line": 71,
+                    "line": 70,
                     "rawdescription": "\nThe minimum selectable date",
                     "modifierKind": [
                         148
@@ -10531,7 +10526,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The currently selected date</p>\n",
-                    "line": 38,
+                    "line": 37,
                     "rawdescription": "\nThe currently selected date",
                     "modifierKind": [
                         148
@@ -10547,7 +10542,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 45,
+                    "line": 44,
                     "modifierKind": [
                         148
                     ],
@@ -10562,7 +10557,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The select mode of the picker;</p>\n",
-                    "line": 35,
+                    "line": 34,
                     "rawdescription": "\n\nThe select mode of the picker;\n",
                     "modifierKind": [
                         148
@@ -10579,7 +10574,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Callback to invoke when a new month is selected</p>\n",
-                    "line": 165,
+                    "line": 164,
                     "rawdescription": "\n\nCallback to invoke when a new month is selected\n",
                     "modifierKind": [
                         148
@@ -10594,7 +10589,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits when use keyboard enter to select a calendar cell</p>\n",
-                    "line": 178,
+                    "line": 177,
                     "rawdescription": "\nEmits when use keyboard enter to select a calendar cell",
                     "modifierKind": [
                         148
@@ -10609,7 +10604,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits when any date is activated</p>\n",
-                    "line": 175,
+                    "line": 174,
                     "rawdescription": "\nEmits when any date is activated",
                     "modifierKind": [
                         148
@@ -10624,7 +10619,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits the selected year</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 172,
+                    "line": 171,
                     "rawdescription": "\n\nEmits the selected year\n\nThis doesn't imply a change on the selected date.\n",
                     "modifierKind": [
                         148
@@ -10642,7 +10637,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 142,
+                    "line": 141,
                     "modifierKind": [
                         148
                     ]
@@ -10656,7 +10651,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 118,
+                    "line": 117,
                     "modifierKind": [
                         148
                     ]
@@ -10670,7 +10665,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 116,
+                    "line": 115,
                     "modifierKind": [
                         148
                     ]
@@ -10684,7 +10679,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 159,
+                    "line": 158,
                     "modifierKind": [
                         148
                     ]
@@ -10698,7 +10693,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 60,
+                    "line": 59,
                     "modifierKind": [
                         148
                     ]
@@ -10712,7 +10707,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 157,
+                    "line": 156,
                     "modifierKind": [
                         148
                     ]
@@ -10726,7 +10721,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 124,
+                    "line": 123,
                     "modifierKind": [
                         148
                     ]
@@ -10740,7 +10735,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 149,
+                    "line": 148,
                     "modifierKind": [
                         148
                     ]
@@ -10754,7 +10749,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 114,
+                    "line": 113,
                     "modifierKind": [
                         148
                     ]
@@ -10768,7 +10763,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 112,
+                    "line": 111,
                     "modifierKind": [
                         148
                     ]
@@ -10788,7 +10783,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 239,
+                    "line": 238,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -10809,7 +10804,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 235,
+                    "line": 234,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nWhether the next period button is enabled",
@@ -10828,7 +10823,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 221,
+                    "line": 220,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nGenerate the next year list\n",
@@ -10851,7 +10846,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 227,
+                    "line": 226,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\nWhether the previous period button is enabled",
@@ -10870,7 +10865,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 213,
+                    "line": 212,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nGenerate the previous year list\n",
@@ -10900,7 +10895,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 186,
+                    "line": 185,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandle a calendarCell selected\n",
@@ -10938,9 +10933,8 @@
         },
         {
             "name": "TimerComponent",
-            "id": "component-TimerComponent-6b7a848acb3b0223c04b06fb6fdfc784f3961346833ffe38662dd8595094a23aadb6846839269b5ed26250543f855b66f8aa475d88941c56e0256a370f204273",
+            "id": "component-TimerComponent-a0a29b40de51daf15b58abf3bba60142ad5f0e070e1ff3d336d80fbd1815bcfcf06139476972f08c7b3d038fbb64a8dd97c0023f2ef8455a0d49aa4823f7a3ed",
             "file": "src/lib/date-time/timer/timer.component.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "host": {},
@@ -10967,7 +10961,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Whether the timer is in hour12 format</p>\n",
-                    "line": 59,
+                    "line": 58,
                     "rawdescription": "\n\nWhether the timer is in hour12 format\n",
                     "modifierKind": [
                         148
@@ -10983,7 +10977,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The maximum selectable date time</p>\n",
-                    "line": 44,
+                    "line": 43,
                     "rawdescription": "\nThe maximum selectable date time",
                     "modifierKind": [
                         148
@@ -10999,7 +10993,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The minimum selectable date time</p>\n",
-                    "line": 36,
+                    "line": 35,
                     "rawdescription": "\nThe minimum selectable date time",
                     "modifierKind": [
                         148
@@ -11015,7 +11009,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The current picker moment</p>\n",
-                    "line": 28,
+                    "line": 27,
                     "rawdescription": "\nThe current picker moment",
                     "modifierKind": [
                         148
@@ -11031,7 +11025,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Whether to show the second&#39;s timer</p>\n",
-                    "line": 54,
+                    "line": 53,
                     "rawdescription": "\n\nWhether to show the second's timer\n",
                     "modifierKind": [
                         148
@@ -11047,7 +11041,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Hours to change per step</p>\n",
-                    "line": 64,
+                    "line": 63,
                     "rawdescription": "\n\nHours to change per step\n",
                     "modifierKind": [
                         148
@@ -11063,7 +11057,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Minutes to change per step</p>\n",
-                    "line": 69,
+                    "line": 68,
                     "rawdescription": "\n\nMinutes to change per step\n",
                     "modifierKind": [
                         148
@@ -11079,7 +11073,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Seconds to change per step</p>\n",
-                    "line": 74,
+                    "line": 73,
                     "rawdescription": "\n\nSeconds to change per step\n",
                     "modifierKind": [
                         148
@@ -11096,7 +11090,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 139,
+                    "line": 138,
                     "modifierKind": [
                         148
                     ],
@@ -11113,7 +11107,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 125,
+                    "line": 124,
                     "modifierKind": [
                         148
                     ]
@@ -11127,7 +11121,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Check if the down hour button is enabled</p>\n",
-                    "line": 212,
+                    "line": 211,
                     "rawdescription": "\n\nCheck if the down hour button is enabled\n",
                     "modifierKind": [
                         148
@@ -11142,7 +11136,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 129,
+                    "line": 128,
                     "modifierKind": [
                         148
                     ]
@@ -11156,7 +11150,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Check if the down minute button is enabled</p>\n",
-                    "line": 228,
+                    "line": 227,
                     "rawdescription": "\n\nCheck if the down minute button is enabled\n",
                     "modifierKind": [
                         148
@@ -11171,7 +11165,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 133,
+                    "line": 132,
                     "modifierKind": [
                         148
                     ]
@@ -11185,7 +11179,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Check if the down second button is enabled</p>\n",
-                    "line": 244,
+                    "line": 243,
                     "rawdescription": "\n\nCheck if the down second button is enabled\n",
                     "modifierKind": [
                         148
@@ -11200,7 +11194,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 135,
+                    "line": 134,
                     "modifierKind": [
                         148
                     ]
@@ -11214,7 +11208,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The value would be displayed in hourBox.\nWe need this because the value displayed in hourBox it not\nthe same as the hourValue when the timer is in hour12Timer mode.</p>\n",
-                    "line": 117,
+                    "line": 116,
                     "rawdescription": "\n\nThe value would be displayed in hourBox.\nWe need this because the value displayed in hourBox it not\nthe same as the hourValue when the timer is in hour12Timer mode.\n",
                     "modifierKind": [
                         148
@@ -11229,7 +11223,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 76,
+                    "line": 75,
                     "modifierKind": [
                         148
                     ]
@@ -11243,7 +11237,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 119,
+                    "line": 118,
                     "modifierKind": [
                         148
                     ]
@@ -11257,7 +11251,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 121,
+                    "line": 120,
                     "modifierKind": [
                         148
                     ]
@@ -11271,7 +11265,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 123,
+                    "line": 122,
                     "modifierKind": [
                         148
                     ]
@@ -11285,7 +11279,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Check if the up hour button is enabled</p>\n",
-                    "line": 205,
+                    "line": 204,
                     "rawdescription": "\n\nCheck if the up hour button is enabled\n",
                     "modifierKind": [
                         148
@@ -11300,7 +11294,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 127,
+                    "line": 126,
                     "modifierKind": [
                         148
                     ]
@@ -11314,7 +11308,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Check if the up minute button is enabled</p>\n",
-                    "line": 220,
+                    "line": 219,
                     "rawdescription": "\n\nCheck if the up minute button is enabled\n",
                     "modifierKind": [
                         148
@@ -11329,7 +11323,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 131,
+                    "line": 130,
                     "modifierKind": [
                         148
                     ]
@@ -11343,7 +11337,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Check if the up second button is enabled</p>\n",
-                    "line": 236,
+                    "line": 235,
                     "rawdescription": "\n\nCheck if the up second button is enabled\n",
                     "modifierKind": [
                         148
@@ -11357,7 +11351,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 144,
+                    "line": 143,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nFocus to the host element\n",
@@ -11376,7 +11370,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 170,
+                    "line": 169,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -11404,7 +11398,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 159,
+                    "line": 158,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the hour value via typing into timer box input\nWe need this to handle the hour value when the timer is in hour12 mode\n",
@@ -11434,7 +11428,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 185,
+                    "line": 184,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -11462,7 +11456,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 175,
+                    "line": 174,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -11490,7 +11484,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 180,
+                    "line": 179,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -11526,9 +11520,8 @@
         },
         {
             "name": "YearViewComponent",
-            "id": "component-YearViewComponent-cc4a2beb8fa269f98ee35410456a0727bb69947b994e76ac26b5e871e5e43e22feaf4bc81ad4d294f988da6137616b677b86736d65ba8b240c4a607021ed394e",
+            "id": "component-YearViewComponent-416b77d98afb64b08d4cfb0a0c40466f56b90263a74d3e377a79e35a6eca623634d2f5cf5c02fcdaa6659c6133f4ea2274871c3fa29a3bd434dec9947edaec0c",
             "file": "src/lib/date-time/calendar-year-view/calendar-year-view.component.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "host": {},
@@ -11554,7 +11547,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>A function used to filter which dates are selectable</p>\n",
-                    "line": 60,
+                    "line": 59,
                     "rawdescription": "\n\nA function used to filter which dates are selectable\n",
                     "modifierKind": [
                         148
@@ -11570,7 +11563,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The maximum selectable date</p>\n",
-                    "line": 71,
+                    "line": 70,
                     "rawdescription": "\nThe maximum selectable date",
                     "modifierKind": [
                         148
@@ -11586,7 +11579,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The minimum selectable date</p>\n",
-                    "line": 63,
+                    "line": 62,
                     "rawdescription": "\nThe minimum selectable date",
                     "modifierKind": [
                         148
@@ -11602,7 +11595,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 50,
+                    "line": 49,
                     "modifierKind": [
                         148
                     ],
@@ -11617,7 +11610,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The currently selected date</p>\n",
-                    "line": 36,
+                    "line": 35,
                     "rawdescription": "\nThe currently selected date",
                     "modifierKind": [
                         148
@@ -11633,7 +11626,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 43,
+                    "line": 42,
                     "modifierKind": [
                         148
                     ],
@@ -11648,7 +11641,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The select mode of the picker;</p>\n",
-                    "line": 33,
+                    "line": 32,
                     "rawdescription": "\n\nThe select mode of the picker;\n",
                     "modifierKind": [
                         148
@@ -11665,7 +11658,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Callback to invoke when a new month is selected</p>\n",
-                    "line": 168,
+                    "line": 167,
                     "rawdescription": "\n\nCallback to invoke when a new month is selected\n",
                     "modifierKind": [
                         148
@@ -11680,7 +11673,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits when use keyboard enter to select a calendar cell</p>\n",
-                    "line": 181,
+                    "line": 180,
                     "rawdescription": "\nEmits when use keyboard enter to select a calendar cell",
                     "modifierKind": [
                         148
@@ -11695,7 +11688,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits the selected year</p>\n<p>This doesn&#39;t imply a change on the selected date.</p>\n",
-                    "line": 175,
+                    "line": 174,
                     "rawdescription": "\n\nEmits the selected year\n\nThis doesn't imply a change on the selected date.\n",
                     "modifierKind": [
                         148
@@ -11710,7 +11703,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Emits when any date is activated</p>\n",
-                    "line": 178,
+                    "line": 177,
                     "rawdescription": "\nEmits when any date is activated",
                     "modifierKind": [
                         148
@@ -11728,7 +11721,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 116,
+                    "line": 115,
                     "modifierKind": [
                         148
                     ]
@@ -11742,7 +11735,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 125,
+                    "line": 124,
                     "modifierKind": [
                         148
                     ]
@@ -11756,7 +11749,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 123,
+                    "line": 122,
                     "modifierKind": [
                         148
                     ]
@@ -11770,7 +11763,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 109,
+                    "line": 108,
                     "modifierKind": [
                         148
                     ]
@@ -11784,7 +11777,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>An array to hold all selectedDates&#39; month value\nthe value is the month number in current year</p>\n",
-                    "line": 143,
+                    "line": 142,
                     "rawdescription": "\n\nAn array to hold all selectedDates' month value\nthe value is the month number in current year\n",
                     "modifierKind": [
                         148
@@ -11799,7 +11792,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 132,
+                    "line": 131,
                     "modifierKind": [
                         148
                     ]
@@ -11819,7 +11812,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 226,
+                    "line": 225,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandle keydown event on calendar body\n",
@@ -11849,7 +11842,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 189,
+                    "line": 188,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHandle a calendarCell selected\n",

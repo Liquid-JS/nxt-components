@@ -1,5 +1,5 @@
 import { NgComponentOutlet } from '@angular/common'
-import { Component, Injector, Input, Type, ViewEncapsulation, input } from '@angular/core'
+import { Component, Injector, Type, ViewEncapsulation, computed, input } from '@angular/core'
 import { TabsModule } from 'ngx-bootstrap/tabs'
 import { HighlightAutoDirective } from 'nxt-highlightjs'
 import { HighlightLineNumbersDirective } from 'nxt-highlightjs/line-numbers'
@@ -74,12 +74,13 @@ export function resolveTempaltes(cfg: LoaderConfig, prefix: string) {
 })
 export class ExampleComponent {
 
+    readonly injector = input<Injector>()
+
     readonly asTab = input<boolean>(false)
 
-    _config?: ExampleConfig
-    sources?: SourceDef[]
-    @Input() set config(val: ExampleConfig | undefined) {
-        this._config = val
+    readonly config = input<ExampleConfig>()
+    readonly sources = computed(() => {
+        const val = this.config()
         const sources = new Array<SourceDef>()
         if (val?.template)
             sources.push({
@@ -116,16 +117,7 @@ export class ExampleComponent {
                 code: val.source.replace(/.scss'/gim, '.css\''),
                 key: 'source'
             })
-        this.sources = sources.length ? sources : undefined
-    }
-    get config() {
-        return this._config
-    }
-
-    readonly injector = input<Injector>()
-
-    tabTrackBy(_i: number, val: SourceDef) {
-        return val.key
-    }
+        return sources.length ? sources : undefined
+    })
 
 }

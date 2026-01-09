@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, viewChild, output, input, computed, linkedSignal, inject } from '@angular/core'
+import { Component, viewChild, output, input, computed, linkedSignal, inject } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
 import { CalendarBodyComponent, CalendarCell } from '../calendar-body/calendar-body.component'
@@ -15,7 +15,6 @@ export const YEAR_ROWS = 7
     templateUrl: './calendar-multi-year-view.component.html',
     styleUrls: ['./calendar-multi-year-view.component.scss'],
     preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CalendarBodyComponent
     ],

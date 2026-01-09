@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations'
 import { ViewportScroller } from '@angular/common'
-import { Component, ElementRef, ViewChild } from '@angular/core'
+import { Component, effect, ElementRef, inject, signal, viewChild } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import logo from '../assets/nxt-logo.png'
 
@@ -57,8 +57,8 @@ type MenuItem = {
     ]
 })
 export class AppComponent {
-    navbarCollapsed = true
-    animationDone = true
+    readonly navbarCollapsed = signal(true)
+    readonly animationDone = signal(true)
 
     readonly logo = logo
 
@@ -193,18 +193,21 @@ export class AppComponent {
         }
     ]
 
-    @ViewChild('headerEl') set header(val: ElementRef<HTMLElement>) {
-        this.scroller.setOffset(() => [0, (val.nativeElement?.clientHeight || 1) - 1])
+    readonly header = viewChild<ElementRef<HTMLElement>>('headerEl')
+
+    constructor() {
+        const scroller = inject(ViewportScroller)
+        effect(() => {
+            const val = this.header()
+            if (val)
+                scroller.setOffset(() => [0, (val.nativeElement?.clientHeight || 1) - 1])
+        })
     }
 
-    constructor(
-        private readonly scroller: ViewportScroller
-    ) { }
-
-    toggle(forced = !this.navbarCollapsed) {
-        if (forced != this.navbarCollapsed) {
-            this.navbarCollapsed = forced
-            this.animationDone = !this.navbarCollapsed  // true if new state is open, false if new state is collapsed
+    toggle(forced = !this.navbarCollapsed()) {
+        if (forced != this.navbarCollapsed()) {
+            this.navbarCollapsed.set(forced)
+            this.animationDone.set(!this.navbarCollapsed())  // true if new state is open, false if new state is collapsed
         }
     }
 }

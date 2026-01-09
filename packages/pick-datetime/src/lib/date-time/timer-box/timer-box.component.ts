@@ -1,5 +1,5 @@
 import { coerceNumberProperty } from '@angular/cdk/coercion'
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, computed, input, output } from '@angular/core'
+import { Component, OnDestroy, OnInit, computed, input, output } from '@angular/core'
 import { Subject, Subscription } from 'rxjs'
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
 import { NumberFixedLenPipe } from '../number-fixed-len.pipe'
@@ -10,7 +10,6 @@ import { NumberFixedLenPipe } from '../number-fixed-len.pipe'
     templateUrl: './timer-box.component.html',
     styleUrls: ['./timer-box.component.scss'],
     preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         NumberFixedLenPipe
     ],

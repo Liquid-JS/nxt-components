@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, NgZone, computed, input, linkedSignal, output, inject } from '@angular/core'
+import { Component, ElementRef, NgZone, computed, input, linkedSignal, output, inject } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
@@ -9,7 +9,6 @@ import { TimerBoxComponent } from '../timer-box/timer-box.component'
     templateUrl: './timer.component.html',
     styleUrls: ['./timer.component.scss'],
     preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         TimerBoxComponent
     ],

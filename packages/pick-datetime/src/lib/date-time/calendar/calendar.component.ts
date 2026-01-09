@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, NgZone, afterRenderEffect, computed, input, linkedSignal, output, inject } from '@angular/core'
+import { Component, ElementRef, NgZone, afterRenderEffect, computed, input, linkedSignal, output, inject } from '@angular/core'
 import { take } from 'rxjs/operators'
 import { CdkMonitorFocus } from '@angular/cdk/a11y'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
@@ -14,7 +14,6 @@ import { MultiYearViewComponent } from '../calendar-multi-year-view/calendar-mul
     templateUrl: './calendar.component.html',
     styleUrls: ['./calendar.component.scss'],
     preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CdkMonitorFocus,
         MonthViewComponent,

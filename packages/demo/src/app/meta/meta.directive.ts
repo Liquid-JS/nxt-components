@@ -1,5 +1,5 @@
 import { Location } from '@angular/common'
-import { Directive, Inject, Input, OnDestroy, OnInit, DOCUMENT, output } from '@angular/core'
+import { Directive, OnDestroy, OnInit, DOCUMENT, output, inject, effect, input } from '@angular/core'
 import { Meta, MetaDefinition, Title } from '@angular/platform-browser'
 import { Router } from '@angular/router'
 
@@ -8,87 +8,106 @@ import { Router } from '@angular/router'
     selector: 'app-meta'
 })
 export class MetaDirective implements OnInit, OnDestroy, OnInit {
+    private readonly titleService = inject(Title)
+    private readonly meta = inject(Meta)
+    private readonly location = inject(Location)
+    private readonly router = inject(Router)
+    private readonly dom = inject(DOCUMENT)
 
-    @Input() set title(val: string) {
-        this.titleService.setTitle(val)
-        this.upsert({
-            property: 'og:title',
-            content: val
-        })
-    }
-
-    @Input() set description(val: string) {
-        this.upsert({
-            name: 'description',
-            content: val
-        })
-        this.upsert({
-            property: 'og:description',
-            content: val
-        })
-    }
-
-    @Input() set author(val: string) {
-        this.upsert({
-            name: 'author',
-            content: val
-        })
-    }
-
-    @Input() set copyrightYear(val: string) {
-        this.upsert({
-            name: 'dcterms.dateCopyrighted',
-            content: val
-        })
-    }
-
-    @Input() set type(val: string) {
-        this.upsert({
-            property: 'og:type',
-            content: val
-        })
-    }
-
-    @Input() set image(val: string) {
-        val = this.publicUrl(this.location.prepareExternalUrl(val))
-        this.upsert({
-            name: 'image',
-            content: val
-        })
-        this.upsert({
-            property: 'og:image',
-            content: val
-        })
-    }
-
-    @Input() set email(val: string) {
-        this.upsert({
-            property: 'og:email',
-            content: val
-        })
-    }
-
-    @Input() set url(val: string) {
-        const el = this.dom.querySelector<HTMLLinkElement>('link[rel=\'canonical\']') || this.dom.createElement('link')
-        el.setAttribute('rel', 'canonical')
-        el.setAttribute('href', this.publicUrl(this.location.prepareExternalUrl(val || '/')))
-        this.dom.querySelector('head')?.appendChild(el)
-    }
+    readonly title = input<string>()
+    readonly description = input<string>()
+    readonly author = input<string>('Liquid-JS')
+    readonly copyrightYear = input<string>(new Date().getUTCFullYear().toString())
+    readonly type = input<string>('website')
+    readonly image = input<string>()
+    readonly email = input<string>()
+    readonly url = input<string>(this.router.url)
 
     readonly done = output<void>()
 
-    constructor(
-        private readonly titleService: Title,
-        private readonly meta: Meta,
-        private readonly location: Location,
-        private readonly router: Router,
-        @Inject(DOCUMENT) private readonly dom: Document
-    ) {
-        // Default values
-        this.author = 'Liquid-JS'
-        this.copyrightYear = new Date().getUTCFullYear().toString()
-        this.type = 'website'
-        this.url = this.router.url
+    constructor() {
+        effect(() => {
+            const val = this.title()
+
+            if (!val)
+                return
+
+            this.titleService.setTitle(val)
+            this.upsert({
+                property: 'og:title',
+                content: val
+            })
+        })
+        effect(() => {
+            const val = this.description()
+
+            if (!val)
+                return
+
+            this.upsert({
+                name: 'description',
+                content: val
+            })
+            this.upsert({
+                property: 'og:description',
+                content: val
+            })
+        })
+        effect(() => {
+            const val = this.author()
+            this.upsert({
+                name: 'author',
+                content: val
+            })
+        })
+        effect(() => {
+            const val = this.copyrightYear()
+            this.upsert({
+                name: 'dcterms.dateCopyrighted',
+                content: val
+            })
+        })
+        effect(() => {
+            const val = this.type()
+            this.upsert({
+                property: 'og:type',
+                content: val
+            })
+        })
+        effect(() => {
+            let val = this.image()
+
+            if (!val)
+                return
+
+            val = this.publicUrl(this.location.prepareExternalUrl(val))
+            this.upsert({
+                name: 'image',
+                content: val
+            })
+            this.upsert({
+                property: 'og:image',
+                content: val
+            })
+        })
+        effect(() => {
+            const val = this.email()
+
+            if (!val)
+                return
+
+            this.upsert({
+                property: 'og:email',
+                content: val
+            })
+        })
+        effect(() => {
+            const val = this.url()
+            const el = this.dom.querySelector<HTMLLinkElement>('link[rel=\'canonical\']') || this.dom.createElement('link')
+            el.setAttribute('rel', 'canonical')
+            el.setAttribute('href', this.publicUrl(this.location.prepareExternalUrl(val || '/')))
+            this.dom.querySelector('head')?.appendChild(el)
+        })
     }
 
     ngOnInit(): void {

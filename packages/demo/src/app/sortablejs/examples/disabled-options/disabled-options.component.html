@@ -1,7 +1,7 @@
 <ul class="list-group"
     [nxtSortablejs]="draggableItems"
     [config]="draggableOptions">
-    @for (item of draggableItems; track item) {
+    @for (item of draggableItems; track item.text) {
     <li class="list-group-item"
         [class.draggable]="item.draggable"
         [class.disabled]="!item.draggable">

@@ -1,6 +1,6 @@
 import { AnimationEvent } from '@angular/animations'
 import { CdkTrapFocus } from '@angular/cdk/a11y'
-import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, computed, ElementRef, signal, viewChild, inject } from '@angular/core'
+import { AfterContentInit, AfterViewInit, Component, computed, ElementRef, signal, viewChild, inject } from '@angular/core'
 import { Subject } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeDirective } from '../../class/date-time.class'
@@ -14,7 +14,6 @@ import { dateTimePickerAnimations } from './date-time-picker-container.animation
     selector: 'nxt-date-time-container',
     templateUrl: './date-time-picker-container.component.html',
     styleUrls: ['./date-time-picker-container.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     preserveWhitespaces: false,
     animations: [
         dateTimePickerAnimations.transformPicker,

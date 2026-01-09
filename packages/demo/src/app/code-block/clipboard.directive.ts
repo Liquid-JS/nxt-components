@@ -1,4 +1,4 @@
-import { Directive, ElementRef, input, output } from '@angular/core'
+import { Directive, input, output } from '@angular/core'
 import * as clipboard from 'clipboard-polyfill'
 
 @Directive({
@@ -18,10 +18,6 @@ export class ClipboardDirective {
     readonly clipboardSuccess = output<void>()
 
     readonly clipboardError = output<Error>()
-
-    constructor(
-        protected elementRef: ElementRef
-    ) { }
 
     onClick(event?: MouseEvent) {
         if (event) {

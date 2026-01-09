@@ -1,4 +1,4 @@
-@if (!loading) {
+@if (!examples.isLoading()) {
 <app-meta title="nxt-flags"
     (done)="doneCb()"
     description="Angular component to show flags based on country ISO code."></app-meta>
@@ -20,7 +20,7 @@
         <li><a href="https://liquid-js.github.io/nxt-components/nxt-flags"><strong>API docs</strong></a></li>
     </ul>
 
-    @for (example of examples | async; track example; let i = $index) {
+    @for (example of examples.value(); track example.component; let i = $index) {
     <app-example [injector]="injector"
         [config]="example"
         id="example-{{ i }}"></app-example>

@@ -1,4 +1,4 @@
-@if (!loading) {
+@if (!examples.isLoading()) {
 <app-meta title="nxt-highlightjs"
     (done)="doneCb()"
     description="Angular code highlighting directives with optional line numbers and support for SSR."></app-meta>
@@ -21,7 +21,7 @@
         <li><a href="https://liquid-js.github.io/nxt-components/nxt-highlightjs"><strong>API docs</strong></a></li>
     </ul>
 
-    @for (example of examples | async; track example; let i = $index) {
+    @for (example of examples.value(); track example.component; let i = $index) {
     <app-example [injector]="injector"
         [config]="example"
         [asTab]="true"

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, viewChild, output, input, computed, inject } from '@angular/core'
+import { Component, viewChild, output, input, computed, inject } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
@@ -15,7 +15,6 @@ const MONTHS_PER_ROW = 3
     templateUrl: './calendar-year-view.component.html',
     styleUrls: ['./calendar-year-view.component.scss'],
     preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CalendarBodyComponent
     ],

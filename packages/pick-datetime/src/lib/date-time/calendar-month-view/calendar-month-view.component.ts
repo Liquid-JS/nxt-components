@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, viewChild, output, linkedSignal, computed, inject } from '@angular/core'
+import { Component, input, viewChild, output, linkedSignal, computed, inject } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
 import { DateFilter, SelectMode } from '../../class/date-time.class'
@@ -15,7 +15,6 @@ const WEEKS_PER_VIEW = 6
     templateUrl: './calendar-month-view.component.html',
     styleUrls: ['./calendar-month-view.component.scss'],
     preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CalendarBodyComponent
     ],

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation } from '@angular/core'
+import { ChangeDetectorRef, Component, inject, ViewEncapsulation } from '@angular/core'
 import { SortablejsDirective } from 'nxt-sortablejs'
 import { Options } from 'sortablejs'
 
@@ -9,11 +9,11 @@ import { Options } from 'sortablejs'
     encapsulation: ViewEncapsulation.Emulated,
     imports: [
         SortablejsDirective
-    ],
-    // Prevent lag when working with large number of items
-    changeDetection: ChangeDetectionStrategy.OnPush
+    ]
 })
 export class ScrollingOptionsComponent {
+    private readonly cdRef = inject(ChangeDetectorRef)
+
     scrollableItems = Array.from({ length: 30 })
         .map((_, i) => i + 1)
 
@@ -27,8 +27,4 @@ export class ScrollingOptionsComponent {
             this.cdRef.detectChanges()
         }
     }
-
-    constructor(
-        private readonly cdRef: ChangeDetectorRef
-    ) { }
 }

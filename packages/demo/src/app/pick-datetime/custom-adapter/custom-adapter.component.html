@@ -1,4 +1,4 @@
-@if (!loading) {
+@if (!exampleImpl.isLoading()) {
 <app-meta title="Writing a custom date adapter | nxt-pick-datetime"
     (done)="doneCb()"
     description="Angular date and time picker supports custom date-time implementations."></app-meta>
@@ -7,7 +7,7 @@
     <h1>Writing a custom date adapter</h1>
     <p>If neither of the provided date adapters is suitable for your project, it is possible to create your own date-time implementation. Making the picker work with a different date & time implementation is as easy as extending <code>DateTimeAdapter</code>. You will also want to provide a matching <code>NXT_DATE_TIME_FORMATS</code> to configure formatting strings for your implementation.</p>
 
-    @if ((exampleImpl | async); as config) {
+    @if (exampleImpl.value(); as config) {
     <app-example [injector]="injector"
         [config]="config"></app-example>
     }
