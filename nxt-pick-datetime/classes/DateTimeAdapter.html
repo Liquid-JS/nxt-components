@@ -153,10 +153,7 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Protected</span>
-                                <a href="#_localeChanges" >_localeChanges</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
                                 <a href="#locale" >locale</a>
                             </li>
                             <li>
@@ -332,20 +329,6 @@
 
 
 
-                    <tr>
-                        <td class="col-md-4">
-                            <h6><b>Accessors</b></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <ul class="index-list">
-                                <li>
-                                    <a href="#localeChanges" >localeChanges</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
         </tbody>
     </table>
 </section>
@@ -360,11 +343,12 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="_localeChanges"></a>
+                    <a name="locale"></a>
                     <span class="name">
                             <span class="modifier">Protected</span>
-                        <span ><b>_localeChanges</b></span>
-                        <a href="#_localeChanges"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>locale</b></span>
+                        <a href="#locale"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -376,35 +360,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
-                    </td>
-                </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>A stream that emits when the locale changes</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="locale"></a>
-                    <span class="name">
-                            <span class="modifier">Protected</span>
-                        <span ><b>locale</b></span>
-                        <a href="#locale"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
+                        <i>Default value : </i><code>signal&lt;any&gt;(undefined)</code>
                     </td>
                 </tr>
 
@@ -3084,28 +3040,6 @@ If dateLeft is after dateRight, it would return negative value</p>
 
 
 
-            <section data-compodoc="block-accessors">
-    <h3 id="accessors">
-        Accessors
-    </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="localeChanges"></a>
-                        <span class="name"><b>localeChanges</b><a href="#localeChanges"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>get</b><code>localeChanges()</code></span>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-</section>
     </div>
 
 

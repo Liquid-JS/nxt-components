@@ -62,13 +62,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SortablejsModule.html" data-type="entity-link" class="deprecated-name">SortablejsModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                        'data-bs-target="#directives-links-module-SortablejsModule-e6c0984f4a6dfd81858a97a646bfbd4e33d34eb1a0d96c8c71c1cbe536052386cb6cc3f6a0016b8a0b0f4d0c1232673a4b1a1035f638794b0ee3bcc9412e1975"' : 'data-bs-target="#xs-directives-links-module-SortablejsModule-e6c0984f4a6dfd81858a97a646bfbd4e33d34eb1a0d96c8c71c1cbe536052386cb6cc3f6a0016b8a0b0f4d0c1232673a4b1a1035f638794b0ee3bcc9412e1975"' }>
+                                        'data-bs-target="#directives-links-module-SortablejsModule-284d5a788b3248144d67b9682e2ee42928c002db26bf072df208bc53598f9ee772ef123fadc825015cd4d8274039d8558a989092ffb5d5c7e86cb638437d7436"' : 'data-bs-target="#xs-directives-links-module-SortablejsModule-284d5a788b3248144d67b9682e2ee42928c002db26bf072df208bc53598f9ee772ef123fadc825015cd4d8274039d8558a989092ffb5d5c7e86cb638437d7436"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-SortablejsModule-e6c0984f4a6dfd81858a97a646bfbd4e33d34eb1a0d96c8c71c1cbe536052386cb6cc3f6a0016b8a0b0f4d0c1232673a4b1a1035f638794b0ee3bcc9412e1975"' :
-                                        'id="xs-directives-links-module-SortablejsModule-e6c0984f4a6dfd81858a97a646bfbd4e33d34eb1a0d96c8c71c1cbe536052386cb6cc3f6a0016b8a0b0f4d0c1232673a4b1a1035f638794b0ee3bcc9412e1975"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-SortablejsModule-284d5a788b3248144d67b9682e2ee42928c002db26bf072df208bc53598f9ee772ef123fadc825015cd4d8274039d8558a989092ffb5d5c7e86cb638437d7436"' :
+                                        'id="xs-directives-links-module-SortablejsModule-284d5a788b3248144d67b9682e2ee42928c002db26bf072df208bc53598f9ee772ef123fadc825015cd4d8274039d8558a989092ffb5d5c7e86cb638437d7436"' }>
                                         <li class="link">
                                             <a href="directives/SortablejsDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SortablejsDirective</a>
                                         </li>

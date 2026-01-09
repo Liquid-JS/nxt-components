@@ -62,13 +62,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/DropzoneModule.html" data-type="entity-link" class="deprecated-name">DropzoneModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-DropzoneModule-45fba98a3cb7db63512d608bd5607779a18ca6d9a5b62b9a62aac661356db284c45dc6ce95ef987c25eef917c84d47597d362f2a7c0858c7baaf498fdb1372d2"' : 'data-bs-target="#xs-components-links-module-DropzoneModule-45fba98a3cb7db63512d608bd5607779a18ca6d9a5b62b9a62aac661356db284c45dc6ce95ef987c25eef917c84d47597d362f2a7c0858c7baaf498fdb1372d2"' }>
+                                            'data-bs-target="#components-links-module-DropzoneModule-564654daa42f56b8e1ca6d3be628e79585ae2d162856aa8be67bbc6eba44d711014be17ab6e3f6883069171337b7337d5f8d502d3c166b42e72d95a8beb157e5"' : 'data-bs-target="#xs-components-links-module-DropzoneModule-564654daa42f56b8e1ca6d3be628e79585ae2d162856aa8be67bbc6eba44d711014be17ab6e3f6883069171337b7337d5f8d502d3c166b42e72d95a8beb157e5"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-DropzoneModule-45fba98a3cb7db63512d608bd5607779a18ca6d9a5b62b9a62aac661356db284c45dc6ce95ef987c25eef917c84d47597d362f2a7c0858c7baaf498fdb1372d2"' :
-                                            'id="xs-components-links-module-DropzoneModule-45fba98a3cb7db63512d608bd5607779a18ca6d9a5b62b9a62aac661356db284c45dc6ce95ef987c25eef917c84d47597d362f2a7c0858c7baaf498fdb1372d2"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-DropzoneModule-564654daa42f56b8e1ca6d3be628e79585ae2d162856aa8be67bbc6eba44d711014be17ab6e3f6883069171337b7337d5f8d502d3c166b42e72d95a8beb157e5"' :
+                                            'id="xs-components-links-module-DropzoneModule-564654daa42f56b8e1ca6d3be628e79585ae2d162856aa8be67bbc6eba44d711014be17ab6e3f6883069171337b7337d5f8d502d3c166b42e72d95a8beb157e5"' }>
                                             <li class="link">
                                                 <a href="components/DropzoneComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >DropzoneComponent</a>
                                             </li>
@@ -76,13 +76,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                        'data-bs-target="#directives-links-module-DropzoneModule-45fba98a3cb7db63512d608bd5607779a18ca6d9a5b62b9a62aac661356db284c45dc6ce95ef987c25eef917c84d47597d362f2a7c0858c7baaf498fdb1372d2"' : 'data-bs-target="#xs-directives-links-module-DropzoneModule-45fba98a3cb7db63512d608bd5607779a18ca6d9a5b62b9a62aac661356db284c45dc6ce95ef987c25eef917c84d47597d362f2a7c0858c7baaf498fdb1372d2"' }>
+                                        'data-bs-target="#directives-links-module-DropzoneModule-564654daa42f56b8e1ca6d3be628e79585ae2d162856aa8be67bbc6eba44d711014be17ab6e3f6883069171337b7337d5f8d502d3c166b42e72d95a8beb157e5"' : 'data-bs-target="#xs-directives-links-module-DropzoneModule-564654daa42f56b8e1ca6d3be628e79585ae2d162856aa8be67bbc6eba44d711014be17ab6e3f6883069171337b7337d5f8d502d3c166b42e72d95a8beb157e5"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-DropzoneModule-45fba98a3cb7db63512d608bd5607779a18ca6d9a5b62b9a62aac661356db284c45dc6ce95ef987c25eef917c84d47597d362f2a7c0858c7baaf498fdb1372d2"' :
-                                        'id="xs-directives-links-module-DropzoneModule-45fba98a3cb7db63512d608bd5607779a18ca6d9a5b62b9a62aac661356db284c45dc6ce95ef987c25eef917c84d47597d362f2a7c0858c7baaf498fdb1372d2"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-DropzoneModule-564654daa42f56b8e1ca6d3be628e79585ae2d162856aa8be67bbc6eba44d711014be17ab6e3f6883069171337b7337d5f8d502d3c166b42e72d95a8beb157e5"' :
+                                        'id="xs-directives-links-module-DropzoneModule-564654daa42f56b8e1ca6d3be628e79585ae2d162856aa8be67bbc6eba44d711014be17ab6e3f6883069171337b7337d5f8d502d3c166b42e72d95a8beb157e5"' }>
                                         <li class="link">
                                             <a href="directives/DropzoneDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >DropzoneDirective</a>
                                         </li>

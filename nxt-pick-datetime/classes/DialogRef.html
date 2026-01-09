@@ -158,6 +158,10 @@
                             <li>
                                 <a href="#disableClose" >disableClose</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#isAnimating" >isAnimating</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -184,9 +188,6 @@
                             </li>
                             <li>
                                 <a href="#close" >close</a>
-                            </li>
-                            <li>
-                                <a href="#isAnimating" >isAnimating</a>
                             </li>
                             <li>
                                 <a href="#keydownEvents" >keydownEvents</a>
@@ -341,7 +342,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>!!this.container.config?.disableClose</code>
+                        <i>Default value : </i><code>!!this.container.config()?.disableClose</code>
                     </td>
                 </tr>
 
@@ -351,6 +352,33 @@
 </div>
                 </td>
             </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isAnimating"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>isAnimating</b></span>
+                        <a href="#isAnimating"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.container.isAnimating</code>
+                    </td>
+                </tr>
+
 
         </tbody>
     </table>
@@ -544,37 +572,6 @@
                             <div class="io-description">
                                 
                             </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="isAnimating"></a>
-                    <span class="name">
-                        <span ><b>isAnimating</b></span>
-                        <a href="#isAnimating"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>isAnimating()</code>
-                </td>
-            </tr>
-
-
-
-
-            <tr>
-                <td class="col-md-4">
-
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                        </div>
                 </td>
             </tr>
         </tbody>
