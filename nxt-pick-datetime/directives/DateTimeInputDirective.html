@@ -202,6 +202,14 @@
                                     <span class="modifier">Readonly</span>
                                 <a href="#isInSingleMode" >isInSingleMode</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#value" >value</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#values" >values</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -214,9 +222,6 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
-                            <li>
-                                <a href="#formatNativeInputValue" >formatNativeInputValue</a>
-                            </li>
                             <li>
                                 <a href="#handleBlurOnHost" >handleBlurOnHost</a>
                             </li>
@@ -269,13 +274,13 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#value" >value</a>
-                            </li>
-                            <li>
-                                <a href="#values" >values</a>
-                            </li>
-                            <li>
                                 <a href="#_disabled" >_disabled</a>
+                            </li>
+                            <li>
+                                <a href="#_valueInput" >_valueInput</a>
+                            </li>
+                            <li>
+                                <a href="#_valuesInput" >_valuesInput</a>
                             </li>
                             <li>
                                 <a href="#dateTime" >dateTime</a>
@@ -334,12 +339,6 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                    <a href="#value" >value</a>
-                                </li>
-                                <li>
-                                    <a href="#values" >values</a>
-                                </li>
-                                <li>
                                     <a href="#elementRef" >elementRef</a>
                                 </li>
                             </ul>
@@ -355,114 +354,16 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(elmRef: ElementRef<HTMLInputElement>, renderer: Renderer2, dateTimeAdapter: <a href="../classes/DateTimeAdapter.html" target="_self">DateTimeAdapter&lt;T&gt;</a>, dateTimeFormats: <a href="../interfaces/DateTimeFormats.html" target="_self">DateTimeFormats</a>)</code>
+<code>constructor()</code>
                     </td>
                 </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>elmRef</td>
-                                                  
-                                                        <td>
-                                                                    <code>ElementRef&lt;HTMLInputElement&gt;</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>renderer</td>
-                                                  
-                                                        <td>
-                                                                    <code>Renderer2</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>dateTimeAdapter</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../classes/DateTimeAdapter.html" target="_self" >DateTimeAdapter&lt;T&gt;</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>dateTimeFormats</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../interfaces/DateTimeFormats.html" target="_self" >DateTimeFormats</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
             </tbody>
         </table>
 </section>
 
             <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="value"></a>
-                        <b>value</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>T</code>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="values"></a>
-                        <b>values</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>Array&lt;T&gt;</code>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -486,6 +387,48 @@
                     <td class="col-md-4">
                         <div class="io-description"><p>Whether the date &amp; time picker input is disabled</p>
 </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_valueInput"></a>
+                        <b>_valueInput</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>T</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>undefined, { alias: &#x27;value&#x27; }</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_valuesInput"></a>
+                        <b>_valuesInput</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Array&lt;T | undefined&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Array&lt;T | undefined&gt;(), { alias: &#x27;values&#x27; }</code>
                     </td>
                 </tr>
             </tbody>
@@ -752,39 +695,6 @@
     <h3 id="methods">
         Methods
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="formatNativeInputValue"></a>
-                    <span class="name">
-                        <span ><b>formatNativeInputValue</b></span>
-                        <a href="#formatNativeInputValue"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>formatNativeInputValue()</code>
-                </td>
-            </tr>
-
-
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>Set the native input property &#39;value&#39;</p>
-</div>
-
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -1620,126 +1530,66 @@
 
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="value"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>value</b></span>
+                        <a href="#value"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.parsedValue.asReadonly()</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="values"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>values</b></span>
+                        <a href="#values"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.parsedValues.asReadonly()</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
 </section>
 
             <section data-compodoc="block-accessors">
     <h3 id="accessors">
         Accessors
     </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="value"></a>
-                        <span class="name"><b>value</b><a href="#value"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>get</b><code>value()</code></span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>value(value: T | undefined)</code></span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-
-                                <div class="io-description">
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                        <td>Type</td>
-                                                    <td>Optional</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                            <td>value</td>
-                                                    
-                                                            <td>
-                                                                        <code>T | undefined</code>
-                                                            </td>
-                                                    
-                                                        <td>
-                                                                No
-                                                        </td>
-                                                        
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                                <div class="io-description">
-                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                                </div>
-                        </td>
-                    </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="values"></a>
-                        <span class="name"><b>values</b><a href="#values"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>get</b><code>values()</code></span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>values(values: Array<T | undefined>)</code></span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-
-                                <div class="io-description">
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                        <td>Type</td>
-                                                    <td>Optional</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                            <td>values</td>
-                                                    
-                                                            <td>
-                                                                        <code>Array&lt;T | undefined&gt;</code>
-                                                            </td>
-                                                    
-                                                        <td>
-                                                                No
-                                                        </td>
-                                                        
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                                <div class="io-description">
-                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                                </div>
-                        </td>
-                    </tr>
-            </tbody>
-        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
