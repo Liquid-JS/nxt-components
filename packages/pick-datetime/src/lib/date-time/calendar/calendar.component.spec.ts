@@ -1,11 +1,12 @@
 /* eslint-disable @angular-eslint/component-class-suffix */
 import { Component, NgZone } from '@angular/core'
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, MockNgZone, provideTestDateTimeAdapter } from '../../../test-helpers'
 import { MonthViewComponent } from '../calendar-month-view/calendar-month-view.component'
 import { YearViewComponent } from '../calendar-year-view/calendar-year-view.component'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
+import { MultiYearViewComponent } from '../calendar-multi-year-view/calendar-multi-year-view.component'
 import { CalendarComponent } from './calendar.component'
 
 describe('CalendarComponent', () => {
@@ -105,21 +106,20 @@ describe('CalendarComponent', () => {
             expect(normalizedYear?.getFullYear()).toEqual(2018)
         })
 
-        /*it('should re-render when the i18n labels have changed', () => {
+        it('should re-render when the i18n labels have changed', () => {
             inject([DateTimeIntl], (intl: DateTimeIntl) => {
                 const button = fixture.debugElement.nativeElement.querySelector(
                     '.nxt-dt-control-period-button'
                 )
 
-                intl.switchToMultiYearViewLabel = 'Go to multi-year view?'
-                intl.changes.next()
+                intl.switchToMultiYearViewLabel.set('Go to multi-year view?')
                 fixture.detectChanges()
 
                 expect(button.getAttribute('aria-label')).toBe(
                     'Go to multi-year view?'
                 )
             })
-        })*/
+        })
 
         it('should set all buttons to be `type="button"`', () => {
             const invalidButtons = calendarElement.querySelectorAll(
@@ -352,7 +352,7 @@ describe('CalendarComponent', () => {
             expect(yearViewComp.months()).not.toBe(monthList)
         })
 
-        /*it('should re-render the multi-years view when the minDate changes', () => {
+        it('should re-render the multi-years view when the minDate changes', () => {
             fixture.detectChanges()
             const periodButton = calendarElement.querySelector(
                 '.nxt-dt-control-period-button'
@@ -390,7 +390,7 @@ describe('CalendarComponent', () => {
             testComponent.maxDate = new Date(2017, 10, 1)
             fixture.detectChanges()
             expect(multiYearsViewComp.years()).not.toBe(yearList)
-        })*/
+        })
     })
 
     describe('calendar with date filter', () => {

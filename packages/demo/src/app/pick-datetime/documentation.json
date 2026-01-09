@@ -10439,7 +10439,7 @@
         },
         {
             "name": "MultiYearViewComponent",
-            "id": "component-MultiYearViewComponent-414b5f92a642db350452ec3354485ae067d40786f25faa46324b3005639e4e2b39541d1afc66d036c5ef23cd36b49d6fa71d1ebfc2a5ec5237316ee5003984f6",
+            "id": "component-MultiYearViewComponent-f07016b569155857c513e6fbf1af11c1d7b7d99294dca4bfcfb2c4878db5e7b17d079b4d1f51f2401f20f7eeb3bef94e61ac5e687b6bc29b6309193c15188232",
             "file": "src/lib/date-time/calendar-multi-year-view/calendar-multi-year-view.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],

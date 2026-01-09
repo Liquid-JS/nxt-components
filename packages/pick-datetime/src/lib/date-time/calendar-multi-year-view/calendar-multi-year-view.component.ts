@@ -315,17 +315,21 @@ export class MultiYearViewComponent<T> {
     /** Whether the given year is enabled */
     private isYearEnabled(year: number) {
 
-        // enable if it reaches here and there's no filter defined
-        if (!this.dateTimeFilter()) {
-            return true
-        }
-
         const firstOfYear = this.dateTimeAdapter.createDate(year, 0, 1)
 
         // If any date in the year is enabled count the year as enabled.
-        for (let date = firstOfYear; this.dateTimeAdapter.getYear(date) == year;
-            date = this.dateTimeAdapter.addCalendarDays(date, 1)) {
-            if (this.dateTimeFilter()!(date, 'year')) {
+        for (let date = firstOfYear;
+            this.dateTimeAdapter.getYear(date) == year;
+            date = this.dateTimeAdapter.addCalendarDays(date, 1)
+        ) {
+            if (
+                !!date &&
+                (!this.dateTimeFilter() || this.dateTimeFilter()!(date, 'year')) &&
+                (!this.min() ||
+                    this.dateTimeAdapter.compare(date, this.min()) >= 0) &&
+                (!this.max() ||
+                    this.dateTimeAdapter.compare(date, this.max()) <= 0)
+            ) {
                 return true
             }
         }
