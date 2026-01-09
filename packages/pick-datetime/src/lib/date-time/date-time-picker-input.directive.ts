@@ -57,7 +57,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
 
     /** Whether the date & time picker input is disabled */
     // eslint-disable-next-line @angular-eslint/no-input-rename
-    readonly _disabled = input(false, { alias: 'disabled' })
+    readonly _disabled = input<boolean>(false, { alias: 'disabled' })
     readonly disabled = linkedSignal({
         source: () => this._disabled(),
         computation: v => v
@@ -86,7 +86,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
     /**
      * The character to separate the 'from' and 'to' in input value
      */
-    readonly rangeSeparator = input('~')
+    readonly rangeSeparator = input<string>('~')
 
     private _value?: T
     @Input()

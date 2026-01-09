@@ -31,7 +31,7 @@ export class CalendarBodyComponent {
     /**
      * The cell number of the active cell in the table.
      */
-    readonly activeCell = input(0)
+    readonly activeCell = input<number>(0)
 
     /**
      * The cells to display in the table.
@@ -41,12 +41,12 @@ export class CalendarBodyComponent {
     /**
      * The number of columns in the table.
      */
-    readonly numCols = input(7)
+    readonly numCols = input<number>(7)
 
     /**
      * The ratio (width / height) to use for the cells in the table.
      */
-    readonly cellRatio = input(1)
+    readonly cellRatio = input<number>(1)
 
     /**
      * The value in the table that corresponds to today.

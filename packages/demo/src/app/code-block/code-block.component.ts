@@ -18,7 +18,7 @@ export class CodeBlockComponent {
 
     readonly code = input<string>()
 
-    readonly copy = input(true)
+    readonly copy = input<boolean>(true)
 
     readonly languages = input<string[]>()
 

@@ -34,7 +34,7 @@ export class CalendarComponent<T> {
     /**
      * Set the first day of week
      */
-    readonly firstDayOfWeek = input(0)
+    readonly firstDayOfWeek = input<number>(0)
 
     /** The minimum selectable date */
     readonly min = input<T | undefined, T | undefined>(undefined, {

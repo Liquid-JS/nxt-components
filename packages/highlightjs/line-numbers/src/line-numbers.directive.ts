@@ -19,11 +19,11 @@ export class HighlightLineNumbersDirective {
     private readonly highlight = inject(HighlightBase)
     private readonly nativeElement = inject(ElementRef<HTMLElement>).nativeElement
 
-    readonly startFrom = input(this.options?.startFrom, {
+    readonly startFrom = input<number | undefined, unknown>(this.options?.startFrom, {
         transform: numberAttribute
     })
 
-    readonly singleLine = input(this.options?.singleLine, {
+    readonly singleLine = input<boolean | undefined, unknown>(this.options?.singleLine, {
         transform: booleanAttribute
     })
 

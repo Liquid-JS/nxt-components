@@ -21,7 +21,7 @@ import { NumberFixedLenPipe } from '../number-fixed-len.pipe'
 
 export class TimerBoxComponent implements OnInit, OnDestroy {
 
-    readonly showDivider = input(false)
+    readonly showDivider = input<boolean>(false)
 
     readonly upBtnAriaLabel = input<string>()
 
@@ -43,7 +43,7 @@ export class TimerBoxComponent implements OnInit, OnDestroy {
 
     readonly max = input<number>(0)
 
-    readonly step = input(1)
+    readonly step = input<number>(1)
 
     readonly inputLabel = input<string>()
 

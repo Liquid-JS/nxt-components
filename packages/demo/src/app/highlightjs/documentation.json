@@ -2,7 +2,7 @@
     "pipes": [
         {
             "name": "CodeFromUrlPipe",
-            "id": "pipe-CodeFromUrlPipe-050d36ec586a359d271f81aa3c6c1de2c65ce0b23d260f4ebe20a9f1e79f4bd304f488f4f90a105856590506d44c4b82e74c78cb77ab46bd9dc575d153980b4e",
+            "id": "pipe-CodeFromUrlPipe-3cc86c239db6b4ca32883153595ce1b0227becd320ae98fbf7f707071f32b7d89ac70c50ffbd4a0ed1d8c00f491dfc807a6abdcfdb0916c716126147e7cb870d",
             "file": "extras/src/code-from-url.pipe.ts",
             "type": "pipe",
             "deprecated": true,
@@ -45,7 +45,7 @@
         },
         {
             "name": "GistFilePipe",
-            "id": "pipe-GistFilePipe-6f3251e303f674136967117448aaca00fd232f9fcf9623185164c5d54f05eff846bd7421c3cc7eecdb36fdf6ebcff07e18714618c01cac5be0546ee828412b95",
+            "id": "pipe-GistFilePipe-7787cbfb2f533c4be782162b1f9cc4da021fc885f59e9d3f64b7dcf68f0429de5d9152a6adb31931829cfcc6cde91cd4b85220e355e8b94d87774144788dbbe2",
             "file": "extras/src/gist.ts",
             "type": "pipe",
             "deprecated": false,
@@ -109,7 +109,7 @@
     "interfaces": [
         {
             "name": "ChangeStatus",
-            "id": "interface-ChangeStatus-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-ChangeStatus-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -153,7 +153,7 @@
         },
         {
             "name": "Files",
-            "id": "interface-Files-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-Files-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -161,7 +161,7 @@
             "properties": [],
             "indexSignatures": [
                 {
-                    "id": "index-declaration-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+                    "id": "index-declaration-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
                     "args": [
                         {
                             "name": "fileName",
@@ -182,7 +182,7 @@
         },
         {
             "name": "Gist",
-            "id": "interface-Gist-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-Gist-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -396,7 +396,7 @@
         },
         {
             "name": "GistFile",
-            "id": "interface-GistFile-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-GistFile-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -480,7 +480,7 @@
         },
         {
             "name": "GistOptions",
-            "id": "interface-GistOptions-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-GistOptions-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -514,7 +514,7 @@
         },
         {
             "name": "HighlightJSOptions",
-            "id": "interface-HighlightJSOptions-a8576e1b98801dce4c7d719cf982fa239e4b03066304d208e4c64b1257762543db8f3cfd4c15066defefaf5bc9ba34ea8a17bf064f92515b6bab45f43903f006",
+            "id": "interface-HighlightJSOptions-d6c60e1d8030dbf4c70ad81259879baeb124fe8d92e289f0d38ef1034bd10db1504b00e981500b74d6e3a8bfd6f9193d3ec704b362170d9b1ccfbd6b6c9fe118",
             "file": "src/lib/highlight.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -598,7 +598,7 @@
         },
         {
             "name": "History",
-            "id": "interface-History-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-History-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -662,7 +662,7 @@
         },
         {
             "name": "LineNumbersOptions",
-            "id": "interface-LineNumbersOptions-a8576e1b98801dce4c7d719cf982fa239e4b03066304d208e4c64b1257762543db8f3cfd4c15066defefaf5bc9ba34ea8a17bf064f92515b6bab45f43903f006",
+            "id": "interface-LineNumbersOptions-d6c60e1d8030dbf4c70ad81259879baeb124fe8d92e289f0d38ef1034bd10db1504b00e981500b74d6e3a8bfd6f9193d3ec704b362170d9b1ccfbd6b6c9fe118",
             "file": "src/lib/highlight.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -698,7 +698,7 @@
         },
         {
             "name": "Owner",
-            "id": "interface-Owner-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-Owner-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -892,7 +892,7 @@
         },
         {
             "name": "User",
-            "id": "interface-User-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-User-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -1088,7 +1088,7 @@
     "injectables": [
         {
             "name": "HighlightJS",
-            "id": "injectable-HighlightJS-b085458c2c5f6b6f2ac7abc5c1f8bfb1323a839d8a7afa61dee0cf74ba46185292417c0e5267fbd42848355b1a2e010d68b311e244fad383060ef761453dcde4",
+            "id": "injectable-HighlightJS-80ff146883ef2413cd7cd05a3f650e73121a84a67e8abb4b28c0b5e115f596f0d1f64b4df5398c970bc76e37aa4c19da9518c16cde133393b607531e89a1c595",
             "file": "src/lib/highlight.service.ts",
             "properties": [
                 {
@@ -1368,8 +1368,8 @@
                     "jsdoctags": [
                         {
                             "tagName": {
-                                "pos": 3596,
-                                "end": 3602,
+                                "pos": 3501,
+                                "end": 3507,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1533,12 +1533,12 @@
         },
         {
             "name": "HighlightLoader",
-            "id": "injectable-HighlightLoader-d3885854dc6baee8678623d4dde9fda10cec668da6185cda9a41cc6b42ca9cc74861ff536c52c0d9a30877daf47da0049c9ee7ae00b7c4110ee5dc6dd3357215",
+            "id": "injectable-HighlightLoader-97198034179b8030f151945635e9c5fa73d56ac848b071debe78dbf52bdbfa014188a8dc87493b0df6b9c3622e659345534b1e4de05017bb4bc84081ecaea022",
             "file": "src/lib/highlight.loader.ts",
             "properties": [
                 {
                     "name": "hljs",
-                    "defaultValue": "resource({\r\n        loader: () => this.loadLibrary()\r\n            .then(async hljs => {\r\n                if (this.options?.lineNumbersLoader) {\r\n                    const plugin = await this.options.lineNumbersLoader();\r\n                    (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)\r\n                }\r\n\r\n                hljs.configure({\r\n                    __emitter: TokenTreeEmitter\r\n                })\r\n\r\n                if (this.options?.highlightOptions)\r\n                    hljs.configure(this.options.highlightOptions)\r\n\r\n                return hljs\r\n            })\r\n            .finally(this._t)\r\n    }).asReadonly()",
+                    "defaultValue": "resource({\n        loader: () => this.loadLibrary()\n            .then(async hljs => {\n                if (this.options?.lineNumbersLoader) {\n                    const plugin = await this.options.lineNumbersLoader();\n                    (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)\n                }\n\n                hljs.configure({\n                    __emitter: TokenTreeEmitter\n                })\n\n                if (this.options?.highlightOptions)\n                    hljs.configure(this.options.highlightOptions)\n\n                return hljs\n            })\n            .finally(this._t)\n    }).asReadonly()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -1609,16 +1609,16 @@
                         "deprecationMessage": "use hljs.value()",
                         "jsdoctags": [
                             {
-                                "pos": 1515,
-                                "end": 1550,
+                                "pos": 1474,
+                                "end": 1508,
                                 "kind": 332,
                                 "id": 0,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
                                 "tagName": {
-                                    "pos": 1516,
-                                    "end": 1526,
+                                    "pos": 1475,
+                                    "end": 1485,
                                     "kind": 80,
                                     "id": 0,
                                     "flags": 16842752,
@@ -1636,12 +1636,12 @@
         },
         {
             "name": "HighlightLoaderStub",
-            "id": "injectable-HighlightLoaderStub-c9a63001c98f69e8e0a29b16dcffddabee53b89db80c3e94c73296125a7821930ba258b276f67135571099e5f27131d3c89208ace511ea2bedb161c9a6884871",
+            "id": "injectable-HighlightLoaderStub-a7f0108229d4d8862be01c9fee2ed1bc5b1667ffed7bcee49b28a78a37893eb60a8a83b4023fa1b0f3bfd843ec2b1a31684b4667cc54852ef6856d85f9dbb47d",
             "file": "src/test-helpers.ts",
             "properties": [
                 {
                     "name": "hljs",
-                    "defaultValue": "resource({\r\n        loader: () => this.ready\r\n    }).asReadonly()",
+                    "defaultValue": "resource({\n        loader: () => this.ready\n    }).asReadonly()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -1655,7 +1655,7 @@
                 },
                 {
                     "name": "ready",
-                    "defaultValue": "new Promise<HLJSApi>((resolve) => {\r\n        (hljs as any).lineNumbersBlock = activateLineNumbers(document)\r\n        resolve(hljs)\r\n    })",
+                    "defaultValue": "new Promise<HLJSApi>((resolve) => {\n        (hljs as any).lineNumbersBlock = activateLineNumbers(document)\n        resolve(hljs)\n    })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -1680,7 +1680,7 @@
     "directives": [
         {
             "name": "GistDirective",
-            "id": "directive-GistDirective-6f3251e303f674136967117448aaca00fd232f9fcf9623185164c5d54f05eff846bd7421c3cc7eecdb36fdf6ebcff07e18714618c01cac5be0546ee828412b95",
+            "id": "directive-GistDirective-7787cbfb2f533c4be782162b1f9cc4da021fc885f59e9d3f64b7dcf68f0429de5d9152a6adb31931829cfcc6cde91cd4b85220e355e8b94d87774144788dbbe2",
             "file": "extras/src/gist.ts",
             "type": "directive",
             "description": "",
@@ -1754,7 +1754,7 @@
         },
         {
             "name": "HighlightAutoDirective",
-            "id": "directive-HighlightAutoDirective-2205c97f156613df53a0ad9b8f4390aadd0f2f08f3596a7265b916b6567c4641cf9a6e155d7f6347c2f597e24f41ca776edc71897e815ff76a74cf34a1fa6ba7",
+            "id": "directive-HighlightAutoDirective-1ae948816a7d8a8df64defd41f6e587026a7d67922426e4506a492a3cf9309a1464edba598c4a814e627008539d6ffc63b01ac0f8abfc82acd521d0730c4f583",
             "file": "src/lib/highlight-auto.directive.ts",
             "type": "directive",
             "description": "",
@@ -1938,7 +1938,7 @@
         },
         {
             "name": "HighlightBase",
-            "id": "directive-HighlightBase-2d50b2daafcfc4637267e9f95c351129994f7f98208babacde3b88508c23c8062a5fab2826ef7f01920be2cc3e1b9c60711fe1f757306ffeeaea13500026d338",
+            "id": "directive-HighlightBase-df840e5d216ba0295b8c2e7f6d30b2301529e1fade87a58a30d8edb012081aa79f2fe6eb611f36f90f6e05d0c055af79cbc75047f35f8907ae795b920d9628e1",
             "file": "src/lib/highlight-base.directive.ts",
             "type": "directive",
             "description": "",
@@ -2060,7 +2060,7 @@
         },
         {
             "name": "HighlightDirective",
-            "id": "directive-HighlightDirective-02e8540daba14f582e42a55649a78931b381823ee53fe8fb9352e7e1f73ba25603155f3f68af35f59f3b67cdd5f4e746fcbf8a0b0598e1a26db71408f4ef8f64",
+            "id": "directive-HighlightDirective-8575170a9665974d3b46d55a73ec452e2d642ea619e90debbe0a4b2c4da89131aaba1029c6b914dcab6e406d737b37fb3991cc662dd81d36a0b0ba8ce1155819",
             "file": "src/lib/highlight.directive.ts",
             "type": "directive",
             "description": "",
@@ -2093,7 +2093,7 @@
                 },
                 {
                     "name": "ignoreIllegals",
-                    "defaultValue": "undefined, {\r        transform: booleanAttribute\r    }",
+                    "defaultValue": "undefined, {        transform: booleanAttribute    }",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "boolean, unknown",
@@ -2257,7 +2257,7 @@
         },
         {
             "name": "HighlightLineNumbersDirective",
-            "id": "directive-HighlightLineNumbersDirective-7778af037f593e9aba86bc08c466b8a2dbd20abe19b3d0695b93a9fdb8fbece37ebe0c3996d1d5381b27f63f4abf2ef53e6d646d69b882d02cb82c3c27bf468a",
+            "id": "directive-HighlightLineNumbersDirective-91fcfb4576ce7321ff3c1128f5964cc27e81846639b8ee6452744a84f980555ce8a953e7d87003295069005a424a8d5c430793bca93461938b12c9d967c0c289",
             "file": "line-numbers/src/line-numbers.directive.ts",
             "type": "directive",
             "description": "",
@@ -2269,9 +2269,10 @@
             "inputsClass": [
                 {
                     "name": "singleLine",
-                    "defaultValue": "this.options?.singleLine, {\r        transform: booleanAttribute\r    }",
+                    "defaultValue": "this.options?.singleLine, {        transform: booleanAttribute    }",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "type": "boolean | undefined, unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -2283,9 +2284,10 @@
                 },
                 {
                     "name": "startFrom",
-                    "defaultValue": "this.options?.startFrom, {\r        transform: numberAttribute\r    }",
+                    "defaultValue": "this.options?.startFrom, {        transform: numberAttribute    }",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "type": "number | undefined, unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -2318,7 +2320,7 @@
     "modules": [
         {
             "name": "HighlightExstrasModule",
-            "id": "module-HighlightExstrasModule-edbcd086d45c21678c9f72d53c406fa809608195a5e2d1d0e801526e824c0f556f5b4e3e727a357aacfbdc0943bce0c951adb2b3b3d0244e5e8e6e5a35782df0",
+            "id": "module-HighlightExstrasModule-42d80110c67b54765358278422edef556adeae65a9cf1734b3e51733b39254f023a93ae23ddef112b3eef2e15d526a22c9a1ac9462c2116e3f2b2964e8ad69e2",
             "description": "",
             "deprecationMessage": "use standalone imports",
             "deprecated": true,
@@ -2373,7 +2375,7 @@
         },
         {
             "name": "HighlightModule",
-            "id": "module-HighlightModule-e78036f58289b27611a7f82b04ac1e2dab2b9ac16f4990eaeb287a565d2f482b706859f2e08b2e02df27de46fe3c8699d1d9abd185428475b479ea9e46df88b5",
+            "id": "module-HighlightModule-3e7085ed839eac4ccf66f2b8ba5632c01d7c259637ff5a6f2e1499d51858f083544f4b5183b531d197c569554bcda883f0592cb9784ca6853b9379d5a251f8f3",
             "description": "",
             "deprecationMessage": "use standalone imports",
             "deprecated": true,
@@ -2431,8 +2433,8 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "unknown",
-                "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\r\n    providedIn: 'root',\r\n    factory: CODE_FILE_LOCATION_FACTORY\r\n})",
-                "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\r\nUsed to handle server-side rendering and to stub out during unit tests.",
+                "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\n    providedIn: 'root',\n    factory: CODE_FILE_LOCATION_FACTORY\n})",
+                "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\nUsed to handle server-side rendering and to stub out during unit tests.",
                 "description": "<p>Injection token used to provide the current location to <code>codeFromUrl</code> pipe.\nUsed to handle server-side rendering and to stub out during unit tests.</p>\n"
             }
         ],
@@ -2513,7 +2515,7 @@
                         "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "destrucuredGroupId": "3817e3a3-2026-4f23-aa84-7cc5c3db4940",
+                        "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
                         "destructuredParameter": true
                     },
                     {
@@ -2522,15 +2524,15 @@
                         "deprecated": false,
                         "deprecationMessage": "",
                         "dotDotDotToken": true,
-                        "destrucuredGroupId": "3817e3a3-2026-4f23-aa84-7cc5c3db4940",
+                        "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
                         "destructuredParameter": true
                     }
                 ],
                 "jsdoctags": [
                     {
                         "name": {
-                            "pos": 2448,
-                            "end": 2451,
+                            "pos": 2374,
+                            "end": 2377,
                             "kind": 80,
                             "id": 0,
                             "flags": 16777216,
@@ -2540,8 +2542,8 @@
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
-                            "pos": 2442,
-                            "end": 2447,
+                            "pos": 2368,
+                            "end": 2373,
                             "kind": 80,
                             "id": 0,
                             "flags": 16777216,
@@ -2555,7 +2557,7 @@
                         "type": "unknown",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "destrucuredGroupId": "3817e3a3-2026-4f23-aa84-7cc5c3db4940",
+                        "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
                         "destructuredParameter": true,
                         "tagName": {
                             "text": "param"
@@ -2567,7 +2569,7 @@
                         "deprecated": false,
                         "deprecationMessage": "",
                         "dotDotDotToken": true,
-                        "destrucuredGroupId": "3817e3a3-2026-4f23-aa84-7cc5c3db4940",
+                        "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
                         "destructuredParameter": true,
                         "tagName": {
                             "text": "param"
@@ -2600,8 +2602,8 @@
                 "jsdoctags": [
                     {
                         "name": {
-                            "pos": 3251,
-                            "end": 3253,
+                            "pos": 3158,
+                            "end": 3160,
                             "kind": 80,
                             "id": 0,
                             "flags": 16777216,
@@ -2611,8 +2613,8 @@
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
-                            "pos": 3245,
-                            "end": 3250,
+                            "pos": 3152,
+                            "end": 3157,
                             "kind": 80,
                             "id": 0,
                             "flags": 16777216,
@@ -2703,8 +2705,8 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
-                    "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\r\n    providedIn: 'root',\r\n    factory: CODE_FILE_LOCATION_FACTORY\r\n})",
-                    "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\r\nUsed to handle server-side rendering and to stub out during unit tests.",
+                    "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\n    providedIn: 'root',\n    factory: CODE_FILE_LOCATION_FACTORY\n})",
+                    "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\nUsed to handle server-side rendering and to stub out during unit tests.",
                     "description": "<p>Injection token used to provide the current location to <code>codeFromUrl</code> pipe.\nUsed to handle server-side rendering and to stub out during unit tests.</p>\n"
                 }
             ]
@@ -2791,7 +2793,7 @@
                             "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "destrucuredGroupId": "3817e3a3-2026-4f23-aa84-7cc5c3db4940",
+                            "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
                             "destructuredParameter": true
                         },
                         {
@@ -2800,15 +2802,15 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "dotDotDotToken": true,
-                            "destrucuredGroupId": "3817e3a3-2026-4f23-aa84-7cc5c3db4940",
+                            "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
                             "destructuredParameter": true
                         }
                     ],
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 2448,
-                                "end": 2451,
+                                "pos": 2374,
+                                "end": 2377,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16777216,
@@ -2818,8 +2820,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 2442,
-                                "end": 2447,
+                                "pos": 2368,
+                                "end": 2373,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16777216,
@@ -2833,7 +2835,7 @@
                             "type": "unknown",
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "destrucuredGroupId": "3817e3a3-2026-4f23-aa84-7cc5c3db4940",
+                            "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
                             "destructuredParameter": true,
                             "tagName": {
                                 "text": "param"
@@ -2845,7 +2847,7 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "dotDotDotToken": true,
-                            "destrucuredGroupId": "3817e3a3-2026-4f23-aa84-7cc5c3db4940",
+                            "destrucuredGroupId": "e16fa867-5074-45dd-b5e0-67d23af0bbe9",
                             "destructuredParameter": true,
                             "tagName": {
                                 "text": "param"
@@ -2878,8 +2880,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3251,
-                                "end": 3253,
+                                "pos": 3158,
+                                "end": 3160,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16777216,
@@ -2889,8 +2891,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 3245,
-                                "end": 3250,
+                                "pos": 3152,
+                                "end": 3157,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16777216,

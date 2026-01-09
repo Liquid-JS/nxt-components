@@ -1,11 +1,15 @@
-import { Directive, HostListener, input, output } from '@angular/core'
+import { Directive, input, output } from '@angular/core'
 import { TextEvent } from '../util/helpers'
 
 /**
  * @internal
  */
 @Directive({
-    selector: '[nxtText]'
+    selector: '[nxtText]',
+    host: {
+        '(input)': 'inputChange($event)',
+        '(change)': 'inputChange($event)'
+    }
 })
 export class TextDirective {
 
@@ -14,8 +18,6 @@ export class TextDirective {
 
     readonly newValue = output<TextEvent>()
 
-    @HostListener('input', ['$event'])
-    @HostListener('change', ['$event'])
     inputChange(event: Event) {
         const value = (((event?.target as HTMLInputElement | null)?.['value'] || '') + '').trim()
 

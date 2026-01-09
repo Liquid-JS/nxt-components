@@ -22,12 +22,12 @@ export abstract class DateTimeDirective<T> {
     /**
      * When true, shows a timer to configure the seconds value
      */
-    readonly showSecondsTimer = input(false)
+    readonly showSecondsTimer = input<boolean>(false)
 
     /**
      * When true, the timer will be in 12-hour format mode
      */
-    readonly hour12Timer = input(false)
+    readonly hour12Timer = input<boolean>(false)
 
     /**
      * The view that the calendar should start on
@@ -37,29 +37,29 @@ export abstract class DateTimeDirective<T> {
     /**
      * Hours to change per step
      */
-    readonly stepHour = input(1)
+    readonly stepHour = input<number>(1)
 
     /**
      * Minutes to change per step
      */
-    readonly stepMinute = input(1)
+    readonly stepMinute = input<number>(1)
 
     /**
      * Seconds to change per step
      */
-    readonly stepSecond = input(1)
+    readonly stepSecond = input<number>(1)
 
     /**
      * Set the first day of week
      *
      * Valid values are from 0 [Sunday] to 6 [Saturday]
      */
-    readonly firstDayOfWeek = input(0)
+    readonly firstDayOfWeek = input<number>(0)
 
     /**
      * If true, don't show dates from preious / next month on the calendar month view
      */
-    readonly hideOtherMonths = input(false)
+    readonly hideOtherMonths = input<boolean>(false)
 
     readonly id = `nxt-dt-picker-${nextUniqueId++}`
 

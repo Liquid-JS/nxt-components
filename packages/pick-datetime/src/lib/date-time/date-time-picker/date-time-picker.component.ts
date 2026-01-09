@@ -106,7 +106,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDest
 
     /** Whether the calendar is open */
     // eslint-disable-next-line @angular-eslint/no-input-rename
-    readonly _isOpen = input(false, { alias: 'isOpen' })
+    readonly _isOpen = input<boolean>(false, { alias: 'isOpen' })
     readonly isOpen = signal(false)
 
     /**

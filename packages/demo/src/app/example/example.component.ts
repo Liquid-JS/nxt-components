@@ -74,7 +74,7 @@ export function resolveTempaltes(cfg: LoaderConfig, prefix: string) {
 })
 export class ExampleComponent {
 
-    readonly asTab = input(false)
+    readonly asTab = input<boolean>(false)
 
     _config?: ExampleConfig
     sources?: SourceDef[]

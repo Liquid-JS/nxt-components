@@ -1,10 +1,4 @@
-/**
- * @internal
- */
-interface LineNumbersOptions {
-    startFrom?: number
-    singleLine?: boolean
-}
+import { LineNumbersOptions } from 'nxt-highlightjs'
 
 export function activateLineNumbers(document: Document) {
     const TABLE_NAME = 'hljs-ln'

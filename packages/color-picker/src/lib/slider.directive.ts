@@ -1,11 +1,19 @@
-import { Directive, ElementRef, HostListener, inject, input, output } from '@angular/core'
+import { Directive, ElementRef, inject, input, output } from '@angular/core'
 import { CursorEvent } from '../util/helpers'
 
 /**
  * @internal
  */
 @Directive({
-    selector: '[nxtSlider]'
+    selector: '[nxtSlider]',
+    host: {
+        '(mousedown)': 'onStart($event)',
+        '(touchstart)': 'onStart($event)',
+        '(document:mousemove)': 'onMove($event)',
+        '(document:touchmove)': 'onMove($event)',
+        '(document:mouseup)': 'onStop($event)',
+        '(document:touchend)': 'onStop($event)'
+    }
 })
 export class SliderDirective {
 
@@ -22,8 +30,6 @@ export class SliderDirective {
     readonly newValue = output<CursorEvent>()
     private readonly elRef = inject(ElementRef)
 
-    @HostListener('mousedown', ['$event'])
-    @HostListener('touchstart', ['$event'])
     onStart(event: MouseEvent | TouchEvent) {
         event.stopPropagation()
         event.preventDefault()
@@ -33,8 +39,6 @@ export class SliderDirective {
         this.dragStart.emit(undefined)
     }
 
-    @HostListener('document:mousemove', ['$event'])
-    @HostListener('document:touchmove', ['$event'])
     onMove(event: MouseEvent | TouchEvent) {
         if (this.isMoving) {
             event.stopPropagation()
@@ -44,8 +48,6 @@ export class SliderDirective {
         }
     }
 
-    @HostListener('document:mouseup', ['$event'])
-    @HostListener('document:touchend', ['$event'])
     onStop(event: MouseEvent | TouchEvent) {
         if (this.isMoving) {
             event.stopPropagation()

@@ -8,7 +8,7 @@
     "directives": [
         {
             "name": "SortablejsDirective",
-            "id": "directive-SortablejsDirective-878fd7e53a0f6879788fc6f9c059c60859bc10a16be1b364e52623f94a90fffd0cbdd21510f4a5d2742149f60bfcf6a760f255db19c7e5f3188ad36659aeee89",
+            "id": "directive-SortablejsDirective-d98b614e6465a71c1892d8aa18dc124556470c45f3479375cad86451b87984e63484a221b4eec0228886729191308d989c3d89c112c19fde63731b2174547ae2",
             "file": "src/lib/sortablejs.directive.ts",
             "type": "directive",
             "description": "",
@@ -115,7 +115,7 @@
     "modules": [
         {
             "name": "SortablejsModule",
-            "id": "module-SortablejsModule-e6c0984f4a6dfd81858a97a646bfbd4e33d34eb1a0d96c8c71c1cbe536052386cb6cc3f6a0016b8a0b0f4d0c1232673a4b1a1035f638794b0ee3bcc9412e1975",
+            "id": "module-SortablejsModule-284d5a788b3248144d67b9682e2ee42928c002db26bf072df208bc53598f9ee772ef123fadc825015cd4d8274039d8558a989092ffb5d5c7e86cb638437d7436",
             "description": "",
             "deprecationMessage": "use standalone imports",
             "deprecated": true,

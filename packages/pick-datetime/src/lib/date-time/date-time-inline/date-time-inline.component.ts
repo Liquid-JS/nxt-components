@@ -41,7 +41,7 @@ export class DateTimeInlineComponent<T> extends DateTimeDirective<T> implements 
 
     /** Whether the date time picker should be disabled */
     // eslint-disable-next-line @angular-eslint/no-input-rename
-    readonly _disabled = input(false, { alias: 'disabled' })
+    readonly _disabled = input<boolean>(false, { alias: 'disabled' })
     readonly disabled = linkedSignal({
         source: () => this._disabled(),
         computation: v => v

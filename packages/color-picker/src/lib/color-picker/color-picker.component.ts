@@ -1,4 +1,4 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, HostListener, inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core'
+import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core'
 import { cmykToRgb, denormalizeCMYK, denormalizeHSLA, denormalizeRGBA, formatCmyk, formatOutput, hslaToHsva, hsvaToHsla, hsvaToRgba, rgbaToCmyk, rgbaToHex, rgbaToHsva, stringToCmyk, stringToHsva } from '../../util/color'
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Cmyk, Hsla, Hsva, Rgba } from '../../util/formats'
@@ -19,7 +19,14 @@ import { TextDirective } from '../text.directive'
     imports: [
         SliderDirective,
         TextDirective
-    ]
+    ],
+    host: {
+        '(document:keyup.esc)': 'onCancel($event)',
+        '(document:keyup.enter)': 'onAccept($event)',
+        '(document:mousedown)': 'onFocusChange($event)',
+        '(document:focusin)': 'onFocusChange($event)',
+        '(click)': 'onClick($event)'
+    }
 })
 export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked {
 
@@ -95,7 +102,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     private readonly cdRef = inject(ChangeDetectorRef)
     private readonly service = inject(ColorPickerService)
 
-    @HostListener('document:keyup.esc', ['$event'])
     onCancel(event: Event) {
         event.stopPropagation()
         event.preventDefault()
@@ -113,7 +119,6 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    @HostListener('document:keyup.enter', ['$event'])
     onAccept(event: Event) {
         event.stopPropagation()
         event.preventDefault()
@@ -129,13 +134,10 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    @HostListener('click', ['$event'])
     onClick(event: MouseEvent) {
         event.stopPropagation()
     }
 
-    @HostListener('document:mousedown', ['$event'])
-    @HostListener('document:focusin', ['$event'])
     onFocusChange(event: MouseEvent | FocusEvent) {
         const path = new Set(composedPath(event))
         const intersect = this.ignoredElements?.find(el => path.has(el))

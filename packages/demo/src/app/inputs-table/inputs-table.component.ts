@@ -16,27 +16,17 @@ export class InputsTableComponent {
     readonly parsed = computed(() => {
         const inputs = this.inputs()
         return inputs?.map(v => {
-            try {
-                if (v.defaultValue) {
-                    // eslint-disable-next-line no-eval
-                    const p: any[] = (0, eval)(`[${v.defaultValue}]`)
-                    let j
-                    const alias = p.find((c, i) => {
-                        const match = (typeof c == 'object') && ('alias' in c)
-                        if (match) {
-                            j = i
-                        }
-                        return match
-                    })?.alias
-                    if (typeof j == 'number') {
-                        p.splice(j, 1)
-                        if (p.length)
-                            v.defaultValue = `${p[0]}`
-                    }
-                    if (alias)
-                        v.name = alias
-                }
-            } catch { }
+            if (v.defaultValue) {
+                const alias = v.defaultValue.match(/alias:\s*["']([^"']+)["']/)?.[1]
+                if (alias)
+                    v.name = alias
+                v.defaultValue = v.defaultValue?.split(',').map((p: any) => p.trim())?.shift()
+            }
+            v.type = v.type?.split(',').map((p: any) => p.trim())?.shift()
+            if ((!v.defaultValue?.trim() || v.defaultValue.trim().startsWith('undefined')) && v.type && !v.type.match(/\|\s*undefined$/))
+                v.type += ' | undefined'
+            if (v.defaultValue?.trim().startsWith('undefined'))
+                v.defaultValue = undefined
             return v
         })
     })

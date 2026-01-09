@@ -3,7 +3,7 @@
     "interfaces": [
         {
             "name": "DropzoneConfig",
-            "id": "interface-DropzoneConfig-433c916f0db5d9a5fb097da8074d71881eed2d6e9f027b825b0cd4ad2938eefed4b4ba08273095af513256a6b1637ad5ddaa3674b49fb1803c1be5feae78b322",
+            "id": "interface-DropzoneConfig-364a3e53988101c15f85faf8e6007ac490abd62e26995c50933444c682d4a80405db0339a5c809beae9b8f80cfad2386067c669bd84335786769833e52a7d9b5",
             "file": "src/lib/dropzone.interfaces.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -58,7 +58,7 @@
     "directives": [
         {
             "name": "DropzoneDirective",
-            "id": "directive-DropzoneDirective-ac58e2329c3e631a835cbf6dcef0377fe5a5a99a3f86732087133afed7a9cd015109d1c692868e67a928241425a1ad069117fcfca5734769f7ff1d8f85fe2a0c",
+            "id": "directive-DropzoneDirective-569c0e64e37b27ed56aed839db48d30817547e0e33ed400cf9a9f7c99a17fbb0b2028c5c199f1f0d663876e15ae4b6fedfcc900bd30d4cff1239d047cd879786",
             "file": "src/lib/dropzone.directive.ts",
             "type": "directive",
             "description": "",
@@ -677,7 +677,7 @@
         },
         {
             "name": "DropzoneListeners",
-            "id": "directive-DropzoneListeners-433c916f0db5d9a5fb097da8074d71881eed2d6e9f027b825b0cd4ad2938eefed4b4ba08273095af513256a6b1637ad5ddaa3674b49fb1803c1be5feae78b322",
+            "id": "directive-DropzoneListeners-364a3e53988101c15f85faf8e6007ac490abd62e26995c50933444c682d4a80405db0339a5c809beae9b8f80cfad2386067c669bd84335786769833e52a7d9b5",
             "file": "src/lib/dropzone.interfaces.ts",
             "type": "directive",
             "description": "",
@@ -1153,7 +1153,7 @@
     "components": [
         {
             "name": "DropzoneComponent",
-            "id": "component-DropzoneComponent-d924055416f8414e44ac0f54b87bbf3a2e28f4227324a4df6201f7033a16d0b296891f20e27dd59a0652db1a748b68923bcb7d06c3c59c206539623e6c30d94c",
+            "id": "component-DropzoneComponent-ac104d34a0c0fb68dee331c09a985e8954f0513a5739504342e4759045093ed4655ae5417d6a95b804cfd99b5bd07c9a8293f391142d0509ed7d705e4a2e28ae",
             "file": "src/lib/dropzone.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -1844,7 +1844,7 @@
     "modules": [
         {
             "name": "DropzoneModule",
-            "id": "module-DropzoneModule-45fba98a3cb7db63512d608bd5607779a18ca6d9a5b62b9a62aac661356db284c45dc6ce95ef987c25eef917c84d47597d362f2a7c0858c7baaf498fdb1372d2",
+            "id": "module-DropzoneModule-564654daa42f56b8e1ca6d3be628e79585ae2d162856aa8be67bbc6eba44d711014be17ab6e3f6883069171337b7337d5f8d502d3c166b42e72d95a8beb157e5",
             "description": "",
             "deprecationMessage": "use standalone imports",
             "deprecated": true,

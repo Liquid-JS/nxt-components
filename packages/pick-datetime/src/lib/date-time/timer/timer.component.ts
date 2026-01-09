@@ -56,17 +56,17 @@ export class TimerComponent<T> {
     /**
      * Hours to change per step
      */
-    readonly stepHour = input(1)
+    readonly stepHour = input<number>(1)
 
     /**
      * Minutes to change per step
      */
-    readonly stepMinute = input(1)
+    readonly stepMinute = input<number>(1)
 
     /**
      * Seconds to change per step
      */
-    readonly stepSecond = input(1)
+    readonly stepSecond = input<number>(1)
 
     readonly hourValue = computed(() => this.dateTimeAdapter.getHours(this.pickerMoment()))
     private readonly hoursWithPM = computed(() => {

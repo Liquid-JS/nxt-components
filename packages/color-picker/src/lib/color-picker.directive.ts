@@ -1,6 +1,6 @@
 import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
-import { ApplicationRef, ComponentRef, Directive, ElementRef, HostListener, Injector, OnChanges, OnDestroy, SimpleChanges, ViewContainerRef, inject, output, input, linkedSignal } from '@angular/core'
+import { ApplicationRef, ComponentRef, Directive, ElementRef, Injector, OnChanges, OnDestroy, SimpleChanges, ViewContainerRef, inject, output, input, linkedSignal } from '@angular/core'
 import { compositeColors, hsvaToRgba, stringToHsva } from '../util/color'
 import { opaqueSliderLight } from '../util/contrast'
 import { Hsva, Rgba } from '../util/formats'
@@ -10,7 +10,13 @@ import { ColorPickerComponent } from './color-picker/color-picker.component'
 
 @Directive({
     selector: '[nxtColor]',
-    exportAs: 'nxtColorPicker'
+    exportAs: 'nxtColorPicker',
+    host: {
+        '(focus)': 'handleOpen($event)',
+        '(click)': 'handleOpen($event)',
+        '(input)': 'handleInput($event)',
+        '(change)': 'handleInput($event)'
+    }
 })
 export class ColorPickerDirective implements OnChanges, OnDestroy {
 
@@ -186,8 +192,6 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     private readonly overlay = inject(Overlay)
 
     /** @internal */
-    @HostListener('focus', ['$event'])
-    @HostListener('click', ['$event'])
     handleOpen(event: Event) {
         const path = new Set(composedPath(event))
         const ignored = this.resIgnoredElements.find(el => path.has(el))
@@ -198,8 +202,6 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     }
 
     /** @internal */
-    @HostListener('input', ['$event'])
-    @HostListener('change', ['$event'])
     handleInput(event: Event) {
         const value = (((event?.target as HTMLInputElement | null)?.['value'] || '') + '').trim()
 

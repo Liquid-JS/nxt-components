@@ -198,6 +198,34 @@ export default config(
                                 'config'
                             ],
                             package: 'typescript-eslint'
+                        },
+                        {
+                            from: 'file',
+                            name: [
+                                // Library deprecations
+                                "MomentDateTimeModule",
+                                "NativeDateTimeModule",
+                                "DateTimeModule",
+                                "ColorPickerModule",
+                                "ready",
+                                "getCodeFromGist",
+                                "getCodeFromUrl",
+                                "GistDirective",
+                                "CodeFromUrlPipe",
+                                "DropzoneModule",
+                                "highlight",
+                                "highlightAuto",
+                                "highlightElement",
+                                "highlightAll",
+                                "registerLanguage",
+                                "debugMode",
+                                "safeMode",
+                                "getLanguage",
+                                "listLanguages",
+                                "unregisterLanguage",
+                                "registerAliases",
+                                "lineNumbersBlock"
+                            ]
                         }
                     ]
                 }
