@@ -2,7 +2,7 @@
     "name": "nxt-flags",
     "description": "Angular component to show country flags.",
     "bugs": "https://github.com/Liquid-JS/nxt-components/issues",
-    "version": "20.0.0",
+    "version": "21.0.0-alpha.0",
     "license": "MIT",
     "type": "module",
     "repository": "https://github.com/Liquid-JS/nxt-components.git",

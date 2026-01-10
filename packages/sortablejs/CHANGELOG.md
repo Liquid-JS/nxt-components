@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.0.0-alpha.0](https://github.com/Liquid-JS/nxt-components/compare/v20.0.0...v21.0.0-alpha.0) (2026-01-10)
+
+### Features
+
+* cleanup deprecated imports and providers ([3b358f2](https://github.com/Liquid-JS/nxt-components/commit/3b358f2d98c75ce820de94a890c73512d081fad0))
+* common module ([96609fc](https://github.com/Liquid-JS/nxt-components/commit/96609fc2327ef7d05c93c55fcf7ff401f142d68c))
+* deprecate pipes and loaders, use resource signals ([455c0d8](https://github.com/Liquid-JS/nxt-components/commit/455c0d891603bd3aadce93494f14ed2a1ca6d6a6))
+* inputs ([349a34b](https://github.com/Liquid-JS/nxt-components/commit/349a34b269a04e34049cbf824b799b8ebb217b48))
+* move to standalone ([25ce102](https://github.com/Liquid-JS/nxt-components/commit/25ce102ff524aff8f516fc52e4d07d09802bb601))
+* **pick-datetime:** inject constructor ([453fd59](https://github.com/Liquid-JS/nxt-components/commit/453fd599759177dc3267b9fb87b2a6136e6c881d))
+* **sortablejs:** use signals ([c103f89](https://github.com/Liquid-JS/nxt-components/commit/c103f89c2e25bce0ceb4c73570b3e0f6e944ea04))
+
 # [20.0.0](https://github.com/Liquid-JS/nxt-components/compare/v19.1.0...v20.0.0) (2025-06-30)
 
 * feat!: use angular 20 ([a1a270a](https://github.com/Liquid-JS/nxt-components/commit/a1a270a73d9a8c9d4ad92ef85faaadef720a705c))

@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.0.0-alpha.0](https://github.com/Liquid-JS/nxt-components/compare/v20.0.0...v21.0.0-alpha.0) (2026-01-10)
+
+### Bug Fixes
+
+* **pick-datetime:** year select minmax ([3c0fbbd](https://github.com/Liquid-JS/nxt-components/commit/3c0fbbde2db80181619a2717b11c49b59cceac9c))
+
+### Features
+
+* cleanup deprecated imports and providers ([3b358f2](https://github.com/Liquid-JS/nxt-components/commit/3b358f2d98c75ce820de94a890c73512d081fad0))
+* **color-picker:** input signals ([7f019a4](https://github.com/Liquid-JS/nxt-components/commit/7f019a4ca86596e8dfa52ee27a778a516806344a))
+* **color-picker:** signals ([f2c0164](https://github.com/Liquid-JS/nxt-components/commit/f2c01644d58480bac859b97a4c2991a3eb79fd13))
+* common module ([96609fc](https://github.com/Liquid-JS/nxt-components/commit/96609fc2327ef7d05c93c55fcf7ff401f142d68c))
+* deprecate pipes and loaders, use resource signals ([455c0d8](https://github.com/Liquid-JS/nxt-components/commit/455c0d891603bd3aadce93494f14ed2a1ca6d6a6))
+* **dropzone-wrapper:** signals ([b9c0c22](https://github.com/Liquid-JS/nxt-components/commit/b9c0c226ef48dc0ef0f785154cb5407e5a257dee))
+* **flags:** signals ([8598fa4](https://github.com/Liquid-JS/nxt-components/commit/8598fa4c966809b81e6975cf15ea86e57eccf354))
+* **highlightjs:** signal loader ([3c06f4e](https://github.com/Liquid-JS/nxt-components/commit/3c06f4efc6bfb89505c16ce758efabb985e791c9))
+* inputs ([349a34b](https://github.com/Liquid-JS/nxt-components/commit/349a34b269a04e34049cbf824b799b8ebb217b48))
+* **json-view:** signals ([5a0c579](https://github.com/Liquid-JS/nxt-components/commit/5a0c57977409c3ee4252bb17f8f2652a1838f219))
+* more signals ([d833b76](https://github.com/Liquid-JS/nxt-components/commit/d833b76a1f776a4dd1d81b6a97925f76a5160ccb))
+* move to standalone ([25ce102](https://github.com/Liquid-JS/nxt-components/commit/25ce102ff524aff8f516fc52e4d07d09802bb601))
+* ng class ([0ed5351](https://github.com/Liquid-JS/nxt-components/commit/0ed5351c77d30830e04306a3e319f6edb612d901))
+* ng style ([3956c93](https://github.com/Liquid-JS/nxt-components/commit/3956c935366c59366ae6f20d740eb68b5282c403))
+* **pick-datetime:** calendar signal inputs ([94383a5](https://github.com/Liquid-JS/nxt-components/commit/94383a554da5e1c7ef22832facb0aa500031e2e4))
+* **pick-datetime:** inject constructor ([453fd59](https://github.com/Liquid-JS/nxt-components/commit/453fd599759177dc3267b9fb87b2a6136e6c881d))
+* **pick-datetime:** input signals ([02e059c](https://github.com/Liquid-JS/nxt-components/commit/02e059cbabdc3db2da123cc613e4667861196cdd))
+* **pick-datetime:** signals ([3fdfa3f](https://github.com/Liquid-JS/nxt-components/commit/3fdfa3fe87e3b82b13efaf4f66a6dafd82a02d84))
+* queries ([e51dc41](https://github.com/Liquid-JS/nxt-components/commit/e51dc41bb1c14a5074aa926b0444b37f022c95cf))
+* signal outputs ([2a633c7](https://github.com/Liquid-JS/nxt-components/commit/2a633c702b77176a6ffc60762bbc12a99dbf0238))
+* **sortablejs:** use signals ([c103f89](https://github.com/Liquid-JS/nxt-components/commit/c103f89c2e25bce0ceb4c73570b3e0f6e944ea04))
+
 # [20.0.0](https://github.com/Liquid-JS/nxt-components/compare/v19.1.0...v20.0.0) (2025-06-30)
 
 * feat!: use angular 20 ([a1a270a](https://github.com/Liquid-JS/nxt-components/commit/a1a270a73d9a8c9d4ad92ef85faaadef720a705c))

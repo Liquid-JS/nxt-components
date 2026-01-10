@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.0.0-alpha.0](https://github.com/Liquid-JS/nxt-components/compare/v20.0.0...v21.0.0-alpha.0) (2026-01-10)
+
+### Features
+
+* cleanup deprecated imports and providers ([3b358f2](https://github.com/Liquid-JS/nxt-components/commit/3b358f2d98c75ce820de94a890c73512d081fad0))
+* deprecate pipes and loaders, use resource signals ([455c0d8](https://github.com/Liquid-JS/nxt-components/commit/455c0d891603bd3aadce93494f14ed2a1ca6d6a6))
+* **dropzone-wrapper:** signals ([b9c0c22](https://github.com/Liquid-JS/nxt-components/commit/b9c0c226ef48dc0ef0f785154cb5407e5a257dee))
+* inputs ([349a34b](https://github.com/Liquid-JS/nxt-components/commit/349a34b269a04e34049cbf824b799b8ebb217b48))
+* move to standalone ([25ce102](https://github.com/Liquid-JS/nxt-components/commit/25ce102ff524aff8f516fc52e4d07d09802bb601))
+* ng class ([0ed5351](https://github.com/Liquid-JS/nxt-components/commit/0ed5351c77d30830e04306a3e319f6edb612d901))
+* queries ([e51dc41](https://github.com/Liquid-JS/nxt-components/commit/e51dc41bb1c14a5074aa926b0444b37f022c95cf))
+
 # [20.0.0](https://github.com/Liquid-JS/nxt-components/compare/v19.1.0...v20.0.0) (2025-06-30)
 
 * feat!: use angular 20 ([a1a270a](https://github.com/Liquid-JS/nxt-components/commit/a1a270a73d9a8c9d4ad92ef85faaadef720a705c))

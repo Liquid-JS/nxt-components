@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.0.0-alpha.0](https://github.com/Liquid-JS/nxt-components/compare/v20.0.0...v21.0.0-alpha.0) (2026-01-10)
+
+### Features
+
+* common module ([96609fc](https://github.com/Liquid-JS/nxt-components/commit/96609fc2327ef7d05c93c55fcf7ff401f142d68c))
+* inputs ([349a34b](https://github.com/Liquid-JS/nxt-components/commit/349a34b269a04e34049cbf824b799b8ebb217b48))
+* **json-view:** signals ([5a0c579](https://github.com/Liquid-JS/nxt-components/commit/5a0c57977409c3ee4252bb17f8f2652a1838f219))
+* move to standalone ([25ce102](https://github.com/Liquid-JS/nxt-components/commit/25ce102ff524aff8f516fc52e4d07d09802bb601))
+* ng class ([0ed5351](https://github.com/Liquid-JS/nxt-components/commit/0ed5351c77d30830e04306a3e319f6edb612d901))
+
 # [20.0.0](https://github.com/Liquid-JS/nxt-components/compare/v19.1.0...v20.0.0) (2025-06-30)
 
 * feat!: use angular 20 ([a1a270a](https://github.com/Liquid-JS/nxt-components/commit/a1a270a73d9a8c9d4ad92ef85faaadef720a705c))

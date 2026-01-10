@@ -2,7 +2,7 @@
     "name": "nxt-highlightjs",
     "description": "Angular code highlighting directives with optional line numbers and support for SSR",
     "bugs": "https://github.com/Liquid-JS/nxt-components/issues",
-    "version": "20.0.0",
+    "version": "21.0.0-alpha.0",
     "license": "MIT",
     "type": "module",
     "repository": "https://github.com/Liquid-JS/nxt-components.git",

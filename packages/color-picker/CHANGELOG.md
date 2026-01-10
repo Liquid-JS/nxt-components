@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.0.0-alpha.0](https://github.com/Liquid-JS/nxt-components/compare/v20.0.0...v21.0.0-alpha.0) (2026-01-10)
+
+### Features
+
+* **color-picker:** input signals ([7f019a4](https://github.com/Liquid-JS/nxt-components/commit/7f019a4ca86596e8dfa52ee27a778a516806344a))
+* **color-picker:** signals ([f2c0164](https://github.com/Liquid-JS/nxt-components/commit/f2c01644d58480bac859b97a4c2991a3eb79fd13))
+* more signals ([d833b76](https://github.com/Liquid-JS/nxt-components/commit/d833b76a1f776a4dd1d81b6a97925f76a5160ccb))
+* move to standalone ([25ce102](https://github.com/Liquid-JS/nxt-components/commit/25ce102ff524aff8f516fc52e4d07d09802bb601))
+* ng class ([0ed5351](https://github.com/Liquid-JS/nxt-components/commit/0ed5351c77d30830e04306a3e319f6edb612d901))
+* ng style ([3956c93](https://github.com/Liquid-JS/nxt-components/commit/3956c935366c59366ae6f20d740eb68b5282c403))
+* **pick-datetime:** inject constructor ([453fd59](https://github.com/Liquid-JS/nxt-components/commit/453fd599759177dc3267b9fb87b2a6136e6c881d))
+* signal outputs ([2a633c7](https://github.com/Liquid-JS/nxt-components/commit/2a633c702b77176a6ffc60762bbc12a99dbf0238))
+
 # [20.0.0](https://github.com/Liquid-JS/nxt-components/compare/v19.1.0...v20.0.0) (2025-06-30)
 
 * feat!: use angular 20 ([a1a270a](https://github.com/Liquid-JS/nxt-components/commit/a1a270a73d9a8c9d4ad92ef85faaadef720a705c))
