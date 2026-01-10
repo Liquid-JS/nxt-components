@@ -307,8 +307,7 @@ describe('TimerComponent', () => {
 
 @Component({
     template: `
-        <nxt-date-time-timer
-                [hour12Timer]="hour12Timer"
+        <nxt-date-time-timer [hour12Timer]="hour12Timer"
                 [showSecondsTimer]="showSecondsTimer"
                 [pickerMoment]="pickerMoment"
                 [stepHour]="stepHour"
@@ -316,7 +315,7 @@ describe('TimerComponent', () => {
                 [stepSecond]="stepSecond"
                 [min]="minDateTime"
                 [max]="maxDateTime"
-                (selectedChange)="handleSelectedChange($event)"></nxt-date-time-timer>
+                (selectedChange)="handleSelectedChange($event)" />
     `,
     imports: [TimerComponent]
 })

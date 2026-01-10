@@ -1,7 +1,7 @@
 @if (!examples.isLoading()) {
 <app-meta title="nxt-flags"
     (done)="doneCb()"
-    description="Angular component to show flags based on country ISO code."></app-meta>
+    description="Angular component to show flags based on country ISO code." />
 }
 <app-content-wrap>
     <h1>Angular country flags</h1>
@@ -23,6 +23,6 @@
     @for (example of examples.value(); track example.component; let i = $index) {
     <app-example [injector]="injector"
         [config]="example"
-        id="example-{{ i }}"></app-example>
+        id="example-{{ i }}" />
     }
 </app-content-wrap>

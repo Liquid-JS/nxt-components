@@ -1,7 +1,7 @@
 @if (!examples.isLoading()) {
 <app-meta title="nxt-json-view"
     (done)="doneCb()"
-    description="An interactive JSON view component for Angular."></app-meta>
+    description="An interactive JSON view component for Angular." />
 }
 <app-content-wrap>
     <h1>Angular JSON viewer</h1>
@@ -49,6 +49,6 @@
     @for (example of examples.value(); track example.component; let i = $index) {
     <app-example [injector]="injector"
         [config]="example"
-        id="example-{{ i }}"></app-example>
+        id="example-{{ i }}" />
     }
 </app-content-wrap>

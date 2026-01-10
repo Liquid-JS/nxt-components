@@ -3,7 +3,10 @@
     "version": "21.0.0-alpha.0",
     "license": "MIT",
     "type": "module",
-    "repository": "https://github.com/Liquid-JS/nxt-components.git",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Liquid-JS/nxt-components.git"
+    },
     "private": true,
     "scripts": {
         "serve": "ng serve demo",

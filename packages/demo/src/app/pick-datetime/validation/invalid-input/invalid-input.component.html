@@ -5,7 +5,7 @@
     placeholder="Date and time"
     [nxtDateTimeTrigger]="picker"
     [nxtDateTime]="picker">
-<nxt-date-time #picker></nxt-date-time>
+<nxt-date-time #picker />
 @if (dateTimeControl.errors?.['dateTimeParse']; as parseError) {
 <div class="invalid-feedback">
     Input is not a valid date string, received "{{ parseError.text }}".

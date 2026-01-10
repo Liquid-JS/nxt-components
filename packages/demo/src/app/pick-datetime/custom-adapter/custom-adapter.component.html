@@ -1,7 +1,7 @@
 @if (!exampleImpl.isLoading()) {
 <app-meta title="Writing a custom date adapter | nxt-pick-datetime"
     (done)="doneCb()"
-    description="Angular date and time picker supports custom date-time implementations."></app-meta>
+    description="Angular date and time picker supports custom date-time implementations." />
 }
 <app-content-wrap>
     <h1>Writing a custom date adapter</h1>
@@ -9,6 +9,6 @@
 
     @if (exampleImpl.value(); as config) {
     <app-example [injector]="injector"
-        [config]="config"></app-example>
+        [config]="config" />
     }
 </app-content-wrap>

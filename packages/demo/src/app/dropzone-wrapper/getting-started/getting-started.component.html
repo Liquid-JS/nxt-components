@@ -1,17 +1,17 @@
 <app-meta title="Getting started | nxt-dropzone-wrapper"
-    description="Getting started with Angular Dropzone wrapper"></app-meta>
+    description="Getting started with Angular Dropzone wrapper" />
 <app-content-wrap>
     <h1>Getting started with nxt-dropzone-wrapper</h1>
 
     <h2 class="h4">Installing</h2>
     <app-code-block [code]="installScript"
-        [languages]="['shell']"></app-code-block>
+        [languages]="['shell']" />
 
     <br>
 
     <h2 class="h4">Configure dropzone wrapper</h2>
     <app-code-block [code]="loadConfig"
-        [languages]="['typescript']"></app-code-block>
+        [languages]="['typescript']" />
 
     <br>
 
@@ -19,25 +19,25 @@
     <p>This library provides two ways to create a Dropzone element, component for simple use cases and directive for more custom use cases.</p>
     <h3 class="h5">Use dropzone component</h3>
     <app-code-block [code]="includeHTML"
-        [languages]="['html']"></app-code-block>
+        [languages]="['html']" />
     <br>
     <h3 class="h5">Use dropzone directive</h3>
     <p>When using only the directive you need to provide your own theming or import the default theme (<code>dropzone/dist/dropzone.css</code>).</p>
     <app-code-block [code]="includeDirective"
-        [languages]="['html']"></app-code-block>
+        [languages]="['html']" />
     <br>
 
     <h2 class="h3">Configuration options</h2>
     <h3 class="h5">Component inputs</h3>
-    <app-inputs-table [inputs]="componentInputs"></app-inputs-table>
+    <app-inputs-table [inputs]="componentInputs" />
     <br>
 
     <h3 class="h5">Directive inputs</h3>
-    <app-inputs-table [inputs]="directiveInputs"></app-inputs-table>
+    <app-inputs-table [inputs]="directiveInputs" />
     <br>
 
     <h3 class="h5">Outputs (same for both component and directive)</h3>
     <p>See <a href="https://docs.dropzone.dev/configuration/events">Dropzone documentation</a> for details about events.</p>
-    <app-outputs-table [outputs]="directiveOutputs"></app-outputs-table>
+    <app-outputs-table [outputs]="directiveOutputs" />
 
 </app-content-wrap>

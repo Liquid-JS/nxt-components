@@ -1,7 +1,7 @@
 @if (!examples.isLoading()) {
 <app-meta title="Extras | nxt-highlightjs"
     (done)="doneCb()"
-    description="Angular Highlight.js provides a number of utils, making it easy to display source code form files or gists."></app-meta>
+    description="Angular Highlight.js provides a number of utils, making it easy to display source code form files or gists." />
 }
 <app-content-wrap>
     <h1>Extras</h1>
@@ -10,7 +10,7 @@
     <p>The extras rely on <code>HttpClient</code> to fetch contents, ensure that it is included with the providers.</p>
 
     <app-code-block [code]="loadHttp"
-        [languages]="['typescript']"></app-code-block>
+        [languages]="['typescript']" />
     <br>
 
     <h2>Examples <div class="btn-group"
@@ -41,7 +41,7 @@
     @for (example of examples.value(); track example.component; let i = $index) {
     <app-example [injector]="injector"
         [config]="example"
-        id="example-{{ i }}"></app-example>
+        id="example-{{ i }}" />
     }
 
 </app-content-wrap>

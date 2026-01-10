@@ -267,10 +267,9 @@ describe('MultiYearViewComponent', () => {
 
 @Component({
     template: `
-        <nxt-date-time-multi-year-view
-                [selected]="selected"
+        <nxt-date-time-multi-year-view [selected]="selected"
                 [(pickerMoment)]="pickerMoment"
-                (change)="handleChange($event)"></nxt-date-time-multi-year-view>
+                (change)="handleChange($event)" />
     `,
     imports: [MultiYearViewComponent]
 })
@@ -285,9 +284,8 @@ class StandardMultiYearViewComponent {
 
 @Component({
     template: `
-        <nxt-date-time-multi-year-view
-                [(pickerMoment)]="pickerMoment"
-                [dateTimeFilter]="dateTimeFilter"></nxt-date-time-multi-year-view>
+        <nxt-date-time-multi-year-view [(pickerMoment)]="pickerMoment"
+                [dateTimeFilter]="dateTimeFilter" />
     `,
     imports: [MultiYearViewComponent]
 })

@@ -104,7 +104,7 @@
         [hideOtherMonths]="hideOtherMonths()"
         (pickerMomentChange)="handlePickerMomentChange($event)"
         (selectedChange)="dateSelected($event)"
-        (userSelection)="userSelected()"></nxt-date-time-month-view>
+        (userSelection)="userSelected()" />
     }
     @case ('year') {
     <nxt-date-time-year-view [pickerMoment]="pickerMoment()"
@@ -117,7 +117,7 @@
         (keyboardEnter)="focusActiveCell()"
         (pickerMomentChange)="handlePickerMomentChange($event)"
         (monthSelected)="selectMonthInYearView($event)"
-        (change)="goToDateInView($event, 'month')"></nxt-date-time-year-view>
+        (change)="goToDateInView($event, 'month')" />
     }
     @case ('multi-years') {
     <nxt-date-time-multi-year-view [pickerMoment]="pickerMoment()"
@@ -130,7 +130,7 @@
         (keyboardEnter)="focusActiveCell()"
         (pickerMomentChange)="handlePickerMomentChange($event)"
         (yearSelected)="selectYearInMultiYearView($event)"
-        (change)="goToDateInView($event, 'year')"></nxt-date-time-multi-year-view>
+        (change)="goToDateInView($event, 'year')" />
     }
     }
 </div>

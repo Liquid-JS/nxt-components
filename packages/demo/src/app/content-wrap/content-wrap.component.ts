@@ -3,7 +3,7 @@ import { Component } from '@angular/core'
 @Component({
     selector: 'app-content-wrap',
     imports: [],
-    template: '<ng-content></ng-content>',
+    template: '<ng-content />',
     styleUrls: ['./content-wrap.component.scss'],
     host: {
         class: 'px-3 px-md-4 pt-4 pt-md-5 pb-4'

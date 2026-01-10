@@ -1,28 +1,28 @@
 <app-meta title="Getting started | nxt-highlightjs"
-    description="Getting started with Angular highlightjs"></app-meta>
+    description="Getting started with Angular highlightjs" />
 <app-content-wrap>
     <h1>Getting started with nxt-highlightjs</h1>
 
     <h2 class="h4">Installing</h2>
     <app-code-block [code]="installScript"
-        [languages]="['shell']"></app-code-block>
+        [languages]="['shell']" />
 
     <br>
 
     <h2 class="h4">Load and configure Highlight.js</h2>
     <app-code-block [code]="loadFull"
-        [languages]="['typescript']"></app-code-block>
+        [languages]="['typescript']" />
     <br>
 
     <p>Above code loads the entire Highlight.js library. To improve performance you might want to load only the core library and neccesary languages.</p>
 
     <app-code-block [code]="loadConfig"
-        [languages]="['typescript']"></app-code-block>
+        [languages]="['typescript']" />
     <br>
 
     <h2 class="h4">Include it in HTML template</h2>
     <app-code-block [code]="includeHTML"
-        [languages]="['html']"></app-code-block>
+        [languages]="['html']" />
     <br>
 
     <h2 class="h3">Configuration options</h2>
@@ -32,10 +32,10 @@
     }
     <h3 class="h5">{{ item.selector }}</h3>
     @if (item.inputs.length) {
-    <app-inputs-table [inputs]="item.inputs"></app-inputs-table>
+    <app-inputs-table [inputs]="item.inputs" />
     }
     @if (item.outputs.length) {
-    <app-outputs-table [outputs]="item.outputs"></app-outputs-table>
+    <app-outputs-table [outputs]="item.outputs" />
     }
     }
 

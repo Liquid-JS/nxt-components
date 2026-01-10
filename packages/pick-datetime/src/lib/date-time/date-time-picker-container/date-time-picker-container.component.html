@@ -16,7 +16,7 @@
         [hideOtherMonths]="!!hideOtherMonths()"
         (yearSelected)="picker()?.selectYear($event)"
         (monthSelected)="picker()?.selectMonth($event)"
-        (selectedChange)="dateSelected($event)"></nxt-date-time-calendar>
+        (selectedChange)="dateSelected($event)" />
     }
 
     @if (pickerType() === 'both' || pickerType() === 'timer') {
@@ -29,7 +29,7 @@
         [stepHour]="stepHour() ?? 1"
         [stepMinute]="stepMinute() ?? 1"
         [stepSecond]="stepSecond() ?? 1"
-        (selectedChange)="timeSelected($event)"></nxt-date-time-timer>
+        (selectedChange)="timeSelected($event)" />
     }
 
     @if (isInRangeMode()) {

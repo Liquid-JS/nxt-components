@@ -2,7 +2,10 @@
     "name": "nxt-components",
     "version": "0.0.0",
     "private": true,
-    "repository": "https://github.com/Liquid-JS/nxt-components.git",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Liquid-JS/nxt-components.git"
+    },
     "author": "HitkoDev <development@hitko.si>",
     "license": "MIT",
     "type": "module",
@@ -63,7 +66,7 @@
         "@liquid-js/commitlint-plugin-workspace-scopes": "^2.1.0",
         "@stylistic/eslint-plugin": "^5.7.0",
         "@stylistic/stylelint-config": "^3.0.1",
-        "@types/jasmine": "^5.1.13",
+        "@types/jasmine": "^5.1.14",
         "@types/node": "<25.0.0",
         "@types/semver": "^7.7.1",
         "angular-eslint": "21.1.0",

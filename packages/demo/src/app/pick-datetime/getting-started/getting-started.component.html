@@ -1,11 +1,11 @@
 <app-meta title="Getting started | nxt-pick-datetime"
-    description="Getting started with Angular date and time picker."></app-meta>
+    description="Getting started with Angular date and time picker." />
 <app-content-wrap>
     <h1>Getting started with nxt-pick-datetime</h1>
 
     <h2 class="h4">Installing</h2>
     <app-code-block [code]="installScript"
-        [languages]="['shell']"></app-code-block>
+        [languages]="['shell']" />
 
     <br>
 
@@ -17,12 +17,12 @@
         <li><code>provideMomentDateTimeAdapter</code> - support for MomentJs</li>
     </ul>
     <app-code-block [code]="loadConfig"
-        [languages]="['typescript']"></app-code-block>
+        [languages]="['typescript']" />
     <br>
 
     <h2 class="h4">Use it in a template</h2>
     <app-code-block [code]="includeHTML"
-        [languages]="['html']"></app-code-block>
+        [languages]="['html']" />
     <br>
 
     <h2 class="h3">Configuration options</h2>
@@ -32,10 +32,10 @@
     }
     <h3 class="h5">{{ item.selector }}</h3>
     @if (item.inputs.length) {
-    <app-inputs-table [inputs]="item.inputs"></app-inputs-table>
+    <app-inputs-table [inputs]="item.inputs" />
     }
     @if (item.outputs.length) {
-    <app-outputs-table [outputs]="item.outputs"></app-outputs-table>
+    <app-outputs-table [outputs]="item.outputs" />
     }
     }
 

@@ -270,10 +270,9 @@ describe('MonthViewComponent', () => {
 
 @Component({
     template: `
-        <nxt-date-time-month-view
-                [(selected)]="selected"
+        <nxt-date-time-month-view [(selected)]="selected"
                 [(pickerMoment)]="pickerMoment"
-                [firstDayOfWeek]="firstDayOfWeek"></nxt-date-time-month-view>
+                [firstDayOfWeek]="firstDayOfWeek" />
     `,
     imports: [MonthViewComponent]
 })
@@ -285,9 +284,8 @@ class StandardMonthViewComponent {
 
 @Component({
     template: `
-        <nxt-date-time-month-view
-                [(pickerMoment)]="pickerMoment"
-                [dateTimeFilter]="dateTimeFilter"></nxt-date-time-month-view>
+        <nxt-date-time-month-view [(pickerMoment)]="pickerMoment"
+                [dateTimeFilter]="dateTimeFilter" />
     `,
     imports: [MonthViewComponent]
 })

@@ -22,7 +22,7 @@
     @if (!asTab() && cfg.component) {
     <div class="example__preview">
         <ng-container [ngComponentOutlet]="cfg.component"
-            [ngComponentOutletInjector]="injector()"></ng-container>
+            [ngComponentOutletInjector]="injector()" />
     </div>
     }
     @if (sources(); as src) {
@@ -33,7 +33,7 @@
             <tab heading="Preview"
                 class="example-tab-preview">
                 <ng-container [ngComponentOutlet]="cfg.component"
-                    [ngComponentOutletInjector]="injector()"></ng-container>
+                    [ngComponentOutletInjector]="injector()" />
             </tab>
             }
             @for (source of src; track source.key) {

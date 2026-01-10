@@ -6,7 +6,7 @@
     [nxtDateTimeTrigger]="pickerMin"
     [nxtDateTime]="pickerMin"
     [min]="min">
-<nxt-date-time #pickerMin></nxt-date-time>
+<nxt-date-time #pickerMin />
 @if (minDateTimeControl.errors?.['dateTimeMin']; as minError) {
 <div class="invalid-feedback">
     Selected value should be after "{{ minError.min | date:'short' }}", received "{{ minError.actual | date:'short' }}".
@@ -21,7 +21,7 @@
     [nxtDateTimeTrigger]="pickerMax"
     [nxtDateTime]="pickerMax"
     [max]="max">
-<nxt-date-time #pickerMax></nxt-date-time>
+<nxt-date-time #pickerMax />
 @if (maxDateTimeControl.errors?.['dateTimeMax']; as maxError) {
 <div class="invalid-feedback">
     Selected value should be before "{{ maxError.max | date:'short' }}", received "{{ maxError.actual | date:'short' }}".

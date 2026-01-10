@@ -1,7 +1,7 @@
 @if (!examples.isLoading()) {
 <app-meta title="nxt-pick-datetime"
     (done)="doneCb()"
-    description="Simple responsive Angular date and time picker."></app-meta>
+    description="Simple responsive Angular date and time picker." />
 }
 <app-content-wrap>
     <h1>Angular date & time picker</h1>
@@ -52,7 +52,7 @@
     @for (example of examples.value(); track example.component; let i = $index) {
     <app-example [injector]="injector"
         [config]="example"
-        id="example-{{ i }}"></app-example>
+        id="example-{{ i }}" />
     }
 
 </app-content-wrap>

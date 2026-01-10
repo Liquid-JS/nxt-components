@@ -318,10 +318,9 @@ describe('YearViewComponent', () => {
 
 @Component({
     template: `
-        <nxt-date-time-year-view
-                [selected]="selected"
+        <nxt-date-time-year-view [selected]="selected"
                 [(pickerMoment)]="pickerMoment"
-                (change)="handleChange($event)"></nxt-date-time-year-view>
+                (change)="handleChange($event)" />
     `,
     imports: [YearViewComponent]
 })
@@ -336,9 +335,8 @@ class StandardYearViewComponent {
 
 @Component({
     template: `
-        <nxt-date-time-year-view
-                [(pickerMoment)]="pickerMoment"
-                [dateTimeFilter]="dateTimeFilter"></nxt-date-time-year-view>
+        <nxt-date-time-year-view [(pickerMoment)]="pickerMoment"
+                [dateTimeFilter]="dateTimeFilter" />
     `,
     imports: [YearViewComponent]
 })

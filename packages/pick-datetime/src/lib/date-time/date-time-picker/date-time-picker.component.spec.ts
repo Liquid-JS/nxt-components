@@ -2287,7 +2287,7 @@ describe('DateTimeComponent', () => {
         <nxt-date-time [isOpen]="isOpen"
                        [disabled]="disabled"
                        [pickerType]="pickerType"
-                       [pickerMode]="pickerMode" #dt></nxt-date-time>
+                       [pickerMode]="pickerMode" #dt />
     `,
     imports: [
         DateTimeComponent,
@@ -2308,7 +2308,7 @@ class StandardDateTimePicker {
     template: `
         <input [nxtDateTime]="dt" [selectMode]="selectMode" [values]="dates">
         <nxt-date-time [startAt]="startAt"
-                       [pickerType]="pickerType" #dt></nxt-date-time>
+                       [pickerType]="pickerType" #dt />
     `,
     imports: [
         DateTimeComponent,
@@ -2328,7 +2328,7 @@ class RangeDateTimePicker {
     template: `
         <input [nxtDateTime]="dt">
         <input [nxtDateTime]="dt">
-        <nxt-date-time #dt></nxt-date-time>
+        <nxt-date-time #dt />
     `,
     imports: [
         DateTimeComponent,
@@ -2339,7 +2339,7 @@ class MultiInputDateTimePicker { }
 
 @Component({
     template: `
-        <nxt-date-time #dt></nxt-date-time>
+        <nxt-date-time #dt />
     `,
     imports: [
         DateTimeComponent
@@ -2352,7 +2352,7 @@ class NoInputDateTimePicker {
 @Component({
     template: `
         <input [nxtDateTime]="dt" [value]="date">
-        <nxt-date-time #dt [startAt]="startDate"></nxt-date-time>
+        <nxt-date-time #dt [startAt]="startDate" />
     `,
     imports: [
         DateTimeComponent,
@@ -2370,7 +2370,7 @@ class DateTimePickerWithStartAt {
         <input [nxtDateTime]="dt" [value]="date">
         <nxt-date-time #dt [startView]="startView"
                        (monthSelected)="onMonthSelection()"
-                       (yearSelected)="onYearSelection()"></nxt-date-time>
+                       (yearSelected)="onYearSelection()" />
     `,
     imports: [
         DateTimeComponent,
@@ -2390,7 +2390,7 @@ class DateTimePickerWithStartView {
 @Component({
     template: `
         <input [(ngModel)]="moment" [selectMode]="selectMode" [nxtDateTime]="dt">
-        <nxt-date-time #dt></nxt-date-time>
+        <nxt-date-time #dt />
     `,
     imports: [
         FormsModule,
@@ -2410,7 +2410,7 @@ class DateTimePickerWithNgModel {
         <input [formControl]="formControl"
                [nxtDateTime]="dt"
                [nxtDateTimeTrigger]="dt">
-        <nxt-date-time #dt></nxt-date-time>
+        <nxt-date-time #dt />
     `,
     imports: [
         FormsModule,
@@ -2431,7 +2431,7 @@ class DateTimePickerWithFormControl {
     template: `
         <input [nxtDateTime]="dt">
         <button [nxtDateTimeTrigger]="dt">Icon</button>
-        <nxt-date-time #dt></nxt-date-time>
+        <nxt-date-time #dt />
     `,
     imports: [
         DateTimeComponent,
@@ -2449,7 +2449,7 @@ class DateTimePickerWithTrigger {
         <input [(ngModel)]="date" [min]="min" [max]="max"
                [nxtDateTime]="dt"
                [nxtDateTimeTrigger]="dt">
-        <nxt-date-time [showSecondsTimer]="true" #dt></nxt-date-time>
+        <nxt-date-time [showSecondsTimer]="true" #dt />
     `,
     imports: [
         FormsModule,
@@ -2474,7 +2474,7 @@ class DateTimePickerWithMinAndMaxValidation {
                [dateTimeFilter]="filter"
                [nxtDateTime]="dt"
                [nxtDateTimeTrigger]="dt">
-        <nxt-date-time [showSecondsTimer]="true" #dt></nxt-date-time>
+        <nxt-date-time [showSecondsTimer]="true" #dt />
     `,
     imports: [
         FormsModule,
@@ -2499,7 +2499,7 @@ class DateTimePickerWithFilterValidation {
                (input)="handleInput()"
                (dateTimeChange)="handleDateTimeChange()"
                (dateTimeInput)="handleDateTimeInput()">
-        <nxt-date-time [showSecondsTimer]="true" #dt></nxt-date-time>
+        <nxt-date-time [showSecondsTimer]="true" #dt />
     `,
     imports: [
         DateTimeComponent,
@@ -2524,7 +2524,7 @@ class DateTimePickerWithChangeAndInputEvents {
 @Component({
     template: `
     <input [nxtDateTime]="dt" [(ngModel)]="value" [min]="min" [max]="max">
-    <nxt-date-time #dt [startAt]="startAt"></nxt-date-time>
+    <nxt-date-time #dt [startAt]="startAt" />
   `,
     imports: [
         FormsModule,
@@ -2544,7 +2544,7 @@ class DateTimePickerWithISOStrings {
 @Component({
     template: `
     <input [(ngModel)]="selected" [nxtDateTime]="dt">
-    <nxt-date-time (open)="isOpenSpy()" (close)="closedSpy()" #dt></nxt-date-time>
+    <nxt-date-time (open)="isOpenSpy()" (close)="closedSpy()" #dt />
   `,
     imports: [
         FormsModule,

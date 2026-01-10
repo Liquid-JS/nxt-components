@@ -427,12 +427,11 @@ describe('CalendarComponent', () => {
 
 @Component({
     template: `
-        <nxt-date-time-calendar
-                [(selected)]="selected"
+        <nxt-date-time-calendar [(selected)]="selected"
                 [selectMode]="selectMode"
                 [pickerMoment]="pickerMoment"
                 (monthSelected)="selectedMonth=$event"
-                (yearSelected)="selectedYear=$event"></nxt-date-time-calendar>
+                (yearSelected)="selectedYear=$event" />
     `,
     imports: [CalendarComponent]
 })
@@ -449,7 +448,7 @@ class StandardCalendar {
         <nxt-date-time-calendar [selectMode]="selectMode"
                                 [pickerMoment]="pickerMoment"
                                 [min]="minDate"
-                                [max]="maxDate"></nxt-date-time-calendar>
+                                [max]="maxDate" />
     `,
     imports: [CalendarComponent]
 })
@@ -466,7 +465,7 @@ class CalendarWithMinMax {
         <nxt-date-time-calendar [(selected)]="selected"
                                 [selectMode]="selectMode"
                                 [pickerMoment]="pickerMoment"
-                                [dateTimeFilter]="dateTimeFilter"></nxt-date-time-calendar>
+                                [dateTimeFilter]="dateTimeFilter" />
     `,
     imports: [CalendarComponent]
 })

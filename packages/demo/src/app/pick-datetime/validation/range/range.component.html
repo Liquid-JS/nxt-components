@@ -6,7 +6,7 @@
     selectMode="range"
     [nxtDateTimeTrigger]="picker"
     [nxtDateTime]="picker">
-<nxt-date-time #picker></nxt-date-time>
+<nxt-date-time #picker />
 @if (dateTimeControl.errors?.['dateTimeRange']) {
 <div class="invalid-feedback">
     "Range.to" should be greater than "range.from".

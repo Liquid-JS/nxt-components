@@ -113,7 +113,7 @@ export class AppColorPickerComponent {
 
 @Component({
     selector: 'app-color-picker-wrap',
-    template: '<app-color-picker></app-color-picker>',
+    template: '<app-color-picker />',
     imports: [
         AppColorPickerComponent
     ],

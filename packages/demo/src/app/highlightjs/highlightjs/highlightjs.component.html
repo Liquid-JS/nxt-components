@@ -1,7 +1,7 @@
 @if (!examples.isLoading()) {
 <app-meta title="nxt-highlightjs"
     (done)="doneCb()"
-    description="Angular code highlighting directives with optional line numbers and support for SSR."></app-meta>
+    description="Angular code highlighting directives with optional line numbers and support for SSR." />
 }
 <app-content-wrap>
     <h1>Angular Highlight.js directives</h1>
@@ -25,6 +25,6 @@
     <app-example [injector]="injector"
         [config]="example"
         [asTab]="true"
-        id="example-{{ i }}"></app-example>
+        id="example-{{ i }}" />
     }
 </app-content-wrap>

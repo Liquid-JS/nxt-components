@@ -1,7 +1,7 @@
 @if (!examples.isLoading()) {
 <app-meta title="nxt-color-picker"
     (done)="doneCb()"
-    description="A color picker widget for Angular with no dependencies."></app-meta>
+    description="A color picker widget for Angular with no dependencies." />
 }
 <app-content-wrap>
     <h1>Angular color picker</h1>
@@ -45,6 +45,6 @@
     @for (example of examples.value(); track example.component; let i = $index) {
     <app-example [injector]="injector"
         [config]="example"
-        id="example-{{ i }}"></app-example>
+        id="example-{{ i }}" />
     }
 </app-content-wrap>
