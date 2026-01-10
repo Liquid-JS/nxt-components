@@ -2,7 +2,7 @@
     "name": "nxt-sortablejs",
     "description": "Angular sortablejs bindings.",
     "bugs": "https://github.com/Liquid-JS/nxt-components/issues",
-    "version": "21.0.0-alpha.0",
+    "version": "21.0.0-alpha.1",
     "license": "MIT",
     "type": "module",
     "repository": {

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.0.0-alpha.1](https://github.com/Liquid-JS/nxt-components/compare/v21.0.0-alpha.0...v21.0.0-alpha.1) (2026-01-10)
+
+**Note:** Version bump only for package nxt-pick-datetime
+
 # [21.0.0-alpha.0](https://github.com/Liquid-JS/nxt-components/compare/v20.0.0...v21.0.0-alpha.0) (2026-01-10)
 
 ### Bug Fixes
