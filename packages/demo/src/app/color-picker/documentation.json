@@ -848,7 +848,7 @@
     "directives": [
         {
             "name": "ColorPickerDirective",
-            "id": "directive-ColorPickerDirective-1eb39051f50a263238eee1e87cf15be61888542d17f6a2816e3f67554b1caa0541ce9c87ee245495c62e679c2d74f55613886dddbe5b831c8a8f1dbad75471b3",
+            "id": "directive-ColorPickerDirective-e78623472cd5a438d935c6ab1872ae8e0e3d4862f326189718a48ceb65422dd6afd22f32e2ddd521fa2109e92870a13a8d31d0289824ddbd85dc8957890fcf5d",
             "file": "src/lib/color-picker.directive.ts",
             "type": "directive",
             "description": "",
@@ -884,7 +884,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Alpha channel mode</p>\n",
-                    "line": 106,
+                    "line": 110,
                     "rawdescription": "\nAlpha channel mode",
                     "modifierKind": [
                         148
@@ -900,7 +900,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Show a Cancel / Reset button which resets the color</p>\n",
-                    "line": 142,
+                    "line": 146,
                     "rawdescription": "\nShow a Cancel / Reset button which resets the color",
                     "modifierKind": [
                         148
@@ -916,7 +916,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Close the color picker dialog when user clicks outside</p>\n",
-                    "line": 136,
+                    "line": 140,
                     "rawdescription": "\nClose the color picker dialog when user clicks outside",
                     "modifierKind": [
                         148
@@ -932,7 +932,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Enables CMYK input format and color change event</p>\n",
-                    "line": 101,
+                    "line": 105,
                     "rawdescription": "\nEnables CMYK input format and color change event",
                     "modifierKind": [
                         148
@@ -948,7 +948,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Dialog positioning mode</p>\n",
-                    "line": 128,
+                    "line": 132,
                     "rawdescription": "\nDialog positioning mode",
                     "modifierKind": [
                         148
@@ -964,7 +964,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Disables opening of the color picker dialog via toggle</p>\n",
-                    "line": 95,
+                    "line": 99,
                     "rawdescription": "\nDisables opening of the color picker dialog via toggle",
                     "modifierKind": [
                         148
@@ -980,7 +980,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Disables / hides the color input field from the dialog</p>\n",
-                    "line": 125,
+                    "line": 129,
                     "rawdescription": "\nDisables / hides the color input field from the dialog",
                     "modifierKind": [
                         148
@@ -995,7 +995,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Used when the color is not well-formed or is undefined</p>\n",
-                    "line": 108,
+                    "line": 112,
                     "rawdescription": "\nUsed when the color is not well-formed or is undefined",
                     "modifierKind": [
                         148
@@ -1011,7 +1011,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Use this option to force color picker dialog height</p>\n",
-                    "line": 90,
+                    "line": 94,
                     "rawdescription": "\nUse this option to force color picker dialog height",
                     "modifierKind": [
                         148
@@ -1026,7 +1026,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Array of HTML elements that will be ignored when clicked</p>\n",
-                    "line": 131,
+                    "line": 135,
                     "rawdescription": "\nArray of HTML elements that will be ignored when clicked",
                     "modifierKind": [
                         148
@@ -1041,7 +1041,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Use this option to set the max colors allowed in presets</p>\n",
-                    "line": 148,
+                    "line": 152,
                     "rawdescription": "\nUse this option to set the max colors allowed in presets",
                     "modifierKind": [
                         148
@@ -1057,7 +1057,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Dialog color mode</p>\n",
-                    "line": 98,
+                    "line": 102,
                     "rawdescription": "\nDialog color mode",
                     "modifierKind": [
                         148
@@ -1073,7 +1073,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Show an OK / Apply button which saves the color</p>\n",
-                    "line": 139,
+                    "line": 143,
                     "rawdescription": "\nShow an OK / Apply button which saves the color",
                     "modifierKind": [
                         148
@@ -1089,7 +1089,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Output color format</p>\n",
-                    "line": 104,
+                    "line": 108,
                     "rawdescription": "\nOutput color format",
                     "modifierKind": [
                         148
@@ -1105,7 +1105,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Dialog position</p>\n",
-                    "line": 111,
+                    "line": 115,
                     "rawdescription": "\nDialog position",
                     "modifierKind": [
                         148
@@ -1121,7 +1121,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Dialog offset percentage relative to the directive element</p>\n",
-                    "line": 113,
+                    "line": 117,
                     "rawdescription": "\nDialog offset percentage relative to the directive element",
                     "modifierKind": [
                         148
@@ -1136,7 +1136,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Array of preset colors to show in the color picker dialog</p>\n",
-                    "line": 122,
+                    "line": 126,
                     "rawdescription": "\nArray of preset colors to show in the color picker dialog",
                     "modifierKind": [
                         148
@@ -1152,7 +1152,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Show buttons to add / remove preset colors</p>\n",
-                    "line": 145,
+                    "line": 149,
                     "rawdescription": "\nShow buttons to add / remove preset colors",
                     "modifierKind": [
                         148
@@ -1168,7 +1168,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Show label for preset colors</p>\n<p>If string is given, it overrides the default label.</p>\n",
-                    "line": 120,
+                    "line": 124,
                     "rawdescription": "\n\nShow label for preset colors\n\nIf string is given, it overrides the default label.\n",
                     "modifierKind": [
                         148
@@ -1184,7 +1184,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Save currently selected color when user clicks outside</p>\n",
-                    "line": 134,
+                    "line": 138,
                     "rawdescription": "\nSave currently selected color when user clicks outside",
                     "modifierKind": [
                         148
@@ -1200,7 +1200,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Sets the default open / close state of the color picker</p>\n",
-                    "line": 93,
+                    "line": 97,
                     "rawdescription": "\nSets the default open / close state of the color picker",
                     "modifierKind": [
                         148
@@ -1216,7 +1216,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Create dialog component in the root view container</p>\n<p>Note: The root component needs to have public viewContainerRef.</p>\n",
-                    "line": 155,
+                    "line": 159,
                     "rawdescription": "\n\nCreate dialog component in the root view container\n\nNote: The root component needs to have public viewContainerRef.\n",
                     "modifierKind": [
                         148
@@ -1232,7 +1232,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Use this option to set color picker dialog width</p>\n",
-                    "line": 88,
+                    "line": 92,
                     "rawdescription": "\nUse this option to set color picker dialog width",
                     "modifierKind": [
                         148
@@ -1249,7 +1249,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Current color value, emit when dialog is closed</p>\n",
-                    "line": 160,
+                    "line": 164,
                     "rawdescription": "\nCurrent color value, emit when dialog is closed",
                     "modifierKind": [
                         148
@@ -1264,7 +1264,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Outputs the color as CMYK string if CMYK is enabled</p>\n",
-                    "line": 183,
+                    "line": 187,
                     "rawdescription": "\nOutputs the color as CMYK string if CMYK is enabled",
                     "modifierKind": [
                         148
@@ -1279,7 +1279,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Color select canceled, emit when Cancel button is pressed</p>\n",
-                    "line": 176,
+                    "line": 180,
                     "rawdescription": "\nColor select canceled, emit when Cancel button is pressed",
                     "modifierKind": [
                         148
@@ -1294,7 +1294,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Selected color value, emit when OK button pressed or user clicks outside (if saveClickOutside is true)</p>\n",
-                    "line": 178,
+                    "line": 182,
                     "rawdescription": "\nSelected color value, emit when OK button pressed or user clicks outside (if saveClickOutside is true)",
                     "modifierKind": [
                         148
@@ -1309,7 +1309,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Input name and its value, emit when user changes color through inputs</p>\n",
-                    "line": 163,
+                    "line": 167,
                     "rawdescription": "\nInput name and its value, emit when user changes color through inputs",
                     "modifierKind": [
                         148
@@ -1324,7 +1324,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Changed color value, emit when color changes</p>\n",
-                    "line": 180,
+                    "line": 184,
                     "rawdescription": "\nChanged color value, emit when color changes",
                     "modifierKind": [
                         148
@@ -1339,7 +1339,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Current color value, emit when dialog is isOpen</p>\n",
-                    "line": 158,
+                    "line": 162,
                     "rawdescription": "\nCurrent color value, emit when dialog is isOpen",
                     "modifierKind": [
                         148
@@ -1354,7 +1354,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Preset colors, emit when preset color is added / removed</p>\n",
-                    "line": 186,
+                    "line": 190,
                     "rawdescription": "\nPreset colors, emit when preset color is added / removed",
                     "modifierKind": [
                         148
@@ -1369,7 +1369,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Slider name and its value, emit when user changes color through slider</p>\n",
-                    "line": 171,
+                    "line": 175,
                     "rawdescription": "\nSlider name and its value, emit when user changes color through slider",
                     "modifierKind": [
                         148
@@ -1384,7 +1384,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Slider name and current color, emit when slider dragging ends</p>\n",
-                    "line": 173,
+                    "line": 177,
                     "rawdescription": "\nSlider name and current color, emit when slider dragging ends",
                     "modifierKind": [
                         148
@@ -1399,7 +1399,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Slider name and current color, emit when slider dragging starts</p>\n",
-                    "line": 169,
+                    "line": 173,
                     "rawdescription": "\nSlider name and current color, emit when slider dragging starts",
                     "modifierKind": [
                         148
@@ -1414,7 +1414,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Status of the dialog, emit when dialog is isOpen / closed</p>\n",
-                    "line": 166,
+                    "line": 170,
                     "rawdescription": "\nStatus of the dialog, emit when dialog is isOpen / closed",
                     "modifierKind": [
                         148
@@ -1429,7 +1429,7 @@
             "propertiesClass": [
                 {
                     "name": "nxtColor",
-                    "defaultValue": "linkedSignal({\n        source: () => this._nxtColor(),\n        computation: v => v\n    })",
+                    "defaultValue": "linkedSignal({\n        source: () => {\n            const v = this._nxtColor()\n            console.log(v)\n            return v\n        },\n        computation: v => v\n    })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -1449,7 +1449,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 278,
+                    "line": 282,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1459,7 +1459,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 265,
+                    "line": 269,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1488,7 +1488,7 @@
                     "optional": false,
                     "returnType": "\"light\" | \"dark\"",
                     "typeParameters": [],
-                    "line": 291,
+                    "line": 295,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nGet text color mode to ensure good contrast with selected color\n\n",
@@ -1496,8 +1496,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 10681,
-                                "end": 10683,
+                                "pos": 10766,
+                                "end": 10768,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1511,8 +1511,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "new Rgba(1, 1, 1, 1, true)",
                             "tagName": {
-                                "pos": 10675,
-                                "end": 10680,
+                                "pos": 10760,
+                                "end": 10765,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1523,8 +1523,8 @@
                         },
                         {
                             "name": {
-                                "pos": 10775,
-                                "end": 10777,
+                                "pos": 10860,
+                                "end": 10862,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1538,8 +1538,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "this.dialog?.rgbaText",
                             "tagName": {
-                                "pos": 10769,
-                                "end": 10774,
+                                "pos": 10854,
+                                "end": 10859,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1550,8 +1550,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 10840,
-                                "end": 10847,
+                                "pos": 10925,
+                                "end": 10932,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,

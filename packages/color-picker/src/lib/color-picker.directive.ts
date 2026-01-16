@@ -80,7 +80,11 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     /** The color to show in the color picker dialog */
     readonly _nxtColor = input<string | undefined>(undefined, { alias: 'nxtColor' })
     readonly nxtColor = linkedSignal({
-        source: () => this._nxtColor(),
+        source: () => {
+            const v = this._nxtColor()
+            console.log(v)
+            return v
+        },
         computation: v => v
     })
 
@@ -228,13 +232,13 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             }
         }
 
-        if (changes['nxtColor']) {
+        if (changes['_nxtColor']) {
             if (this.dialog && !this.ignoreChanges) {
                 if (this.dialogDisplay() == DialogDisplayEnum.inline) {
-                    this.dialog.setInitialColor(changes['nxtColor'].currentValue)
+                    this.dialog.setInitialColor(changes['_nxtColor'].currentValue)
                 }
 
-                this.dialog.setColorFromString(changes['nxtColor'].currentValue, false)
+                this.dialog.setColorFromString(changes['_nxtColor'].currentValue, false)
 
                 if (this.useRootViewContainer() && this.dialogDisplay() != DialogDisplayEnum.inline) {
                     this.cmpRef?.changeDetectorRef.detectChanges()
