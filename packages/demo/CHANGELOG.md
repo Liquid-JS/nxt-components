@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.0.1](https://github.com/Liquid-JS/nxt-components/compare/v21.0.0...v21.0.1) (2026-01-16)
+
+### Bug Fixes
+
+* **color-picker:** change detection ([4b42ef1](https://github.com/Liquid-JS/nxt-components/commit/4b42ef15456538d74694ed73737bf97f0a7bae92))
+
 # [21.0.0](https://github.com/Liquid-JS/nxt-components/compare/v21.0.0-alpha.1...v21.0.0) (2026-01-16)
 
 **Note:** Version bump only for package demo
