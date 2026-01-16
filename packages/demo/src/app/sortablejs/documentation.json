@@ -127,6 +127,8 @@
                         {
                             "name": "globalOptions",
                             "type": "Options",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -146,6 +148,8 @@
                         {
                             "name": "globalOptions",
                             "type": "Options",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {

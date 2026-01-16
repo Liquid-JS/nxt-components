@@ -17,6 +17,8 @@
                         {
                             "name": "url",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -31,6 +33,8 @@
                         {
                             "name": "url",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -60,16 +64,18 @@
                         {
                             "name": "gist",
                             "type": "Gist | null",
+                            "optional": true,
+                            "dotDotDotToken": false,
                             "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true
+                            "deprecationMessage": ""
                         },
                         {
                             "name": "fileName",
                             "type": "string | null",
+                            "optional": true,
+                            "dotDotDotToken": false,
                             "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true
+                            "deprecationMessage": ""
                         }
                     ],
                     "optional": false,
@@ -82,9 +88,10 @@
                         {
                             "name": "gist",
                             "type": "Gist | null",
+                            "optional": true,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "optional": true,
                             "tagName": {
                                 "text": "param"
                             }
@@ -92,9 +99,10 @@
                         {
                             "name": "fileName",
                             "type": "string | null",
+                            "optional": true,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "optional": true,
                             "tagName": {
                                 "text": "param"
                             }
@@ -166,6 +174,8 @@
                         {
                             "name": "fileName",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1129,6 +1139,8 @@
                         {
                             "name": "name",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1148,6 +1160,8 @@
                         {
                             "name": "name",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1162,12 +1176,16 @@
                         {
                             "name": "code",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         },
                         {
                             "name": "options",
                             "type": "HighlightOptions",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1187,6 +1205,8 @@
                         {
                             "name": "code",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1196,6 +1216,8 @@
                         {
                             "name": "options",
                             "type": "HighlightOptions",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1226,15 +1248,18 @@
                         {
                             "name": "value",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         },
                         {
                             "name": "languageSubset",
                             "type": "string[]",
+                            "optional": true,
+                            "dotDotDotToken": false,
                             "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true
+                            "deprecationMessage": ""
                         }
                     ],
                     "optional": false,
@@ -1252,6 +1277,8 @@
                         {
                             "name": "value",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1261,9 +1288,10 @@
                         {
                             "name": "languageSubset",
                             "type": "string[]",
+                            "optional": true,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
-                            "optional": true,
                             "tagName": {
                                 "text": "param"
                             }
@@ -1276,6 +1304,8 @@
                         {
                             "name": "element",
                             "type": "HTMLElement",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1295,6 +1325,8 @@
                         {
                             "name": "element",
                             "type": "HTMLElement",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1309,12 +1341,16 @@
                         {
                             "name": "code",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         },
                         {
                             "name": "options",
                             "type": "LineNumbersOptions",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1334,6 +1370,8 @@
                         {
                             "name": "code",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1343,6 +1381,8 @@
                         {
                             "name": "options",
                             "type": "LineNumbersOptions",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1386,11 +1426,16 @@
                         {
                             "name": "alias",
                             "type": "string | string[]",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         },
                         {
+                            "name": "",
                             "type": "literal type",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1410,6 +1455,8 @@
                         {
                             "name": "alias",
                             "type": "string | string[]",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1417,7 +1464,10 @@
                             }
                         },
                         {
+                            "name": "",
                             "type": "literal type",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1432,12 +1482,16 @@
                         {
                             "name": "languageName",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         },
                         {
                             "name": "languageDefinition",
                             "type": "LanguageFn",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1457,6 +1511,8 @@
                         {
                             "name": "languageName",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1466,6 +1522,8 @@
                         {
                             "name": "languageDefinition",
                             "type": "LanguageFn",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1496,6 +1554,8 @@
                         {
                             "name": "languageName",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1515,6 +1575,8 @@
                         {
                             "name": "languageName",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1558,6 +1620,8 @@
                         {
                             "name": "path",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1574,6 +1638,8 @@
                         {
                             "name": "path",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1903,6 +1969,8 @@
                         {
                             "name": "code",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1920,6 +1988,8 @@
                         {
                             "name": "code",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2021,6 +2091,8 @@
                         {
                             "name": "code",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2039,6 +2111,8 @@
                         {
                             "name": "code",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -2225,6 +2299,8 @@
                         {
                             "name": "code",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -2239,6 +2315,8 @@
                         {
                             "name": "code",
                             "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
