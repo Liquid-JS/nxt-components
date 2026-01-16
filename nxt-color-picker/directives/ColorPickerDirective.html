@@ -1429,7 +1429,11 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>linkedSignal({
-        source: () &#x3D;&gt; this._nxtColor(),
+        source: () &#x3D;&gt; {
+            const v &#x3D; this._nxtColor()
+            console.log(v)
+            return v
+        },
         computation: v &#x3D;&gt; v
     })</code>
                     </td>
