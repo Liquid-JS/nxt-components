@@ -1849,20 +1849,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/ensure@npm:^19.5.0":
-  version: 19.8.1
-  resolution: "@commitlint/ensure@npm:19.8.1"
-  dependencies:
-    "@commitlint/types": "npm:^19.8.1"
-    lodash.camelcase: "npm:^4.3.0"
-    lodash.kebabcase: "npm:^4.1.1"
-    lodash.snakecase: "npm:^4.1.1"
-    lodash.startcase: "npm:^4.4.0"
-    lodash.upperfirst: "npm:^4.3.1"
-  checksum: 10/af342f61b246c301937cc03477c64b86ca6dea47de23f94d237181d346d020ec23c8a458f56aec8bfe9cdcb80a06adcc34964f32c05a2649282a959ce6fae39d
-  languageName: node
-  linkType: hard
-
 "@commitlint/ensure@npm:^20.3.1":
   version: 20.3.1
   resolution: "@commitlint/ensure@npm:20.3.1"
@@ -1931,13 +1917,6 @@ __metadata:
     lodash.merge: "npm:^4.6.2"
     lodash.uniq: "npm:^4.5.0"
   checksum: 10/952dfea7e8b7e5c9a4f13de95afbe1c8c137da8b54ca4ab6c9b5ed49cb97af2e87a4ae0ddbbd6f435c38ab797ba08d6c8ff3f5d93131a5fffeecce4528734492
-  languageName: node
-  linkType: hard
-
-"@commitlint/message@npm:^19.5.0":
-  version: 19.8.1
-  resolution: "@commitlint/message@npm:19.8.1"
-  checksum: 10/e365590dd539fe2519a15bd99ee8499c3ffbd80852839783ae6fd0b65feef08b26d2134a4e9ea32e006c2b3aa04447a38b011e73975b4fc3d7c7380a0fbf2377
   languageName: node
   linkType: hard
 
@@ -2011,16 +1990,6 @@ __metadata:
   dependencies:
     find-up: "npm:^7.0.0"
   checksum: 10/e3e2c93e41902cc2ca13bfd6492ffefaaafe21cab9795aa599c9f3c0aaeef53b006620dae6fea179f939cc14fe9e37a5356329a6097440e204bc203a7cb84727
-  languageName: node
-  linkType: hard
-
-"@commitlint/types@npm:^19.8.1":
-  version: 19.8.1
-  resolution: "@commitlint/types@npm:19.8.1"
-  dependencies:
-    "@types/conventional-commits-parser": "npm:^5.0.0"
-    chalk: "npm:^5.3.0"
-  checksum: 10/d1943a5789a02c75b0c72755673ab8d50c850b025abb7806b7eef83b373591948f5d1d9cd22022f89302a256546934d797445913c5c495d8e92711cf17b0fbf0
   languageName: node
   linkType: hard
 
@@ -3134,14 +3103,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@liquid-js/commitlint-plugin-workspace-scopes@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@liquid-js/commitlint-plugin-workspace-scopes@npm:2.1.0"
+"@liquid-js/commitlint-plugin-workspace-scopes@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "@liquid-js/commitlint-plugin-workspace-scopes@npm:2.1.1"
   dependencies:
-    "@commitlint/ensure": "npm:^19.5.0"
-    "@commitlint/message": "npm:^19.5.0"
-    "@manypkg/get-packages": "npm:^2.2.2"
-  checksum: 10/7fc158853615bc328c4681a92c5a817dcb9d39f1ce7c663aa558e7c6d7c6eca8a0469fbfa8ec98be0dcdea3f3230ffa4c9215239f635e7760ac5ccd9d99ad19f
+    "@commitlint/ensure": "npm:^20.3.1"
+    "@commitlint/message": "npm:^20.0.0"
+    "@manypkg/get-packages": "npm:^3.1.0"
+  checksum: 10/b14af02922cd97e03556896878c1e35ae543388c64285094f02c0bf23ad9d61bd4f9939d9b19cf3f43aaa5681556be0108101126b264b2f7f1c89a1d8a3e43b3
   languageName: node
   linkType: hard
 
@@ -3206,33 +3175,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@manypkg/find-root@npm:^2.2.2":
-  version: 2.2.3
-  resolution: "@manypkg/find-root@npm:2.2.3"
+"@manypkg/find-root@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@manypkg/find-root@npm:3.1.0"
   dependencies:
-    "@manypkg/tools": "npm:^1.1.2"
-  checksum: 10/b0e6e530bda0019ea098fc88903c703b64f0eee3e568eb7e82258b1b487c330c76648bd27569835fcc61cf60d15d257a2779ac0051d1bc8a682f0fb629b989ef
+    "@manypkg/tools": "npm:^2.1.0"
+  checksum: 10/49d625ce57a142066ac8bc135219fcb924715e7f54ece98d36208034beeba20133c49e4bb6b636a5e7d0c0633f157a9c3523e65397839f487d88490c42bfab62
   languageName: node
   linkType: hard
 
-"@manypkg/get-packages@npm:^2.2.2":
-  version: 2.2.2
-  resolution: "@manypkg/get-packages@npm:2.2.2"
+"@manypkg/get-packages@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@manypkg/get-packages@npm:3.1.0"
   dependencies:
-    "@manypkg/find-root": "npm:^2.2.2"
-    "@manypkg/tools": "npm:^1.1.1"
-  checksum: 10/90a6f08a0b79f8edefeddb34eb0f1dad9ae08f5a86fc0df02349111cb85a239feb5aefb20d82c097caff2181581b3ec59b043c21cafd32e6baf9af6b19cc9de4
+    "@manypkg/find-root": "npm:^3.1.0"
+    "@manypkg/tools": "npm:^2.1.0"
+  checksum: 10/f6c7e16fc99fc17138b0eeda2374ccd3279b9d520e87ddb25296738d83bb1345f67ff1bf6b759ec19d9df84fcb3dd20546eb2cdafb53c378fa4bcebeb693e6d3
   languageName: node
   linkType: hard
 
-"@manypkg/tools@npm:^1.1.1, @manypkg/tools@npm:^1.1.2":
-  version: 1.1.2
-  resolution: "@manypkg/tools@npm:1.1.2"
+"@manypkg/tools@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@manypkg/tools@npm:2.1.0"
   dependencies:
-    fast-glob: "npm:^3.3.2"
     jju: "npm:^1.4.0"
     js-yaml: "npm:^4.1.0"
-  checksum: 10/f3d57b52d07634aef92a136e8f02009626ce7cc283d77d129787bf81d1ad8b0dae9a2cedfd794bd71caf601184929125fc2f4aa105bc0a8d3fcf56a0ce1cf0a0
+    tinyglobby: "npm:^0.2.13"
+  checksum: 10/6da7cfe594e5943929954b55d74b0356e150ee8be001280202799483d83223a2f3af3eecfed4539feb6fb5ae21a0bba99debb85fd9cec9d09bece2d3f7490425
   languageName: node
   linkType: hard
 
@@ -6760,9 +6729,9 @@ __metadata:
   linkType: hard
 
 "diff@npm:^4.0.1":
-  version: 4.0.2
-  resolution: "diff@npm:4.0.2"
-  checksum: 10/ec09ec2101934ca5966355a229d77afcad5911c92e2a77413efda5455636c4cf2ce84057e2d7715227a2eeeda04255b849bd3ae3a4dd22eb22e86e76456df069
+  version: 4.0.4
+  resolution: "diff@npm:4.0.4"
+  checksum: 10/5019b3f5ae124ea9e95137119e1a83a59c252c75ddac873cc967832fd7a834570a58a4d58b941bdbd07832ebf98dcb232b27c561b7f5584357da6dae59bcac62
   languageName: node
   linkType: hard
 
@@ -7747,7 +7716,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.0.3, fast-glob@npm:^3.3.2, fast-glob@npm:^3.3.3":
+"fast-glob@npm:^3.0.3, fast-glob@npm:^3.3.3":
   version: 3.3.3
   resolution: "fast-glob@npm:3.3.3"
   dependencies:
@@ -11023,7 +10992,7 @@ __metadata:
     "@lerna-lite/cli": "npm:^4.11.0"
     "@lerna-lite/version": "npm:^4.11.1"
     "@liquid-js/angular-cli-ghpages": "npm:^2.0.4"
-    "@liquid-js/commitlint-plugin-workspace-scopes": "npm:^2.1.0"
+    "@liquid-js/commitlint-plugin-workspace-scopes": "npm:^2.1.1"
     "@stylistic/eslint-plugin": "npm:^5.7.0"
     "@stylistic/stylelint-config": "npm:^4.0.0"
     "@types/jasmine": "npm:^5.1.15"
@@ -13558,7 +13527,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tinyglobby@npm:0.2.15, tinyglobby@npm:^0.2.12, tinyglobby@npm:^0.2.14, tinyglobby@npm:^0.2.15, tinyglobby@npm:^0.2.9":
+"tinyglobby@npm:0.2.15, tinyglobby@npm:^0.2.12, tinyglobby@npm:^0.2.13, tinyglobby@npm:^0.2.14, tinyglobby@npm:^0.2.15, tinyglobby@npm:^0.2.9":
   version: 0.2.15
   resolution: "tinyglobby@npm:0.2.15"
   dependencies:

@@ -62,7 +62,7 @@
         "@lerna-lite/cli": "^4.11.0",
         "@lerna-lite/version": "^4.11.1",
         "@liquid-js/angular-cli-ghpages": "^2.0.4",
-        "@liquid-js/commitlint-plugin-workspace-scopes": "^2.1.0",
+        "@liquid-js/commitlint-plugin-workspace-scopes": "^2.1.1",
         "@stylistic/eslint-plugin": "^5.7.0",
         "@stylistic/stylelint-config": "^4.0.0",
         "@types/jasmine": "^5.1.15",
