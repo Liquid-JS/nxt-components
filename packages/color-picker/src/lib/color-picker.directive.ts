@@ -80,11 +80,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     /** The color to show in the color picker dialog */
     readonly _nxtColor = input<string | undefined>(undefined, { alias: 'nxtColor' })
     readonly nxtColor = linkedSignal({
-        source: () => {
-            const v = this._nxtColor()
-            console.log(v)
-            return v
-        },
+        source: () => this._nxtColor(),
         computation: v => v
     })
 
