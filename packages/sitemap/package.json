@@ -41,9 +41,9 @@
     "devDependencies": {
         "@rollup/plugin-typescript": "^12.3.0",
         "builtins": "^5.1.0",
-        "globby": "^16.1.0",
+        "globby": "^16.2.0",
         "json-schema-to-typescript": "^15.0.4",
-        "rollup": "^4.57.1",
+        "rollup": "^4.60.1",
         "rollup-plugin-copy": "^3.5.0"
     }
 }
