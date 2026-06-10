@@ -43,7 +43,6 @@ export class ExtrasComponent {
             .map(p => Promise.all([
                 import(`./${p.path}/${p.path}.component.ts`),
                 ...p.include.map(ext => ext == 'ts'
-                    // @ts-expect-error TypeScript cannot provide types based on attributes yet
                     ? import(`./${p.path}/${p.path}.component.ts`, { with: { loader: 'text' } })
                     : import(`./${p.path}/${p.path}.component.${ext}`))
             ])

@@ -1,7 +1,6 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "baseUrl": "./",
         "outDir": "./dist/out-tsc",
         "forceConsistentCasingInFileNames": true,
         "strict": true,
@@ -17,44 +16,46 @@
         "moduleResolution": "bundler",
         "importHelpers": false,
         "target": "es2022",
-        "module": "es2022",
+        "module": "esnext",
         "skipLibCheck": true,
+        "allowImportingTsExtensions": true,
+        "rewriteRelativeImportExtensions": true,
         "paths": {
             "nxt-color-picker": [
-                "dist/color-picker"
+                "./dist/color-picker"
             ],
             "nxt-dropzone-wrapper": [
-                "dist/dropzone-wrapper"
+                "./dist/dropzone-wrapper"
             ],
             "nxt-flags": [
-                "dist/flags"
+                "./dist/flags"
             ],
             "nxt-highlightjs": [
-                "dist/highlightjs"
+                "./dist/highlightjs"
             ],
             "nxt-highlightjs/extras": [
-                "dist/highlightjs/extras"
+                "./dist/highlightjs/extras"
             ],
             "nxt-highlightjs/line-numbers": [
-                "dist/highlightjs/line-numbers"
+                "./dist/highlightjs/line-numbers"
             ],
             "nxt-json-view": [
-                "dist/json-view"
+                "./dist/json-view"
             ],
             "nxt-pick-datetime": [
-                "dist/pick-datetime"
+                "./dist/pick-datetime"
             ],
             "nxt-pick-datetime/moment-adapter": [
-                "dist/pick-datetime/moment-adapter"
+                "./dist/pick-datetime/moment-adapter"
             ],
             "nxt-pick-datetime/native-adapter": [
-                "dist/pick-datetime/native-adapter"
+                "./dist/pick-datetime/native-adapter"
             ],
             "nxt-sitemap": [
-                "dist/sitemap"
+                "./dist/sitemap"
             ],
             "nxt-sortablejs": [
-                "dist/sortablejs"
+                "./dist/sortablejs"
             ]
         },
         "useDefineForClassFields": false

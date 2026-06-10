@@ -50,7 +50,6 @@ export class AppJsonViewComponent {
             .map(p => Promise.all([
                 import(`../examples/${p.path}/${p.path}.component.ts`),
                 ...p.include.map(ext => ext == 'ts'
-                    // @ts-expect-error TypeScript cannot provide types based on attributes yet
                     ? import(`../examples/${p.path}/${p.path}.component.ts`, { with: { loader: 'text' } })
                     : import(`../examples/${p.path}/${p.path}.component.${ext}`))
             ])
