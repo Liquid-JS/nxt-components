@@ -1,20 +1,18 @@
 /* eslint-disable @angular-eslint/component-class-suffix */
-import { Component, DebugElement, NgZone } from '@angular/core'
+import { Component, DebugElement } from '@angular/core'
 import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { MockNgZone, provideTestDateTimeAdapter } from 'packages/pick-datetime/src/test-helpers'
+import { provideTestDateTimeAdapter } from '../../../test-helpers'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 import { TimerComponent } from './timer.component'
 
 describe('TimerComponent', () => {
-    let _zone: MockNgZone | undefined
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             providers: [
                 provideTestDateTimeAdapter(),
-                DateTimeIntl,
-                { provide: NgZone, useFactory: () => (_zone = new MockNgZone()) }
+                DateTimeIntl
             ]
         }).compileComponents()
     })

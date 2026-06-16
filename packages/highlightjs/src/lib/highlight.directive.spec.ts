@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core'
+import { Component, DebugElement, signal } from '@angular/core'
 import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import hljs from 'highlight.js'
@@ -7,14 +7,14 @@ import { HighlightDirective } from './highlight.directive'
 import { HighlightLoader } from './highlight.loader'
 
 @Component({
-    template: '<code [nxtHighlight]="code" [language]="language"></code>',
+    template: '<code [nxtHighlight]="code()" [language]="language()"></code>',
     imports: [
         HighlightDirective
     ]
 })
 class TestHighlightComponent {
-    code?: string
-    language?: string
+    readonly code = signal<string | undefined>(undefined)
+    readonly language = signal<string | undefined>(undefined)
 }
 
 describe('Highlight Directive', () => {
@@ -47,18 +47,18 @@ describe('Highlight Directive', () => {
     })
 
     it('should reset text if empty string was passed', () => {
-        component.code = ''
+        component.code.set('')
         fixture.detectChanges()
         expect(directiveElement.nativeElement.innerHTML).toBe('')
     })
 
     it('should highlight code reactively', async () => {
-        component.language = 'ts'
-        component.code = testJsCode
+        component.language.set('ts')
+        component.code.set(testJsCode)
         fixture.detectChanges()
 
         let highlightedCode: string = hljs.highlight(testJsCode, {
-            language: component.language,
+            language: component.language()!,
             ignoreIllegals: false
         }).value
 
@@ -66,12 +66,12 @@ describe('Highlight Directive', () => {
         expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode)
 
         // Change code 2nd time with another value
-        component.language = 'html'
-        component.code = testHtmlCode
+        component.language.set('html')
+        component.code.set(testHtmlCode)
         fixture.detectChanges()
 
         highlightedCode = hljs.highlight(testHtmlCode, {
-            language: component.language,
+            language: component.language()!,
             ignoreIllegals: false
         }).value
 
@@ -79,14 +79,14 @@ describe('Highlight Directive', () => {
         expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode)
 
         // Change code 3rd time but with empty string
-        component.code = ''
+        component.code.set('')
         fixture.detectChanges()
 
         await afterTimeout(200)
         expect(directiveElement.nativeElement.innerHTML).toBe('')
 
         // Change code 4th time but with undefinedish value
-        component.code = undefined
+        component.code.set(undefined)
         fixture.detectChanges()
 
         await afterTimeout(200)

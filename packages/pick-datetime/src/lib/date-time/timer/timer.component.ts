@@ -1,5 +1,4 @@
-import { Component, ElementRef, NgZone, computed, input, linkedSignal, output, inject } from '@angular/core'
-import { take } from 'rxjs/operators'
+import { Component, ElementRef, NgZone, computed, input, linkedSignal, output, inject, afterNextRender, Injector } from '@angular/core'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 import { TimerBoxComponent } from '../timer-box/timer-box.component'
@@ -19,6 +18,7 @@ import { TimerBoxComponent } from '../timer-box/timer-box.component'
 })
 export class TimerComponent<T> {
     private readonly ngZone = inject(NgZone)
+    private readonly injector = inject(Injector)
     private readonly elmRef = inject<ElementRef<HTMLElement>>(ElementRef)
     private readonly pickerIntl = inject(DateTimeIntl)
     private readonly dateTimeAdapter = inject<DateTimeAdapter<T>>(DateTimeAdapter)
@@ -141,13 +141,12 @@ export class TimerComponent<T> {
      * Focus to the host element
      */
     focus() {
-        this.ngZone.runOutsideAngular(() => {
-            this.ngZone.onStable
-                .asObservable()
-                .pipe(take(1))
-                .subscribe(() => {
-                    this.elmRef.nativeElement.focus()
-                })
+        afterNextRender(() => {
+            this.ngZone.runOutsideAngular(() => {
+                this.elmRef.nativeElement.focus()
+            })
+        }, {
+            injector: this.injector
         })
     }
 

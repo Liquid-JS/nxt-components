@@ -4,4 +4,3 @@ export {
     DropzoneConfig, DropzoneListeners, NXT_DROPZONE_CONFIG,
     provideDropzoneConfig
 } from './lib/dropzone.interfaces'
-export { DropzoneModule } from './lib/dropzone.module'

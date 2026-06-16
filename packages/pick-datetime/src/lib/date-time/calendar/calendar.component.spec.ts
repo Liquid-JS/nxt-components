@@ -1,23 +1,21 @@
 /* eslint-disable @angular-eslint/component-class-suffix */
-import { Component, NgZone } from '@angular/core'
+import { Component } from '@angular/core'
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, MockNgZone, provideTestDateTimeAdapter } from '../../../test-helpers'
+import { dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, provideTestDateTimeAdapter } from '../../../test-helpers'
 import { MonthViewComponent } from '../calendar-month-view/calendar-month-view.component'
+import { MultiYearViewComponent } from '../calendar-multi-year-view/calendar-multi-year-view.component'
 import { YearViewComponent } from '../calendar-year-view/calendar-year-view.component'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
-import { MultiYearViewComponent } from '../calendar-multi-year-view/calendar-multi-year-view.component'
 import { CalendarComponent } from './calendar.component'
 
 describe('CalendarComponent', () => {
-    let zone: MockNgZone
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             providers: [
                 provideTestDateTimeAdapter(),
-                DateTimeIntl,
-                { provide: NgZone, useFactory: () => (zone = new MockNgZone()) }
+                DateTimeIntl
             ]
         }).compileComponents()
     })
@@ -159,7 +157,6 @@ describe('CalendarComponent', () => {
 
                     spyOn(activeCell, 'focus').and.callThrough()
                     fixture.detectChanges()
-                    zone.simulateZoneExit()
 
                     expect(activeCell.focus).not.toHaveBeenCalled()
                 })
@@ -172,11 +169,9 @@ describe('CalendarComponent', () => {
                     spyOn(activeCell, 'focus').and.callThrough()
                     fixture.detectChanges()
                     await fixture.whenStable()
-                    zone.simulateZoneExit()
 
                     calendarInstance.currentView.set('multi-years')
                     fixture.detectChanges()
-                    zone.simulateZoneExit()
 
                     expect(activeCell.focus).toHaveBeenCalled()
                 })
