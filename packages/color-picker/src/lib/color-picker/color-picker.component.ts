@@ -740,7 +740,9 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
         }
     }
 
-    onRemovePresetColor(value: string) {
+    onRemovePresetColor(value: string, evt: Event) {
+        evt.stopPropagation()
+        evt.preventDefault()
         this.presetColors = this.presetColors?.filter((color) => (color != value))
 
         if (this.callbacks) {
