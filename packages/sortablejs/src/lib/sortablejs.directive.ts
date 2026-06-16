@@ -1,5 +1,6 @@
 import {
     AfterViewInit,
+    ChangeDetectorRef,
     Directive,
     ElementRef,
     NgZone,
@@ -27,6 +28,7 @@ export class SortablejsDirective<T> implements OnChanges, OnDestroy, AfterViewIn
     private readonly globalConfig = inject(GLOBALS, { optional: true })
     private readonly service = inject(SortablejsService)
     private readonly element = inject(ElementRef)
+    private readonly cdRef = inject(ChangeDetectorRef)
     private readonly zone = inject(NgZone)
     private readonly renderer = inject(Renderer2)
 
@@ -74,6 +76,7 @@ export class SortablejsDirective<T> implements OnChanges, OnDestroy, AfterViewIn
             }
 
             this.proxyEvent('onAddOriginal', event)
+            this.cdRef.detectChanges()
         },
         onRemove: (event: SortableEvent) => {
             const bindings = this.bindings()
@@ -101,12 +104,14 @@ export class SortablejsDirective<T> implements OnChanges, OnDestroy, AfterViewIn
             }
 
             this.proxyEvent('onRemove', event)
+            this.cdRef.detectChanges()
         },
         onUpdate: (event: SortableEvent) => {
             const bindings = this.bindings()
 
             bindings.injectIntoEvery(event.newIndex!, bindings.extractFromEvery(event.oldIndex!))
             this.proxyEvent('onUpdate', event)
+            this.cdRef.detectChanges()
         }
     }))
 
