@@ -5,8 +5,6 @@ import { HighlightJS } from './highlight.service'
 
 describe('Highlight Service', () => {
 
-    const testJsCode: string = 'console.log(&quot;test&quot;)'
-
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             providers: [

@@ -1,6 +1,6 @@
 /* eslint-disable @angular-eslint/component-class-suffix */
 import { Component, DebugElement, signal } from '@angular/core'
-import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { provideTestDateTimeAdapter } from '../../../test-helpers'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
@@ -74,7 +74,7 @@ describe('TimerComponent', () => {
             expect(toggleBtn).toBeTruthy()
         })
 
-        it('should dispatch an event when a timer arrow button clicked', fakeAsync(() => {
+        it('should dispatch an event when a timer arrow button clicked', () => {
             spyOn(testComponent, 'handleSelectedChange')
             expect(testComponent.handleSelectedChange).not.toHaveBeenCalled()
 
@@ -89,13 +89,12 @@ describe('TimerComponent', () => {
             arrowBtns.forEach(btn => {
                 btn.click()
                 fixture.detectChanges()
-                flush()
             })
 
             expect(testComponent.handleSelectedChange).toHaveBeenCalledTimes(6)
-        }))
+        })
 
-        it('should dispatch an event when hour12 toggle button clicked', fakeAsync(() => {
+        it('should dispatch an event when hour12 toggle button clicked', () => {
             spyOn(testComponent, 'handleSelectedChange')
             expect(testComponent.handleSelectedChange).not.toHaveBeenCalled()
 
@@ -108,12 +107,11 @@ describe('TimerComponent', () => {
 
             toggleBtn?.click()
             fixture.detectChanges()
-            flush()
 
             expect(testComponent.handleSelectedChange).toHaveBeenCalledTimes(1)
-        }))
+        })
 
-        it('should add or minus stepHour hours when hour arrow button clicked', fakeAsync(() => {
+        it('should add or minus stepHour hours when hour arrow button clicked', () => {
             expect(timerInstance.stepHour()).toBe(1)
 
             const arrowBtns = timerElement.querySelectorAll<HTMLButtonElement>(
@@ -123,14 +121,12 @@ describe('TimerComponent', () => {
 
             arrowBtns[0].click()
             fixture.detectChanges()
-            flush()
             expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 13, 30, 30)
             )
 
             arrowBtns[1].click()
             fixture.detectChanges()
-            flush()
             expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 30)
             )
@@ -141,20 +137,18 @@ describe('TimerComponent', () => {
 
             arrowBtns[0].click()
             fixture.detectChanges()
-            flush()
             expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 14, 30, 30)
             )
 
             arrowBtns[1].click()
             fixture.detectChanges()
-            flush()
             expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 30)
             )
-        }))
+        })
 
-        it('should add or minus stepMinute minutes when minute arrow button clicked', fakeAsync(() => {
+        it('should add or minus stepMinute minutes when minute arrow button clicked', () => {
             expect(timerInstance.stepMinute()).toBe(1)
 
             const arrowBtns = timerElement.querySelectorAll<HTMLButtonElement>(
@@ -164,14 +158,12 @@ describe('TimerComponent', () => {
 
             arrowBtns[2].click()
             fixture.detectChanges()
-            flush()
             expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 31, 30)
             )
 
             arrowBtns[3].click()
             fixture.detectChanges()
-            flush()
             expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 30)
             )
@@ -182,20 +174,18 @@ describe('TimerComponent', () => {
 
             arrowBtns[2].click()
             fixture.detectChanges()
-            flush()
             expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 32, 30)
             )
 
             arrowBtns[3].click()
             fixture.detectChanges()
-            flush()
             expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 30)
             )
-        }))
+        })
 
-        it('should add or minus stepSecond seconds when second arrow button clicked', fakeAsync(() => {
+        it('should add or minus stepSecond seconds when second arrow button clicked', () => {
             expect(timerInstance.stepSecond()).toBe(1)
 
             testComponent.showSecondsTimer.set(true)
@@ -207,14 +197,12 @@ describe('TimerComponent', () => {
 
             arrowBtns[4].click()
             fixture.detectChanges()
-            flush()
             expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 31)
             )
 
             arrowBtns[5].click()
             fixture.detectChanges()
-            flush()
             expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 30)
             )
@@ -225,20 +213,18 @@ describe('TimerComponent', () => {
 
             arrowBtns[4].click()
             fixture.detectChanges()
-            flush()
             expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 32)
             )
 
             arrowBtns[5].click()
             fixture.detectChanges()
-            flush()
             expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 30)
             )
-        }))
+        })
 
-        it('should toggle between PM and AM when hour12 toggle button clicked', fakeAsync(() => {
+        it('should toggle between PM and AM when hour12 toggle button clicked', () => {
             testComponent.hour12Timer.set(true)
             fixture.detectChanges()
 
@@ -249,13 +235,12 @@ describe('TimerComponent', () => {
 
             toggleBtn?.click()
             fixture.detectChanges()
-            flush()
 
             expect(toggleBtn?.innerHTML).toContain('AM')
             expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 0, 30, 30)
             )
-        }))
+        })
 
         it('should disable all down arrow button if pickerMoment equals to minDateTime', () => {
             testComponent.showSecondsTimer.set(true)

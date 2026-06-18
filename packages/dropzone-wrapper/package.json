@@ -27,8 +27,8 @@
         "lint:html": "js-beautify --type html -r -f ./src/**/*.html --config ./js-beautify.json",
         "lint:sass": "stylelint \"src/**/*.scss\"",
         "lint:sass:fix": "yarn lint:sass --fix",
-        "test": "ng test dropzone-wrapper --no-watch",
-        "test:watch": "ng test dropzone-wrapper",
+        "_test": "ng test dropzone-wrapper --no-watch",
+        "_test:watch": "ng test dropzone-wrapper",
         "docs": "npx compodoc -c .compodocrc.json",
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/dropzone-wrapper"
     },

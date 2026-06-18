@@ -351,8 +351,6 @@
                     "options": {
                         "tsConfig": "packages/pick-datetime/tsconfig.spec.json",
                         "polyfills": [
-                            "zone.js",
-                            "zone.js/testing",
                             "@angular/localize/init"
                         ]
                     }

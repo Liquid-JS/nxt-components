@@ -26,7 +26,7 @@
         "build": "ng build highlightjs --configuration \"production\"",
         "lint": "ng lint highlightjs",
         "lint:fix": "yarn lint --fix",
-        "lint:html": "js-beautify --type html -r -f ./src/**/*.html --config ./js-beautify.json",
+        "_lint:html": "js-beautify --type html -r -f ./src/**/*.html --config ./js-beautify.json",
         "_lint:sass": "stylelint \"src/**/*.scss\" \"assets/**/*.scss\"",
         "_lint:sass:fix": "yarn lint:sass --fix",
         "test": "ng test highlightjs --no-watch",
