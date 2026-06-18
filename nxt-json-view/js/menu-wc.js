@@ -48,35 +48,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
 
                     </ul>
                 </li>
-                    <li class="chapter modules">
-                        <a data-type="chapter-link" href="modules.html">
-                            <div class="menu-toggler linked" data-bs-toggle="collapse" ${ isNormalMode ?
-                                'data-bs-target="#modules-links"' : 'data-bs-target="#xs-modules-links"' }>
-                                <span class="icon ion-ios-archive"></span>
-                                <span class="link-name">Modules</span>
-                                <span class="icon ion-ios-arrow-down"></span>
-                            </div>
-                        </a>
-                        <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
-                            <li class="link">
-                                <a href="modules/JsonViewModule.html" data-type="entity-link" class="deprecated-name">JsonViewModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-JsonViewModule-16583309baf6a02c8f8de60a0cd73246f26f6c4f174bd185d5a1be79d45bf2bba5d9d7c095ca399ad13f088db38d1a3b9f151dce0c7f42d3f87d3bc9e8b2fc03"' : 'data-bs-target="#xs-components-links-module-JsonViewModule-16583309baf6a02c8f8de60a0cd73246f26f6c4f174bd185d5a1be79d45bf2bba5d9d7c095ca399ad13f088db38d1a3b9f151dce0c7f42d3f87d3bc9e8b2fc03"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-JsonViewModule-16583309baf6a02c8f8de60a0cd73246f26f6c4f174bd185d5a1be79d45bf2bba5d9d7c095ca399ad13f088db38d1a3b9f151dce0c7f42d3f87d3bc9e8b2fc03"' :
-                                            'id="xs-components-links-module-JsonViewModule-16583309baf6a02c8f8de60a0cd73246f26f6c4f174bd185d5a1be79d45bf2bba5d9d7c095ca399ad13f088db38d1a3b9f151dce0c7f42d3f87d3bc9e8b2fc03"' }>
-                                            <li class="link">
-                                                <a href="components/JsonViewComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >JsonViewComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                </ul>
-                </li>
                     <li class="chapter">
                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#components-links"' :
                             'data-bs-target="#xs-components-links"' }>

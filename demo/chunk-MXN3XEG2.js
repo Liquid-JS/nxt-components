@@ -1,0 +1,31 @@
+import"./chunk-F5DYP4RK.js";var s=`@if (gist.isLoading()) {
+<div class="d-flex justify-content-center">
+    <div class="spinner-border"
+        role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+} @else if (gist.error(); as err) {
+<div class="alert alert-danger"
+    role="alert">
+    <span class="gist-loading-error">{{ err.message }}</span>
+</div>
+} @else {
+<label for="gist"
+    class="form-label">File</label>
+<select [ngModel]="selectedFile()"
+    (ngModelChange)="selectedFile.set($event)"
+    class="form-select"
+    name="gist">
+    @for (file of gist.value()?.files | keyvalue; track file.key) {
+    <option [value]="file.key">{{ file.value.filename }}</option>
+    }
+</select>
+
+<br>
+
+<pre [class.empty]="!gist.hasValue()"><code
+    [nxtHighlight]="(gist.value() | gistFile: selectedFile())?.content"
+    [language]="extName()"></code></pre>
+}
+`;export{s as default};

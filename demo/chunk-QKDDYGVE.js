@@ -1,0 +1,18 @@
+import"./chunk-F5DYP4RK.js";var a=`@if (gist.isLoading()) {
+<div class="d-flex justify-content-center">
+    <div class="spinner-border"
+        role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+} @else if (gist.error(); as err) {
+<div class="alert alert-danger"
+    role="alert">
+    <span class="gist-loading-error">{{ err.message }}</span>
+</div>
+} @else {
+<pre [class.empty]="!gist.hasValue()"><code 
+    [nxtHighlight]="(gist.value() | gistFile: 'sample.component.ts')?.content"
+    language="ts"></code></pre>
+}
+`;export{a as default};

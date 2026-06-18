@@ -48,35 +48,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
 
                     </ul>
                 </li>
-                    <li class="chapter modules">
-                        <a data-type="chapter-link" href="modules.html">
-                            <div class="menu-toggler linked" data-bs-toggle="collapse" ${ isNormalMode ?
-                                'data-bs-target="#modules-links"' : 'data-bs-target="#xs-modules-links"' }>
-                                <span class="icon ion-ios-archive"></span>
-                                <span class="link-name">Modules</span>
-                                <span class="icon ion-ios-arrow-down"></span>
-                            </div>
-                        </a>
-                        <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
-                            <li class="link">
-                                <a href="modules/FlagsModule.html" data-type="entity-link" class="deprecated-name">FlagsModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-FlagsModule-74df69ffaaebb54848cf05d761837f2d144c0ad559082be8dbfe0f4445f7a39750c4accb1aebd0d2c6478806a8eb1708a73425e05075359165c389abdf20b7d5"' : 'data-bs-target="#xs-components-links-module-FlagsModule-74df69ffaaebb54848cf05d761837f2d144c0ad559082be8dbfe0f4445f7a39750c4accb1aebd0d2c6478806a8eb1708a73425e05075359165c389abdf20b7d5"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FlagsModule-74df69ffaaebb54848cf05d761837f2d144c0ad559082be8dbfe0f4445f7a39750c4accb1aebd0d2c6478806a8eb1708a73425e05075359165c389abdf20b7d5"' :
-                                            'id="xs-components-links-module-FlagsModule-74df69ffaaebb54848cf05d761837f2d144c0ad559082be8dbfe0f4445f7a39750c4accb1aebd0d2c6478806a8eb1708a73425e05075359165c389abdf20b7d5"' }>
-                                            <li class="link">
-                                                <a href="components/FlagComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >FlagComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                </ul>
-                </li>
                     <li class="chapter">
                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#components-links"' :
                             'data-bs-target="#xs-components-links"' }>
