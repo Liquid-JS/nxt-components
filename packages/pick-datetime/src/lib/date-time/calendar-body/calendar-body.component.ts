@@ -1,5 +1,4 @@
-import { Component, ElementRef, NgZone, computed, input, output, inject } from '@angular/core'
-import { take } from 'rxjs/operators'
+import { Component, ElementRef, NgZone, computed, input, output, inject, afterNextRender, Injector, DestroyRef } from '@angular/core'
 import { SelectMode } from '../../class/date-time.class'
 
 export class CalendarCell {
@@ -29,6 +28,8 @@ export class CalendarCell {
 export class CalendarBodyComponent {
     private readonly elmRef = inject<ElementRef<HTMLElement>>(ElementRef)
     private readonly ngZone = inject(NgZone)
+    private readonly injector = inject(Injector)
+    private readonly destroyRef = inject(DestroyRef)
 
     /**
      * The cell number of the active cell in the table.
@@ -156,15 +157,15 @@ export class CalendarBodyComponent {
      * Focus to a active cell
      */
     focusActiveCell(): void {
-        this.ngZone.runOutsideAngular(() => {
-            this.ngZone.onStable
-                .asObservable()
-                .pipe(take(1))
-                .subscribe(() => {
+        if (!this.destroyRef.destroyed)
+            afterNextRender(() => {
+                this.ngZone.runOutsideAngular(() => {
                     this.elmRef.nativeElement
                         ?.querySelector<HTMLElement>('.nxt-dt-calendar-cell-active')
                         ?.focus()
                 })
-        })
+            }, {
+                injector: this.injector
+            })
     }
 }

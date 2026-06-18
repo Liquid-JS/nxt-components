@@ -61,7 +61,6 @@
                         },
                         "index": "packages/demo/src/index.html",
                         "polyfills": [
-                            "zone.js",
                             "@angular/localize/init"
                         ],
                         "tsConfig": "packages/demo/tsconfig.app.json",
@@ -183,10 +182,7 @@
                     "builder": "@angular/build:karma",
                     "options": {
                         "tsConfig": "packages/dropzone-wrapper/tsconfig.spec.json",
-                        "polyfills": [
-                            "zone.js",
-                            "zone.js/testing"
-                        ]
+                        "polyfills": []
                     }
                 },
                 "lint": {
@@ -228,10 +224,7 @@
                     "builder": "@angular/build:karma",
                     "options": {
                         "tsConfig": "packages/flags/tsconfig.spec.json",
-                        "polyfills": [
-                            "zone.js",
-                            "zone.js/testing"
-                        ]
+                        "polyfills": []
                     }
                 },
                 "lint": {
@@ -273,10 +266,7 @@
                     "builder": "@angular/build:karma",
                     "options": {
                         "tsConfig": "packages/highlightjs/tsconfig.spec.json",
-                        "polyfills": [
-                            "zone.js",
-                            "zone.js/testing"
-                        ]
+                        "polyfills": []
                     }
                 },
                 "lint": {
@@ -318,10 +308,7 @@
                     "builder": "@angular/build:karma",
                     "options": {
                         "tsConfig": "packages/json-view/tsconfig.spec.json",
-                        "polyfills": [
-                            "zone.js",
-                            "zone.js/testing"
-                        ]
+                        "polyfills": []
                     }
                 },
                 "lint": {
@@ -364,8 +351,6 @@
                     "options": {
                         "tsConfig": "packages/pick-datetime/tsconfig.spec.json",
                         "polyfills": [
-                            "zone.js",
-                            "zone.js/testing",
                             "@angular/localize/init"
                         ]
                     }
@@ -409,10 +394,7 @@
                     "builder": "@angular/build:karma",
                     "options": {
                         "tsConfig": "packages/sortablejs/tsconfig.spec.json",
-                        "polyfills": [
-                            "zone.js",
-                            "zone.js/testing"
-                        ]
+                        "polyfills": []
                     }
                 },
                 "lint": {
@@ -455,8 +437,6 @@
                     "options": {
                         "tsConfig": "packages/color-picker/tsconfig.spec.json",
                         "polyfills": [
-                            "zone.js",
-                            "zone.js/testing",
                             "@angular/localize/init"
                         ]
                     }

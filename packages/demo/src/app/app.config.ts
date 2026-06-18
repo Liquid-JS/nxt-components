@@ -1,12 +1,12 @@
 import { ApplicationConfig, isDevMode, DOCUMENT } from '@angular/core'
-import { provideClientHydration } from '@angular/platform-browser'
+import { provideClientHydration, withNoIncrementalHydration } from '@angular/platform-browser'
 import { provideAnimations } from '@angular/platform-browser/animations'
 import { DefaultUrlSerializer, provideRouter, UrlSerializer, UrlTree, withInMemoryScrolling } from '@angular/router'
 import { provideServiceWorker } from '@angular/service-worker'
 import { provideHighlightOptions } from 'nxt-highlightjs'
 import { provideDropzoneConfig } from 'nxt-dropzone-wrapper'
-import { provideNativeDateTimeAdapter } from 'packages/pick-datetime/native-adapter/src/native-adapter.module'
-import { provideHttpClient, withFetch } from '@angular/common/http'
+import { provideNativeDateTimeAdapter } from 'nxt-pick-datetime/native-adapter'
+import { provideHttpClient } from '@angular/common/http'
 import { APP_BASE_HREF } from '@angular/common'
 import { routes } from './app.routes'
 
@@ -31,7 +31,7 @@ export class TrailingSlashUrlSerializer extends DefaultUrlSerializer {
 
 export const appConfig: ApplicationConfig = {
     providers: [
-        provideHttpClient(withFetch()),
+        provideHttpClient(),
         provideRouter(routes, withInMemoryScrolling({
             anchorScrolling: 'enabled',
             scrollPositionRestoration: 'enabled'
@@ -41,7 +41,7 @@ export const appConfig: ApplicationConfig = {
             useClass: TrailingSlashUrlSerializer
         },
         provideAnimations(),
-        provideClientHydration(),
+        provideClientHydration(withNoIncrementalHydration()),
         provideServiceWorker('ngsw-worker.js', {
             enabled: !isDevMode(),
             registrationStrategy: 'registerWhenStable:30000'

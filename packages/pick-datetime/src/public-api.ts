@@ -10,5 +10,4 @@ export { DateTimeInputDirective, DateTimeInputEvent } from './lib/date-time/date
 export { DateTimeIntl } from './lib/date-time/date-time-picker-intl.service'
 export { DateTimeTriggerDirective } from './lib/date-time/date-time-picker-trigger.directive'
 export { DateTimeComponent } from './lib/date-time/date-time-picker/date-time-picker.component'
-export { DateTimeModule } from './lib/date-time/date-time.module'
 export { TimerComponent } from './lib/date-time/timer/timer.component'

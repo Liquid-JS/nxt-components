@@ -358,50 +358,6 @@
             ]
         }
     ],
-    "modules": [
-        {
-            "name": "JsonViewModule",
-            "id": "module-JsonViewModule-16583309baf6a02c8f8de60a0cd73246f26f6c4f174bd185d5a1be79d45bf2bba5d9d7c095ca399ad13f088db38d1a3b9f151dce0c7f42d3f87d3bc9e8b2fc03",
-            "description": "",
-            "deprecationMessage": "use standalone imports",
-            "deprecated": true,
-            "file": "src/lib/json-view.module.ts",
-            "methods": [],
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": []
-                },
-                {
-                    "type": "imports",
-                    "elements": [
-                        {
-                            "name": "JsonViewComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "JsonViewComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        }
-    ],
+    "modules": [],
     "miscellaneous": []
 }

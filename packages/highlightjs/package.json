@@ -26,7 +26,7 @@
         "build": "ng build highlightjs --configuration \"production\"",
         "lint": "ng lint highlightjs",
         "lint:fix": "yarn lint --fix",
-        "lint:html": "js-beautify --type html -r -f ./src/**/*.html --config ./js-beautify.json",
+        "_lint:html": "js-beautify --type html -r -f ./src/**/*.html --config ./js-beautify.json",
         "_lint:sass": "stylelint \"src/**/*.scss\" \"assets/**/*.scss\"",
         "_lint:sass:fix": "yarn lint:sass --fix",
         "test": "ng test highlightjs --no-watch",
@@ -35,10 +35,10 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/highlightjs"
     },
     "peerDependencies": {
-        "@angular/cdk": "^21.0.0",
-        "@angular/common": "^21.0.0",
-        "@angular/core": "^21.0.0",
-        "@angular/platform-browser": "^21.0.0",
+        "@angular/cdk": "^22.0.0",
+        "@angular/common": "^22.0.0",
+        "@angular/core": "^22.0.0",
+        "@angular/platform-browser": "^22.0.0",
         "highlight.js": ">=11.11.1",
         "rxjs": "^7.8.2"
     },

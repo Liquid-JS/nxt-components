@@ -15,30 +15,6 @@ export class CodeLoader {
     readonly options = inject(NXT_GIST_OPTIONS, { optional: true })
     private readonly pendingTasks = inject(PendingTasks)
 
-    /**
-     * Get plus code
-     *
-     * @param id Gist ID
-     * @deprecated Use gistResource
-     */
-    getCodeFromGist(id: string): Observable<Gist> {
-        let params: HttpParams | undefined
-        if (this.options?.clientId && this.options?.clientSecret) {
-            params = new HttpParams().set('client_id', this.options.clientId).set('client_secret', this.options.clientSecret)
-        }
-        return this.fetchFile(`https://api.github.com/gists/${id}`, { params, responseType: 'json' })
-    }
-
-    /**
-     * Get code by URL
-     *
-     * @param url File raw link
-     * @deprecated Use fileResource
-     */
-    getCodeFromUrl(url: string): Observable<string> {
-        return this.fetchFile(url, { responseType: 'text' })
-    }
-
     fetchFile(url: string, options: any): Observable<any> {
         // Check if URL is valid
         if (isUrl(url)) {

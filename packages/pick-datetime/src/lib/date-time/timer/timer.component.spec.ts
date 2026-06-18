@@ -1,20 +1,18 @@
 /* eslint-disable @angular-eslint/component-class-suffix */
-import { Component, DebugElement, NgZone } from '@angular/core'
-import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing'
+import { Component, DebugElement, signal } from '@angular/core'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { MockNgZone, provideTestDateTimeAdapter } from 'packages/pick-datetime/src/test-helpers'
+import { provideTestDateTimeAdapter } from '../../../test-helpers'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 import { TimerComponent } from './timer.component'
 
 describe('TimerComponent', () => {
-    let _zone: MockNgZone | undefined
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             providers: [
                 provideTestDateTimeAdapter(),
-                DateTimeIntl,
-                { provide: NgZone, useFactory: () => (_zone = new MockNgZone()) }
+                DateTimeIntl
             ]
         }).compileComponents()
     })
@@ -47,7 +45,7 @@ describe('TimerComponent', () => {
         })
 
         it('should have three timer boxes if showSecondsTimer set to true', () => {
-            testComponent.showSecondsTimer = true
+            testComponent.showSecondsTimer.set(true)
             fixture.detectChanges()
 
             const timerBoxes = timerElement.querySelectorAll(
@@ -66,7 +64,7 @@ describe('TimerComponent', () => {
         })
 
         it('should have the hour12 toggle button if hour12Timer set to true', () => {
-            testComponent.hour12Timer = true
+            testComponent.hour12Timer.set(true)
             fixture.detectChanges()
 
             const toggleBtn = timerElement.querySelector(
@@ -76,11 +74,11 @@ describe('TimerComponent', () => {
             expect(toggleBtn).toBeTruthy()
         })
 
-        it('should dispatch an event when a timer arrow button clicked', fakeAsync(() => {
+        it('should dispatch an event when a timer arrow button clicked', () => {
             spyOn(testComponent, 'handleSelectedChange')
             expect(testComponent.handleSelectedChange).not.toHaveBeenCalled()
 
-            testComponent.showSecondsTimer = true
+            testComponent.showSecondsTimer.set(true)
             fixture.detectChanges()
 
             const arrowBtns = timerElement.querySelectorAll<HTMLButtonElement>(
@@ -91,17 +89,16 @@ describe('TimerComponent', () => {
             arrowBtns.forEach(btn => {
                 btn.click()
                 fixture.detectChanges()
-                flush()
             })
 
             expect(testComponent.handleSelectedChange).toHaveBeenCalledTimes(6)
-        }))
+        })
 
-        it('should dispatch an event when hour12 toggle button clicked', fakeAsync(() => {
+        it('should dispatch an event when hour12 toggle button clicked', () => {
             spyOn(testComponent, 'handleSelectedChange')
             expect(testComponent.handleSelectedChange).not.toHaveBeenCalled()
 
-            testComponent.hour12Timer = true
+            testComponent.hour12Timer.set(true)
             fixture.detectChanges()
 
             const toggleBtn = timerElement.querySelector<HTMLButtonElement>(
@@ -110,12 +107,11 @@ describe('TimerComponent', () => {
 
             toggleBtn?.click()
             fixture.detectChanges()
-            flush()
 
             expect(testComponent.handleSelectedChange).toHaveBeenCalledTimes(1)
-        }))
+        })
 
-        it('should add or minus stepHour hours when hour arrow button clicked', fakeAsync(() => {
+        it('should add or minus stepHour hours when hour arrow button clicked', () => {
             expect(timerInstance.stepHour()).toBe(1)
 
             const arrowBtns = timerElement.querySelectorAll<HTMLButtonElement>(
@@ -125,38 +121,34 @@ describe('TimerComponent', () => {
 
             arrowBtns[0].click()
             fixture.detectChanges()
-            flush()
-            expect(testComponent.pickerMoment).toEqual(
+            expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 13, 30, 30)
             )
 
             arrowBtns[1].click()
             fixture.detectChanges()
-            flush()
-            expect(testComponent.pickerMoment).toEqual(
+            expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 30)
             )
 
-            testComponent.stepHour = 2
+            testComponent.stepHour.set(2)
             fixture.detectChanges()
             expect(timerInstance.stepHour()).toBe(2)
 
             arrowBtns[0].click()
             fixture.detectChanges()
-            flush()
-            expect(testComponent.pickerMoment).toEqual(
+            expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 14, 30, 30)
             )
 
             arrowBtns[1].click()
             fixture.detectChanges()
-            flush()
-            expect(testComponent.pickerMoment).toEqual(
+            expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 30)
             )
-        }))
+        })
 
-        it('should add or minus stepMinute minutes when minute arrow button clicked', fakeAsync(() => {
+        it('should add or minus stepMinute minutes when minute arrow button clicked', () => {
             expect(timerInstance.stepMinute()).toBe(1)
 
             const arrowBtns = timerElement.querySelectorAll<HTMLButtonElement>(
@@ -166,41 +158,37 @@ describe('TimerComponent', () => {
 
             arrowBtns[2].click()
             fixture.detectChanges()
-            flush()
-            expect(testComponent.pickerMoment).toEqual(
+            expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 31, 30)
             )
 
             arrowBtns[3].click()
             fixture.detectChanges()
-            flush()
-            expect(testComponent.pickerMoment).toEqual(
+            expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 30)
             )
 
-            testComponent.stepMinute = 2
+            testComponent.stepMinute.set(2)
             fixture.detectChanges()
             expect(timerInstance.stepMinute()).toBe(2)
 
             arrowBtns[2].click()
             fixture.detectChanges()
-            flush()
-            expect(testComponent.pickerMoment).toEqual(
+            expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 32, 30)
             )
 
             arrowBtns[3].click()
             fixture.detectChanges()
-            flush()
-            expect(testComponent.pickerMoment).toEqual(
+            expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 30)
             )
-        }))
+        })
 
-        it('should add or minus stepSecond seconds when second arrow button clicked', fakeAsync(() => {
+        it('should add or minus stepSecond seconds when second arrow button clicked', () => {
             expect(timerInstance.stepSecond()).toBe(1)
 
-            testComponent.showSecondsTimer = true
+            testComponent.showSecondsTimer.set(true)
             fixture.detectChanges()
             const arrowBtns = timerElement.querySelectorAll<HTMLButtonElement>(
                 'button.nxt-dt-control-arrow-button'
@@ -209,39 +197,35 @@ describe('TimerComponent', () => {
 
             arrowBtns[4].click()
             fixture.detectChanges()
-            flush()
-            expect(testComponent.pickerMoment).toEqual(
+            expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 31)
             )
 
             arrowBtns[5].click()
             fixture.detectChanges()
-            flush()
-            expect(testComponent.pickerMoment).toEqual(
+            expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 30)
             )
 
-            testComponent.stepSecond = 2
+            testComponent.stepSecond.set(2)
             fixture.detectChanges()
             expect(timerInstance.stepSecond()).toBe(2)
 
             arrowBtns[4].click()
             fixture.detectChanges()
-            flush()
-            expect(testComponent.pickerMoment).toEqual(
+            expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 32)
             )
 
             arrowBtns[5].click()
             fixture.detectChanges()
-            flush()
-            expect(testComponent.pickerMoment).toEqual(
+            expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 12, 30, 30)
             )
-        }))
+        })
 
-        it('should toggle between PM and AM when hour12 toggle button clicked', fakeAsync(() => {
-            testComponent.hour12Timer = true
+        it('should toggle between PM and AM when hour12 toggle button clicked', () => {
+            testComponent.hour12Timer.set(true)
             fixture.detectChanges()
 
             const toggleBtn = timerElement.querySelector<HTMLButtonElement>(
@@ -251,23 +235,22 @@ describe('TimerComponent', () => {
 
             toggleBtn?.click()
             fixture.detectChanges()
-            flush()
 
             expect(toggleBtn?.innerHTML).toContain('AM')
-            expect(testComponent.pickerMoment).toEqual(
+            expect(testComponent.pickerMoment()).toEqual(
                 new Date(2018, 0, 31, 0, 30, 30)
             )
-        }))
+        })
 
         it('should disable all down arrow button if pickerMoment equals to minDateTime', () => {
-            testComponent.showSecondsTimer = true
+            testComponent.showSecondsTimer.set(true)
             fixture.detectChanges()
             const arrowBtns = timerElement.querySelectorAll<HTMLButtonElement>(
                 'button.nxt-dt-control-arrow-button'
             )
             expect(arrowBtns.length).toBe(6)
 
-            testComponent.pickerMoment = new Date(testComponent.minDateTime)
+            testComponent.pickerMoment.set(new Date(testComponent.minDateTime()))
             fixture.detectChanges()
 
             // up arrow buttons
@@ -282,14 +265,14 @@ describe('TimerComponent', () => {
         })
 
         it('should disable all up arrow button if pickerMoment equals to maxDateTime', () => {
-            testComponent.showSecondsTimer = true
+            testComponent.showSecondsTimer.set(true)
             fixture.detectChanges()
             const arrowBtns = timerElement.querySelectorAll<HTMLButtonElement>(
                 'button.nxt-dt-control-arrow-button'
             )
             expect(arrowBtns.length).toBe(6)
 
-            testComponent.pickerMoment = new Date(testComponent.maxDateTime)
+            testComponent.pickerMoment.set(new Date(testComponent.maxDateTime()))
             fixture.detectChanges()
 
             // up arrow buttons
@@ -307,29 +290,29 @@ describe('TimerComponent', () => {
 
 @Component({
     template: `
-        <nxt-date-time-timer [hour12Timer]="hour12Timer"
-                [showSecondsTimer]="showSecondsTimer"
-                [pickerMoment]="pickerMoment"
-                [stepHour]="stepHour"
-                [stepMinute]="stepMinute"
-                [stepSecond]="stepSecond"
-                [min]="minDateTime"
-                [max]="maxDateTime"
+        <nxt-date-time-timer [hour12Timer]="hour12Timer()"
+                [showSecondsTimer]="showSecondsTimer()"
+                [pickerMoment]="pickerMoment()"
+                [stepHour]="stepHour()"
+                [stepMinute]="stepMinute()"
+                [stepSecond]="stepSecond()"
+                [min]="minDateTime()"
+                [max]="maxDateTime()"
                 (selectedChange)="handleSelectedChange($event)" />
     `,
     imports: [TimerComponent]
 })
 class StandardTimer {
-    stepHour = 1
-    stepMinute = 1
-    stepSecond = 1
-    hour12Timer = false
-    showSecondsTimer = false
-    pickerMoment = new Date(2018, 0, 31, 12, 30, 30)
-    minDateTime = new Date(2018, 0, 29, 12, 30, 30)
-    maxDateTime = new Date(2018, 1, 1, 12, 30, 30)
+    readonly stepHour = signal(1)
+    readonly stepMinute = signal(1)
+    readonly stepSecond = signal(1)
+    readonly hour12Timer = signal(false)
+    readonly showSecondsTimer = signal(false)
+    readonly pickerMoment = signal(new Date(2018, 0, 31, 12, 30, 30))
+    readonly minDateTime = signal(new Date(2018, 0, 29, 12, 30, 30))
+    readonly maxDateTime = signal(new Date(2018, 1, 1, 12, 30, 30))
 
     handleSelectedChange(val: Date) {
-        this.pickerMoment = val
+        this.pickerMoment.set(val)
     }
 }

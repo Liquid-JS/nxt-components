@@ -1,13 +1,12 @@
-import { AnimationEvent } from '@angular/animations'
+import { animate, animateChild, AnimationEvent, group, query, state, style, transition, trigger } from '@angular/animations'
 import { CdkTrapFocus } from '@angular/cdk/a11y'
-import { AfterContentInit, AfterViewInit, Component, computed, ElementRef, signal, viewChild, inject } from '@angular/core'
+import { AfterContentInit, AfterViewInit, Component, computed, ElementRef, inject, signal, viewChild } from '@angular/core'
 import { Subject } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeDirective } from '../../class/date-time.class'
 import { CalendarComponent } from '../calendar/calendar.component'
 import { DateTimeIntl } from '../date-time-picker-intl.service'
 import { TimerComponent } from '../timer/timer.component'
-import { dateTimePickerAnimations } from './date-time-picker-container.animations'
 
 /** @internal */
 @Component({
@@ -16,8 +15,20 @@ import { dateTimePickerAnimations } from './date-time-picker-container.animation
     styleUrls: ['./date-time-picker-container.component.scss'],
     preserveWhitespaces: false,
     animations: [
-        dateTimePickerAnimations.transformPicker,
-        dateTimePickerAnimations.fadeInPicker
+        trigger('transformPicker', [
+            state('void', style({ opacity: 0, transform: 'scale(1, 0)' })),
+            state('enter', style({ opacity: 1, transform: 'scale(1, 1)' })),
+            transition('void => enter', group([
+                query('@fadeInPicker', animateChild(), { optional: true }),
+                animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)')
+            ])),
+            transition('enter => void', animate('100ms linear', style({ opacity: 0 })))
+        ]),
+        trigger('fadeInPicker', [
+            state('enter', style({ opacity: 1 })),
+            state('void', style({ opacity: 0 })),
+            transition('void => enter', animate('400ms 100ms cubic-bezier(0.55, 0, 0.55, 0.2)'))
+        ])
     ],
     imports: [
         CdkTrapFocus,

@@ -31,9 +31,9 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/sitemap"
     },
     "peerDependencies": {
-        "@angular-devkit/architect": "^0.2100.0",
-        "@angular-devkit/core": "^21.0.0",
-        "@angular-devkit/schematics": "^21.0.0"
+        "@angular-devkit/architect": "^0.2200.0",
+        "@angular-devkit/core": "^22.0.0",
+        "@angular-devkit/schematics": "^22.0.0"
     },
     "dependencies": {
         "sitemap": "^9.0.0"
@@ -43,7 +43,7 @@
         "builtins": "^5.1.0",
         "globby": "^16.2.0",
         "json-schema-to-typescript": "^15.0.4",
-        "rollup": "^4.60.1",
+        "rollup": "^4.62.0",
         "rollup-plugin-copy": "^3.5.0"
     }
 }

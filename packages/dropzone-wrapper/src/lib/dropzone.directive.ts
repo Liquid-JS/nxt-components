@@ -51,6 +51,10 @@ export class DropzoneDirective extends DropzoneListeners implements OnDestroy {
             const d = this.paramDiff.diff(n)
             if (d) {
                 let hasChanges = false
+                d.forEachRemovedItem((r) => {
+                    if (!internalChanges.has(r.key as any) && r.currentValue !== r.previousValue)
+                        hasChanges = true
+                })
                 d.forEachItem(r => {
                     if (!internalChanges.has(r.key as any) && r.currentValue !== r.previousValue)
                         hasChanges = true

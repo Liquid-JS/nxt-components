@@ -17,7 +17,6 @@ import { MetaDirective } from '../../meta/meta.directive'
 export class CustomAdapterComponent {
 
     readonly exampleImpl = resource({
-        // @ts-expect-error TypeScript cannot provide types based on attributes yet
         loader: () => import('./custom-adapter.example.ts', { with: { loader: 'text' } })
             .then(res => ({
                 name: 'Custom date & time adapter module',

@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core'
+import { Component, DebugElement, signal } from '@angular/core'
 import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import hljs from 'highlight.js'
@@ -7,13 +7,13 @@ import { HighlightAutoDirective } from './highlight-auto.directive'
 import { HighlightLoader } from './highlight.loader'
 
 @Component({
-    template: '<code [nxtHighlightAuto]="code"></code>',
+    template: '<code [nxtHighlightAuto]="code()"></code>',
     imports: [
         HighlightAutoDirective
     ]
 })
 class TestHighlightComponent {
-    code?: string
+    readonly code = signal<string | undefined>(undefined)
 }
 
 describe('HighlightAuto Directive', () => {
@@ -43,7 +43,7 @@ describe('HighlightAuto Directive', () => {
     it('[Content-Security-Policy (CSP)] highlight element when trustedTypes is not supported by the browser', async () => {
         const trustedTypesBackup = (window as any)['trustedTypes']
         delete (window as any)['trustedTypes']
-        component.code = testJsCode
+        component.code.set(testJsCode)
         fixture.detectChanges()
 
         const highlightedCode: string = hljs.highlightAuto(testJsCode).value
@@ -59,13 +59,13 @@ describe('HighlightAuto Directive', () => {
     })
 
     it('should reset text if empty string was passed', () => {
-        component.code = ''
+        component.code.set('')
         fixture.detectChanges()
         expect(directiveElement.nativeElement.innerHTML).toBe('')
     })
 
     it('should highlight given text and highlight another text when change', async () => {
-        component.code = testJsCode
+        component.code.set(testJsCode)
         fixture.detectChanges()
 
         let highlightedCode: string = hljs.highlightAuto(testJsCode).value
@@ -74,7 +74,7 @@ describe('HighlightAuto Directive', () => {
         expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode)
 
         // Change code 2nd time with another value
-        component.code = testHtmlCode
+        component.code.set(testHtmlCode)
         fixture.detectChanges()
 
         highlightedCode = hljs.highlightAuto(testHtmlCode).value
@@ -83,14 +83,14 @@ describe('HighlightAuto Directive', () => {
         expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode)
 
         // Change code 3rd time but with empty string
-        component.code = ''
+        component.code.set('')
         fixture.detectChanges()
 
         await afterTimeout(200)
         expect(directiveElement.nativeElement.innerHTML).toBe('')
 
         // Change code 4th time but with undefinedish value
-        component.code = undefined
+        component.code.set(undefined)
         fixture.detectChanges()
 
         await afterTimeout(200)

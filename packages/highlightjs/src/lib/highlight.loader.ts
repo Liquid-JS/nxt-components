@@ -1,7 +1,5 @@
 import { Injectable, PendingTasks, inject, DOCUMENT, resource } from '@angular/core'
 import type { HLJSApi } from 'highlight.js'
-import { filter, firstValueFrom } from 'rxjs'
-import { toObservable } from '@angular/core/rxjs-interop'
 import { NXT_HIGHLIGHT_OPTIONS } from './highlight.model'
 import { LoaderErrors } from './loader-errors'
 import { TokenTreeEmitter } from './output'
@@ -35,15 +33,6 @@ export class HighlightLoader {
             })
             .finally(this._t)
     }).asReadonly()
-
-    private readonly _ready$ = toObservable(this.hljs.value).pipe(filter((v): v is HLJSApi => !!v))
-
-    /**
-     * @deprecated use hljs.value()
-     */
-    get ready() {
-        return firstValueFrom(this._ready$)
-    }
 
     private themeLinkElement?: HTMLLinkElement
 

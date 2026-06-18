@@ -1,55 +1,8 @@
 {
     "pipes": [
         {
-            "name": "CodeFromUrlPipe",
-            "id": "pipe-CodeFromUrlPipe-3cc86c239db6b4ca32883153595ce1b0227becd320ae98fbf7f707071f32b7d89ac70c50ffbd4a0ed1d8c00f491dfc807a6abdcfdb0916c716126147e7cb870d",
-            "file": "extras/src/code-from-url.pipe.ts",
-            "type": "pipe",
-            "deprecated": true,
-            "deprecationMessage": "use fileResource with `{ formatUrl: true }`",
-            "description": "",
-            "rawdescription": "\n\n",
-            "properties": [],
-            "methods": [
-                {
-                    "name": "transform",
-                    "args": [
-                        {
-                            "name": "url",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Observable<string>",
-                    "typeParameters": [],
-                    "line": 18,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "url",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "standalone": false,
-            "ngname": "codeFromUrl"
-        },
-        {
             "name": "GistFilePipe",
-            "id": "pipe-GistFilePipe-7787cbfb2f533c4be782162b1f9cc4da021fc885f59e9d3f64b7dcf68f0429de5d9152a6adb31931829cfcc6cde91cd4b85220e355e8b94d87774144788dbbe2",
+            "id": "pipe-GistFilePipe-e943cd33ea18ea65dc3111664e7791d09847b0be06621fc0e9afaa38cdb48a2b5dc72ac93914198e0ccffc216d9191a0eaf5ea5836b7b00b34f8378d4aee6e95",
             "file": "extras/src/gist.ts",
             "type": "pipe",
             "deprecated": false,
@@ -81,7 +34,7 @@
                     "optional": false,
                     "returnType": "GistFile | undefined",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 8,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1098,7 +1051,7 @@
     "injectables": [
         {
             "name": "HighlightJS",
-            "id": "injectable-HighlightJS-80ff146883ef2413cd7cd05a3f650e73121a84a67e8abb4b28c0b5e115f596f0d1f64b4df5398c970bc76e37aa4c19da9518c16cde133393b607531e89a1c595",
+            "id": "injectable-HighlightJS-083aa106e1d9ea667b56977793e1d3616956e8dcde3b0751110814d6269cd188aa3764d3271e4463af9d0112a3072b2b309f60cc91313e24a6b97506953e4c99",
             "file": "src/lib/highlight.service.ts",
             "properties": [
                 {
@@ -1110,482 +1063,13 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 19,
+                    "line": 12,
                     "modifierKind": [
                         148
                     ]
                 }
             ],
-            "methods": [
-                {
-                    "name": "debugMode",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "Promise<void>",
-                    "typeParameters": [],
-                    "line": 129,
-                    "deprecated": true,
-                    "deprecationMessage": "use hljs().debugMode",
-                    "rawdescription": "\n\nEnables debug/development mode.\n\n",
-                    "description": "<p>Enables debug/development mode.</p>\n",
-                    "modifierKind": [
-                        134
-                    ],
-                    "jsdoctags": []
-                },
-                {
-                    "name": "getLanguage",
-                    "args": [
-                        {
-                            "name": "name",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Promise<any>",
-                    "typeParameters": [],
-                    "line": 109,
-                    "deprecated": true,
-                    "deprecationMessage": "use hljs().getLanguage",
-                    "rawdescription": "\n\nLooks up a language by name or alias.\n\n",
-                    "description": "<p>Looks up a language by name or alias.</p>\n",
-                    "modifierKind": [
-                        134
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "name",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "highlight",
-                    "args": [
-                        {
-                            "name": "code",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "options",
-                            "type": "HighlightOptions",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Promise<HighlightResult>",
-                    "typeParameters": [],
-                    "line": 26,
-                    "deprecated": true,
-                    "deprecationMessage": "use hljs().highlight",
-                    "rawdescription": "\n\nCore highlighting function. Accepts the code to highlight (string) and a list of options (object)\n\n",
-                    "description": "<p>Core highlighting function. Accepts the code to highlight (string) and a list of options (object)</p>\n",
-                    "modifierKind": [
-                        134
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "code",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "options",
-                            "type": "HighlightOptions",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "highlightAll",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "Promise<void>",
-                    "typeParameters": [],
-                    "line": 59,
-                    "deprecated": true,
-                    "deprecationMessage": "use hljs().highlightAll",
-                    "rawdescription": "\n\nApplies highlighting to all elements on a page matching the configured cssSelector. The default cssSelector value is 'pre code',\nwhich highlights all code blocks. This can be called before or after the page’s onload event has fired.\n\n",
-                    "description": "<p>Applies highlighting to all elements on a page matching the configured cssSelector. The default cssSelector value is &#39;pre code&#39;,\nwhich highlights all code blocks. This can be called before or after the page’s onload event has fired.</p>\n",
-                    "modifierKind": [
-                        134
-                    ],
-                    "jsdoctags": []
-                },
-                {
-                    "name": "highlightAuto",
-                    "args": [
-                        {
-                            "name": "value",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "languageSubset",
-                            "type": "string[]",
-                            "optional": true,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Promise<AutoHighlightResult>",
-                    "typeParameters": [],
-                    "line": 36,
-                    "deprecated": true,
-                    "deprecationMessage": "use hljs().highlightAuto",
-                    "rawdescription": "\n\nHighlighting with language detection.\n\n",
-                    "description": "<p>Highlighting with language detection.</p>\n",
-                    "modifierKind": [
-                        134
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "value",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "languageSubset",
-                            "type": "string[]",
-                            "optional": true,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "highlightElement",
-                    "args": [
-                        {
-                            "name": "element",
-                            "type": "HTMLElement",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Promise<void>",
-                    "typeParameters": [],
-                    "line": 48,
-                    "deprecated": true,
-                    "deprecationMessage": "use hljs().highlightElement",
-                    "rawdescription": "\n\nApplies highlighting to a DOM node containing code.\nThis function is the one to use to apply highlighting dynamically after page load or within initialization code of third-party JavaScript frameworks.\nThe function uses language detection by default but you can specify the language in the class attribute of the DOM node. See the scopes reference for all available language names and scopes.\n\n",
-                    "description": "<p>Applies highlighting to a DOM node containing code.\nThis function is the one to use to apply highlighting dynamically after page load or within initialization code of third-party JavaScript frameworks.\nThe function uses language detection by default but you can specify the language in the class attribute of the DOM node. See the scopes reference for all available language names and scopes.</p>\n",
-                    "modifierKind": [
-                        134
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "element",
-                            "type": "HTMLElement",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "lineNumbersBlock",
-                    "args": [
-                        {
-                            "name": "code",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "options",
-                            "type": "LineNumbersOptions",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Promise<void>",
-                    "typeParameters": [],
-                    "line": 139,
-                    "deprecated": true,
-                    "deprecationMessage": "use hljs().lineNumbersBlock",
-                    "rawdescription": "\n\nDisplay line numbers\n\n",
-                    "description": "<p>Display line numbers</p>\n",
-                    "modifierKind": [
-                        134
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "code",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "options",
-                            "type": "LineNumbersOptions",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "listLanguages",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "Promise<string[]>",
-                    "typeParameters": [],
-                    "line": 99,
-                    "deprecated": true,
-                    "deprecationMessage": "use hljs().listLanguages",
-                    "rawdescription": "\n\n",
-                    "description": "",
-                    "modifierKind": [
-                        134
-                    ],
-                    "jsdoctags": [
-                        {
-                            "tagName": {
-                                "pos": 3501,
-                                "end": 3507,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "return"
-                            },
-                            "comment": "<p>The languages names list.</p>\n"
-                        }
-                    ]
-                },
-                {
-                    "name": "registerAliases",
-                    "args": [
-                        {
-                            "name": "alias",
-                            "type": "string | string[]",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "",
-                            "type": "literal type",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Promise<void>",
-                    "typeParameters": [],
-                    "line": 90,
-                    "deprecated": true,
-                    "deprecationMessage": "use hljs().registerAliases",
-                    "rawdescription": "\n\nAdds new language alias or aliases to the library for the specified language name defined under languageName key.\n\n",
-                    "description": "<p>Adds new language alias or aliases to the library for the specified language name defined under languageName key.</p>\n",
-                    "modifierKind": [
-                        134
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "alias",
-                            "type": "string | string[]",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "",
-                            "type": "literal type",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "registerLanguage",
-                    "args": [
-                        {
-                            "name": "languageName",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "languageDefinition",
-                            "type": "LanguageFn",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Promise<void>",
-                    "typeParameters": [],
-                    "line": 70,
-                    "deprecated": true,
-                    "deprecationMessage": "use hljs().registerLanguage",
-                    "rawdescription": "\n\nAdds new language to the library under the specified name. Used mostly internally.\nThe function is passed the hljs object to be able to use common regular expressions defined within it.\n\n",
-                    "description": "<p>Adds new language to the library under the specified name. Used mostly internally.\nThe function is passed the hljs object to be able to use common regular expressions defined within it.</p>\n",
-                    "modifierKind": [
-                        134
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "languageName",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "languageDefinition",
-                            "type": "LanguageFn",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "safeMode",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "Promise<void>",
-                    "typeParameters": [],
-                    "line": 119,
-                    "deprecated": true,
-                    "deprecationMessage": "use hljs().safeMode",
-                    "rawdescription": "\n\nEnables safe mode. This is the default mode, providing the most reliable experience for production usage.\n\n",
-                    "description": "<p>Enables safe mode. This is the default mode, providing the most reliable experience for production usage.</p>\n",
-                    "modifierKind": [
-                        134
-                    ],
-                    "jsdoctags": []
-                },
-                {
-                    "name": "unregisterLanguage",
-                    "args": [
-                        {
-                            "name": "languageName",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Promise<void>",
-                    "typeParameters": [],
-                    "line": 80,
-                    "deprecated": true,
-                    "deprecationMessage": "use hljs().unregisterLanguage",
-                    "rawdescription": "\n\nRemoves a language and its aliases from the library. Used mostly internally\n\n",
-                    "description": "<p>Removes a language and its aliases from the library. Used mostly internally</p>\n",
-                    "modifierKind": [
-                        134
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "languageName",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
+            "methods": [],
             "deprecated": false,
             "deprecationMessage": "",
             "description": "",
@@ -1595,7 +1079,7 @@
         },
         {
             "name": "HighlightLoader",
-            "id": "injectable-HighlightLoader-97198034179b8030f151945635e9c5fa73d56ac848b071debe78dbf52bdbfa014188a8dc87493b0df6b9c3622e659345534b1e4de05017bb4bc84081ecaea022",
+            "id": "injectable-HighlightLoader-568e1cd7f7499591651501145fb2ecb2b771aa9daf72161f4e766f4fb7137138147c79065a3bc44f5e4af5adbb75435af2e71022c601487ed52c65cdfeaf8929",
             "file": "src/lib/highlight.loader.ts",
             "properties": [
                 {
@@ -1607,7 +1091,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 19,
+                    "line": 17,
                     "modifierKind": [
                         148
                     ]
@@ -1629,7 +1113,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 95,
+                    "line": 84,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReload theme styles\n",
@@ -1659,43 +1143,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 48
-            },
-            "accessors": {
-                "ready": {
-                    "name": "ready",
-                    "getSignature": {
-                        "name": "ready",
-                        "type": "",
-                        "returnType": "",
-                        "line": 44,
-                        "rawdescription": "\n\n",
-                        "description": "",
-                        "deprecated": true,
-                        "deprecationMessage": "use hljs.value()",
-                        "jsdoctags": [
-                            {
-                                "pos": 1474,
-                                "end": 1508,
-                                "kind": 332,
-                                "id": 0,
-                                "flags": 16842752,
-                                "modifierFlagsCache": 0,
-                                "transformFlags": 0,
-                                "tagName": {
-                                    "pos": 1475,
-                                    "end": 1485,
-                                    "kind": 80,
-                                    "id": 0,
-                                    "flags": 16842752,
-                                    "transformFlags": 0,
-                                    "escapedText": "deprecated"
-                                },
-                                "comment": "<p>use hljs.value()</p>\n"
-                            }
-                        ]
-                    }
-                }
+                "line": 37
             },
             "extends": [],
             "type": "injectable"
@@ -1744,80 +1192,6 @@
     "interceptors": [],
     "classes": [],
     "directives": [
-        {
-            "name": "GistDirective",
-            "id": "directive-GistDirective-7787cbfb2f533c4be782162b1f9cc4da021fc885f59e9d3f64b7dcf68f0429de5d9152a6adb31931829cfcc6cde91cd4b85220e355e8b94d87774144788dbbe2",
-            "file": "extras/src/gist.ts",
-            "type": "directive",
-            "description": "",
-            "rawdescription": "\n\n",
-            "selector": "[nxtGist]",
-            "providers": [],
-            "hostDirectives": [],
-            "standalone": false,
-            "inputsClass": [
-                {
-                    "name": "gist",
-                    "defaultValue": "undefined, { alias: 'nxtGist' }",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 16,
-                    "modifierKind": [
-                        148
-                    ],
-                    "required": false
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "gistError",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "any",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 18,
-                    "modifierKind": [
-                        148
-                    ],
-                    "required": false
-                },
-                {
-                    "name": "gistLoad",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Gist",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 17,
-                    "modifierKind": [
-                        148
-                    ],
-                    "required": false
-                }
-            ],
-            "deprecated": true,
-            "deprecationMessage": "use gistResource",
-            "hostBindings": [],
-            "hostListeners": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "extends": [],
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 18
-            }
-        },
         {
             "name": "HighlightAutoDirective",
             "id": "directive-HighlightAutoDirective-1ae948816a7d8a8df64defd41f6e587026a7d67922426e4506a492a3cf9309a1464edba598c4a814e627008539d6ffc63b01ac0f8abfc82acd521d0730c4f583",
@@ -2395,112 +1769,7 @@
         }
     ],
     "components": [],
-    "modules": [
-        {
-            "name": "HighlightExstrasModule",
-            "id": "module-HighlightExstrasModule-42d80110c67b54765358278422edef556adeae65a9cf1734b3e51733b39254f023a93ae23ddef112b3eef2e15d526a22c9a1ac9462c2116e3f2b2964e8ad69e2",
-            "description": "",
-            "deprecationMessage": "use standalone imports",
-            "deprecated": true,
-            "file": "extras/src/highlight-extras.module.ts",
-            "methods": [],
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": []
-                },
-                {
-                    "type": "imports",
-                    "elements": [
-                        {
-                            "name": "CodeFromUrlPipe"
-                        },
-                        {
-                            "name": "GistDirective"
-                        },
-                        {
-                            "name": "GistFilePipe"
-                        }
-                    ]
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "CodeFromUrlPipe"
-                        },
-                        {
-                            "name": "GistDirective"
-                        },
-                        {
-                            "name": "GistFilePipe"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        },
-        {
-            "name": "HighlightModule",
-            "id": "module-HighlightModule-3e7085ed839eac4ccf66f2b8ba5632c01d7c259637ff5a6f2e1499d51858f083544f4b5183b531d197c569554bcda883f0592cb9784ca6853b9379d5a251f8f3",
-            "description": "",
-            "deprecationMessage": "use standalone imports",
-            "deprecated": true,
-            "file": "src/lib/highlight.module.ts",
-            "methods": [],
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": []
-                },
-                {
-                    "type": "imports",
-                    "elements": [
-                        {
-                            "name": "HighlightAutoDirective"
-                        },
-                        {
-                            "name": "HighlightDirective"
-                        }
-                    ]
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "HighlightAutoDirective"
-                        },
-                        {
-                            "name": "HighlightDirective"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        }
-    ],
+    "modules": [],
     "miscellaneous": {
         "variables": [
             {
@@ -2598,8 +1867,8 @@
                 "jsdoctags": [
                     {
                         "name": {
-                            "pos": 2374,
-                            "end": 2377,
+                            "pos": 1625,
+                            "end": 1628,
                             "kind": 80,
                             "id": 0,
                             "flags": 16777216,
@@ -2609,8 +1878,8 @@
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
-                            "pos": 2368,
-                            "end": 2373,
+                            "pos": 1619,
+                            "end": 1624,
                             "kind": 80,
                             "id": 0,
                             "flags": 16777216,
@@ -2655,8 +1924,8 @@
                 "jsdoctags": [
                     {
                         "name": {
-                            "pos": 3188,
-                            "end": 3190,
+                            "pos": 2439,
+                            "end": 2441,
                             "kind": 80,
                             "id": 0,
                             "flags": 16777216,
@@ -2666,8 +1935,8 @@
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
-                            "pos": 3182,
-                            "end": 3187,
+                            "pos": 2433,
+                            "end": 2438,
                             "kind": 80,
                             "id": 0,
                             "flags": 16777216,
@@ -2851,8 +2120,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 2374,
-                                "end": 2377,
+                                "pos": 1625,
+                                "end": 1628,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16777216,
@@ -2862,8 +2131,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 2368,
-                                "end": 2373,
+                                "pos": 1619,
+                                "end": 1624,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16777216,
@@ -2908,8 +2177,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3188,
-                                "end": 3190,
+                                "pos": 2439,
+                                "end": 2441,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16777216,
@@ -2919,8 +2188,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 3182,
-                                "end": 3187,
+                                "pos": 2433,
+                                "end": 2438,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16777216,

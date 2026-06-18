@@ -18,17 +18,17 @@
         "lint:sass:fix": "yarn lint:sass --fix"
     },
     "dependencies": {
-        "@angular/animations": "^21.2.6",
-        "@angular/cdk": "^21.2.4",
-        "@angular/common": "^21.2.6",
-        "@angular/compiler": "^21.2.6",
-        "@angular/core": "^21.2.6",
-        "@angular/forms": "^21.2.6",
-        "@angular/platform-browser": "^21.2.6",
-        "@angular/platform-server": "^21.2.6",
-        "@angular/router": "^21.2.6",
-        "@angular/service-worker": "^21.2.6",
-        "@angular/ssr": "^21.2.5",
+        "@angular/animations": "^22.0.2",
+        "@angular/cdk": "^22.0.2",
+        "@angular/common": "^22.0.2",
+        "@angular/compiler": "^22.0.2",
+        "@angular/core": "^22.0.2",
+        "@angular/forms": "^22.0.2",
+        "@angular/platform-browser": "^22.0.2",
+        "@angular/platform-server": "^22.0.2",
+        "@angular/router": "^22.0.2",
+        "@angular/service-worker": "^22.0.2",
+        "@angular/ssr": "^22.0.3",
         "@popperjs/core": "^2.11.8",
         "bootstrap": "^5.3.8",
         "clipboard-polyfill": "^4.1.1",
@@ -36,11 +36,10 @@
         "highlight.js": "^11.11.1",
         "i18n-iso-countries": "^7.14.0",
         "jquery": "^4.0.0",
-        "ngx-bootstrap": "^21.0.1",
+        "ngx-bootstrap": "./ngx-bootstrap-21.2.1.tgz",
         "rxjs": "^7.8.2",
-        "sass": "^1.98.0",
-        "sortablejs": "^1.15.7",
-        "zone.js": "^0.16.1"
+        "sass": "^1.101.0",
+        "sortablejs": "^1.15.7"
     },
     "devDependencies": {
         "@types/diacritics": "^1.3.3"

@@ -1,6 +1,6 @@
 // Based on @angular/cdk/testing
 import { Platform } from '@angular/cdk/platform'
-import { EventEmitter, Injectable, LOCALE_ID, NgZone, Provider, inject } from '@angular/core'
+import { Injectable, LOCALE_ID, Provider, inject } from '@angular/core'
 import { DateTimeAdapter } from './lib/class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from './lib/class/date-time-format.class'
 
@@ -117,22 +117,6 @@ export function createMouseEvent(type: string, x = 0, y = 0, button = 0) {
     })
 
     return event
-}
-
-export class MockNgZone extends NgZone {
-    override onStable = new EventEmitter<any>(false)
-    constructor() {
-        super({ enableLongStackTrace: false })
-    }
-    override run(fn: () => void): any {
-        return fn()
-    }
-    override runOutsideAngular(fn: () => void): any {
-        return fn()
-    }
-    simulateZoneExit(): void {
-        this.onStable.emit(null)
-    }
 }
 
 /** The default month names to use if Intl API is not available */

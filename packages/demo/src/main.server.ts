@@ -1,7 +1,7 @@
+import { readFile } from 'fs/promises'
 import { join } from 'path'
 import { fileURLToPath, pathToFileURL } from 'url'
-import { readFile } from 'fs/promises'
-import { Injectable, isDevMode, provideZoneChangeDetection } from '@angular/core'
+import { Injectable, isDevMode, provideZonelessChangeDetection } from '@angular/core'
 import { bootstrapApplication, BootstrapContext } from '@angular/platform-browser'
 import { CodeLoader, NXT_HIGHLIGHT_FILE_LOCATION } from 'nxt-highlightjs/extras'
 import { from, Observable } from 'rxjs'
@@ -22,7 +22,7 @@ class SSRCodeLoader extends CodeLoader {
 const bootstrap = (context: BootstrapContext) => bootstrapApplication(AppComponent, {
     ...config,
     providers: [
-        provideZoneChangeDetection(),
+        provideZonelessChangeDetection(),
         ...config.providers,
         {
             provide: NXT_HIGHLIGHT_FILE_LOCATION,

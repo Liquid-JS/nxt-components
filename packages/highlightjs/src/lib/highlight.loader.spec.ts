@@ -1,5 +1,8 @@
 import { TestBed } from '@angular/core/testing'
 import hljs, { HLJSApi } from 'highlight.js'
+import { toObservable } from '@angular/core/rxjs-interop'
+import { firstValueFrom, filter } from 'rxjs'
+import { Injector } from '@angular/core'
 import { HighlightLoader } from './highlight.loader'
 import { NXT_HIGHLIGHT_OPTIONS, HighlightJSOptions } from './highlight.model'
 import { LoaderErrors } from './loader-errors'
@@ -18,7 +21,7 @@ describe('Highlight Loader', () => {
         })
 
         const loader: HighlightLoader = TestBed.inject(HighlightLoader)
-        const lib: HLJSApi = await loader.ready
+        const lib: HLJSApi = await firstValueFrom(toObservable(loader.hljs.value, { injector: TestBed.inject(Injector) }).pipe(filter((v): v is HLJSApi => !!v)))
         expect(lib).toBe(hljs)
     })
 
@@ -33,7 +36,7 @@ describe('Highlight Loader', () => {
         })
 
         const loader: HighlightLoader = TestBed.inject(HighlightLoader)
-        const lib: HLJSApi = await loader.ready
+        const lib: HLJSApi = await firstValueFrom(toObservable(loader.hljs.value, { injector: TestBed.inject(Injector) }).pipe(filter((v): v is HLJSApi => !!v)))
         expect(lib).toBe(hljs)
     })
 
@@ -46,7 +49,7 @@ describe('Highlight Loader', () => {
         })
 
         const loader: HighlightLoader = TestBed.inject(HighlightLoader)
-        const lib: HLJSApi = await loader.ready
+        const lib: HLJSApi = await firstValueFrom(toObservable(loader.hljs.value, { injector: TestBed.inject(Injector) }).pipe(filter((v): v is HLJSApi => !!v)))
         expect(lib).toBe(hljs)
         expect((lib as any).lineNumbersBlock).toBeTruthy()
     })
@@ -54,7 +57,7 @@ describe('Highlight Loader', () => {
     it('should throw an error if library options did not exist', async () => {
         try {
             const loader: HighlightLoader = TestBed.inject(HighlightLoader)
-            await loader.ready
+            await firstValueFrom(toObservable(loader.hljs.value, { injector: TestBed.inject(Injector) }).pipe(filter((v): v is HLJSApi => !!v)))
         } catch (error) {
             expect((error as Error).message).toContain(LoaderErrors.NO_FULL_AND_NO_CORE_IMPORTS)
         }
@@ -69,7 +72,7 @@ describe('Highlight Loader', () => {
                 } as HighlightJSOptions
             })
             const loader: HighlightLoader = TestBed.inject(HighlightLoader)
-            await loader.ready
+            await firstValueFrom(toObservable(loader.hljs.value, { injector: TestBed.inject(Injector) }).pipe(filter((v): v is HLJSApi => !!v)))
         } catch (error) {
             expect((error as Error).message).toContain(LoaderErrors.FULL_WITH_CORE_LIBRARY_IMPORTS)
         }
@@ -86,7 +89,7 @@ describe('Highlight Loader', () => {
                 } as HighlightJSOptions
             })
             const loader: HighlightLoader = TestBed.inject(HighlightLoader)
-            await loader.ready
+            await firstValueFrom(toObservable(loader.hljs.value, { injector: TestBed.inject(Injector) }).pipe(filter((v): v is HLJSApi => !!v)))
         } catch (error) {
             expect((error as Error).message).toContain(LoaderErrors.FULL_WITH_LANGUAGE_IMPORTS)
         }
@@ -100,7 +103,7 @@ describe('Highlight Loader', () => {
                 } as HighlightJSOptions
             })
             const loader: HighlightLoader = TestBed.inject(HighlightLoader)
-            await loader.ready
+            await firstValueFrom(toObservable(loader.hljs.value, { injector: TestBed.inject(Injector) }).pipe(filter((v): v is HLJSApi => !!v)))
         } catch (error) {
             expect((error as Error).message).toContain(LoaderErrors.CORE_WITHOUT_LANGUAGE_IMPORTS)
         }
@@ -116,7 +119,7 @@ describe('Highlight Loader', () => {
                 } as HighlightJSOptions
             })
             const loader: HighlightLoader = TestBed.inject(HighlightLoader)
-            await loader.ready
+            await firstValueFrom(toObservable(loader.hljs.value, { injector: TestBed.inject(Injector) }).pipe(filter((v): v is HLJSApi => !!v)))
         } catch (error) {
             expect((error as Error).message).toContain(LoaderErrors.LANGUAGE_WITHOUT_CORE_IMPORTS)
         }
@@ -192,7 +195,7 @@ describe('Highlight Loader', () => {
         })
         const configureSpy: jasmine.Spy = spyOn(hljs, 'configure')
         const loader: HighlightLoader = TestBed.inject(HighlightLoader)
-        await loader.ready
+        await firstValueFrom(toObservable(loader.hljs.value, { injector: TestBed.inject(Injector) }).pipe(filter((v): v is HLJSApi => !!v)))
         expect(configureSpy).toHaveBeenCalledWith({
             languages: ['ts', 'html']
         })

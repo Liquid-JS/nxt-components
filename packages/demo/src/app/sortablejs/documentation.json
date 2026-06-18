@@ -8,7 +8,7 @@
     "directives": [
         {
             "name": "SortablejsDirective",
-            "id": "directive-SortablejsDirective-255b0ef04ae1f31c5c5b9df43d61ac8606b7e3e77a1c756b0474d6f709c57f27887bda7170c14759135da9eb1374779bfc47f1af82c88cdaa34376dab5e73cdb",
+            "id": "directive-SortablejsDirective-80bdb37a09f8f164b4962c63993909947bbed9803f1326c30eccdadf2155ced536c6483e975bce3208411364f7589bc4e0a5dda708063967bdd00eaf6964cd83",
             "file": "src/lib/sortablejs.directive.ts",
             "type": "directive",
             "description": "",
@@ -26,7 +26,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>A function invoked when cloning items from template dataset into target dataset</p>\n",
-                    "line": 48,
+                    "line": 50,
                     "rawdescription": "\nA function invoked when cloning items from template dataset into target dataset",
                     "modifierKind": [
                         148
@@ -41,7 +41,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Sortablejs configuration</p>\n",
-                    "line": 45,
+                    "line": 47,
                     "rawdescription": "\nSortablejs configuration",
                     "modifierKind": [
                         148
@@ -57,7 +57,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Input data, can be Array or FormArray</p>\n",
-                    "line": 34,
+                    "line": 36,
                     "rawdescription": "\nInput data, can be Array or FormArray",
                     "modifierKind": [
                         148
@@ -72,7 +72,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>CSS selector for the sortable container</p>\n<p>Mostly required when used with custom components which wrap items in multiple containers. In that case,\nthis should be the selector for the direct HTML parent of sortable items.</p>\n",
-                    "line": 42,
+                    "line": 44,
                     "rawdescription": "\n\nCSS selector for the sortable container\n\nMostly required when used with custom components which wrap items in multiple containers. In that case,\nthis should be the selector for the direct HTML parent of sortable items.\n",
                     "modifierKind": [
                         148
@@ -89,7 +89,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Initialised a new Sortablejs instance</p>\n",
-                    "line": 51,
+                    "line": 53,
                     "rawdescription": "\nInitialised a new Sortablejs instance",
                     "modifierKind": [
                         148
@@ -112,89 +112,7 @@
         }
     ],
     "components": [],
-    "modules": [
-        {
-            "name": "SortablejsModule",
-            "id": "module-SortablejsModule-284d5a788b3248144d67b9682e2ee42928c002db26bf072df208bc53598f9ee772ef123fadc825015cd4d8274039d8558a989092ffb5d5c7e86cb638437d7436",
-            "description": "",
-            "deprecationMessage": "use standalone imports",
-            "deprecated": true,
-            "file": "src/lib/sortablejs.module.ts",
-            "methods": [
-                {
-                    "name": "forRoot",
-                    "args": [
-                        {
-                            "name": "globalOptions",
-                            "type": "Options",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "ModuleWithProviders<SortablejsModule>",
-                    "typeParameters": [],
-                    "line": 18,
-                    "deprecated": true,
-                    "deprecationMessage": "use provideGlobalSortableOptions",
-                    "rawdescription": "",
-                    "description": "",
-                    "modifierKind": [
-                        126
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "globalOptions",
-                            "type": "Options",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": []
-                },
-                {
-                    "type": "imports",
-                    "elements": [
-                        {
-                            "name": "SortablejsDirective"
-                        }
-                    ]
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "SortablejsDirective"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        }
-    ],
+    "modules": [],
     "miscellaneous": {
         "variables": [],
         "functions": [

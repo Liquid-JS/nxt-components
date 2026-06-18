@@ -1571,51 +1571,7 @@
         }
     ],
     "components": [],
-    "modules": [
-        {
-            "name": "ColorPickerModule",
-            "id": "module-ColorPickerModule-5ce370c8d268dc0250b40bf191712d5dc3dfa5c51046a2a59842b5d13b0e710af50d7a48dc2ceee91f76b803bc91b965eb978cac8577d372df09f3b8995f3423",
-            "description": "",
-            "deprecationMessage": "use standalone imports",
-            "deprecated": true,
-            "file": "src/lib/color-picker.module.ts",
-            "methods": [],
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": []
-                },
-                {
-                    "type": "imports",
-                    "elements": [
-                        {
-                            "name": "ColorPickerDirective"
-                        }
-                    ]
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "ColorPickerDirective"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        }
-    ],
+    "modules": [],
     "miscellaneous": {
         "variables": [
             {
