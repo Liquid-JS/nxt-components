@@ -94,51 +94,7 @@
             "extends": []
         }
     ],
-    "modules": [
-        {
-            "name": "FlagsModule",
-            "id": "module-FlagsModule-74df69ffaaebb54848cf05d761837f2d144c0ad559082be8dbfe0f4445f7a39750c4accb1aebd0d2c6478806a8eb1708a73425e05075359165c389abdf20b7d5",
-            "description": "",
-            "deprecationMessage": "use standalone imports",
-            "deprecated": true,
-            "file": "src/lib/flags.module.ts",
-            "methods": [],
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": []
-                },
-                {
-                    "type": "imports",
-                    "elements": [
-                        {
-                            "name": "FlagComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "FlagComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        }
-    ],
+    "modules": [],
     "miscellaneous": {
         "variables": [
             {

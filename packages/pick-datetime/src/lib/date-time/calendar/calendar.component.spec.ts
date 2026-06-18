@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/component-class-suffix */
-import { Component } from '@angular/core'
+import { Component, model, signal } from '@angular/core'
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, provideTestDateTimeAdapter } from '../../../test-helpers'
@@ -58,7 +58,7 @@ describe('CalendarComponent', () => {
 
             fixture.detectChanges()
             expect(calendarInstance.currentView()).toBe('month')
-            expect(testComponent.selected).toEqual(new Date(2018, 0, 31))
+            expect(testComponent.selected()).toEqual(new Date(2018, 0, 31))
         })
 
         it('should emit the selected month on cell clicked in year view', () => {
@@ -82,7 +82,7 @@ describe('CalendarComponent', () => {
                 '.nxt-dt-calendar-cell-active'
             ) as HTMLElement).click()
 
-            const normalizedMonth = fixture.componentInstance.selectedMonth
+            const normalizedMonth = fixture.componentInstance.selectedMonth()
             expect(normalizedMonth?.getMonth()).toEqual(0)
         })
 
@@ -100,7 +100,7 @@ describe('CalendarComponent', () => {
 
             fixture.detectChanges()
 
-            const normalizedYear = fixture.componentInstance.selectedYear
+            const normalizedYear = fixture.componentInstance.selectedYear()
             expect(normalizedYear?.getFullYear()).toEqual(2018)
         })
 
@@ -162,18 +162,17 @@ describe('CalendarComponent', () => {
                 })
 
                 it('should move focus to the active cell when the view changes', async () => {
-                    const activeCell = calendarMainEl.querySelector(
-                        '.nxt-dt-calendar-cell-active'
-                    ) as HTMLElement
-
-                    spyOn(activeCell, 'focus').and.callThrough()
                     fixture.detectChanges()
                     await fixture.whenStable()
 
                     calendarInstance.currentView.set('multi-years')
                     fixture.detectChanges()
 
-                    expect(activeCell.focus).toHaveBeenCalled()
+                    const activeCell = calendarMainEl.querySelector(
+                        '.nxt-dt-calendar-cell-active'
+                    ) as HTMLElement
+
+                    expect(document.activeElement == activeCell).toBe(true)
                 })
 
                 describe('year view', () => {
@@ -212,7 +211,7 @@ describe('CalendarComponent', () => {
                         expect(calendarInstance.pickerMoment()).toEqual(
                             new Date(2018, 1, 28)
                         )
-                        expect(testComponent.selected).toBeUndefined()
+                        expect(testComponent.selected()).toBeUndefined()
                     })
                 })
 
@@ -245,7 +244,7 @@ describe('CalendarComponent', () => {
                         expect(calendarInstance.pickerMoment()).toEqual(
                             new Date(2019, 0, 31)
                         )
-                        expect(testComponent.selected).toBeUndefined()
+                        expect(testComponent.selected()).toBeUndefined()
                     })
                 })
             })
@@ -279,7 +278,7 @@ describe('CalendarComponent', () => {
             expect(monthViewComp).toBeTruthy()
 
             const daysList = monthViewComp.days()
-            testComponent.minDate = new Date(2017, 10, 1)
+            testComponent.minDate.set(new Date(2017, 10, 1))
             fixture.detectChanges()
             expect(monthViewComp.days()).not.toBe(daysList)
         })
@@ -292,7 +291,7 @@ describe('CalendarComponent', () => {
             expect(monthViewComp).toBeTruthy()
 
             const daysList = monthViewComp.days()
-            testComponent.maxDate = new Date(2017, 10, 1)
+            testComponent.maxDate.set(new Date(2017, 10, 1))
             fixture.detectChanges()
             expect(monthViewComp.days()).not.toBe(daysList)
         })
@@ -317,7 +316,7 @@ describe('CalendarComponent', () => {
             expect(yearViewComp).toBeTruthy()
 
             const monthList = yearViewComp.months()
-            testComponent.minDate = new Date(2017, 10, 1)
+            testComponent.minDate.set(new Date(2017, 10, 1))
             fixture.detectChanges()
             expect(yearViewComp.months()).not.toBe(monthList)
         })
@@ -342,7 +341,7 @@ describe('CalendarComponent', () => {
             expect(yearViewComp).toBeTruthy()
 
             const monthList = yearViewComp.months()
-            testComponent.maxDate = new Date(2017, 10, 1)
+            testComponent.maxDate.set(new Date(2017, 10, 1))
             fixture.detectChanges()
             expect(yearViewComp.months()).not.toBe(monthList)
         })
@@ -362,7 +361,7 @@ describe('CalendarComponent', () => {
             expect(multiYearsViewComp).toBeTruthy()
 
             const yearList = multiYearsViewComp.years()
-            testComponent.minDate = new Date(2017, 10, 1)
+            testComponent.minDate.set(new Date(2017, 10, 1))
             fixture.detectChanges()
             expect(multiYearsViewComp.years()).not.toBe(yearList)
         })
@@ -382,7 +381,7 @@ describe('CalendarComponent', () => {
             expect(multiYearsViewComp).toBeTruthy()
 
             const yearList = multiYearsViewComp.years()
-            testComponent.maxDate = new Date(2017, 10, 1)
+            testComponent.maxDate.set(new Date(2017, 10, 1))
             fixture.detectChanges()
             expect(multiYearsViewComp.years()).not.toBe(yearList)
         })
@@ -410,12 +409,12 @@ describe('CalendarComponent', () => {
             const monthCell = calendarElement.querySelector(
                 '[aria-label="January 2, 2018"]'
             )
-            expect(testComponent.selected).toBeFalsy();
+            expect(testComponent.selected()).toBeFalsy();
 
             (monthCell as HTMLElement).click()
             fixture.detectChanges()
 
-            expect(testComponent.selected).toEqual(new Date(2018, 0, 2))
+            expect(testComponent.selected()).toEqual(new Date(2018, 0, 2))
         })
     })
 })
@@ -423,51 +422,51 @@ describe('CalendarComponent', () => {
 @Component({
     template: `
         <nxt-date-time-calendar [(selected)]="selected"
-                [selectMode]="selectMode"
-                [pickerMoment]="pickerMoment"
-                (monthSelected)="selectedMonth=$event"
-                (yearSelected)="selectedYear=$event" />
+                [selectMode]="selectMode()"
+                [pickerMoment]="pickerMoment()"
+                (monthSelected)="selectedMonth.set($event)"
+                (yearSelected)="selectedYear.set($event)" />
     `,
     imports: [CalendarComponent]
 })
 class StandardCalendar {
-    selectMode = 'single'
-    selected?: Date
-    selectedYear?: Date
-    selectedMonth?: Date
-    pickerMoment = new Date(2018, 0, 31)
+    readonly selectMode = signal('single')
+    readonly selected = model<Date>()
+    readonly selectedYear = signal<Date | undefined>(undefined)
+    readonly selectedMonth = signal<Date | undefined>(undefined)
+    readonly pickerMoment = signal(new Date(2018, 0, 31))
 }
 
 @Component({
     template: `
-        <nxt-date-time-calendar [selectMode]="selectMode"
-                                [pickerMoment]="pickerMoment"
-                                [min]="minDate"
-                                [max]="maxDate" />
+        <nxt-date-time-calendar [selectMode]="selectMode()"
+                                [pickerMoment]="pickerMoment()"
+                                [min]="minDate()"
+                                [max]="maxDate()" />
     `,
     imports: [CalendarComponent]
 })
 class CalendarWithMinMax {
-    selectMode = 'single'
-    startAt?: Date
-    minDate = new Date(2016, 0, 1)
-    maxDate = new Date(2019, 0, 1)
-    pickerMoment = new Date(2018, 0, 31)
+    readonly selectMode = signal('single')
+    readonly startAt = signal<Date | undefined>(undefined)
+    readonly minDate = signal(new Date(2016, 0, 1))
+    readonly maxDate = signal(new Date(2019, 0, 1))
+    readonly pickerMoment = signal(new Date(2018, 0, 31))
 }
 
 @Component({
     template: `
         <nxt-date-time-calendar [(selected)]="selected"
-                                [selectMode]="selectMode"
-                                [pickerMoment]="pickerMoment"
+                                [selectMode]="selectMode()"
+                                [pickerMoment]="pickerMoment()"
                                 [dateTimeFilter]="dateTimeFilter" />
     `,
     imports: [CalendarComponent]
 })
 class CalendarWithDateFilter {
-    selectMode = 'single'
-    selected?: Date
-    pickerMoment = new Date(2018, 0, 31)
+    readonly selectMode = signal('single')
+    readonly selected = model<Date>()
+    readonly pickerMoment = signal(new Date(2018, 0, 31))
 
     dateTimeFilter(date: Date) {
         return !(date.getDate() % 2) && date.getMonth() !== 10

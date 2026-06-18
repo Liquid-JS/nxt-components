@@ -58,7 +58,7 @@
     "directives": [
         {
             "name": "DropzoneDirective",
-            "id": "directive-DropzoneDirective-569c0e64e37b27ed56aed839db48d30817547e0e33ed400cf9a9f7c99a17fbb0b2028c5c199f1f0d663876e15ae4b6fedfcc900bd30d4cff1239d047cd879786",
+            "id": "directive-DropzoneDirective-c59140ad402a26075a67bafe9da6ad277dadd2a97d4be8a58156871159844ecdd148a6e3639f272eb6d5e06d3056a097c60f8bc768be0fc7d997b9cc42e81631",
             "file": "src/lib/dropzone.directive.ts",
             "type": "directive",
             "description": "",
@@ -661,7 +661,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 74
+                "line": 78
             },
             "accessors": {
                 "dropzone": {
@@ -670,7 +670,7 @@
                         "name": "dropzone",
                         "type": "",
                         "returnType": "",
-                        "line": 66
+                        "line": 70
                     }
                 }
             }
@@ -1841,57 +1841,7 @@
             ]
         }
     ],
-    "modules": [
-        {
-            "name": "DropzoneModule",
-            "id": "module-DropzoneModule-564654daa42f56b8e1ca6d3be628e79585ae2d162856aa8be67bbc6eba44d711014be17ab6e3f6883069171337b7337d5f8d502d3c166b42e72d95a8beb157e5",
-            "description": "",
-            "deprecationMessage": "use standalone imports",
-            "deprecated": true,
-            "file": "src/lib/dropzone.module.ts",
-            "methods": [],
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": []
-                },
-                {
-                    "type": "imports",
-                    "elements": [
-                        {
-                            "name": "DropzoneComponent"
-                        },
-                        {
-                            "name": "DropzoneDirective"
-                        }
-                    ]
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "DropzoneComponent"
-                        },
-                        {
-                            "name": "DropzoneDirective"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        }
-    ],
+    "modules": [],
     "miscellaneous": {
         "variables": [
             {

@@ -1,4 +1,4 @@
-import { Component, ElementRef, NgZone, afterRenderEffect, computed, input, linkedSignal, output, inject, afterNextRender, Injector } from '@angular/core'
+import { Component, ElementRef, NgZone, afterRenderEffect, computed, input, linkedSignal, output, inject, afterNextRender, Injector, DestroyRef } from '@angular/core'
 import { CdkMonitorFocus } from '@angular/cdk/a11y'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeFormats, NXT_DATE_TIME_FORMATS } from '../../class/date-time-format.class'
@@ -28,6 +28,7 @@ export class CalendarComponent<T> {
     private readonly pickerIntl = inject(DateTimeIntl)
     private readonly ngZone = inject(NgZone)
     private readonly injector = inject(Injector)
+    private readonly destroyRef = inject(DestroyRef)
     private readonly dateTimeAdapter = inject<DateTimeAdapter<T>>(DateTimeAdapter)
     private readonly dateTimeFormats = inject<DateTimeFormats>(NXT_DATE_TIME_FORMATS)
 
@@ -206,12 +207,11 @@ export class CalendarComponent<T> {
     constructor() {
         afterRenderEffect(() => {
             this.currentView()
-            this.focusActiveCell()
-            /*this.ngZone.runOutsideAngular(() => {
+            this.ngZone.runOutsideAngular(() => {
                 this.elmRef.nativeElement
                     ?.querySelector<HTMLElement>('.nxt-dt-calendar-cell-active')
                     ?.focus()
-            })*/
+            })
         })
     }
 
@@ -311,13 +311,14 @@ export class CalendarComponent<T> {
      * Focus to the host element
      */
     focusActiveCell() {
-        afterNextRender(() => {
-            this.ngZone.runOutsideAngular(() => {
-                this.elmRef.nativeElement
-                    ?.querySelector<HTMLElement>('.nxt-dt-calendar-cell-active')
-                    ?.focus()
-            })
-        }, { injector: this.injector })
+        if (!this.destroyRef.destroyed)
+            afterNextRender(() => {
+                this.ngZone.runOutsideAngular(() => {
+                    this.elmRef.nativeElement
+                        ?.querySelector<HTMLElement>('.nxt-dt-calendar-cell-active')
+                        ?.focus()
+                })
+            }, { injector: this.injector })
     }
 
     selectYearInMultiYearView(normalizedYear: T): void {

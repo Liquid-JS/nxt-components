@@ -1,7 +1,7 @@
 import { coerceArray } from '@angular/cdk/coercion'
 import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
-import { Component, ComponentRef, InjectionToken, OnDestroy, ViewContainerRef, DOCUMENT, input, output, computed, signal, linkedSignal, effect, inject, afterNextRender, Injector } from '@angular/core'
+import { Component, ComponentRef, InjectionToken, OnDestroy, ViewContainerRef, DOCUMENT, input, output, computed, signal, linkedSignal, effect, inject, afterNextRender, Injector, DestroyRef } from '@angular/core'
 import { merge, Subscription } from 'rxjs'
 import { filter, take } from 'rxjs/operators'
 import { DateTimeDirective, PickerMode, PickerType } from '../../class/date-time.class'
@@ -30,6 +30,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDest
     private readonly viewContainerRef = inject(ViewContainerRef)
     private readonly dialogService = inject(DialogService)
     private readonly injector = inject(Injector)
+    private readonly destroyRef = inject(DestroyRef)
     private readonly defaultScrollStrategy = inject(NXT_DTPICKER_SCROLL_STRATEGY, { optional: true }) ?? (() => this.overlay.scrollStrategies.block())
     private readonly document = inject<Document>(DOCUMENT, { optional: true })
 
@@ -498,11 +499,12 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDest
             this.pickerContainer = componentRef?.instance
 
             // Update the position once the calendar has rendered.
-            afterNextRender(() => {
-                this.popupRef?.updatePosition()
-            }, {
-                injector: this.injector
-            })
+            if (!this.destroyRef.destroyed)
+                afterNextRender(() => {
+                    this.popupRef?.updatePosition()
+                }, {
+                    injector: this.injector
+                })
 
             // emit open stream
             this.pickerOpenedStreamSub = this.pickerContainer?.pickerOpenedStream

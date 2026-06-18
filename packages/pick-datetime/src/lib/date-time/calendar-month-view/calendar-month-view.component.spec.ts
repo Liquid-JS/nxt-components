@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core'
+import { Component, DebugElement, model, signal } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { dispatchKeyboardEvent, provideTestDateTimeAdapter } from '../../../test-helpers'
@@ -49,7 +49,7 @@ describe('MonthViewComponent', () => {
         })
 
         it('should NOT show selected date if in different month', () => {
-            testComponent.selected = new Date(2018, 2, 10)
+            testComponent.selected.set(new Date(2018, 2, 10))
             fixture.detectChanges()
             const selectedEl = monthViewElement.querySelector(
                 '.nxt-dt-calendar-cell-selected'
@@ -73,7 +73,7 @@ describe('MonthViewComponent', () => {
         })
 
         it('should set Monday as first day of week if firstDayOfWeek set to 1', () => {
-            testComponent.firstDayOfWeek = 1
+            testComponent.firstDayOfWeek.set(1)
             fixture.detectChanges()
             const weekdayCells = monthViewElement.querySelectorAll(
                 '.nxt-dt-weekday'
@@ -82,7 +82,7 @@ describe('MonthViewComponent', () => {
         })
 
         it('should set Saturday as first day of week if firstDayOfWeek set to 6', () => {
-            testComponent.firstDayOfWeek = 6
+            testComponent.firstDayOfWeek.set(6)
             fixture.detectChanges()
             const weekdayCells = monthViewElement.querySelectorAll(
                 '.nxt-dt-weekday'
@@ -96,15 +96,15 @@ describe('MonthViewComponent', () => {
             )
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowLeft')
             fixture.detectChanges()
-            expect(testComponent.pickerMoment).toEqual(new Date(2018, 0, 4))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2018, 0, 4))
 
-            testComponent.pickerMoment = new Date(2017, 0, 1)
+            testComponent.pickerMoment.set(new Date(2017, 0, 1))
             fixture.detectChanges()
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowLeft')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2016, 11, 31))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2016, 11, 31))
         })
 
         it('should increment date on right arrow press', () => {
@@ -114,12 +114,12 @@ describe('MonthViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowRight')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2018, 0, 6))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2018, 0, 6))
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowRight')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2018, 0, 7))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2018, 0, 7))
         })
 
         it('should go up a row on up arrow press', () => {
@@ -129,15 +129,15 @@ describe('MonthViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowUp')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2017, 11, 29))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2017, 11, 29))
 
-            testComponent.pickerMoment = new Date(2017, 0, 7)
+            testComponent.pickerMoment.set(new Date(2017, 0, 7))
             fixture.detectChanges()
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowUp')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2016, 11, 31))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2016, 11, 31))
         })
 
         it('should go down a row on down arrow press', () => {
@@ -147,16 +147,16 @@ describe('MonthViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowDown')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2018, 0, 12))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2018, 0, 12))
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowDown')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2018, 0, 19))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2018, 0, 19))
         })
 
         it('should go to beginning of the month on home press', () => {
-            testComponent.pickerMoment = new Date(2018, 0, 7)
+            testComponent.pickerMoment.set(new Date(2018, 0, 7))
             fixture.detectChanges()
 
             const calendarBodyEl = monthViewElement.querySelector(
@@ -165,16 +165,16 @@ describe('MonthViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'Home')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2018, 0, 1))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2018, 0, 1))
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'Home')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2018, 0, 1))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2018, 0, 1))
         })
 
         it('should go to end of the month on end press', () => {
-            testComponent.pickerMoment = new Date(2018, 0, 7)
+            testComponent.pickerMoment.set(new Date(2018, 0, 7))
             fixture.detectChanges()
 
             const calendarBodyEl = monthViewElement.querySelector(
@@ -183,12 +183,12 @@ describe('MonthViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'End')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2018, 0, 31))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2018, 0, 31))
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'End')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2018, 0, 31))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2018, 0, 31))
         })
 
         it('should go back one month on page up press', () => {
@@ -198,12 +198,12 @@ describe('MonthViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'PageUp')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2017, 11, 5))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2017, 11, 5))
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'PageUp')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2017, 10, 5))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2017, 10, 5))
         })
 
         it('should go forward one month on page down press', () => {
@@ -213,12 +213,12 @@ describe('MonthViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'PageDown')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2018, 1, 5))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2018, 1, 5))
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'PageDown')
             fixture.detectChanges()
 
-            expect(testComponent.pickerMoment).toEqual(new Date(2018, 2, 5))
+            expect(testComponent.pickerMoment()).toEqual(new Date(2018, 2, 5))
         })
 
         it('should select active date on enter', () => {
@@ -228,12 +228,12 @@ describe('MonthViewComponent', () => {
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'ArrowLeft')
             fixture.detectChanges()
 
-            expect(testComponent.selected).toEqual(new Date(2018, 0, 10))
+            expect(testComponent.selected()).toEqual(new Date(2018, 0, 10))
 
             dispatchKeyboardEvent(calendarBodyEl!, 'keydown', 'Enter')
             fixture.detectChanges()
 
-            expect(testComponent.selected).toEqual(new Date(2018, 0, 4))
+            expect(testComponent.selected()).toEqual(new Date(2018, 0, 4))
         })
     })
 
@@ -272,14 +272,14 @@ describe('MonthViewComponent', () => {
     template: `
         <nxt-date-time-month-view [(selected)]="selected"
                 [(pickerMoment)]="pickerMoment"
-                [firstDayOfWeek]="firstDayOfWeek" />
+                [firstDayOfWeek]="firstDayOfWeek()" />
     `,
     imports: [MonthViewComponent]
 })
 class StandardMonthViewComponent {
-    selected = new Date(2018, 0, 10)
-    pickerMoment = new Date(2018, 0, 5)
-    firstDayOfWeek?: number
+    readonly selected = model(new Date(2018, 0, 10))
+    readonly pickerMoment = model(new Date(2018, 0, 5))
+    readonly firstDayOfWeek = signal<number | undefined>(undefined)
 }
 
 @Component({
@@ -290,7 +290,7 @@ class StandardMonthViewComponent {
     imports: [MonthViewComponent]
 })
 class MonthViewWithDateFilterComponent {
-    pickerMoment = new Date(2018, 0, 1)
+    readonly pickerMoment = model(new Date(2018, 0, 1))
     dateTimeFilter(date: Date) {
         return date.getDate() % 2 == 0
     }

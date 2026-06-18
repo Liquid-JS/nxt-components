@@ -1,4 +1,4 @@
-import { Component, DebugElement } from '@angular/core'
+import { Component, DebugElement, model, signal } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { dispatchKeyboardEvent, dispatchMouseEvent, provideTestDateTimeAdapter } from '../../../test-helpers'
@@ -49,7 +49,7 @@ describe('MultiYearViewComponent', () => {
         })
 
         it('should NOT show selected year if in different range', () => {
-            testComponent.selected = new Date(2040, 0, 10)
+            testComponent.selected.set(new Date(2040, 0, 10))
             fixture.detectChanges()
 
             const selectedElContent = multiYearViewElement.querySelector(
@@ -267,18 +267,18 @@ describe('MultiYearViewComponent', () => {
 
 @Component({
     template: `
-        <nxt-date-time-multi-year-view [selected]="selected"
+        <nxt-date-time-multi-year-view [selected]="selected()"
                 [(pickerMoment)]="pickerMoment"
                 (change)="handleChange($event)" />
     `,
     imports: [MultiYearViewComponent]
 })
 class StandardMultiYearViewComponent {
-    selected = new Date(2020, 0, 10)
-    pickerMoment = new Date(2018, 0, 5)
+    readonly selected = signal(new Date(2020, 0, 10))
+    readonly pickerMoment = model(new Date(2018, 0, 5))
 
     handleChange(date: Date): void {
-        this.pickerMoment = new Date(date)
+        this.pickerMoment.set(new Date(date))
     }
 }
 
@@ -290,7 +290,7 @@ class StandardMultiYearViewComponent {
     imports: [MultiYearViewComponent]
 })
 class MultiYearViewWithDateFilterComponent {
-    pickerMoment = new Date(2018, 0, 1)
+    readonly pickerMoment = model(new Date(2018, 0, 1))
     dateTimeFilter(date: Date) {
         return date.getFullYear() !== 2018
     }

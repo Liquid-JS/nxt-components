@@ -3970,7 +3970,7 @@
     "classes": [
         {
             "name": "CalendarCell",
-            "id": "class-CalendarCell-48da3071d0f812855f363aa4262e6869b7e2d4b854966496832bae3d0c474e9d0d7afb7ac0b3ea0a86a1f20083649cd8b541926769ccc08bec0919d73c870638",
+            "id": "class-CalendarCell-e3c8aa8306d180e9f78d7cef73e0715f2eabd79025611d0b93ea4d8ec105d8f796328cd33b426f1969cf63147d97c5ac0a05e54108e58350499e44778e119ead",
             "file": "src/lib/date-time/calendar-body/calendar-body.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -4032,7 +4032,7 @@
                         "defaultValue": "''"
                     }
                 ],
-                "line": 5,
+                "line": 4,
                 "jsdoctags": [
                     {
                         "name": "value",
@@ -4115,7 +4115,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 9,
+                    "line": 8,
                     "modifierKind": [
                         125
                     ]
@@ -4128,7 +4128,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 12,
+                    "line": 11,
                     "modifierKind": [
                         125
                     ]
@@ -4141,7 +4141,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 8,
+                    "line": 7,
                     "modifierKind": [
                         125
                     ]
@@ -4154,7 +4154,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 10,
+                    "line": 9,
                     "modifierKind": [
                         125
                     ]
@@ -4167,7 +4167,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 11,
+                    "line": 10,
                     "modifierKind": [
                         125
                     ]
@@ -4180,7 +4180,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 7,
+                    "line": 6,
                     "modifierKind": [
                         125
                     ]
@@ -7956,7 +7956,7 @@
     "components": [
         {
             "name": "CalendarComponent",
-            "id": "component-CalendarComponent-39aca3345bd19eb0fda801ae2c3e4feb3c14f0b4a54b03eb27ab1b66e9f0464f4283d374b4f8dad5006b4a05a166905c1945fd27e151167b2d517055fbfd5116",
+            "id": "component-CalendarComponent-03cb6cda0011236b24bb94c9efd5ac134dd92563f89b926c0c348ea8d7fadf5e8b5db743399d6b81051c11f8ef214eeb5b48ac8dcf605b34e204dc1e493725ea",
             "file": "src/lib/date-time/calendar/calendar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -8558,7 +8558,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 330,
+                    "line": 327,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -8590,7 +8590,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 326,
+                    "line": 323,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -8669,7 +8669,7 @@
         },
         {
             "name": "DateTimeComponent",
-            "id": "component-DateTimeComponent-131127b66b46d9da47e5272d7acdbabd5d827fb83e4dca8ec17f7be03843a7e2937d953a795073dabed1b1ddf7e2cee38476646f6bf7f6d3cd7460c4c33954de",
+            "id": "component-DateTimeComponent-f4d0298c4c3dd1050409807d3077cb26bf5b54a34f6230e339dba6a88d7a04397c2de1e602abd920d2980b6a11ee026fda57a85461cc45b906b71f887b4cc95c",
             "file": "src/lib/date-time/date-time-picker/date-time-picker.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -11731,7 +11731,7 @@
         },
         {
             "name": "TimerComponent",
-            "id": "component-TimerComponent-a0a29b40de51daf15b58abf3bba60142ad5f0e070e1ff3d336d80fbd1815bcfcf06139476972f08c7b3d038fbb64a8dd97c0023f2ef8455a0d49aa4823f7a3ed",
+            "id": "component-TimerComponent-36d1368bac73a317c8491432cc634c8fde1b9577694f6b878e793776518fe2ac32768e53428cd68520b5f12a5ef96fce7582ac8f564bf619c5cc4732fa97e666",
             "file": "src/lib/date-time/timer/timer.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -11919,7 +11919,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Check if the down hour button is enabled</p>\n",
-                    "line": 211,
+                    "line": 210,
                     "rawdescription": "\n\nCheck if the down hour button is enabled\n",
                     "modifierKind": [
                         148
@@ -11948,7 +11948,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Check if the down minute button is enabled</p>\n",
-                    "line": 227,
+                    "line": 226,
                     "rawdescription": "\n\nCheck if the down minute button is enabled\n",
                     "modifierKind": [
                         148
@@ -11977,7 +11977,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Check if the down second button is enabled</p>\n",
-                    "line": 243,
+                    "line": 242,
                     "rawdescription": "\n\nCheck if the down second button is enabled\n",
                     "modifierKind": [
                         148
@@ -12077,7 +12077,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Check if the up hour button is enabled</p>\n",
-                    "line": 204,
+                    "line": 203,
                     "rawdescription": "\n\nCheck if the up hour button is enabled\n",
                     "modifierKind": [
                         148
@@ -12106,7 +12106,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Check if the up minute button is enabled</p>\n",
-                    "line": 219,
+                    "line": 218,
                     "rawdescription": "\n\nCheck if the up minute button is enabled\n",
                     "modifierKind": [
                         148
@@ -12135,7 +12135,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Check if the up second button is enabled</p>\n",
-                    "line": 235,
+                    "line": 234,
                     "rawdescription": "\n\nCheck if the up second button is enabled\n",
                     "modifierKind": [
                         148
@@ -12170,7 +12170,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 169,
+                    "line": 168,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -12202,7 +12202,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 158,
+                    "line": 157,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSet the hour value via typing into timer box input\nWe need this to handle the hour value when the timer is in hour12 mode\n",
@@ -12236,7 +12236,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 184,
+                    "line": 183,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -12268,7 +12268,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 174,
+                    "line": 173,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -12300,7 +12300,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 179,
+                    "line": 178,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -12705,169 +12705,7 @@
             "extends": []
         }
     ],
-    "modules": [
-        {
-            "name": "DateTimeModule",
-            "id": "module-DateTimeModule-d37d6dc3ea2605f8a39265583ebbeb5f9500225d569dd5d89ab370079ff3bec1b336f167592dbc65ee941d71ca411deddbbadba4ffd9d569b6408b938798e3ec",
-            "description": "",
-            "deprecationMessage": "use standalone imports",
-            "deprecated": true,
-            "file": "src/lib/date-time/date-time.module.ts",
-            "methods": [],
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": []
-                },
-                {
-                    "type": "imports",
-                    "elements": [
-                        {
-                            "name": "CalendarComponent"
-                        },
-                        {
-                            "name": "DateTimeComponent"
-                        },
-                        {
-                            "name": "DateTimeInlineComponent"
-                        },
-                        {
-                            "name": "DateTimeInputDirective"
-                        },
-                        {
-                            "name": "DateTimeTriggerDirective"
-                        },
-                        {
-                            "name": "MonthViewComponent"
-                        },
-                        {
-                            "name": "MultiYearViewComponent"
-                        },
-                        {
-                            "name": "TimerComponent"
-                        },
-                        {
-                            "name": "YearViewComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "CalendarComponent"
-                        },
-                        {
-                            "name": "DateTimeComponent"
-                        },
-                        {
-                            "name": "DateTimeInlineComponent"
-                        },
-                        {
-                            "name": "DateTimeInputDirective"
-                        },
-                        {
-                            "name": "DateTimeTriggerDirective"
-                        },
-                        {
-                            "name": "MonthViewComponent"
-                        },
-                        {
-                            "name": "MultiYearViewComponent"
-                        },
-                        {
-                            "name": "TimerComponent"
-                        },
-                        {
-                            "name": "YearViewComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        },
-        {
-            "name": "MomentDateTimeModule",
-            "id": "module-MomentDateTimeModule-f35f76582ab2bcdc3209ffb5bcca9193ca7e190de267b9fe829e5a70d727562c4064941088eaeb4e532f1db65e84be7c7b3965600c8c308801b065df0bf8c561",
-            "description": "",
-            "deprecationMessage": "use provideMomentDateTimeAdapter",
-            "deprecated": true,
-            "file": "moment-adapter/src/moment-adapter.module.ts",
-            "methods": [],
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": []
-                },
-                {
-                    "type": "imports",
-                    "elements": []
-                },
-                {
-                    "type": "exports",
-                    "elements": []
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        },
-        {
-            "name": "NativeDateTimeModule",
-            "id": "module-NativeDateTimeModule-d33b559123320e638923222a696f39808e9aa8390c50e7f5b0d7af5bb5e6feca2d9c764f36c4667c06852a58dc5a28dae09cf592c296ad8d410251772c52bd20",
-            "description": "",
-            "deprecationMessage": "use provideNativeDateTimeAdapter",
-            "deprecated": true,
-            "file": "native-adapter/src/native-adapter.module.ts",
-            "methods": [],
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": []
-                },
-                {
-                    "type": "imports",
-                    "elements": []
-                },
-                {
-                    "type": "exports",
-                    "elements": []
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        }
-    ],
+    "modules": [],
     "miscellaneous": {
         "variables": [
             {
@@ -12898,7 +12736,7 @@
         "functions": [
             {
                 "name": "provideMomentDateTimeAdapter",
-                "file": "moment-adapter/src/moment-adapter.module.ts",
+                "file": "moment-adapter/src/public-api.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
@@ -12909,7 +12747,7 @@
             },
             {
                 "name": "provideNativeDateTimeAdapter",
-                "file": "native-adapter/src/native-adapter.module.ts",
+                "file": "native-adapter/src/public-api.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
@@ -13019,10 +12857,10 @@
             ]
         },
         "groupedFunctions": {
-            "moment-adapter/src/moment-adapter.module.ts": [
+            "moment-adapter/src/public-api.ts": [
                 {
                     "name": "provideMomentDateTimeAdapter",
-                    "file": "moment-adapter/src/moment-adapter.module.ts",
+                    "file": "moment-adapter/src/public-api.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,
@@ -13032,10 +12870,10 @@
                     "returnType": "Provider[]"
                 }
             ],
-            "native-adapter/src/native-adapter.module.ts": [
+            "native-adapter/src/public-api.ts": [
                 {
                     "name": "provideNativeDateTimeAdapter",
-                    "file": "native-adapter/src/native-adapter.module.ts",
+                    "file": "native-adapter/src/public-api.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,
