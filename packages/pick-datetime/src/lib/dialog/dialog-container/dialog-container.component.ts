@@ -1,6 +1,6 @@
 import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory } from '@angular/cdk/a11y'
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal'
-import { afterNextRender, Component, ComponentRef, DOCUMENT, ElementRef, EmbeddedViewRef, inject, output, signal, viewChild } from '@angular/core'
+import { afterNextRender, Component, ComponentRef, DestroyRef, DOCUMENT, ElementRef, EmbeddedViewRef, inject, output, signal, viewChild } from '@angular/core'
 import { DialogConfig } from '../../class/dialog-config.class'
 
 /** @internal */
@@ -23,6 +23,7 @@ export class DialogContainerComponent extends BasePortalOutlet {
     private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef)
     private readonly focusTrapFactory = inject(ConfigurableFocusTrapFactory)
     private readonly document = inject<Document>(DOCUMENT, { optional: true })
+    readonly destroyRef = inject(DestroyRef)
 
     readonly portalOutlet = viewChild(CdkPortalOutlet)
 
@@ -90,21 +91,11 @@ export class DialogContainerComponent extends BasePortalOutlet {
                     ], {
                         duration: 150
                     }).addEventListener('finish', () => {
-                        this.trapFocus()
-                        this.animationStateChanged.emit({
-                            phaseName: 'done',
-                            toState: 'enter'
-                        })
-                        this.isAnimating.set(false)
+                        this.endEnterAnimation()
                     })
                 })
             } else {
-                this.trapFocus()
-                this.animationStateChanged.emit({
-                    phaseName: 'done',
-                    toState: 'enter'
-                })
-                this.isAnimating.set(false)
+                this.endEnterAnimation()
             }
         })
     }
@@ -161,21 +152,31 @@ export class DialogContainerComponent extends BasePortalOutlet {
             ], {
                 duration: 200
             }).addEventListener('finish', () => {
-                this.restoreFocus()
-                this.animationStateChanged.emit({
-                    phaseName: 'done',
-                    toState: 'exit'
-                })
-                this.isAnimating.set(false)
+                this.endExitAnimation()
             })
         } else {
-            this.restoreFocus()
+            this.endExitAnimation()
+        }
+    }
+
+    private endEnterAnimation() {
+        this.trapFocus()
+        if (!this.destroyRef.destroyed)
+            this.animationStateChanged.emit({
+                phaseName: 'done',
+                toState: 'enter'
+            })
+        this.isAnimating.set(false)
+    }
+
+    private endExitAnimation() {
+        this.restoreFocus()
+        if (!this.destroyRef.destroyed)
             this.animationStateChanged.emit({
                 phaseName: 'done',
                 toState: 'exit'
             })
-            this.isAnimating.set(false)
-        }
+        this.isAnimating.set(false)
     }
 
     /**

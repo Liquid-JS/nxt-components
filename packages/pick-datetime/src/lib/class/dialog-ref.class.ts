@@ -75,18 +75,24 @@ export class DialogRef<T> {
     close(dialogResult?: any) {
         this.result = dialogResult
 
-        outputToObservable(this.container.animationStateChanged)
-            .pipe(
-                filter((event) => event.phaseName === 'start'),
-                take(1)
-            )
-            .subscribe(() => {
-                this._beforeClose$.next(dialogResult)
-                this._beforeClose$.complete()
-                this.overlayRef.detachBackdrop()
-            })
+        if (!this.container.destroyRef.destroyed) {
+            outputToObservable(this.container.animationStateChanged)
+                .pipe(
+                    filter((event) => event.phaseName === 'start'),
+                    take(1)
+                )
+                .subscribe(() => {
+                    this._beforeClose$.next(dialogResult)
+                    this._beforeClose$.complete()
+                    this.overlayRef.detachBackdrop()
+                })
 
-        this.container.startExitAnimation()
+            this.container.startExitAnimation()
+        } else {
+            this._beforeClose$.next(dialogResult)
+            this._beforeClose$.complete()
+            this.overlayRef.detachBackdrop()
+        }
     }
 
     /**
