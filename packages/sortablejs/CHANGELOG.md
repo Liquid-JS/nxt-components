@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.0.0-alpha.0](https://github.com/Liquid-JS/nxt-components/compare/v21.0.2...v22.0.0-alpha.0) (2026-07-10)
+
+### Bug Fixes
+
+* **sortablejs:** zoneless change detection ([efbe1db](https://github.com/Liquid-JS/nxt-components/commit/efbe1db5f4c5f8228e307a087adc810fc94d6517))
+
 # [21.0.0](https://github.com/Liquid-JS/nxt-components/compare/v21.0.0-alpha.1...v21.0.0) (2026-01-16)
 
 **Note:** Version bump only for package nxt-sortablejs

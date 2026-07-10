@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.0.0-alpha.0](https://github.com/Liquid-JS/nxt-components/compare/v21.0.2...v22.0.0-alpha.0) (2026-07-10)
+
+### Bug Fixes
+
+* **color-picker:** remove preset event ([3508394](https://github.com/Liquid-JS/nxt-components/commit/35083949a00f414f616ee0f48823ecede88a9c09))
+
 ## [21.0.2](https://github.com/Liquid-JS/nxt-components/compare/v21.0.1...v21.0.2) (2026-02-10)
 
 **Note:** Version bump only for package nxt-color-picker

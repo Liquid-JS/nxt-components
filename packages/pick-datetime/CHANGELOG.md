@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.0.0-alpha.0](https://github.com/Liquid-JS/nxt-components/compare/v21.0.2...v22.0.0-alpha.0) (2026-07-10)
+
+### Bug Fixes
+
+* close listener ([546c7df](https://github.com/Liquid-JS/nxt-components/commit/546c7dfd1d9f145016ca72ee4d68f00cefe26e9d))
+* tests ([d7092b6](https://github.com/Liquid-JS/nxt-components/commit/d7092b6f73e28706d768cdd3102c21ae298a1d60))
+* tests ([50324af](https://github.com/Liquid-JS/nxt-components/commit/50324afd1861e4f8251d7499a67f2ae406ebfb01))
+
+### Features
+
+* **pick-datetime:** new dialog animation ([f72e0b9](https://github.com/Liquid-JS/nxt-components/commit/f72e0b9d05262f72bbb7d1c013f32e20f1489523))
+* **pick-datetime:** use new animations for container ([1ff10b1](https://github.com/Liquid-JS/nxt-components/commit/1ff10b1cd7082ce34cdbb9f9c089154732a406cf))
+
 # [21.0.0](https://github.com/Liquid-JS/nxt-components/compare/v21.0.0-alpha.1...v21.0.0) (2026-01-16)
 
 **Note:** Version bump only for package nxt-pick-datetime
