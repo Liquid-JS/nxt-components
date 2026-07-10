@@ -217,6 +217,9 @@
                                 <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#disabled" >disabled</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#dialogOrigin" >dialogOrigin</a>
+                            </li>
+                            <li>
                                 <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#nxtDateTimeTrigger" >nxtDateTimeTrigger</a>
                             </li>
                         </ul>
@@ -250,6 +253,33 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>undefined</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialogOrigin"></a>
+                        <b>dialogOrigin</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Use the event to calculate origin when opening in dialog mode</p>
+</div>
                     </td>
                 </tr>
             </tbody>
@@ -298,7 +328,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>handleClickOnHost(event: <a href="https://angular.dev/api/router/Event" target="_blank">Event</a>)</code>
+<code>handleClickOnHost(event: PointerEvent)</code>
                 </td>
             </tr>
 
@@ -323,7 +353,7 @@
                                         <tr>
                                                 <td>event</td>
                                             <td>
-                                                            <code><a href="https://angular.dev/api/router/Event" target="_blank" >Event</a></code>
+                                                        <code>PointerEvent</code>
                                             </td>
 
                                             <td>
