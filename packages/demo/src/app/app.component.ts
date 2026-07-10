@@ -1,22 +1,7 @@
-import { animate, style, transition, trigger } from '@angular/animations'
 import { ViewportScroller } from '@angular/common'
 import { Component, effect, ElementRef, inject, signal, viewChild } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import logo from '../assets/nxt-logo.png'
-
-const visible = style({
-    overflow: 'hidden',
-    height: '*',
-    marginTop: '*',
-    marginBottom: '*'
-})
-
-const hidden = style({
-    overflow: 'hidden',
-    height: '0px',
-    marginTop: '0px',
-    marginBottom: '0px'
-})
 
 type MenuItem = {
     label: string
@@ -27,38 +12,12 @@ type MenuItem = {
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    animations: [
-        trigger('expandCollapseNav', [
-            transition('open => close', [
-                visible,
-                animate('0.3s ease-in-out', hidden)
-            ]),
-            transition('close => open', [
-                hidden,
-                animate('0.3s ease-in-out', visible)
-            ])
-        ]),
-        trigger('expandCollapse', [
-            transition('* => void', [
-                visible,
-                animate('0.3s ease-in-out', hidden)
-            ]),
-            transition('void => *', [
-                hidden,
-                animate('0.3s ease-in-out', visible)
-            ])
-        ]),
-        trigger('blockInitialRenderAnimation', [
-            transition(':enter', [])
-        ])
-    ],
     imports: [
         RouterModule
     ]
 })
 export class AppComponent {
     readonly navbarCollapsed = signal(true)
-    readonly animationDone = signal(true)
 
     readonly logo = logo
 
@@ -207,7 +166,6 @@ export class AppComponent {
     toggle(forced = !this.navbarCollapsed()) {
         if (forced != this.navbarCollapsed()) {
             this.navbarCollapsed.set(forced)
-            this.animationDone.set(!this.navbarCollapsed())  // true if new state is open, false if new state is collapsed
         }
     }
 }

@@ -317,17 +317,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/animations@npm:^22.0.6":
-  version: 22.0.6
-  resolution: "@angular/animations@npm:22.0.6"
-  dependencies:
-    tslib: "npm:^2.3.0"
-  peerDependencies:
-    "@angular/core": 22.0.6
-  checksum: 10/43492a4caa49a04f6cfa776eafdfac30eb55a910f74b47b1da053cbe1a552eb20735512139c3462e3498d48dfc034fd7df3938fd720a2a787ddfd769f5a9ac01
-  languageName: node
-  linkType: hard
-
 "@angular/build@npm:^22.0.6":
   version: 22.0.6
   resolution: "@angular/build@npm:22.0.6"
@@ -5812,7 +5801,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "demo@workspace:packages/demo"
   dependencies:
-    "@angular/animations": "npm:^22.0.6"
     "@angular/cdk": "npm:^22.0.4"
     "@angular/common": "npm:^22.0.6"
     "@angular/compiler": "npm:^22.0.6"
@@ -5831,7 +5819,7 @@ __metadata:
     highlight.js: "npm:^11.11.1"
     i18n-iso-countries: "npm:^7.14.0"
     jquery: "npm:^4.0.0"
-    ngx-bootstrap: ./ngx-bootstrap-21.2.1.tgz
+    ngx-bootstrap: "npm:^21.2.1"
     rxjs: "npm:^7.8.2"
     sass: "npm:^1.101.0"
     sortablejs: "npm:^1.15.7"
@@ -9591,9 +9579,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ngx-bootstrap@file:./ngx-bootstrap-21.2.1.tgz::locator=demo%40workspace%3Apackages%2Fdemo":
+"ngx-bootstrap@npm:^21.2.1":
   version: 21.2.1
-  resolution: "ngx-bootstrap@file:./ngx-bootstrap-21.2.1.tgz#./ngx-bootstrap-21.2.1.tgz::hash=23cf09&locator=demo%40workspace%3Apackages%2Fdemo"
+  resolution: "ngx-bootstrap@npm:21.2.1"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:

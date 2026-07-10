@@ -168,63 +168,9 @@ export default config(
                         {
                             from: 'package',
                             name: [
-                                'animate',
-                                'animateChild',
-                                'AnimationTriggerMetadata',
-                                'keyframes',
-                                'group',
-                                'query',
-                                'state',
-                                'style',
-                                'transition',
-                                'trigger',
-                                'AnimationEvent'
-                            ],
-                            package: '@angular/animations'
-                        },
-                        {
-                            from: 'package',
-                            name: [
-                                'NoopAnimationsModule',
-                                'provideAnimations',
-                                'provideNoopAnimations'
-                            ],
-                            package: '@angular/platform-browser/types/animations.d.ts'
-                        },
-                        {
-                            from: 'package',
-                            name: [
                                 'config'
                             ],
                             package: 'typescript-eslint'
-                        },
-                        {
-                            from: 'file',
-                            name: [
-                                // Library deprecations
-                                'MomentDateTimeModule',
-                                'NativeDateTimeModule',
-                                'DateTimeModule',
-                                'ColorPickerModule',
-                                'ready',
-                                'getCodeFromGist',
-                                'getCodeFromUrl',
-                                'GistDirective',
-                                'CodeFromUrlPipe',
-                                'DropzoneModule',
-                                'highlight',
-                                'highlightAuto',
-                                'highlightElement',
-                                'highlightAll',
-                                'registerLanguage',
-                                'debugMode',
-                                'safeMode',
-                                'getLanguage',
-                                'listLanguages',
-                                'unregisterLanguage',
-                                'registerAliases',
-                                'lineNumbersBlock'
-                            ]
                         }
                     ]
                 }

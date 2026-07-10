@@ -25,6 +25,15 @@ svg.github {
     z-index: 100;
     padding: 58px 0 0;
     box-shadow: inset -1px 0 0 rgb(0, 0, 0, 0.1);
+    display: grid;
+    overflow: hidden;
+    height: 100vh;
+    transition: all 0.3s ease-in-out;
+
+    &.collapse {
+        overflow: hidden;
+        height: 0;
+    }
 
     .nav-link {
         font-weight: 500;
@@ -42,18 +51,31 @@ svg.github {
         }
     }
 
-    .nav-item > .nav {
+    .nav-item>.expand-collapse>.nav {
         margin-inline-start: 1rem;
     }
 }
 
-@media (width >= 768px) {
+.block-transition {
+    animation: noop 0.2s !important;
+
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+@media (width >=768px) {
     main {
         width: calc(100% - 240px);
     }
 
     .sidebar {
         width: 240px;
+
+        &.collapse {
+            height: auto;
+        }
     }
 }
 
@@ -73,5 +95,49 @@ svg.github {
         height: 1.5rem;
         flex: 1.5rem 0 0;
         margin-inline-end: 0.375rem;
+    }
+}
+
+.expand-collapse {
+    display: grid;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+    transition: grid-template-rows 0.3s ease-in-out;
+    align-items: start;
+
+    &>* {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    &.expand {
+        animation: expand 0.3s ease-in-out;
+        grid-template-rows: 0fr;
+    }
+
+    &.collapse {
+        grid-template-rows: 0fr;
+    }
+}
+
+@keyframes noop {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes expand {
+    from {
+        grid-template-rows: 0fr;
+    }
+
+    to {
+        grid-template-rows: 1fr;
     }
 }

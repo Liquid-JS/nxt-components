@@ -1,6 +1,5 @@
 import { ApplicationConfig, isDevMode, DOCUMENT } from '@angular/core'
 import { provideClientHydration, withNoIncrementalHydration } from '@angular/platform-browser'
-import { provideAnimations } from '@angular/platform-browser/animations'
 import { DefaultUrlSerializer, provideRouter, UrlSerializer, UrlTree, withInMemoryScrolling } from '@angular/router'
 import { provideServiceWorker } from '@angular/service-worker'
 import { provideHighlightOptions } from 'nxt-highlightjs'
@@ -40,7 +39,6 @@ export const appConfig: ApplicationConfig = {
             provide: UrlSerializer,
             useClass: TrailingSlashUrlSerializer
         },
-        provideAnimations(),
         provideClientHydration(withNoIncrementalHydration()),
         provideServiceWorker('ngsw-worker.js', {
             enabled: !isDevMode(),

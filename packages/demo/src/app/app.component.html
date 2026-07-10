@@ -31,14 +31,12 @@
 <div class="container-fluid">
     <div class="row">
         <nav class="col-md-3 col-lg-2 d-md-block bg-body sidebar"
-            [class.collapse]="(navbarCollapsed() && animationDone())"
-            [@expandCollapseNav]="navbarCollapsed() ? 'close' : 'open'"
-            (@expandCollapseNav.done)="animationDone.set(true)">
+            [class.collapse]="navbarCollapsed()">
             <div class="position-sticky p-2 sidebar-sticky">
                 <ul class="nav flex-column">
                     @for (item of menuItems; track item) {
                     <li class="nav-item"
-                        @blockInitialRenderAnimation>
+                        animate.enter="block-transition">
                         <a [routerLink]="item.link"
                             class="nav-link"
                             routerLinkActive="active"
@@ -46,23 +44,26 @@
                             (click)="toggle(true)">
                             {{ item.label }}</a>
                         @if (active.isActive && item.children?.length && item.children; as submenu) {
-                        <ul class="nav flex-column"
-                            @expandCollapse>
-                            @for (child of submenu; track child) {
-                            <li class="nav-item">@if (child.link) {
-                                <a [routerLink]="[item.link, child.link]"
-                                    class="nav-link"
-                                    routerLinkActive="active"
-                                    (click)="toggle(true)">
-                                    {{ child.label }}</a>
-                                }@if (child.url) {
-                                <a href="{{ child.url }}"
-                                    class="nav-link">
-                                    {{ child.label }}</a>
+                        <div class="expand-collapse"
+                            animate.enter="expand"
+                            animate.leave="collapse">
+                            <ul class="nav flex-column">
+                                @for (child of submenu; track child) {
+                                <li class="nav-item">@if (child.link) {
+                                    <a [routerLink]="[item.link, child.link]"
+                                        class="nav-link"
+                                        routerLinkActive="active"
+                                        (click)="toggle(true)">
+                                        {{ child.label }}</a>
+                                    }@if (child.url) {
+                                    <a href="{{ child.url }}"
+                                        class="nav-link">
+                                        {{ child.label }}</a>
+                                    }
+                                </li>
                                 }
-                            </li>
-                            }
-                        </ul>
+                            </ul>
+                        </div>
                         }
                     </li>
                     }
