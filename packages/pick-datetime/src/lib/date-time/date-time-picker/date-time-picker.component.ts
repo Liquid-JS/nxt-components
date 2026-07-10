@@ -267,7 +267,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDest
         this._dtInput.set(inputDirective)
     }
 
-    open(): void {
+    open(event?: PointerEvent): void {
         if (this.isOpen() || this.disabled()) {
             return
         }
@@ -303,7 +303,7 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDest
         }
 
         if (this.pickerMode() === 'dialog')
-            this.openAsDialog()
+            this.openAsDialog(event)
         else
             this.openAsPopup()
 
@@ -319,8 +319,8 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDest
 
         // Listen to picker container's confirmSelectedStream
         this.confirmSelectedStreamSub = this.pickerContainer?.confirmSelectedStream.subscribe(
-            (event: any) => {
-                this.confirmSelect(event)
+            (e) => {
+                this.confirmSelect(e)
             }
         )
     }
@@ -449,12 +449,13 @@ export class DateTimeComponent<T> extends DateTimeDirective<T> implements OnDest
     /**
      * Open the picker as a dialog
      */
-    private openAsDialog(): void {
+    private openAsDialog(event?: PointerEvent): void {
         const backdropClass = this.backdropClass()
         const panelClass = this.panelClass()
         this.dialogRef = this.dialogService.open(
             DateTimeContainerComponent,
             {
+                event,
                 autoFocus: false,
                 backdropClass: [
                     'cdk-overlay-dark-backdrop',

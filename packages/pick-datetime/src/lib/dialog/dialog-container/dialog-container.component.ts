@@ -1,47 +1,12 @@
-import { animate, animateChild, AnimationEvent, keyframes, style, transition, trigger } from '@angular/animations'
 import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory } from '@angular/cdk/a11y'
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal'
-import { Component, ComponentRef, ElementRef, EmbeddedViewRef, DOCUMENT, viewChild, output, signal, computed, inject } from '@angular/core'
+import { afterNextRender, Component, ComponentRef, DOCUMENT, ElementRef, EmbeddedViewRef, inject, output, signal, viewChild } from '@angular/core'
 import { DialogConfig } from '../../class/dialog-config.class'
-
-/** @internal */
-export type DialogContainerState = 'void' | 'enter' | 'exit'
 
 /** @internal */
 @Component({
     selector: 'nxt-dialog-container',
     templateUrl: './dialog-container.component.html',
-    animations: [
-        trigger('slideModal', [
-            transition('void => enter', [
-                style({
-                    opacity: 0,
-                    transform: 'translateX({{ x }}) translateY({{ y }}) scale({{scale}})',
-                    transformOrigin: '{{ ox }} {{ oy }}'
-                }),
-                animate('300ms cubic-bezier(0.35, 0, 0.25, 1)', style('*')),
-                animate('150ms', keyframes([
-                    style({ transform: 'scale(1)', offset: 0 }),
-                    style({ transform: 'scale(1.05)', offset: 0.3 }),
-                    style({ transform: 'scale(.95)', offset: 0.8 }),
-                    style({ transform: 'scale(1)', offset: 1.0 })
-                ])),
-                animateChild()
-            ], {
-                params: {
-                    x: '0px',
-                    y: '0px',
-                    ox: '50%',
-                    oy: '50%',
-                    scale: 1
-                }
-            }),
-            transition('enter => exit', [animateChild(), animate(200, style({
-                opacity: 0,
-                transform: 'translateX({{ x }}) translateY({{ y }}) scale({{scale}})'
-            }))], { params: { x: '0px', y: '0px', ox: '50%', oy: '50%' } })
-        ])
-    ],
     imports: [
         CdkPortalOutlet
     ],
@@ -51,10 +16,7 @@ export type DialogContainerState = 'void' | 'enter' | 'exit'
         '[attr.aria-labelledby]': 'ariaLabelledBy()',
         '[attr.id]': 'config()?.id',
         '[attr.role]': 'config()?.role',
-        '[attr.aria-describedby]': 'config()?.ariaDescribedBy',
-        '[@slideModal]': 'dialogContainerAnimation()',
-        '(@slideModal.start)': 'onAnimationStart($event)',
-        '(@slideModal.done)': 'onAnimationDone($event)'
+        '[attr.aria-describedby]': 'config()?.ariaDescribedBy'
     }
 })
 export class DialogContainerComponent extends BasePortalOutlet {
@@ -71,30 +33,81 @@ export class DialogContainerComponent extends BasePortalOutlet {
     readonly ariaLabelledBy = signal<string | undefined>(undefined)
 
     /** Emits when an animation state changes */
-    readonly animationStateChanged = output<AnimationEvent>()
+    readonly animationStateChanged = output<{
+        phaseName: 'start' | 'done'
+        toState: 'enter' | 'exit'
+    }>()
 
     readonly isAnimating = signal(false)
 
     private readonly _config = signal<DialogConfig | undefined>(undefined)
     readonly config = this._config.asReadonly()
 
-    private readonly state = signal<DialogContainerState>('enter')
-
     // for animation purpose
-    private readonly params = signal({
+    private params = {
         x: '0px',
         y: '0px',
         ox: '50%',
         oy: '50%',
         scale: 0
-    })
+    }
 
     // A variable to hold the focused element before the dialog was open.
     // This would help us to refocus back to element when the dialog was closed.
     private elementFocusedBeforeDialogWasOpened?: HTMLElement
 
-    /** @internal */
-    readonly dialogContainerAnimation = computed(() => ({ value: this.state(), params: this.params() }))
+    constructor() {
+        super()
+        afterNextRender(() => {
+            const params = this.params
+            const target = this.elementRef.nativeElement
+            this.isAnimating.set(true)
+            this.animationStateChanged.emit({
+                phaseName: 'start',
+                toState: 'enter'
+            })
+            if (target) {
+                target.animate([
+                    {
+                        opacity: 0,
+                        transform: `translateX(${params.x}) translateY(${params.y}) scale(${params.scale})`,
+                        transformOrigin: `${params.ox} ${params.oy}`
+                    },
+                    {
+                        opacity: 1,
+                        transform: 'translateX(0px) translateY(0px) scale(1)',
+                        transformOrigin: '50% 50%'
+                    }
+                ], {
+                    duration: 300,
+                    easing: 'cubic-bezier(0.35, 0, 0.25, 1)'
+                }).addEventListener('finish', () => {
+                    target.animate([
+                        { transform: 'scale(1)', offset: 0 },
+                        { transform: 'scale(1.05)', offset: 0.3 },
+                        { transform: 'scale(.95)', offset: 0.8 },
+                        { transform: 'scale(1)', offset: 1.0 }
+                    ], {
+                        duration: 150
+                    }).addEventListener('finish', () => {
+                        this.trapFocus()
+                        this.animationStateChanged.emit({
+                            phaseName: 'done',
+                            toState: 'enter'
+                        })
+                        this.isAnimating.set(false)
+                    })
+                })
+            } else {
+                this.trapFocus()
+                this.animationStateChanged.emit({
+                    phaseName: 'done',
+                    toState: 'enter'
+                })
+                this.isAnimating.set(false)
+            }
+        })
+    }
 
     /**
      * Attach a ComponentPortal as content to this dialog container.
@@ -127,24 +140,42 @@ export class DialogContainerComponent extends BasePortalOutlet {
         }
     }
 
-    onAnimationStart(event: AnimationEvent): void {
-        this.isAnimating.set(true)
-        this.animationStateChanged.emit(event)
-    }
-
-    onAnimationDone(event: AnimationEvent): void {
-        if (event.toState === 'enter') {
-            this.trapFocus()
-        } else if (event.toState === 'exit') {
-            this.restoreFocus()
-        }
-
-        this.animationStateChanged.emit(event)
-        this.isAnimating.set(false)
-    }
-
     startExitAnimation() {
-        this.state.set('exit')
+        const params = this.params
+        const target = this.elementRef.nativeElement
+        this.isAnimating.set(true)
+        this.animationStateChanged.emit({
+            phaseName: 'start',
+            toState: 'exit'
+        })
+        if (target) {
+            target.animate([
+                {
+                    opacity: 1,
+                    transform: 'translateX(0px) translateY(0px) scale(1)'
+                },
+                {
+                    opacity: 0,
+                    transform: `translateX(${params.x}) translateY(${params.y}) scale(${params.scale})`
+                }
+            ], {
+                duration: 200
+            }).addEventListener('finish', () => {
+                this.restoreFocus()
+                this.animationStateChanged.emit({
+                    phaseName: 'done',
+                    toState: 'exit'
+                })
+                this.isAnimating.set(false)
+            })
+        } else {
+            this.restoreFocus()
+            this.animationStateChanged.emit({
+                phaseName: 'done',
+                toState: 'exit'
+            })
+            this.isAnimating.set(false)
+        }
     }
 
     /**
@@ -162,13 +193,13 @@ export class DialogContainerComponent extends BasePortalOutlet {
         const ox = clientX / window.innerWidth
         const oy = clientY / window.innerHeight
 
-        this.params.set({
+        this.params = {
             x: `${x}px`,
             y: `${y}px`,
             ox: `${ox * 100}%`,
             oy: `${oy * 100}%`,
             scale: 0
-        })
+        }
     }
 
     /**

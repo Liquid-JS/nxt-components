@@ -4,7 +4,6 @@ import { Component, model, Provider, signal, Type, viewChild } from '@angular/co
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing'
 import { FormsModule, ReactiveFormsModule, UntypedFormControl } from '@angular/forms'
 import { By } from '@angular/platform-browser'
-import { provideNoopAnimations } from '@angular/platform-browser/animations'
 import { createKeyboardEvent, dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, provideTestDateTimeAdapter } from '../../../test-helpers'
 import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
 import { DateTimeInputDirective } from '../date-time-picker-input.directive'
@@ -27,10 +26,7 @@ describe('DateTimeComponent', () => {
         providers?: Provider[]
     ) => {
         TestBed.configureTestingModule({
-            providers: [
-                provideNoopAnimations(),
-                ...providers || []
-            ]
+            providers
         })
 
         TestBed.compileComponents().catch(console.error)
@@ -110,6 +106,8 @@ describe('DateTimeComponent', () => {
                 ).not.toBeNull()
 
                 testComponent.isOpen.set(false)
+                fixture.detectChanges()
+                await fixture.whenStable()
                 fixture.detectChanges()
                 await fixture.whenStable()
 

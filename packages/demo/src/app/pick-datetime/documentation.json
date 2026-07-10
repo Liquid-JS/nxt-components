@@ -164,7 +164,7 @@
         },
         {
             "name": "DialogPosition",
-            "id": "interface-DialogPosition-eb603f1b58fd51c6603e27a249855b739a9ed0e526cb1e92c6f9e2d84d3a85662bdbd5426ce7f45263087931c58c2a40302cd4711ebe80c2b666e464c2e679e2",
+            "id": "interface-DialogPosition-194ad944098f74118172b428183f3af2ced216e7358e32aaf95913bc5a4a3819934a277bf79b37bf25102e3f89fd85646ea03181f7daf7ded85a4d641494338c",
             "file": "src/lib/class/dialog-config.class.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -6338,7 +6338,7 @@
         },
         {
             "name": "DialogConfig",
-            "id": "class-DialogConfig-eb603f1b58fd51c6603e27a249855b739a9ed0e526cb1e92c6f9e2d84d3a85662bdbd5426ce7f45263087931c58c2a40302cd4711ebe80c2b666e464c2e679e2",
+            "id": "class-DialogConfig-194ad944098f74118172b428183f3af2ced216e7358e32aaf95913bc5a4a3819934a277bf79b37bf25102e3f89fd85646ea03181f7daf7ded85a4d641494338c",
             "file": "src/lib/class/dialog-config.class.ts",
             "coverageIgnore": false,
             "deprecated": false,
@@ -6450,12 +6450,12 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "MouseEvent",
+                    "type": "PointerEvent",
                     "indexKey": "",
                     "optional": true,
-                    "description": "<p>Mouse Event</p>\n",
+                    "description": "<p>Pointer Event</p>\n",
                     "line": 65,
-                    "rawdescription": "\n\nMouse Event\n"
+                    "rawdescription": "\n\nPointer Event\n"
                 },
                 {
                     "name": "hasBackdrop",
@@ -8452,7 +8452,7 @@
         },
         {
             "name": "DateTimeTriggerDirective",
-            "id": "directive-DateTimeTriggerDirective-88a57901459970bcada371c4fb4e175a8589d3ef75b64db5c070a864ffdbf0b7eb099712a1bf58fd3c6d65c7ee36e6dc38bf1e998919ab552ce662a90c7f168b",
+            "id": "directive-DateTimeTriggerDirective-100a433c12036e49c7788fe6d34472489c377bfc7ded3f4f3647715bf40ceeeb9352e6e8011c5ed110d8a5e08e88161ff8d93a5a2ca32586fabbd3e46c003d21",
             "file": "src/lib/date-time/date-time-picker-trigger.directive.ts",
             "type": "directive",
             "description": "",
@@ -8472,8 +8472,25 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 15,
+                    "line": 18,
                     "rawdescription": "\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "dialogOrigin",
+                    "coverageIgnore": false,
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Use the event to calculate origin when opening in dialog mode</p>\n",
+                    "line": 15,
+                    "rawdescription": "\nUse the event to calculate origin when opening in dialog mode",
                     "modifierKind": [
                         148
                     ],
@@ -8513,7 +8530,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 19,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -8527,7 +8544,7 @@
                     "args": [
                         {
                             "name": "event",
-                            "type": "Event",
+                            "type": "PointerEvent",
                             "optional": false,
                             "dotDotDotToken": false,
                             "deprecated": false,
@@ -8537,7 +8554,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 18,
+                    "line": 21,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -8545,7 +8562,7 @@
                     "jsdoctags": [
                         {
                             "name": "event",
-                            "type": "Event",
+                            "type": "PointerEvent",
                             "optional": false,
                             "dotDotDotToken": false,
                             "deprecated": false,
@@ -9363,7 +9380,7 @@
         },
         {
             "name": "DateTimeComponent",
-            "id": "component-DateTimeComponent-c1712c257e77a1b1f1dc88e1c83f4c8feedd73686f188c975511e1cd938b57c5fa5c077cd3a807f3cb4c749b47cec5465b6c37eb4069f8b1d006621576752b26",
+            "id": "component-DateTimeComponent-cfbe0c3570e154396f02d8fbf1fdc26d08ccf8c7ca12e87c5279ecebe21bc9ef93aef509f1f9d09f03b4f25e6cae55a23c6313a7330117450b9c3890a625fe46",
             "file": "src/lib/date-time/date-time-picker/date-time-picker.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -10251,7 +10268,16 @@
                 {
                     "name": "open",
                     "coverageIgnore": false,
-                    "args": [],
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "PointerEvent",
+                            "optional": true,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
@@ -10259,7 +10285,20 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
-                    "description": ""
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "PointerEvent",
+                            "optional": true,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "registerInput",

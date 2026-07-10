@@ -60,9 +60,9 @@ export class DialogConfig {
     paneClass?: string | string[] = ''
 
     /**
-     * Mouse Event
+     * Pointer Event
      */
-    event?: MouseEvent
+    event?: PointerEvent
 
     /**
      * Custom class for the backdrop

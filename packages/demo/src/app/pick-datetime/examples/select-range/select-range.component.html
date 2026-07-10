@@ -1,8 +1,7 @@
 <input class="form-control"
     [(ngModel)]="range"
-    placeholder="Date time tange"
+    placeholder="Date time range"
     selectMode="range"
     [nxtDateTimeTrigger]="picker"
     [nxtDateTime]="picker">
-<nxt-date-time #picker
-    pickerMode="dialog" />
+<nxt-date-time #picker />

@@ -36,7 +36,6 @@
         "docs:json": "yarn docs --exportFormat json --output ../demo/src/app/pick-datetime"
     },
     "peerDependencies": {
-        "@angular/animations": "^22.0.0",
         "@angular/cdk": "^22.0.0",
         "@angular/common": "^22.0.0",
         "@angular/core": "^22.0.0",

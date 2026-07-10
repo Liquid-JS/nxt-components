@@ -38,12 +38,12 @@ export class AppPickDatetimeComponent {
             },
             {
                 path: 'trigger-icon',
-                name: 'Trigger via an icon',
+                name: 'Trigger a dialog via an icon',
                 include: ['html']
             },
             {
                 path: 'select-range',
-                name: 'Select range, open as a dialog',
+                name: 'Select range',
                 include: ['html', 'ts']
             },
             {

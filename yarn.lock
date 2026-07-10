@@ -9847,7 +9847,6 @@ __metadata:
     "@angular-devkit/architect": "npm:^0.2200.6"
     "@angular-devkit/core": "npm:^22.0.6"
     "@angular-devkit/schematics": "npm:^22.0.6"
-    "@angular/animations": "npm:^22.0.6"
     "@angular/build": "npm:^22.0.6"
     "@angular/cdk": "npm:^22.0.4"
     "@angular/cli": "npm:^22.0.6"
@@ -9957,7 +9956,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nxt-pick-datetime@workspace:packages/pick-datetime"
   peerDependencies:
-    "@angular/animations": ^22.0.0
     "@angular/cdk": ^22.0.0
     "@angular/common": ^22.0.0
     "@angular/core": ^22.0.0
