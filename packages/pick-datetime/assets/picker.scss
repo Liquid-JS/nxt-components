@@ -92,6 +92,7 @@ $backdrop-animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
 }
 
 .cdk-overlay-transparent-backdrop {
+
     // Note: as of Firefox 57, having the backdrop be `background: none` will prevent it from
     // capturing the user's mouse scroll events. Since we also can't use something like
     // `rgba(0, 0, 0, 0)`, we work around the inconsistency by not setting the background at
@@ -314,21 +315,21 @@ $theme-color: #3f51b5;
     .nxt-dt-calendar-cell-disabled {
         cursor: default;
 
-        & > .nxt-dt-calendar-cell-content:not(.nxt-dt-calendar-cell-selected) {
+        &>.nxt-dt-calendar-cell-content:not(.nxt-dt-calendar-cell-selected) {
             color: rgb(0, 0, 0, 0.4);
         }
 
-        & > .nxt-dt-calendar-cell-content.nxt-dt-calendar-cell-selected {
+        &>.nxt-dt-calendar-cell-content.nxt-dt-calendar-cell-selected {
             opacity: 0.4;
         }
 
-        & > .nxt-dt-calendar-cell-today:not(.nxt-dt-calendar-cell-selected) {
+        &>.nxt-dt-calendar-cell-today:not(.nxt-dt-calendar-cell-selected) {
             border-color: rgb(0, 0, 0, 0.2);
         }
     }
 
-    .nxt-dt-calendar-cell-active:focus > .nxt-dt-calendar-cell-content:not(.nxt-dt-calendar-cell-selected),
-    :not(.nxt-dt-calendar-cell-disabled):hover > .nxt-dt-calendar-cell-content:not(.nxt-dt-calendar-cell-selected) {
+    .nxt-dt-calendar-cell-active:focus>.nxt-dt-calendar-cell-content:not(.nxt-dt-calendar-cell-selected),
+    :not(.nxt-dt-calendar-cell-disabled):hover>.nxt-dt-calendar-cell-content:not(.nxt-dt-calendar-cell-selected) {
         background-color: rgb(0, 0, 0, 0.04);
     }
 
@@ -454,7 +455,7 @@ $theme-color: #3f51b5;
         transition: background-color 100ms linear;
     }
 
-    &:hover > .nxt-dt-control-button-content {
+    &:hover>.nxt-dt-control-button-content {
         background-color: rgb(0, 0, 0, 0.12);
     }
 
@@ -511,7 +512,8 @@ $theme-color: #3f51b5;
 
     .nxt-dt-calendar {
         min-width: 250px;
-        min-height: 330px;
+
+        //min-height: 330px;
         max-width: 750px;
         max-height: 750px;
     }
@@ -522,7 +524,7 @@ $theme-color: #3f51b5;
     }
 }
 
-@media all and (orientation: landscape) {
+/* @media all and (orientation: landscape) {
     .nxt-dt-dialog-container {
         .nxt-dt-calendar {
             width: 58vh;
@@ -546,7 +548,7 @@ $theme-color: #3f51b5;
             width: 80vw;
         }
     }
-}
+} */
 
 .nxt-dt-container-buttons {
     display: flex;
@@ -652,11 +654,11 @@ $theme-color: #3f51b5;
         outline: none;
     }
 
-    &:focus > .nxt-dt-control-content {
+    &:focus>.nxt-dt-control-content {
         background-color: rgb(0, 0, 0, 0.12);
     }
 
-    &:not(:-moz-focusring):focus > .nxt-dt-control-content {
+    &:not(:-moz-focusring):focus>.nxt-dt-control-content {
         box-shadow: none;
     }
 }

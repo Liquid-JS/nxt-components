@@ -84,7 +84,7 @@ export class DialogConfig {
      * The min-width of the overlay panel.
      * If a number is provided, pixel units are assumed.
      */
-    minWidth?: number | string
+    minWidth?: number | string = '18.5em'
 
     /**
      * The min-height of the overlay panel.

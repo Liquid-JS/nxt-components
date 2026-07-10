@@ -1,6 +1,5 @@
-import { animate, animateChild, AnimationEvent, group, query, state, style, transition, trigger } from '@angular/animations'
 import { CdkTrapFocus } from '@angular/cdk/a11y'
-import { AfterContentInit, AfterViewInit, Component, computed, ElementRef, inject, signal, viewChild } from '@angular/core'
+import { AfterContentInit, AfterViewInit, AnimationCallbackEvent, Component, computed, ElementRef, inject, signal, viewChild } from '@angular/core'
 import { Subject } from 'rxjs'
 import { DateTimeAdapter } from '../../class/date-time-adapter.class'
 import { DateTimeDirective } from '../../class/date-time.class'
@@ -14,22 +13,6 @@ import { TimerComponent } from '../timer/timer.component'
     templateUrl: './date-time-picker-container.component.html',
     styleUrls: ['./date-time-picker-container.component.scss'],
     preserveWhitespaces: false,
-    animations: [
-        trigger('transformPicker', [
-            state('void', style({ opacity: 0, transform: 'scale(1, 0)' })),
-            state('enter', style({ opacity: 1, transform: 'scale(1, 1)' })),
-            transition('void => enter', group([
-                query('@fadeInPicker', animateChild(), { optional: true }),
-                animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)')
-            ])),
-            transition('enter => void', animate('100ms linear', style({ opacity: 0 })))
-        ]),
-        trigger('fadeInPicker', [
-            state('enter', style({ opacity: 1 })),
-            state('void', style({ opacity: 0 })),
-            transition('void => enter', animate('400ms 100ms cubic-bezier(0.55, 0, 0.55, 0.2)'))
-        ])
-    ],
     imports: [
         CdkTrapFocus,
         CalendarComponent,
@@ -42,11 +25,53 @@ import { TimerComponent } from '../timer/timer.component'
         '[class.nxt-dt-inline-container]': "pickerMode() === 'inline'",
         '[class.nxt-dt-container-disabled]': 'disabled()',
         '[attr.id]': 'picker()?.id',
-        '[@transformPicker]': "pickerMode() === 'inline' ? '' : 'enter'",
-        '(@transformPicker.done)': 'handleContainerAnimationDone($event)'
+        '(animate.enter)': 'transformPickerEnter($event)',
+        '(animate.leave)': 'transformPickerLeave($event)'
     }
 })
 export class DateTimeContainerComponent<T> implements AfterContentInit, AfterViewInit {
+
+    transformPickerEnter({ target, animationComplete }: AnimationCallbackEvent) {
+        let anim = target.animate([
+            { opacity: 0, transform: 'scale(1, 0)' },
+            { opacity: 1, transform: 'scale(1, 1)' }
+        ], {
+            duration: 400,
+            easing: 'cubic-bezier(0.25, 0.8, 0.25, 1)'
+        })
+        const inner = target.querySelector<HTMLElement>('.nxt-dt-container-inner')
+        if (inner) {
+            inner.style.opacity = '0'
+            anim = inner.animate([
+                { opacity: 0 },
+                { opacity: 1 }
+            ], {
+                duration: 400,
+                delay: 100,
+                easing: 'cubic-bezier(0.55, 0, 0.55, 0.2)'
+            })
+        }
+        anim.addEventListener('finish', () => {
+            if (inner)
+                inner.style.opacity = ''
+            this.pickerOpened$.next()
+            animationComplete()
+        })
+    }
+
+    transformPickerLeave({ target, animationComplete }: AnimationCallbackEvent) {
+        const anim = target.animate([
+            { opacity: 1 },
+            { opacity: 0 }
+        ], {
+            duration: 100,
+            easing: 'linear'
+        })
+        anim.addEventListener('finish', () => {
+            animationComplete()
+        })
+    }
+
     private readonly elmRef = inject<ElementRef<HTMLElement>>(ElementRef)
     private readonly pickerIntl = inject(DateTimeIntl)
     private readonly dateTimeAdapter = inject<DateTimeAdapter<T>>(DateTimeAdapter)
@@ -178,13 +203,6 @@ export class DateTimeContainerComponent<T> implements AfterContentInit, AfterVie
 
     ngAfterViewInit(): void {
         this.focusPicker()
-    }
-
-    handleContainerAnimationDone(event: AnimationEvent): void {
-        const toState = event.toState
-        if (toState === 'enter') {
-            this.pickerOpened$.next()
-        }
     }
 
     dateSelected(date?: T): void {

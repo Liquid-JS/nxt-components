@@ -3,14 +3,16 @@
     "interfaces": [
         {
             "name": "DropzoneConfig",
-            "id": "interface-DropzoneConfig-364a3e53988101c15f85faf8e6007ac490abd62e26995c50933444c682d4a80405db0339a5c809beae9b8f80cfad2386067c669bd84335786769833e52a7d9b5",
+            "id": "interface-DropzoneConfig-433c916f0db5d9a5fb097da8074d71881eed2d6e9f027b825b0cd4ad2938eefed4b4ba08273095af513256a6b1637ad5ddaa3674b49fb1803c1be5feae78b322",
             "file": "src/lib/dropzone.interfaces.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
+            "displayName": "DropzoneConfig",
             "properties": [
                 {
                     "name": "autoReset",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -22,6 +24,7 @@
                 },
                 {
                     "name": "cancelReset",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -33,6 +36,7 @@
                 },
                 {
                     "name": "errorReset",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -48,7 +52,16 @@
             "methods": [],
             "extends": [
                 "Dropzone.DropzoneOptions"
-            ]
+            ],
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "Dropzone.DropzoneOptions",
+                        "type": "class"
+                    }
+                ]
+            }
         }
     ],
     "injectables": [],
@@ -70,8 +83,9 @@
             "standalone": false,
             "inputsClass": [
                 {
-                    "name": "_config",
-                    "defaultValue": "undefined, { alias: 'nxtDropzone' }",
+                    "name": "nxtDropzone",
+                    "coverageIgnore": false,
+                    "defaultValue": "undefined",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DropzoneConfig",
@@ -87,6 +101,7 @@
                 },
                 {
                     "name": "disabled",
+                    "coverageIgnore": false,
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -95,6 +110,7 @@
                     "optional": false,
                     "description": "",
                     "line": 23,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -103,8 +119,8 @@
             ],
             "outputsClass": [
                 {
-                    "name": "DZ_ADDEDFILE",
-                    "defaultValue": "{ alias: 'addedFile' }",
+                    "name": "addedFile",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -112,6 +128,7 @@
                     "optional": false,
                     "description": "",
                     "line": 132,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -121,8 +138,8 @@
                     }
                 },
                 {
-                    "name": "DZ_ADDEDFILES",
-                    "defaultValue": "{ alias: 'addedFiles' }",
+                    "name": "addedFiles",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -130,6 +147,7 @@
                     "optional": false,
                     "description": "",
                     "line": 133,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -139,8 +157,8 @@
                     }
                 },
                 {
-                    "name": "DZ_CANCELED",
-                    "defaultValue": "{ alias: 'canceled' }",
+                    "name": "canceled",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -148,6 +166,7 @@
                     "optional": false,
                     "description": "",
                     "line": 147,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -157,8 +176,8 @@
                     }
                 },
                 {
-                    "name": "DZ_CANCELEDMULTIPLE",
-                    "defaultValue": "{ alias: 'canceledMultiple' }",
+                    "name": "canceledMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -166,6 +185,7 @@
                     "optional": false,
                     "description": "",
                     "line": 148,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -175,8 +195,8 @@
                     }
                 },
                 {
-                    "name": "DZ_COMPLETE",
-                    "defaultValue": "{ alias: 'complete' }",
+                    "name": "complete",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -184,6 +204,7 @@
                     "optional": false,
                     "description": "",
                     "line": 149,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -193,8 +214,8 @@
                     }
                 },
                 {
-                    "name": "DZ_COMPLETEMULTIPLE",
-                    "defaultValue": "{ alias: 'completeMultiple' }",
+                    "name": "completeMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -202,6 +223,7 @@
                     "optional": false,
                     "description": "",
                     "line": 150,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -211,8 +233,8 @@
                     }
                 },
                 {
-                    "name": "DZ_DRAGEND",
-                    "defaultValue": "{ alias: 'dragEnd' }",
+                    "name": "dragEnd",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -220,6 +242,7 @@
                     "optional": false,
                     "description": "",
                     "line": 126,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -229,8 +252,8 @@
                     }
                 },
                 {
-                    "name": "DZ_DRAGENTER",
-                    "defaultValue": "{ alias: 'dragEnter' }",
+                    "name": "dragEnter",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -238,6 +261,7 @@
                     "optional": false,
                     "description": "",
                     "line": 127,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -247,8 +271,8 @@
                     }
                 },
                 {
-                    "name": "DZ_DRAGLEAVE",
-                    "defaultValue": "{ alias: 'dragLeave' }",
+                    "name": "dragLeave",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -256,6 +280,7 @@
                     "optional": false,
                     "description": "",
                     "line": 129,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -265,8 +290,8 @@
                     }
                 },
                 {
-                    "name": "DZ_DRAGOVER",
-                    "defaultValue": "{ alias: 'dragOver' }",
+                    "name": "dragOver",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -274,6 +299,7 @@
                     "optional": false,
                     "description": "",
                     "line": 128,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -283,8 +309,8 @@
                     }
                 },
                 {
-                    "name": "DZ_DRAGSTART",
-                    "defaultValue": "{ alias: 'dragStart' }",
+                    "name": "dragStart",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -292,6 +318,7 @@
                     "optional": false,
                     "description": "",
                     "line": 125,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -301,8 +328,8 @@
                     }
                 },
                 {
-                    "name": "DZ_DROP",
-                    "defaultValue": "{ alias: 'drop' }",
+                    "name": "drop",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -310,6 +337,7 @@
                     "optional": false,
                     "description": "",
                     "line": 124,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -319,8 +347,8 @@
                     }
                 },
                 {
-                    "name": "DZ_ERROR",
-                    "defaultValue": "{ alias: 'error' }",
+                    "name": "error",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, string | Error]",
@@ -328,6 +356,7 @@
                     "optional": false,
                     "description": "",
                     "line": 136,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -337,8 +366,8 @@
                     }
                 },
                 {
-                    "name": "DZ_ERRORMULTIPLE",
-                    "defaultValue": "{ alias: 'errorMultiple' }",
+                    "name": "errorMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile[], string | Error]",
@@ -346,6 +375,7 @@
                     "optional": false,
                     "description": "",
                     "line": 137,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -355,8 +385,8 @@
                     }
                 },
                 {
-                    "name": "DZ_INIT",
-                    "defaultValue": "{ alias: 'init' }",
+                    "name": "init",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone",
@@ -364,6 +394,7 @@
                     "optional": false,
                     "description": "",
                     "line": 123,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -373,8 +404,8 @@
                     }
                 },
                 {
-                    "name": "DZ_MAXFILESEXCEEDED",
-                    "defaultValue": "{ alias: 'maxFilesExceeded' }",
+                    "name": "maxFilesExceeded",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -382,6 +413,7 @@
                     "optional": false,
                     "description": "",
                     "line": 151,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -391,8 +423,8 @@
                     }
                 },
                 {
-                    "name": "DZ_MAXFILESREACHED",
-                    "defaultValue": "{ alias: 'maxFilesReached' }",
+                    "name": "maxFilesReached",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -400,6 +432,7 @@
                     "optional": false,
                     "description": "",
                     "line": 152,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -409,8 +442,8 @@
                     }
                 },
                 {
-                    "name": "DZ_PASTE",
-                    "defaultValue": "{ alias: 'paste' }",
+                    "name": "paste",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -418,6 +451,7 @@
                     "optional": false,
                     "description": "",
                     "line": 130,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -427,8 +461,8 @@
                     }
                 },
                 {
-                    "name": "DZ_PROCESSING",
-                    "defaultValue": "{ alias: 'processing' }",
+                    "name": "processing",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -436,6 +470,7 @@
                     "optional": false,
                     "description": "",
                     "line": 138,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -445,8 +480,8 @@
                     }
                 },
                 {
-                    "name": "DZ_PROCESSINGMULTIPLE",
-                    "defaultValue": "{ alias: 'processingMultiple' }",
+                    "name": "processingMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -454,6 +489,7 @@
                     "optional": false,
                     "description": "",
                     "line": 139,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -463,8 +499,8 @@
                     }
                 },
                 {
-                    "name": "DZ_QUEUECOMPLETE",
-                    "defaultValue": "{ alias: 'queueComplete' }",
+                    "name": "queueComplete",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "void",
@@ -472,6 +508,7 @@
                     "optional": false,
                     "description": "",
                     "line": 153,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -481,8 +518,8 @@
                     }
                 },
                 {
-                    "name": "DZ_REMOVEDFILE",
-                    "defaultValue": "{ alias: 'removedFile' }",
+                    "name": "removedFile",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -490,6 +527,7 @@
                     "optional": false,
                     "description": "",
                     "line": 134,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -499,8 +537,8 @@
                     }
                 },
                 {
-                    "name": "DZ_RESET",
-                    "defaultValue": "{ alias: 'reset' }",
+                    "name": "reset",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "void",
@@ -508,6 +546,7 @@
                     "optional": false,
                     "description": "",
                     "line": 131,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -517,8 +556,8 @@
                     }
                 },
                 {
-                    "name": "DZ_SENDING",
-                    "defaultValue": "{ alias: 'sending' }",
+                    "name": "sending",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, XMLHttpRequest, FormData]",
@@ -526,6 +565,7 @@
                     "optional": false,
                     "description": "",
                     "line": 142,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -535,8 +575,8 @@
                     }
                 },
                 {
-                    "name": "DZ_SENDINGMULTIPLE",
-                    "defaultValue": "{ alias: 'sendingMultiple' }",
+                    "name": "sendingMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]",
@@ -544,6 +584,7 @@
                     "optional": false,
                     "description": "",
                     "line": 143,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -553,8 +594,8 @@
                     }
                 },
                 {
-                    "name": "DZ_SUCCESS",
-                    "defaultValue": "{ alias: 'success' }",
+                    "name": "success",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, Object | string]",
@@ -562,6 +603,7 @@
                     "optional": false,
                     "description": "",
                     "line": 145,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -571,8 +613,8 @@
                     }
                 },
                 {
-                    "name": "DZ_SUCCESSMULTIPLE",
-                    "defaultValue": "{ alias: 'successMultiple' }",
+                    "name": "successMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -580,6 +622,7 @@
                     "optional": false,
                     "description": "",
                     "line": 146,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -589,8 +632,8 @@
                     }
                 },
                 {
-                    "name": "DZ_THUMBNAIL",
-                    "defaultValue": "{ alias: 'thumbnail' }",
+                    "name": "thumbnail",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, string]",
@@ -598,6 +641,7 @@
                     "optional": false,
                     "description": "",
                     "line": 135,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -607,8 +651,8 @@
                     }
                 },
                 {
-                    "name": "DZ_TOTALUPLOADPROGRESS",
-                    "defaultValue": "{ alias: 'totalUploadProgress' }",
+                    "name": "totalUploadProgress",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[number, number, number]",
@@ -616,6 +660,7 @@
                     "optional": false,
                     "description": "",
                     "line": 141,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -625,8 +670,8 @@
                     }
                 },
                 {
-                    "name": "DZ_UPLOADPROGRESS",
-                    "defaultValue": "{ alias: 'uploadProgress' }",
+                    "name": "uploadProgress",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, number, number]",
@@ -634,6 +679,7 @@
                     "optional": false,
                     "description": "",
                     "line": 140,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -649,6 +695,7 @@
             "hostListeners": [],
             "propertiesClass": [],
             "methodsClass": [],
+            "coverageIgnore": false,
             "extends": [
                 "DropzoneListeners"
             ],
@@ -661,7 +708,8 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 78
+                "line": 78,
+                "rawdescription": "\n"
             },
             "accessors": {
                 "dropzone": {
@@ -670,14 +718,34 @@
                         "name": "dropzone",
                         "type": "",
                         "returnType": "",
-                        "line": 70
+                        "line": 70,
+                        "rawdescription": "\n",
+                        "description": ""
                     }
                 }
+            },
+            "relationships": {
+                "incoming": [
+                    {
+                        "name": "DropzoneComponent",
+                        "type": "component"
+                    }
+                ],
+                "outgoing": [
+                    {
+                        "name": "DropzoneListeners",
+                        "type": "directive"
+                    },
+                    {
+                        "name": "OnDestroy",
+                        "type": "interface"
+                    }
+                ]
             }
         },
         {
             "name": "DropzoneListeners",
-            "id": "directive-DropzoneListeners-364a3e53988101c15f85faf8e6007ac490abd62e26995c50933444c682d4a80405db0339a5c809beae9b8f80cfad2386067c669bd84335786769833e52a7d9b5",
+            "id": "directive-DropzoneListeners-433c916f0db5d9a5fb097da8074d71881eed2d6e9f027b825b0cd4ad2938eefed4b4ba08273095af513256a6b1637ad5ddaa3674b49fb1803c1be5feae78b322",
             "file": "src/lib/dropzone.interfaces.ts",
             "type": "directive",
             "description": "",
@@ -688,8 +756,8 @@
             "inputsClass": [],
             "outputsClass": [
                 {
-                    "name": "DZ_ADDEDFILE",
-                    "defaultValue": "{ alias: 'addedFile' }",
+                    "name": "addedFile",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -697,14 +765,15 @@
                     "optional": false,
                     "description": "",
                     "line": 132,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_ADDEDFILES",
-                    "defaultValue": "{ alias: 'addedFiles' }",
+                    "name": "addedFiles",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -712,14 +781,15 @@
                     "optional": false,
                     "description": "",
                     "line": 133,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_CANCELED",
-                    "defaultValue": "{ alias: 'canceled' }",
+                    "name": "canceled",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -727,14 +797,15 @@
                     "optional": false,
                     "description": "",
                     "line": 147,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_CANCELEDMULTIPLE",
-                    "defaultValue": "{ alias: 'canceledMultiple' }",
+                    "name": "canceledMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -742,14 +813,15 @@
                     "optional": false,
                     "description": "",
                     "line": 148,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_COMPLETE",
-                    "defaultValue": "{ alias: 'complete' }",
+                    "name": "complete",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -757,14 +829,15 @@
                     "optional": false,
                     "description": "",
                     "line": 149,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_COMPLETEMULTIPLE",
-                    "defaultValue": "{ alias: 'completeMultiple' }",
+                    "name": "completeMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -772,14 +845,15 @@
                     "optional": false,
                     "description": "",
                     "line": 150,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_DRAGEND",
-                    "defaultValue": "{ alias: 'dragEnd' }",
+                    "name": "dragEnd",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -787,14 +861,15 @@
                     "optional": false,
                     "description": "",
                     "line": 126,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_DRAGENTER",
-                    "defaultValue": "{ alias: 'dragEnter' }",
+                    "name": "dragEnter",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -802,14 +877,15 @@
                     "optional": false,
                     "description": "",
                     "line": 127,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_DRAGLEAVE",
-                    "defaultValue": "{ alias: 'dragLeave' }",
+                    "name": "dragLeave",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -817,14 +893,15 @@
                     "optional": false,
                     "description": "",
                     "line": 129,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_DRAGOVER",
-                    "defaultValue": "{ alias: 'dragOver' }",
+                    "name": "dragOver",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -832,14 +909,15 @@
                     "optional": false,
                     "description": "",
                     "line": 128,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_DRAGSTART",
-                    "defaultValue": "{ alias: 'dragStart' }",
+                    "name": "dragStart",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -847,14 +925,15 @@
                     "optional": false,
                     "description": "",
                     "line": 125,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_DROP",
-                    "defaultValue": "{ alias: 'drop' }",
+                    "name": "drop",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -862,14 +941,15 @@
                     "optional": false,
                     "description": "",
                     "line": 124,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_ERROR",
-                    "defaultValue": "{ alias: 'error' }",
+                    "name": "error",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, string | Error]",
@@ -877,14 +957,15 @@
                     "optional": false,
                     "description": "",
                     "line": 136,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_ERRORMULTIPLE",
-                    "defaultValue": "{ alias: 'errorMultiple' }",
+                    "name": "errorMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile[], string | Error]",
@@ -892,14 +973,15 @@
                     "optional": false,
                     "description": "",
                     "line": 137,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_INIT",
-                    "defaultValue": "{ alias: 'init' }",
+                    "name": "init",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone",
@@ -907,14 +989,15 @@
                     "optional": false,
                     "description": "",
                     "line": 123,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_MAXFILESEXCEEDED",
-                    "defaultValue": "{ alias: 'maxFilesExceeded' }",
+                    "name": "maxFilesExceeded",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -922,14 +1005,15 @@
                     "optional": false,
                     "description": "",
                     "line": 151,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_MAXFILESREACHED",
-                    "defaultValue": "{ alias: 'maxFilesReached' }",
+                    "name": "maxFilesReached",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -937,14 +1021,15 @@
                     "optional": false,
                     "description": "",
                     "line": 152,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_PASTE",
-                    "defaultValue": "{ alias: 'paste' }",
+                    "name": "paste",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -952,14 +1037,15 @@
                     "optional": false,
                     "description": "",
                     "line": 130,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_PROCESSING",
-                    "defaultValue": "{ alias: 'processing' }",
+                    "name": "processing",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -967,14 +1053,15 @@
                     "optional": false,
                     "description": "",
                     "line": 138,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_PROCESSINGMULTIPLE",
-                    "defaultValue": "{ alias: 'processingMultiple' }",
+                    "name": "processingMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -982,14 +1069,15 @@
                     "optional": false,
                     "description": "",
                     "line": 139,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_QUEUECOMPLETE",
-                    "defaultValue": "{ alias: 'queueComplete' }",
+                    "name": "queueComplete",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "void",
@@ -997,14 +1085,15 @@
                     "optional": false,
                     "description": "",
                     "line": 153,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_REMOVEDFILE",
-                    "defaultValue": "{ alias: 'removedFile' }",
+                    "name": "removedFile",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -1012,14 +1101,15 @@
                     "optional": false,
                     "description": "",
                     "line": 134,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_RESET",
-                    "defaultValue": "{ alias: 'reset' }",
+                    "name": "reset",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "void",
@@ -1027,14 +1117,15 @@
                     "optional": false,
                     "description": "",
                     "line": 131,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_SENDING",
-                    "defaultValue": "{ alias: 'sending' }",
+                    "name": "sending",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, XMLHttpRequest, FormData]",
@@ -1042,14 +1133,15 @@
                     "optional": false,
                     "description": "",
                     "line": 142,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_SENDINGMULTIPLE",
-                    "defaultValue": "{ alias: 'sendingMultiple' }",
+                    "name": "sendingMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]",
@@ -1057,14 +1149,15 @@
                     "optional": false,
                     "description": "",
                     "line": 143,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_SUCCESS",
-                    "defaultValue": "{ alias: 'success' }",
+                    "name": "success",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, Object | string]",
@@ -1072,14 +1165,15 @@
                     "optional": false,
                     "description": "",
                     "line": 145,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_SUCCESSMULTIPLE",
-                    "defaultValue": "{ alias: 'successMultiple' }",
+                    "name": "successMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -1087,14 +1181,15 @@
                     "optional": false,
                     "description": "",
                     "line": 146,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_THUMBNAIL",
-                    "defaultValue": "{ alias: 'thumbnail' }",
+                    "name": "thumbnail",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, string]",
@@ -1102,14 +1197,15 @@
                     "optional": false,
                     "description": "",
                     "line": 135,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_TOTALUPLOADPROGRESS",
-                    "defaultValue": "{ alias: 'totalUploadProgress' }",
+                    "name": "totalUploadProgress",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[number, number, number]",
@@ -1117,14 +1213,15 @@
                     "optional": false,
                     "description": "",
                     "line": 141,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
                     "required": false
                 },
                 {
-                    "name": "DZ_UPLOADPROGRESS",
-                    "defaultValue": "{ alias: 'uploadProgress' }",
+                    "name": "uploadProgress",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, number, number]",
@@ -1132,6 +1229,7 @@
                     "optional": false,
                     "description": "",
                     "line": 140,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1144,10 +1242,29 @@
             "hostListeners": [],
             "propertiesClass": [],
             "methodsClass": [],
+            "coverageIgnore": false,
             "extends": [],
             "implements": [
                 "DZ_EVENTS"
-            ]
+            ],
+            "relationships": {
+                "incoming": [
+                    {
+                        "name": "DropzoneComponent",
+                        "type": "component"
+                    },
+                    {
+                        "name": "DropzoneDirective",
+                        "type": "directive"
+                    }
+                ],
+                "outgoing": [
+                    {
+                        "name": "DZ_EVENTS",
+                        "type": "interface"
+                    }
+                ]
+            }
         }
     ],
     "components": [
@@ -1176,11 +1293,13 @@
             "templateUrl": [
                 "./dropzone.component.html"
             ],
+            "templateVariables": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
                     "name": "config",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DropzoneConfig",
@@ -1196,6 +1315,7 @@
                 },
                 {
                     "name": "disabled",
+                    "coverageIgnore": false,
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1212,6 +1332,7 @@
                 },
                 {
                     "name": "message",
+                    "coverageIgnore": false,
                     "defaultValue": "'Click or drag files to upload'",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1228,6 +1349,7 @@
                 },
                 {
                     "name": "placeholder",
+                    "coverageIgnore": false,
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1244,6 +1366,7 @@
                 },
                 {
                     "name": "useDropzoneClass",
+                    "coverageIgnore": false,
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1261,8 +1384,8 @@
             ],
             "outputsClass": [
                 {
-                    "name": "DZ_ADDEDFILE",
-                    "defaultValue": "{ alias: 'addedFile' }",
+                    "name": "addedFile",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -1270,6 +1393,7 @@
                     "optional": false,
                     "description": "",
                     "line": 132,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1279,8 +1403,8 @@
                     }
                 },
                 {
-                    "name": "DZ_ADDEDFILES",
-                    "defaultValue": "{ alias: 'addedFiles' }",
+                    "name": "addedFiles",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -1288,6 +1412,7 @@
                     "optional": false,
                     "description": "",
                     "line": 133,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1297,8 +1422,8 @@
                     }
                 },
                 {
-                    "name": "DZ_CANCELED",
-                    "defaultValue": "{ alias: 'canceled' }",
+                    "name": "canceled",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -1306,6 +1431,7 @@
                     "optional": false,
                     "description": "",
                     "line": 147,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1315,8 +1441,8 @@
                     }
                 },
                 {
-                    "name": "DZ_CANCELEDMULTIPLE",
-                    "defaultValue": "{ alias: 'canceledMultiple' }",
+                    "name": "canceledMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -1324,6 +1450,7 @@
                     "optional": false,
                     "description": "",
                     "line": 148,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1333,8 +1460,8 @@
                     }
                 },
                 {
-                    "name": "DZ_COMPLETE",
-                    "defaultValue": "{ alias: 'complete' }",
+                    "name": "complete",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -1342,6 +1469,7 @@
                     "optional": false,
                     "description": "",
                     "line": 149,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1351,8 +1479,8 @@
                     }
                 },
                 {
-                    "name": "DZ_COMPLETEMULTIPLE",
-                    "defaultValue": "{ alias: 'completeMultiple' }",
+                    "name": "completeMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -1360,6 +1488,7 @@
                     "optional": false,
                     "description": "",
                     "line": 150,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1369,8 +1498,8 @@
                     }
                 },
                 {
-                    "name": "DZ_DRAGEND",
-                    "defaultValue": "{ alias: 'dragEnd' }",
+                    "name": "dragEnd",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -1378,6 +1507,7 @@
                     "optional": false,
                     "description": "",
                     "line": 126,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1387,8 +1517,8 @@
                     }
                 },
                 {
-                    "name": "DZ_DRAGENTER",
-                    "defaultValue": "{ alias: 'dragEnter' }",
+                    "name": "dragEnter",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -1396,6 +1526,7 @@
                     "optional": false,
                     "description": "",
                     "line": 127,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1405,8 +1536,8 @@
                     }
                 },
                 {
-                    "name": "DZ_DRAGLEAVE",
-                    "defaultValue": "{ alias: 'dragLeave' }",
+                    "name": "dragLeave",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -1414,6 +1545,7 @@
                     "optional": false,
                     "description": "",
                     "line": 129,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1423,8 +1555,8 @@
                     }
                 },
                 {
-                    "name": "DZ_DRAGOVER",
-                    "defaultValue": "{ alias: 'dragOver' }",
+                    "name": "dragOver",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -1432,6 +1564,7 @@
                     "optional": false,
                     "description": "",
                     "line": 128,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1441,8 +1574,8 @@
                     }
                 },
                 {
-                    "name": "DZ_DRAGSTART",
-                    "defaultValue": "{ alias: 'dragStart' }",
+                    "name": "dragStart",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -1450,6 +1583,7 @@
                     "optional": false,
                     "description": "",
                     "line": 125,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1459,8 +1593,8 @@
                     }
                 },
                 {
-                    "name": "DZ_DROP",
-                    "defaultValue": "{ alias: 'drop' }",
+                    "name": "drop",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -1468,6 +1602,7 @@
                     "optional": false,
                     "description": "",
                     "line": 124,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1477,8 +1612,8 @@
                     }
                 },
                 {
-                    "name": "DZ_ERROR",
-                    "defaultValue": "{ alias: 'error' }",
+                    "name": "error",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, string | Error]",
@@ -1486,6 +1621,7 @@
                     "optional": false,
                     "description": "",
                     "line": 136,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1495,8 +1631,8 @@
                     }
                 },
                 {
-                    "name": "DZ_ERRORMULTIPLE",
-                    "defaultValue": "{ alias: 'errorMultiple' }",
+                    "name": "errorMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile[], string | Error]",
@@ -1504,6 +1640,7 @@
                     "optional": false,
                     "description": "",
                     "line": 137,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1513,8 +1650,8 @@
                     }
                 },
                 {
-                    "name": "DZ_INIT",
-                    "defaultValue": "{ alias: 'init' }",
+                    "name": "init",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone",
@@ -1522,6 +1659,7 @@
                     "optional": false,
                     "description": "",
                     "line": 123,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1531,8 +1669,8 @@
                     }
                 },
                 {
-                    "name": "DZ_MAXFILESEXCEEDED",
-                    "defaultValue": "{ alias: 'maxFilesExceeded' }",
+                    "name": "maxFilesExceeded",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -1540,6 +1678,7 @@
                     "optional": false,
                     "description": "",
                     "line": 151,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1549,8 +1688,8 @@
                     }
                 },
                 {
-                    "name": "DZ_MAXFILESREACHED",
-                    "defaultValue": "{ alias: 'maxFilesReached' }",
+                    "name": "maxFilesReached",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -1558,6 +1697,7 @@
                     "optional": false,
                     "description": "",
                     "line": 152,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1567,8 +1707,8 @@
                     }
                 },
                 {
-                    "name": "DZ_PASTE",
-                    "defaultValue": "{ alias: 'paste' }",
+                    "name": "paste",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DragEvent",
@@ -1576,6 +1716,7 @@
                     "optional": false,
                     "description": "",
                     "line": 130,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1585,8 +1726,8 @@
                     }
                 },
                 {
-                    "name": "DZ_PROCESSING",
-                    "defaultValue": "{ alias: 'processing' }",
+                    "name": "processing",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -1594,6 +1735,7 @@
                     "optional": false,
                     "description": "",
                     "line": 138,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1603,8 +1745,8 @@
                     }
                 },
                 {
-                    "name": "DZ_PROCESSINGMULTIPLE",
-                    "defaultValue": "{ alias: 'processingMultiple' }",
+                    "name": "processingMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -1612,6 +1754,7 @@
                     "optional": false,
                     "description": "",
                     "line": 139,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1621,8 +1764,8 @@
                     }
                 },
                 {
-                    "name": "DZ_QUEUECOMPLETE",
-                    "defaultValue": "{ alias: 'queueComplete' }",
+                    "name": "queueComplete",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "void",
@@ -1630,6 +1773,7 @@
                     "optional": false,
                     "description": "",
                     "line": 153,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1639,8 +1783,8 @@
                     }
                 },
                 {
-                    "name": "DZ_REMOVEDFILE",
-                    "defaultValue": "{ alias: 'removedFile' }",
+                    "name": "removedFile",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile",
@@ -1648,6 +1792,7 @@
                     "optional": false,
                     "description": "",
                     "line": 134,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1657,8 +1802,8 @@
                     }
                 },
                 {
-                    "name": "DZ_RESET",
-                    "defaultValue": "{ alias: 'reset' }",
+                    "name": "reset",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "void",
@@ -1666,6 +1811,7 @@
                     "optional": false,
                     "description": "",
                     "line": 131,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1675,8 +1821,8 @@
                     }
                 },
                 {
-                    "name": "DZ_SENDING",
-                    "defaultValue": "{ alias: 'sending' }",
+                    "name": "sending",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, XMLHttpRequest, FormData]",
@@ -1684,6 +1830,7 @@
                     "optional": false,
                     "description": "",
                     "line": 142,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1693,8 +1840,8 @@
                     }
                 },
                 {
-                    "name": "DZ_SENDINGMULTIPLE",
-                    "defaultValue": "{ alias: 'sendingMultiple' }",
+                    "name": "sendingMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]",
@@ -1702,6 +1849,7 @@
                     "optional": false,
                     "description": "",
                     "line": 143,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1711,8 +1859,8 @@
                     }
                 },
                 {
-                    "name": "DZ_SUCCESS",
-                    "defaultValue": "{ alias: 'success' }",
+                    "name": "success",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, Object | string]",
@@ -1720,6 +1868,7 @@
                     "optional": false,
                     "description": "",
                     "line": 145,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1729,8 +1878,8 @@
                     }
                 },
                 {
-                    "name": "DZ_SUCCESSMULTIPLE",
-                    "defaultValue": "{ alias: 'successMultiple' }",
+                    "name": "successMultiple",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Dropzone.DropzoneFile[]",
@@ -1738,6 +1887,7 @@
                     "optional": false,
                     "description": "",
                     "line": 146,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1747,8 +1897,8 @@
                     }
                 },
                 {
-                    "name": "DZ_THUMBNAIL",
-                    "defaultValue": "{ alias: 'thumbnail' }",
+                    "name": "thumbnail",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, string]",
@@ -1756,6 +1906,7 @@
                     "optional": false,
                     "description": "",
                     "line": 135,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1765,8 +1916,8 @@
                     }
                 },
                 {
-                    "name": "DZ_TOTALUPLOADPROGRESS",
-                    "defaultValue": "{ alias: 'totalUploadProgress' }",
+                    "name": "totalUploadProgress",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[number, number, number]",
@@ -1774,6 +1925,7 @@
                     "optional": false,
                     "description": "",
                     "line": 141,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1783,8 +1935,8 @@
                     }
                 },
                 {
-                    "name": "DZ_UPLOADPROGRESS",
-                    "defaultValue": "{ alias: 'uploadProgress' }",
+                    "name": "uploadProgress",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[Dropzone.DropzoneFile, number, number]",
@@ -1792,6 +1944,7 @@
                     "optional": false,
                     "description": "",
                     "line": 140,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1804,6 +1957,7 @@
             "propertiesClass": [
                 {
                     "name": "directiveRef",
+                    "coverageIgnore": false,
                     "defaultValue": "viewChild(DropzoneDirective)",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1812,12 +1966,14 @@
                     "optional": false,
                     "description": "",
                     "line": 37,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ]
                 }
             ],
             "methodsClass": [],
+            "coverageIgnore": false,
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -1838,7 +1994,24 @@
             ],
             "implements": [
                 "OnInit"
-            ]
+            ],
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "DropzoneDirective",
+                        "type": "directive"
+                    },
+                    {
+                        "name": "DropzoneListeners",
+                        "type": "directive"
+                    },
+                    {
+                        "name": "OnInit",
+                        "type": "interface"
+                    }
+                ]
+            }
         }
     ],
     "modules": [],
@@ -1849,6 +2022,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/lib/dropzone.interfaces.ts",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "unknown",
@@ -1861,9 +2035,12 @@
                 "file": "src/lib/dropzone.interfaces.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "provideDropzoneConfig",
                 "args": [
                     {
                         "name": "config",
@@ -1894,6 +2071,7 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/lib/dropzone.interfaces.ts",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -1908,9 +2086,12 @@
                     "file": "src/lib/dropzone.interfaces.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "provideDropzoneConfig",
                     "args": [
                         {
                             "name": "config",

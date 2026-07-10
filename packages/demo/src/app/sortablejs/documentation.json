@@ -20,6 +20,7 @@
             "inputsClass": [
                 {
                     "name": "cloneFunction",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "CloneFunction<T>",
@@ -35,6 +36,7 @@
                 },
                 {
                     "name": "config",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Options",
@@ -49,8 +51,9 @@
                     "required": false
                 },
                 {
-                    "name": "data",
-                    "defaultValue": "undefined, { alias: 'nxtSortablejs' }",
+                    "name": "nxtSortablejs",
+                    "coverageIgnore": false,
+                    "defaultValue": "undefined",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "SortableData<T>",
@@ -66,6 +69,7 @@
                 },
                 {
                     "name": "sortablejsContainer",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -83,6 +87,7 @@
             "outputsClass": [
                 {
                     "name": "init",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Sortable",
@@ -103,12 +108,30 @@
             "hostListeners": [],
             "propertiesClass": [],
             "methodsClass": [],
+            "coverageIgnore": false,
             "extends": [],
             "implements": [
                 "OnChanges",
                 "OnDestroy",
                 "AfterViewInit"
-            ]
+            ],
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "OnChanges",
+                        "type": "interface"
+                    },
+                    {
+                        "name": "OnDestroy",
+                        "type": "interface"
+                    },
+                    {
+                        "name": "AfterViewInit",
+                        "type": "interface"
+                    }
+                ]
+            }
         }
     ],
     "components": [],
@@ -121,9 +144,12 @@
                 "file": "src/lib/globals.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "provideGlobalSortableOptions",
                 "args": [
                     {
                         "name": "globalOptions",
@@ -151,10 +177,12 @@
                 "name": "CloneFunction",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "coverageIgnore": false,
                 "rawtype": "function",
                 "file": "src/lib/sortablejs.directive.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
                 "kind": 185
             },
@@ -162,10 +190,12 @@
                 "name": "SortableData",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "coverageIgnore": false,
                 "rawtype": "unknown",
                 "file": "src/lib/sortablejs.directive.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
                 "kind": 195
             }
@@ -179,9 +209,12 @@
                     "file": "src/lib/globals.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "provideGlobalSortableOptions",
                     "args": [
                         {
                             "name": "globalOptions",
@@ -212,10 +245,12 @@
                     "name": "CloneFunction",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
+                    "coverageIgnore": false,
                     "rawtype": "function",
                     "file": "src/lib/sortablejs.directive.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
                     "kind": 185
                 },
@@ -223,10 +258,12 @@
                     "name": "SortableData",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
+                    "coverageIgnore": false,
                     "rawtype": "unknown",
                     "file": "src/lib/sortablejs.directive.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
                     "kind": 195
                 }

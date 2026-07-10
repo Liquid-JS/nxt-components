@@ -3,15 +3,16 @@
     "interfaces": [
         {
             "name": "LevelLabels",
-            "id": "interface-LevelLabels-b3bf53d2b0a9e1ab8e0207c39f8d242961d91431b8822f4821f4b37a58f8dae6dde7878085d361cf4f67915f11c2858eba6f7ac8d9a0615ee59b47790fd5d8ca",
+            "id": "interface-LevelLabels-5b4a265617bc7cb727510602e82a1ec16c08725540b2ebe9ba67fa533594e80490594437becc9f495aac065a3e2ec704744949974e087938e9356e013f5c369c",
             "file": "src/lib/utils/interfaces.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
+            "displayName": "LevelLabels",
             "properties": [],
             "indexSignatures": [
                 {
-                    "id": "index-declaration-b3bf53d2b0a9e1ab8e0207c39f8d242961d91431b8822f4821f4b37a58f8dae6dde7878085d361cf4f67915f11c2858eba6f7ac8d9a0615ee59b47790fd5d8ca",
+                    "id": "index-declaration-5b4a265617bc7cb727510602e82a1ec16c08725540b2ebe9ba67fa533594e80490594437becc9f495aac065a3e2ec704744949974e087938e9356e013f5c369c",
                     "args": [
                         {
                             "name": "level",
@@ -22,26 +23,34 @@
                             "deprecationMessage": ""
                         }
                     ],
-                    "returnType": "literal type",
+                    "returnType": "{  }",
                     "line": 1,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
                 }
             ],
             "kind": 182,
             "methods": [],
-            "extends": []
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         }
     ],
     "injectables": [
         {
             "name": "ExpanderService",
-            "id": "injectable-ExpanderService-de67e23c077052248e3de37d122c6c8b90b638298e4ab114d417f2333c5e604e3232de0feb524fb0bf4c791f47b6c930fb6d3a6cf7a96201b7f192a794b77daa",
+            "id": "injectable-ExpanderService-e6008a6fdf0753b1bdd5ea50b55962c7c4615fc4d84cf6d0fc75540b8f1bbbde8224ceb614e1b5d72746cc71e0d2fa2f2b9561e7db20da3e2754b55dbcef753f",
             "file": "src/lib/expander/expander.service.ts",
+            "coverageIgnore": false,
             "properties": [],
             "methods": [
                 {
                     "name": "addItem",
+                    "coverageIgnore": false,
                     "args": [
                         {
                             "name": "item",
@@ -58,6 +67,8 @@
                     "line": 10,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
                     "jsdoctags": [
                         {
                             "name": "item",
@@ -74,6 +85,7 @@
                 },
                 {
                     "name": "collapseTo",
+                    "coverageIgnore": false,
                     "args": [
                         {
                             "name": "level",
@@ -90,6 +102,8 @@
                     "line": 27,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
                     "jsdoctags": [
                         {
                             "name": "level",
@@ -106,6 +120,7 @@
                 },
                 {
                     "name": "expandTo",
+                    "coverageIgnore": false,
                     "args": [
                         {
                             "name": "level",
@@ -122,6 +137,8 @@
                     "line": 18,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
                     "jsdoctags": [
                         {
                             "name": "level",
@@ -138,6 +155,7 @@
                 },
                 {
                     "name": "removeItem",
+                    "coverageIgnore": false,
                     "args": [
                         {
                             "name": "item",
@@ -154,6 +172,8 @@
                     "line": 14,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
                     "jsdoctags": [
                         {
                             "name": "item",
@@ -174,7 +194,17 @@
             "description": "",
             "rawdescription": "\n",
             "extends": [],
-            "type": "injectable"
+            "providedIn": "root",
+            "type": "injectable",
+            "relationships": {
+                "incoming": [
+                    {
+                        "name": "JsonViewComponent",
+                        "type": "component"
+                    }
+                ],
+                "outgoing": []
+            }
         }
     ],
     "guards": [],
@@ -206,11 +236,13 @@
             "templateUrl": [
                 "./json-view.component.html"
             ],
+            "templateVariables": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
                     "name": "data",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "any",
@@ -226,6 +258,7 @@
                 },
                 {
                     "name": "levelLabels",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "LevelLabels",
@@ -241,6 +274,7 @@
                 },
                 {
                     "name": "levelOpen",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -260,6 +294,7 @@
             "methodsClass": [
                 {
                     "name": "collapseTo",
+                    "coverageIgnore": false,
                     "args": [
                         {
                             "name": "level",
@@ -294,6 +329,7 @@
                 },
                 {
                     "name": "expandTo",
+                    "coverageIgnore": false,
                     "args": [
                         {
                             "name": "level",
@@ -328,15 +364,19 @@
                 },
                 {
                     "name": "ngAfterViewChecked",
+                    "coverageIgnore": false,
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
                     "line": 37,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
                 }
             ],
+            "coverageIgnore": false,
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -355,7 +395,24 @@
             "extends": [],
             "implements": [
                 "AfterViewChecked"
-            ]
+            ],
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "JsonViewItemComponent",
+                        "type": "component"
+                    },
+                    {
+                        "name": "ExpanderService",
+                        "type": "injectable"
+                    },
+                    {
+                        "name": "AfterViewChecked",
+                        "type": "interface"
+                    }
+                ]
+            }
         }
     ],
     "modules": [],

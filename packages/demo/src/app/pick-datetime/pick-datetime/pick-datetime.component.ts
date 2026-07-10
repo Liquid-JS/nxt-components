@@ -43,7 +43,7 @@ export class AppPickDatetimeComponent {
             },
             {
                 path: 'select-range',
-                name: 'Select range',
+                name: 'Select range, open as a dialog',
                 include: ['html', 'ts']
             },
             {

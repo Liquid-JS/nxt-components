@@ -5,6 +5,7 @@
             "id": "pipe-GistFilePipe-e943cd33ea18ea65dc3111664e7791d09847b0be06621fc0e9afaa38cdb48a2b5dc72ac93914198e0ccffc216d9191a0eaf5ea5836b7b00b34f8378d4aee6e95",
             "file": "extras/src/gist.ts",
             "type": "pipe",
+            "coverageIgnore": false,
             "deprecated": false,
             "deprecationMessage": "",
             "description": "",
@@ -13,6 +14,7 @@
             "methods": [
                 {
                     "name": "transform",
+                    "coverageIgnore": false,
                     "args": [
                         {
                             "name": "gist",
@@ -37,6 +39,8 @@
                     "line": 8,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
                     "jsdoctags": [
                         {
                             "name": "gist",
@@ -64,65 +68,81 @@
                 }
             ],
             "standalone": false,
-            "ngname": "gistFile"
+            "ngname": "gistFile",
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         }
     ],
     "interfaces": [
         {
             "name": "ChangeStatus",
-            "id": "interface-ChangeStatus-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
+            "id": "interface-ChangeStatus-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
+            "displayName": "ChangeStatus",
             "properties": [
                 {
                     "name": "additions",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 72
+                    "line": 72,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "deletions",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 73
+                    "line": 73,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "total",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 71
+                    "line": 71,
+                    "rawdescription": "\n"
                 }
             ],
             "indexSignatures": [],
             "kind": 172,
             "methods": [],
-            "extends": []
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "Files",
-            "id": "interface-Files-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
+            "id": "interface-Files-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
+            "displayName": "Files",
             "properties": [],
             "indexSignatures": [
                 {
-                    "id": "index-declaration-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
+                    "id": "index-declaration-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
                     "args": [
                         {
                             "name": "fileName",
@@ -136,520 +156,638 @@
                     "returnType": "GistFile",
                     "line": 94,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
                 }
             ],
             "kind": 182,
             "methods": [],
-            "extends": []
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "Gist",
-            "id": "interface-Gist-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
+            "id": "interface-Gist-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
+            "displayName": "Gist",
             "properties": [
                 {
                     "name": "comments",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 112
+                    "line": 112,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "comments_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 114
+                    "line": 114,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "commits_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 101
+                    "line": 101,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "created_at",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Date",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 109
+                    "line": 109,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "description",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 111
+                    "line": 111,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "files",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Files",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 107
+                    "line": 107,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "forks",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "any[]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 116
+                    "line": 116,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "forks_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 100
+                    "line": 100,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "git_pull_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 104
+                    "line": 104,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "git_push_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 105
+                    "line": 105,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "history",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "History[]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 117
+                    "line": 117,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "html_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 106
+                    "line": 106,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "id",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 102
+                    "line": 102,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "node_id",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 103
+                    "line": 103,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "owner",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Owner",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 115
+                    "line": 115,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "public",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "boolean",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 108
+                    "line": 108,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "truncated",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "boolean",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 118
+                    "line": 118,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "updated_at",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Date",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 110
+                    "line": 110,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 99
+                    "line": 99,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "user",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "any",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 113
+                    "line": 113,
+                    "rawdescription": "\n"
                 }
             ],
             "indexSignatures": [],
             "kind": 172,
             "methods": [],
-            "extends": []
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "GistFile",
-            "id": "interface-GistFile-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
+            "id": "interface-GistFile-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
+            "displayName": "GistFile",
             "properties": [
                 {
                     "name": "content",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 91
+                    "line": 91,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "filename",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 85
+                    "line": 85,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "language",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 87
+                    "line": 87,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "raw_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 88
+                    "line": 88,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "size",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 89
+                    "line": 89,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "truncated",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "boolean",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 90
+                    "line": 90,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "type",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 86
+                    "line": 86,
+                    "rawdescription": "\n"
                 }
             ],
             "indexSignatures": [],
             "kind": 172,
             "methods": [],
-            "extends": []
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "GistOptions",
-            "id": "interface-GistOptions-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
+            "id": "interface-GistOptions-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
+            "displayName": "GistOptions",
             "properties": [
                 {
                     "name": "clientId",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 10
+                    "line": 10,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "clientSecret",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 11
+                    "line": 11,
+                    "rawdescription": "\n"
                 }
             ],
             "indexSignatures": [],
             "kind": 172,
             "methods": [],
-            "extends": []
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "HighlightJSOptions",
-            "id": "interface-HighlightJSOptions-d6c60e1d8030dbf4c70ad81259879baeb124fe8d92e289f0d38ef1034bd10db1504b00e981500b74d6e3a8bfd6f9193d3ec704b362170d9b1ccfbd6b6c9fe118",
+            "id": "interface-HighlightJSOptions-a8576e1b98801dce4c7d719cf982fa239e4b03066304d208e4c64b1257762543db8f3cfd4c15066defefaf5bc9ba34ea8a17bf064f92515b6bab45f43903f006",
             "file": "src/lib/highlight.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
+            "displayName": "HighlightJSOptions",
             "properties": [
                 {
                     "name": "coreLibraryLoader",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "function",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 17
+                    "line": 17,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "fullLibraryLoader",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "function",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 18
+                    "line": 18,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "highlightOptions",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Partial<HLJSOptions>",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 14
+                    "line": 14,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "languages",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Record<string | Promise<LanguageFn>>",
+                    "type": "Record<string, () => Promise<LanguageFn>>",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 16
+                    "line": 16,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "lineNumbersLoader",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "function",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 19
+                    "line": 19,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "lineNumbersOptions",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "LineNumbersOptions",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 15
+                    "line": 15,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "themePath",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 20
+                    "line": 20,
+                    "rawdescription": "\n"
                 }
             ],
             "indexSignatures": [],
             "kind": 172,
             "methods": [],
-            "extends": []
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "History",
-            "id": "interface-History-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
+            "id": "interface-History-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
+            "displayName": "History",
             "properties": [
                 {
                     "name": "change_status",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ChangeStatus",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 80
+                    "line": 80,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "committed_at",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Date",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 79
+                    "line": 79,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 81
+                    "line": 81,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "user",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "User",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 77
+                    "line": 77,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "version",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 78
+                    "line": 78,
+                    "rawdescription": "\n"
                 }
             ],
             "indexSignatures": [],
             "kind": 172,
             "methods": [],
-            "extends": []
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "LineNumbersOptions",
-            "id": "interface-LineNumbersOptions-d6c60e1d8030dbf4c70ad81259879baeb124fe8d92e289f0d38ef1034bd10db1504b00e981500b74d6e3a8bfd6f9193d3ec704b362170d9b1ccfbd6b6c9fe118",
+            "id": "interface-LineNumbersOptions-a8576e1b98801dce4c7d719cf982fa239e4b03066304d208e4c64b1257762543db8f3cfd4c15066defefaf5bc9ba34ea8a17bf064f92515b6bab45f43903f006",
             "file": "src/lib/highlight.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
+            "displayName": "LineNumbersOptions",
             "properties": [
                 {
                     "name": "singleLine",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "boolean",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 10
+                    "line": 10,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "startFrom",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 9
+                    "line": 9,
+                    "rawdescription": "\n"
                 }
             ],
             "indexSignatures": [],
@@ -657,395 +795,481 @@
             "description": "<p>Full documentation is available here <a href=\"https://highlightjs.readthedocs.io/en/latest/api.html\">https://highlightjs.readthedocs.io/en/latest/api.html</a></p>\n",
             "rawdescription": "\n\nFull documentation is available here https://highlightjs.readthedocs.io/en/latest/api.html\n",
             "methods": [],
-            "extends": []
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "Owner",
-            "id": "interface-Owner-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
+            "id": "interface-Owner-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
+            "displayName": "Owner",
             "properties": [
                 {
                     "name": "avatar_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 32
+                    "line": 32,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "events_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 43
+                    "line": 43,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "followers_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 36
+                    "line": 36,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "following_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 37
+                    "line": 37,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "gists_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 38
+                    "line": 38,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "gravatar_id",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 33
+                    "line": 33,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "html_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 35
+                    "line": 35,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "id",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 30
+                    "line": 30,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "login",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 29
+                    "line": 29,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "node_id",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 31
+                    "line": 31,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "organizations_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 41
+                    "line": 41,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "received_events_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 44
+                    "line": 44,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "repos_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 42
+                    "line": 42,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "site_admin",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "boolean",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 46
+                    "line": 46,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "starred_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 39
+                    "line": 39,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "subscriptions_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 40
+                    "line": 40,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "type",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 45
+                    "line": 45,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 34
+                    "line": 34,
+                    "rawdescription": "\n"
                 }
             ],
             "indexSignatures": [],
             "kind": 172,
             "methods": [],
-            "extends": []
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "User",
-            "id": "interface-User-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
+            "id": "interface-User-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
+            "displayName": "User",
             "properties": [
                 {
                     "name": "avatar_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 53
+                    "line": 53,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "events_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 64
+                    "line": 64,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "followers_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 57
+                    "line": 57,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "following_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 58
+                    "line": 58,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "gists_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 59
+                    "line": 59,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "gravatar_id",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 54
+                    "line": 54,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "html_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 56
+                    "line": 56,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "id",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 51
+                    "line": 51,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "login",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 50
+                    "line": 50,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "node_id",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 52
+                    "line": 52,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "organizations_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 62
+                    "line": 62,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "received_events_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 65
+                    "line": 65,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "repos_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 63
+                    "line": 63,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "site_admin",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "boolean",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 67
+                    "line": 67,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "starred_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 60
+                    "line": 60,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "subscriptions_url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 61
+                    "line": 61,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "type",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 66
+                    "line": 66,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "url",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 55
+                    "line": 55,
+                    "rawdescription": "\n"
                 }
             ],
             "indexSignatures": [],
             "kind": 172,
             "methods": [],
-            "extends": []
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         }
     ],
     "injectables": [
@@ -1053,9 +1277,11 @@
             "name": "HighlightJS",
             "id": "injectable-HighlightJS-083aa106e1d9ea667b56977793e1d3616956e8dcde3b0751110814d6269cd188aa3764d3271e4463af9d0112a3072b2b309f60cc91313e24a6b97506953e4c99",
             "file": "src/lib/highlight.service.ts",
+            "coverageIgnore": false,
             "properties": [
                 {
                     "name": "hljs",
+                    "coverageIgnore": false,
                     "defaultValue": "this.loader.hljs.value",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1064,6 +1290,7 @@
                     "optional": false,
                     "description": "",
                     "line": 12,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ]
@@ -1075,15 +1302,22 @@
             "description": "",
             "rawdescription": "\n",
             "extends": [],
-            "type": "injectable"
+            "providedIn": "root",
+            "type": "injectable",
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "HighlightLoader",
             "id": "injectable-HighlightLoader-568e1cd7f7499591651501145fb2ecb2b771aa9daf72161f4e766f4fb7137138147c79065a3bc44f5e4af5adbb75435af2e71022c601487ed52c65cdfeaf8929",
             "file": "src/lib/highlight.loader.ts",
+            "coverageIgnore": false,
             "properties": [
                 {
                     "name": "hljs",
+                    "coverageIgnore": false,
                     "defaultValue": "resource({\n        loader: () => this.loadLibrary()\n            .then(async hljs => {\n                if (this.options?.lineNumbersLoader) {\n                    const plugin = await this.options.lineNumbersLoader();\n                    (hljs as any).lineNumbersBlock = plugin.activateLineNumbers(this.document)\n                }\n\n                hljs.configure({\n                    __emitter: TokenTreeEmitter\n                })\n\n                if (this.options?.highlightOptions)\n                    hljs.configure(this.options.highlightOptions)\n\n                return hljs\n            })\n            .finally(this._t)\n    }).asReadonly()",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1092,6 +1326,7 @@
                     "optional": false,
                     "description": "",
                     "line": 17,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ]
@@ -1100,6 +1335,7 @@
             "methods": [
                 {
                     "name": "setTheme",
+                    "coverageIgnore": false,
                     "args": [
                         {
                             "name": "path",
@@ -1143,19 +1379,27 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 37
+                "line": 37,
+                "rawdescription": "\n"
             },
             "extends": [],
-            "type": "injectable"
+            "providedIn": "root",
+            "type": "injectable",
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "HighlightLoaderStub",
-            "id": "injectable-HighlightLoaderStub-a7f0108229d4d8862be01c9fee2ed1bc5b1667ffed7bcee49b28a78a37893eb60a8a83b4023fa1b0f3bfd843ec2b1a31684b4667cc54852ef6856d85f9dbb47d",
+            "id": "injectable-HighlightLoaderStub-c9a63001c98f69e8e0a29b16dcffddabee53b89db80c3e94c73296125a7821930ba258b276f67135571099e5f27131d3c89208ace511ea2bedb161c9a6884871",
             "file": "src/test-helpers.ts",
+            "coverageIgnore": false,
             "properties": [
                 {
                     "name": "hljs",
-                    "defaultValue": "resource({\n        loader: () => this.ready\n    }).asReadonly()",
+                    "coverageIgnore": false,
+                    "defaultValue": "resource({\r\n        loader: () => this.ready\r\n    }).asReadonly()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -1163,20 +1407,23 @@
                     "optional": false,
                     "description": "",
                     "line": 18,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ]
                 },
                 {
                     "name": "ready",
-                    "defaultValue": "new Promise<HLJSApi>((resolve) => {\n        (hljs as any).lineNumbersBlock = activateLineNumbers(document)\n        resolve(hljs)\n    })",
+                    "coverageIgnore": false,
+                    "defaultValue": "new Promise<HLJSApi>((resolve) => {\r\n        (hljs as any).lineNumbersBlock = activateLineNumbers(document)\r\n        resolve(hljs)\r\n    })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 13,
+                    "rawdescription": "\n"
                 }
             ],
             "methods": [],
@@ -1185,7 +1432,12 @@
             "description": "",
             "rawdescription": "\n",
             "extends": [],
-            "type": "injectable"
+            "providedIn": "root",
+            "type": "injectable",
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         }
     ],
     "guards": [],
@@ -1210,8 +1462,9 @@
             "standalone": false,
             "inputsClass": [
                 {
-                    "name": "code",
-                    "defaultValue": "undefined, { alias: 'nxtHighlightAuto' }",
+                    "name": "nxtHighlightAuto",
+                    "coverageIgnore": false,
+                    "defaultValue": "undefined",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -1227,6 +1480,7 @@
                 },
                 {
                     "name": "languages",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string[]",
@@ -1244,6 +1498,7 @@
             "outputsClass": [
                 {
                     "name": "highlighted",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "AutoHighlightResult",
@@ -1265,6 +1520,7 @@
             "propertiesClass": [
                 {
                     "name": "highlightResult",
+                    "coverageIgnore": false,
                     "defaultValue": "signal<AutoHighlightResult | undefined>(undefined)",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1283,6 +1539,7 @@
                 },
                 {
                     "name": "code",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "InputSignal<string | undefined>",
@@ -1301,6 +1558,7 @@
                 },
                 {
                     "name": "highlighted",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "OutputEmitterRef<HighlightResult | AutoHighlightResult | undefined>",
@@ -1319,6 +1577,7 @@
                 },
                 {
                     "name": "hljs",
+                    "coverageIgnore": false,
                     "defaultValue": "inject(HighlightJS)",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1327,6 +1586,7 @@
                     "optional": false,
                     "description": "",
                     "line": 19,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         124,
                         148
@@ -1339,6 +1599,7 @@
             "methodsClass": [
                 {
                     "name": "highlightElement",
+                    "coverageIgnore": false,
                     "args": [
                         {
                             "name": "code",
@@ -1355,6 +1616,8 @@
                     "line": 41,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
                     "modifierKind": [
                         124
                     ],
@@ -1376,9 +1639,19 @@
                     }
                 }
             ],
+            "coverageIgnore": false,
             "extends": [
                 "HighlightBase"
-            ]
+            ],
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "HighlightBase",
+                        "type": "directive"
+                    }
+                ]
+            }
         },
         {
             "name": "HighlightBase",
@@ -1399,6 +1672,7 @@
             "propertiesClass": [
                 {
                     "name": "code",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "InputSignal<string | undefined>",
@@ -1414,6 +1688,7 @@
                 },
                 {
                     "name": "highlighted",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "OutputEmitterRef<HighlightResult | AutoHighlightResult | undefined>",
@@ -1429,6 +1704,7 @@
                 },
                 {
                     "name": "highlightResult",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "WritableSignal<HighlightResult | AutoHighlightResult | undefined>",
@@ -1444,6 +1720,7 @@
                 },
                 {
                     "name": "hljs",
+                    "coverageIgnore": false,
                     "defaultValue": "inject(HighlightJS)",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1452,6 +1729,7 @@
                     "optional": false,
                     "description": "",
                     "line": 19,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         124,
                         148
@@ -1461,6 +1739,7 @@
             "methodsClass": [
                 {
                     "name": "highlightElement",
+                    "coverageIgnore": false,
                     "args": [
                         {
                             "name": "code",
@@ -1477,6 +1756,8 @@
                     "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
                     "modifierKind": [
                         124,
                         128
@@ -1496,6 +1777,7 @@
                     ]
                 }
             ],
+            "coverageIgnore": false,
             "extends": [],
             "constructorObj": {
                 "name": "constructor",
@@ -1503,7 +1785,21 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 37
+                "line": 37,
+                "rawdescription": "\n"
+            },
+            "relationships": {
+                "incoming": [
+                    {
+                        "name": "HighlightAutoDirective",
+                        "type": "directive"
+                    },
+                    {
+                        "name": "HighlightDirective",
+                        "type": "directive"
+                    }
+                ],
+                "outgoing": []
             }
         },
         {
@@ -1524,8 +1820,9 @@
             "standalone": false,
             "inputsClass": [
                 {
-                    "name": "code",
-                    "defaultValue": "undefined, { alias: 'nxtHighlight' }",
+                    "name": "nxtHighlight",
+                    "coverageIgnore": false,
+                    "defaultValue": "undefined",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -1541,10 +1838,11 @@
                 },
                 {
                     "name": "ignoreIllegals",
-                    "defaultValue": "undefined, {        transform: booleanAttribute    }",
+                    "coverageIgnore": false,
+                    "defaultValue": "undefined",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "boolean, unknown",
+                    "type": "boolean",
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>An optional flag, when set to true it forces highlighting to finish even in case of detecting\nillegal syntax for the language instead of throwing an exception</p>\n",
@@ -1557,6 +1855,7 @@
                 },
                 {
                     "name": "language",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -1574,6 +1873,7 @@
             "outputsClass": [
                 {
                     "name": "highlighted",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "HighlightResult",
@@ -1595,6 +1895,7 @@
             "propertiesClass": [
                 {
                     "name": "highlightResult",
+                    "coverageIgnore": false,
                     "defaultValue": "signal<HighlightResult | undefined>(undefined)",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1613,6 +1914,7 @@
                 },
                 {
                     "name": "code",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "InputSignal<string | undefined>",
@@ -1631,6 +1933,7 @@
                 },
                 {
                     "name": "highlighted",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "OutputEmitterRef<HighlightResult | AutoHighlightResult | undefined>",
@@ -1649,6 +1952,7 @@
                 },
                 {
                     "name": "hljs",
+                    "coverageIgnore": false,
                     "defaultValue": "inject(HighlightJS)",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1657,6 +1961,7 @@
                     "optional": false,
                     "description": "",
                     "line": 19,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         124,
                         148
@@ -1669,6 +1974,7 @@
             "methodsClass": [
                 {
                     "name": "highlightElement",
+                    "coverageIgnore": false,
                     "args": [
                         {
                             "name": "code",
@@ -1685,6 +1991,8 @@
                     "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
                     "jsdoctags": [
                         {
                             "name": "code",
@@ -1703,9 +2011,19 @@
                     }
                 }
             ],
+            "coverageIgnore": false,
             "extends": [
                 "HighlightBase"
-            ]
+            ],
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "HighlightBase",
+                        "type": "directive"
+                    }
+                ]
+            }
         },
         {
             "name": "HighlightLineNumbersDirective",
@@ -1721,14 +2039,16 @@
             "inputsClass": [
                 {
                     "name": "singleLine",
-                    "defaultValue": "this.options?.singleLine, {        transform: booleanAttribute    }",
+                    "coverageIgnore": false,
+                    "defaultValue": "this.options?.singleLine",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "boolean | undefined, unknown",
+                    "type": "boolean | undefined",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 26,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1736,14 +2056,16 @@
                 },
                 {
                     "name": "startFrom",
-                    "defaultValue": "this.options?.startFrom, {        transform: numberAttribute    }",
+                    "coverageIgnore": false,
+                    "defaultValue": "this.options?.startFrom",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "number | undefined, unknown",
+                    "type": "number | undefined",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 22,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ],
@@ -1757,6 +2079,7 @@
             "hostListeners": [],
             "propertiesClass": [],
             "methodsClass": [],
+            "coverageIgnore": false,
             "extends": [],
             "constructorObj": {
                 "name": "constructor",
@@ -1764,7 +2087,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 28
+                "line": 28,
+                "rawdescription": "\n"
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
             }
         }
     ],
@@ -1777,11 +2105,12 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "extras/src/code-file-location.ts",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "unknown",
-                "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\n    providedIn: 'root',\n    factory: CODE_FILE_LOCATION_FACTORY\n})",
-                "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\nUsed to handle server-side rendering and to stub out during unit tests.",
+                "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\r\n    providedIn: 'root',\r\n    factory: CODE_FILE_LOCATION_FACTORY\r\n})",
+                "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\r\nUsed to handle server-side rendering and to stub out during unit tests.",
                 "description": "<p>Injection token used to provide the current location to <code>codeFromUrl</code> pipe.\nUsed to handle server-side rendering and to stub out during unit tests.</p>\n"
             }
         ],
@@ -1791,9 +2120,12 @@
                 "file": "line-numbers/src/line-numbers-lib.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "activateLineNumbers",
                 "args": [
                     {
                         "name": "document",
@@ -1819,9 +2151,12 @@
                 "file": "src/test-helpers.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "afterTimeout",
                 "args": [
                     {
                         "name": "timeout",
@@ -1848,9 +2183,12 @@
                 "file": "extras/src/code-loader.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "Code resource by URL",
                 "description": "<p>Code resource by URL</p>\n",
+                "displayName": "fileResource",
                 "args": [
                     {
                         "name": "url",
@@ -1904,9 +2242,12 @@
                 "file": "extras/src/code-loader.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "Gist resource by id",
                 "description": "<p>Gist resource by id</p>\n",
+                "displayName": "gistResource",
                 "args": [
                     {
                         "name": "id",
@@ -1962,9 +2303,12 @@
                 "file": "extras/src/gist.model.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "provideGistOptions",
                 "args": [
                     {
                         "name": "options",
@@ -1991,9 +2335,12 @@
                 "file": "src/lib/highlight.model.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "provideHighlightOptions",
                 "args": [
                     {
                         "name": "options",
@@ -2024,11 +2371,12 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "extras/src/code-file-location.ts",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
-                    "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\n    providedIn: 'root',\n    factory: CODE_FILE_LOCATION_FACTORY\n})",
-                    "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\nUsed to handle server-side rendering and to stub out during unit tests.",
+                    "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\r\n    providedIn: 'root',\r\n    factory: CODE_FILE_LOCATION_FACTORY\r\n})",
+                    "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\r\nUsed to handle server-side rendering and to stub out during unit tests.",
                     "description": "<p>Injection token used to provide the current location to <code>codeFromUrl</code> pipe.\nUsed to handle server-side rendering and to stub out during unit tests.</p>\n"
                 }
             ]
@@ -2040,9 +2388,12 @@
                     "file": "line-numbers/src/line-numbers-lib.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "activateLineNumbers",
                     "args": [
                         {
                             "name": "document",
@@ -2070,9 +2421,12 @@
                     "file": "src/test-helpers.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "afterTimeout",
                     "args": [
                         {
                             "name": "timeout",
@@ -2101,9 +2455,12 @@
                     "file": "extras/src/code-loader.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "Code resource by URL",
                     "description": "<p>Code resource by URL</p>\n",
+                    "displayName": "fileResource",
                     "args": [
                         {
                             "name": "url",
@@ -2157,9 +2514,12 @@
                     "file": "extras/src/code-loader.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "Gist resource by id",
                     "description": "<p>Gist resource by id</p>\n",
+                    "displayName": "gistResource",
                     "args": [
                         {
                             "name": "id",
@@ -2217,9 +2577,12 @@
                     "file": "extras/src/gist.model.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "provideGistOptions",
                     "args": [
                         {
                             "name": "options",
@@ -2248,9 +2611,12 @@
                     "file": "src/lib/highlight.model.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "provideHighlightOptions",
                     "args": [
                         {
                             "name": "options",

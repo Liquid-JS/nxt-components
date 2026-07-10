@@ -3,101 +3,125 @@
     "interfaces": [
         {
             "name": "InputChangeEvent",
-            "id": "interface-InputChangeEvent-97fdf6385dabb714574ca4f268bd7574f8941d5bf9304b7aba5453b132ff8b99878d066e74c9f204a63c75fc634e480082887750f99d3e105b3b2736e5af6201",
+            "id": "interface-InputChangeEvent-bbc7d3fcbaa56148786317c7607129444caf9da15d343fcbe35fe53a9ad9a2317dbd13068836693362d47ff6eee15acc585d9db9d252495120014558ac870ff2",
             "file": "src/util/types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
+            "displayName": "InputChangeEvent",
             "properties": [
                 {
                     "name": "color",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 53
+                    "line": 53,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "input",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 50
+                    "line": 50,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "valid",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "boolean",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 51
+                    "line": 51,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "value",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number | string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 52
+                    "line": 52,
+                    "rawdescription": "\n"
                 }
             ],
             "indexSignatures": [],
             "kind": 172,
             "methods": [],
-            "extends": []
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "SliderChangeEvent",
-            "id": "interface-SliderChangeEvent-97fdf6385dabb714574ca4f268bd7574f8941d5bf9304b7aba5453b132ff8b99878d066e74c9f204a63c75fc634e480082887750f99d3e105b3b2736e5af6201",
+            "id": "interface-SliderChangeEvent-bbc7d3fcbaa56148786317c7607129444caf9da15d343fcbe35fe53a9ad9a2317dbd13068836693362d47ff6eee15acc585d9db9d252495120014558ac870ff2",
             "file": "src/util/types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
+            "displayName": "SliderChangeEvent",
             "properties": [
                 {
                     "name": "color",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 59
+                    "line": 59,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "slider",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 57
+                    "line": 57,
+                    "rawdescription": "\n"
                 },
                 {
                     "name": "value",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number | string",
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 58
+                    "line": 58,
+                    "rawdescription": "\n"
                 }
             ],
             "indexSignatures": [],
             "kind": 172,
             "methods": [],
-            "extends": []
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         }
     ],
     "injectables": [],
@@ -106,11 +130,13 @@
     "classes": [
         {
             "name": "Cmyk",
-            "id": "class-Cmyk-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
+            "id": "class-Cmyk-ad5ce9a19337403135fc341d01ac2c77b4f3e7e7f4583698c4ce5b5cfc4d11deaaeb658033e7530d6d79475db6d46edd46fee76582309ca95703b176bcd510a2",
             "file": "src/util/formats.ts",
+            "coverageIgnore": false,
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
+            "displayName": "Cmyk",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -168,6 +194,7 @@
                     }
                 ],
                 "line": 1,
+                "rawdescription": "\n",
                 "jsdoctags": [
                     {
                         "name": "c",
@@ -243,6 +270,7 @@
             "properties": [
                 {
                     "name": "a",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -250,12 +278,14 @@
                     "optional": false,
                     "description": "",
                     "line": 7,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
                 },
                 {
                     "name": "c",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -263,12 +293,14 @@
                     "optional": false,
                     "description": "",
                     "line": 3,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
                 },
                 {
                     "name": "k",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -276,12 +308,14 @@
                     "optional": false,
                     "description": "",
                     "line": 6,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
                 },
                 {
                     "name": "m",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -289,12 +323,14 @@
                     "optional": false,
                     "description": "",
                     "line": 4,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
                 },
                 {
                     "name": "y",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -302,6 +338,7 @@
                     "optional": false,
                     "description": "",
                     "line": 5,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
@@ -311,15 +348,21 @@
             "indexSignatures": [],
             "extends": [],
             "hostBindings": [],
-            "hostListeners": []
+            "hostListeners": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "Hsla",
-            "id": "class-Hsla-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
+            "id": "class-Hsla-ad5ce9a19337403135fc341d01ac2c77b4f3e7e7f4583698c4ce5b5cfc4d11deaaeb658033e7530d6d79475db6d46edd46fee76582309ca95703b176bcd510a2",
             "file": "src/util/formats.ts",
+            "coverageIgnore": false,
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
+            "displayName": "Hsla",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -369,6 +412,7 @@
                     }
                 ],
                 "line": 13,
+                "rawdescription": "\n",
                 "jsdoctags": [
                     {
                         "name": "h",
@@ -433,6 +477,7 @@
             "properties": [
                 {
                     "name": "a",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -440,12 +485,14 @@
                     "optional": false,
                     "description": "",
                     "line": 18,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
                 },
                 {
                     "name": "h",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -453,12 +500,14 @@
                     "optional": false,
                     "description": "",
                     "line": 15,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
                 },
                 {
                     "name": "l",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -466,12 +515,14 @@
                     "optional": false,
                     "description": "",
                     "line": 17,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
                 },
                 {
                     "name": "s",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -479,6 +530,7 @@
                     "optional": false,
                     "description": "",
                     "line": 16,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
@@ -488,15 +540,21 @@
             "indexSignatures": [],
             "extends": [],
             "hostBindings": [],
-            "hostListeners": []
+            "hostListeners": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "Hsva",
-            "id": "class-Hsva-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
+            "id": "class-Hsva-ad5ce9a19337403135fc341d01ac2c77b4f3e7e7f4583698c4ce5b5cfc4d11deaaeb658033e7530d6d79475db6d46edd46fee76582309ca95703b176bcd510a2",
             "file": "src/util/formats.ts",
+            "coverageIgnore": false,
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
+            "displayName": "Hsva",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -546,6 +604,7 @@
                     }
                 ],
                 "line": 24,
+                "rawdescription": "\n",
                 "jsdoctags": [
                     {
                         "name": "h",
@@ -610,6 +669,7 @@
             "properties": [
                 {
                     "name": "a",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -617,12 +677,14 @@
                     "optional": false,
                     "description": "",
                     "line": 29,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
                 },
                 {
                     "name": "h",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -630,12 +692,14 @@
                     "optional": false,
                     "description": "",
                     "line": 26,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
                 },
                 {
                     "name": "s",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -643,12 +707,14 @@
                     "optional": false,
                     "description": "",
                     "line": 27,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
                 },
                 {
                     "name": "v",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -656,6 +722,7 @@
                     "optional": false,
                     "description": "",
                     "line": 28,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
@@ -665,15 +732,21 @@
             "indexSignatures": [],
             "extends": [],
             "hostBindings": [],
-            "hostListeners": []
+            "hostListeners": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         },
         {
             "name": "Rgba",
-            "id": "class-Rgba-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
+            "id": "class-Rgba-ad5ce9a19337403135fc341d01ac2c77b4f3e7e7f4583698c4ce5b5cfc4d11deaaeb658033e7530d6d79475db6d46edd46fee76582309ca95703b176bcd510a2",
             "file": "src/util/formats.ts",
+            "coverageIgnore": false,
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
+            "displayName": "Rgba",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -723,6 +796,7 @@
                     }
                 ],
                 "line": 35,
+                "rawdescription": "\n",
                 "jsdoctags": [
                     {
                         "name": "r",
@@ -787,6 +861,7 @@
             "properties": [
                 {
                     "name": "a",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -794,12 +869,14 @@
                     "optional": false,
                     "description": "",
                     "line": 40,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
                 },
                 {
                     "name": "b",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -807,12 +884,14 @@
                     "optional": false,
                     "description": "",
                     "line": 39,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
                 },
                 {
                     "name": "g",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -820,12 +899,14 @@
                     "optional": false,
                     "description": "",
                     "line": 38,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
                 },
                 {
                     "name": "r",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -833,6 +914,7 @@
                     "optional": false,
                     "description": "",
                     "line": 37,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         125
                     ]
@@ -842,13 +924,17 @@
             "indexSignatures": [],
             "extends": [],
             "hostBindings": [],
-            "hostListeners": []
+            "hostListeners": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
         }
     ],
     "directives": [
         {
             "name": "ColorPickerDirective",
-            "id": "directive-ColorPickerDirective-d734c7d5ea0b17d4fe61aa9f4a1b5d0908b857ad13ab49c3f82834ed302d5c56951710e81045936fbc1d3edba01f1216ca41d42b25d21b852854ffe51de3c10b",
+            "id": "directive-ColorPickerDirective-5bbd7b641b8c9f1c4edc8bc30b87afdbc658b5cbeabf8b56841ade911c5825a59e40c6db244bf40141681885b3449f35b43170af6c65d6fe5b1c39b59008161e",
             "file": "src/lib/color-picker.directive.ts",
             "type": "directive",
             "description": "",
@@ -860,8 +946,9 @@
             "standalone": false,
             "inputsClass": [
                 {
-                    "name": "_nxtColor",
-                    "defaultValue": "undefined, { alias: 'nxtColor' }",
+                    "name": "nxtColor",
+                    "coverageIgnore": false,
+                    "defaultValue": "undefined",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string | undefined",
@@ -877,6 +964,7 @@
                 },
                 {
                     "name": "alphaChannel",
+                    "coverageIgnore": false,
                     "defaultValue": "AlphaChannelEnum.enabled",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -893,6 +981,7 @@
                 },
                 {
                     "name": "cancelButton",
+                    "coverageIgnore": false,
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -909,6 +998,7 @@
                 },
                 {
                     "name": "closeClickOutside",
+                    "coverageIgnore": false,
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -925,6 +1015,7 @@
                 },
                 {
                     "name": "cmykEnabled",
+                    "coverageIgnore": false,
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -941,6 +1032,7 @@
                 },
                 {
                     "name": "dialogDisplay",
+                    "coverageIgnore": false,
                     "defaultValue": "DialogDisplayEnum.popup",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -957,6 +1049,7 @@
                 },
                 {
                     "name": "disabled",
+                    "coverageIgnore": false,
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -973,6 +1066,7 @@
                 },
                 {
                     "name": "disableInput",
+                    "coverageIgnore": false,
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -989,6 +1083,7 @@
                 },
                 {
                     "name": "fallbackColor",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -1004,6 +1099,7 @@
                 },
                 {
                     "name": "height",
+                    "coverageIgnore": false,
                     "defaultValue": "'auto'",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1020,6 +1116,7 @@
                 },
                 {
                     "name": "ignoredElements",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "any[]",
@@ -1035,6 +1132,7 @@
                 },
                 {
                     "name": "maxPresetColors",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
@@ -1050,6 +1148,7 @@
                 },
                 {
                     "name": "mode",
+                    "coverageIgnore": false,
                     "defaultValue": "'color'",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1066,6 +1165,7 @@
                 },
                 {
                     "name": "okButton",
+                    "coverageIgnore": false,
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1082,6 +1182,7 @@
                 },
                 {
                     "name": "outputFormat",
+                    "coverageIgnore": false,
                     "defaultValue": "OutputFormatEnum.auto",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1098,6 +1199,7 @@
                 },
                 {
                     "name": "position",
+                    "coverageIgnore": false,
                     "defaultValue": "DialogPositionEnum.auto",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1114,6 +1216,7 @@
                 },
                 {
                     "name": "positionOffset",
+                    "coverageIgnore": false,
                     "defaultValue": "0",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1130,6 +1233,7 @@
                 },
                 {
                     "name": "presetColors",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string[]",
@@ -1145,6 +1249,7 @@
                 },
                 {
                     "name": "presetColorsEditable",
+                    "coverageIgnore": false,
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1161,6 +1266,7 @@
                 },
                 {
                     "name": "presetLabel",
+                    "coverageIgnore": false,
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1177,6 +1283,7 @@
                 },
                 {
                     "name": "saveClickOutside",
+                    "coverageIgnore": false,
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1193,6 +1300,7 @@
                 },
                 {
                     "name": "toggle",
+                    "coverageIgnore": false,
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1209,6 +1317,7 @@
                 },
                 {
                     "name": "useRootViewContainer",
+                    "coverageIgnore": false,
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1225,6 +1334,7 @@
                 },
                 {
                     "name": "width",
+                    "coverageIgnore": false,
                     "defaultValue": "'230px'",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -1243,6 +1353,7 @@
             "outputsClass": [
                 {
                     "name": "close",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string | undefined",
@@ -1258,6 +1369,7 @@
                 },
                 {
                     "name": "cmykColorChange",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -1273,6 +1385,7 @@
                 },
                 {
                     "name": "colorSelect",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -1288,6 +1401,7 @@
                 },
                 {
                     "name": "colorSelectCancel",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "void",
@@ -1303,6 +1417,7 @@
                 },
                 {
                     "name": "inputChange",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "InputChangeEvent",
@@ -1318,6 +1433,7 @@
                 },
                 {
                     "name": "nxtColorChange",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -1333,6 +1449,7 @@
                 },
                 {
                     "name": "open",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string | undefined",
@@ -1348,6 +1465,7 @@
                 },
                 {
                     "name": "presetColorsChange",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string[]",
@@ -1363,6 +1481,7 @@
                 },
                 {
                     "name": "sliderChange",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "SliderChangeEvent",
@@ -1378,6 +1497,7 @@
                 },
                 {
                     "name": "sliderDragEnd",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "SliderChangeEvent",
@@ -1393,6 +1513,7 @@
                 },
                 {
                     "name": "sliderDragStart",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "SliderChangeEvent",
@@ -1408,6 +1529,7 @@
                 },
                 {
                     "name": "toggleChange",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "boolean",
@@ -1429,7 +1551,8 @@
             "propertiesClass": [
                 {
                     "name": "nxtColor",
-                    "defaultValue": "linkedSignal({\n        source: () => this._nxtColor(),\n        computation: v => v\n    })",
+                    "coverageIgnore": false,
+                    "defaultValue": "linkedSignal({\r\n        source: () => this._nxtColor(),\r\n        computation: v => v\r\n    })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -1437,6 +1560,7 @@
                     "optional": false,
                     "description": "",
                     "line": 82,
+                    "rawdescription": "\n",
                     "modifierKind": [
                         148
                     ]
@@ -1445,26 +1569,33 @@
             "methodsClass": [
                 {
                     "name": "closeDialog",
+                    "coverageIgnore": false,
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
                     "line": 278,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
                 },
                 {
                     "name": "openDialog",
+                    "coverageIgnore": false,
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
                     "line": 265,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": ""
                 },
                 {
                     "name": "textColorMode",
+                    "coverageIgnore": false,
                     "args": [
                         {
                             "name": "bg",
@@ -1496,8 +1627,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 10684,
-                                "end": 10686,
+                                "pos": 10970,
+                                "end": 10972,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1511,8 +1642,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "new Rgba(1, 1, 1, 1, true)",
                             "tagName": {
-                                "pos": 10678,
-                                "end": 10683,
+                                "pos": 10964,
+                                "end": 10969,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1523,8 +1654,8 @@
                         },
                         {
                             "name": {
-                                "pos": 10778,
-                                "end": 10780,
+                                "pos": 11065,
+                                "end": 11067,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1538,8 +1669,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "this.dialog?.rgbaText",
                             "tagName": {
-                                "pos": 10772,
-                                "end": 10777,
+                                "pos": 11059,
+                                "end": 11064,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1550,8 +1681,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 10843,
-                                "end": 10850,
+                                "pos": 11131,
+                                "end": 11138,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1563,11 +1694,25 @@
                     ]
                 }
             ],
+            "coverageIgnore": false,
             "extends": [],
             "implements": [
                 "OnChanges",
                 "OnDestroy"
-            ]
+            ],
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": "OnChanges",
+                        "type": "interface"
+                    },
+                    {
+                        "name": "OnDestroy",
+                        "type": "interface"
+                    }
+                ]
+            }
         }
     ],
     "components": [],
@@ -1579,6 +1724,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/util/types.ts",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "unknown",
@@ -1591,9 +1737,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "calculateContrast",
                 "args": [
                     {
                         "name": "foreground",
@@ -1634,9 +1783,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "calculateLuminance",
                 "args": [
                     {
                         "name": "color",
@@ -1662,9 +1814,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "calculateMinimumAlpha",
                 "args": [
                     {
                         "name": "foreground",
@@ -1720,9 +1875,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "clamp",
                 "args": [
                     {
                         "name": "val",
@@ -1778,9 +1936,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "cmykToRgb",
                 "args": [
                     {
                         "name": "cmyk",
@@ -1807,9 +1968,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "compositeAlpha",
                 "args": [
                     {
                         "name": "foregroundAlpha",
@@ -1850,9 +2014,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "compositeColors",
                 "args": [
                     {
                         "name": "foreground",
@@ -1893,9 +2060,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "compositeComponent",
                 "args": [
                     {
                         "name": "fgC",
@@ -1981,9 +2151,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "denormalizeCMYK",
                 "args": [
                     {
                         "name": "cmyk",
@@ -2010,9 +2183,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "denormalizeHSLA",
                 "args": [
                     {
                         "name": "hsla",
@@ -2038,9 +2214,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "denormalizeHSVA",
                 "args": [
                     {
                         "name": "hsva",
@@ -2066,9 +2245,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "denormalizeRGBA",
                 "args": [
                     {
                         "name": "rgba",
@@ -2094,9 +2276,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "formatCmyk",
                 "args": [
                     {
                         "name": "cmyk",
@@ -2137,9 +2322,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "formatOutput",
                 "args": [
                     {
                         "name": "hsva",
@@ -2197,9 +2385,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "hslaToHsva",
                 "args": [
                     {
                         "name": "hsla",
@@ -2225,9 +2416,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "hsvaToHsla",
                 "args": [
                     {
                         "name": "hsva",
@@ -2253,9 +2447,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "hsvaToRgba",
                 "args": [
                     {
                         "name": "hsva",
@@ -2281,9 +2478,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "normalizeCMYK",
                 "args": [
                     {
                         "name": "cmyk",
@@ -2310,9 +2510,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "normalizeHSLA",
                 "args": [
                     {
                         "name": "hsla",
@@ -2338,9 +2541,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "normalizeHSVA",
                 "args": [
                     {
                         "name": "hsva",
@@ -2366,9 +2572,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "normalizeRGBA",
                 "args": [
                     {
                         "name": "rgba",
@@ -2394,9 +2603,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "rgbaToCmyk",
                 "args": [
                     {
                         "name": "rgba",
@@ -2422,9 +2634,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "rgbaToHex",
                 "args": [
                     {
                         "name": "rgba",
@@ -2467,9 +2682,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "rgbaToHsva",
                 "args": [
                     {
                         "name": "rgba",
@@ -2495,9 +2713,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "stringToCmyk",
                 "args": [
                     {
                         "name": "colorString",
@@ -2542,9 +2763,12 @@
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
+                "coverageIgnore": false,
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
+                "displayName": "stringToHsva",
                 "args": [
                     {
                         "name": "colorString",
@@ -2590,10 +2814,12 @@
                 "name": "AlphaChannel",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "coverageIgnore": false,
                 "rawtype": " `${AlphaChannelEnum}`",
                 "file": "src/util/types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
                 "kind": 204
             },
@@ -2601,10 +2827,12 @@
                 "name": "ColorFormat",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "coverageIgnore": false,
                 "rawtype": " `${ColorFormatEnum}`",
                 "file": "src/util/types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
                 "kind": 204
             },
@@ -2612,10 +2840,12 @@
                 "name": "ColorMode",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "coverageIgnore": false,
                 "rawtype": "\"color\" | \"c\" | \"1\" | \"grayscale\" | \"g\" | \"2\" | \"presets\" | \"p\" | \"3\"",
                 "file": "src/util/types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
                 "kind": 193
             },
@@ -2623,10 +2853,12 @@
                 "name": "DialogDisplay",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "coverageIgnore": false,
                 "rawtype": " `${DialogDisplayEnum}`",
                 "file": "src/util/types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
                 "kind": 204
             },
@@ -2634,10 +2866,12 @@
                 "name": "DialogPosition",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "coverageIgnore": false,
                 "rawtype": " `${DialogPositionEnum}`",
                 "file": "src/util/types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
                 "kind": 204
             },
@@ -2645,10 +2879,12 @@
                 "name": "OutputFormat",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "coverageIgnore": false,
                 "rawtype": " `${OutputFormatEnum}`",
                 "file": "src/util/types.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
                 "kind": 204
             }
@@ -2686,6 +2922,7 @@
                 "subtype": "enum",
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
                 "file": "src/util/types.ts"
             },
@@ -2721,6 +2958,7 @@
                 "subtype": "enum",
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
                 "file": "src/util/types.ts"
             },
@@ -2744,6 +2982,7 @@
                 "subtype": "enum",
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
                 "file": "src/util/types.ts"
             },
@@ -2785,6 +3024,7 @@
                 "subtype": "enum",
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
                 "file": "src/util/types.ts"
             },
@@ -2820,6 +3060,7 @@
                 "subtype": "enum",
                 "deprecated": false,
                 "deprecationMessage": "",
+                "rawdescription": "",
                 "description": "",
                 "file": "src/util/types.ts"
             }
@@ -2831,6 +3072,7 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/util/types.ts",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -2845,9 +3087,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "calculateContrast",
                     "args": [
                         {
                             "name": "foreground",
@@ -2888,9 +3133,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "calculateLuminance",
                     "args": [
                         {
                             "name": "color",
@@ -2916,9 +3164,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "calculateMinimumAlpha",
                     "args": [
                         {
                             "name": "foreground",
@@ -2974,9 +3225,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "clamp",
                     "args": [
                         {
                             "name": "val",
@@ -3032,9 +3286,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "cmykToRgb",
                     "args": [
                         {
                             "name": "cmyk",
@@ -3061,9 +3318,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "compositeAlpha",
                     "args": [
                         {
                             "name": "foregroundAlpha",
@@ -3104,9 +3364,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "compositeColors",
                     "args": [
                         {
                             "name": "foreground",
@@ -3147,9 +3410,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "compositeComponent",
                     "args": [
                         {
                             "name": "fgC",
@@ -3235,9 +3501,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "denormalizeCMYK",
                     "args": [
                         {
                             "name": "cmyk",
@@ -3264,9 +3533,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "denormalizeHSLA",
                     "args": [
                         {
                             "name": "hsla",
@@ -3292,9 +3564,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "denormalizeHSVA",
                     "args": [
                         {
                             "name": "hsva",
@@ -3320,9 +3595,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "denormalizeRGBA",
                     "args": [
                         {
                             "name": "rgba",
@@ -3348,9 +3626,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "formatCmyk",
                     "args": [
                         {
                             "name": "cmyk",
@@ -3391,9 +3672,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "formatOutput",
                     "args": [
                         {
                             "name": "hsva",
@@ -3451,9 +3735,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "hslaToHsva",
                     "args": [
                         {
                             "name": "hsla",
@@ -3479,9 +3766,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "hsvaToHsla",
                     "args": [
                         {
                             "name": "hsva",
@@ -3507,9 +3797,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "hsvaToRgba",
                     "args": [
                         {
                             "name": "hsva",
@@ -3535,9 +3828,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "normalizeCMYK",
                     "args": [
                         {
                             "name": "cmyk",
@@ -3564,9 +3860,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "normalizeHSLA",
                     "args": [
                         {
                             "name": "hsla",
@@ -3592,9 +3891,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "normalizeHSVA",
                     "args": [
                         {
                             "name": "hsva",
@@ -3620,9 +3922,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "normalizeRGBA",
                     "args": [
                         {
                             "name": "rgba",
@@ -3648,9 +3953,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "rgbaToCmyk",
                     "args": [
                         {
                             "name": "rgba",
@@ -3676,9 +3984,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "rgbaToHex",
                     "args": [
                         {
                             "name": "rgba",
@@ -3721,9 +4032,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "rgbaToHsva",
                     "args": [
                         {
                             "name": "rgba",
@@ -3749,9 +4063,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "stringToCmyk",
                     "args": [
                         {
                             "name": "colorString",
@@ -3796,9 +4113,12 @@
                     "file": "src/util/color.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
+                    "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
+                    "displayName": "stringToHsva",
                     "args": [
                         {
                             "name": "colorString",
@@ -3874,6 +4194,7 @@
                     "subtype": "enum",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
                     "file": "src/util/types.ts"
                 },
@@ -3909,6 +4230,7 @@
                     "subtype": "enum",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
                     "file": "src/util/types.ts"
                 },
@@ -3932,6 +4254,7 @@
                     "subtype": "enum",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
                     "file": "src/util/types.ts"
                 },
@@ -3973,6 +4296,7 @@
                     "subtype": "enum",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
                     "file": "src/util/types.ts"
                 },
@@ -4008,6 +4332,7 @@
                     "subtype": "enum",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
                     "file": "src/util/types.ts"
                 }
@@ -4019,10 +4344,12 @@
                     "name": "AlphaChannel",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
+                    "coverageIgnore": false,
                     "rawtype": " `${AlphaChannelEnum}`",
                     "file": "src/util/types.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
                     "kind": 204
                 },
@@ -4030,10 +4357,12 @@
                     "name": "ColorFormat",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
+                    "coverageIgnore": false,
                     "rawtype": " `${ColorFormatEnum}`",
                     "file": "src/util/types.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
                     "kind": 204
                 },
@@ -4041,10 +4370,12 @@
                     "name": "ColorMode",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
+                    "coverageIgnore": false,
                     "rawtype": "\"color\" | \"c\" | \"1\" | \"grayscale\" | \"g\" | \"2\" | \"presets\" | \"p\" | \"3\"",
                     "file": "src/util/types.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
                     "kind": 193
                 },
@@ -4052,10 +4383,12 @@
                     "name": "DialogDisplay",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
+                    "coverageIgnore": false,
                     "rawtype": " `${DialogDisplayEnum}`",
                     "file": "src/util/types.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
                     "kind": 204
                 },
@@ -4063,10 +4396,12 @@
                     "name": "DialogPosition",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
+                    "coverageIgnore": false,
                     "rawtype": " `${DialogPositionEnum}`",
                     "file": "src/util/types.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
                     "kind": 204
                 },
@@ -4074,10 +4409,12 @@
                     "name": "OutputFormat",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
+                    "coverageIgnore": false,
                     "rawtype": " `${OutputFormatEnum}`",
                     "file": "src/util/types.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "rawdescription": "",
                     "description": "",
                     "kind": 204
                 }
