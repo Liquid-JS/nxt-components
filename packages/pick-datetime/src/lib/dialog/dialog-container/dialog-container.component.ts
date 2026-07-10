@@ -20,6 +20,9 @@ import { DialogConfig } from '../../class/dialog-config.class'
     }
 })
 export class DialogContainerComponent extends BasePortalOutlet {
+
+    static animate = true
+
     private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef)
     private readonly focusTrapFactory = inject(ConfigurableFocusTrapFactory)
     private readonly document = inject<Document>(DOCUMENT, { optional: true })
@@ -67,7 +70,7 @@ export class DialogContainerComponent extends BasePortalOutlet {
                 phaseName: 'start',
                 toState: 'enter'
             })
-            if (target) {
+            if (target && DialogContainerComponent.animate) {
                 target.animate([
                     {
                         opacity: 0,
@@ -139,7 +142,7 @@ export class DialogContainerComponent extends BasePortalOutlet {
             phaseName: 'start',
             toState: 'exit'
         })
-        if (target) {
+        if (target && DialogContainerComponent.animate) {
             target.animate([
                 {
                     opacity: 1,

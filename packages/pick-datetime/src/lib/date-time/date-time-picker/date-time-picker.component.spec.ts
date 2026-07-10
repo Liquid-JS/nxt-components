@@ -8,7 +8,11 @@ import { createKeyboardEvent, dispatchFakeEvent, dispatchKeyboardEvent, dispatch
 import { DateTimeContainerComponent } from '../date-time-picker-container/date-time-picker-container.component'
 import { DateTimeInputDirective } from '../date-time-picker-input.directive'
 import { DateTimeTriggerDirective } from '../date-time-picker-trigger.directive'
+import { DialogContainerComponent } from '../../dialog/dialog-container/dialog-container.component'
 import { DateTimeComponent } from './date-time-picker.component'
+
+DateTimeContainerComponent.animate = false
+DialogContainerComponent.animate = false
 
 function assert<T>(val: T): asserts val {
     if (!val)
@@ -26,6 +30,7 @@ describe('DateTimeComponent', () => {
         providers?: Provider[]
     ) => {
         TestBed.configureTestingModule({
+            animationsEnabled: true,
             providers
         })
 
@@ -159,6 +164,8 @@ describe('DateTimeComponent', () => {
                 ).not.toBe(0)
 
                 testComponent.dateTimePicker()?.close()
+                fixture.detectChanges()
+                await fixture.whenStable()
                 fixture.detectChanges()
                 await fixture.whenStable()
 
@@ -855,7 +862,7 @@ describe('DateTimeComponent', () => {
                         )
                 })
 
-                it('should close the dateTimePicker popup panel when both the rangeFrom and the rangeTo value are selected', () => {
+                it('should close the dateTimePicker popup panel when both the rangeFrom and the rangeTo value are selected', async () => {
                     testComponent.dates.set([])
                     fixture.detectChanges()
 
@@ -882,6 +889,7 @@ describe('DateTimeComponent', () => {
                     )
                     dispatchMouseEvent(dateCell!, 'click')
                     fixture.detectChanges()
+                    await new Promise(resolve => setTimeout(resolve))
 
                     expect(testComponent.dateTimePicker()?.selecteds().length).toBe(
                         2

@@ -31,7 +31,14 @@ import { TimerComponent } from '../timer/timer.component'
 })
 export class DateTimeContainerComponent<T> implements AfterContentInit, AfterViewInit {
 
+    static animate = true
+
     transformPickerEnter({ target, animationComplete }: AnimationCallbackEvent) {
+        if (!DateTimeContainerComponent.animate) {
+            this.pickerOpened$.next()
+            animationComplete()
+            return
+        }
         let anim = target.animate([
             { opacity: 0, transform: 'scale(1, 0)' },
             { opacity: 1, transform: 'scale(1, 1)' }
@@ -60,6 +67,11 @@ export class DateTimeContainerComponent<T> implements AfterContentInit, AfterVie
     }
 
     transformPickerLeave({ target, animationComplete }: AnimationCallbackEvent) {
+        if (!DateTimeContainerComponent.animate) {
+            animationComplete()
+            return
+        }
+
         const anim = target.animate([
             { opacity: 1 },
             { opacity: 0 }
