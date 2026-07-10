@@ -84,7 +84,14 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+    <button type="button"
+        class="search-input-clear"
+        aria-label="Clear search"
+        data-search-input-clear>&times;</button>
+</div>
+            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -130,13 +137,13 @@
                 <td class="col-md-4">
                     <ul class="index-list">
                         <li>
-                            <a href="#FlagDatabaseKey" title="src/lib/database.ts" ><b>FlagDatabaseKey</b>&nbsp;&nbsp;&nbsp;(src/.../database.ts)</a>
+                            <a href="#FlagDatabaseKey" title="src/lib/database.ts" class="reference-link "><span class="reference-badge reference-badge--typealias" aria-hidden="true">T</span><span class="reference-link-label"><b>FlagDatabaseKey</b>&nbsp;&nbsp;&nbsp;(src/.../database.ts)</span></a>
                         </li>
                         <li>
-                            <a href="#FlagFormat" title="src/lib/types.ts" ><b>FlagFormat</b>&nbsp;&nbsp;&nbsp;(src/.../types.ts)</a>
+                            <a href="#FlagFormat" title="src/lib/types.ts" class="reference-link "><span class="reference-badge reference-badge--typealias" aria-hidden="true">T</span><span class="reference-link-label"><b>FlagFormat</b>&nbsp;&nbsp;&nbsp;(src/.../types.ts)</span></a>
                         </li>
                         <li>
-                            <a href="#FlagSizeAlias" title="src/lib/types.ts" ><b>FlagSizeAlias</b>&nbsp;&nbsp;&nbsp;(src/.../types.ts)</a>
+                            <a href="#FlagSizeAlias" title="src/lib/types.ts" class="reference-link "><span class="reference-badge reference-badge--typealias" aria-hidden="true">T</span><span class="reference-link-label"><b>FlagSizeAlias</b>&nbsp;&nbsp;&nbsp;(src/.../types.ts)</span></a>
                         </li>
                     </ul>
                 </td>
@@ -157,13 +164,14 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <code>    <code>unknown</code>
+                    <code>        <code><a href="../miscellaneous/variables.html#FlagDatabase" target="_self" >keyof typeof FlagDatabase</a></code>
 </code>
                 </td>
             </tr>
         </tbody>
     </table>
-</section>    <h3>src/lib/types.ts</h3>
+</section>
+    <h3>src/lib/types.ts</h3>
     <section data-compodoc="block-typealias">
     <table class="table table-sm table-bordered">
         <tbody>
@@ -175,7 +183,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <code>        <code><a href="../miscellaneous/typealiases.html#FlagFormat" target="_self" > &#x60;${FlagFormatEnum}&#x60;</a></code>
+                    <code>        <code><a href="../miscellaneous/typealiases.html#FlagFormat" target="_self" >&#x60;${FlagFormatEnum}&#x60;</a></code>
 </code>
                 </td>
             </tr>
@@ -191,13 +199,14 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <code>    <code>unknown</code>
+                    <code>        <code><a href="../miscellaneous/enumerations.html#FlagSize" target="_self" >keyof typeof FlagSize</a></code>
 </code>
                 </td>
             </tr>
         </tbody>
     </table>
 </section>
+
 
 
                    </div><div class="search-results">
@@ -232,6 +241,24 @@
 
        <script>
                $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var updateDarkModeSwitchOffset = function () {
+                    var content = document.querySelector('.content');
+                    var scrollbarWidth = 0;
+
+                    if (content) {
+                         scrollbarWidth = Math.max(0, content.offsetWidth - content.clientWidth);
+                    }
+
+                    document.documentElement.style.setProperty(
+                         '--content-scrollbar-width',
+                         scrollbarWidth + 'px'
+                    );
+               };
+
+               updateDarkModeSwitchOffset();
+               requestAnimationFrame(updateDarkModeSwitchOffset);
+               window.addEventListener('resize', updateDarkModeSwitchOffset);
+
                checkToggle(darkModeState);
                if ($darkModeToggleSwitchers.length > 0) {
                     for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
@@ -247,7 +274,6 @@
        <script src="../js/libs/lit-html.js"></script>
 
        <script src="../js/menu-wc.js" defer></script>
-       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

@@ -84,7 +84,14 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+    <button type="button"
+        class="search-input-clear"
+        aria-label="Clear search"
+        data-search-input-clear>&times;</button>
+</div>
+            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -110,10 +117,19 @@
   DateTimeComponent</li>
 </ol>
 
+<div class="io-file io-file-path" data-compodoc="entity-file-path">
+    <span class="icon ion-ios-document" aria-hidden="true"></span>
+    <code>src/lib/date-time/date-time-picker/date-time-picker.component.ts</code>
+</div>
+
 <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
             <a href="#info" class="nav-link active"
                 role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#api" class="nav-link"
+                role="tab" id="api-tab" data-bs-toggle="tab" data-link="api">API</a>
         </li>
         <li class="nav-item">
             <a href="#styleData" class="nav-link"
@@ -122,27 +138,20 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/lib/date-time/date-time-picker/date-time-picker.component.ts</code>
-</p>
-
-
+    <div class="tab-pane fade active in" id="info">
 
     <p class="comment">
         <h3>Extends</h3>
     </p>
     <p class="comment">
-                    <code><a href="../directives/DateTimeDirective.html" target="_self" >DateTimeDirective</a></code>
+                    <code><a href="../directives/DateTimeDirective.html" target="_self" >DateTimeDirective&lt;T&gt;</a></code>
     </p>
 
     <p class="comment">
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                    <code><a href="https://angular.dev/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -180,6 +189,7 @@
 
 
 
+
             <tr>
                 <td class="col-md-3">templateUrl</td>
                 <td class="col-md-9"><code>./date-time-picker.component.html</code></td>
@@ -196,245 +206,303 @@
     </table>
 </section>
 
-    <section data-compodoc="block-index">
+        <section data-compodoc="block-relationships">
+            <h3>Relationships</h3>
+
+            <div class="row pt-3">
+                <div class="col-sm-6">
+                    <h4>Used by</h4>
+                        <p class="comment"><i>No results matching.</i></p>
+                </div>
+
+                <div class="col-sm-6">
+                    <h4>Depends on</h4>
+                        <ul class="list-unstyled relationships-list">
+                                <li>
+                                            <code><a href="../directives/DateTimeDirective.html" target="_self" >DateTimeDirective&lt;T&gt;</a></code>
+                                </li>
+                                <li>
+                                            <code><a href="https://angular.dev/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                                </li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+</div>
+
+    <div class="tab-pane fade " id="api">    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
                 <tr>
-                    <td class="col-md-4">
+                    <td class="col-md-3">
                         <h6><b>Properties</b></h6>
                     </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                    <td class="col-md-9">
                         <ul class="index-list">
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#dateTimeFilter" >dateTimeFilter</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#disabled" >disabled</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#dtInput" >dtInput</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#isInRangeMode" >isInRangeMode</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#isInSingleMode" >isInSingleMode</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#isOpen" >isOpen</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#max" >max</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#min" >min</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#selected" >selected</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#selecteds" >selecteds</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#selectMode" >selectMode</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#startAt" >startAt</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#dateTimeAdapter" >dateTimeAdapter</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#dateTimeChecker" >dateTimeChecker</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Protected</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#dateTimeFormats" >dateTimeFormats</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#formatString" >formatString</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#id" >id</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Abstract</span>
                                 <a href="#monthSelected" >monthSelected</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Abstract</span>
                                 <a href="#pickerMode" >pickerMode</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Abstract</span>
                                 <a href="#pickerType" >pickerType</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
                                     <span class="modifier">Abstract</span>
                                 <a href="#yearSelected" >yearSelected</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
+            </tbody>
+        </table>
 
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
                 <tr>
-                    <td class="col-md-4">
+                    <td class="col-md-3">
                         <h6><b>Methods</b></h6>
                     </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                    <td class="col-md-9">
                         <ul class="index-list">
                             <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
                                 <a href="#close" >close</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
                                 <a href="#confirmSelect" >confirmSelect</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
                                 <a href="#ngOnDestroy" >ngOnDestroy</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
                                 <a href="#open" >open</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
                                 <a href="#registerInput" >registerInput</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
                                 <a href="#select" >select</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
                                 <a href="#selectMonth" >selectMonth</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
                                 <a href="#selectYear" >selectYear</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
                                     <span class="modifier">Protected</span>
                                 <a href="#getValidDate" >getValidDate</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
+            </tbody>
+        </table>
 
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
                 <tr>
-                    <td class="col-md-4">
+                    <td class="col-md-3">
                         <h6><b>Inputs</b></h6>
                     </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                    <td class="col-md-9">
                         <ul class="index-list">
                             <li>
-                                <a href="#_disabled" >_disabled</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#disabled" >disabled</a>
                             </li>
                             <li>
-                                <a href="#_isOpen" >_isOpen</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#isOpen" >isOpen</a>
                             </li>
                             <li>
-                                <a href="#startAt" >startAt</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#startAt" >startAt</a>
                             </li>
                             <li>
-                                <a href="#backdropClass" >backdropClass</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#backdropClass" >backdropClass</a>
                             </li>
                             <li>
-                                <a href="#panelClass" >panelClass</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#panelClass" >panelClass</a>
                             </li>
                             <li>
-                                <a href="#pickerMode" >pickerMode</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#pickerMode" >pickerMode</a>
                             </li>
                             <li>
-                                <a href="#pickerType" >pickerType</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#pickerType" >pickerType</a>
                             </li>
                             <li>
-                                <a href="#scrollStrategy" >scrollStrategy</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#scrollStrategy" >scrollStrategy</a>
                             </li>
                             <li>
-                                <a href="#firstDayOfWeek" >firstDayOfWeek</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#firstDayOfWeek" >firstDayOfWeek</a>
                             </li>
                             <li>
-                                <a href="#hideOtherMonths" >hideOtherMonths</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#hideOtherMonths" >hideOtherMonths</a>
                             </li>
                             <li>
-                                <a href="#hour12Timer" >hour12Timer</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#hour12Timer" >hour12Timer</a>
                             </li>
                             <li>
-                                <a href="#showSecondsTimer" >showSecondsTimer</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#showSecondsTimer" >showSecondsTimer</a>
                             </li>
                             <li>
-                                <a href="#startView" >startView</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#startView" >startView</a>
                             </li>
                             <li>
-                                <a href="#stepHour" >stepHour</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#stepHour" >stepHour</a>
                             </li>
                             <li>
-                                <a href="#stepMinute" >stepMinute</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#stepMinute" >stepMinute</a>
                             </li>
                             <li>
-                                <a href="#stepSecond" >stepSecond</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#stepSecond" >stepSecond</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
+            </tbody>
+        </table>
 
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
                 <tr>
-                    <td class="col-md-4">
+                    <td class="col-md-3">
                         <h6><b>Outputs</b></h6>
                     </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                    <td class="col-md-9">
                         <ul class="index-list">
                             <li>
-                                <a href="#afterPickerClosed" >afterPickerClosed</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#close" >close</a>
                             </li>
                             <li>
-                                <a href="#afterPickerOpened" >afterPickerOpened</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#open" >open</a>
                             </li>
                             <li>
-                                <a href="#confirmSelectedChange" >confirmSelectedChange</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#confirmSelectedChange" >confirmSelectedChange</a>
                             </li>
                             <li>
-                                <a href="#disabledChange" >disabledChange</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#disabledChange" >disabledChange</a>
                             </li>
                             <li>
-                                <a href="#isOpenChange" >isOpenChange</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#isOpenChange" >isOpenChange</a>
                             </li>
                             <li>
-                                <a href="#monthSelected" >monthSelected</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#monthSelected" >monthSelected</a>
                             </li>
                             <li>
-                                <a href="#yearSelected" >yearSelected</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#yearSelected" >yearSelected</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
+            </tbody>
+        </table>
 
 
 
-        </tbody>
-    </table>
 </section>
 
     <section data-compodoc="block-constructor">
@@ -457,8 +525,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="_disabled"></a>
-                        <b>_disabled</b>
+                        <a name="disabled"></a>
+                        <b>disabled</b>
                     </td>
                 </tr>
                 <tr>
@@ -469,7 +537,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>undefined, { alias: &#x27;disabled&#x27; }</code>
+                        <i>Default value : </i><code>undefined</code>
                     </td>
                 </tr>
                 <tr>
@@ -484,8 +552,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="_isOpen"></a>
-                        <b>_isOpen</b>
+                        <a name="isOpen"></a>
+                        <b>isOpen</b>
                     </td>
                 </tr>
                 <tr>
@@ -496,7 +564,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>false, { alias: &#x27;isOpen&#x27; }</code>
+                        <i>Default value : </i><code>false</code>
                     </td>
                 </tr>
                 <tr>
@@ -517,7 +585,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>T | undefined, T | undefined</code>
+                        <i>Type : </i>    <code>T | undefined</code>
 
                     </td>
                 </tr>
@@ -589,13 +657,13 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#PickerMode" target="_self" >PickerMode, PickerMode</a></code>
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#PickerMode" target="_self" >PickerMode</a></code>
 
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;popup&#x27;, {        transform: mode &#x3D;&gt; {            if (mode &#x3D;&#x3D;&#x3D; &#x27;popup&#x27;) {                return mode            } else {                return &#x27;dialog&#x27;            }        }    }</code>
+                        <i>Default value : </i><code>&#x27;popup&#x27;</code>
                     </td>
                 </tr>
                 <tr>
@@ -882,14 +950,15 @@
             </tbody>
         </table>
 </section>
+
     <section data-compodoc="block-outputs">
     <h3 id="outputs">Outputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="afterPickerClosed"></a>
-                        <b>afterPickerClosed</b>
+                        <a name="close"></a>
+                        <b>close</b>
                     </td>
                 </tr>
                 <tr>
@@ -910,8 +979,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="afterPickerOpened"></a>
-                        <b>afterPickerOpened</b>
+                        <a name="open"></a>
+                        <b>open</b>
                     </td>
                 </tr>
                 <tr>
@@ -1041,6 +1110,7 @@
             </tbody>
         </table>
 </section>
+
 
 
     <section data-compodoc="block-methods">
@@ -1520,6 +1590,7 @@
         </tbody>
     </table>
 </section>
+
     <section data-compodoc="block-properties">
     
     <h3 id="inputs">
@@ -2203,6 +2274,24 @@
 
        <script>
                $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var updateDarkModeSwitchOffset = function () {
+                    var content = document.querySelector('.content');
+                    var scrollbarWidth = 0;
+
+                    if (content) {
+                         scrollbarWidth = Math.max(0, content.offsetWidth - content.clientWidth);
+                    }
+
+                    document.documentElement.style.setProperty(
+                         '--content-scrollbar-width',
+                         scrollbarWidth + 'px'
+                    );
+               };
+
+               updateDarkModeSwitchOffset();
+               requestAnimationFrame(updateDarkModeSwitchOffset);
+               window.addEventListener('resize', updateDarkModeSwitchOffset);
+
                checkToggle(darkModeState);
                if ($darkModeToggleSwitchers.length > 0) {
                     for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
@@ -2218,7 +2307,6 @@
        <script src="../js/libs/lit-html.js"></script>
 
        <script src="../js/menu-wc.js" defer></script>
-       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

@@ -84,7 +84,14 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+    <button type="button"
+        class="search-input-clear"
+        aria-label="Clear search"
+        data-search-input-clear>&times;</button>
+</div>
+            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -111,6 +118,11 @@
   <li class="breadcrumb-item" >DropzoneDirective</li>
 </ol>
 
+<div class="io-file io-file-path" data-compodoc="entity-file-path">
+    <span class="icon ion-ios-document" aria-hidden="true"></span>
+    <code>src/lib/dropzone.directive.ts</code>
+</div>
+
 <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
             <a href="#info" 
@@ -118,17 +130,16 @@
                 class="nav-link active"
                 role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
+        <li class="nav-item">
+            <a href="#api" 
+                class="nav-link"
+                
+                role="tab" id="api-tab" data-bs-toggle="tab" data-link="api">API</a>
+        </li>
 </ul>
 
 <div class="tab-content">
     <div class="tab-pane fade active in" id="info">
-        <p class="comment">
-            <h3>File</h3>
-        </p>
-        <p class="comment">
-            <code>src/lib/dropzone.directive.ts</code>
-        </p>
-
 
 
             <p class="comment">
@@ -142,7 +153,7 @@
                 <h3>Implements</h3>
             </p>
             <p class="comment">
-                            <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                            <code><a href="https://angular.dev/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
             </p>
 
 
@@ -167,150 +178,183 @@
             </table>
         </section>
 
+                <section data-compodoc="block-relationships">
+            <h3>Relationships</h3>
+
+            <div class="row pt-3">
+                <div class="col-sm-6">
+                    <h4>Used by</h4>
+                        <ul class="list-unstyled relationships-list">
+                                <li>
+                                            <code><a href="../components/DropzoneComponent.html" target="_self" >DropzoneComponent</a></code>
+                                </li>
+                        </ul>
+                </div>
+
+                <div class="col-sm-6">
+                    <h4>Depends on</h4>
+                        <ul class="list-unstyled relationships-list">
+                                <li>
+                                            <code><a href="../directives/DropzoneListeners.html" target="_self" >DropzoneListeners</a></code>
+                                </li>
+                                <li>
+                                            <code><a href="https://angular.dev/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                                </li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="tab-pane fade " id="api">
             <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
 
 
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
                 <tr>
-                    <td class="col-md-4">
+                    <td class="col-md-3">
                         <h6><b>Inputs</b></h6>
                     </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                    <td class="col-md-9">
                         <ul class="index-list">
                             <li>
-                                <a href="#_config" >_config</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#nxtDropzone" >nxtDropzone</a>
                             </li>
                             <li>
-                                <a href="#disabled" >disabled</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#disabled" >disabled</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
+            </tbody>
+        </table>
 
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
                 <tr>
-                    <td class="col-md-4">
+                    <td class="col-md-3">
                         <h6><b>Outputs</b></h6>
                     </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                    <td class="col-md-9">
                         <ul class="index-list">
                             <li>
-                                <a href="#DZ_ADDEDFILE" >DZ_ADDEDFILE</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#addedFile" >addedFile</a>
                             </li>
                             <li>
-                                <a href="#DZ_ADDEDFILES" >DZ_ADDEDFILES</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#addedFiles" >addedFiles</a>
                             </li>
                             <li>
-                                <a href="#DZ_CANCELED" >DZ_CANCELED</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#canceled" >canceled</a>
                             </li>
                             <li>
-                                <a href="#DZ_CANCELEDMULTIPLE" >DZ_CANCELEDMULTIPLE</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#canceledMultiple" >canceledMultiple</a>
                             </li>
                             <li>
-                                <a href="#DZ_COMPLETE" >DZ_COMPLETE</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#complete" >complete</a>
                             </li>
                             <li>
-                                <a href="#DZ_COMPLETEMULTIPLE" >DZ_COMPLETEMULTIPLE</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#completeMultiple" >completeMultiple</a>
                             </li>
                             <li>
-                                <a href="#DZ_DRAGEND" >DZ_DRAGEND</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#dragEnd" >dragEnd</a>
                             </li>
                             <li>
-                                <a href="#DZ_DRAGENTER" >DZ_DRAGENTER</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#dragEnter" >dragEnter</a>
                             </li>
                             <li>
-                                <a href="#DZ_DRAGLEAVE" >DZ_DRAGLEAVE</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#dragLeave" >dragLeave</a>
                             </li>
                             <li>
-                                <a href="#DZ_DRAGOVER" >DZ_DRAGOVER</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#dragOver" >dragOver</a>
                             </li>
                             <li>
-                                <a href="#DZ_DRAGSTART" >DZ_DRAGSTART</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#dragStart" >dragStart</a>
                             </li>
                             <li>
-                                <a href="#DZ_DROP" >DZ_DROP</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#drop" >drop</a>
                             </li>
                             <li>
-                                <a href="#DZ_ERROR" >DZ_ERROR</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#error" >error</a>
                             </li>
                             <li>
-                                <a href="#DZ_ERRORMULTIPLE" >DZ_ERRORMULTIPLE</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#errorMultiple" >errorMultiple</a>
                             </li>
                             <li>
-                                <a href="#DZ_INIT" >DZ_INIT</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#init" >init</a>
                             </li>
                             <li>
-                                <a href="#DZ_MAXFILESEXCEEDED" >DZ_MAXFILESEXCEEDED</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#maxFilesExceeded" >maxFilesExceeded</a>
                             </li>
                             <li>
-                                <a href="#DZ_MAXFILESREACHED" >DZ_MAXFILESREACHED</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#maxFilesReached" >maxFilesReached</a>
                             </li>
                             <li>
-                                <a href="#DZ_PASTE" >DZ_PASTE</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#paste" >paste</a>
                             </li>
                             <li>
-                                <a href="#DZ_PROCESSING" >DZ_PROCESSING</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#processing" >processing</a>
                             </li>
                             <li>
-                                <a href="#DZ_PROCESSINGMULTIPLE" >DZ_PROCESSINGMULTIPLE</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#processingMultiple" >processingMultiple</a>
                             </li>
                             <li>
-                                <a href="#DZ_QUEUECOMPLETE" >DZ_QUEUECOMPLETE</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#queueComplete" >queueComplete</a>
                             </li>
                             <li>
-                                <a href="#DZ_REMOVEDFILE" >DZ_REMOVEDFILE</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#removedFile" >removedFile</a>
                             </li>
                             <li>
-                                <a href="#DZ_RESET" >DZ_RESET</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#reset" >reset</a>
                             </li>
                             <li>
-                                <a href="#DZ_SENDING" >DZ_SENDING</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#sending" >sending</a>
                             </li>
                             <li>
-                                <a href="#DZ_SENDINGMULTIPLE" >DZ_SENDINGMULTIPLE</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#sendingMultiple" >sendingMultiple</a>
                             </li>
                             <li>
-                                <a href="#DZ_SUCCESS" >DZ_SUCCESS</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#success" >success</a>
                             </li>
                             <li>
-                                <a href="#DZ_SUCCESSMULTIPLE" >DZ_SUCCESSMULTIPLE</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#successMultiple" >successMultiple</a>
                             </li>
                             <li>
-                                <a href="#DZ_THUMBNAIL" >DZ_THUMBNAIL</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#thumbnail" >thumbnail</a>
                             </li>
                             <li>
-                                <a href="#DZ_TOTALUPLOADPROGRESS" >DZ_TOTALUPLOADPROGRESS</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#totalUploadProgress" >totalUploadProgress</a>
                             </li>
                             <li>
-                                <a href="#DZ_UPLOADPROGRESS" >DZ_UPLOADPROGRESS</a>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">O</span><a href="#uploadProgress" >uploadProgress</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
+            </tbody>
+        </table>
 
 
 
-                    <tr>
-                        <td class="col-md-4">
-                            <h6><b>Accessors</b></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <ul class="index-list">
-                                <li>
-                                    <a href="#dropzone" >dropzone</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-        </tbody>
-    </table>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-3">
+                        <h6><b>Accessors</b></h6>
+                    </td>
+                    <td class="col-md-9">
+                        <ul class="index-list">
+                            <li>
+                                <span class="reference-badge reference-badge--accessor" aria-hidden="true">A</span>
+                                <a href="#dropzone" >dropzone</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 </section>
 
             <section data-compodoc="block-constructor">
@@ -333,8 +377,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="_config"></a>
-                        <b>_config</b>
+                        <a name="nxtDropzone"></a>
+                        <b>nxtDropzone</b>
                     </td>
                 </tr>
                 <tr>
@@ -345,7 +389,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>undefined, { alias: &#x27;nxtDropzone&#x27; }</code>
+                        <i>Default value : </i><code>undefined</code>
                     </td>
                 </tr>
                 <tr>
@@ -378,14 +422,15 @@
             </tbody>
         </table>
 </section>
+
             <section data-compodoc="block-outputs">
     <h3 id="outputs">Outputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_ADDEDFILE"></a>
-                        <b>DZ_ADDEDFILE</b>
+                        <a name="addedFile"></a>
+                        <b>addedFile</b>
                     </td>
                 </tr>
                 <tr>
@@ -400,8 +445,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_ADDEDFILES"></a>
-                        <b>DZ_ADDEDFILES</b>
+                        <a name="addedFiles"></a>
+                        <b>addedFiles</b>
                     </td>
                 </tr>
                 <tr>
@@ -416,8 +461,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_CANCELED"></a>
-                        <b>DZ_CANCELED</b>
+                        <a name="canceled"></a>
+                        <b>canceled</b>
                     </td>
                 </tr>
                 <tr>
@@ -432,8 +477,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_CANCELEDMULTIPLE"></a>
-                        <b>DZ_CANCELEDMULTIPLE</b>
+                        <a name="canceledMultiple"></a>
+                        <b>canceledMultiple</b>
                     </td>
                 </tr>
                 <tr>
@@ -448,8 +493,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_COMPLETE"></a>
-                        <b>DZ_COMPLETE</b>
+                        <a name="complete"></a>
+                        <b>complete</b>
                     </td>
                 </tr>
                 <tr>
@@ -464,8 +509,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_COMPLETEMULTIPLE"></a>
-                        <b>DZ_COMPLETEMULTIPLE</b>
+                        <a name="completeMultiple"></a>
+                        <b>completeMultiple</b>
                     </td>
                 </tr>
                 <tr>
@@ -480,8 +525,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_DRAGEND"></a>
-                        <b>DZ_DRAGEND</b>
+                        <a name="dragEnd"></a>
+                        <b>dragEnd</b>
                     </td>
                 </tr>
                 <tr>
@@ -496,8 +541,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_DRAGENTER"></a>
-                        <b>DZ_DRAGENTER</b>
+                        <a name="dragEnter"></a>
+                        <b>dragEnter</b>
                     </td>
                 </tr>
                 <tr>
@@ -512,8 +557,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_DRAGLEAVE"></a>
-                        <b>DZ_DRAGLEAVE</b>
+                        <a name="dragLeave"></a>
+                        <b>dragLeave</b>
                     </td>
                 </tr>
                 <tr>
@@ -528,8 +573,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_DRAGOVER"></a>
-                        <b>DZ_DRAGOVER</b>
+                        <a name="dragOver"></a>
+                        <b>dragOver</b>
                     </td>
                 </tr>
                 <tr>
@@ -544,8 +589,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_DRAGSTART"></a>
-                        <b>DZ_DRAGSTART</b>
+                        <a name="dragStart"></a>
+                        <b>dragStart</b>
                     </td>
                 </tr>
                 <tr>
@@ -560,8 +605,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_DROP"></a>
-                        <b>DZ_DROP</b>
+                        <a name="drop"></a>
+                        <b>drop</b>
                     </td>
                 </tr>
                 <tr>
@@ -576,8 +621,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_ERROR"></a>
-                        <b>DZ_ERROR</b>
+                        <a name="error"></a>
+                        <b>error</b>
                     </td>
                 </tr>
                 <tr>
@@ -592,8 +637,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_ERRORMULTIPLE"></a>
-                        <b>DZ_ERRORMULTIPLE</b>
+                        <a name="errorMultiple"></a>
+                        <b>errorMultiple</b>
                     </td>
                 </tr>
                 <tr>
@@ -608,8 +653,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_INIT"></a>
-                        <b>DZ_INIT</b>
+                        <a name="init"></a>
+                        <b>init</b>
                     </td>
                 </tr>
                 <tr>
@@ -624,8 +669,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_MAXFILESEXCEEDED"></a>
-                        <b>DZ_MAXFILESEXCEEDED</b>
+                        <a name="maxFilesExceeded"></a>
+                        <b>maxFilesExceeded</b>
                     </td>
                 </tr>
                 <tr>
@@ -640,8 +685,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_MAXFILESREACHED"></a>
-                        <b>DZ_MAXFILESREACHED</b>
+                        <a name="maxFilesReached"></a>
+                        <b>maxFilesReached</b>
                     </td>
                 </tr>
                 <tr>
@@ -656,8 +701,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_PASTE"></a>
-                        <b>DZ_PASTE</b>
+                        <a name="paste"></a>
+                        <b>paste</b>
                     </td>
                 </tr>
                 <tr>
@@ -672,8 +717,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_PROCESSING"></a>
-                        <b>DZ_PROCESSING</b>
+                        <a name="processing"></a>
+                        <b>processing</b>
                     </td>
                 </tr>
                 <tr>
@@ -688,8 +733,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_PROCESSINGMULTIPLE"></a>
-                        <b>DZ_PROCESSINGMULTIPLE</b>
+                        <a name="processingMultiple"></a>
+                        <b>processingMultiple</b>
                     </td>
                 </tr>
                 <tr>
@@ -704,8 +749,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_QUEUECOMPLETE"></a>
-                        <b>DZ_QUEUECOMPLETE</b>
+                        <a name="queueComplete"></a>
+                        <b>queueComplete</b>
                     </td>
                 </tr>
                 <tr>
@@ -720,8 +765,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_REMOVEDFILE"></a>
-                        <b>DZ_REMOVEDFILE</b>
+                        <a name="removedFile"></a>
+                        <b>removedFile</b>
                     </td>
                 </tr>
                 <tr>
@@ -736,8 +781,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_RESET"></a>
-                        <b>DZ_RESET</b>
+                        <a name="reset"></a>
+                        <b>reset</b>
                     </td>
                 </tr>
                 <tr>
@@ -752,8 +797,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_SENDING"></a>
-                        <b>DZ_SENDING</b>
+                        <a name="sending"></a>
+                        <b>sending</b>
                     </td>
                 </tr>
                 <tr>
@@ -768,8 +813,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_SENDINGMULTIPLE"></a>
-                        <b>DZ_SENDINGMULTIPLE</b>
+                        <a name="sendingMultiple"></a>
+                        <b>sendingMultiple</b>
                     </td>
                 </tr>
                 <tr>
@@ -784,8 +829,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_SUCCESS"></a>
-                        <b>DZ_SUCCESS</b>
+                        <a name="success"></a>
+                        <b>success</b>
                     </td>
                 </tr>
                 <tr>
@@ -800,8 +845,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_SUCCESSMULTIPLE"></a>
-                        <b>DZ_SUCCESSMULTIPLE</b>
+                        <a name="successMultiple"></a>
+                        <b>successMultiple</b>
                     </td>
                 </tr>
                 <tr>
@@ -816,8 +861,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_THUMBNAIL"></a>
-                        <b>DZ_THUMBNAIL</b>
+                        <a name="thumbnail"></a>
+                        <b>thumbnail</b>
                     </td>
                 </tr>
                 <tr>
@@ -832,8 +877,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_TOTALUPLOADPROGRESS"></a>
-                        <b>DZ_TOTALUPLOADPROGRESS</b>
+                        <a name="totalUploadProgress"></a>
+                        <b>totalUploadProgress</b>
                     </td>
                 </tr>
                 <tr>
@@ -848,8 +893,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_UPLOADPROGRESS"></a>
-                        <b>DZ_UPLOADPROGRESS</b>
+                        <a name="uploadProgress"></a>
+                        <b>uploadProgress</b>
                     </td>
                 </tr>
                 <tr>
@@ -861,6 +906,7 @@
             </tbody>
         </table>
 </section>
+
 
 
 
@@ -887,7 +933,6 @@
             </tbody>
         </table>
 </section>
-
     </div>
 
 
@@ -939,6 +984,24 @@
 
        <script>
                $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var updateDarkModeSwitchOffset = function () {
+                    var content = document.querySelector('.content');
+                    var scrollbarWidth = 0;
+
+                    if (content) {
+                         scrollbarWidth = Math.max(0, content.offsetWidth - content.clientWidth);
+                    }
+
+                    document.documentElement.style.setProperty(
+                         '--content-scrollbar-width',
+                         scrollbarWidth + 'px'
+                    );
+               };
+
+               updateDarkModeSwitchOffset();
+               requestAnimationFrame(updateDarkModeSwitchOffset);
+               window.addEventListener('resize', updateDarkModeSwitchOffset);
+
                checkToggle(darkModeState);
                if ($darkModeToggleSwitchers.length > 0) {
                     for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
@@ -954,7 +1017,6 @@
        <script src="../js/libs/lit-html.js"></script>
 
        <script src="../js/menu-wc.js" defer></script>
-       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

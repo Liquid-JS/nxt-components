@@ -19,7 +19,14 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                 </li>
 
                 <li class="divider"></li>
-                ${ isNormalMode ? `<div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>` : '' }
+                ${ isNormalMode ? `<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+    <button type="button"
+        class="search-input-clear"
+        aria-label="Clear search"
+        data-search-input-clear>&times;</button>
+</div>
+` : '' }
                 <li class="chapter">
                     <a data-type="chapter-link" href="index.html"><span class="icon ion-ios-home"></span>Getting started</a>
                     <ul class="links">
@@ -110,13 +117,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/CalendarCell.html" data-type="entity-link" >CalendarCell</a>
                             </li>
                             <li class="link">
-                                <a href="classes/DateTimeAdapter.html" data-type="entity-link" >DateTimeAdapter</a>
+                                <a href="classes/DateTimeAdapter.html" data-type="entity-link" >DateTimeAdapter&lt;T&gt;</a>
                             </li>
                             <li class="link">
                                 <a href="classes/DialogConfig.html" data-type="entity-link" >DialogConfig</a>
                             </li>
                             <li class="link">
-                                <a href="classes/DialogRef.html" data-type="entity-link" >DialogRef</a>
+                                <a href="classes/DialogRef.html" data-type="entity-link" >DialogRef&lt;T&gt;</a>
                             </li>
                         </ul>
                     </li>
@@ -151,7 +158,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/DateTimeFormats.html" data-type="entity-link" >DateTimeFormats</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/DateTimeInputEvent.html" data-type="entity-link" >DateTimeInputEvent</a>
+                                <a href="interfaces/DateTimeInputEvent.html" data-type="entity-link" >DateTimeInputEvent&lt;T&gt;</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/DialogPosition.html" data-type="entity-link" >DialogPosition</a>

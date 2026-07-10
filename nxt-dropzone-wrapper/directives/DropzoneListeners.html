@@ -84,7 +84,14 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+    <button type="button"
+        class="search-input-clear"
+        aria-label="Clear search"
+        data-search-input-clear>&times;</button>
+</div>
+            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -111,6 +118,11 @@
   <li class="breadcrumb-item" >DropzoneListeners</li>
 </ol>
 
+<div class="io-file io-file-path" data-compodoc="entity-file-path">
+    <span class="icon ion-ios-document" aria-hidden="true"></span>
+    <code>src/lib/dropzone.interfaces.ts</code>
+</div>
+
 <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
             <a href="#info" 
@@ -118,17 +130,16 @@
                 class="nav-link active"
                 role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
+        <li class="nav-item">
+            <a href="#api" 
+                class="nav-link"
+                
+                role="tab" id="api-tab" data-bs-toggle="tab" data-link="api">API</a>
+        </li>
 </ul>
 
 <div class="tab-content">
     <div class="tab-pane fade active in" id="info">
-        <p class="comment">
-            <h3>File</h3>
-        </p>
-        <p class="comment">
-            <code>src/lib/dropzone.interfaces.ts</code>
-        </p>
-
 
 
 
@@ -141,6 +152,36 @@
 
 
 
+                <section data-compodoc="block-relationships">
+            <h3>Relationships</h3>
+
+            <div class="row pt-3">
+                <div class="col-sm-6">
+                    <h4>Used by</h4>
+                        <ul class="list-unstyled relationships-list">
+                                <li>
+                                            <code><a href="../components/DropzoneComponent.html" target="_self" >DropzoneComponent</a></code>
+                                </li>
+                                <li>
+                                            <code><a href="../directives/DropzoneDirective.html" target="_self" >DropzoneDirective</a></code>
+                                </li>
+                        </ul>
+                </div>
+
+                <div class="col-sm-6">
+                    <h4>Depends on</h4>
+                        <ul class="list-unstyled relationships-list">
+                                <li>
+                                        <code>DZ_EVENTS</code>
+                                </li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="tab-pane fade " id="api">
 
 
 
@@ -150,8 +191,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_ADDEDFILE"></a>
-                        <b>DZ_ADDEDFILE</b>
+                        <a name="addedFile"></a>
+                        <b>addedFile</b>
                     </td>
                 </tr>
                 <tr>
@@ -166,8 +207,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_ADDEDFILES"></a>
-                        <b>DZ_ADDEDFILES</b>
+                        <a name="addedFiles"></a>
+                        <b>addedFiles</b>
                     </td>
                 </tr>
                 <tr>
@@ -182,8 +223,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_CANCELED"></a>
-                        <b>DZ_CANCELED</b>
+                        <a name="canceled"></a>
+                        <b>canceled</b>
                     </td>
                 </tr>
                 <tr>
@@ -198,8 +239,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_CANCELEDMULTIPLE"></a>
-                        <b>DZ_CANCELEDMULTIPLE</b>
+                        <a name="canceledMultiple"></a>
+                        <b>canceledMultiple</b>
                     </td>
                 </tr>
                 <tr>
@@ -214,8 +255,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_COMPLETE"></a>
-                        <b>DZ_COMPLETE</b>
+                        <a name="complete"></a>
+                        <b>complete</b>
                     </td>
                 </tr>
                 <tr>
@@ -230,8 +271,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_COMPLETEMULTIPLE"></a>
-                        <b>DZ_COMPLETEMULTIPLE</b>
+                        <a name="completeMultiple"></a>
+                        <b>completeMultiple</b>
                     </td>
                 </tr>
                 <tr>
@@ -246,8 +287,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_DRAGEND"></a>
-                        <b>DZ_DRAGEND</b>
+                        <a name="dragEnd"></a>
+                        <b>dragEnd</b>
                     </td>
                 </tr>
                 <tr>
@@ -262,8 +303,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_DRAGENTER"></a>
-                        <b>DZ_DRAGENTER</b>
+                        <a name="dragEnter"></a>
+                        <b>dragEnter</b>
                     </td>
                 </tr>
                 <tr>
@@ -278,8 +319,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_DRAGLEAVE"></a>
-                        <b>DZ_DRAGLEAVE</b>
+                        <a name="dragLeave"></a>
+                        <b>dragLeave</b>
                     </td>
                 </tr>
                 <tr>
@@ -294,8 +335,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_DRAGOVER"></a>
-                        <b>DZ_DRAGOVER</b>
+                        <a name="dragOver"></a>
+                        <b>dragOver</b>
                     </td>
                 </tr>
                 <tr>
@@ -310,8 +351,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_DRAGSTART"></a>
-                        <b>DZ_DRAGSTART</b>
+                        <a name="dragStart"></a>
+                        <b>dragStart</b>
                     </td>
                 </tr>
                 <tr>
@@ -326,8 +367,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_DROP"></a>
-                        <b>DZ_DROP</b>
+                        <a name="drop"></a>
+                        <b>drop</b>
                     </td>
                 </tr>
                 <tr>
@@ -342,8 +383,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_ERROR"></a>
-                        <b>DZ_ERROR</b>
+                        <a name="error"></a>
+                        <b>error</b>
                     </td>
                 </tr>
                 <tr>
@@ -358,8 +399,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_ERRORMULTIPLE"></a>
-                        <b>DZ_ERRORMULTIPLE</b>
+                        <a name="errorMultiple"></a>
+                        <b>errorMultiple</b>
                     </td>
                 </tr>
                 <tr>
@@ -374,8 +415,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_INIT"></a>
-                        <b>DZ_INIT</b>
+                        <a name="init"></a>
+                        <b>init</b>
                     </td>
                 </tr>
                 <tr>
@@ -390,8 +431,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_MAXFILESEXCEEDED"></a>
-                        <b>DZ_MAXFILESEXCEEDED</b>
+                        <a name="maxFilesExceeded"></a>
+                        <b>maxFilesExceeded</b>
                     </td>
                 </tr>
                 <tr>
@@ -406,8 +447,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_MAXFILESREACHED"></a>
-                        <b>DZ_MAXFILESREACHED</b>
+                        <a name="maxFilesReached"></a>
+                        <b>maxFilesReached</b>
                     </td>
                 </tr>
                 <tr>
@@ -422,8 +463,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_PASTE"></a>
-                        <b>DZ_PASTE</b>
+                        <a name="paste"></a>
+                        <b>paste</b>
                     </td>
                 </tr>
                 <tr>
@@ -438,8 +479,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_PROCESSING"></a>
-                        <b>DZ_PROCESSING</b>
+                        <a name="processing"></a>
+                        <b>processing</b>
                     </td>
                 </tr>
                 <tr>
@@ -454,8 +495,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_PROCESSINGMULTIPLE"></a>
-                        <b>DZ_PROCESSINGMULTIPLE</b>
+                        <a name="processingMultiple"></a>
+                        <b>processingMultiple</b>
                     </td>
                 </tr>
                 <tr>
@@ -470,8 +511,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_QUEUECOMPLETE"></a>
-                        <b>DZ_QUEUECOMPLETE</b>
+                        <a name="queueComplete"></a>
+                        <b>queueComplete</b>
                     </td>
                 </tr>
                 <tr>
@@ -486,8 +527,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_REMOVEDFILE"></a>
-                        <b>DZ_REMOVEDFILE</b>
+                        <a name="removedFile"></a>
+                        <b>removedFile</b>
                     </td>
                 </tr>
                 <tr>
@@ -502,8 +543,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_RESET"></a>
-                        <b>DZ_RESET</b>
+                        <a name="reset"></a>
+                        <b>reset</b>
                     </td>
                 </tr>
                 <tr>
@@ -518,8 +559,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_SENDING"></a>
-                        <b>DZ_SENDING</b>
+                        <a name="sending"></a>
+                        <b>sending</b>
                     </td>
                 </tr>
                 <tr>
@@ -534,8 +575,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_SENDINGMULTIPLE"></a>
-                        <b>DZ_SENDINGMULTIPLE</b>
+                        <a name="sendingMultiple"></a>
+                        <b>sendingMultiple</b>
                     </td>
                 </tr>
                 <tr>
@@ -550,8 +591,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_SUCCESS"></a>
-                        <b>DZ_SUCCESS</b>
+                        <a name="success"></a>
+                        <b>success</b>
                     </td>
                 </tr>
                 <tr>
@@ -566,8 +607,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_SUCCESSMULTIPLE"></a>
-                        <b>DZ_SUCCESSMULTIPLE</b>
+                        <a name="successMultiple"></a>
+                        <b>successMultiple</b>
                     </td>
                 </tr>
                 <tr>
@@ -582,8 +623,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_THUMBNAIL"></a>
-                        <b>DZ_THUMBNAIL</b>
+                        <a name="thumbnail"></a>
+                        <b>thumbnail</b>
                     </td>
                 </tr>
                 <tr>
@@ -598,8 +639,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_TOTALUPLOADPROGRESS"></a>
-                        <b>DZ_TOTALUPLOADPROGRESS</b>
+                        <a name="totalUploadProgress"></a>
+                        <b>totalUploadProgress</b>
                     </td>
                 </tr>
                 <tr>
@@ -614,8 +655,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="DZ_UPLOADPROGRESS"></a>
-                        <b>DZ_UPLOADPROGRESS</b>
+                        <a name="uploadProgress"></a>
+                        <b>uploadProgress</b>
                     </td>
                 </tr>
                 <tr>
@@ -683,6 +724,24 @@
 
        <script>
                $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var updateDarkModeSwitchOffset = function () {
+                    var content = document.querySelector('.content');
+                    var scrollbarWidth = 0;
+
+                    if (content) {
+                         scrollbarWidth = Math.max(0, content.offsetWidth - content.clientWidth);
+                    }
+
+                    document.documentElement.style.setProperty(
+                         '--content-scrollbar-width',
+                         scrollbarWidth + 'px'
+                    );
+               };
+
+               updateDarkModeSwitchOffset();
+               requestAnimationFrame(updateDarkModeSwitchOffset);
+               window.addEventListener('resize', updateDarkModeSwitchOffset);
+
                checkToggle(darkModeState);
                if ($darkModeToggleSwitchers.length > 0) {
                     for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
@@ -698,7 +757,6 @@
        <script src="../js/libs/lit-html.js"></script>
 
        <script src="../js/menu-wc.js" defer></script>
-       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
