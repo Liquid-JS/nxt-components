@@ -1,6 +1,6 @@
 {
     "name": "demo",
-    "version": "22.0.0-alpha.0",
+    "version": "22.0.0",
     "license": "MIT",
     "type": "module",
     "repository": {
