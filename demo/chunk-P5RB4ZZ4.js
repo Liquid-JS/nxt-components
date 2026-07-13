@@ -1,0 +1,17 @@
+import"./chunk-F5DYP4RK.js";var s=`<ul class="list-group"
+    [nxtSortablejs]="citiesControls">
+    @for (city of citiesControls.controls; track city) {
+    <li class="list-group-item">
+        <input class="form-control"
+            [formControl]="city">
+    </li>
+    }
+</ul>
+<br>
+
+<h3 class="h4">FormArray value</h3>
+
+<app-code-block [code]="citiesControls.value | json"
+    [languages]="['json']"
+    [copy]="false" />
+`;export{s as default};
