@@ -172,7 +172,7 @@ export function activateLineNumbers(document: Document) {
                         NUMBER_LINE_NAME,
                         DATA_ATTR_NAME,
                         CODE_BLOCK_NAME,
-                        i + Number(!!(options?.startFrom)),
+                        i + (options?.startFrom ?? 1),
                         lines[i].length > 0 ? lines[i] : ' '
                     ])
             }

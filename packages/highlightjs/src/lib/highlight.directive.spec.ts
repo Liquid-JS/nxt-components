@@ -1,4 +1,4 @@
-import { Component, DebugElement, signal } from '@angular/core'
+import { Component, DebugElement, Injectable, resource, signal } from '@angular/core'
 import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import hljs from 'highlight.js'
@@ -91,5 +91,68 @@ describe('Highlight Directive', () => {
 
         await afterTimeout(200)
         expect(directiveElement.nativeElement.innerHTML).toBe('')
+    })
+
+    it('should show code in a language that isn\'t loaded, or without a language, as text', async () => {
+        component.language.set('not-a-language')
+        component.code.set('<b>bold</b>')
+        fixture.detectChanges()
+
+        await afterTimeout(200)
+        expect(directiveElement.nativeElement.innerHTML).toBe('&lt;b&gt;bold&lt;/b&gt;')
+        expect(directiveInstance.highlightResult()).toBeUndefined()
+
+        component.language.set(undefined)
+        component.code.set('x < y')
+        fixture.detectChanges()
+
+        await afterTimeout(200)
+        expect(directiveElement.nativeElement.textContent).toBe('x < y')
+        expect(directiveElement.nativeElement.querySelector('span')).toBeNull()
+    })
+})
+
+@Injectable({ providedIn: 'root' })
+class PendingHighlightLoaderStub {
+    readonly hljs = resource({
+        loader: () => new Promise<never>(() => undefined)
+    }).asReadonly()
+}
+
+describe('Highlight Directive before Highlight.js loads', () => {
+    let component: TestHighlightComponent
+    let element: HTMLElement
+    let fixture: ComponentFixture<TestHighlightComponent>
+
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            providers: [
+                { provide: HighlightLoader, useClass: PendingHighlightLoaderStub },
+                { provide: ComponentFixtureAutoDetect, useValue: true }
+            ]
+        }).compileComponents()
+
+        fixture = TestBed.createComponent(TestHighlightComponent)
+        component = fixture.componentInstance
+        element = fixture.debugElement.query(By.directive(HighlightDirective)).nativeElement
+    })
+
+    it('should show the code as text', () => {
+        component.language.set('ts')
+        component.code.set('const a = 1')
+        fixture.detectChanges()
+
+        expect(element.innerHTML).toBe('const a = 1')
+    })
+
+    it('should keep code that\'s already highlighted, e.g. on the server', () => {
+        const highlighted = hljs.highlight('const a = 1', { language: 'ts' }).value
+        element.innerHTML = highlighted
+
+        component.language.set('ts')
+        component.code.set('const a = 1')
+        fixture.detectChanges()
+
+        expect(element.innerHTML).toBe(highlighted)
     })
 })

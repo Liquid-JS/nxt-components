@@ -20,6 +20,14 @@ export default config(
             '**/*.ts'
         ],
         rules: {
+            '@import/no-extraneous-dependencies': [
+                'error',
+                {
+                    devDependencies: false,
+                    // Secondary entry points import the primary entry point by package name
+                    whitelist: ['nxt-highlightjs']
+                }
+            ],
             '@angular-eslint/directive-selector': [
                 'error',
                 {

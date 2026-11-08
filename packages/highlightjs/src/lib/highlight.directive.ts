@@ -29,8 +29,10 @@ export class HighlightDirective extends HighlightBase {
 
     /**
      * The language name highlight only one language
+     *
+     * Without it, or with a language that isn't loaded, the code shows as text.
      */
-    readonly language = input.required<string>()
+    readonly language = input<string>()
 
     /**
      * An optional flag, when set to true it forces highlighting to finish even in case of detecting
@@ -47,8 +49,12 @@ export class HighlightDirective extends HighlightBase {
 
     highlightElement(code: string) {
         const hljs = this.hljs.hljs()
-        return hljs?.highlight(code, {
-            language: this.language(),
+        const language = this.language()
+        if (!language || !hljs?.getLanguage(language)) {
+            return undefined
+        }
+        return hljs.highlight(code, {
+            language,
             ignoreIllegals: this.ignoreIllegals()
         })
     }
