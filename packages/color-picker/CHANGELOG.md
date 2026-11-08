@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.1.0](https://github.com/Liquid-JS/nxt-components/compare/v22.0.0...v22.1.0) (2026-11-08)
+
+### Features
+
+* **color-picker:** a11y ([269cbc5](https://github.com/Liquid-JS/nxt-components/commit/269cbc5d03abce8367f3ff1d2c536dfe84e7cd5d))
+
 # [22.0.0](https://github.com/Liquid-JS/nxt-components/compare/v22.0.0-alpha.0...v22.0.0) (2026-07-13)
 
 **Note:** Version bump only for package nxt-color-picker
