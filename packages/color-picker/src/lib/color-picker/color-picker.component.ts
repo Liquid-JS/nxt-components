@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, ElementRef, inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core'
+import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core'
 import { cmykToRgb, denormalizeCMYK, denormalizeHSLA, denormalizeRGBA, formatCmyk, formatOutput, hslaToHsva, hsvaToHsla, hsvaToRgba, rgbaToCmyk, rgbaToHex, rgbaToHsva, stringToCmyk, stringToHsva } from '../../util/color'
 import { opaqueSliderLight, transparentSliderLight } from '../../util/contrast'
 import { Cmyk, Hsla, Hsva, Rgba } from '../../util/formats'
@@ -6,6 +6,7 @@ import { ColorModeInternal, composedPath, CursorEvent, DialogConfig, DirectiveCa
 import { AlphaChannel, AlphaChannelEnum, AlphaEnabledFormats, ColorFormat, ColorFormatEnum, DialogDisplay, DialogDisplayEnum, OutputFormat, OutputFormatEnum } from '../../util/types'
 import { ColorPickerService } from '../color-picker.service'
 import { SliderDirective } from '../slider.directive'
+import { injectColorPickerTexts } from '../texts'
 import { TextDirective } from '../text.directive'
 
 /**
@@ -31,6 +32,8 @@ import { TextDirective } from '../text.directive'
 export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     readonly colorModeInternal = ColorModeInternal
+
+    readonly texts = injectColorPickerTexts()
 
     private hsva?: Hsva
     private cmyk?: Cmyk
@@ -93,6 +96,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
     cancelButton = false
 
+    clearable = false
+
     presetLabel: boolean | string = false
     presetColors?: string[]
     maxPresetColors?: number
@@ -100,8 +105,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     presetColorsEditable: boolean = false
     private readonly elRef = inject(ElementRef)
     private readonly service = inject(ColorPickerService)
+    private readonly cdRef = inject(ChangeDetectorRef)
 
     onCancel(event: Event) {
+        if (!this.show) {
+            return
+        }
+        const returnFocus = this.containsFocus()
+
         event.stopPropagation()
         event.preventDefault()
 
@@ -115,10 +126,35 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
         if (this.show && this.dialogDisplay == DialogDisplayEnum.popup) {
             this.closeColorPicker()
+            if (returnFocus) {
+                this.callbacks?.focusTrigger()
+            }
+        }
+    }
+
+    onClear(event: Event) {
+        const returnFocus = this.containsFocus()
+
+        event.stopPropagation()
+        event.preventDefault()
+
+        this.callbacks?.colorCleared()
+
+        if (this.show && this.dialogDisplay == DialogDisplayEnum.popup) {
+            this.closeColorPicker()
+            if (returnFocus) {
+                this.callbacks?.focusTrigger()
+            }
         }
     }
 
     onAccept(event: Event) {
+        // Listened for on the document, so only an open dialog handles it
+        if (!this.show) {
+            return
+        }
+        const returnFocus = this.containsFocus()
+
         event.stopPropagation()
         event.preventDefault()
 
@@ -129,8 +165,57 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
             if (this.dialogDisplay == DialogDisplayEnum.popup) {
                 this.closeColorPicker()
+                if (returnFocus) {
+                    this.callbacks?.focusTrigger()
+                }
             }
         }
+    }
+
+    onDialogKeydown(event: KeyboardEvent) {
+        if (event.key != 'Tab' || this.dialogDisplay != DialogDisplayEnum.popup) {
+            return
+        }
+        const focusable = this.focusableElements()
+        if (!focusable.length) {
+            return
+        }
+        const index = focusable.indexOf(document.activeElement as HTMLElement)
+        const next = event.shiftKey
+            ? (index <= 0 ? focusable.length - 1 : index - 1)
+            : (index == focusable.length - 1 ? 0 : index + 1)
+        event.preventDefault()
+        focusable[next].focus()
+    }
+
+    focusFirst() {
+        this.focusableElements()[0]?.focus()
+    }
+
+    private focusableElements(): HTMLElement[] {
+        const root: HTMLElement | undefined = this.elRef.nativeElement
+        return Array.from(root?.querySelectorAll<HTMLElement>('[tabindex="0"], input, button, select, textarea') ?? [])
+            .filter(el => !el.hasAttribute('disabled') && el.offsetParent != null)
+    }
+
+    private containsFocus() {
+        const root: HTMLElement | undefined = this.elRef.nativeElement
+        return !!root && root.contains(document.activeElement)
+    }
+
+    saturationBrightnessText() {
+        return this.texts().saturationBrightnessValue(
+            this.percentText(this.slider?.s || 0),
+            this.percentText(1 - (this.slider?.v || 0))
+        )
+    }
+
+    hueText() {
+        return `${Math.round((this.slider?.h || 0) * 360)}°`
+    }
+
+    percentText(value: number) {
+        return `${Math.round(value * 100)}%`
     }
 
     onClick(event: MouseEvent) {
@@ -234,6 +319,8 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
 
         this.cancelButton = config.cancelButton()
 
+        this.clearable = config.clearable()
+
         this.fallbackColor = config.fallbackColor() || '#fff'
 
         this.setPresetConfig(config.presetLabel(), config.presetColors())
@@ -259,6 +346,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     }
 
     setColorFromString(value: string, emit: boolean = true, update: boolean = true) {
+        this.cdRef.markForCheck()
         let hsva = stringToHsva(value, true)
         let cmyk = stringToCmyk(value, true)
 
@@ -755,6 +843,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     private openColorPicker() {
         if (!this.show) {
             this.show = true
+            this.cdRef.markForCheck()
 
             if (this.callbacks) {
                 this.callbacks.stateChanged(true)
@@ -765,6 +854,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy, AfterViewChecked
     private closeColorPicker() {
         if (this.show) {
             this.show = false
+            this.cdRef.markForCheck()
 
             if (this.callbacks) {
                 this.callbacks.stateChanged(false)

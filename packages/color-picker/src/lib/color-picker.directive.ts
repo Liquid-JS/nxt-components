@@ -1,6 +1,6 @@
 import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
-import { ApplicationRef, ComponentRef, Directive, ElementRef, Injector, OnChanges, OnDestroy, SimpleChanges, ViewContainerRef, inject, output, input, linkedSignal } from '@angular/core'
+import { ApplicationRef, booleanAttribute, ComponentRef, computed, Directive, ElementRef, Injector, OnChanges, OnDestroy, SimpleChanges, ViewContainerRef, inject, output, input, linkedSignal, signal } from '@angular/core'
 import { compositeColors, hsvaToRgba, stringToHsva } from '../util/color'
 import { opaqueSliderLight } from '../util/contrast'
 import { Hsva, Rgba } from '../util/formats'
@@ -12,6 +12,9 @@ import { ColorPickerComponent } from './color-picker/color-picker.component'
     selector: '[nxtColor]',
     exportAs: 'nxtColorPicker',
     host: {
+        'aria-haspopup': 'dialog',
+        '[attr.aria-expanded]': 'dialogDisplay() == "popup" ? expanded() : null',
+        '(keydown)': 'handleKeydown($event)',
         '(focus)': 'handleOpen($event)',
         '(click)': 'handleOpen($event)',
         '(input)': 'handleInput($event)',
@@ -27,8 +30,15 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
     private cmpRef?: ComponentRef<ColorPickerComponent>
 
+    /** Set while focus returns to the element, so it doesn't open the dialog again */
+    private returningFocus = false
+
+    /** @internal Whether the dialog is open */
+    readonly expanded = signal(false)
+
     private readonly _callbacks: DirectiveCallbacks = {
         stateChanged: (state: boolean) => {
+            this.expanded.set(state)
             this.toggleChange.emit(state)
 
             if (state) {
@@ -50,6 +60,9 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         colorSelectCanceled: () => {
             this.colorSelectCancel.emit(undefined)
         },
+        colorCleared: () => {
+            this.clearColor()
+        },
         colorSelected: (value: string) => {
             this.colorSelect.emit(value)
         },
@@ -67,6 +80,11 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         },
         presetColorsChanged: (value: string[]) => {
             this.presetColorsChange.emit(value)
+        },
+        focusTrigger: () => {
+            this.returningFocus = true
+            this.elRef.nativeElement.focus()
+            this.returningFocus = false
         }
     }
     private overlayRef?: OverlayRef
@@ -93,6 +111,12 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     readonly toggle = input<boolean>(false)
     /** Disables opening of the color picker dialog via toggle */
     readonly disabled = input<boolean>(false)
+
+    /** Disabled by a form, see `setDisabled` */
+    private readonly disabledByForm = signal(false)
+
+    /** @internal Whether it's disabled, by the input or a form */
+    readonly isDisabled = computed(() => this.disabled() || this.disabledByForm())
 
     /** Dialog color mode */
     readonly mode = input<ColorMode>('color')
@@ -140,6 +164,12 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
     /** Show a Cancel / Reset button which resets the color */
     readonly cancelButton = input<boolean>(false)
+
+    /**
+     * Lets the user clear the color: the dialog has a Clear button, and emptying the input clears it; the color is
+     * then an empty string
+     */
+    readonly clearable = input(false, { transform: booleanAttribute })
 
     /** Show buttons to add / remove preset colors */
     readonly presetColorsEditable = input<boolean>(false)
@@ -193,19 +223,35 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
     /** @internal */
     handleOpen(event: Event) {
+        if (this.returningFocus) {
+            return
+        }
         const path = new Set(composedPath(event))
         const ignored = this.resIgnoredElements.find(el => path.has(el))
 
-        if (!this.disabled() && !ignored) {
+        if (!this.isDisabled() && !ignored) {
             this.openDialog()
         }
+    }
+
+    /** @internal */
+    handleKeydown(event: KeyboardEvent) {
+        if (event.key != 'ArrowDown' || this.isDisabled() || this.dialogDisplay() != DialogDisplayEnum.popup) {
+            return
+        }
+        event.preventDefault()
+        this.openDialog()
+        this.cmpRef?.changeDetectorRef.detectChanges()
+        this.dialog?.focusFirst()
     }
 
     /** @internal */
     handleInput(event: Event) {
         const value = (((event?.target as HTMLInputElement | null)?.['value'] || '') + '').trim()
 
-        if (this.dialog) {
+        if (!value && this.clearable()) {
+            this.clearColor()
+        } else if (this.dialog) {
             this.dialog.setColorFromString(value, true)
         } else {
             this.nxtColor.set(value)
@@ -220,7 +266,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
     /** @internal */
     ngOnChanges(changes: SimpleChanges) {
-        if (changes['toggle'] && !this.disabled()) {
+        if (changes['toggle'] && !this.isDisabled()) {
             if (changes['toggle'].currentValue) {
                 this.openDialog()
             } else {
@@ -262,6 +308,20 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         }
     }
 
+    setColor(value: string) {
+        this.nxtColor.set(value)
+        if (this.dialog) {
+            this.dialog.setColorFromString(value, false)
+        }
+    }
+
+    setDisabled(disabled: boolean) {
+        this.disabledByForm.set(disabled)
+        if (disabled) {
+            this.closeDialog()
+        }
+    }
+
     openDialog() {
         if (!this.dialogCreated) {
             this.create()
@@ -279,6 +339,15 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         if (this.dialog && this.dialogDisplay() == DialogDisplayEnum.popup) {
             this.dialog.closeDialog()
         }
+    }
+
+    /** Clears the color, which is then an empty string */
+    private clearColor() {
+        this.nxtColor.set('')
+        if (this.cmykEnabled()) {
+            this.cmykColorChange.emit('')
+        }
+        this.nxtColorChange.emit('')
     }
 
     /**

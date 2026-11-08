@@ -1,5 +1,8 @@
 @if (show) {
 <div class="color-picker"
+    role="dialog"
+    [attr.aria-label]="texts().dialog"
+    (keydown)="onDialogKeydown($event)"
     [style]="{
         visibility: !show ? 'hidden' : 'visible',
         width: width || '',
@@ -13,6 +16,10 @@
         nxtSlider
         [rgX]="1"
         [rgY]="1"
+        [positionX]="slider?.s || 0"
+        [positionY]="slider?.v || 0"
+        [label]="texts().saturationBrightness"
+        [valueText]="saturationBrightnessText()"
         (newValue)="onColorChange($event)"
         (dragStart)="onDragStart('saturation-lightness')"
         (dragEnd)="onDragEnd('saturation-lightness')"
@@ -30,8 +37,8 @@
             <div class="color-picker__selected-color">
                 <div [style.backgroundColor]="selectedColor || ''">@if (presetColorsEditable && !(maxPresetColors && (presetColors?.length || 0) >= maxPresetColors)) {
                     <button type="button"
-                        title="Add color to preset"
-                        i18n-title="@@nxt-color-picker.button.add-color"
+                        [title]="texts().addColor"
+                        [attr.aria-label]="texts().addColor"
                         class="color-picker__add-selected"
                         [class.color-picker__add-selected--light]="alphaSliderLight"
                         (click)="onAddPresetColor(selectedColor)"><svg xmlns="http://www.w3.org/2000/svg"
@@ -51,6 +58,9 @@
             <div class="color-picker__slider color-picker__slider--hue"
                 nxtSlider
                 [rgX]="1"
+                [positionX]="slider?.h || 0"
+                [label]="texts().hue"
+                [valueText]="hueText()"
                 (newValue)="onHueChange($event)"
                 (dragStart)="onDragStart('hue')"
                 (dragEnd)="onDragEnd('hue')">
@@ -63,6 +73,9 @@
             <div class="color-picker__slider color-picker__slider--value"
                 nxtSlider
                 [rgX]="1"
+                [positionX]="1 - (slider?.v || 0)"
+                [label]="texts().brightness"
+                [valueText]="percentText(1 - (slider?.v || 0))"
                 (newValue)="onValueChange($event)"
                 (dragStart)="onDragStart('value')"
                 (dragEnd)="onDragEnd('value')">
@@ -75,6 +88,9 @@
             <div class="color-picker__slider color-picker__slider--alpha"
                 nxtSlider
                 [rgX]="1"
+                [positionX]="slider?.a || 0"
+                [label]="texts().opacity"
+                [valueText]="percentText(slider?.a || 0)"
                 (newValue)="onAlphaChange($event)"
                 (dragStart)="onDragStart('alpha')"
                 (dragEnd)="onDragEnd('alpha')">
@@ -93,7 +109,8 @@
         <div class="color-picker__input-fields">
             @if (mode == colorModeInternal.grayscale) {
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().brightness"
+                    type="number"
                     pattern="[0-9]*"
                     min="0"
                     max="100"
@@ -106,7 +123,8 @@
             </div>
             @if (alphaChannel != 'disabled') {
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().opacity"
+                    type="number"
                     pattern="[0-9]+([\.,][0-9]{1,2})?"
                     min="0"
                     max="1"
@@ -123,7 +141,8 @@
             @switch (format) {
             @case ('hsla') {
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().hue"
+                    type="number"
                     pattern="[0-9]*"
                     min="0"
                     max="360"
@@ -135,7 +154,8 @@
                 <span class="color-picker__input-field-label">H</span>
             </div>
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().saturation"
+                    type="number"
                     pattern="[0-9]*"
                     min="0"
                     max="100"
@@ -147,7 +167,8 @@
                 <span class="color-picker__input-field-label">S</span>
             </div>
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().lightness"
+                    type="number"
                     pattern="[0-9]*"
                     min="0"
                     max="100"
@@ -160,7 +181,8 @@
             </div>
             @if (alphaChannel != 'disabled') {
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().opacity"
+                    type="number"
                     pattern="[0-9]+([\.,][0-9]{1,2})?"
                     min="0"
                     max="1"
@@ -176,7 +198,8 @@
             }
             @case ('rgba') {
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().red"
+                    type="number"
                     pattern="[0-9]*"
                     min="0"
                     max="255"
@@ -188,7 +211,8 @@
                 <span class="color-picker__input-field-label">R</span>
             </div>
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().green"
+                    type="number"
                     pattern="[0-9]*"
                     min="0"
                     max="255"
@@ -200,7 +224,8 @@
                 <span class="color-picker__input-field-label">G</span>
             </div>
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().blue"
+                    type="number"
                     pattern="[0-9]*"
                     min="0"
                     max="255"
@@ -213,7 +238,8 @@
             </div>
             @if (alphaChannel != 'disabled') {
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().opacity"
+                    type="number"
                     pattern="[0-9]+([\.,][0-9]{1,2})?"
                     min="0"
                     max="1"
@@ -229,7 +255,8 @@
             }
             @case ('cmyk') {
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().cyan"
+                    type="number"
                     pattern="[0-9]*"
                     min="0"
                     max="100"
@@ -241,7 +268,8 @@
                 <span class="color-picker__input-field-label">C</span>
             </div>
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().magenta"
+                    type="number"
                     pattern="[0-9]*"
                     min="0"
                     max="100"
@@ -253,7 +281,8 @@
                 <span class="color-picker__input-field-label">M</span>
             </div>
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().yellow"
+                    type="number"
                     pattern="[0-9]*"
                     min="0"
                     max="100"
@@ -265,7 +294,8 @@
                 <span class="color-picker__input-field-label">Y</span>
             </div>
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().black"
+                    type="number"
                     pattern="[0-9]*"
                     min="0"
                     max="100"
@@ -278,7 +308,8 @@
             </div>
             @if (alphaChannel != 'disabled') {
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().opacity"
+                    type="number"
                     pattern="[0-9]+([\.,][0-9]{1,2})?"
                     min="0"
                     max="1"
@@ -294,7 +325,8 @@
             }
             @default {
             <div class="color-picker__input-field">
-                <input nxtText
+                <input [attr.aria-label]="texts().hex"
+                    nxtText
                     [value]="hexText"
                     (blur)="onHexInput()"
                     (keyup.enter)="onAccept($event)"
@@ -303,7 +335,8 @@
             </div>
             @if (alphaChannel == 'forced') {
             <div class="color-picker__input-field">
-                <input type="number"
+                <input [attr.aria-label]="texts().opacity"
+                    type="number"
                     pattern="[0-9]+([\.,][0-9]{1,2})?"
                     min="0"
                     max="1"
@@ -323,13 +356,19 @@
         @if (mode == colorModeInternal.color) {
         <div class="color-picker__input-type">
             <span class="color-picker__input-type-arrow"
+                role="button"
+                [attr.aria-label]="texts().nextFormat"
                 (click)="onFormatToggle(1)"
                 tabindex="0"
-                (keydown.enter)="onFormatToggle(1)"></span>
+                (keydown.enter)="onFormatToggle(1)"
+                (keydown.space)="$event.preventDefault(); onFormatToggle(1)"></span>
             <span class="color-picker__input-type-arrow"
+                role="button"
+                [attr.aria-label]="texts().previousFormat"
                 (click)="onFormatToggle(-1)"
                 tabindex="0"
-                (keydown.enter)="onFormatToggle(-1)"></span>
+                (keydown.enter)="onFormatToggle(-1)"
+                (keydown.space)="$event.preventDefault(); onFormatToggle(-1)"></span>
         </div>
         }
     </div>
@@ -340,7 +379,7 @@
         @if (presetLabel) {
         <div class="color-picker__preset-label">
             @if (presetLabel === true) {
-            <ng-container i18n="@@nxt-color-picker.preset-colors">Preset colors</ng-container>
+            {{ texts().presetColors }}
             } @else {
             {{ presetLabel }}
             }
@@ -350,15 +389,18 @@
             @for (color of presetColors; track color) {
             @if (stringToRgba(color); as rgba) {
             <div class="color-picker__preset-item"
+                role="button"
                 [title]="color"
+                [attr.aria-label]="texts().presetColor(color)"
                 (click)="setColorFromString(color)"
                 tabindex="0"
-                (keydown.enter)="setColorFromString(color)">
+                (keydown.enter)="setColorFromString(color)"
+                (keydown.space)="$event.preventDefault(); setColorFromString(color)">
                 <div class="color-picker__preset-item-fill"
                     [style.backgroundColor]="rgba || ''">@if (presetColorsEditable) {
                     <button type="button"
-                        title="Remove Color"
-                        i18n-title="@@nxt-color-picker.button.remove-color"
+                        [title]="texts().removeColor"
+                        [attr.aria-label]="texts().removeColor"
                         class="color-picker__remove-selected"
                         (click)="onRemovePresetColor(color, $event)"
                         tabindex="0"
@@ -381,17 +423,20 @@
         </div>
     </div>
     }
-    @if (okButton || cancelButton) {
+    @if (okButton || cancelButton || clearable) {
     <div class="color-picker__buttons">
+        @if (clearable) {
+        <button type="button"
+            class="color-picker__clear"
+            (click)="onClear($event)">{{ texts().clear }}</button>
+        }
         @if (cancelButton) {
         <button type="button"
-            (click)="onCancel($event)"
-            i18n="@@nxt-color-picker.button.cancel">Cancel</button>
+            (click)="onCancel($event)">{{ texts().cancel }}</button>
         }
         @if (okButton) {
         <button type="button"
-            (click)="onAccept($event)"
-            i18n="@@nxt-color-picker.button.ok">OK</button>
+            (click)="onAccept($event)">{{ texts().ok }}</button>
         }
     </div>
     }

@@ -1,7 +1,7 @@
 @use "sass:math";
 
-$borderColor: #999;
-$backgroundColor: #fff;
+$borderColor: var(--nxt-color-picker-border-color, #999);
+$backgroundColor: var(--nxt-color-picker-background, #fff);
 $baseSize: 16px;
 
 $dark: #222222;
@@ -11,14 +11,29 @@ $light: #dadada;
     position: relative;
     user-select: none;
     background-color: $backgroundColor;
-    box-shadow: 0 8px 10px 1px rgb(0, 0, 0, 0.14), 0 3px 14px 2px rgb(0, 0, 0, 0.12), 0 5px 5px -3px rgb(0, 0, 0, 0.2);
+    color: var(--nxt-color-picker-text-color, inherit);
+    font-family: var(--nxt-color-picker-font-family, inherit);
+    border: var(--nxt-color-picker-border, none);
+    border-radius: var(--nxt-color-picker-border-radius, 0);
+    box-shadow: var(--nxt-color-picker-shadow, 0 8px 10px 1px rgb(0, 0, 0, 0.14), 0 3px 14px 2px rgb(0, 0, 0, 0.12), 0 5px 5px -3px rgb(0, 0, 0, 0.2));
     display: flex;
     flex-direction: column;
 
     * {
         box-sizing: border-box;
         margin: 0;
-        font-size: 0.75 * $baseSize;
+        font-size: var(--nxt-color-picker-font-size, #{0.75 * $baseSize});
+    }
+
+    // The sliders, presets and buttons show where focus is
+    [tabindex]:focus-visible,
+    button:focus-visible {
+        outline: var(--nxt-color-picker-focus-outline, 2px solid currentcolor);
+        outline-offset: var(--nxt-color-picker-focus-outline-offset, 2px);
+    }
+
+    .color-picker__sv:focus-visible {
+        outline-offset: calc(-1 * var(--nxt-color-picker-focus-outline-width, 2px));
     }
 
     .color-picker__arrow {
@@ -184,15 +199,39 @@ $light: #dadada;
 
             input {
                 text-align: center;
-                font-size: 0.75 * $baseSize;
-                height: 1.5 * $baseSize;
+                font-size: var(--nxt-color-picker-font-size, #{0.75 * $baseSize});
+                font-family: inherit;
+                height: var(--nxt-color-picker-input-height, #{1.5 * $baseSize});
                 appearance: none;
                 flex: 100% 1 1;
                 padding: 1px;
-                border: $borderColor solid 1px;
+                color: var(--nxt-color-picker-input-text-color, inherit);
+                border: var(--nxt-color-picker-input-border-color, #{$borderColor}) solid var(--nxt-color-picker-input-border-width, 1px);
+                border-radius: var(--nxt-color-picker-input-border-radius, 0);
                 width: 100%;
-                background: none;
+                background: var(--nxt-color-picker-input-background, none);
                 min-width: 0;
+                outline: none;
+
+                &::placeholder {
+                    color: var(--nxt-color-picker-input-placeholder-color, inherit);
+                }
+
+                &:hover {
+                    background: var(--nxt-color-picker-input-hover-background, var(--nxt-color-picker-input-background, none));
+                    border-color: var(--nxt-color-picker-input-hover-border-color, var(--nxt-color-picker-input-border-color, #{$borderColor}));
+                }
+
+                &:focus {
+                    background: var(--nxt-color-picker-input-focus-background, var(--nxt-color-picker-input-background, none));
+                    border-color: var(--nxt-color-picker-input-focus-border-color, var(--nxt-color-picker-input-border-color, #{$borderColor}));
+                }
+
+                &:disabled {
+                    background: var(--nxt-color-picker-input-disabled-background, var(--nxt-color-picker-input-background, none));
+                    border-color: var(--nxt-color-picker-input-disabled-border-color, var(--nxt-color-picker-input-border-color, #{$borderColor}));
+                    color: var(--nxt-color-picker-input-disabled-text-color, var(--nxt-color-picker-input-text-color, inherit));
+                }
 
                 &:invalid {
                     box-shadow: none;
@@ -220,17 +259,27 @@ $light: #dadada;
         margin-top: math.div($baseSize, 4);
         display: flex;
         flex-wrap: wrap;
-        background-size: contain;
-        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMDAgMTAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjMzMzMzMzIiBwb2ludHM9IjUwIDE2IDMwIDQ0IDcwIDQ0ICIvPjxwb2x5Z29uIGZpbGw9IiMzMzMzMzMiIHBvaW50cz0iNTAgODQgNzAgNTYgMzAgNTYgIi8+PC9zdmc+");
-        background-repeat: no-repeat;
-        background-position: center;
 
+        // Triangles in a colour the theme sets, pointing up and down
         .color-picker__input-type-arrow {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
             flex: 100% 1 1;
             width: 100%;
             height: 50%;
+
+            &:before {
+                content: "";
+                border-style: solid;
+                border-width: 0 0.3 * $baseSize 0.42 * $baseSize;
+                border-color: transparent transparent var(--nxt-color-picker-arrow-color, #333);
+            }
+
+            & + .color-picker__input-type-arrow:before {
+                transform: rotate(180deg);
+            }
         }
     }
 
@@ -328,6 +377,11 @@ $light: #dadada;
             border-radius: var(--nxt-color-picker-button-border-radius, #{math.div($baseSize, 4)});
             font-size: var(--nxt-color-picker-button-font-size, inherit);
             font-weight: var(--nxt-color-picker-button-font-weight, inherit);
+        }
+
+        // Away from the buttons that close the dialog with a color
+        .color-picker__clear {
+            margin-inline-end: auto;
         }
     }
 }

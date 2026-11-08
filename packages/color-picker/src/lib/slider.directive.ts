@@ -1,4 +1,4 @@
-import { Directive, ElementRef, inject, input, output } from '@angular/core'
+import { computed, Directive, ElementRef, inject, input, output } from '@angular/core'
 import { CursorEvent } from '../util/helpers'
 
 /**
@@ -7,6 +7,14 @@ import { CursorEvent } from '../util/helpers'
 @Directive({
     selector: '[nxtSlider]',
     host: {
+        'role': 'slider',
+        'tabindex': '0',
+        'aria-valuemin': '0',
+        'aria-valuemax': '100',
+        '[attr.aria-valuenow]': 'valueNow()',
+        '[attr.aria-valuetext]': 'valueText()',
+        '[attr.aria-label]': 'label()',
+        '(keydown)': 'onKeydown($event)',
         '(mousedown)': 'onStart($event)',
         '(touchstart)': 'onStart($event)',
         '(document:mousemove)': 'onMove($event)',
@@ -23,6 +31,16 @@ export class SliderDirective {
     readonly rgY = input<number>()
 
     readonly slider = input<string>(undefined, { alias: 'nxtSlider' })
+
+    readonly positionX = input<number>()
+    readonly positionY = input<number>()
+    readonly label = input<string>()
+    readonly valueText = input<string>()
+
+    readonly valueNow = computed(() => {
+        const position = this.rgX() != undefined ? this.positionX() : this.positionY()
+        return position == undefined ? undefined : Math.round(position * 100)
+    })
 
     readonly dragEnd = output()
     readonly dragStart = output()
@@ -58,6 +76,63 @@ export class SliderDirective {
         }
     }
 
+    onKeydown(event: KeyboardEvent) {
+        const twoDimensional = this.rgX() != undefined && this.rgY() != undefined
+        const horizontal = this.rgX() != undefined
+        let x = this.positionX() ?? 0
+        let y = this.positionY() ?? 0
+        const step = event.shiftKey ? 0.1 : 0.01
+
+        switch (event.key) {
+            case 'ArrowLeft':
+                x -= step
+                break
+            case 'ArrowRight':
+                x += step
+                break
+            case 'ArrowUp':
+                if (twoDimensional) {
+                    y -= step
+                } else if (horizontal) {
+                    x += step
+                } else {
+                    y -= step
+                }
+                break
+            case 'ArrowDown':
+                if (twoDimensional) {
+                    y += step
+                } else if (horizontal) {
+                    x -= step
+                } else {
+                    y += step
+                }
+                break
+            case 'PageUp':
+                if (horizontal && !twoDimensional) x += 0.1
+                else y -= 0.1
+                break
+            case 'PageDown':
+                if (horizontal && !twoDimensional) x -= 0.1
+                else y += 0.1
+                break
+            case 'Home':
+                x = 0
+                if (!horizontal) y = 0
+                break
+            case 'End':
+                x = 1
+                if (!horizontal) y = 1
+                break
+            default:
+                return
+        }
+
+        event.preventDefault()
+        event.stopPropagation()
+        this.emitPosition(Math.max(0, Math.min(x, 1)), Math.max(0, Math.min(y, 1)))
+    }
+
     private getX(event: MouseEvent | TouchEvent) {
         const position = this.elRef.nativeElement.getBoundingClientRect()
 
@@ -81,14 +156,18 @@ export class SliderDirective {
         const x = Math.max(0, Math.min(this.getX(event), width))
         const y = Math.max(0, Math.min(this.getY(event), height))
 
+        this.emitPosition(x / width, y / height)
+    }
+
+    private emitPosition(x: number, y: number) {
         const rgX = this.rgX()
         const rgY = this.rgY()
         if (rgX != undefined && rgY != undefined) {
-            this.newValue.emit({ s: x / width, v: (1 - y / height), rgX, rgY })
+            this.newValue.emit({ s: x, v: 1 - y, rgX, rgY })
         } else if (rgX == undefined && rgY != undefined) {
-            this.newValue.emit({ v: y / height, rgY })
+            this.newValue.emit({ v: y, rgY })
         } else if (rgX != undefined && rgY == undefined) {
-            this.newValue.emit({ v: x / width, rgX })
+            this.newValue.emit({ v: x, rgX })
         }
     }
 }

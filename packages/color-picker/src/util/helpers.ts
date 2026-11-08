@@ -1,4 +1,4 @@
-import { ElementRef, InputSignal } from '@angular/core'
+import { ElementRef, InputSignal, Signal } from '@angular/core'
 import { AlphaChannel, ColorMode, DialogDisplay, DialogPosition, InputChangeEvent, OutputFormat, SliderChangeEvent } from './types'
 
 /**
@@ -84,12 +84,14 @@ export interface DirectiveCallbacks {
     cmykChanged(valuse: string, ignore?: boolean): void
     colorChanged(value: string, ignore?: boolean): void
     colorSelectCanceled(): void
+    colorCleared(): void
     colorSelected(value: string): void
     inputChanged(event: InputChangeEvent): void
     sliderDragStart(event: SliderChangeEvent): void
     sliderChanged(event: SliderChangeEvent): void
     sliderDragEnd(event: SliderChangeEvent): void
     presetColorsChanged(value?: string[]): void
+    focusTrigger(): void
 }
 
 /**
@@ -118,6 +120,7 @@ export interface DialogConfig {
     maxPresetColors: InputSignal<number | undefined>
     okButton: InputSignal<boolean>
     cancelButton: InputSignal<boolean>
+    clearable: Signal<boolean>
     presetColorsEditable: InputSignal<boolean>
 }
 
