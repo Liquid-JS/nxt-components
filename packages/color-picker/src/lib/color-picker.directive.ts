@@ -1,7 +1,7 @@
 import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
 import { ApplicationRef, booleanAttribute, ComponentRef, computed, Directive, ElementRef, Injector, OnChanges, OnDestroy, SimpleChanges, ViewContainerRef, inject, output, input, linkedSignal, signal } from '@angular/core'
-import { compositeColors, hsvaToRgba, stringToHsva } from '../util/color'
+import { compositeColors, hsvaToRgba, stringToCmyk, stringToHsva } from '../util/color'
 import { opaqueSliderLight } from '../util/contrast'
 import { Hsva, Rgba } from '../util/formats'
 import { composedPath, DirectiveCallbacks } from '../util/helpers'
@@ -253,7 +253,8 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
             this.clearColor()
         } else if (this.dialog) {
             this.dialog.setColorFromString(value, true)
-        } else {
+        } else if (stringToHsva(value, true) || stringToCmyk(value, true)) {
+            // Text that isn't a color doesn't change it, as in the dialog
             this.nxtColor.set(value)
             this.nxtColorChange.emit(value)
         }

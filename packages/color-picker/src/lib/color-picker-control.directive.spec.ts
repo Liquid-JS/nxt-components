@@ -89,6 +89,21 @@ describe('ColorPickerControlDirective', () => {
         })
     }
 
+    it('should not give the form text that isn\'t a color, with the dialog open or closed', async () => {
+        await create(ReactiveHostComponent)
+        const control = (fixture.componentInstance as ReactiveHostComponent).control
+
+        await type('#00ff0')
+        expect(control.value).toBe('#ff0000')
+        await type('#00ff00')
+        expect(control.value).toBe('#00ff00')
+
+        await open()
+        expect(dialog()).toBeTruthy()
+        await type('blue-ish')
+        expect(control.value).toBe('#00ff00')
+    })
+
     it('should not give the form a color that only differs in spaces or case', async () => {
         await create(ReactiveHostComponent)
         const control = (fixture.componentInstance as ReactiveHostComponent).control
