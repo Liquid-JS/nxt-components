@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core'
     name: 'numberFixedLen'
 })
 export class NumberFixedLenPipe implements PipeTransform {
-    transform(num: number | undefined, len: number | undefined) {
+    transform(num?: number, len?: number) {
         if (num == undefined || !Number.isFinite(num))
             return undefined
 

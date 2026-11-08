@@ -65,7 +65,7 @@ export class DropzoneDirective extends DropzoneListeners implements OnDestroy {
         }
     })
 
-    private _instance?: Dropzone | undefined
+    private _instance?: Dropzone
 
     get dropzone() {
         return this._instance
@@ -111,7 +111,7 @@ export class DropzoneDirective extends DropzoneListeners implements OnDestroy {
         const instance = this._instance
         if (instance) {
             this.zone.runOutsideAngular(() => {
-                instance.removeAllFiles(cancel)
+                instance.removeAllFiles(!!cancel)
             })
         }
     }

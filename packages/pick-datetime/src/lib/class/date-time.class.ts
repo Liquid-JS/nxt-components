@@ -111,7 +111,7 @@ export abstract class DateTimeDirective<T> {
     /**
      * Date Time Checker to check if the give dateTime is selectable
      */
-    readonly dateTimeChecker = signal((dateTime: T | undefined) => (
+    readonly dateTimeChecker = signal((dateTime?: T) => (
         !!dateTime &&
         (!this.dateTimeFilter() || this.dateTimeFilter()!(dateTime)) &&
         (!this.min() || this.dateTimeAdapter.compare(dateTime, this.min()) >= 0) &&

@@ -6,7 +6,6 @@
     "root": true,
     "reject": [
         "@types/node",
-        "typescript",
-        "eslint"
+        "typescript"
     ]
 }

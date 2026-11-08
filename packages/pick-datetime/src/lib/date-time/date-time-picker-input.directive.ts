@@ -250,7 +250,7 @@ export class DateTimeInputDirective<T> implements OnInit, AfterContentInit, OnDe
         computation: v => v
     })
 
-    private onModelChange?: (date: T | Array<T | undefined> | undefined) => void
+    private onModelChange?: (date?: T | Array<T | undefined>) => void
     private onModelTouched?: () => void
     private validatorOnChange?: () => void
 

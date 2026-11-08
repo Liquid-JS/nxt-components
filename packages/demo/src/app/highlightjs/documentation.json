@@ -78,7 +78,7 @@
     "interfaces": [
         {
             "name": "ChangeStatus",
-            "id": "interface-ChangeStatus-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-ChangeStatus-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -133,7 +133,7 @@
         },
         {
             "name": "Files",
-            "id": "interface-Files-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-Files-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -142,7 +142,7 @@
             "properties": [],
             "indexSignatures": [
                 {
-                    "id": "index-declaration-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+                    "id": "index-declaration-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
                     "args": [
                         {
                             "name": "fileName",
@@ -171,7 +171,7 @@
         },
         {
             "name": "Gist",
-            "id": "interface-Gist-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-Gist-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -430,7 +430,7 @@
         },
         {
             "name": "GistFile",
-            "id": "interface-GistFile-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-GistFile-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -533,7 +533,7 @@
         },
         {
             "name": "GistOptions",
-            "id": "interface-GistOptions-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-GistOptions-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -576,7 +576,7 @@
         },
         {
             "name": "HighlightJSOptions",
-            "id": "interface-HighlightJSOptions-a8576e1b98801dce4c7d719cf982fa239e4b03066304d208e4c64b1257762543db8f3cfd4c15066defefaf5bc9ba34ea8a17bf064f92515b6bab45f43903f006",
+            "id": "interface-HighlightJSOptions-d6c60e1d8030dbf4c70ad81259879baeb124fe8d92e289f0d38ef1034bd10db1504b00e981500b74d6e3a8bfd6f9193d3ec704b362170d9b1ccfbd6b6c9fe118",
             "file": "src/lib/highlight.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -679,7 +679,7 @@
         },
         {
             "name": "History",
-            "id": "interface-History-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-History-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -758,7 +758,7 @@
         },
         {
             "name": "LineNumbersOptions",
-            "id": "interface-LineNumbersOptions-a8576e1b98801dce4c7d719cf982fa239e4b03066304d208e4c64b1257762543db8f3cfd4c15066defefaf5bc9ba34ea8a17bf064f92515b6bab45f43903f006",
+            "id": "interface-LineNumbersOptions-d6c60e1d8030dbf4c70ad81259879baeb124fe8d92e289f0d38ef1034bd10db1504b00e981500b74d6e3a8bfd6f9193d3ec704b362170d9b1ccfbd6b6c9fe118",
             "file": "src/lib/highlight.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -803,7 +803,7 @@
         },
         {
             "name": "Owner",
-            "id": "interface-Owner-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-Owner-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -1038,7 +1038,7 @@
         },
         {
             "name": "User",
-            "id": "interface-User-471a6072f6f55d3a8b5e033f233112be076f90933e804904563a8141b62520944cd979d7468c58f4846266ddd2ac6938351172e3b0cc8f95e8bf77e1231c23f6",
+            "id": "interface-User-e1ddffe858cb6eea0837ca6efafcf099d77bf6645d26a4b6d34baa8aba6b4a234315494e5d8d7d0e52b1f51b48adb22499a6e969995ad8c2a167f460e4d11ecb",
             "file": "extras/src/gist.model.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -1392,14 +1392,14 @@
         },
         {
             "name": "HighlightLoaderStub",
-            "id": "injectable-HighlightLoaderStub-c9a63001c98f69e8e0a29b16dcffddabee53b89db80c3e94c73296125a7821930ba258b276f67135571099e5f27131d3c89208ace511ea2bedb161c9a6884871",
+            "id": "injectable-HighlightLoaderStub-a7f0108229d4d8862be01c9fee2ed1bc5b1667ffed7bcee49b28a78a37893eb60a8a83b4023fa1b0f3bfd843ec2b1a31684b4667cc54852ef6856d85f9dbb47d",
             "file": "src/test-helpers.ts",
             "coverageIgnore": false,
             "properties": [
                 {
                     "name": "hljs",
                     "coverageIgnore": false,
-                    "defaultValue": "resource({\r\n        loader: () => this.ready\r\n    }).asReadonly()",
+                    "defaultValue": "resource({\n        loader: () => this.ready\n    }).asReadonly()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -1415,7 +1415,7 @@
                 {
                     "name": "ready",
                     "coverageIgnore": false,
-                    "defaultValue": "new Promise<HLJSApi>((resolve) => {\r\n        (hljs as any).lineNumbersBlock = activateLineNumbers(document)\r\n        resolve(hljs)\r\n    })",
+                    "defaultValue": "new Promise<HLJSApi>((resolve) => {\n        (hljs as any).lineNumbersBlock = activateLineNumbers(document)\n        resolve(hljs)\n    })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -1655,7 +1655,7 @@
         },
         {
             "name": "HighlightBase",
-            "id": "directive-HighlightBase-df840e5d216ba0295b8c2e7f6d30b2301529e1fade87a58a30d8edb012081aa79f2fe6eb611f36f90f6e05d0c055af79cbc75047f35f8907ae795b920d9628e1",
+            "id": "directive-HighlightBase-22f1b75a17e8f1b8f158f45c3aca7012ec4035a34c16e16eb5796f31cf77a516ca98d75d253263075a810c740b4d1dbf4c968eb83ebfac348e2cadcc3951c5b3",
             "file": "src/lib/highlight-base.directive.ts",
             "type": "directive",
             "description": "",
@@ -1753,11 +1753,11 @@
                     "optional": false,
                     "returnType": "HighlightResult | AutoHighlightResult | undefined",
                     "typeParameters": [],
-                    "line": 56,
+                    "line": 71,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\n",
-                    "description": "",
+                    "rawdescription": "\n\nHighlights the code with the loaded Highlight.js, or returns `undefined` to show it as text\n",
+                    "description": "<p>Highlights the code with the loaded Highlight.js, or returns <code>undefined</code> to show it as text</p>\n",
                     "modifierKind": [
                         124,
                         128
@@ -1804,7 +1804,7 @@
         },
         {
             "name": "HighlightDirective",
-            "id": "directive-HighlightDirective-8575170a9665974d3b46d55a73ec452e2d642ea619e90debbe0a4b2c4da89131aaba1029c6b914dcab6e406d737b37fb3991cc662dd81d36a0b0ba8ce1155819",
+            "id": "directive-HighlightDirective-2bf72409700ae41e8d47834b4bd7f8eb98df2e9fc4cb6bd122e1932350e417e73bbec15581f12852da4db5634e9192720a06228e3dc74116366dae572707b354",
             "file": "src/lib/highlight.directive.ts",
             "type": "directive",
             "description": "",
@@ -1846,7 +1846,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>An optional flag, when set to true it forces highlighting to finish even in case of detecting\nillegal syntax for the language instead of throwing an exception</p>\n",
-                    "line": 39,
+                    "line": 41,
                     "rawdescription": "\n\nAn optional flag, when set to true it forces highlighting to finish even in case of detecting\nillegal syntax for the language instead of throwing an exception\n",
                     "modifierKind": [
                         148
@@ -1861,13 +1861,13 @@
                     "type": "string",
                     "indexKey": "",
                     "optional": false,
-                    "description": "<p>The language name highlight only one language</p>\n",
-                    "line": 33,
-                    "rawdescription": "\n\nThe language name highlight only one language\n",
+                    "description": "<p>The language name highlight only one language</p>\n<p>Without it, or with a language that isn&#39;t loaded, the code shows as text.</p>\n",
+                    "line": 35,
+                    "rawdescription": "\n\nThe language name highlight only one language\n\nWithout it, or with a language that isn't loaded, the code shows as text.\n",
                     "modifierKind": [
                         148
                     ],
-                    "required": true
+                    "required": false
                 }
             ],
             "outputsClass": [
@@ -1880,7 +1880,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Stream that emits when code string is highlighted</p>\n",
-                    "line": 46,
+                    "line": 48,
                     "rawdescription": "\n\nStream that emits when code string is highlighted\n",
                     "modifierKind": [
                         148
@@ -1988,7 +1988,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 50,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2109,8 +2109,8 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "unknown",
-                "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\r\n    providedIn: 'root',\r\n    factory: CODE_FILE_LOCATION_FACTORY\r\n})",
-                "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\r\nUsed to handle server-side rendering and to stub out during unit tests.",
+                "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\n    providedIn: 'root',\n    factory: CODE_FILE_LOCATION_FACTORY\n})",
+                "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\nUsed to handle server-side rendering and to stub out during unit tests.",
                 "description": "<p>Injection token used to provide the current location to <code>codeFromUrl</code> pipe.\nUsed to handle server-side rendering and to stub out during unit tests.</p>\n"
             }
         ],
@@ -2375,8 +2375,8 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
-                    "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\r\n    providedIn: 'root',\r\n    factory: CODE_FILE_LOCATION_FACTORY\r\n})",
-                    "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\r\nUsed to handle server-side rendering and to stub out during unit tests.",
+                    "defaultValue": "new InjectionToken<CodeFileLocation>('NXT_HIGHLIGHT_FILE_LOCATION', {\n    providedIn: 'root',\n    factory: CODE_FILE_LOCATION_FACTORY\n})",
+                    "rawdescription": "Injection token used to provide the current location to `codeFromUrl` pipe.\nUsed to handle server-side rendering and to stub out during unit tests.",
                     "description": "<p>Injection token used to provide the current location to <code>codeFromUrl</code> pipe.\nUsed to handle server-side rendering and to stub out during unit tests.</p>\n"
                 }
             ]

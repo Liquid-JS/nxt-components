@@ -29,7 +29,7 @@ import { provideHighlightOptions } from 'nxt-highlightjs'
 export const appConfig: ApplicationConfig = {
     providers: [
         provideHighlightOptions({
-            fullLibraryLoader: () => import('highlight.js')
+            fullLibraryLoader: () => import('highlight.js').then(r => r.default)
         })
     ]
 }`
@@ -40,12 +40,12 @@ import { provideHighlightOptions } from 'nxt-highlightjs'
 export const appConfig: ApplicationConfig = {
     providers: [
         provideHighlightOptions({
-            coreLibraryLoader: () => import('highlight.js/lib/core'),
+            coreLibraryLoader: () => import('highlight.js/lib/core').then(r => r.default),
             lineNumbersLoader: () => import('nxt-highlightjs/line-numbers'), // Optional, add line numbers if needed
             languages: {
-                typescript: () => import('highlight.js/lib/languages/typescript'),
-                css: () => import('highlight.js/lib/languages/css'),
-                xml: () => import('highlight.js/lib/languages/xml')
+                typescript: () => import('highlight.js/lib/languages/typescript').then(r => r.default),
+                css: () => import('highlight.js/lib/languages/css').then(r => r.default),
+                xml: () => import('highlight.js/lib/languages/xml').then(r => r.default)
             },
             themePath: 'path-to-theme.css' // Optional, useful for dynamic theme changes
         })

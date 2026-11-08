@@ -2,8 +2,329 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "ColorPickerTexts",
+            "id": "interface-ColorPickerTexts-86c8646cf399352144206e6ad5ddc367e39c05503a0474187011b52d566464a12c209ea9cd9fe1e350fb7bd697589872beaad2150d7ad3c8e2a6de02ce646488",
+            "file": "src/lib/texts.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "displayName": "ColorPickerTexts",
+            "properties": [
+                {
+                    "name": "addColor",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 36,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "black",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "blue",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "brightness",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "cancel",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "clear",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>The button that clears the color, see <code>clearable</code></p>\n",
+                    "line": 41,
+                    "rawdescription": "\nThe button that clears the color, see `clearable`"
+                },
+                {
+                    "name": "cyan",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "dialog",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Names the dialog</p>\n",
+                    "line": 9,
+                    "rawdescription": "\nNames the dialog"
+                },
+                {
+                    "name": "green",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "hex",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Names the hex input</p>\n",
+                    "line": 27,
+                    "rawdescription": "\nNames the hex input"
+                },
+                {
+                    "name": "hue",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "lightness",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "magenta",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "nextFormat",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Names the button that shows the next color format&#39;s inputs</p>\n",
+                    "line": 31,
+                    "rawdescription": "\nNames the button that shows the next color format's inputs"
+                },
+                {
+                    "name": "ok",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "opacity",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "presetColor",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Names a preset color, given the color</p>\n",
+                    "line": 35,
+                    "rawdescription": "\nNames a preset color, given the color"
+                },
+                {
+                    "name": "presetColors",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>The label of the preset colors, when <code>presetLabel</code> is <code>true</code></p>\n",
+                    "line": 33,
+                    "rawdescription": "\nThe label of the preset colors, when `presetLabel` is `true`"
+                },
+                {
+                    "name": "previousFormat",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Names the button that shows the previous color format&#39;s inputs</p>\n",
+                    "line": 29,
+                    "rawdescription": "\nNames the button that shows the previous color format's inputs"
+                },
+                {
+                    "name": "red",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "removeColor",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "saturation",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "rawdescription": "\n"
+                },
+                {
+                    "name": "saturationBrightness",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Names the saturation and brightness area</p>\n",
+                    "line": 11,
+                    "rawdescription": "\nNames the saturation and brightness area"
+                },
+                {
+                    "name": "saturationBrightnessValue",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Announces the saturation and brightness, given both as percentages</p>\n",
+                    "line": 13,
+                    "rawdescription": "\nAnnounces the saturation and brightness, given both as percentages"
+                },
+                {
+                    "name": "yellow",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "rawdescription": "\n"
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "description": "<p>The texts the color picker shows and announces to assistive technologies</p>\n",
+            "rawdescription": "\nThe texts the color picker shows and announces to assistive technologies",
+            "methods": [],
+            "extends": [],
+            "relationships": {
+                "incoming": [],
+                "outgoing": []
+            }
+        },
+        {
             "name": "InputChangeEvent",
-            "id": "interface-InputChangeEvent-bbc7d3fcbaa56148786317c7607129444caf9da15d343fcbe35fe53a9ad9a2317dbd13068836693362d47ff6eee15acc585d9db9d252495120014558ac870ff2",
+            "id": "interface-InputChangeEvent-97fdf6385dabb714574ca4f268bd7574f8941d5bf9304b7aba5453b132ff8b99878d066e74c9f204a63c75fc634e480082887750f99d3e105b3b2736e5af6201",
             "file": "src/util/types.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -70,7 +391,7 @@
         },
         {
             "name": "SliderChangeEvent",
-            "id": "interface-SliderChangeEvent-bbc7d3fcbaa56148786317c7607129444caf9da15d343fcbe35fe53a9ad9a2317dbd13068836693362d47ff6eee15acc585d9db9d252495120014558ac870ff2",
+            "id": "interface-SliderChangeEvent-97fdf6385dabb714574ca4f268bd7574f8941d5bf9304b7aba5453b132ff8b99878d066e74c9f204a63c75fc634e480082887750f99d3e105b3b2736e5af6201",
             "file": "src/util/types.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -130,7 +451,7 @@
     "classes": [
         {
             "name": "Cmyk",
-            "id": "class-Cmyk-ad5ce9a19337403135fc341d01ac2c77b4f3e7e7f4583698c4ce5b5cfc4d11deaaeb658033e7530d6d79475db6d46edd46fee76582309ca95703b176bcd510a2",
+            "id": "class-Cmyk-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
             "file": "src/util/formats.ts",
             "coverageIgnore": false,
             "deprecated": false,
@@ -356,7 +677,7 @@
         },
         {
             "name": "Hsla",
-            "id": "class-Hsla-ad5ce9a19337403135fc341d01ac2c77b4f3e7e7f4583698c4ce5b5cfc4d11deaaeb658033e7530d6d79475db6d46edd46fee76582309ca95703b176bcd510a2",
+            "id": "class-Hsla-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
             "file": "src/util/formats.ts",
             "coverageIgnore": false,
             "deprecated": false,
@@ -548,7 +869,7 @@
         },
         {
             "name": "Hsva",
-            "id": "class-Hsva-ad5ce9a19337403135fc341d01ac2c77b4f3e7e7f4583698c4ce5b5cfc4d11deaaeb658033e7530d6d79475db6d46edd46fee76582309ca95703b176bcd510a2",
+            "id": "class-Hsva-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
             "file": "src/util/formats.ts",
             "coverageIgnore": false,
             "deprecated": false,
@@ -740,7 +1061,7 @@
         },
         {
             "name": "Rgba",
-            "id": "class-Rgba-ad5ce9a19337403135fc341d01ac2c77b4f3e7e7f4583698c4ce5b5cfc4d11deaaeb658033e7530d6d79475db6d46edd46fee76582309ca95703b176bcd510a2",
+            "id": "class-Rgba-560de30cb22eb0d3e2ba6926d827a6a6f959925efebd98b1229f6533332b37bcc4a277b66f7399f370b79f1010bf95f5d0b77bf329590bbf55236b51dd27744c",
             "file": "src/util/formats.ts",
             "coverageIgnore": false,
             "deprecated": false,
@@ -933,8 +1254,234 @@
     ],
     "directives": [
         {
+            "name": "ColorPickerControlDirective",
+            "id": "directive-ColorPickerControlDirective-2f294becfcdba9566c3173f78d2a4144ee43e8419767079b2502f13fadaaf91553d1b2960f9e38e0e1c3b8d21d7b05e0ce37fb284b16b92524d10ab93fd4c0b0",
+            "file": "src/lib/color-picker-control.directive.ts",
+            "type": "directive",
+            "description": "<p>Makes the color picker a form control, with <code>formControl</code>, <code>formControlName</code>, <code>ngModel</code> or signal forms&#39;\n<code>formField</code>, in place of binding <code>nxtColor</code> and <code>nxtColorChange</code>:</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">&lt;input nxtColor formControlName=&quot;color&quot; outputFormat=&quot;hex&quot; clearable /&gt;</code></pre></div><p>The value is the color in the output format, or the CMYK color with <code>cmykEnabled</code>, and <code>null</code> without one, e.g.\nonce cleared; colors that only differ in spaces or case are the same value. An input shows the color, also when\nthe dialog changes it, but not while it&#39;s typed in. The control is touched when the dialog closes, or when the\ninput loses focus while the dialog is closed, and the picker follows its disabled state.</p>\n",
+            "rawdescription": "\n\nMakes the color picker a form control, with `formControl`, `formControlName`, `ngModel` or signal forms'\n`formField`, in place of binding `nxtColor` and `nxtColorChange`:\n\n```html\n<input nxtColor formControlName=\"color\" outputFormat=\"hex\" clearable />\n```\n\nThe value is the color in the output format, or the CMYK color with `cmykEnabled`, and `null` without one, e.g.\nonce cleared; colors that only differ in spaces or case are the same value. An input shows the color, also when\nthe dialog changes it, but not while it's typed in. The control is touched when the dialog closes, or when the\ninput loses focus while the dialog is closed, and the picker follows its disabled state.\n",
+            "selector": "[nxtColor][formControl],[nxtColor][formControlName],[nxtColor][ngModel],[nxtColor][formField]",
+            "providers": [
+                {
+                    "name": ")"
+                }
+            ],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "registerOnChange",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "string | null",
+                                    "optional": false,
+                                    "dotDotDotToken": false,
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 60,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "string | null",
+                                    "optional": false,
+                                    "dotDotDotToken": false,
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setDisabledState",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "disabled",
+                            "type": "boolean",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 68,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "disabled",
+                            "type": "boolean",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string | null",
+                            "optional": true,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string | null",
+                            "optional": true,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "coverageIgnore": false,
+            "jsdoctags": [
+                {
+                    "pos": 417,
+                    "end": 1136,
+                    "kind": 321,
+                    "id": 0,
+                    "flags": 16777216,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "comment": "Makes the color picker a form control, with `formControl`, `formControlName`, `ngModel` or signal forms'\n`formField`, in place of binding `nxtColor` and `nxtColorChange`:\n\n```html\n<input nxtColor formControlName=\"color\" outputFormat=\"hex\" clearable />\n```\n\nThe value is the color in the output format, or the CMYK color with `cmykEnabled`, and `null` without one, e.g.\nonce cleared; colors that only differ in spaces or case are the same value. An input shows the color, also when\nthe dialog changes it, but not while it's typed in. The control is touched when the dialog closes, or when the\ninput loses focus while the dialog is closed, and the picker follows its disabled state."
+                }
+            ],
+            "extends": [],
+            "implements": [
+                "ControlValueAccessor"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 35,
+                "rawdescription": "\n"
+            },
+            "relationships": {
+                "incoming": [],
+                "outgoing": [
+                    {
+                        "name": ")",
+                        "type": "injectable"
+                    },
+                    {
+                        "name": "ControlValueAccessor",
+                        "type": "interface"
+                    }
+                ]
+            }
+        },
+        {
             "name": "ColorPickerDirective",
-            "id": "directive-ColorPickerDirective-5bbd7b641b8c9f1c4edc8bc30b87afdbc658b5cbeabf8b56841ade911c5825a59e40c6db244bf40141681885b3449f35b43170af6c65d6fe5b1c39b59008161e",
+            "id": "directive-ColorPickerDirective-fd3619392c3e159adb502b8b9bea96ac49afc4e030d6cb450e5c89e778b602650ad6d063ef3092148e89ebe3530a868c80183c47d50b742cf585cbe3430d943a",
             "file": "src/lib/color-picker.directive.ts",
             "type": "directive",
             "description": "",
@@ -955,7 +1502,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>The color to show in the color picker dialog</p>\n",
-                    "line": 81,
+                    "line": 99,
                     "rawdescription": "\nThe color to show in the color picker dialog",
                     "modifierKind": [
                         148
@@ -972,7 +1519,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Alpha channel mode</p>\n",
-                    "line": 106,
+                    "line": 130,
                     "rawdescription": "\nAlpha channel mode",
                     "modifierKind": [
                         148
@@ -989,8 +1536,25 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Show a Cancel / Reset button which resets the color</p>\n",
-                    "line": 142,
+                    "line": 166,
                     "rawdescription": "\nShow a Cancel / Reset button which resets the color",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "clearable",
+                    "coverageIgnore": false,
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Lets the user clear the color: the dialog has a Clear button, and emptying the input clears it; the color is\nthen an empty string</p>\n",
+                    "line": 172,
+                    "rawdescription": "\n\nLets the user clear the color: the dialog has a Clear button, and emptying the input clears it; the color is\nthen an empty string\n",
                     "modifierKind": [
                         148
                     ],
@@ -1006,7 +1570,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Close the color picker dialog when user clicks outside</p>\n",
-                    "line": 136,
+                    "line": 160,
                     "rawdescription": "\nClose the color picker dialog when user clicks outside",
                     "modifierKind": [
                         148
@@ -1023,7 +1587,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Enables CMYK input format and color change event</p>\n",
-                    "line": 101,
+                    "line": 125,
                     "rawdescription": "\nEnables CMYK input format and color change event",
                     "modifierKind": [
                         148
@@ -1040,7 +1604,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Dialog positioning mode</p>\n",
-                    "line": 128,
+                    "line": 152,
                     "rawdescription": "\nDialog positioning mode",
                     "modifierKind": [
                         148
@@ -1057,7 +1621,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Disables opening of the color picker dialog via toggle</p>\n",
-                    "line": 95,
+                    "line": 113,
                     "rawdescription": "\nDisables opening of the color picker dialog via toggle",
                     "modifierKind": [
                         148
@@ -1074,7 +1638,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Disables / hides the color input field from the dialog</p>\n",
-                    "line": 125,
+                    "line": 149,
                     "rawdescription": "\nDisables / hides the color input field from the dialog",
                     "modifierKind": [
                         148
@@ -1090,7 +1654,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Used when the color is not well-formed or is undefined</p>\n",
-                    "line": 108,
+                    "line": 132,
                     "rawdescription": "\nUsed when the color is not well-formed or is undefined",
                     "modifierKind": [
                         148
@@ -1107,7 +1671,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Use this option to force color picker dialog height</p>\n",
-                    "line": 90,
+                    "line": 108,
                     "rawdescription": "\nUse this option to force color picker dialog height",
                     "modifierKind": [
                         148
@@ -1123,7 +1687,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Array of HTML elements that will be ignored when clicked</p>\n",
-                    "line": 131,
+                    "line": 155,
                     "rawdescription": "\nArray of HTML elements that will be ignored when clicked",
                     "modifierKind": [
                         148
@@ -1139,7 +1703,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Use this option to set the max colors allowed in presets</p>\n",
-                    "line": 148,
+                    "line": 178,
                     "rawdescription": "\nUse this option to set the max colors allowed in presets",
                     "modifierKind": [
                         148
@@ -1156,7 +1720,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Dialog color mode</p>\n",
-                    "line": 98,
+                    "line": 122,
                     "rawdescription": "\nDialog color mode",
                     "modifierKind": [
                         148
@@ -1173,7 +1737,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Show an OK / Apply button which saves the color</p>\n",
-                    "line": 139,
+                    "line": 163,
                     "rawdescription": "\nShow an OK / Apply button which saves the color",
                     "modifierKind": [
                         148
@@ -1190,7 +1754,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Output color format</p>\n",
-                    "line": 104,
+                    "line": 128,
                     "rawdescription": "\nOutput color format",
                     "modifierKind": [
                         148
@@ -1207,7 +1771,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Dialog position</p>\n",
-                    "line": 111,
+                    "line": 135,
                     "rawdescription": "\nDialog position",
                     "modifierKind": [
                         148
@@ -1224,7 +1788,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Dialog offset percentage relative to the directive element</p>\n",
-                    "line": 113,
+                    "line": 137,
                     "rawdescription": "\nDialog offset percentage relative to the directive element",
                     "modifierKind": [
                         148
@@ -1240,7 +1804,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Array of preset colors to show in the color picker dialog</p>\n",
-                    "line": 122,
+                    "line": 146,
                     "rawdescription": "\nArray of preset colors to show in the color picker dialog",
                     "modifierKind": [
                         148
@@ -1257,7 +1821,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Show buttons to add / remove preset colors</p>\n",
-                    "line": 145,
+                    "line": 175,
                     "rawdescription": "\nShow buttons to add / remove preset colors",
                     "modifierKind": [
                         148
@@ -1274,7 +1838,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Show label for preset colors</p>\n<p>If string is given, it overrides the default label.</p>\n",
-                    "line": 120,
+                    "line": 144,
                     "rawdescription": "\n\nShow label for preset colors\n\nIf string is given, it overrides the default label.\n",
                     "modifierKind": [
                         148
@@ -1291,7 +1855,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Save currently selected color when user clicks outside</p>\n",
-                    "line": 134,
+                    "line": 158,
                     "rawdescription": "\nSave currently selected color when user clicks outside",
                     "modifierKind": [
                         148
@@ -1308,7 +1872,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Sets the default open / close state of the color picker</p>\n",
-                    "line": 93,
+                    "line": 111,
                     "rawdescription": "\nSets the default open / close state of the color picker",
                     "modifierKind": [
                         148
@@ -1325,7 +1889,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Create dialog component in the root view container</p>\n<p>Note: The root component needs to have public viewContainerRef.</p>\n",
-                    "line": 155,
+                    "line": 185,
                     "rawdescription": "\n\nCreate dialog component in the root view container\n\nNote: The root component needs to have public viewContainerRef.\n",
                     "modifierKind": [
                         148
@@ -1342,7 +1906,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Use this option to set color picker dialog width</p>\n",
-                    "line": 88,
+                    "line": 106,
                     "rawdescription": "\nUse this option to set color picker dialog width",
                     "modifierKind": [
                         148
@@ -1360,7 +1924,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Current color value, emit when dialog is closed</p>\n",
-                    "line": 160,
+                    "line": 190,
                     "rawdescription": "\nCurrent color value, emit when dialog is closed",
                     "modifierKind": [
                         148
@@ -1376,7 +1940,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Outputs the color as CMYK string if CMYK is enabled</p>\n",
-                    "line": 183,
+                    "line": 213,
                     "rawdescription": "\nOutputs the color as CMYK string if CMYK is enabled",
                     "modifierKind": [
                         148
@@ -1392,7 +1956,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Color select canceled, emit when Cancel button is pressed</p>\n",
-                    "line": 176,
+                    "line": 206,
                     "rawdescription": "\nColor select canceled, emit when Cancel button is pressed",
                     "modifierKind": [
                         148
@@ -1408,7 +1972,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Selected color value, emit when OK button pressed or user clicks outside (if saveClickOutside is true)</p>\n",
-                    "line": 178,
+                    "line": 208,
                     "rawdescription": "\nSelected color value, emit when OK button pressed or user clicks outside (if saveClickOutside is true)",
                     "modifierKind": [
                         148
@@ -1424,7 +1988,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Input name and its value, emit when user changes color through inputs</p>\n",
-                    "line": 163,
+                    "line": 193,
                     "rawdescription": "\nInput name and its value, emit when user changes color through inputs",
                     "modifierKind": [
                         148
@@ -1440,7 +2004,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Changed color value, emit when color changes</p>\n",
-                    "line": 180,
+                    "line": 210,
                     "rawdescription": "\nChanged color value, emit when color changes",
                     "modifierKind": [
                         148
@@ -1456,7 +2020,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Current color value, emit when dialog is isOpen</p>\n",
-                    "line": 158,
+                    "line": 188,
                     "rawdescription": "\nCurrent color value, emit when dialog is isOpen",
                     "modifierKind": [
                         148
@@ -1472,7 +2036,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Preset colors, emit when preset color is added / removed</p>\n",
-                    "line": 186,
+                    "line": 216,
                     "rawdescription": "\nPreset colors, emit when preset color is added / removed",
                     "modifierKind": [
                         148
@@ -1488,7 +2052,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Slider name and its value, emit when user changes color through slider</p>\n",
-                    "line": 171,
+                    "line": 201,
                     "rawdescription": "\nSlider name and its value, emit when user changes color through slider",
                     "modifierKind": [
                         148
@@ -1504,7 +2068,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Slider name and current color, emit when slider dragging ends</p>\n",
-                    "line": 173,
+                    "line": 203,
                     "rawdescription": "\nSlider name and current color, emit when slider dragging ends",
                     "modifierKind": [
                         148
@@ -1520,7 +2084,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Slider name and current color, emit when slider dragging starts</p>\n",
-                    "line": 169,
+                    "line": 199,
                     "rawdescription": "\nSlider name and current color, emit when slider dragging starts",
                     "modifierKind": [
                         148
@@ -1536,7 +2100,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "<p>Status of the dialog, emit when dialog is isOpen / closed</p>\n",
-                    "line": 166,
+                    "line": 196,
                     "rawdescription": "\nStatus of the dialog, emit when dialog is isOpen / closed",
                     "modifierKind": [
                         148
@@ -1552,14 +2116,14 @@
                 {
                     "name": "nxtColor",
                     "coverageIgnore": false,
-                    "defaultValue": "linkedSignal({\r\n        source: () => this._nxtColor(),\r\n        computation: v => v\r\n    })",
+                    "defaultValue": "linkedSignal({\n        source: () => this._nxtColor(),\n        computation: v => v\n    })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 82,
+                    "line": 100,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1574,7 +2138,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 278,
+                    "line": 338,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -1587,11 +2151,81 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 265,
+                    "line": 325,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
                     "description": ""
+                },
+                {
+                    "name": "setColor",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 311,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setDisabled",
+                    "coverageIgnore": false,
+                    "args": [
+                        {
+                            "name": "disabled",
+                            "type": "boolean",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 318,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n",
+                    "description": "",
+                    "jsdoctags": [
+                        {
+                            "name": "disabled",
+                            "type": "boolean",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "textColorMode",
@@ -1619,7 +2253,7 @@
                     "optional": false,
                     "returnType": "\"light\" | \"dark\"",
                     "typeParameters": [],
-                    "line": 291,
+                    "line": 360,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nGet text color mode to ensure good contrast with selected color\n\n",
@@ -1627,8 +2261,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 10970,
-                                "end": 10972,
+                                "pos": 12916,
+                                "end": 12918,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1642,8 +2276,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "new Rgba(1, 1, 1, 1, true)",
                             "tagName": {
-                                "pos": 10964,
-                                "end": 10969,
+                                "pos": 12910,
+                                "end": 12915,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1654,8 +2288,8 @@
                         },
                         {
                             "name": {
-                                "pos": 11065,
-                                "end": 11067,
+                                "pos": 13010,
+                                "end": 13012,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1669,8 +2303,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "this.dialog?.rgbaText",
                             "tagName": {
-                                "pos": 11059,
-                                "end": 11064,
+                                "pos": 13004,
+                                "end": 13009,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1681,8 +2315,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 11131,
-                                "end": 11138,
+                                "pos": 13075,
+                                "end": 13082,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -1720,6 +2354,16 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "$localize",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/lib/texts.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "LocalizeFn"
+            },
+            {
                 "name": "AlphaEnabledFormats",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1729,6 +2373,32 @@
                 "deprecationMessage": "",
                 "type": "unknown",
                 "defaultValue": "new Set<ColorFormat>([ColorFormatEnum.hsla, ColorFormatEnum.rgba, ColorFormatEnum.cmyk])"
+            },
+            {
+                "name": "key",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/lib/color-picker-control.directive.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "(value?: string | null) => (value || '').replace(/\\s+/g, '').toLowerCase()",
+                "rawdescription": "A color, as forms compare them: without spaces and case, e.g. `rgb(255,0,0)` for `RGB(255, 0, 0)`",
+                "description": "<p>A color, as forms compare them: without spaces and case, e.g. <code>rgb(255,0,0)</code> for <code>RGB(255, 0, 0)</code></p>\n"
+            },
+            {
+                "name": "NXT_COLOR_PICKER_TEXTS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/lib/texts.ts",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "new InjectionToken<ColorPickerTextsSource>('nxt-color-picker texts')",
+                "rawdescription": "The texts that replace the default ones, see `provideColorPickerTexts`",
+                "description": "<p>The texts that replace the default ones, see <code>provideColorPickerTexts</code></p>\n"
             }
         ],
         "functions": [
@@ -2599,6 +3269,38 @@
                 ]
             },
             {
+                "name": "provideColorPickerTexts",
+                "file": "src/lib/texts.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "coverageIgnore": false,
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "Changes the color picker's texts, for the app or for the color pickers inside a component, e.g. for texts an app\nkeeps elsewhere or changes at run time; the others stay as they are.\n\nThe defaults are English and translated with Angular's i18n, as `$localize` messages with ids like\n`@@nxt-color-picker.button.ok`.\n\n```ts\nproviders: [provideColorPickerTexts({ ok: 'Apply', presetColors: 'Brand colors' })]\n```",
+                "description": "<p>Changes the color picker&#39;s texts, for the app or for the color pickers inside a component, e.g. for texts an app\nkeeps elsewhere or changes at run time; the others stay as they are.</p>\n<p>The defaults are English and translated with Angular&#39;s i18n, as <code>$localize</code> messages with ids like\n<code>@@nxt-color-picker.button.ok</code>.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-ts\">providers: [provideColorPickerTexts({ ok: &#39;Apply&#39;, presetColors: &#39;Brand colors&#39; })]</code></pre></div>",
+                "displayName": "provideColorPickerTexts",
+                "args": [
+                    {
+                        "name": "texts",
+                        "type": "ColorPickerTextsSource",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "Provider",
+                "jsdoctags": [
+                    {
+                        "name": "texts",
+                        "type": "ColorPickerTextsSource",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
                 "name": "rgbaToCmyk",
                 "file": "src/util/color.ts",
                 "ctype": "miscellaneous",
@@ -2850,6 +3552,19 @@
                 "kind": 193
             },
             {
+                "name": "ColorPickerTextsSource",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "coverageIgnore": false,
+                "rawtype": "Partial<ColorPickerTexts> | unknown",
+                "file": "src/lib/texts.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "rawdescription": "Texts, or a function that gives them, e.g. from signals, which the color picker follows",
+                "description": "<p>Texts, or a function that gives them, e.g. from signals, which the color picker follows</p>\n",
+                "kind": 193
+            },
+            {
                 "name": "DialogDisplay",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -3066,6 +3781,31 @@
             }
         ],
         "groupedVariables": {
+            "src/lib/texts.ts": [
+                {
+                    "name": "$localize",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/lib/texts.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "LocalizeFn"
+                },
+                {
+                    "name": "NXT_COLOR_PICKER_TEXTS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/lib/texts.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "new InjectionToken<ColorPickerTextsSource>('nxt-color-picker texts')",
+                    "rawdescription": "The texts that replace the default ones, see `provideColorPickerTexts`",
+                    "description": "<p>The texts that replace the default ones, see <code>provideColorPickerTexts</code></p>\n"
+                }
+            ],
             "src/util/types.ts": [
                 {
                     "name": "AlphaEnabledFormats",
@@ -3077,6 +3817,21 @@
                     "deprecationMessage": "",
                     "type": "unknown",
                     "defaultValue": "new Set<ColorFormat>([ColorFormatEnum.hsla, ColorFormatEnum.rgba, ColorFormatEnum.cmyk])"
+                }
+            ],
+            "src/lib/color-picker-control.directive.ts": [
+                {
+                    "name": "key",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/lib/color-picker-control.directive.ts",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "(value?: string | null) => (value || '').replace(/\\s+/g, '').toLowerCase()",
+                    "rawdescription": "A color, as forms compare them: without spaces and case, e.g. `rgb(255,0,0)` for `RGB(255, 0, 0)`",
+                    "description": "<p>A color, as forms compare them: without spaces and case, e.g. <code>rgb(255,0,0)</code> for <code>RGB(255, 0, 0)</code></p>\n"
                 }
             ]
         },
@@ -4158,6 +4913,40 @@
                         }
                     ]
                 }
+            ],
+            "src/lib/texts.ts": [
+                {
+                    "name": "provideColorPickerTexts",
+                    "file": "src/lib/texts.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "Changes the color picker's texts, for the app or for the color pickers inside a component, e.g. for texts an app\nkeeps elsewhere or changes at run time; the others stay as they are.\n\nThe defaults are English and translated with Angular's i18n, as `$localize` messages with ids like\n`@@nxt-color-picker.button.ok`.\n\n```ts\nproviders: [provideColorPickerTexts({ ok: 'Apply', presetColors: 'Brand colors' })]\n```",
+                    "description": "<p>Changes the color picker&#39;s texts, for the app or for the color pickers inside a component, e.g. for texts an app\nkeeps elsewhere or changes at run time; the others stay as they are.</p>\n<p>The defaults are English and translated with Angular&#39;s i18n, as <code>$localize</code> messages with ids like\n<code>@@nxt-color-picker.button.ok</code>.</p>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-ts\">providers: [provideColorPickerTexts({ ok: &#39;Apply&#39;, presetColors: &#39;Brand colors&#39; })]</code></pre></div>",
+                    "displayName": "provideColorPickerTexts",
+                    "args": [
+                        {
+                            "name": "texts",
+                            "type": "ColorPickerTextsSource",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "Provider",
+                    "jsdoctags": [
+                        {
+                            "name": "texts",
+                            "type": "ColorPickerTextsSource",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
             ]
         },
         "groupedEnumerations": {
@@ -4417,6 +5206,21 @@
                     "rawdescription": "",
                     "description": "",
                     "kind": 204
+                }
+            ],
+            "src/lib/texts.ts": [
+                {
+                    "name": "ColorPickerTextsSource",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "coverageIgnore": false,
+                    "rawtype": "Partial<ColorPickerTexts> | unknown",
+                    "file": "src/lib/texts.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "Texts, or a function that gives them, e.g. from signals, which the color picker follows",
+                    "description": "<p>Texts, or a function that gives them, e.g. from signals, which the color picker follows</p>\n",
+                    "kind": 193
                 }
             ]
         }

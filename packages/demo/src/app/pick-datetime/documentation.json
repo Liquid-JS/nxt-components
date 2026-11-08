@@ -3,7 +3,7 @@
     "interfaces": [
         {
             "name": "DateTimeFormats",
-            "id": "interface-DateTimeFormats-6c90bae76745def59658cb3d35926c39ac0dcc870fd892a58d8338effc8cd2e41f5abc61837394dd14d84b065ecddb853ec85abb0ab481d26e513b51ddd94089",
+            "id": "interface-DateTimeFormats-3dff21ebb7a767a5a789a0da8c95d9e57332e562b661e144bd54c66756753280d3a40a162c6eacadad9ecefccfcf0c61a8a81866eb1782bef712e619684a7fe0",
             "file": "src/lib/class/date-time-format.class.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -106,7 +106,7 @@
         },
         {
             "name": "DateTimeInputEvent",
-            "id": "interface-DateTimeInputEvent-d2c4c33d8b029f67f2a148b1adce0c6f8421973fdd32ea6da93eac59a167c16a361854c8b86b3a4da75a8f2fb51e17162fc60956ed824b1ec4db579f5faa1f67",
+            "id": "interface-DateTimeInputEvent-1226b1ad85eb981857f331a497e936d4590b3f41c0fe43893c2594092e706b33ce522b69952b2ae4f9b4b3f861c025b0b7a2cf19d60ae57c118fb6d9f3153b9a",
             "file": "src/lib/date-time/date-time-picker-input.directive.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -164,7 +164,7 @@
         },
         {
             "name": "DialogPosition",
-            "id": "interface-DialogPosition-194ad944098f74118172b428183f3af2ced216e7358e32aaf95913bc5a4a3819934a277bf79b37bf25102e3f89fd85646ea03181f7daf7ded85a4d641494338c",
+            "id": "interface-DialogPosition-69a886e2a1b1ba66dae02499a1403ce0d09dbedddda17ec86005120546b647c6e336a42e9f4944827283da6811604e422e2b12df4e570a68cfcf6e97c1d9e258",
             "file": "src/lib/class/dialog-config.class.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -233,7 +233,7 @@
         },
         {
             "name": "MomentDateTimeAdapterOptions",
-            "id": "interface-MomentDateTimeAdapterOptions-0358e7697bc92a0da848947832fc124e28fde6a1c9e8dfd167f0b3b17f85385d62a408c4ca9595be5a3a68f0cb98b2eb4a7a5c9dea79ed5378f4cfda7f1975c2",
+            "id": "interface-MomentDateTimeAdapterOptions-a257228dad8f852ff7269645f4bf50f703eaa610e57af92f2dffbba1210a40a43a68be89dcb34d505c34dd4f6a55aca60428f409557e3157821cc20fe372e513",
             "file": "moment-adapter/src/date-time-adapter.class.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -268,7 +268,7 @@
     "injectables": [
         {
             "name": "DateTimeIntl",
-            "id": "injectable-DateTimeIntl-e09d596406fb33b30c5cbb00042263b07b0fef46f8bcfb124702eda95348dc10b936a391eb0b934487d174a1c29692acd2dac40305b8482c992eb539f1833bdc",
+            "id": "injectable-DateTimeIntl-75f5909a340c841612193eaea81c0e07e60484ad4bdbf53721c1e27f67bd54374301cf9f9bba93b678d44a337af1fedb9e26333f59eb0e70d10b13c71b4e7e46",
             "file": "src/lib/date-time/date-time-picker-intl.service.ts",
             "coverageIgnore": false,
             "properties": [
@@ -608,7 +608,7 @@
         },
         {
             "name": "MomentDateTimeAdapter",
-            "id": "injectable-MomentDateTimeAdapter-0358e7697bc92a0da848947832fc124e28fde6a1c9e8dfd167f0b3b17f85385d62a408c4ca9595be5a3a68f0cb98b2eb4a7a5c9dea79ed5378f4cfda7f1975c2",
+            "id": "injectable-MomentDateTimeAdapter-a257228dad8f852ff7269645f4bf50f703eaa610e57af92f2dffbba1210a40a43a68be89dcb34d505c34dd4f6a55aca60428f409557e3157821cc20fe372e513",
             "file": "moment-adapter/src/date-time-adapter.class.ts",
             "coverageIgnore": false,
             "properties": [
@@ -2471,7 +2471,7 @@
         },
         {
             "name": "NativeDateTimeAdapter",
-            "id": "injectable-NativeDateTimeAdapter-6b8431c26528cc020235aebf1118d7d37460a2177fc9dbaeaa63174ca462d43f7f6e92795eb3f5741a87308143e8e8e8de116022ed1e49456c968837456ae491",
+            "id": "injectable-NativeDateTimeAdapter-964eb97e93194dd071b74a54ff2df7603a1be5c0fa4fa8785009a6d86a5ec21e3a000eef8d86d63feecff5526f76bb69aba2baf81f1bdd3cf0dba7775f79f226",
             "file": "native-adapter/src/date-time-adapter.class.ts",
             "coverageIgnore": false,
             "properties": [
@@ -4517,7 +4517,7 @@
         },
         {
             "name": "DateTimeAdapter",
-            "id": "class-DateTimeAdapter-bb7ec51c90dbd4180c11e894d7a79996130665a50f8425b96fc24104373208c4e4646c16465b9082bc1e17a13b876b2c921020cc42bdee57dc4d09aa924c364c",
+            "id": "class-DateTimeAdapter-d02c085e44100a197adc7614ff3f6649f4b2a6160de254def035eeaefb6594fea91f2c018eafed3fe50b50aca125a0a02a44d3842f682b4d8b4127d6638d0350",
             "file": "src/lib/class/date-time-adapter.class.ts",
             "coverageIgnore": false,
             "deprecated": false,
@@ -6338,7 +6338,7 @@
         },
         {
             "name": "DialogConfig",
-            "id": "class-DialogConfig-194ad944098f74118172b428183f3af2ced216e7358e32aaf95913bc5a4a3819934a277bf79b37bf25102e3f89fd85646ea03181f7daf7ded85a4d641494338c",
+            "id": "class-DialogConfig-69a886e2a1b1ba66dae02499a1403ce0d09dbedddda17ec86005120546b647c6e336a42e9f4944827283da6811604e422e2b12df4e570a68cfcf6e97c1d9e258",
             "file": "src/lib/class/dialog-config.class.ts",
             "coverageIgnore": false,
             "deprecated": false,
@@ -6634,7 +6634,7 @@
         },
         {
             "name": "DialogRef",
-            "id": "class-DialogRef-b276676612800059845cb890d68375598cfeea150d4dab7b14e7e8f185a46b19dfe306bff4ab428c23ec951e61dbab60d764b6db927f52b9418cb5f391537bfa",
+            "id": "class-DialogRef-34ebaa5edd3bbc327200462472cddb428d19838a79852305cb0340d1b4c6f5c26b26df30cc6b050083b81bf90ae12ecac4b5e345874665ef568a2529df6231f9",
             "file": "src/lib/class/dialog-ref.class.ts",
             "coverageIgnore": false,
             "deprecated": false,
@@ -6902,8 +6902,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 3854,
-                                "end": 3862,
+                                "pos": 3740,
+                                "end": 3748,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -6916,8 +6916,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 3848,
-                                "end": 3853,
+                                "pos": 3734,
+                                "end": 3739,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -6962,8 +6962,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 4713,
-                                "end": 4718,
+                                "pos": 4568,
+                                "end": 4573,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -6977,8 +6977,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "'auto'",
                             "tagName": {
-                                "pos": 4707,
-                                "end": 4712,
+                                "pos": 4562,
+                                "end": 4567,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -6989,8 +6989,8 @@
                         },
                         {
                             "name": {
-                                "pos": 4759,
-                                "end": 4765,
+                                "pos": 4613,
+                                "end": 4619,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -7004,8 +7004,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "'auto'",
                             "tagName": {
-                                "pos": 4753,
-                                "end": 4758,
+                                "pos": 4607,
+                                "end": 4612,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -7030,7 +7030,7 @@
     "directives": [
         {
             "name": "DateTimeDirective",
-            "id": "directive-DateTimeDirective-eb8c86d5f5a4f369c83626e9e8e6e5caecaf03a9513333a1b316aba859533717075454e62378609f9e19b3c5e8cac3e6418fb7434515583ba496990bd6c7ad1c",
+            "id": "directive-DateTimeDirective-7bf1e7969c8c9d331ba7659afff00c1fecc8f4cbe158a6f9ce0d0559b3997f6385180cd6d513d006bd0c4d8a04d4db400bea38816614c6971160173f9bf29c03",
             "file": "src/lib/class/date-time.class.ts",
             "type": "directive",
             "description": "",
@@ -7202,7 +7202,7 @@
                 {
                     "name": "dateTimeChecker",
                     "coverageIgnore": false,
-                    "defaultValue": "signal((dateTime: T | undefined) => (\r\n        !!dateTime &&\r\n        (!this.dateTimeFilter() || this.dateTimeFilter()!(dateTime)) &&\r\n        (!this.min() || this.dateTimeAdapter.compare(dateTime, this.min()) >= 0) &&\r\n        (!this.max() || this.dateTimeAdapter.compare(dateTime, this.max()) <= 0)\r\n    ))",
+                    "defaultValue": "signal((dateTime?: T) => (\n        !!dateTime &&\n        (!this.dateTimeFilter() || this.dateTimeFilter()!(dateTime)) &&\n        (!this.min() || this.dateTimeAdapter.compare(dateTime, this.min()) >= 0) &&\n        (!this.max() || this.dateTimeAdapter.compare(dateTime, this.max()) <= 0)\n    ))",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -7265,7 +7265,7 @@
                 {
                     "name": "formatString",
                     "coverageIgnore": false,
-                    "defaultValue": "computed(() => this.pickerType() === 'both'\r\n        ? this.dateTimeFormats.fullPickerInput\r\n        : this.pickerType() === 'calendar'\r\n            ? this.dateTimeFormats.datePickerInput\r\n            : this.dateTimeFormats.timePickerInput)",
+                    "defaultValue": "computed(() => this.pickerType() === 'both'\n        ? this.dateTimeFormats.fullPickerInput\n        : this.pickerType() === 'calendar'\n            ? this.dateTimeFormats.datePickerInput\n            : this.dateTimeFormats.timePickerInput)",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -7653,7 +7653,7 @@
         },
         {
             "name": "DateTimeInputDirective",
-            "id": "directive-DateTimeInputDirective-d2c4c33d8b029f67f2a148b1adce0c6f8421973fdd32ea6da93eac59a167c16a361854c8b86b3a4da75a8f2fb51e17162fc60956ed824b1ec4db579f5faa1f67",
+            "id": "directive-DateTimeInputDirective-1226b1ad85eb981857f331a497e936d4590b3f41c0fe43893c2594092e706b33ce522b69952b2ae4f9b4b3f861c025b0b7a2cf19d60ae57c118fb6d9f3153b9a",
             "file": "src/lib/date-time/date-time-picker-input.directive.ts",
             "type": "directive",
             "description": "",
@@ -7898,7 +7898,7 @@
                 {
                     "name": "disabled",
                     "coverageIgnore": false,
-                    "defaultValue": "linkedSignal({\r\n        source: () => this._disabled(),\r\n        computation: v => v\r\n    })",
+                    "defaultValue": "linkedSignal({\n        source: () => this._disabled(),\n        computation: v => v\n    })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -7930,7 +7930,7 @@
                 {
                     "name": "isInRangeMode",
                     "coverageIgnore": false,
-                    "defaultValue": "computed(() => {\r\n        const selectMode = this.selectMode()\r\n        return (\r\n            selectMode === 'range' ||\r\n            selectMode === 'rangeFrom' ||\r\n            selectMode === 'rangeTo'\r\n        )\r\n    })",
+                    "defaultValue": "computed(() => {\n        const selectMode = this.selectMode()\n        return (\n            selectMode === 'range' ||\n            selectMode === 'rangeFrom' ||\n            selectMode === 'rangeTo'\n        )\n    })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -8452,7 +8452,7 @@
         },
         {
             "name": "DateTimeTriggerDirective",
-            "id": "directive-DateTimeTriggerDirective-100a433c12036e49c7788fe6d34472489c377bfc7ded3f4f3647715bf40ceeeb9352e6e8011c5ed110d8a5e08e88161ff8d93a5a2ca32586fabbd3e46c003d21",
+            "id": "directive-DateTimeTriggerDirective-8ce70cc71253c071a783ecf9ff82f136f989ebab6896612b62f2ef3fb8e395321aa5be9b355d75d43647ae65e25ef25341e5c078f1a716fc01ca4fcade3b50bd",
             "file": "src/lib/date-time/date-time-picker-trigger.directive.ts",
             "type": "directive",
             "description": "",
@@ -10056,7 +10056,7 @@
                 {
                     "name": "dateTimeChecker",
                     "coverageIgnore": false,
-                    "defaultValue": "signal((dateTime: T | undefined) => (\r\n        !!dateTime &&\r\n        (!this.dateTimeFilter() || this.dateTimeFilter()!(dateTime)) &&\r\n        (!this.min() || this.dateTimeAdapter.compare(dateTime, this.min()) >= 0) &&\r\n        (!this.max() || this.dateTimeAdapter.compare(dateTime, this.max()) <= 0)\r\n    ))",
+                    "defaultValue": "signal((dateTime?: T) => (\n        !!dateTime &&\n        (!this.dateTimeFilter() || this.dateTimeFilter()!(dateTime)) &&\n        (!this.min() || this.dateTimeAdapter.compare(dateTime, this.min()) >= 0) &&\n        (!this.max() || this.dateTimeAdapter.compare(dateTime, this.max()) <= 0)\n    ))",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -10095,7 +10095,7 @@
                 {
                     "name": "formatString",
                     "coverageIgnore": false,
-                    "defaultValue": "computed(() => this.pickerType() === 'both'\r\n        ? this.dateTimeFormats.fullPickerInput\r\n        : this.pickerType() === 'calendar'\r\n            ? this.dateTimeFormats.datePickerInput\r\n            : this.dateTimeFormats.timePickerInput)",
+                    "defaultValue": "computed(() => this.pickerType() === 'both'\n        ? this.dateTimeFormats.fullPickerInput\n        : this.pickerType() === 'calendar'\n            ? this.dateTimeFormats.datePickerInput\n            : this.dateTimeFormats.timePickerInput)",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -11113,7 +11113,7 @@
                 {
                     "name": "dateTimeChecker",
                     "coverageIgnore": false,
-                    "defaultValue": "signal((dateTime: T | undefined) => (\r\n        !!dateTime &&\r\n        (!this.dateTimeFilter() || this.dateTimeFilter()!(dateTime)) &&\r\n        (!this.min() || this.dateTimeAdapter.compare(dateTime, this.min()) >= 0) &&\r\n        (!this.max() || this.dateTimeAdapter.compare(dateTime, this.max()) <= 0)\r\n    ))",
+                    "defaultValue": "signal((dateTime?: T) => (\n        !!dateTime &&\n        (!this.dateTimeFilter() || this.dateTimeFilter()!(dateTime)) &&\n        (!this.min() || this.dateTimeAdapter.compare(dateTime, this.min()) >= 0) &&\n        (!this.max() || this.dateTimeAdapter.compare(dateTime, this.max()) <= 0)\n    ))",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -11170,7 +11170,7 @@
                 {
                     "name": "formatString",
                     "coverageIgnore": false,
-                    "defaultValue": "computed(() => this.pickerType() === 'both'\r\n        ? this.dateTimeFormats.fullPickerInput\r\n        : this.pickerType() === 'calendar'\r\n            ? this.dateTimeFormats.datePickerInput\r\n            : this.dateTimeFormats.timePickerInput)",
+                    "defaultValue": "computed(() => this.pickerType() === 'both'\n        ? this.dateTimeFormats.fullPickerInput\n        : this.pickerType() === 'calendar'\n            ? this.dateTimeFormats.datePickerInput\n            : this.dateTimeFormats.timePickerInput)",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -13879,7 +13879,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "unknown",
-                "defaultValue": "new InjectionToken<MomentDateTimeAdapterOptions>('NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {\r\n    providedIn: 'root',\r\n    factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY\r\n})",
+                "defaultValue": "new InjectionToken<MomentDateTimeAdapterOptions>('NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {\n    providedIn: 'root',\n    factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY\n})",
                 "rawdescription": "InjectionToken for moment date adapter to configure options",
                 "description": "<p>InjectionToken for moment date adapter to configure options</p>\n"
             }
@@ -14021,7 +14021,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
-                    "defaultValue": "new InjectionToken<MomentDateTimeAdapterOptions>('NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {\r\n    providedIn: 'root',\r\n    factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY\r\n})",
+                    "defaultValue": "new InjectionToken<MomentDateTimeAdapterOptions>('NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS', {\n    providedIn: 'root',\n    factory: NXT_MOMENT_DATE_TIME_ADAPTER_OPTIONS_FACTORY\n})",
                     "rawdescription": "InjectionToken for moment date adapter to configure options",
                     "description": "<p>InjectionToken for moment date adapter to configure options</p>\n"
                 }

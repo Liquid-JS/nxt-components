@@ -3,7 +3,7 @@
     "interfaces": [
         {
             "name": "DropzoneConfig",
-            "id": "interface-DropzoneConfig-433c916f0db5d9a5fb097da8074d71881eed2d6e9f027b825b0cd4ad2938eefed4b4ba08273095af513256a6b1637ad5ddaa3674b49fb1803c1be5feae78b322",
+            "id": "interface-DropzoneConfig-360a648dc6811984c6af6ea422dc756a1f39097662dffc9febfcb15ccb232d4e39f9a2161e85031e743a14a005e51cd8d63a4e6ed9f7ed49d65c7ab21934dc2f",
             "file": "src/lib/dropzone.interfaces.ts",
             "deprecated": false,
             "deprecationMessage": "",
@@ -19,7 +19,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "<p>Time in ms until input resets after a successful upload</p>\n",
-                    "line": 71,
+                    "line": 72,
                     "rawdescription": "\n\nTime in ms until input resets after a successful upload\n"
                 },
                 {
@@ -31,7 +31,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "<p>Time in ms until input resets after cancelled upload</p>\n",
-                    "line": 79,
+                    "line": 80,
                     "rawdescription": "\n\nTime in ms until input resets after cancelled upload\n"
                 },
                 {
@@ -43,7 +43,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "<p>Time in ms until input resets after upload error</p>\n",
-                    "line": 75,
+                    "line": 76,
                     "rawdescription": "\n\nTime in ms until input resets after upload error\n"
                 }
             ],
@@ -51,13 +51,13 @@
             "kind": 172,
             "methods": [],
             "extends": [
-                "Dropzone.DropzoneOptions"
+                "DropzoneOptions"
             ],
             "relationships": {
                 "incoming": [],
                 "outgoing": [
                     {
-                        "name": "Dropzone.DropzoneOptions",
+                        "name": "DropzoneOptions",
                         "type": "class"
                     }
                 ]
@@ -71,7 +71,7 @@
     "directives": [
         {
             "name": "DropzoneDirective",
-            "id": "directive-DropzoneDirective-c59140ad402a26075a67bafe9da6ad277dadd2a97d4be8a58156871159844ecdd148a6e3639f272eb6d5e06d3056a097c60f8bc768be0fc7d997b9cc42e81631",
+            "id": "directive-DropzoneDirective-f6b59d3fc8c7625ee3354bcaf297d0207bfd4cacd4b61f44bd0735f3e6a9dd393711d26df094939841a9fb96fddb24c40fe61eddc50cb94a70bb02c143c611f2",
             "file": "src/lib/dropzone.directive.ts",
             "type": "directive",
             "description": "",
@@ -123,26 +123,7 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 132,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        148
-                    ],
-                    "required": false,
-                    "inheritance": {
-                        "file": "DropzoneListeners"
-                    }
-                },
-                {
-                    "name": "addedFiles",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -157,15 +138,15 @@
                     }
                 },
                 {
-                    "name": "canceled",
+                    "name": "addedFiles",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 147,
+                    "line": 134,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -176,11 +157,11 @@
                     }
                 },
                 {
-                    "name": "canceledMultiple",
+                    "name": "canceled",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -195,11 +176,11 @@
                     }
                 },
                 {
-                    "name": "complete",
+                    "name": "canceledMultiple",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile[]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -214,15 +195,34 @@
                     }
                 },
                 {
-                    "name": "completeMultiple",
+                    "name": "complete",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 150,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
+                    "inheritance": {
+                        "file": "DropzoneListeners"
+                    }
+                },
+                {
+                    "name": "completeMultiple",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DropzoneFile[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 151,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -241,7 +241,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 126,
+                    "line": 127,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -260,7 +260,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 127,
+                    "line": 128,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -279,7 +279,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 129,
+                    "line": 130,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -298,7 +298,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 128,
+                    "line": 129,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -317,7 +317,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 125,
+                    "line": 126,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -336,7 +336,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 124,
+                    "line": 125,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -351,11 +351,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, string | Error]",
+                    "type": "[DropzoneFile, string | Error]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 136,
+                    "line": 137,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -370,11 +370,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile[], string | Error]",
+                    "type": "[DropzoneFile[], string | Error]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 137,
+                    "line": 138,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -393,7 +393,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 123,
+                    "line": 124,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -408,11 +408,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 151,
+                    "line": 152,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -427,11 +427,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "DropzoneFile[]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 152,
+                    "line": 153,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -450,7 +450,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 130,
+                    "line": 131,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -465,11 +465,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 138,
+                    "line": 139,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -484,11 +484,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "DropzoneFile[]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 139,
+                    "line": 140,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -507,7 +507,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 153,
+                    "line": 154,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -522,11 +522,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 134,
+                    "line": 135,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -545,7 +545,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 131,
+                    "line": 132,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -560,26 +560,7 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, XMLHttpRequest, FormData]",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 142,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        148
-                    ],
-                    "required": false,
-                    "inheritance": {
-                        "file": "DropzoneListeners"
-                    }
-                },
-                {
-                    "name": "sendingMultiple",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]",
+                    "type": "[DropzoneFile, XMLHttpRequest, FormData]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -594,15 +575,15 @@
                     }
                 },
                 {
-                    "name": "success",
+                    "name": "sendingMultiple",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, Object | string]",
+                    "type": "[DropzoneFile[], XMLHttpRequest, FormData]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 145,
+                    "line": 144,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -613,11 +594,11 @@
                     }
                 },
                 {
-                    "name": "successMultiple",
+                    "name": "success",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "[DropzoneFile, Object | string]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -632,15 +613,34 @@
                     }
                 },
                 {
+                    "name": "successMultiple",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DropzoneFile[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 147,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
+                    "inheritance": {
+                        "file": "DropzoneListeners"
+                    }
+                },
+                {
                     "name": "thumbnail",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, string]",
+                    "type": "[DropzoneFile, string]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 135,
+                    "line": 136,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -659,7 +659,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 141,
+                    "line": 142,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -674,11 +674,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, number, number]",
+                    "type": "[DropzoneFile, number, number]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 140,
+                    "line": 141,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -745,7 +745,7 @@
         },
         {
             "name": "DropzoneListeners",
-            "id": "directive-DropzoneListeners-433c916f0db5d9a5fb097da8074d71881eed2d6e9f027b825b0cd4ad2938eefed4b4ba08273095af513256a6b1637ad5ddaa3674b49fb1803c1be5feae78b322",
+            "id": "directive-DropzoneListeners-360a648dc6811984c6af6ea422dc756a1f39097662dffc9febfcb15ccb232d4e39f9a2161e85031e743a14a005e51cd8d63a4e6ed9f7ed49d65c7ab21934dc2f",
             "file": "src/lib/dropzone.interfaces.ts",
             "type": "directive",
             "description": "",
@@ -760,23 +760,7 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 132,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        148
-                    ],
-                    "required": false
-                },
-                {
-                    "name": "addedFiles",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -788,15 +772,15 @@
                     "required": false
                 },
                 {
-                    "name": "canceled",
+                    "name": "addedFiles",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 147,
+                    "line": 134,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -804,11 +788,11 @@
                     "required": false
                 },
                 {
-                    "name": "canceledMultiple",
+                    "name": "canceled",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -820,11 +804,11 @@
                     "required": false
                 },
                 {
-                    "name": "complete",
+                    "name": "canceledMultiple",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile[]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -836,15 +820,31 @@
                     "required": false
                 },
                 {
-                    "name": "completeMultiple",
+                    "name": "complete",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 150,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
+                    "name": "completeMultiple",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DropzoneFile[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 151,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -860,7 +860,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 126,
+                    "line": 127,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -876,7 +876,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 127,
+                    "line": 128,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -892,7 +892,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 129,
+                    "line": 130,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -908,7 +908,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 128,
+                    "line": 129,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -924,7 +924,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 125,
+                    "line": 126,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -940,7 +940,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 124,
+                    "line": 125,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -952,11 +952,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, string | Error]",
+                    "type": "[DropzoneFile, string | Error]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 136,
+                    "line": 137,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -968,11 +968,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile[], string | Error]",
+                    "type": "[DropzoneFile[], string | Error]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 137,
+                    "line": 138,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -988,7 +988,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 123,
+                    "line": 124,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1000,11 +1000,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 151,
+                    "line": 152,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1016,11 +1016,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "DropzoneFile[]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 152,
+                    "line": 153,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1036,7 +1036,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 130,
+                    "line": 131,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1048,11 +1048,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 138,
+                    "line": 139,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1064,11 +1064,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "DropzoneFile[]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 139,
+                    "line": 140,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1084,7 +1084,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 153,
+                    "line": 154,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1096,11 +1096,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 134,
+                    "line": 135,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1116,7 +1116,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 131,
+                    "line": 132,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1128,23 +1128,7 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, XMLHttpRequest, FormData]",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 142,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        148
-                    ],
-                    "required": false
-                },
-                {
-                    "name": "sendingMultiple",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]",
+                    "type": "[DropzoneFile, XMLHttpRequest, FormData]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -1156,15 +1140,15 @@
                     "required": false
                 },
                 {
-                    "name": "success",
+                    "name": "sendingMultiple",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, Object | string]",
+                    "type": "[DropzoneFile[], XMLHttpRequest, FormData]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 145,
+                    "line": 144,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1172,11 +1156,11 @@
                     "required": false
                 },
                 {
-                    "name": "successMultiple",
+                    "name": "success",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "[DropzoneFile, Object | string]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -1188,15 +1172,31 @@
                     "required": false
                 },
                 {
+                    "name": "successMultiple",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DropzoneFile[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 147,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false
+                },
+                {
                     "name": "thumbnail",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, string]",
+                    "type": "[DropzoneFile, string]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 135,
+                    "line": 136,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1212,7 +1212,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 141,
+                    "line": 142,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1224,11 +1224,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, number, number]",
+                    "type": "[DropzoneFile, number, number]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 140,
+                    "line": 141,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1388,26 +1388,7 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 132,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        148
-                    ],
-                    "required": false,
-                    "inheritance": {
-                        "file": "DropzoneListeners"
-                    }
-                },
-                {
-                    "name": "addedFiles",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -1422,15 +1403,15 @@
                     }
                 },
                 {
-                    "name": "canceled",
+                    "name": "addedFiles",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 147,
+                    "line": 134,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1441,11 +1422,11 @@
                     }
                 },
                 {
-                    "name": "canceledMultiple",
+                    "name": "canceled",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -1460,11 +1441,11 @@
                     }
                 },
                 {
-                    "name": "complete",
+                    "name": "canceledMultiple",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile[]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -1479,15 +1460,34 @@
                     }
                 },
                 {
-                    "name": "completeMultiple",
+                    "name": "complete",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 150,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
+                    "inheritance": {
+                        "file": "DropzoneListeners"
+                    }
+                },
+                {
+                    "name": "completeMultiple",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DropzoneFile[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 151,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1506,7 +1506,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 126,
+                    "line": 127,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1525,7 +1525,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 127,
+                    "line": 128,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1544,7 +1544,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 129,
+                    "line": 130,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1563,7 +1563,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 128,
+                    "line": 129,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1582,7 +1582,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 125,
+                    "line": 126,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1601,7 +1601,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 124,
+                    "line": 125,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1616,11 +1616,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, string | Error]",
+                    "type": "[DropzoneFile, string | Error]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 136,
+                    "line": 137,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1635,11 +1635,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile[], string | Error]",
+                    "type": "[DropzoneFile[], string | Error]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 137,
+                    "line": 138,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1658,7 +1658,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 123,
+                    "line": 124,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1673,11 +1673,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 151,
+                    "line": 152,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1692,11 +1692,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "DropzoneFile[]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 152,
+                    "line": 153,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1715,7 +1715,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 130,
+                    "line": 131,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1730,11 +1730,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 138,
+                    "line": 139,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1749,11 +1749,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "DropzoneFile[]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 139,
+                    "line": 140,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1772,7 +1772,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 153,
+                    "line": 154,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1787,11 +1787,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile",
+                    "type": "DropzoneFile",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 134,
+                    "line": 135,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1810,7 +1810,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 131,
+                    "line": 132,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1825,26 +1825,7 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, XMLHttpRequest, FormData]",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 142,
-                    "rawdescription": "\n",
-                    "modifierKind": [
-                        148
-                    ],
-                    "required": false,
-                    "inheritance": {
-                        "file": "DropzoneListeners"
-                    }
-                },
-                {
-                    "name": "sendingMultiple",
-                    "coverageIgnore": false,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile[], XMLHttpRequest, FormData]",
+                    "type": "[DropzoneFile, XMLHttpRequest, FormData]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -1859,15 +1840,15 @@
                     }
                 },
                 {
-                    "name": "success",
+                    "name": "sendingMultiple",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, Object | string]",
+                    "type": "[DropzoneFile[], XMLHttpRequest, FormData]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 145,
+                    "line": 144,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1878,11 +1859,11 @@
                     }
                 },
                 {
-                    "name": "successMultiple",
+                    "name": "success",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Dropzone.DropzoneFile[]",
+                    "type": "[DropzoneFile, Object | string]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
@@ -1897,15 +1878,34 @@
                     }
                 },
                 {
+                    "name": "successMultiple",
+                    "coverageIgnore": false,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DropzoneFile[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 147,
+                    "rawdescription": "\n",
+                    "modifierKind": [
+                        148
+                    ],
+                    "required": false,
+                    "inheritance": {
+                        "file": "DropzoneListeners"
+                    }
+                },
+                {
                     "name": "thumbnail",
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, string]",
+                    "type": "[DropzoneFile, string]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 135,
+                    "line": 136,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1924,7 +1924,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 141,
+                    "line": 142,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148
@@ -1939,11 +1939,11 @@
                     "coverageIgnore": false,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[Dropzone.DropzoneFile, number, number]",
+                    "type": "[DropzoneFile, number, number]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 140,
+                    "line": 141,
                     "rawdescription": "\n",
                     "modifierKind": [
                         148

@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, computed, signal, viewChild } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 // eslint-disable-next-line @import/no-extraneous-dependencies
-import Dropzone from 'dropzone'
+import Dropzone, { DropzoneFile } from 'dropzone'
 import { DropzoneComponent, DropzoneConfig, DropzoneDirective } from 'nxt-dropzone-wrapper'
 
 @Component({
@@ -49,7 +49,7 @@ export class SandboxComponent {
         console.log('onUploadSuccess:', args)
     }
 
-    onUploadError([dz, err]: [Dropzone.DropzoneFile, string | Error]) {
+    onUploadError([dz, err]: [DropzoneFile, string | Error]) {
         console.log('onUploadError:', dz, err)
     }
 

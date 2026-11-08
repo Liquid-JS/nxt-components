@@ -51,7 +51,7 @@ svg.github {
         }
     }
 
-    .nav-item>.expand-collapse>.nav {
+    .nav-item > .expand-collapse > .nav {
         margin-inline-start: 1rem;
     }
 }
@@ -65,7 +65,7 @@ svg.github {
     }
 }
 
-@media (width >=768px) {
+@media (width >= 768px) {
     main {
         width: calc(100% - 240px);
     }
@@ -105,7 +105,7 @@ svg.github {
     transition: grid-template-rows 0.3s ease-in-out;
     align-items: start;
 
-    &>* {
+    & > * {
         display: flex;
         flex-direction: column;
         min-height: 0;

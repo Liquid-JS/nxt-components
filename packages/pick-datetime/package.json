@@ -41,7 +41,7 @@
         "@angular/core": "^22.0.0",
         "@angular/forms": "^22.0.0",
         "@angular/localize": "^22.0.0",
-        "moment": "^2.30.1",
+        "moment": "^2.31.0",
         "rxjs": "^7.8.2"
     },
     "exports": {

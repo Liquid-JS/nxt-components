@@ -35,9 +35,6 @@
     "peerDependencies": {
         "@angular/common": "^22.0.0",
         "@angular/core": "^22.0.0",
-        "dropzone": "^6.0.0-beta.2"
-    },
-    "devDependencies": {
-        "@types/dropzone": "^5.7.9"
+        "dropzone": "^6.0.0"
     }
 }
