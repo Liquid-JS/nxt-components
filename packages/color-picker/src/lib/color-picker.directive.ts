@@ -254,7 +254,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
         } else if (this.dialog) {
             this.dialog.setColorFromString(value, true)
         } else if (stringToHsva(value, true) || stringToCmyk(value, true)) {
-            // Text that isn't a color doesn't change it, as in the dialog
+            // Before the dialog first opens, e.g. text the browser fills in: text that isn't a color doesn't change it, as in the dialog
             this.nxtColor.set(value)
             this.nxtColorChange.emit(value)
         }

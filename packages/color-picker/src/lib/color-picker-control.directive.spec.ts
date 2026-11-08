@@ -89,7 +89,7 @@ describe('ColorPickerControlDirective', () => {
         })
     }
 
-    it('should not give the form text that isn\'t a color, with the dialog open or closed', async () => {
+    it('should not give the form text that isn\'t a color, before or after the dialog opens', async () => {
         await create(ReactiveHostComponent)
         const control = (fixture.componentInstance as ReactiveHostComponent).control
 
