@@ -87,7 +87,9 @@ $light: #dadada;
 
         .color-picker__hav {
             margin: math.div(-$baseSize, 4);
-            margin-left: 0;
+
+            // Beside the selected colour, on the left or, in a right-to-left page, the right.
+            margin-inline-start: 0;
             flex: auto 1 1;
         }
     }

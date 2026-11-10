@@ -61,4 +61,16 @@ describe('ColorPickerComponent', () => {
     })
 
     it('should create', () => expect(component).toBeTruthy())
+
+    it('should keep the sliders as close to the selected colour in a right-to-left page', () => {
+        const sliders = fixture.nativeElement.querySelector('.color-picker__hav') as HTMLElement
+        const margins = () => {
+            const style = getComputedStyle(sliders)
+            return [style.marginLeft, style.marginRight]
+        }
+        expect(margins()).toEqual(['0px', '-4px'])
+
+        fixture.nativeElement.setAttribute('dir', 'rtl')
+        expect(margins()).toEqual(['-4px', '0px'])
+    })
 })
