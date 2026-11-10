@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.1.2](https://github.com/Liquid-JS/nxt-components/compare/v22.1.1...v22.1.2) (2026-11-10)
+
+### Bug Fixes
+
+* **color-picker:** sliders sit as close to the selected colour in right-to-left pages ([ed4a783](https://github.com/Liquid-JS/nxt-components/commit/ed4a78355113089bf55d349640050f72662ac151))
+
 ## [22.1.1](https://github.com/Liquid-JS/nxt-components/compare/v22.1.0...v22.1.1) (2026-11-10)
 
 ### Bug Fixes
