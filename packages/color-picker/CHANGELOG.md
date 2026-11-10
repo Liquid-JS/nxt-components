@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.1.1](https://github.com/Liquid-JS/nxt-components/compare/v22.1.0...v22.1.1) (2026-11-10)
+
+### Bug Fixes
+
+* **color-picker:** ignore typed text that isn't a color while the dialog is closed ([8cfe535](https://github.com/Liquid-JS/nxt-components/commit/8cfe535dc99bb7caeb84935e9ef5dd1fd6ae2aa2))
+* **color-picker:** name when unparseable text was passed on: before the dialog opens ([8a086f0](https://github.com/Liquid-JS/nxt-components/commit/8a086f0a839a51e31f72f3c10edb6668afb6df33))
+
 # [22.1.0](https://github.com/Liquid-JS/nxt-components/compare/v22.0.0...v22.1.0) (2026-11-08)
 
 ### Features
