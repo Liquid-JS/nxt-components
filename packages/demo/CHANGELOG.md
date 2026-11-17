@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.2.0](https://github.com/Liquid-JS/nxt-components/compare/v22.1.2...v22.2.0) (2026-11-17)
+
+### Features
+
+* **flags:** custom flags path & label ([36156eb](https://github.com/Liquid-JS/nxt-components/commit/36156ebb3858888209a06a496acd28a8864c3587))
+
 # [22.1.0](https://github.com/Liquid-JS/nxt-components/compare/v22.0.0...v22.1.0) (2026-11-08)
 
 **Note:** Version bump only for package demo
