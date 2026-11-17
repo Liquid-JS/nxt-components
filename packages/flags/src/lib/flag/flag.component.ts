@@ -1,5 +1,6 @@
-import { Component, computed, input, ViewEncapsulation } from '@angular/core'
+import { Component, computed, inject, input, ViewEncapsulation } from '@angular/core'
 import { FlagDatabase, FlagDatabaseKey } from '../database'
+import { NXT_FLAGS_PATH } from '../path'
 import { FlagFormat, FlagFormatEnum, FlagSize, FlagSizeAlias } from '../types'
 
 const availableFormats = new Set<FlagFormat>(Object.values(FlagFormatEnum))
@@ -15,10 +16,15 @@ const availableCodes = new Set(Object.values(FlagDatabase))
         '[style.height.px]': '_height()',
         '[style.borderRadius]': '_radius()',
         '[style.backgroundImage]': '_image()',
-        '[style.display]': '_display()'
+        '[style.display]': '_display()',
+        '[attr.role]': 'label() ? "img" : null',
+        '[attr.aria-label]': 'label() || null',
+        '[attr.aria-hidden]': 'label() ? null : "true"'
     }
 })
 export class FlagComponent {
+
+    private readonly path = inject(NXT_FLAGS_PATH)
 
     /** ISO 3166-1-alpha-2 country code */
     readonly country = input<FlagDatabaseKey>()
@@ -34,6 +40,12 @@ export class FlagComponent {
             return undefined
         }
     })
+
+    /**
+     * The flag's accessible name, e.g. the country's name; with it, the flag is an image to assistive technologies.
+     * Without it, the flag is decorative and hidden from them, e.g. beside the country's name.
+     */
+    readonly label = input<string>()
 
     /** Flag format */
     readonly format = input<FlagFormat>(FlagFormatEnum.None)
@@ -69,7 +81,17 @@ export class FlagComponent {
     readonly _radius = computed(() => this._format() == FlagFormatEnum.Round ? '100%' : '0%')
 
     /** @internal */
-    readonly _image = computed(() => `url(assets/flags/${this._code()}.svg)`)
+    readonly _image = computed(() => {
+        const code = this._code()
+        if (!code) {
+            return undefined
+        }
+        const path = this.path
+        const url = typeof path == 'function'
+            ? path(code)
+            : `${path && !path.endsWith('/') ? `${path}/` : path}${code}.svg`
+        return `url(${JSON.stringify(url)})`
+    })
 
     /** @internal */
     readonly _display = computed(() => this._code()

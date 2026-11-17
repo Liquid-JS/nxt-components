@@ -25,6 +25,18 @@
         [languages]="['html']" />
     <br>
 
+    <h2 class="h4">Load the flags from another folder or a CDN</h2>
+    <p>The flags load from <code>assets/flags/</code> by default, relative to the base href. Provide another path, or a function from a code to its URL, for the app or for the flags inside a component:</p>
+    <app-code-block [code]="providePath"
+        [languages]="['typescript']" />
+    <br>
+
+    <h2 class="h4">Accessible name</h2>
+    <p>A flag is decorative by default, hidden from assistive technologies, e.g. beside the country's name. Give it a <code>label</code> where it stands on its own, and it's an image with that name:</p>
+    <app-code-block [code]="includeLabel"
+        [languages]="['html']" />
+    <br>
+
     <h2 class="h3">Configuration options</h2>
     <app-inputs-table [inputs]="componentInputs" />
 

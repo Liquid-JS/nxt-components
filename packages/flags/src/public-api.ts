@@ -5,3 +5,4 @@
 export * from './lib/database'
 export * from './lib/types'
 export * from './lib/flag/flag.component'
+export * from './lib/path'

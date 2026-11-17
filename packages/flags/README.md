@@ -55,3 +55,24 @@ Use the tag `nxt-flag` with attribute `country="xx"` (where xx is the [ISO 3166-
 ```html
 <nxt-flag country="br"></nxt-flag>
 ```
+
+### Load the flags from another folder or a CDN
+
+The flags load from `assets/flags/` by default, relative to the base href. Provide another path, or a function from a
+code to its URL, for the app or for the flags inside a component:
+
+```ts
+import { provideFlagsPath } from 'nxt-flags'
+
+providers: [provideFlagsPath('/static/flags/')]
+providers: [provideFlagsPath((code) => `https://cdn.example.com/flags/${code}.svg`)]
+```
+
+### Accessible name
+
+A flag is decorative by default, hidden from assistive technologies, e.g. beside the country's name. Give it a `label`
+where it stands on its own, and it's an image with that name:
+
+```html
+<nxt-flag country="br" label="Brazil"></nxt-flag>
+```

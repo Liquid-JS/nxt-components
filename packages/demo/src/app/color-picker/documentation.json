@@ -1481,7 +1481,7 @@
         },
         {
             "name": "ColorPickerDirective",
-            "id": "directive-ColorPickerDirective-fd3619392c3e159adb502b8b9bea96ac49afc4e030d6cb450e5c89e778b602650ad6d063ef3092148e89ebe3530a868c80183c47d50b742cf585cbe3430d943a",
+            "id": "directive-ColorPickerDirective-5375e35b3c55e87a5de0be839e201e3a6553bdc2cacf234132782c13b91572d4721c3ad0d99afd30f019a8dc9f4dc260d53fb2aa1ee9794c30945db96cb811dc",
             "file": "src/lib/color-picker.directive.ts",
             "type": "directive",
             "description": "",
@@ -2138,7 +2138,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 338,
+                    "line": 339,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2151,7 +2151,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 325,
+                    "line": 326,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2173,7 +2173,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 311,
+                    "line": 312,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2208,7 +2208,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 318,
+                    "line": 319,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n",
@@ -2253,7 +2253,7 @@
                     "optional": false,
                     "returnType": "\"light\" | \"dark\"",
                     "typeParameters": [],
-                    "line": 360,
+                    "line": 361,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nGet text color mode to ensure good contrast with selected color\n\n",
@@ -2261,8 +2261,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 12916,
-                                "end": 12918,
+                                "pos": 13128,
+                                "end": 13130,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -2276,8 +2276,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "new Rgba(1, 1, 1, 1, true)",
                             "tagName": {
-                                "pos": 12910,
-                                "end": 12915,
+                                "pos": 13122,
+                                "end": 13127,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -2288,8 +2288,8 @@
                         },
                         {
                             "name": {
-                                "pos": 13010,
-                                "end": 13012,
+                                "pos": 13222,
+                                "end": 13224,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -2303,8 +2303,8 @@
                             "deprecationMessage": "",
                             "defaultValue": "this.dialog?.rgbaText",
                             "tagName": {
-                                "pos": 13004,
-                                "end": 13009,
+                                "pos": 13216,
+                                "end": 13221,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,
@@ -2315,8 +2315,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 13075,
-                                "end": 13082,
+                                "pos": 13287,
+                                "end": 13294,
                                 "kind": 80,
                                 "id": 0,
                                 "flags": 16842752,

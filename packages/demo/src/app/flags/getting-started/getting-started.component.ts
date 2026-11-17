@@ -45,6 +45,13 @@ export class GettingStartedComponent {
 
     readonly includeHTML = '<nxt-flag country="br"></nxt-flag>'
 
+    readonly providePath = `import { provideFlagsPath } from 'nxt-flags'
+
+providers: [provideFlagsPath('/static/flags/')]
+providers: [provideFlagsPath((code) => \`https://cdn.example.com/flags/\${code}.svg\`)]`
+
+    readonly includeLabel = '<nxt-flag country="br" label="Brazil"></nxt-flag>'
+
     readonly componentDocs = docs.components.find(d => d.selector == 'nxt-flag')
 
     readonly componentInputs = (this.componentDocs?.inputsClass.sort((a, b) => a.line - b.line) ?? [])
