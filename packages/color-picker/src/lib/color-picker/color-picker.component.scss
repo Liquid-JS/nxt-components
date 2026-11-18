@@ -41,7 +41,7 @@ $light: #dadada;
         width: 0;
         border-style: solid;
         position: absolute;
-        z-index: 999999;
+        z-index: 9999;
     }
 
     .color-picker__cursor {
@@ -55,6 +55,7 @@ $light: #dadada;
         transition: border 0.2s linear;
 
         &.color-picker__cursor--sv {
+            z-index: 10000;
             margin: math.div(-$baseSize, 2);
         }
 

@@ -1,6 +1,6 @@
 import { ConnectedPosition, Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
-import { ApplicationRef, booleanAttribute, ComponentRef, computed, Directive, ElementRef, Injector, OnChanges, OnDestroy, SimpleChanges, ViewContainerRef, inject, output, input, linkedSignal, signal } from '@angular/core'
+import { ApplicationRef, booleanAttribute, ComponentRef, computed, Directive, effect, ElementRef, Injector, OnChanges, OnDestroy, SimpleChanges, ViewContainerRef, inject, output, input, linkedSignal, signal } from '@angular/core'
 import { compositeColors, hsvaToRgba, stringToCmyk, stringToHsva } from '../util/color'
 import { opaqueSliderLight } from '../util/contrast'
 import { Hsva, Rgba } from '../util/formats'
@@ -13,7 +13,6 @@ import { ColorPickerComponent } from './color-picker/color-picker.component'
     exportAs: 'nxtColorPicker',
     host: {
         'aria-haspopup': 'dialog',
-        '[attr.aria-expanded]': 'dialogDisplay() == "popup" ? expanded() : null',
         '(keydown)': 'handleKeydown($event)',
         '(focus)': 'handleOpen($event)',
         '(click)': 'handleOpen($event)',
@@ -220,6 +219,20 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     private readonly vcRef = inject(ViewContainerRef)
     private readonly elRef = inject(ElementRef)
     private readonly overlay = inject(Overlay)
+
+    constructor() {
+        // Not a host binding: the host may be an ng-container, which can't have attributes
+        effect(() => {
+            const el: Node | undefined = this.elRef.nativeElement
+            if (el?.nodeType != Node.ELEMENT_NODE)
+                return
+
+            if (this.dialogDisplay() == DialogDisplayEnum.popup)
+                (el as Element).setAttribute('aria-expanded', `${this.expanded()}`)
+            else
+                (el as Element).removeAttribute('aria-expanded')
+        })
+    }
 
     /** @internal */
     handleOpen(event: Event) {

@@ -190,3 +190,25 @@ describe('ColorPickerDirective by keyboard', () => {
         expect(fixture.componentInstance.cancelled).toBe(1)
     })
 })
+
+@Component({
+    template: `<ng-container dialogDisplay="inline" [(nxtColor)]="color" />
+<input class="trigger" [(nxtColor)]="color" />`,
+    imports: [ColorPickerDirective]
+})
+class ContainerHostComponent {
+    color = '#ff0000'
+}
+
+describe('ColorPickerDirective on ng-container', () => {
+    it('should render inline without setting attributes on the container', async () => {
+        const fixture = TestBed.createComponent(ContainerHostComponent)
+        fixture.detectChanges()
+        await fixture.whenStable()
+        fixture.detectChanges()
+
+        expect(fixture.nativeElement.querySelector('.color-picker')).not.toBeNull()
+        expect(fixture.nativeElement.querySelector('input.trigger').getAttribute('aria-expanded')).toBe('false')
+        fixture.destroy()
+    })
+})
