@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.2.1](https://github.com/Liquid-JS/nxt-components/compare/v22.2.0...v22.2.1) (2026-11-18)
+
+### Bug Fixes
+
+* **color-picker:** dialog corners overflow, dialog class ([a1312c3](https://github.com/Liquid-JS/nxt-components/commit/a1312c3e7331ddd561a32d91e380b6b25b3821bd))
+
 # [22.2.0](https://github.com/Liquid-JS/nxt-components/compare/v22.1.2...v22.2.0) (2026-11-17)
 
 ### Features
