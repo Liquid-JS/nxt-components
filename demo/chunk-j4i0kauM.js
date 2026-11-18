@@ -1,0 +1,38 @@
+import{t as Z}from"./chunk-BPcHclRB.js";import{t as ee}from"./chunk-FRdXVlQV.js";import"./chunk-DpIsQNvT.js";import{t as Ht}from"./chunk-8aGTNAAo.js";import"./chunk-B3srRVBE.js";import{n as b,t as S$1}from"./chunk-IcDNAYhK.js";import"./main-7IQ42RCL.js";import"./chunk-jrLhM0Sc.js";import"./chunk-Csat7SFd.js";import{Ar as tv,Ft as W_,a as Au,ar as nv,br as rw,hr as rM,ht as QC,zr as vs}from"./chunk-Cw6fPprD.js";import"./chunk-B_U_B7EY.js";var y={pipes:[],interfaces:[],injectables:[],guards:[],interceptors:[],classes:[],directives:[{name:`SortablejsDirective`,id:`directive-SortablejsDirective-80bdb37a09f8f164b4962c63993909947bbed9803f1326c30eccdadf2155ced536c6483e975bce3208411364f7589bc4e0a5dda708063967bdd00eaf6964cd83`,file:`src/lib/sortablejs.directive.ts`,type:`directive`,description:``,rawdescription:`
+`,selector:`[nxtSortablejs]`,providers:[],hostDirectives:[],standalone:!1,inputsClass:[{name:`cloneFunction`,coverageIgnore:!1,deprecated:!1,deprecationMessage:``,type:`CloneFunction<T>`,indexKey:``,optional:!1,description:`<p>A function invoked when cloning items from template dataset into target dataset</p>
+`,line:50,rawdescription:`
+A function invoked when cloning items from template dataset into target dataset`,modifierKind:[148],required:!1},{name:`config`,coverageIgnore:!1,deprecated:!1,deprecationMessage:``,type:`Options`,indexKey:``,optional:!1,description:`<p>Sortablejs configuration</p>
+`,line:47,rawdescription:`
+Sortablejs configuration`,modifierKind:[148],required:!1},{name:`nxtSortablejs`,coverageIgnore:!1,defaultValue:`undefined`,deprecated:!1,deprecationMessage:``,type:`SortableData<T>`,indexKey:``,optional:!1,description:`<p>Input data, can be Array or FormArray</p>
+`,line:36,rawdescription:`
+Input data, can be Array or FormArray`,modifierKind:[148],required:!1},{name:`sortablejsContainer`,coverageIgnore:!1,deprecated:!1,deprecationMessage:``,type:`string`,indexKey:``,optional:!1,description:`<p>CSS selector for the sortable container</p>
+<p>Mostly required when used with custom components which wrap items in multiple containers. In that case,
+this should be the selector for the direct HTML parent of sortable items.</p>
+`,line:44,rawdescription:`
+
+CSS selector for the sortable container
+
+Mostly required when used with custom components which wrap items in multiple containers. In that case,
+this should be the selector for the direct HTML parent of sortable items.
+`,modifierKind:[148],required:!1}],outputsClass:[{name:`init`,coverageIgnore:!1,deprecated:!1,deprecationMessage:``,type:`Sortable`,indexKey:``,optional:!1,description:`<p>Initialised a new Sortablejs instance</p>
+`,line:53,rawdescription:`
+Initialised a new Sortablejs instance`,modifierKind:[148],required:!1}],deprecated:!1,deprecationMessage:``,hostBindings:[],hostListeners:[],propertiesClass:[],methodsClass:[],coverageIgnore:!1,extends:[],implements:[`OnChanges`,`OnDestroy`,`AfterViewInit`],relationships:{incoming:[],outgoing:[{name:`OnChanges`,type:`interface`},{name:`OnDestroy`,type:`interface`},{name:`AfterViewInit`,type:`interface`}]}}],components:[],modules:[],miscellaneous:{variables:[],functions:[{name:`provideGlobalSortableOptions`,file:`src/lib/globals.ts`,ctype:`miscellaneous`,subtype:`function`,coverageIgnore:!1,deprecated:!1,deprecationMessage:``,rawdescription:``,description:``,displayName:`provideGlobalSortableOptions`,args:[{name:`globalOptions`,type:`Options`,deprecated:!1,deprecationMessage:``}],returnType:`Provider[]`,jsdoctags:[{name:`globalOptions`,type:`Options`,deprecated:!1,deprecationMessage:``,tagName:{text:`param`}}]}],typealiases:[{name:`CloneFunction`,ctype:`miscellaneous`,subtype:`typealias`,coverageIgnore:!1,rawtype:`function`,file:`src/lib/sortablejs.directive.ts`,deprecated:!1,deprecationMessage:``,rawdescription:``,description:``,kind:185},{name:`SortableData`,ctype:`miscellaneous`,subtype:`typealias`,coverageIgnore:!1,rawtype:`unknown`,file:`src/lib/sortablejs.directive.ts`,deprecated:!1,deprecationMessage:``,rawdescription:``,description:``,kind:195}],enumerations:[],groupedVariables:{},groupedFunctions:{"src/lib/globals.ts":[{name:`provideGlobalSortableOptions`,file:`src/lib/globals.ts`,ctype:`miscellaneous`,subtype:`function`,coverageIgnore:!1,deprecated:!1,deprecationMessage:``,rawdescription:``,description:``,displayName:`provideGlobalSortableOptions`,args:[{name:`globalOptions`,type:`Options`,deprecated:!1,deprecationMessage:``}],returnType:`Provider[]`,jsdoctags:[{name:`globalOptions`,type:`Options`,deprecated:!1,deprecationMessage:``,tagName:{text:`param`}}]}]},groupedEnumerations:{},groupedTypeAliases:{"src/lib/sortablejs.directive.ts":[{name:`CloneFunction`,ctype:`miscellaneous`,subtype:`typealias`,coverageIgnore:!1,rawtype:`function`,file:`src/lib/sortablejs.directive.ts`,deprecated:!1,deprecationMessage:``,rawdescription:``,description:``,kind:185},{name:`SortableData`,ctype:`miscellaneous`,subtype:`typealias`,coverageIgnore:!1,rawtype:`unknown`,file:`src/lib/sortablejs.directive.ts`,deprecated:!1,deprecationMessage:``,rawdescription:``,description:``,kind:195}]}}};var S=()=>[`shell`];var v=()=>[`typescript`];var w=()=>[`html`];var k=(()=>{class c{constructor(){this.installScript=`npm install --save nxt-sortablejs sortablejs`,this.importGlobal=`import { ApplicationConfig } from '@angular/core'
+import { provideGlobalSortableOptions } from 'nxt-sortablejs'
+
+export const appConfig: ApplicationConfig = {
+    providers: [
+        provideGlobalSortableOptions({
+            animation: 150
+        })
+    ]
+}`,this.importDirective=`import { SortablejsDirective } from 'nxt-sortablejs'
+
+@Component({
+    ...
+    imports: [
+        ...
+        SortablejsDirective
+    ]
+})`,this.includeHTML=`<ul [nxtSortablejs]="items">
+    <li *ngFor="let item of items">{{ item }}</li>
+</ul>`,this.directiveDocs=y.directives.find(a=>a.selector==`[nxtSortablejs]`),this.inputs=this.directiveDocs?.inputsClass.sort((a,i)=>a.line-i.line)??[],this.outputs=this.directiveDocs?.outputsClass.sort((a,i)=>a.line-i.line)??[]}static{this.ɵfac=function(i){return new(i||c)}}static{this.ɵcmp=QC({type:c,selectors:[[`app-getting-started`]],decls:27,vars:14,consts:[[`title`,`Getting started | nxt-sortablejs`,`description`,`Getting started with Angular Storablejs directive.`],[1,`h4`],[3,`code`,`languages`],[1,`h3`],[3,`inputs`],[3,`outputs`]],template:function(i,l){i&1&&(nv(0,`app-meta`,0),vs(1,`app-content-wrap`)(2,`h1`),W_(3,`Getting started with nxt-sortablejs`),Au(),vs(4,`h2`,1),W_(5,`Installing`),Au(),nv(6,`app-code-block`,2)(7,`br`),vs(8,`h2`,1),W_(9,`Import Sortablejs directive`),Au(),nv(10,`app-code-block`,2)(11,`br`),vs(12,`p`),W_(13,`If you want to cofigure global Sortablejs options, include `),vs(14,`code`),W_(15,`provideGlobalSortableOptions`),Au(),W_(16,` in your application.`),Au(),nv(17,`app-code-block`,2)(18,`br`),vs(19,`h2`,1),W_(20,`Use it in a template`),Au(),nv(21,`app-code-block`,2)(22,`br`),vs(23,`h2`,3),W_(24,`Configuration options`),Au(),nv(25,`app-inputs-table`,4)(26,`app-outputs-table`,5),Au()),i&2&&(rw(6),tv(`code`,l.installScript)(`languages`,rM(10,S)),rw(4),tv(`code`,l.importDirective)(`languages`,rM(11,v)),rw(7),tv(`code`,l.importGlobal)(`languages`,rM(12,v)),rw(4),tv(`code`,l.includeHTML)(`languages`,rM(13,w)),rw(4),tv(`inputs`,l.inputs),rw(),tv(`outputs`,l.outputs))},dependencies:[Ht,S$1,b,ee,Z],encapsulation:2})}}return c})();export{k as GettingStartedComponent};

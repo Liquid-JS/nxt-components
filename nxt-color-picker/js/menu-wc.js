@@ -64,6 +64,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="directives-links"' : 'id="xs-directives-links"' }>
                                 <li class="link">
+                                    <a href="directives/ColorPickerControlDirective.html" data-type="entity-link" >ColorPickerControlDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="directives/ColorPickerDirective.html" data-type="entity-link" >ColorPickerDirective</a>
                                 </li>
                             </ul>
@@ -98,6 +101,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
+                            <li class="link">
+                                <a href="interfaces/ColorPickerTexts.html" data-type="entity-link" >ColorPickerTexts</a>
+                            </li>
                             <li class="link">
                                 <a href="interfaces/InputChangeEvent.html" data-type="entity-link" >InputChangeEvent</a>
                             </li>

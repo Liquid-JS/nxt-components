@@ -127,7 +127,80 @@
     ]
 })</code></pre></div><h3>Include it in HTML template</h3>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;input [(nxtColor)]=&quot;color&quot; 
-    [style.background]=&quot;color&quot;/&gt;</code></pre></div>
+    [style.background]=&quot;color&quot;/&gt;</code></pre></div><h3>Forms</h3>
+<p><code>ColorPickerControlDirective</code> makes the color picker a form control, with <code>formControl</code>, <code>formControlName</code>, <code>ngModel</code>
+or signal forms&#39; <code>formField</code>, in place of <code>[(nxtColor)]</code>:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { ColorPickerControlDirective, ColorPickerDirective } from &#39;nxt-color-picker&#39;
+
+&#64;Component({
+    ...
+    imports: [
+        ...
+        ColorPickerDirective,
+        ColorPickerControlDirective
+    ]
+})</code></pre></div><b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;input nxtColor formControlName=&quot;color&quot; outputFormat=&quot;hex&quot; /&gt;</code></pre></div><p>The value is the color in the output format, or the CMYK color with <code>cmykEnabled</code>, and <code>null</code> without one; colors
+that only differ in spaces or case are the same value, so they don&#39;t change it. The input shows the color, also when
+the dialog changes it, but not while it&#39;s typed in. The control is touched when the dialog closes, or when the input
+loses focus while the dialog is closed, and the picker follows the form&#39;s disabled state.</p>
+<h3>Clearing</h3>
+<p>With <code>clearable</code>, the user can remove the color: the dialog has a Clear button, and emptying the input clears it.
+The color is then an empty string, and a form control&#39;s value <code>null</code>.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;input nxtColor formControlName=&quot;color&quot; clearable /&gt;</code></pre></div><h3>Keyboard</h3>
+<p>The dialog opens when the field has focus, and the field keeps it, so typing a color and Tab work as usual. To use
+the dialog by keyboard:</p>
+<ul>
+<li><strong>Arrow Down</strong> in the field opens the dialog and moves focus into it. Tab and Shift+Tab move between its
+controls and stay within it.</li>
+<li>The saturation and brightness area and the hue and opacity sliders move with the <strong>arrow keys</strong> by 1%, by 10%
+with <strong>Shift</strong>, and with <strong>Page Up</strong> and <strong>Page Down</strong>; <strong>Home</strong> and <strong>End</strong> move a slider to its ends. In the
+area, Up and Down change the brightness.</li>
+<li><strong>Enter</strong> keeps the color and <strong>Escape</strong> goes back to the color the dialog opened with. Both close the dialog
+and return focus to the field.</li>
+</ul>
+<p>The field has <code>aria-haspopup=&quot;dialog&quot;</code> and <code>aria-expanded</code>, the dialog, its sliders, inputs and buttons and the
+preset colors are named, and the sliders announce their values. The format arrows and the preset colors work with
+Enter and Space.</p>
+<h3>Texts</h3>
+<p>The texts the dialog shows and announces are English and translated with <code>@angular/localize</code>, as messages with ids
+like <code>@@nxt-color-picker.button.ok</code>. <code>provideColorPickerTexts</code> changes them, for the app or for the color pickers in
+a component; the others stay as they are. It takes the texts, or a function that gives them, e.g. from signals, which
+the dialog follows, so an app can change them at run time:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { provideColorPickerTexts } from &#39;nxt-color-picker&#39;
+
+providers: [provideColorPickerTexts({ ok: &#39;Apply&#39;, presetColors: &#39;Brand colors&#39; })]</code></pre></div><p><code>ColorPickerTexts</code> lists them all, from the dialog&#39;s name to the Clear button.</p>
+<h3>Theming</h3>
+<p>The dialog takes its colors and sizes from CSS custom properties, so it can match an app&#39;s design. Set them on
+<code>nxt-color-picker</code>, or on an element the dialog is in, e.g. the overlay container:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-css">nxt-color-picker {
+    --nxt-color-picker-background: #fff;
+    --nxt-color-picker-text-color: #222b45;
+    --nxt-color-picker-border: 1px solid #e4e9f2;
+    --nxt-color-picker-border-radius: 0.25rem;
+    --nxt-color-picker-input-background: #f7f9fc;
+    --nxt-color-picker-input-border-color: #e4e9f2;
+    --nxt-color-picker-input-focus-border-color: #3366ff;
+}</code></pre></div><table class="table table-bordered compodoc-table">
+<thead>
+<tr><th>Property</th><th>Styles</th></tr>
+</thead>
+<tbody>
+<tr><td><code>--nxt-color-picker-background</code>, <code>-text-color</code>, <code>-font-family</code>, <code>-font-size</code></td><td>the dialog</td></tr>
+<tr><td><code>--nxt-color-picker-border</code>, <code>-border-radius</code>, <code>-shadow</code></td><td>the dialog&#39;s frame</td></tr>
+<tr><td><code>--nxt-color-picker-border-color</code></td><td>the separator and the arrow pointing at the field</td></tr>
+<tr><td><code>--nxt-color-picker-focus-outline</code>, <code>-focus-outline-offset</code>, <code>-focus-outline-width</code></td><td>the focused slider, preset or button</td></tr>
+<tr><td><code>--nxt-color-picker-arrow-color</code></td><td>the arrows that change the input format</td></tr>
+<tr><td><code>--nxt-color-picker-input-background</code>, <code>-input-border-color</code>, <code>-input-border-width</code>, <code>-input-border-radius</code>, <code>-input-text-color</code>, <code>-input-placeholder-color</code>, <code>-input-height</code></td><td>the dialog&#39;s inputs</td></tr>
+<tr><td><code>--nxt-color-picker-input-hover-*</code>, <code>-input-focus-*</code>, <code>-input-disabled-*</code> (<code>background</code>, <code>border-color</code>, and <code>text-color</code> when disabled)</td><td>the inputs under the pointer, with focus and disabled</td></tr>
+<tr><td><code>--nxt-color-picker-button-color</code>, <code>-button-background</code>, <code>-button-padding</code>, <code>-button-border</code>, <code>-button-border-radius</code>, <code>-button-font-size</code>, <code>-button-font-weight</code></td><td>the OK, Cancel and Clear buttons</td></tr>
+</tbody>
+</table>
+<p>Without them the dialog looks as it always has.</p>
+<p>The dialog opens in the overlay container, outside the field. To style one picker&#39;s dialog apart from the others,
+give it classes with <code>dialogClass</code>:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;input [(nxtColor)]=&quot;color&quot; dialogClass=&quot;compact-picker&quot; /&gt;</code></pre></div><b>Example :</b><div><pre class="line-numbers"><code class="language-css">nxt-color-picker.compact-picker {
+    --nxt-color-picker-shadow: none;
+}</code></pre></div>
 
 
 

@@ -124,7 +124,7 @@ import { provideHighlightOptions } from &#39;nxt-highlightjs&#39;
 export const appConfig: ApplicationConfig = {
     providers: [
         provideHighlightOptions({
-            fullLibraryLoader: () =&gt; import(&#39;highlight.js&#39;)
+            fullLibraryLoader: () =&gt; import(&#39;highlight.js&#39;).then(r =&gt; r.default)
         })
     ]
 }</code></pre></div><p>Above code loads the entire Highlight.js library. To improve performance you might want to load only the core library and neccesary languages.</p>
@@ -134,19 +134,21 @@ import { provideHighlightOptions } from &#39;nxt-highlightjs&#39;
 export const appConfig: ApplicationConfig = {
     providers: [
         provideHighlightOptions({
-            coreLibraryLoader: () =&gt; import(&#39;highlight.js/lib/core&#39;),
+            coreLibraryLoader: () =&gt; import(&#39;highlight.js/lib/core&#39;).then(r =&gt; r.default),
             lineNumbersLoader: () =&gt; import(&#39;nxt-highlightjs/line-numbers&#39;), // Optional, add line numbers if needed
             languages: {
-                typescript: () =&gt; import(&#39;highlight.js/lib/languages/typescript&#39;),
-                css: () =&gt; import(&#39;highlight.js/lib/languages/css&#39;),
-                xml: () =&gt; import(&#39;highlight.js/lib/languages/xml&#39;)
+                typescript: () =&gt; import(&#39;highlight.js/lib/languages/typescript&#39;).then(r =&gt; r.default),
+                css: () =&gt; import(&#39;highlight.js/lib/languages/css&#39;).then(r =&gt; r.default),
+                xml: () =&gt; import(&#39;highlight.js/lib/languages/xml&#39;).then(r =&gt; r.default)
             },
             themePath: &#39;path-to-theme.css&#39; // Optional, useful for dynamic theme changes
         })
     ]
 }</code></pre></div><h3>Use it in a template</h3>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;pre&gt;&lt;code [nxtHighlight]=&quot;code&quot;
-    language=&quot;html&quot;&gt;&lt;/code&gt;&lt;/pre&gt;</code></pre></div>
+    language=&quot;html&quot;&gt;&lt;/code&gt;&lt;/pre&gt;</code></pre></div><p>Until Highlight.js loads, and in a language that isn&#39;t loaded, the code shows as plain text. Code that&#39;s already
+highlighted, e.g. by server-side rendering, stays as it is until Highlight.js loads, so hydration keeps it.</p>
+
 
 
 

@@ -238,6 +238,14 @@
                             </li>
                             <li>
                                 <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#setColor" >setColor</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#setDisabled" >setDisabled</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
                                 <a href="#textColorMode" >textColorMode</a>
                             </li>
                         </ul>
@@ -264,10 +272,16 @@
                                 <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#cancelButton" >cancelButton</a>
                             </li>
                             <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#clearable" >clearable</a>
+                            </li>
+                            <li>
                                 <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#closeClickOutside" >closeClickOutside</a>
                             </li>
                             <li>
                                 <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#cmykEnabled" >cmykEnabled</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#dialogClass" >dialogClass</a>
                             </li>
                             <li>
                                 <span class="reference-badge reference-badge--property" aria-hidden="true">I</span><a href="#dialogDisplay" >dialogDisplay</a>
@@ -386,6 +400,19 @@
 
 </section>
 
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
 
             <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
@@ -474,6 +501,34 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="clearable"></a>
+                        <b>clearable</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Lets the user clear the color: the dialog has a Clear button, and emptying the input clears it; the color is
+then an empty string</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="closeClickOutside"></a>
                         <b>closeClickOutside</b>
                     </td>
@@ -519,6 +574,29 @@
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>Enables CMYK input format and color change event</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialogClass"></a>
+                        <b>dialogClass</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Classes of the dialog&#39;s element, <code>nxt-color-picker</code>, e.g. to style one picker&#39;s dialog, which opens in the
+overlay container, apart from the others</p>
 </div>
                     </td>
                 </tr>
@@ -1354,6 +1432,128 @@
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setColor"></a>
+                    <span class="name">
+                        <span ><b>setColor</b></span>
+                        <a href="#setColor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setColor(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDisabled"></a>
+                    <span class="name">
+                        <span ><b>setDisabled</b></span>
+                        <a href="#setDisabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDisabled(disabled: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>disabled</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>

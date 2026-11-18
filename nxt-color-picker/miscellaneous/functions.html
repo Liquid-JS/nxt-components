@@ -200,6 +200,9 @@
                             <a href="#normalizeRGBA" title="src/util/color.ts" class="reference-link "><span class="reference-badge reference-badge--function" aria-hidden="true">F</span><span class="reference-link-label"><b>normalizeRGBA</b>&nbsp;&nbsp;&nbsp;(src/.../color.ts)</span></a>
                         </li>
                         <li>
+                            <a href="#provideColorPickerTexts" title="src/lib/texts.ts" class="reference-link "><span class="reference-badge reference-badge--function" aria-hidden="true">F</span><span class="reference-link-label"><b>provideColorPickerTexts</b>&nbsp;&nbsp;&nbsp;(src/.../texts.ts)</span></a>
+                        </li>
+                        <li>
                             <a href="#rgbaToCmyk" title="src/util/color.ts" class="reference-link "><span class="reference-badge reference-badge--function" aria-hidden="true">F</span><span class="reference-link-label"><b>rgbaToCmyk</b>&nbsp;&nbsp;&nbsp;(src/.../color.ts)</span></a>
                         </li>
                         <li>
@@ -1861,6 +1864,75 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <h3>src/lib/texts.ts</h3>
+    <section data-compodoc="block-methods">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="provideColorPickerTexts"></a>
+                    <span class="name">
+                        <span ><b>provideColorPickerTexts</b></span>
+                        <a href="#provideColorPickerTexts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>provideColorPickerTexts(texts: <a href="../miscellaneous/typealiases.html#ColorPickerTextsSource" target="_self">ColorPickerTextsSource</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Changes the color picker&#39;s texts, for the app or for the color pickers inside a component, e.g. for texts an app
+keeps elsewhere or changes at run time; the others stay as they are.</p>
+<p>The defaults are English and translated with Angular&#39;s i18n, as <code>$localize</code> messages with ids like
+<code>@@nxt-color-picker.button.ok</code>.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">providers: [provideColorPickerTexts({ ok: &#39;Apply&#39;, presetColors: &#39;Brand colors&#39; })]</code></pre></div></div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>texts</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#ColorPickerTextsSource" target="_self" >ColorPickerTextsSource</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://angular.dev/api/core/Provider" target="_blank" >Provider</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
                             </div>
                 </td>
             </tr>

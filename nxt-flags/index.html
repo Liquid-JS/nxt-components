@@ -138,7 +138,16 @@
     ]
 }</code></pre></div><h3>Include it in HTML template</h3>
 <p>Use the tag <code>nxt-flag</code> with attribute <code>country=&quot;xx&quot;</code> (where xx is the <a href="http://www.iso.org/iso/country_names_and_code_elements">ISO 3166-1-alpha-2 code</a> of a country):</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;nxt-flag country=&quot;br&quot;&gt;&lt;/nxt-flag&gt;</code></pre></div>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;nxt-flag country=&quot;br&quot;&gt;&lt;/nxt-flag&gt;</code></pre></div><h3>Load the flags from another folder or a CDN</h3>
+<p>The flags load from <code>assets/flags/</code> by default, relative to the base href. Provide another path, or a function from a
+code to its URL, for the app or for the flags inside a component:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">import { provideFlagsPath } from &#39;nxt-flags&#39;
+
+providers: [provideFlagsPath(&#39;/static/flags/&#39;)]
+providers: [provideFlagsPath((code) =&gt; `https://cdn.example.com/flags/${code}.svg`)]</code></pre></div><h3>Accessible name</h3>
+<p>A flag is decorative by default, hidden from assistive technologies, e.g. beside the country&#39;s name. Give it a <code>label</code>
+where it stands on its own, and it&#39;s an image with that name:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;nxt-flag country=&quot;br&quot; label=&quot;Brazil&quot;&gt;&lt;/nxt-flag&gt;</code></pre></div>
 
 
 
