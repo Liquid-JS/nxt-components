@@ -136,3 +136,16 @@ nxt-color-picker {
 | `--nxt-color-picker-button-color`, `-button-background`, `-button-padding`, `-button-border`, `-button-border-radius`, `-button-font-size`, `-button-font-weight`             | the OK, Cancel and Clear buttons                      |
 
 Without them the dialog looks as it always has.
+
+The dialog opens in the overlay container, outside the field. To style one picker's dialog apart from the others,
+give it classes with `dialogClass`:
+
+```html
+<input [(nxtColor)]="color" dialogClass="compact-picker" />
+```
+
+```css
+nxt-color-picker.compact-picker {
+    --nxt-color-picker-shadow: none;
+}
+```

@@ -28,6 +28,8 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     private ignoreChanges: boolean = false
 
     private cmpRef?: ComponentRef<ColorPickerComponent>
+    /** The dialog's element, while there is one */
+    private readonly dialogElement = signal<HTMLElement | undefined>(undefined)
 
     /** Set while focus returns to the element, so it doesn't open the dialog again */
     private returningFocus = false
@@ -150,6 +152,12 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     /** Dialog positioning mode */
     readonly dialogDisplay = input<DialogDisplay>(DialogDisplayEnum.popup)
 
+    /**
+     * Classes of the dialog's element, `nxt-color-picker`, e.g. to style one picker's dialog, which opens in the
+     * overlay container, apart from the others
+     */
+    readonly dialogClass = input<string | string[]>()
+
     /** Array of HTML elements that will be ignored when clicked */
     readonly ignoredElements = input<any[]>()
 
@@ -231,6 +239,17 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
                 (el as Element).setAttribute('aria-expanded', `${this.expanded()}`)
             else
                 (el as Element).removeAttribute('aria-expanded')
+        })
+
+        // The dialog has the classes it's given, and loses the ones it no longer is
+        let applied: string[] = []
+        effect(() => {
+            const element = this.dialogElement()
+            const value = this.dialogClass() ?? []
+            const classes = (Array.isArray(value) ? value : value.split(/\s+/)).filter(Boolean)
+            element?.classList.remove(...applied.filter(name => !classes.includes(name)))
+            element?.classList.add(...classes)
+            applied = element ? classes : []
         })
     }
 
@@ -390,6 +409,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
 
         this.cmpRef = undefined
         this.overlayRef = undefined
+        this.dialogElement.set(undefined)
         this.dialogCreated = false
     }
 
@@ -431,6 +451,7 @@ export class ColorPickerDirective implements OnChanges, OnDestroy {
     }
 
     private setupDialog() {
+        this.dialogElement.set(this.cmpRef?.location.nativeElement)
         this.dialog?.setupDialog({ ...this, callbacks: this._callbacks, elementRef: this.elRef, color: this.nxtColor() })
     }
 

@@ -1,4 +1,4 @@
-import { Component, ElementRef, signal, ViewContainerRef } from '@angular/core'
+import { Component, ElementRef, signal, ViewContainerRef, ViewEncapsulation } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { Overlay } from '@angular/cdk/overlay'
 import { ColorPickerDirective } from './color-picker.directive'
@@ -210,5 +210,67 @@ describe('ColorPickerDirective on ng-container', () => {
         expect(fixture.nativeElement.querySelector('.color-picker')).not.toBeNull()
         expect(fixture.nativeElement.querySelector('input.trigger').getAttribute('aria-expanded')).toBe('false')
         fixture.destroy()
+    })
+})
+
+@Component({
+    template: `<div class="inline" dialogDisplay="inline" [(nxtColor)]="color" [dialogClass]="dialogClass()"></div>
+<input class="popup" [(nxtColor)]="color" [dialogClass]="dialogClass()" />`,
+    styles: `nxt-color-picker {
+    --nxt-color-picker-border: 1px solid #ccc;
+    --nxt-color-picker-border-radius: 8px;
+}`,
+    encapsulation: ViewEncapsulation.None,
+    imports: [ColorPickerDirective]
+})
+class DialogHostComponent {
+    color = '#ff0000'
+    readonly dialogClass = signal<string | string[] | undefined>('one two')
+}
+
+describe('ColorPickerDirective dialog', () => {
+    let fixture: ComponentFixture<DialogHostComponent>
+
+    async function render() {
+        fixture.detectChanges()
+        await fixture.whenStable()
+        fixture.detectChanges()
+    }
+
+    beforeEach(async () => {
+        fixture = TestBed.createComponent(DialogHostComponent)
+        await render()
+    })
+
+    afterEach(() => fixture.destroy())
+
+    const inline = () => fixture.nativeElement.querySelector('nxt-color-picker') as HTMLElement
+    const popup = () => [...document.querySelectorAll<HTMLElement>('nxt-color-picker')]
+        .find(element => !fixture.nativeElement.contains(element))
+
+    it('should give the dialog its classes, and change them', async () => {
+        expect([...inline().classList]).toEqual(['one', 'two'])
+
+        fixture.componentInstance.dialogClass.set(['two', 'three'])
+        await render()
+        expect([...inline().classList]).toEqual(['two', 'three'])
+
+        fixture.componentInstance.dialogClass.set(undefined)
+        await render()
+        expect([...inline().classList]).toEqual([])
+    })
+
+    it('should give a popup dialog its classes', async () => {
+        fixture.nativeElement.querySelector('input.popup').click()
+        await render()
+        expect(popup()?.classList.contains('one')).toBe(true)
+        expect(popup()?.classList.contains('two')).toBe(true)
+    })
+
+    it('should round the colors at the top as the dialog is', () => {
+        const style = getComputedStyle(inline().querySelector('.color-picker__sv')!)
+        expect(style.borderTopLeftRadius).toBe('8px')
+        expect(style.borderTopRightRadius).toBe('8px')
+        expect(style.borderBottomLeftRadius).toBe('0px')
     })
 })
